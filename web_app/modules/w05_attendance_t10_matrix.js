@@ -637,8 +637,11 @@
   // Render HTML chính
   function render(targetContainerId) {
     if (targetContainerId) state.containerId = targetContainerId;
-    const container = document.getElementById(state.containerId) || document.body;
-    if (!container) return;
+    if (!state.containerId) state.containerId = 'pg-w05-attendance-container';
+    const container = typeof state.containerId === 'string'
+      ? document.getElementById(state.containerId)
+      : (state.containerId instanceof HTMLElement ? state.containerId : null);
+    if (!container || container === document.body) return;
 
     injectStyles();
 
@@ -1111,8 +1114,8 @@
   // Public APIs của Module W05
   return {
     init: function (targetContainerId) {
-      state.containerId = targetContainerId;
-      render(targetContainerId);
+      state.containerId = targetContainerId || state.containerId || 'pg-w05-attendance-container';
+      render(state.containerId);
     },
     render: function (targetContainerId) {
       render(targetContainerId || state.containerId);

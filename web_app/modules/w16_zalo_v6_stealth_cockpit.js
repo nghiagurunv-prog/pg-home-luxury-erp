@@ -936,9 +936,8 @@
     init: function () {
       injectCockpitStyles();
       const defaultContainer = document.getElementById('w16-cockpit') || 
-                               document.getElementById('zalo-v6-cockpit') ||
-                               document.getElementById('app-main');
-      if (defaultContainer) {
+                               document.getElementById('zalo-v6-cockpit');
+      if (defaultContainer && defaultContainer !== document.body) {
         this.render(defaultContainer);
       }
     }

@@ -186,19 +186,16 @@
     async init(containerIdOrElement) {
       if (typeof containerIdOrElement === 'string') {
         this.container = document.getElementById(containerIdOrElement);
-      } else {
+      } else if (containerIdOrElement instanceof HTMLElement) {
         this.container = containerIdOrElement;
-      }
-
-      if (!this.container) {
-        console.warn('[W48] Container element not found, creating dynamic wrapper.');
-        this.container = document.createElement('div');
-        this.container.id = 'w48-delta-cursor-inspector-root';
-        document.body.appendChild(this.container);
+      } else {
+        this.container = document.getElementById('w48-delta-cursor-inspector-root');
       }
 
       await this.loadLiveCursorData();
-      this.render();
+      if (this.container && this.container !== document.body) {
+        this.render();
+      }
     }
 
     async loadLiveCursorData() {
