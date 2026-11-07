@@ -1,0 +1,414 @@
+[
+  {
+    "group_name": "Ván Gỗ Công Nghiệp & Melamine Cốt Chống Ẩm (Lam Giang, NT Cầu Vượt, Cường Thịnh)",
+    "pricing_tier": "Hệ Cao Cấp MDF Lõi Xanh Chống Ẩm & Melamine Nhập Khẩu",
+    "suppliers": [
+      "Tổng Kho Lam Giang",
+      "Gỗ NT Cầu Vượt",
+      "Cường Thịnh"
+    ],
+    "total_messages": 2,
+    "total_files": 4,
+    "files": [
+      "BANG_TONG_HOP_CONG_NO_LAM_GIANG_10_THANG_2026.xlsx",
+      "Don_DH29930.jpg",
+      "Don_tra_hang_NT_23_10_2026.jpg",
+      "Boc_tach_dinh_muc_tam_CNC_Nam.xlsx"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Lam Giang: 147.49M | NT Cầu Vượt: 82.06M | Đã thanh toán đúng tiến độ",
+      "debt_amount": "Lam Giang: 147.49M | NT Cầu Vượt: 82.06M | Đã thanh toán đúng tiến độ",
+      "order_codes": [
+        "DH29930",
+        "DON00216",
+        "DON00274",
+        "DH_MELAMINE_CUONG_THINH"
+      ]
+    },
+    "messages": [
+      {
+        "date": "04/11/2026",
+        "time": "14:33",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Đặt 1 tấm HMR DWS 17 2M 201T + ship (496k) sang xưởng. Đã CK Techcombank dứt điểm ngay lúc 14:33.",
+        "attachments": [
+          "Don_DH29930.jpg"
+        ]
+      },
+      {
+        "date": "06/11/2026",
+        "time": "11:20",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "Chuẩn hóa định mức tấm cắt CNC tủ bếp dưới 1.45 tấm/md, tủ bếp trên 1.04 tấm/md, tủ áo 1.05 tấm/m2. Cấm tính trùng cánh vào thùng.",
+        "attachments": [
+          "Boc_tach_dinh_muc_tam_CNC_Nam.xlsx"
+        ]
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  },
+  {
+    "group_name": "Cốt Plywood Chuẩn A1 Chống Nước (Plywood Đại Lâm Mộc)",
+    "pricing_tier": "Hệ Plywood Chống Nước Chuẩn A1 (Mã 8803)",
+    "suppliers": [
+      "Plywood Đại Lâm Mộc (Tâm & Thanh Huyền)"
+    ],
+    "total_messages": 2,
+    "total_files": 2,
+    "files": [
+      "Don_van_chuyen_CPN_DLM_8803.jpg",
+      "Bang_mau_Plywood_8803.pdf"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "0 đ (Đã thanh toán cước CPN 50.000 đ nhận 2 bộ mẫu mã 8803)",
+      "debt_amount": "0 đ (Đã thanh toán cước CPN 50.000 đ nhận 2 bộ mẫu mã 8803)",
+      "order_codes": [
+        "DH_MAU_DLM_8803"
+      ]
+    },
+    "messages": [
+      {
+        "date": "05/11/2026",
+        "time": "09:15",
+        "sender": "Tâm & Thanh Huyền (Plywood DLM)",
+        "content": "Đã gửi 2 bộ mẫu Plywood A1 mã 8803 mới nhất về 53 Trường Quốc Dụng, TP Hà Tĩnh cho anh Vũ nhận.",
+        "attachments": [
+          "Don_van_chuyen_CPN_DLM_8803.jpg"
+        ]
+      },
+      {
+        "date": "06/11/2026",
+        "time": "10:00",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Xưởng đã nhận 2 bộ mẫu Plywood mã 8803. Vân gỗ sắc nét, cốt đanh chống nước tốt, dùng bóc tách hạng mục ẩm cao.",
+        "attachments": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  },
+  {
+    "group_name": "Cánh Acrylic Bóng Gương Noline & Bo Cong CNC (Chiến Acrylic Livas, Cánh Huỳnh ALD)",
+    "pricing_tier": "Cánh Acrylic No-Line Cao Cấp Công Nghệ Đức & Bo Cong R3-R45",
+    "suppliers": [
+      "Chiến Acrylic Livas",
+      "Đức Acrylic - Cánh Huỳnh ALD"
+    ],
+    "total_messages": 2,
+    "total_files": 3,
+    "files": [
+      "Phieu_xuat_kho_Livas_Dot1.pdf",
+      "Phieu_xuat_kho_Livas_Dot2.pdf",
+      "Bang_thong_so_bo_cong_ALD_R3_R45.pdf"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Livas: 0 đ (Chị Hương đã tất toán toàn bộ) | ALD: Báo giá kỹ thuật",
+      "debt_amount": "Livas: 0 đ (Chị Hương đã tất toán toàn bộ) | ALD: Báo giá kỹ thuật",
+      "order_codes": [
+        "DH_CANH_ACRYLIC_LIVAS_DOT1",
+        "DH_CANH_ACRYLIC_LIVAS_DOT2",
+        "BAO_GIA_BO_CONG_ALD"
+      ]
+    },
+    "messages": [
+      {
+        "date": "05/11/2026",
+        "time": "16:45",
+        "sender": "Chiến Acrylic Livas",
+        "content": "Đã gia công hoàn thiện 100% cánh Acrylic noline đợt 1 và đợt 2 cho công trình biệt thự TP Hà Tĩnh, đã gửi xe về xưởng.",
+        "attachments": [
+          "Phieu_xuat_kho_Livas_Dot1.pdf",
+          "Phieu_xuat_kho_Livas_Dot2.pdf"
+        ]
+      },
+      {
+        "date": "06/11/2026",
+        "time": "08:30",
+        "sender": "Đức Acrylic - Cánh Huỳnh ALD",
+        "content": "Gửi báo giá gia công bo cong R3 đến R45 trên Acrylic/Melamine/Laminate/PET đa dạng cốt chống ẩm, nhựa WPB, Plywood.",
+        "attachments": [
+          "Bang_thong_so_bo_cong_ALD_R3_R45.pdf"
+        ]
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  },
+  {
+    "group_name": "Kính Cường Lực & Gương Bỉ Dantalux Viền Nhôm (Kính Việt Nhật VSG, Vũ Cường Dantalux, Kính Phú Mỹ)",
+    "pricing_tier": "Kính Cường Lực 8-10mm VSG Chuẩn & Gương Bỉ AGC Tráng Bạc 8 Lớp",
+    "suppliers": [
+      "Kính Việt Nhật VSG",
+      "Vũ Cường - Gương Bỉ Dantalux",
+      "Kính Gương Phú Mỹ"
+    ],
+    "total_messages": 2,
+    "total_files": 3,
+    "files": [
+      "Don_dat_kinh_Viet_Nhat_30_10_2026.pdf",
+      "Ban_ve_guong_decor_600x1600.pdf",
+      "Bang_gia_gia_cong_kinh_Phu_My.pdf"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Việt Nhật: Đã cọc 40% (1.110.720 đ) | Gương Bỉ Vũ Cường: 1.100.000 đ",
+      "debt_amount": "Việt Nhật: Đã cọc 40% (1.110.720 đ) | Gương Bỉ Vũ Cường: 1.100.000 đ",
+      "order_codes": [
+        "DH_KINH_VIET_NHAT_VSG_30_10",
+        "DH_GUONG_BI_DANTALUX_600x1600"
+      ]
+    },
+    "messages": [
+      {
+        "date": "05/11/2026",
+        "time": "10:12",
+        "sender": "Vũ Cường - Gương Bỉ Dantalux",
+        "content": "Chốt mẫu gương decor viền nhôm gương Bỉ nhập khẩu 600x1600 lắp cánh tủ áo decor. Đơn giá 1.100.000 đ.",
+        "attachments": [
+          "Ban_ve_guong_decor_600x1600.pdf"
+        ]
+      },
+      {
+        "date": "06/11/2026",
+        "time": "09:00",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "Đồng ý chốt mẫu gương Bỉ Vũ Cường 1.1M. Yêu cầu bọc viền nhôm tinh xảo, chống trầy xước khi vận chuyển.",
+        "attachments": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  },
+  {
+    "group_name": "Phụ Kiện Kim Khí Tủ Bếp & Ray Trượt Bản Lề (Quốc Tâm, Phúc Sơn Kadinax)",
+    "pricing_tier": "Phụ Kiện Chính Hãng Chuẩn Giảm Chấn (DTC, Blumk, Kadinax)",
+    "suppliers": [
+      "Phụ Kiện Quốc Tâm",
+      "Phụ Kiện Phúc Sơn"
+    ],
+    "total_messages": 2,
+    "total_files": 4,
+    "files": [
+      "Hoa_don_ban_le_05_11.jpg",
+      "So_no_tay_T296.jpg",
+      "Hoa_don_Quoc_Tam_04_11.jpg",
+      "Don_hang_Kadinax_Phuc_Son.pdf"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Quốc Tâm: 26.170.000 đ | Phúc Sơn: Tạm dừng chuyển hãng",
+      "debt_amount": "Quốc Tâm: 26.170.000 đ | Phúc Sơn: Tạm dừng chuyển hãng",
+      "order_codes": [
+        "HD_LED_04_11",
+        "HD_RAY_SAP_05_11",
+        "DH_PK_PHUCSON_KADINAX"
+      ]
+    },
+    "messages": [
+      {
+        "date": "04/11/2026",
+        "time": "11:52",
+        "sender": "Phan Thị Lan (Quốc Tâm)",
+        "content": "Gửi hóa đơn 2 cuộn Led 10m TT 170k lấy sáng nay cộng vào sổ nợ T296.",
+        "attachments": [
+          "Hoa_don_Quoc_Tam_04_11.jpg"
+        ]
+      },
+      {
+        "date": "05/11/2026",
+        "time": "15:30",
+        "sender": "Lương Thể Hào (Thợ Lắp Ráp)",
+        "content": "Đã nhận ray trượt sập 80k tại 56 Ngô Đức Kế cho công trình hoàn thiện.",
+        "attachments": [
+          "Hoa_don_ban_le_05_11.jpg"
+        ]
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  },
+  {
+    "group_name": "Phôi Gỗ Tự Nhiên & Cửa Gỗ Thịt (Cường Gỗ Thịt Hà Nội, Gỗ Thịt Đức Anh - Nga)",
+    "pricing_tier": "Gỗ Tự Nhiên (Gõ Đỏ Pachy, Óc Chó Bắc Mỹ, Sồi FAS Loại 1)",
+    "suppliers": [
+      "Xưởng Cường Gỗ Thịt Hà Nội",
+      "Gỗ Thịt Đức Anh - Thu Hương (Nga)"
+    ],
+    "total_messages": 2,
+    "total_files": 2,
+    "files": [
+      "Untitled.xlsx",
+      "So_gach_doi_soat_khoi_luong_duc_anh.jpg"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Đức Anh: Còn nợ 3.200.000 đ (Đã trừ 10M CK trong ngày)",
+      "debt_amount": "Đức Anh: Còn nợ 3.200.000 đ (Đã trừ 10M CK trong ngày)",
+      "order_codes": [
+        "DH_GO_THIT_CUONG_HN_2026",
+        "DH_GO_THIT_DUCANH"
+      ]
+    },
+    "messages": [
+      {
+        "date": "05/11/2026",
+        "time": "21:06",
+        "sender": "Nga (Gỗ thịt Đức Anh)",
+        "content": "Em gửi lại sổ công nợ gỗ sồi, đã trừ 10tr hôm nay chị Dung chuyển khoản nhé anh. Còn nợ lại 3.200.000 đ.",
+        "attachments": [
+          "So_gach_doi_soat_khoi_luong_duc_anh.jpg"
+        ]
+      },
+      {
+        "date": "06/11/2026",
+        "time": "08:00",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "Đã khớp sổ nợ 3.2M của Đức Anh. Lưu ý phân hệ CCSC: Trừ toàn bộ tiền gỗ thịt và đồ mua ngoài trước khi tính khoán xưởng 40%.",
+        "attachments": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  },
+  {
+    "group_name": "Sơn Hoàn Thiện PU & Vách CNC Trang Trí (Đức Lĩnh SƠN PU)",
+    "pricing_tier": "Sơn PU Men Cao Cấp Chống Ngả Màu & Vách CNC",
+    "suppliers": [
+      "Đức Lĩnh SƠN PU"
+    ],
+    "total_messages": 2,
+    "total_files": 1,
+    "files": [
+      "Bien_ban_nghiem_thu_son_canh_CNC.pdf"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Dư nợ nhắc thanh toán: 2.000.000 đ (Chờ nghiệm thu bề mặt)",
+      "debt_amount": "Dư nợ nhắc thanh toán: 2.000.000 đ (Chờ nghiệm thu bề mặt)",
+      "order_codes": [
+        "SON_PU_DUCLINH_CNC4M"
+      ]
+    },
+    "messages": [
+      {
+        "date": "05/11/2026",
+        "time": "14:20",
+        "sender": "Đức Lĩnh SƠN PU",
+        "content": "Gửi anh Nghĩa nhắc khoản thanh toán 2.000.000 đ sơn hoàn thiện bộ cánh CNC 4m và vách ngăn phòng khách.",
+        "attachments": [
+          "Bien_ban_nghiem_thu_son_canh_CNC.pdf"
+        ]
+      },
+      {
+        "date": "06/11/2026",
+        "time": "09:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "Vũ kiểm tra độ mịn và bóng của nước sơn trực tiếp tại xưởng. Khi nào đạt nghiệm thu mới trình duyệt chuyển tiền.",
+        "attachments": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  },
+  {
+    "group_name": "Đá Nung Kết Ceramic, Tấm Than Tre Giả Đá & Đồ Rời Sofa (Hoàng Hà Ceramic, Hoàng Gia, Khánh Sofa, Bọc Đệm HT)",
+    "pricing_tier": "Đá Ceramic Nung Kết, Tấm PVC Nano Than Tre & Phụ Kiện Bán Kèm",
+    "suppliers": [
+      "Hoàng Hà Ceramic PVC",
+      "Vật Liệu Hoàng Gia",
+      "Xưởng Đồ Rời Khánh",
+      "Cơ sở Bọc Đệm Da Nỉ Hà Tĩnh"
+    ],
+    "total_messages": 2,
+    "total_files": 4,
+    "files": [
+      "Ban_ve_boc_tach_mat_da_ban_bep.dwg",
+      "Catalog_tam_PVC_van_da_2026.pdf",
+      "PO_2026_1010_Sofa_Ban_an.pdf",
+      "Phieu_xuat_kho_boc_dem.pdf"
+    ],
+    "entities": {
+      "customer_name": "PG Home Luxury / Nguyễn Viết Nghĩa",
+      "phone": "0911006880 (Vũ Kỹ Thuật)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Khánh Sofa: 28M đã tất toán | Bọc Đệm: 0 đ | Ceramic: Cọc theo công trình",
+      "debt_amount": "Khánh Sofa: 28M đã tất toán | Bọc Đệm: 0 đ | Ceramic: Cọc theo công trình",
+      "order_codes": [
+        "DH_CERAMIC_HOANGHA_CALACATTA",
+        "DH_PVC_NANO_HOANGGIA",
+        "PO-2026-1010",
+        "DH_BOC_DEM_DA_NI_HT"
+      ]
+    },
+    "messages": [
+      {
+        "date": "04/11/2026",
+        "time": "16:00",
+        "sender": "Khánh Sofa (Hà Nội)",
+        "content": "Đã bàn giao bộ Sofa bọc nỉ da góc L và bàn ăn mặt đá Monet cho biệt thự Hà Tĩnh theo PO-2026-1010.",
+        "attachments": [
+          "PO_2026_1010_Sofa_Ban_an.pdf"
+        ]
+      },
+      {
+        "date": "06/11/2026",
+        "time": "14:00",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "Bóc tách rõ doanh thu đồ thương mại ngoài, không gộp vào doanh số sản xuất xưởng nhằm bảo vệ chính xác quỹ thợ và CCSC.",
+        "attachments": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Mục 24: An Cường (100%), Thái Lan (-12% đến -14%), Plywood A1 mã 8803",
+    "workshop_cost_control_54_percent": "Chốt chặn chi phí tổng <= 54% trước khi xuất báo giá"
+  }
+]

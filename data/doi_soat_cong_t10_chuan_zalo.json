@@ -1,0 +1,89 @@
+{
+  "status": "VERIFIED_ACCURATE",
+  "timestamp": "2026-11-04 01:50:00",
+  "zalo_evidence": [
+    {
+      "sender": "a",
+      "time": "08:35",
+      "content": "Phú Gia Hiệp G HD bảng công sau khi đã chỉnh sửa anh kiểm tra lại để trình xếp nha. anh em nào okey rồi like cho minh cái nhé 4"
+    },
+    {
+      "sender": "Lương Thế Hào",
+      "time": "08:39",
+      "content": "Phú Gia Hiệp G [Hình ảnh] bảng công sau khi đã chỉnh sửa anh kiểm tra lại để trình xếp nha. anh em nào okey rồi like cho minh cái nhé @All ok hết rồi nha anh"
+    }
+  ],
+  "payroll_t10": {
+    "Hà Viết Hòa": {
+      "cong_hc": 28.0,
+      "gio_ot": 66.0,
+      "don_gia_hc": 530000,
+      "don_gia_ot": 99375,
+      "phu_cap": 0,
+      "tam_ung": 1590000,
+      "luong_hc": 14840000,
+      "luong_ot": 6558750,
+      "tong_luong": 21398750,
+      "thuc_linh": 19808750
+    },
+    "Lương Thể Hào": {
+      "cong_hc": 30.0,
+      "gio_ot": 62.0,
+      "don_gia_hc": 450000,
+      "don_gia_ot": 84375,
+      "phu_cap": 0,
+      "tam_ung": 0,
+      "luong_hc": 13500000,
+      "luong_ot": 5231250,
+      "tong_luong": 18731250,
+      "thuc_linh": 18731250
+    },
+    "Trần Văn Anh": {
+      "cong_hc": 26.0,
+      "gio_ot": 56.0,
+      "don_gia_hc": 400000,
+      "don_gia_ot": 75000,
+      "phu_cap": 0,
+      "tam_ung": 0,
+      "luong_hc": 10400000,
+      "luong_ot": 4200000,
+      "tong_luong": 14600000,
+      "thuc_linh": 14600000
+    },
+    "Lê Văn Thoan": {
+      "cong_hc": 7.0,
+      "gio_ot": 7.0,
+      "don_gia_hc": 450000,
+      "don_gia_ot": 84375,
+      "phu_cap": 0,
+      "tam_ung": 0,
+      "luong_hc": 3150000,
+      "luong_ot": 590625,
+      "tong_luong": 3740625,
+      "thuc_linh": 3740625
+    },
+    "Tuấn Anh": {
+      "cong_hc": 19.5,
+      "gio_ot": 20.5,
+      "don_gia_hc": 300000,
+      "don_gia_ot": 56250,
+      "phu_cap": 0,
+      "tam_ung": 0,
+      "luong_hc": 5850000,
+      "luong_ot": 1153125,
+      "tong_luong": 7003125,
+      "thuc_linh": 7003125
+    }
+  },
+  "totals": {
+    "cong_hc": 110.5,
+    "gio_ot": 211.5,
+    "luong_hc": 47740000,
+    "luong_ot": 17733750,
+    "phu_cap_thuc_chi": 0,
+    "tam_ung": 1590000,
+    "thuc_linh_tien_mat": 63883750,
+    "quy_khoan_15": 72000000,
+    "doi_du_quy_tho": 6526250
+  }
+}

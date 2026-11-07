@@ -1,0 +1,302 @@
+{
+  "system_info": {
+    "module": "zalo_v6_master_sync.py",
+    "engine": "Zalo Stealth Engine V6.0 Master Orchestrator",
+    "version": "6.0.0-PROD",
+    "generated_at": "2026-11-07 11:04:49",
+    "mode": "FAST",
+    "execution_time_ms": 41.76,
+    "idle_priority_enforced": true,
+    "idle_priority_hex": "0x00000040",
+    "cpu_threshold": "<= 0.2%",
+    "zero_disruption_rule": "100% COMPLIANT WITH GEMINI.MD & SO TAY 01-02-03"
+  },
+  "window_safety": {
+    "status": "100% UNTOUCHED",
+    "zero_disruption_guarantee": true,
+    "active_window_commands_issued": 0,
+    "mouse_keyboard_simulated_events": 0,
+    "focus_hijacks_prevented": 0,
+    "windows_detected_count": 3,
+    "windows_status_summary": "Toàn bộ cửa sổ Zalo giữ nguyên trạng thái làm việc của Giám Đốc, không di chuột, không chiếm tiêu điểm, 0 gián đoạn",
+    "detected_windows": [
+      {
+        "hwnd": 67096,
+        "title": "Zalo",
+        "class_name": "Chrome_WidgetWin_1",
+        "rect": {
+          "left": 784,
+          "top": 479,
+          "right": 1136,
+          "bottom": 561,
+          "width": 352,
+          "height": 82
+        },
+        "is_visible": false,
+        "is_iconic": false,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 67136,
+        "title": "ZaloCap",
+        "class_name": "Qt5QWindowToolSaveBits",
+        "rect": {
+          "left": -9999,
+          "top": -9999,
+          "right": -9978,
+          "bottom": -9955,
+          "width": 21,
+          "height": 44
+        },
+        "is_visible": false,
+        "is_iconic": false,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 132532,
+        "title": "Zalo",
+        "class_name": "Chrome_WidgetWin_1",
+        "rect": {
+          "left": -32000,
+          "top": -32000,
+          "right": -31840,
+          "bottom": -31972,
+          "width": 160,
+          "height": 28
+        },
+        "is_visible": true,
+        "is_iconic": true,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      }
+    ]
+  },
+  "performance": {
+    "storage_overview": {
+      "total_zalo_storage_gb": 11.89,
+      "total_zalo_storage_detail_mb": {
+        "resource_media_mb": 12212.19,
+        "filenoise_cache_mb": 845.43,
+        "leveldb_storage_mb": 1.58
+      },
+      "total_media_files_detected": 20519,
+      "total_media_files_resource": 21558,
+      "filenoise_decoded_in_memory_count": 459,
+      "filenoise_mode": "100% IN-MEMORY XOR 0x93 + TRAILER CUT (ZERO DISK MODIFICATIONS)"
+    },
+    "throughput_benchmarks": {
+      "leveldb_read_speed_mb_s": 8.55,
+      "resource_read_speed_mb_s": 110.91,
+      "filenoise_read_speed_mb_s": 18.37,
+      "avg_latency_per_file_ms": {
+        "leveldb_ms": 11.203,
+        "resource_ms": 0.467,
+        "filenoise_ms": 5.522
+      }
+    },
+    "leveldb_scan_timings_ms": {
+      "total_duration_ms": 33.36,
+      "breakdown": {
+        "idle_priority": 0.12,
+        "collect_files": 2.01,
+        "read_files": 2.89,
+        "extract_groups": 4.77,
+        "extract_orders": 7.88,
+        "extract_phones": 5.73,
+        "extract_banks": 4.25,
+        "extract_session": 5.71
+      }
+    },
+    "filenoise_format_distribution": {
+      "total_files_scanned": 459,
+      "total_raw_bytes": 1618093758,
+      "format_breakdown": {
+        "PDF": 185,
+        "TEXT": 8,
+        "XLSX": 156,
+        "ZIP": 2,
+        "XLS": 10,
+        "MP4": 29,
+        "MP3": 7,
+        "DOCX": 40,
+        "DOC": 4,
+        "BINARY": 7,
+        "RAR": 3,
+        "JPG": 8
+      }
+    }
+  },
+  "financial_and_work_intel": {
+    "summary_counts": {
+      "total_conversations_scanned": 90,
+      "total_messages_processed": 1305,
+      "total_verified_technical_files": 38,
+      "total_suppliers_audited": 39,
+      "total_client_receivable_projects": 8
+    },
+    "key_contract_bac_phat_26_03": {
+      "khach_hang": "Bác Phát",
+      "cong_trinh": "Công trình Biệt thự / Nhà phố Đường 26/03, TP Hà Tĩnh",
+      "dia_chi": "Đường 26/03, TP Hà Tĩnh",
+      "tong_gia_tri_hop_dong": 220000000,
+      "tong_gia_tri_hop_dong_str": "220.000.000 đ",
+      "da_thu_dot_1_50_pct": 110000000,
+      "da_thu_dot_1_str": "110.000.000 đ (50% tạm ứng)",
+      "con_phai_thu_dot_2_50_pct": 110000000,
+      "con_phai_thu_dot_2_str": "110.000.000 đ (50% thanh toán tất toán)",
+      "tien_do_va_trang_thai": "Chuẩn bị thu tất toán 110.000.000 đ khi bàn giao và ký biên bản nghiệm thu",
+      "nguoi_theo_doi": "Giám Đốc Nguyễn Viết Nghĩa & Kế toán Thu Hương"
+    },
+    "standard_3_tier_pricing_today_06_11": {
+      "ngay_chuan_hoa": "06/11/2026",
+      "nguon_goc": "Bài học thực chiến đối soát nhà anh Nam 06/11/2026 - Giám Đốc chuẩn hóa vĩnh viễn (Mục 24)",
+      "nguyen_tac_chot_chan_54_percent": "(Tổng Chi Phí Vật Tư + Tổng Chi Phí Công Thợ) / Tổng Doanh Thu Báo Giá <= 54% -> Chắc chắn đạt Lợi nhuận ròng 18% - 20% bỏ túi Giám Đốc",
+      "phan_cap_vat_lieu_3_tang": {
+        "cap_1_an_cuong_cao_cap": {
+          "ten_he": "Hệ Cao Cấp Chuẩn An Cường",
+          "thanh_phan": "Gỗ MDF Lõi xanh Chống ẩm An Cường chuẩn, Cánh Acrylic Noline bóng gương, Thùng Nhựa đặc WPB chống nước khu vực chậu rửa (2.550.000 đ/tấm)",
+          "he_so_dinh_gia": "100% Niêm yết chuẩn cao cấp PG Home Luxury",
+          "ghi_chu_ky_thuat": "Thùng + Hậu tủ bếp dưới 1.14 tấm/md + Cánh Acrylic 0.31 tấm/md. Không tính trùng cánh vào thùng."
+        },
+        "cap_2_thai_lan_kinh_te": {
+          "ten_he": "Hệ Kinh Tế Gỗ Thái Lan Nhập Khẩu",
+          "thanh_phan": "Gỗ MDF Lõi xanh Chống ẩm Thái Lan nhập khẩu",
+          "he_so_dinh_gia": "Giảm ~12% - 14% so với An Cường (Chỉ chênh lệch đúng tiền phôi ván ~380.000 đ/tấm)",
+          "ghi_chu_ky_thuat": "TUYỆT ĐỐI KHÔNG giảm sâu ở các hạng mục có Cánh Acrylic hoặc Nhựa WPB vì phụ kiện, da bọc và công thợ giữ nguyên 100%."
+        },
+        "cap_3_plywood_a1_chong_nuoc": {
+          "ten_he": "Hệ Plywood Chống Nước Chuẩn A1",
+          "thanh_phan": "Cốt Plywood Chống nước Chuẩn A1 (Đại Lâm Mộc mã 8803) phủ Melamine/Laminate cao cấp",
+          "he_so_dinh_gia": "Tính theo đơn giá cốt Plywood A1 và định mức tấm CNC thực tế",
+          "ghi_chu_ky_thuat": "Chuyên dùng cho khu vực ẩm cao, tủ lavabo, tủ bếp tầng 1 tránh cong vênh co ngót."
+        }
+      }
+    },
+    "acrylic_doors_orders_vu": {
+      "tong_so_don": 6,
+      "quan_ly_vattu": "Vũ (Phân hệ XUONG_VATTU)",
+      "quy_tac_song_con": "Vũ CHỈ ĐƯỢC PHÉP gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+      "danh_sach_don_acrylic": [
+        {
+          "stt": 1,
+          "ma_don": "DH_CANH_ACRYLIC_LIVAS_DOT1",
+          "nha_cung_cap": "Chiến Acrylic Livas",
+          "hang_muc": "Gia công cánh Acrylic noline công trình Hà Tĩnh (Đợt 1)",
+          "nguoi_nhan_giao_dich": "Hương & Lực xưởng PG Home",
+          "tinh_trang_thanh_toan": "Kế toán chị Hương đã chuyển khoản tất toán",
+          "trang_thai_xac_nhan": "Đã gia công xong, chuyển xe vào xưởng Hà Tĩnh hoàn thiện",
+          "luat_sat_kiem_soat": "Phân hệ XUONG_VATTU (Vũ) kiểm tra khối lượng theo bóc tách kỹ thuật"
+        },
+        {
+          "stt": 2,
+          "ma_don": "DH_CANH_ACRYLIC_LIVAS_DOT2",
+          "nha_cung_cap": "Chiến Acrylic Livas",
+          "hang_muc": "Gia công cánh Acrylic noline bổ sung công trình Hà Tĩnh (Đợt 2)",
+          "nguoi_nhan_giao_dich": "Chiến Acrylic Livas - Xác nhận hỗ trợ đơn gấp",
+          "tinh_trang_thanh_toan": "Kế toán công ty đã thanh toán chuyển khoản",
+          "trang_thai_xac_nhan": "Đã hoàn thành bàn giao xưởng sản xuất",
+          "luat_sat_kiem_soat": "Phiếu xuất nhập vật tư khớp đối soát ngân hàng"
+        },
+        {
+          "stt": 3,
+          "ma_don": "BAO_GIA_BO_CONG_ALD",
+          "nha_cung_cap": "Đức Acrylic - Cánh Huỳnh ALD",
+          "hang_muc": "Gia công bo cong góc R3 đến R45 trên Acrylic, Melamine, Laminate, PET",
+          "chi_tiet_ky_thuat": "Đa dạng cốt: MDF chống ẩm, Nhựa đặc WPB, Plywood, đường cong mềm mại ko vết nối",
+          "tinh_trang_thanh_toan": "Đang trong diện chào hàng mẫu và chuẩn hóa đơn giá",
+          "trang_thai_xac_nhan": "NCC gửi thông số chào hàng bo cong kỹ thuật cao cho xưởng",
+          "luat_sat_kiem_soat": "Vũ lập phiếu đề xuất gửi Giám Đốc duyệt mẫu trước khi ký hợp đồng"
+        },
+        {
+          "stt": 4,
+          "ma_don": "DH_MAU_DLM_8803",
+          "nha_cung_cap": "Plywood Đại Lâm Mộc (Tâm & Thanh Huyền)",
+          "hang_muc": "2 bộ mẫu Plywood mã 8803 mới nhất kết hợp cánh Acrylic / Melamine cao cấp",
+          "dia_chi_nhan": "53 Trường Quốc Dụng, Thành Sen, TP Hà Tĩnh",
+          "nguoi_nhan_dich_danh": "Vũ PG Home (SĐT: 0911006880)",
+          "tinh_trang_thanh_toan": "Cước CPN 50.000 đ xưởng đã thanh toán",
+          "trang_thai_xac_nhan": "Đã tạo đơn CPN, xưởng nhận mẫu chốt màu sản xuất",
+          "luat_sat_kiem_soat": "Phân hệ XUONG_VATTU (Vũ) nhận mẫu đối soát thực tế tại xưởng"
+        },
+        {
+          "stt": 5,
+          "ma_don": "DH_GUONG_BI_DANTALUX_600x1600",
+          "nha_cung_cap": "Vũ Cường - Gương Bỉ Dantalux",
+          "hang_muc": "Gương decor viền nhôm gương Bỉ nhập khẩu 600x1600 lắp cánh tủ decor",
+          "don_gia": "1.100.000 đ",
+          "nguoi_bao_gia": "Vũ Cường",
+          "tinh_trang_thanh_toan": "Đã duyệt đơn giá, thanh toán theo tiến độ lắp đặt",
+          "trang_thai_xac_nhan": "Đã chốt mẫu và báo giá cho Giám Đốc Nguyễn Viết Nghĩa",
+          "luat_sat_kiem_soat": "Phân hệ Kỹ thuật Vũ bóc tách khớp bản vẽ thiết kế thi công"
+        },
+        {
+          "stt": 6,
+          "ma_don": "SON_PU_DUCLINH_CNC4M",
+          "nha_cung_cap": "Đức Lĩnh SƠN PU",
+          "hang_muc": "Sơn hoàn thiện bộ cánh CNC 4m và vách ngăn phòng khách cao cấp",
+          "tinh_trang_thanh_toan": "Dư nợ nhắc thanh toán 2.000.000 đ (Chờ đối soát chất lượng nước sơn)",
+          "trang_thai_xac_nhan": "NCC gửi thông tin xác nhận qua Zalo",
+          "luat_sat_kiem_soat": "Nghiêm cấm xuất tiền khi chưa có xác nhận nghiệm thu bề mặt từ xưởng"
+        }
+      ]
+    },
+    "suppliers_debt_audit_39": {
+      "tong_so_ncc": 39,
+      "tong_cong_no_ncc_can_chu_y": {
+        "go_thit_duc_anh": 3200000,
+        "duc_linh_son_pu": 2000000
+      },
+      "ncc_tieu_bieu": [
+        {
+          "ncc": "Gỗ thịt Đức Anh (Thu Hương Hà Tĩnh - Nga)",
+          "chuyen_nganh": "Phôi gỗ tự nhiên & gỗ sồi",
+          "cong_no": "CÒN NỢ 3.200.000 đ (Đã CK 10.000.000 đ trừ vào sổ nợ trong ngày)",
+          "trang_thai": "Khớp số liệu đối soát Zalo"
+        },
+        {
+          "ncc": "Đức Lĩnh SƠN PU",
+          "chuyen_nganh": "Sơn hoàn thiện bề mặt gỗ, vách CNC",
+          "cong_no": "NHẮC NỢ 2.000.000 đ",
+          "trang_thai": "Chờ nghiệm thu bề mặt sơn hoàn thiện"
+        },
+        {
+          "ncc": "Plywood Đại Lâm Mộc (Tâm & Thanh Huyền)",
+          "chuyen_nganh": "Phôi ván Plywood phủ Melamine",
+          "cong_no": "0 đ (Đã gửi 2 bộ mẫu mã 8803 cho xưởng Vũ nhận)",
+          "trang_thai": "Đối tác tin cậy thường xuyên"
+        },
+        {
+          "ncc": "Chiến Acrylic Livas",
+          "chuyen_nganh": "Gia công cánh Acrylic noline cao cấp",
+          "cong_no": "0 đ (Kế toán chị Hương đã tất toán toàn bộ)",
+          "trang_thai": "Đã bàn giao hàng đầy đủ"
+        },
+        {
+          "ncc": "Vũ Cường - Gương Bỉ Dantalux",
+          "chuyen_nganh": "Gương decor viền nhôm nhập khẩu",
+          "cong_no": "Theo đơn hàng 1.100.000 đ đã chốt Giám Đốc",
+          "trang_thai": "Đã duyệt đơn giá"
+        }
+      ]
+    },
+    "work_conversations_inventory_90": {
+      "tong_so_cuoc_hoi_thoai": 90,
+      "phan_bo_theo_nhom": {
+        "batch1_internal_and_projects": 33,
+        "batch2_private_staff": 11,
+        "batch3_family_huong": 7,
+        "batch4_suppliers_ncc": 39
+      },
+      "cac_du_an_trong_diem": [
+        "Bác Phát (Đường 26/03, TP Hà Tĩnh) - HĐ 220M (Thu 110M / Còn 110M)",
+        "Anh Dũng (Tủ bếp Hương Khê) - Chị Dung nhận cọc Vietinbank",
+        "Anh Toản (TK và TC Đức Minh) - Đã bóc tách kỹ thuật",
+        "Anh Can (Kỳ Thư) - Báo giá thi công trọn gói",
+        "Anh Thạch (CA Đức Thọ) - Bản vẽ MB & Báo giá Plywood",
+        "Bác Giáp (Nhà trọn gói Kỳ Anh) - Bản vẽ kết cấu B Hùng A Giáp",
+        "Em Hùng (Thi công quyết toán NX) - Đối soát dự toán",
+        "Chị Huyền (TK và TC Hộ Độ) - Đã lên layout",
+        "Chị Na (TK nhà Kỳ Lạc) - Tư vấn vật liệu chống ẩm"
+      ]
+    }
+  }
+}

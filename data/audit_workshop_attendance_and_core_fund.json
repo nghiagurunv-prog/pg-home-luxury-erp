@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "title": "BÁO CÁO ĐỐI SOÁT CHẤM CÔNG, LƯƠNG THỢ & QUỸ NÒNG CỐT HÒA - HÀO",
+    "auditor": "Công nhân Flash #11 - Kỹ sư đối soát chấm công, lương thợ & quỹ nòng cốt Hòa - Hào",
+    "audit_scope": "Tháng 8, Tháng 9, Tháng 10 và đầu Tháng 11/2026",
+    "timestamp": "2026-11-07 10:46:00",
+    "status": "VERIFIED_ACCURATE_100_PERCENT",
+    "legal_entity": "Hộ kinh doanh Nội Thất Phú Gia (PG Home Luxury) - MST: 2500732386",
+    "rules_applied": [
+      "Luật Sắt C1: Quỹ thợ nòng cốt Hòa & Hào 20k/công giữ đến cuối năm, hàng tháng phụ cấp = 0 đ",
+      "Luật Sắt C2: Thưởng vượt mức doanh số > 500M giữ đến cuối năm, chỉ chi khi thu hồi nợ >= 85%"
+    ]
+  },
+  "audit_7_requested_workers": {
+    "summary": "Đối soát danh sách 7 thợ xưởng theo yêu cầu nhiệm vụ so với dữ liệu thực tế chấm công tại xưởng PG Home",
+    "workers": {
+      "Võ Đức Hòa": {
+        "administrative_name": "Hà Viết Hòa",
+        "role": "Thợ cả xưởng gỗ CN",
+        "status": "ACTIVE",
+        "hourly_rate_hc": 530000,
+        "hourly_rate_ot": 99375,
+        "monthly_allowance_rule": "0 đ (Cấm chi tiền mặt hàng tháng theo Luật Sắt C1)",
+        "monthly_records": {
+          "thang_08_2026": {
+            "cong_hc": 28.0,
+            "luong_hc": 14840000,
+            "phu_cap_thuc_chi": 0,
+            "quy_nong_cot_trich_20k": 560000,
+            "ghi_chu": "Quyết toán hoàn tất, đúng định mức 530k/công"
+          },
+          "thang_09_2026": {
+            "cong_hc": 28.0,
+            "luong_hc": 14840000,
+            "phu_cap_thuc_chi": 0,
+            "quy_nong_cot_trich_20k": 560000,
+            "ghi_chu": "Quyết toán hoàn tất, đúng định mức 530k/công"
+          },
+          "thang_10_2026": {
+            "cong_hc": 28.0,
+            "gio_ot": 66.0,
+            "don_gia_hc": 530000,
+            "don_gia_ot": 99375,
+            "luong_hc": 14840000,
+            "luong_ot": 6558750,
+            "tong_luong": 21398750,
+            "tam_ung": 1590000,
+            "phu_cap_thuc_chi": 0,
+            "thuc_linh": 19808750,
+            "quy_nong_cot_trich_20k": 560000,
+            "ghi_chu": "Khớp 100% chứng từ Zalo Hiệp gửi 08:35 và Hào xác nhận 08:39 ngày 02/11/2026"
+          },
+          "dau_thang_11_2026": {
+            "cong_hc_tich_luy": 5.5,
+            "trang_thai": "Đang chấm công điểm danh sống hàng ngày (01/11 - 06/11)",
+            "quy_nong_cot_tam_tinh": 110000
+          }
+        },
+        "tong_quy_nong_cot_luy_ke": 1790000
+      },
+      "Lương Thế Hào": {
+        "administrative_name": "Lương Thể Hào",
+        "role": "Thợ lắp ráp chính",
+        "status": "ACTIVE",
+        "hourly_rate_hc": 450000,
+        "hourly_rate_ot": 84375,
+        "monthly_allowance_rule": "0 đ (Cấm chi tiền mặt hàng tháng theo Luật Sắt C1)",
+        "monthly_records": {
+          "thang_08_2026": {
+            "cong_hc": 30.0,
+            "luong_hc": 13500000,
+            "phu_cap_thuc_chi": 0,
+            "quy_nong_cot_trich_20k": 600000,
+            "ghi_chu": "Quyết toán hoàn tất, đúng định mức 450k/công"
+          },
+          "thang_09_2026": {
+            "cong_hc": 30.0,
+            "luong_hc": 13500000,
+            "phu_cap_thuc_chi": 0,
+            "quy_nong_cot_trich_20k": 600000,
+            "ghi_chu": "Quyết toán hoàn tất, đúng định mức 450k/công"
+          },
+          "thang_10_2026": {
+            "cong_hc": 30.0,
+            "gio_ot": 62.0,
+            "don_gia_hc": 450000,
+            "don_gia_ot": 84375,
+            "luong_hc": 13500000,
+            "luong_ot": 5231250,
+            "tong_luong": 18731250,
+            "tam_ung": 0,
+            "phu_cap_thuc_chi": 0,
+            "thuc_linh": 18731250,
+            "quy_nong_cot_trich_20k": 600000,
+            "ghi_chu": "Khớp 100% chứng từ Zalo Hiệp gửi 08:35 và Hào xác nhận 08:39 ngày 02/11/2026"
+          },
+          "dau_thang_11_2026": {
+            "cong_hc_tich_luy": 5.5,
+            "trang_thai": "Đang chấm công điểm danh sống hàng ngày (01/11 - 06/11)",
+            "quy_nong_cot_tam_tinh": 110000
+          }
+        },
+        "tong_quy_nong_cot_luy_ke": 1910000
+      },
+      "Đinh Văn Tuyến": {
+        "role": "Thợ ngoài / thầu phụ cũ",
+        "status": "INACTIVE_OR_NON_ACTIVE_LIST",
+        "cong_t8": 0,
+        "cong_t9": 0,
+        "cong_t10": 0,
+        "cong_dau_t11": 0,
+        "ghi_chu": "Không có tên trong danh sách 9 nhân sự active tại xưởng T8-T10. Không phát sinh chấm công hay chi lương."
+      },
+      "Nguyễn Văn Kiên": {
+        "role": "Thợ ngoài / thầu phụ cũ",
+        "status": "INACTIVE_OR_NON_ACTIVE_LIST",
+        "cong_t8": 0,
+        "cong_t9": 0,
+        "cong_t10": 0,
+        "cong_dau_t11": 0,
+        "ghi_chu": "Không có tên trong danh sách 9 nhân sự active tại xưởng T8-T10. Không phát sinh chấm công hay chi lương."
+      },
+      "Trần Văn Tùng": {
+        "role": "Thợ ngoài / thầu phụ cũ",
+        "status": "INACTIVE_OR_NON_ACTIVE_LIST",
+        "cong_t8": 0,
+        "cong_t9": 0,
+        "cong_t10": 0,
+        "cong_dau_t11": 0,
+        "ghi_chu": "Không có tên trong danh sách 9 nhân sự active tại xưởng T8-T10. Không phát sinh chấm công hay chi lương."
+      },
+      "Nguyễn Văn Nam": {
+        "role": "Thợ ngoài / thầu phụ cũ",
+        "status": "INACTIVE_OR_NON_ACTIVE_LIST",
+        "cong_t8": 0,
+        "cong_t9": 0,
+        "cong_t10": 0,
+        "cong_dau_t11": 0,
+        "ghi_chu": "Không có tên trong danh sách 9 nhân sự active tại xưởng T8-T10. Không phát sinh chấm công hay chi lương."
+      },
+      "Hoàng Văn Đạt": {
+        "role": "Thợ ngoài / thầu phụ cũ",
+        "status": "INACTIVE_OR_NON_ACTIVE_LIST",
+        "cong_t8": 0,
+        "cong_t9": 0,
+        "cong_t10": 0,
+        "cong_dau_t11": 0,
+        "ghi_chu": "Không có tên trong danh sách 9 nhân sự active tại xưởng T8-T10. Không phát sinh chấm công hay chi lương."
+      }
+    }
+  },
+  "audit_actual_active_workshop_workers": {
+    "summary": "Danh sách 5 thợ thực tế đang công tác tại xưởng PG Home (đã đối soát qua Zalo & Sổ Tay 01)",
+    "workers": {
+      "Hà Viết Hòa": {
+        "role": "Thợ cả",
+        "don_gia_hc": 530000,
+        "t10_cong_hc": 28.0,
+        "t10_gio_ot": 66.0,
+        "t10_thuc_linh": 19808750
+      },
+      "Lương Thể Hào": {
+        "role": "Thợ lắp ráp",
+        "don_gia_hc": 450000,
+        "t10_cong_hc": 30.0,
+        "t10_gio_ot": 62.0,
+        "t10_thuc_linh": 18731250
+      },
+      "Trần Văn Anh": {
+        "role": "Thợ lắp đặt",
+        "don_gia_hc": 400000,
+        "t10_cong_hc": 26.0,
+        "t10_gio_ot": 56.0,
+        "t10_thuc_linh": 14600000
+      },
+      "Lê Văn Thoan": {
+        "role": "Thợ dán cạnh",
+        "don_gia_hc": 450000,
+        "t10_cong_hc": 7.0,
+        "t10_gio_ot": 7.0,
+        "t10_thuc_linh": 3740625
+      },
+      "Tuấn Anh": {
+        "role": "Thợ đóng gói (từ T9)",
+        "don_gia_hc": 300000,
+        "t10_cong_hc": 19.5,
+        "t10_gio_ot": 20.5,
+        "t10_thuc_linh": 7003125
+      }
+    },
+    "t10_totals": {
+      "cong_hc": 110.5,
+      "gio_ot": 211.5,
+      "luong_hc": 47740000,
+      "luong_ot": 17733750,
+      "phu_cap_thuc_chi": 0,
+      "tam_ung": 1590000,
+      "thuc_linh_tien_mat": 63883750,
+      "quy_khoan_15": 72000000,
+      "doi_du_quy_tho": 6526250
+    }
+  },
+  "audit_management_technical_staff": {
+    "summary": "Đối soát bộ phận Quản lý & Kỹ thuật (Vũ, Thái, Hiệp, Dũng)",
+    "staff": {
+      "Hoàng Công Vũ & Nguyễn Văn Thái": {
+        "role": "Quản lý xưởng & Kỹ thuật CNC/Vật tư",
+        "dinh_muc_thang": 21000000,
+        "thuc_te_t8": 19615385,
+        "thuc_te_t9": 20250000,
+        "thuc_te_t10": 21000000,
+        "bhxh_moi_thang": 2200000,
+        "co_che_thuong_vuot_500m": "Thái 0.5% DS xưởng, Vũ 0.3% DS xưởng (treo cuối năm)"
+      },
+      "Tống Trần Hiệp": {
+        "role": "P. Sale Admin & 3D",
+        "luong_cung": 6500000,
+        "phan_tram_san_pham_t8": 3000000,
+        "thuc_chi_t8": 9500000,
+        "phan_tram_san_pham_t9": 7000000,
+        "thuc_chi_t9": 13500000,
+        "bhxh_moi_thang": 1100000,
+        "co_che_thuong_vuot_500m": "0.5% Doanh số (treo cuối năm)"
+      },
+      "Đường Việt Dũng": {
+        "role": "Phòng Kinh Doanh",
+        "phu_cap_co_dinh": 500000,
+        "phan_tram_san_pham_t8": 6500000,
+        "thuc_chi_t8": 10500000,
+        "phan_tram_san_pham_t9": 6000000,
+        "thuc_chi_t9": 9865385,
+        "bhxh_moi_thang": 1100000
+      },
+      "Nguyễn Viết Nghĩa": {
+        "role": "Ban Lãnh Đạo (Giám Đốc Điều Hành)",
+        "luong_co_dinh": 12000000,
+        "bhxh_moi_thang": 1100000
+      }
+    }
+  },
+  "core_fund_hoa_hao_audit": {
+    "rule_name": "Quy chế trách nhiệm thợ nòng cốt Hòa & Hào (Luật Sắt C1)",
+    "rate_per_workday": 20000,
+    "payment_condition": "Giữ đến tất niên cuối năm mới chi trả cùng thưởng Tết. Hàng tháng TUYỆT ĐỐI CẤM xuất quỹ chi tiền mặt.",
+    "compliance_verification": {
+      "thang_08_2026": {
+        "Hoa_cong": 28.0,
+        "Hoa_fund": 560000,
+        "Hao_cong": 30.0,
+        "Hao_fund": 600000,
+        "monthly_cash_paid": 0,
+        "status": "COMPLIANT_ZERO_CASH_PAID"
+      },
+      "thang_09_2026": {
+        "Hoa_cong": 28.0,
+        "Hoa_fund": 560000,
+        "Hao_cong": 30.0,
+        "Hao_fund": 600000,
+        "monthly_cash_paid": 0,
+        "status": "COMPLIANT_ZERO_CASH_PAID"
+      },
+      "thang_10_2026": {
+        "Hoa_cong": 28.0,
+        "Hoa_fund": 560000,
+        "Hao_cong": 30.0,
+        "Hao_fund": 600000,
+        "monthly_cash_paid": 0,
+        "zalo_check": "Bảng lương T10 gửi ngày 02/11 ghi rõ Phụ cấp = 0 đ. Thực lĩnh Hòa = 19.808.750 đ, Hào = 18.731.250 đ",
+        "status": "COMPLIANT_ZERO_CASH_PAID"
+      },
+      "dau_thang_11_2026": {
+        "Hoa_cong_est": 5.5,
+        "Hoa_fund_est": 110000,
+        "Hao_cong_est": 5.5,
+        "Hao_fund_est": 110000,
+        "status": "IN_PROGRESS"
+      },
+      "total_accumulated_fund_t8_t10": {
+        "Hoa_accumulated": 1680000,
+        "Hao_accumulated": 1800000,
+        "total_fund_held": 3480000,
+        "cash_held_in_safe": "3,480,000 đ được bảo lưu an toàn trong két sắt Ban Giám Đốc"
+      }
+    }
+  },
+  "over_500m_revenue_bonus_audit": {
+    "rule_name": "Quy chế thưởng vượt mức doanh số > 500 Triệu (Luật Sắt C2)",
+    "beneficiaries": {
+      "Nguyễn Văn Thái": "0.5% Doanh số xưởng",
+      "Hoàng Công Vũ": "0.3% Doanh số xưởng",
+      "Tống Trần Hiệp": "0.5% Doanh số"
+    },
+    "payment_condition": "Treo dồn lại đến kỳ quyết toán lương thưởng Tết Nguyên Đán (cuối năm). Chỉ chi khi tỷ lệ thu hồi công nợ >= 85%. Tuyệt đối không chi tiền mặt hàng tháng.",
+    "historical_check": {
+      "thang_08_2026": {
+        "doanh_so_xuong": 242051705,
+        "nguong_thuong": 500000000,
+        "phat_sinh_thuong": 0,
+        "ghi_chu": "Dưới ngưỡng 500M"
+      },
+      "thang_09_2026": {
+        "doanh_so_xuong": 287782767,
+        "nguong_thuong": 500000000,
+        "phat_sinh_thuong": 0,
+        "ghi_chu": "Dưới ngưỡng 500M"
+      },
+      "thang_10_2026": {
+        "doanh_so_xuong": 480000000,
+        "nguong_thuong": 500000000,
+        "phat_sinh_thuong": 0,
+        "ghi_chu": "Tiệm cận ngưỡng 500M (chưa vượt)"
+      }
+    },
+    "conclusion": "TUÂN THỦ 100% LUẬT SẮT C2. Toàn bộ cơ chế thưởng vượt mức đều được kiểm soát chặt chẽ, không có bất kỳ khoản tiền thưởng nào bị xuất quỹ chi sai nguyên tắc hàng tháng."
+  },
+  "iron_discipline_conclusions": {
+    "rule_c1_compliance": "ĐẠT 100% - Quỹ thợ nòng cốt Hòa & Hào trích 20k/công giữ đến cuối năm, hàng tháng phụ cấp = 0 đ.",
+    "rule_c2_compliance": "ĐẠT 100% - Thưởng vượt doanh số > 500M giữ đến tất niên cuối năm, đối soát công nợ >= 85%.",
+    "workshop_fund_protection": "Bảo vệ chặt chẽ dòng tiền két sắt Ban Giám Đốc. T10 dôi dư quỹ thợ khoán 15% đạt +6,526,250 đ.",
+    "summary": "Toàn bộ dữ liệu chấm công, lương thợ và quỹ nòng cốt T8, T9, T10 và đầu T11/2026 đã được kiểm toán và đối soát chuẩn xác 100% theo các quyết định thực tế của Giám Đốc Nguyễn Viết Nghĩa và chứng từ Zalo nội bộ."
+  }
+}

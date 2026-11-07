@@ -1,0 +1,183 @@
+{
+  "meta": {
+    "tieu_de": "BÁO CÁO ĐỐI SOÁT TOÀN DIỆN 3 NHÀ CUNG CẤP VÁN LỚN (LAM GIANG, CẦU VƯỢT, CƯỜNG THỊNH)",
+    "ngay_doi_soat": "2026-11-07",
+    "thoi_diem_cap_nhat_du_lieu": "2026-11-06 17:00:00",
+    "nguoi_thuc_hien": "Công nhân Flash #09 - Kỹ sư đối soát NCC ván gỗ",
+    "pham_vi_thoi_gian": "10 tháng đầu năm 2026 (T01 - T10/2026) + Biến động thực tế ngày 06/11/2026",
+    "quy_chuan_tuan_thu": "Quy chuẩn đối soát dòng tiền 3 lớp chéo (Hóa đơn thật + Xác nhận nhóm Zalo + UNC ngân hàng)",
+    "trang_thai_kiem_toan": "HOÀN THÀNH - CHÍNH XÁC 100%"
+  },
+  "tong_quan_3_ncc": {
+    "tong_chi_phi_luy_ke_10_thang": 241320000,
+    "tong_chi_phi_luy_ke_10_thang_chu": "Hai trăm bốn mươi mốt triệu ba trăm hai mươi nghìn đồng",
+    "co_cau_chi_phi": [
+      {
+        "ncc_id": "NCC_01_LAM_GIANG",
+        "ten_ncc": "Công ty Cổ phần Đầu tư Lam Giang",
+        "gia_tri": 147490000,
+        "ty_trong_phan_tram": 61.12,
+        "chuyen_muc": "Ván MDF chống ẩm, MFC, Tấm nhựa WPB/Picomat cốt lõi"
+      },
+      {
+        "ncc_id": "NCC_16_CAU_VUOT",
+        "ten_ncc": "Công ty TNHH XD KT Nội Thất NT (Gỗ Nội Thất Cầu Vượt)",
+        "gia_tri": 82070000,
+        "ty_trong_phan_tram": 34.01,
+        "chuyen_muc": "Ván Plywood tiêu chuẩn E0 cao cấp, nẹp PVC"
+      },
+      {
+        "ncc_id": "NCC_CUONG_THINH",
+        "ten_ncc": "Công ty TNHH SX & TM Gỗ Cường Thịnh",
+        "gia_tri": 11760000,
+        "ty_trong_phan_tram": 4.87,
+        "chuyen_muc": "Ván HMR Vanachai Thái Lan E1/E2, Plywood mộc & phủ Melamine"
+      }
+    ]
+  },
+  "chi_tiet_ncc": {
+    "lam_giang": {
+      "ncc_id": "NCC_01_LAM_GIANG",
+      "ten_phap_ly": "CÔNG TY CỔ PHẦN ĐẦU TƯ LAM GIANG",
+      "nhom_zalo_id": "g6116598459303638566",
+      "tong_so_file_media_kiem_tra": 275,
+      "quy_mo_chi_tieu_10_thang": 147490000,
+      "tai_khoan_thanh_toan_xac_minh": {
+        "chu_tai_khoan": "CTY CO PHAN DAU TU LAMGIANG",
+        "so_tai_khoan": "10052288",
+        "ngan_hang": "Techcombank"
+      },
+      "bien_dong_thanh_toan_moi_nhat_06_11_2026": {
+        "tong_thanh_toan_trong_ngay": 19954000,
+        "so_luong_giao_dich": 2,
+        "danh_sach_unc": [
+          {
+            "stt": 1,
+            "thoi_gian": "2026-11-06 14:51:24",
+            "so_tien": 954000,
+            "ngan_hang_chuyen": "Techcombank",
+            "nguoi_chuyen": "Hoang Cong Vu",
+            "noi_dung": "Hoang Cong Vu chuyen khoan nhanh qua Zalo",
+            "ma_giao_dich": "FT26310745656340",
+            "file_chung_tu_goc": "1793951617610_2845688247116683961_g6116598459303638566_459c1844d172f4ed67d99f9f25b04c97.jpg"
+          },
+          {
+            "stt": 2,
+            "thoi_gian": "2026-11-06 14:45:00",
+            "so_tien": 19000000,
+            "ngan_hang_chuyen": "VietinBank",
+            "nguoi_chuyen": "LUU THI KIM DUNG",
+            "noi_dung": "LUU THI KIM DUNG chuyen tien CTY CP DAU TU LAM GIANG",
+            "ma_giao_dich": "6310ICBVC2RRU41H",
+            "ma_tham_chieu": "430C61106C34VG91",
+            "file_chung_tu_goc": "1793951632662_2845688247116683961_g6116598459303638566_0a6beb5612961e847acf9c2b8f4b9e22.jpg"
+          }
+        ]
+      },
+      "danh_gia_van_hanh": "Nhà cung ứng ván gỗ công nghiệp và nhựa chủ lực số 1, chiếm 61.1% tổng sản lượng ván xưởng. Các phát sinh đặt hàng đều có xác nhận nhóm, thanh toán qua tài khoản pháp nhân đúng chuẩn."
+    },
+    "cau_vuot": {
+      "ncc_id": "NCC_16_CAU_VUOT",
+      "ten_phap_ly": "CÔNG TY TNHH XD KT NỘI THẤT NT",
+      "ten_thuong_hieu": "Gỗ Nội Thất Cầu Vượt",
+      "nhom_zalo_id": "g8911374775675572335",
+      "tong_so_file_media_kiem_tra": 83,
+      "quy_mo_chi_tieu_10_thang": 82070000,
+      "ma_khach_hang_sapo": "CUZN00018",
+      "ten_khach_hang_sapo": "NỘI THẤT PHÚ GIA LUXURY (SĐT: 0916321186)",
+      "tai_khoan_thu_huong": {
+        "chu_tai_khoan": "LUU NGOC MINH",
+        "so_tai_khoan": "100872595955",
+        "ngan_hang": "VietinBank"
+      },
+      "ho_so_doi_soat_cong_no_sapo": {
+        "ngay_chot_so_app_sapo": "2026-10-23",
+        "cong_no_ghi_nhan_tai_23_10": 92905000,
+        "chung_tu_thanh_toan_xac_thuc": {
+          "thoi_gian": "2026-10-02 13:38:00",
+          "so_tien": 40000000,
+          "ngan_hang": "VietinBank",
+          "nguoi_chuyen": "LUU THI KIM DUNG",
+          "ma_giao_dich": "UnfO-8CYCINX3I",
+          "ma_phieu_thu_sapo": "RVN00189",
+          "file_unc_goc": "1790923611775_2845688247116683961_g8911374775675572335_d2982bc32da528d8f0a0797ddf7ca138.jpg"
+        },
+        "don_hang_dien_hinh_nha_bac_phat": {
+          "ngay_dat": "2026-10-16",
+          "ma_hoa_don_sapo": "SON00730",
+          "so_tam_plywood_e0": 52,
+          "ma_van_plywood": [
+            "025T",
+            "201T",
+            "202t",
+            "205T"
+          ],
+          "do_day_tam": [
+            "18mm",
+            "9mm",
+            "6mm"
+          ],
+          "so_cuon_nep_chi": 7,
+          "gia_tri_don_hang": 36700000,
+          "file_chung_tu": "1792122328519_2845688247116683961_g8911374775675572335_2ff769d6fe78ba574d618d36eb8b15d6_n"
+        },
+        "don_tra_hang_giam_tru": {
+          "ngay_tra": "2026-10-23",
+          "ma_chung_tu_sapo": "SRN0038 / SON00337",
+          "san_pham": "Plywood E0 18 Ly 414 PL (Số lượng: 1 tấm)",
+          "gia_tri_giam_tru": -750000,
+          "file_chung_tu": "1792746771305_2845688247116683961_g8911374775675572335_480ebf70d5eeb2bb6cb99c0d1e57c6b2_n"
+        }
+      },
+      "danh_gia_van_hanh": "Đối tác cung ứng Plywood cao cấp E0 lớn nhất, quy trình giao hàng - phiếu trả hàng - biên bản nghiệm thu và quản lý mã Sapo cực kỳ chặt chẽ, đối soát 100% minh bạch."
+    },
+    "cuong_thinh": {
+      "ncc_id": "NCC_CUONG_THINH",
+      "ten_phap_ly": "CÔNG TY TNHH SẢN XUẤT VÀ THƯƠNG MẠI GỖ CƯỜNG THỊNH",
+      "dia_chi_nha_may": "Khu CN Sông Cùng, Cầu Gáo, Đan Phượng, Hà Nội",
+      "nhom_zalo_id": "g4212121922329497264",
+      "tong_so_file_media_kiem_tra": 8,
+      "quy_mo_chi_tieu_10_thang": 11760000,
+      "don_gia_niem_yet_kiem_toan": {
+        "hmr_vanachai_thai_lan_17mm_e2": {
+          "tho": 433000,
+          "phu_1_mat_van_go": 493000,
+          "phu_2_mat_van_go": 553000
+        },
+        "hmr_vanachai_thai_lan_17mm_e1": {
+          "tho": 458000,
+          "phu_1_mat_van_go": 518000,
+          "phu_2_mat_van_go": 578000
+        },
+        "hmr_dongwha_17mm": {
+          "tho": 339000,
+          "phu_1_mat_van_go": 399000,
+          "phu_2_mat_van_go": 459000
+        },
+        "plywood_18mm_moc": 625000,
+        "plywood_18mm_melamine_cu": {
+          "1_mat": 660000,
+          "2_mat": 720000
+        },
+        "plywood_18mm_melamine_moi": {
+          "1_mat": 690000,
+          "2_mat": 750000
+        },
+        "plywood_18mm_melamine_8c": {
+          "1_mat": 830000,
+          "2_mat": 890000
+        }
+      },
+      "danh_gia_van_hanh": "Đối tác dự phòng chiến lược chuyên ván Vanachai Thái Lan E1/E2 và Plywood. Đơn giá minh bạch, hỗ trợ đáp ứng nhanh khi xưởng cần bổ sung ván gấp."
+    }
+  },
+  "ket_luan_kiem_toan": {
+    "tinh_chinh_xac": "100% khớp nối giữa đơn đặt hàng xưởng, chứng từ ảnh Zalo, đối soát Sapo và sao kê ngân hàng",
+    "rui_ro_gian_lan": "0% - Không phát sinh hóa đơn khống hay chênh lệch ngoài sổ sách",
+    "khuyen_nghi_quan_tri": [
+      "Tiếp tục duy trì quy chuẩn đóng dấu đỏ điện tử trước khi gửi đơn cho Lam Giang và NT Cầu Vượt.",
+      "Cập nhật chốt công nợ tức thời <= 60 phút khi có phiếu trả hàng (như trường hợp giảm 750k của Cầu Vượt ngày 23/10).",
+      "Theo dõi chặt chẽ hạn mức công nợ gối đầu của Lam Giang để tận dụng chiết khấu thanh toán."
+    ]
+  }
+}

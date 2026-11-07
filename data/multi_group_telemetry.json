@@ -1,0 +1,254 @@
+[
+  {
+    "timestamp": "2026-11-02 11:14:10",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Phát hiện 245 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-02 11:14:10",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "Phát hiện 48 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-02 11:14:10",
+    "group": "Xưởng Sản Xuất PG Home",
+    "event": "Phát hiện 22 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-03 20:19:52",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Phát hiện 3 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-03 20:19:52",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "Phát hiện 8 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-03 21:23:56",
+    "group": "Xưởng Sản Xuất PG Home",
+    "event": "Phát hiện 2 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-04 10:35:57",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Phát hiện 1 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-04 11:53:02",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "Phát hiện 1 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-04 14:34:13",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Phát hiện 1 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-04 15:00:15",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Phát hiện 9 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-04 15:20:16",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "Phát hiện 7 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-05 07:37:01",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Phát hiện 259 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-05 07:37:01",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "Phát hiện 64 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-05 07:37:01",
+    "group": "Xưởng Sản Xuất PG Home",
+    "event": "Phát hiện 24 tệp tài liệu/hình ảnh mới",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-05 09:14:24",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Bắt được 254 chứng từ/hình ảnh mới (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-05 09:14:24",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "Bắt được 59 chứng từ/hình ảnh mới (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-05 09:14:24",
+    "group": "Xưởng Sản Xuất PG Home",
+    "event": "Bắt được 20 chứng từ/hình ảnh mới (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-05 20:59:58",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "Bắt được 4 chứng từ/hình ảnh mới (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-05 20:59:58",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "Bắt được 5 chứng từ/hình ảnh mới (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-06 02:03:23",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (73.4 ms) - Tổng 588 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 02:49:13",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (27.0 ms) - Tổng 588 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 07:48:18",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (50.6 ms) - Tổng 588 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 07:48:24",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (63.8 ms) - Tổng 588 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 08:47:05",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (54.4 ms) - Tổng 588 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 09:09:48",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (53.4 ms) - Tổng 588 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 15:44:09",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "[Delta v4.0] Bắt tức thì 8 tệp mới (WORKSHOP_PHOTO_OR_LANDSCAPE) - SHA256: 7ce593f7ab19",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 18:34:47",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (63.2 ms) - Tổng 599 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 18:34:51",
+    "group": "Hệ Thống Zalo v4.0",
+    "event": "Giám Đốc kích hoạt Quét Tức Thì 10 nhóm (46.3 ms) - Tổng 599 chứng từ/media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 18:54:44",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "[Delta v6.0] Bắt tức thì 3 tệp mới từ Vũ (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-06 18:54:44",
+    "group": "Đặt hàng Ceramic Hoàng Hà HY",
+    "event": "[Delta v6.0] Bắt tức thì 1 tệp mới từ Hương (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-06 18:54:44",
+    "group": "Thiết kế nhà Bác Phát Đường 26/03",
+    "event": "[Delta v6.0] Bắt tức thì 19 tệp mới từ Nguyễn Đăng Phát (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 18:54:44",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (568.2 ms) - 4877 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 19:50:37",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "[Storage V6.0] Benchmark đọc đĩa thụ động: LevelDB 20.33 MB/s (33.5 ms), Resource 250.75 MB/s (0.186 ms/file), FileNoise 419.70 MB/s (0.242 ms/file) - 100% Zero-Disruption",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 19:50:37",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "[Storage.db V6.0] Đồng bộ danh tính người gửi thực tế cho 16/16 nhóm từ SQLite Storage.db thành công (Vũ, Hương, Thái, Tâm Quốc, Sonminhtu, Bác Phát, v.v.)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-06 19:50:37",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "[Telemetry V6.0] Chuẩn hóa toàn diện 16 nhóm trọng điểm (4877 media files) sẵn sàng cho Dashboard Giám Đốc",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-07 11:11:26",
+    "group": "Tổng Kho Ván Lam Giang",
+    "event": "[Delta v6.0] Bắt tức thì 3 tệp mới từ Vũ (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-07 11:11:26",
+    "group": "Đặt hàng Ceramic Hoàng Hà HY",
+    "event": "[Delta v6.0] Bắt tức thì 1 tệp mới từ Hương (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-07 11:11:26",
+    "group": "Thiết kế nhà Bác Phát Đường 26/03",
+    "event": "[Delta v6.0] Bắt tức thì 19 tệp mới từ Nguyễn Đăng Phát (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-07 11:11:26",
+    "group": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
+    "event": "[Delta v6.0] Bắt tức thì 10 tệp mới từ Nghĩa Guru (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-07 11:11:26",
+    "group": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
+    "event": "[Delta v6.0] Bắt tức thì 4 tệp mới từ Nguyễn Minh (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-07 11:23:53",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "[Delta v6.0] Bắt tức thì 1 tệp mới từ Tâm Quốc (INVOICE_OR_DELIVERY_NOTE)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-07 11:23:57",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "[Delta v6.0] Bắt tức thì 3 tệp mới từ Tâm Quốc (INVOICE_OR_DELIVERY_NOTE)",
+    "severity": "ALERT"
+  }
+]

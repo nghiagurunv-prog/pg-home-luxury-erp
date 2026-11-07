@@ -1,0 +1,4069 @@
+{
+  "generated_at": "2026-11-07 10:39:24",
+  "total_groups_scanned": 175,
+  "total_media_files": 16997,
+  "total_size_mb": 10169.08,
+  "category_summary": {
+    "WORKSHOP": 9,
+    "PROJECT": 43,
+    "SUPPLIER": 15,
+    "PINNED_VIP": 2,
+    "OTHER": 106
+  },
+  "groups": [
+    {
+      "group_id": "g3755853110317591515",
+      "group_name": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
+      "category": "WORKSHOP",
+      "total_media_files": 1476,
+      "size_mb": 485.75,
+      "latest_mtime_iso": "2026-11-07 10:33:48",
+      "top_senders": [
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 446
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 442
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 245
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 200
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 140
+        }
+      ]
+    },
+    {
+      "group_id": "g7081961912632715916",
+      "group_name": "Tổ Thợ Xưởng Sản Xuất PG Home (Hào, Hòa, Thoan)",
+      "category": "WORKSHOP",
+      "total_media_files": 403,
+      "size_mb": 104.28,
+      "latest_mtime_iso": "2026-11-04 20:07:16",
+      "top_senders": [
+        {
+          "uid": "6568943636831859437",
+          "name": "Lương Thế Hào",
+          "aliasName": null,
+          "zName": "Lương Thế Hào",
+          "file_count": 210
+        },
+        {
+          "uid": "1682744722075667870",
+          "name": "Hòa Pghome",
+          "aliasName": "Hòa Pghome",
+          "zName": "Hoà",
+          "file_count": 63
+        },
+        {
+          "uid": "3284947562238032722",
+          "name": "Thoan Thợ",
+          "aliasName": "Thoan Thợ",
+          "zName": "Lê Thoan",
+          "file_count": 62
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 29
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 27
+        }
+      ]
+    },
+    {
+      "group_id": "g104123483123937461",
+      "group_name": "Nhóm Xưởng Thi Công (Thái Pg Home 2026, Hòa Pghome)",
+      "category": "WORKSHOP",
+      "total_media_files": 141,
+      "size_mb": 27.6,
+      "latest_mtime_iso": "2026-11-06 12:25:33",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 64
+        },
+        {
+          "uid": "1682744722075667870",
+          "name": "Hòa Pghome",
+          "aliasName": "Hòa Pghome",
+          "zName": "Hoà",
+          "file_count": 53
+        },
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 14
+        },
+        {
+          "uid": "592031692733202419",
+          "name": "Toản",
+          "aliasName": null,
+          "zName": "Toản",
+          "file_count": 10
+        }
+      ]
+    },
+    {
+      "group_id": "g4202087807268285076",
+      "group_name": "Nhóm Xưởng Thi Công (Dũng PG Home, Thái Pg Home 2026)",
+      "category": "WORKSHOP",
+      "total_media_files": 80,
+      "size_mb": 14.58,
+      "latest_mtime_iso": "2026-10-09 04:58:51",
+      "top_senders": [
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 42
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 20
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 12
+        },
+        {
+          "uid": "2851902341236634711",
+          "name": "Hào Choa",
+          "aliasName": null,
+          "zName": "Hào Choa",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g3139659005682825558",
+      "group_name": "Tổ Lắp Ráp & Thi Công Xưởng (Hòa, Thái, Dũng)",
+      "category": "WORKSHOP",
+      "total_media_files": 53,
+      "size_mb": 4.52,
+      "latest_mtime_iso": "2026-11-05 14:17:47",
+      "top_senders": [
+        {
+          "uid": "1682744722075667870",
+          "name": "Hòa Pghome",
+          "aliasName": "Hòa Pghome",
+          "zName": "Hoà",
+          "file_count": 37
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 8
+        },
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 8
+        }
+      ]
+    },
+    {
+      "group_id": "g1792366938218612507",
+      "group_name": "Xưởng Sản Xuất PG Home (Đội Ngũ Xưởng)",
+      "category": "WORKSHOP",
+      "total_media_files": 20,
+      "size_mb": 3.08,
+      "latest_mtime_iso": "2026-11-03 21:23:25",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 14
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 3
+        },
+        {
+          "uid": "6568943636831859437",
+          "name": "Lương Thế Hào",
+          "aliasName": null,
+          "zName": "Lương Thế Hào",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g8824707605413137843",
+      "group_name": "Nhóm Xưởng Thi Công (Thái Pg Home 2026, Hương)",
+      "category": "WORKSHOP",
+      "total_media_files": 17,
+      "size_mb": 1.83,
+      "latest_mtime_iso": "2026-11-01 15:53:15",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 9
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 4
+        },
+        {
+          "uid": "1682744722075667870",
+          "name": "Hòa Pghome",
+          "aliasName": "Hòa Pghome",
+          "zName": "Hoà",
+          "file_count": 2
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g7950155543910136464",
+      "group_name": "Nhóm Xưởng Thi Công (Hương, Hòa Pghome)",
+      "category": "WORKSHOP",
+      "total_media_files": 24,
+      "size_mb": 1.43,
+      "latest_mtime_iso": "2026-11-06 12:25:45",
+      "top_senders": [
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 16
+        },
+        {
+          "uid": "1682744722075667870",
+          "name": "Hòa Pghome",
+          "aliasName": "Hòa Pghome",
+          "zName": "Hoà",
+          "file_count": 8
+        }
+      ]
+    },
+    {
+      "group_id": "g4513975030953450080",
+      "group_name": "Tổ Xưởng Sản Xuất (Lực Xưởng PG Home)",
+      "category": "WORKSHOP",
+      "total_media_files": 10,
+      "size_mb": 1.13,
+      "latest_mtime_iso": "2026-08-12 05:08:33",
+      "top_senders": [
+        {
+          "uid": "6528687351857791070",
+          "name": "Lực Xưởng Pg Home",
+          "aliasName": "Lực Xưởng Pg Home",
+          "zName": "Phan Luc",
+          "file_count": 10
+        }
+      ]
+    },
+    {
+      "group_id": "g7732270541439804810",
+      "group_name": "Nhóm NCC / Đối tác (Hà Phương)",
+      "category": "SUPPLIER",
+      "total_media_files": 142,
+      "size_mb": 79.47,
+      "latest_mtime_iso": "2026-11-05 18:39:53",
+      "top_senders": [
+        {
+          "uid": "277062937445522204",
+          "name": "Hà Phương",
+          "aliasName": null,
+          "zName": "Hà Phương",
+          "file_count": 34
+        },
+        {
+          "uid": "8572388218814234931",
+          "name": "Nguyễn Điền",
+          "aliasName": null,
+          "zName": "Nguyễn Điền",
+          "file_count": 30
+        },
+        {
+          "uid": "2237677237682868937",
+          "name": "Nguyễn Văn Anh",
+          "aliasName": null,
+          "zName": "Nguyễn Văn Anh",
+          "file_count": 19
+        },
+        {
+          "uid": "4504573138933628231",
+          "name": "Nguyễn Quy",
+          "aliasName": null,
+          "zName": "Nguyễn Quy",
+          "file_count": 16
+        },
+        {
+          "uid": "4907659047004069855",
+          "name": "Anh Vinh Đt Cầu Vượt",
+          "aliasName": "Anh Vinh Đt Cầu Vượt",
+          "zName": "Thanhvinh Mobiphone",
+          "file_count": 16
+        }
+      ]
+    },
+    {
+      "group_id": "g7737669618333682341",
+      "group_name": "Đặt hàng Ceramic Hoàng Hà HY",
+      "category": "SUPPLIER",
+      "total_media_files": 125,
+      "size_mb": 47.55,
+      "latest_mtime_iso": "2026-11-06 18:28:30",
+      "top_senders": [
+        {
+          "uid": "5741420367230853737",
+          "name": "Hoàng Hà Ceramic pvc",
+          "aliasName": "Hoàng Hà Ceramic pvc",
+          "zName": "Hoàng Hà Pvc Tráng Gương Sao Việt",
+          "file_count": 79
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 25
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 18
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g5938904221495376303",
+      "group_name": "Nhóm Đặt Hàng & Vật Tư (Nghĩa Thạch Cao, Thái Pg Home 2026)",
+      "category": "SUPPLIER",
+      "total_media_files": 230,
+      "size_mb": 46.5,
+      "latest_mtime_iso": "2026-11-04 20:07:25",
+      "top_senders": [
+        {
+          "uid": "7098575692713353543",
+          "name": "Nghĩa Thạch Cao",
+          "aliasName": "Nghĩa Thạch Cao",
+          "zName": "Nghĩa Linh Yến",
+          "file_count": 82
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 77
+        },
+        {
+          "uid": "378251988744452859",
+          "name": "Phạm Thị Hoa",
+          "aliasName": null,
+          "zName": "Phạm Thị Hoa",
+          "file_count": 47
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 24
+        }
+      ]
+    },
+    {
+      "group_id": "g495486322416346660",
+      "group_name": "Tổng Kho Phụ Kiện Quốc Tâm",
+      "category": "SUPPLIER",
+      "total_media_files": 65,
+      "size_mb": 31.6,
+      "latest_mtime_iso": "2026-11-06 14:33:06",
+      "top_senders": [
+        {
+          "uid": "3689145980600156662",
+          "name": "Tâm Quốc",
+          "aliasName": null,
+          "zName": "Tâm Quốc",
+          "file_count": 57
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 6
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g6116598459303638566",
+      "group_name": "Tổng Kho Ván Lam Giang (An Cường & Thái Lan)",
+      "category": "SUPPLIER",
+      "total_media_files": 275,
+      "size_mb": 23.85,
+      "latest_mtime_iso": "2026-11-07 09:56:23",
+      "top_senders": [
+        {
+          "uid": "8394467470054558651",
+          "name": "Ms Hoa Lamgiang",
+          "aliasName": null,
+          "zName": "Ms Hoa Lamgiang",
+          "file_count": 158
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 108
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 6
+        },
+        {
+          "uid": "8764761001694124902",
+          "name": "Kế Toán Gỗ Lamgiang",
+          "aliasName": null,
+          "zName": "Kế Toán Gỗ Lamgiang",
+          "file_count": 2
+        },
+        {
+          "uid": "7495299976849386688",
+          "name": "A Thuy 2",
+          "aliasName": "A Thuy 2",
+          "zName": "Vũ Xuân Thủy",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g2539027971900219384",
+      "group_name": "Nhóm Đặt Hàng Vật Tư & UNC (Vũ - Chị Hương)",
+      "category": "SUPPLIER",
+      "total_media_files": 123,
+      "size_mb": 16.09,
+      "latest_mtime_iso": "2026-11-06 12:15:04",
+      "top_senders": [
+        {
+          "uid": "5055011331062292963",
+          "name": "Duong Tam",
+          "aliasName": null,
+          "zName": "Duong Tam",
+          "file_count": 52
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 34
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 10
+        },
+        {
+          "uid": "7455619656818200755",
+          "name": "Tô Thị Ngũ",
+          "aliasName": null,
+          "zName": "Tô Thị Ngũ",
+          "file_count": 10
+        },
+        {
+          "uid": "337278748333353578",
+          "name": "Giang Còi",
+          "aliasName": null,
+          "zName": "Giang Còi",
+          "file_count": 8
+        }
+      ]
+    },
+    {
+      "group_id": "g8911374775675572335",
+      "group_name": "Đặt hàng Phú Gia - NT (Gỗ NT Cầu Vượt)",
+      "category": "SUPPLIER",
+      "total_media_files": 83,
+      "size_mb": 7.8,
+      "latest_mtime_iso": "2026-11-07 09:56:22",
+      "top_senders": [
+        {
+          "uid": "9151780304348905157",
+          "name": "Gỗ NT cầu vượt",
+          "aliasName": "Gỗ NT cầu vượt",
+          "zName": "Gỗ Nt Hà Tĩnh",
+          "file_count": 70
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 8
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 3
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g6882545434220944455",
+      "group_name": "KÍNH VIỆT NHẬT - PHÚ GIA LUXURY",
+      "category": "SUPPLIER",
+      "total_media_files": 27,
+      "size_mb": 6.71,
+      "latest_mtime_iso": "2026-11-04 21:06:52",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 12
+        },
+        {
+          "uid": "5081626499618816833",
+          "name": "Thoan Vsg",
+          "aliasName": null,
+          "zName": "Thoan Vsg",
+          "file_count": 9
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g5650372208094389422",
+      "group_name": "Nhóm Đặt Hàng & Vật Tư (Thái Pg Home 2026, Đức Lĩnh SƠN PU)",
+      "category": "SUPPLIER",
+      "total_media_files": 39,
+      "size_mb": 3.01,
+      "latest_mtime_iso": "2026-11-04 14:59:45",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 22
+        },
+        {
+          "uid": "8459095933671346592",
+          "name": "Đức Lĩnh SƠN PU",
+          "aliasName": "Đức Lĩnh SƠN PU",
+          "zName": "Đức Lĩnh P U",
+          "file_count": 17
+        }
+      ]
+    },
+    {
+      "group_id": "g4212121922329497264",
+      "group_name": "Chốt màu, đặt hàng Cường Thịnh",
+      "category": "SUPPLIER",
+      "total_media_files": 8,
+      "size_mb": 2.17,
+      "latest_mtime_iso": "2026-09-03 10:59:33",
+      "top_senders": [
+        {
+          "uid": "1693710913334646341",
+          "name": "Nga Melamine Cường Thịnh",
+          "aliasName": "Nga Melamine Cường Thịnh",
+          "zName": "Gỗ Melamin Cường Thịnh",
+          "file_count": 8
+        }
+      ]
+    },
+    {
+      "group_id": "g2299920307461616942",
+      "group_name": "Nhóm Đặt Hàng & Vật Tư (Dũng PG Home, Em Nhật Cửa)",
+      "category": "SUPPLIER",
+      "total_media_files": 9,
+      "size_mb": 2.12,
+      "latest_mtime_iso": "2026-10-09 05:01:43",
+      "top_senders": [
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 6
+        },
+        {
+          "uid": "4437304538750888272",
+          "name": "Em Nhật Cửa",
+          "aliasName": "Em Nhật Cửa",
+          "zName": "Phan Quốc Nhật",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g7419132552396378162",
+      "group_name": "Nhóm NCC / Đối tác (Gỗ NT cầu vượt)",
+      "category": "SUPPLIER",
+      "total_media_files": 12,
+      "size_mb": 1.91,
+      "latest_mtime_iso": "2026-10-23 07:25:04",
+      "top_senders": [
+        {
+          "uid": "9151780304348905157",
+          "name": "Gỗ NT cầu vượt",
+          "aliasName": "Gỗ NT cầu vượt",
+          "zName": "Gỗ Nt Hà Tĩnh",
+          "file_count": 6
+        },
+        {
+          "uid": "5735641549887952477",
+          "name": "Gỗ Nt - Trần Liên",
+          "aliasName": null,
+          "zName": "Gỗ Nt - Trần Liên",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g727862869232620509",
+      "group_name": "2026 Đặt hàng anh Cường Hà Nội",
+      "category": "SUPPLIER",
+      "total_media_files": 7,
+      "size_mb": 0.5,
+      "latest_mtime_iso": "2026-10-30 10:12:10",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 7
+        }
+      ]
+    },
+    {
+      "group_id": "g1224067034537716792",
+      "group_name": "Đặt hàng gỗ thịt Đức Anh - Thu Hương HT",
+      "category": "SUPPLIER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8487057108956790028",
+      "group_name": "Đặt hàng Kính, Gương Phú Mỹ (Vinh)",
+      "category": "SUPPLIER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g795402381131416269",
+      "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
+      "category": "PINNED_VIP",
+      "total_media_files": 1273,
+      "size_mb": 1660.47,
+      "latest_mtime_iso": "2026-11-06 21:31:05",
+      "top_senders": [
+        {
+          "uid": "2926353819792553048",
+          "name": "Nguyễn Minh",
+          "aliasName": "Nguyễn Minh",
+          "zName": "Vô Tình",
+          "file_count": 766
+        },
+        {
+          "uid": "8637268198362425881",
+          "name": "Sonminhtu",
+          "aliasName": null,
+          "zName": "Sonminhtu",
+          "file_count": 219
+        },
+        {
+          "uid": "4580566312795680341",
+          "name": "Điền",
+          "aliasName": null,
+          "zName": "Điền",
+          "file_count": 183
+        },
+        {
+          "uid": "8935609293065027013",
+          "name": "Rub - Nội Thất Và Xây Dựng",
+          "aliasName": null,
+          "zName": "Rub - Nội Thất Và Xây Dựng",
+          "file_count": 38
+        },
+        {
+          "uid": "5818820097402048516",
+          "name": "Nguyễn Thu Hà",
+          "aliasName": null,
+          "zName": "Nguyễn Thu Hà",
+          "file_count": 12
+        }
+      ]
+    },
+    {
+      "group_id": "g1588348021340609742",
+      "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+      "category": "PINNED_VIP",
+      "total_media_files": 1199,
+      "size_mb": 77.74,
+      "latest_mtime_iso": "2026-11-06 00:37:28",
+      "top_senders": [
+        {
+          "uid": "3799628397263949438",
+          "name": "Hà Huy Trọng",
+          "aliasName": null,
+          "zName": "Hà Huy Trọng",
+          "file_count": 248
+        },
+        {
+          "uid": "2165331731385979592",
+          "name": "Thanh Xuân",
+          "aliasName": null,
+          "zName": "Thanh Xuân",
+          "file_count": 48
+        },
+        {
+          "uid": "438618404792406226",
+          "name": "Hữu Chính",
+          "aliasName": null,
+          "zName": "Hữu Chính",
+          "file_count": 45
+        },
+        {
+          "uid": "4206890530093980581",
+          "name": "Ryo",
+          "aliasName": null,
+          "zName": "Ryo",
+          "file_count": 40
+        },
+        {
+          "uid": "809455028116697343",
+          "name": "Bộ Trưởnq Đây",
+          "aliasName": null,
+          "zName": "Bộ Trưởnq Đây",
+          "file_count": 38
+        }
+      ]
+    },
+    {
+      "group_id": "g7661062223689595797",
+      "group_name": "Công trình / Thiết kế (Hop Bu)",
+      "category": "PROJECT",
+      "total_media_files": 238,
+      "size_mb": 268.56,
+      "latest_mtime_iso": "2026-11-07 09:56:17",
+      "top_senders": [
+        {
+          "uid": "4639846290172060832",
+          "name": "Hop Bu",
+          "aliasName": "Hop Bu",
+          "zName": "Nguyên Thị Bích Hơp",
+          "file_count": 145
+        },
+        {
+          "uid": "4432240275670286150",
+          "name": "Ha Le",
+          "aliasName": "Ha Le",
+          "zName": "Hà Trần",
+          "file_count": 38
+        },
+        {
+          "uid": "8640775285124930862",
+          "name": "Hân K37",
+          "aliasName": "Hân K37",
+          "zName": "Han Tran",
+          "file_count": 36
+        },
+        {
+          "uid": "1049580935438507604",
+          "name": "Thục Lâm",
+          "aliasName": null,
+          "zName": "Thục Lâm",
+          "file_count": 9
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g397283759077492295",
+      "group_name": "Công trình / Thiết kế (Nguyễn Thị Lệ)",
+      "category": "PROJECT",
+      "total_media_files": 433,
+      "size_mb": 126.2,
+      "latest_mtime_iso": "2026-11-04 15:00:23",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 139
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 81
+        },
+        {
+          "uid": "8291726434294817238",
+          "name": "Nguyễn Thị Lệ",
+          "aliasName": null,
+          "zName": "Nguyễn Thị Lệ",
+          "file_count": 53
+        },
+        {
+          "uid": "7526539950371806135",
+          "name": "Thiết kế nội thất tuấn tú",
+          "aliasName": "Thiết kế nội thất tuấn tú",
+          "zName": "Tu",
+          "file_count": 53
+        },
+        {
+          "uid": "8792065765772360135",
+          "name": "Trung",
+          "aliasName": null,
+          "zName": "Trung",
+          "file_count": 43
+        }
+      ]
+    },
+    {
+      "group_id": "g6607820046510319735",
+      "group_name": "Công trình / Thiết kế (Hương)",
+      "category": "PROJECT",
+      "total_media_files": 45,
+      "size_mb": 95.18,
+      "latest_mtime_iso": "2026-11-06 12:17:25",
+      "top_senders": [
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 42
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g1954826388122811364",
+      "group_name": "Công trình / Thiết kế (Lê Từ)",
+      "category": "PROJECT",
+      "total_media_files": 241,
+      "size_mb": 93.9,
+      "latest_mtime_iso": "2026-09-15 10:24:22",
+      "top_senders": [
+        {
+          "uid": "3175013267176203211",
+          "name": "Lê Từ",
+          "aliasName": null,
+          "zName": "Lê Từ",
+          "file_count": 44
+        },
+        {
+          "uid": "4079962228160505434",
+          "name": "Đại Phùng",
+          "aliasName": null,
+          "zName": "Đại Phùng",
+          "file_count": 43
+        },
+        {
+          "uid": "1532578545830711680",
+          "name": "Duyên Chupi",
+          "aliasName": null,
+          "zName": "Duyên Chupi",
+          "file_count": 27
+        },
+        {
+          "uid": "5024063140360289405",
+          "name": "Chị Nga (Bạn Chị Thủy)",
+          "aliasName": "Chị Nga (Bạn Chị Thủy)",
+          "zName": "Ngabui",
+          "file_count": 25
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 19
+        }
+      ]
+    },
+    {
+      "group_id": "g8353805365546949930",
+      "group_name": "Công trình / Thiết kế (Bông)",
+      "category": "PROJECT",
+      "total_media_files": 36,
+      "size_mb": 87.1,
+      "latest_mtime_iso": "2026-11-06 12:02:08",
+      "top_senders": [
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 22
+        },
+        {
+          "uid": "6309691648574277460",
+          "name": "Bông",
+          "aliasName": "Bông",
+          "zName": "Nguyễn Tường Nhi",
+          "file_count": 10
+        },
+        {
+          "uid": "2222602421974124060",
+          "name": "Nghĩa Số Viettel",
+          "aliasName": "Nghĩa Số Viettel",
+          "zName": "Nguyễn Viết Nghĩa",
+          "file_count": 2
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g7736623945291314586",
+      "group_name": "Thiết kế nhà Anh Trung Tuyết",
+      "category": "PROJECT",
+      "total_media_files": 383,
+      "size_mb": 84.44,
+      "latest_mtime_iso": "2026-11-06 12:13:32",
+      "top_senders": [
+        {
+          "uid": "5735202008040003667",
+          "name": "Đức PG Home",
+          "aliasName": "Đức PG Home",
+          "zName": "Lê Minh Đức",
+          "file_count": 145
+        },
+        {
+          "uid": "1525550777335004911",
+          "name": "Tuyếttrung",
+          "aliasName": null,
+          "zName": "Tuyếttrung",
+          "file_count": 114
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 68
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 43
+        },
+        {
+          "uid": "2866086224243908866",
+          "name": "Trungtuyết",
+          "aliasName": null,
+          "zName": "Trungtuyết",
+          "file_count": 13
+        }
+      ]
+    },
+    {
+      "group_id": "g7667951524301013166",
+      "group_name": "Công trình / Thiết kế (Sỹ Bảo)",
+      "category": "PROJECT",
+      "total_media_files": 21,
+      "size_mb": 83.1,
+      "latest_mtime_iso": "2026-11-06 19:28:51",
+      "top_senders": [
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 8
+        },
+        {
+          "uid": "8421514449801751323",
+          "name": "Sỹ Bảo",
+          "aliasName": null,
+          "zName": "Sỹ Bảo",
+          "file_count": 6
+        },
+        {
+          "uid": "8356068182069511474",
+          "name": "Nguyễn Mạnh Cường",
+          "aliasName": null,
+          "zName": "Nguyễn Mạnh Cường",
+          "file_count": 3
+        },
+        {
+          "uid": "8388008796580060332",
+          "name": "Chủ Tịch Dinh",
+          "aliasName": "Chủ Tịch Dinh",
+          "zName": "Lê Đức Dinh",
+          "file_count": 3
+        },
+        {
+          "uid": "3332359323558383866",
+          "name": "Phan Minh Tuệ",
+          "aliasName": null,
+          "zName": "Phan Minh Tuệ",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g521377430376594424",
+      "group_name": "Công trình / Thiết kế (O Thúy Vn)",
+      "category": "PROJECT",
+      "total_media_files": 74,
+      "size_mb": 65.7,
+      "latest_mtime_iso": "2026-10-20 11:32:36",
+      "top_senders": [
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 30
+        },
+        {
+          "uid": "1018307753275666405",
+          "name": "O Thúy Vn",
+          "aliasName": "O Thúy Vn",
+          "zName": "Uyên",
+          "file_count": 27
+        },
+        {
+          "uid": "6323763387437323526",
+          "name": "Me Hong",
+          "aliasName": "Me Hong",
+          "zName": "Bùi Hồng",
+          "file_count": 10
+        },
+        {
+          "uid": "5911546111214016718",
+          "name": "Cha",
+          "aliasName": "Cha",
+          "zName": "Nguyễn Viết Nhân",
+          "file_count": 7
+        }
+      ]
+    },
+    {
+      "group_id": "g1916408948041876060",
+      "group_name": "Công trình / Thiết kế (Lê Doãn Hợi)",
+      "category": "PROJECT",
+      "total_media_files": 133,
+      "size_mb": 64.92,
+      "latest_mtime_iso": "2026-10-03 17:16:04",
+      "top_senders": [
+        {
+          "uid": "834224763235965015",
+          "name": "Lê Doãn Hợi",
+          "aliasName": null,
+          "zName": "Lê Doãn Hợi",
+          "file_count": 51
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 44
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 23
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 15
+        }
+      ]
+    },
+    {
+      "group_id": "g7626286516050837266",
+      "group_name": "Công trình / Thiết kế (Dang Hoai Nam)",
+      "category": "PROJECT",
+      "total_media_files": 112,
+      "size_mb": 64.62,
+      "latest_mtime_iso": "2026-10-31 22:20:27",
+      "top_senders": [
+        {
+          "uid": "5009145877930164544",
+          "name": "Dang Hoai Nam",
+          "aliasName": null,
+          "zName": "Dang Hoai Nam",
+          "file_count": 89
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 16
+        },
+        {
+          "uid": "8193071474005885559",
+          "name": "Bs Duẩn",
+          "aliasName": null,
+          "zName": "Bs Duẩn",
+          "file_count": 7
+        }
+      ]
+    },
+    {
+      "group_id": "g8149011240458184403",
+      "group_name": "Thiết kế nhà Bác Phát Đường 26/03",
+      "category": "PROJECT",
+      "total_media_files": 259,
+      "size_mb": 48.41,
+      "latest_mtime_iso": "2026-11-06 16:02:58",
+      "top_senders": [
+        {
+          "uid": "4548339759561286106",
+          "name": "Nguyễn Đăng Phát",
+          "aliasName": null,
+          "zName": "Nguyễn Đăng Phát",
+          "file_count": 88
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 73
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 67
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 26
+        },
+        {
+          "uid": "4179747197760224197",
+          "name": "Hà My",
+          "aliasName": null,
+          "zName": "Hà My",
+          "file_count": 5
+        }
+      ]
+    },
+    {
+      "group_id": "g2210130381397538159",
+      "group_name": "Công trình / Thiết kế (Hương)",
+      "category": "PROJECT",
+      "total_media_files": 45,
+      "size_mb": 34.72,
+      "latest_mtime_iso": "2026-10-31 09:35:11",
+      "top_senders": [
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 26
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 9
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 7
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g4104006736582396976",
+      "group_name": "Công trình / Thiết kế (Vũ)",
+      "category": "PROJECT",
+      "total_media_files": 185,
+      "size_mb": 29.02,
+      "latest_mtime_iso": "2026-10-12 09:24:19",
+      "top_senders": [
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 92
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 80
+        },
+        {
+          "uid": "4173536980779848239",
+          "name": "Jackson Tran",
+          "aliasName": null,
+          "zName": "Jackson Tran",
+          "file_count": 13
+        }
+      ]
+    },
+    {
+      "group_id": "g4956519529444773133",
+      "group_name": "Nhóm Nội Bộ PG Home (Dũng PG Home, Phú Gia Hiệp G)",
+      "category": "PROJECT",
+      "total_media_files": 120,
+      "size_mb": 28.5,
+      "latest_mtime_iso": "2026-10-28 17:38:14",
+      "top_senders": [
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 91
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 27
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g2180438728065211526",
+      "group_name": "Công trình / Thiết kế (Vũ Mạnh Tiến)",
+      "category": "PROJECT",
+      "total_media_files": 83,
+      "size_mb": 24.29,
+      "latest_mtime_iso": "2026-10-27 23:36:26",
+      "top_senders": [
+        {
+          "uid": "2569429000619985772",
+          "name": "Vũ Mạnh Tiến",
+          "aliasName": null,
+          "zName": "Vũ Mạnh Tiến",
+          "file_count": 74
+        },
+        {
+          "uid": "3142526436984403800",
+          "name": "Trường Duy",
+          "aliasName": null,
+          "zName": "Trường Duy",
+          "file_count": 9
+        }
+      ]
+    },
+    {
+      "group_id": "g9123190609595982424",
+      "group_name": "Công trình / Thiết kế (Xuân Hiệp)",
+      "category": "PROJECT",
+      "total_media_files": 105,
+      "size_mb": 22.17,
+      "latest_mtime_iso": "2026-08-23 22:42:21",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 64
+        },
+        {
+          "uid": "6503794407395924102",
+          "name": "Xuân Hiệp",
+          "aliasName": null,
+          "zName": "Xuân Hiệp",
+          "file_count": 23
+        },
+        {
+          "uid": "4443637426333456238",
+          "name": "Trung Thương",
+          "aliasName": null,
+          "zName": "Trung Thương",
+          "file_count": 18
+        }
+      ]
+    },
+    {
+      "group_id": "g3992403089483419811",
+      "group_name": "Công trình / Thiết kế (Hương)",
+      "category": "PROJECT",
+      "total_media_files": 107,
+      "size_mb": 15.32,
+      "latest_mtime_iso": "2026-10-21 09:53:16",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 58
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 27
+        },
+        {
+          "uid": "5375769106930061406",
+          "name": "2026 - A Quế Hộ Độ",
+          "aliasName": "2026 - A Quế Hộ Độ",
+          "zName": "Xuân Quế",
+          "file_count": 22
+        }
+      ]
+    },
+    {
+      "group_id": "g2891523687748176100",
+      "group_name": "Trao đổi PG Home (Phú Gia Hiệp G)",
+      "category": "PROJECT",
+      "total_media_files": 12,
+      "size_mb": 14.66,
+      "latest_mtime_iso": "2026-10-23 11:25:02",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 12
+        }
+      ]
+    },
+    {
+      "group_id": "g3205373573265479615",
+      "group_name": "Công trình / Thiết kế (Vũ)",
+      "category": "PROJECT",
+      "total_media_files": 58,
+      "size_mb": 8.22,
+      "latest_mtime_iso": "2026-11-07 09:56:21",
+      "top_senders": [
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 51
+        },
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 6
+        },
+        {
+          "uid": "8690877932818654296",
+          "name": "Phan Hùng Mạnh",
+          "aliasName": null,
+          "zName": "Phan Hùng Mạnh",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g1754559413548269981",
+      "group_name": "Công trình / Thiết kế (Đài Hs)",
+      "category": "PROJECT",
+      "total_media_files": 13,
+      "size_mb": 8.19,
+      "latest_mtime_iso": "2026-09-30 09:17:45",
+      "top_senders": [
+        {
+          "uid": "8089649800836592768",
+          "name": "Đài Hs",
+          "aliasName": null,
+          "zName": "Đài Hs",
+          "file_count": 8
+        },
+        {
+          "uid": "6628758369099949370",
+          "name": "Toàn Thúy",
+          "aliasName": "Toàn Thúy",
+          "zName": "Bình Yên",
+          "file_count": 4
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g3990433825586861988",
+      "group_name": "Công trình / Thiết kế (Trang Moon)",
+      "category": "PROJECT",
+      "total_media_files": 74,
+      "size_mb": 6.84,
+      "latest_mtime_iso": "2026-10-30 16:14:58",
+      "top_senders": [
+        {
+          "uid": "6410334644316909106",
+          "name": "Trang Moon",
+          "aliasName": null,
+          "zName": "Trang Moon",
+          "file_count": 56
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 18
+        }
+      ]
+    },
+    {
+      "group_id": "g2478045048939659687",
+      "group_name": "Công trình / Thiết kế (Hồng Thắm)",
+      "category": "PROJECT",
+      "total_media_files": 41,
+      "size_mb": 6.27,
+      "latest_mtime_iso": "2026-08-24 15:40:29",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 30
+        },
+        {
+          "uid": "7239457050794431411",
+          "name": "Hồng Thắm",
+          "aliasName": null,
+          "zName": "Hồng Thắm",
+          "file_count": 10
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g8585018281969374176",
+      "group_name": "Trao đổi PG Home (Phú Gia Hiệp G)",
+      "category": "PROJECT",
+      "total_media_files": 72,
+      "size_mb": 4.92,
+      "latest_mtime_iso": "2026-11-06 12:29:07",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 72
+        }
+      ]
+    },
+    {
+      "group_id": "g2845363860871109560",
+      "group_name": "Trao đổi PG Home (Khóa Học Và Ai Digital pghomehatinh)",
+      "category": "PROJECT",
+      "total_media_files": 65,
+      "size_mb": 3.86,
+      "latest_mtime_iso": "2026-08-24 08:20:41",
+      "top_senders": [
+        {
+          "uid": "5405888395115810497",
+          "name": "Khóa Học Và Ai Digital pghomehatinh",
+          "aliasName": "Khóa Học Và Ai Digital pghomehatinh",
+          "zName": "Fongshop - Khóa Học Và Ai Giá Thơm Lừng",
+          "file_count": 65
+        }
+      ]
+    },
+    {
+      "group_id": "g687057752581439820",
+      "group_name": "Trao đổi PG Home (Vũ)",
+      "category": "PROJECT",
+      "total_media_files": 55,
+      "size_mb": 2.64,
+      "latest_mtime_iso": "2026-11-04 16:24:54",
+      "top_senders": [
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 55
+        }
+      ]
+    },
+    {
+      "group_id": "g3279314958936289094",
+      "group_name": "Công trình / Thiết kế (phan quang lam)",
+      "category": "PROJECT",
+      "total_media_files": 9,
+      "size_mb": 2.11,
+      "latest_mtime_iso": "2026-10-27 12:18:11",
+      "top_senders": [
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 6
+        },
+        {
+          "uid": "6445378593595435958",
+          "name": "phan quang lam",
+          "aliasName": null,
+          "zName": "phan quang lam",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g1691466633520279229",
+      "group_name": "Công trình / Thiết kế (Điện Nước Phúc Sơn)",
+      "category": "PROJECT",
+      "total_media_files": 25,
+      "size_mb": 1.78,
+      "latest_mtime_iso": "2026-10-23 15:18:40",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 16
+        },
+        {
+          "uid": "1848395097248350050",
+          "name": "Điện Nước Phúc Sơn",
+          "aliasName": "Điện Nước Phúc Sơn",
+          "zName": "Điện Nước Phúc Sơn",
+          "file_count": 6
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g5950024466591957078",
+      "group_name": "Công trình / Thiết kế (Gió)",
+      "category": "PROJECT",
+      "total_media_files": 21,
+      "size_mb": 1.47,
+      "latest_mtime_iso": "2026-11-06 11:37:57",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 15
+        },
+        {
+          "uid": "1904985825667249579",
+          "name": "Gió",
+          "aliasName": null,
+          "zName": "Gió",
+          "file_count": 3
+        },
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g2910533080592927904",
+      "group_name": "Công trình / Thiết kế (Hương)",
+      "category": "PROJECT",
+      "total_media_files": 12,
+      "size_mb": 1.33,
+      "latest_mtime_iso": "2026-10-19 18:03:48",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 6
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 4
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g3386218879838638138",
+      "group_name": "Trao đổi PG Home (Phú Gia Hiệp G)",
+      "category": "PROJECT",
+      "total_media_files": 25,
+      "size_mb": 1.33,
+      "latest_mtime_iso": "2026-10-15 19:01:11",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 25
+        }
+      ]
+    },
+    {
+      "group_id": "g6901544189863827459",
+      "group_name": "Công trình / Thiết kế (Khánh Đen)",
+      "category": "PROJECT",
+      "total_media_files": 8,
+      "size_mb": 1.28,
+      "latest_mtime_iso": "2026-08-14 00:17:57",
+      "top_senders": [
+        {
+          "uid": "8505508564035895245",
+          "name": "Khánh Đen",
+          "aliasName": "Khánh Đen",
+          "zName": "Nguyễn Duy Khánh",
+          "file_count": 7
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g8752341776764473266",
+      "group_name": "Công trình / Thiết kế (Hùng GĐ)",
+      "category": "PROJECT",
+      "total_media_files": 13,
+      "size_mb": 1.17,
+      "latest_mtime_iso": "2026-10-30 09:18:28",
+      "top_senders": [
+        {
+          "uid": "4400277200941002196",
+          "name": "Hùng GĐ",
+          "aliasName": "Hùng GĐ",
+          "zName": "Hùng",
+          "file_count": 7
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g5655014546979730622",
+      "group_name": "Công trình / Thiết kế (Hiên Đài Hàng xóm Thầy Thành)",
+      "category": "PROJECT",
+      "total_media_files": 24,
+      "size_mb": 1.1,
+      "latest_mtime_iso": "2026-11-06 12:26:27",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 18
+        },
+        {
+          "uid": "3310559589752560693",
+          "name": "Hiên Đài Hàng xóm Thầy Thành",
+          "aliasName": "Hiên Đài Hàng xóm Thầy Thành",
+          "zName": "Út Hiên",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g7611226494849501540",
+      "group_name": "Công trình / Thiết kế (A Hoàn đội bóng)",
+      "category": "PROJECT",
+      "total_media_files": 16,
+      "size_mb": 0.82,
+      "latest_mtime_iso": "2026-08-13 05:38:39",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 11
+        },
+        {
+          "uid": "7485302460951791141",
+          "name": "A Hoàn đội bóng",
+          "aliasName": "A Hoàn đội bóng",
+          "zName": "Code Long",
+          "file_count": 5
+        }
+      ]
+    },
+    {
+      "group_id": "g9130367163296566129",
+      "group_name": "Trao đổi PG Home (Thái Pg Home 2026)",
+      "category": "PROJECT",
+      "total_media_files": 1,
+      "size_mb": 0.77,
+      "latest_mtime_iso": "2026-09-30 09:01:19",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g2884346031012360131",
+      "group_name": "Trao đổi PG Home (Thái Pg Home 2026)",
+      "category": "PROJECT",
+      "total_media_files": 6,
+      "size_mb": 0.57,
+      "latest_mtime_iso": "2026-10-03 16:12:28",
+      "top_senders": [
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "aliasName": "Thái Pg Home 2026",
+          "zName": "Hoàng Thái",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g7229558773155934352",
+      "group_name": "Trao đổi PG Home (Dũng PG Home)",
+      "category": "PROJECT",
+      "total_media_files": 3,
+      "size_mb": 0.51,
+      "latest_mtime_iso": "2026-10-28 10:00:13",
+      "top_senders": [
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g6368856465416698534",
+      "group_name": "Trao đổi PG Home (Vũ)",
+      "category": "PROJECT",
+      "total_media_files": 7,
+      "size_mb": 0.48,
+      "latest_mtime_iso": "2026-10-12 09:20:19",
+      "top_senders": [
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "aliasName": "Vũ",
+          "zName": "Hoang Cong Vu",
+          "file_count": 7
+        }
+      ]
+    },
+    {
+      "group_id": "g5231397793112314205",
+      "group_name": "Công trình / Thiết kế (Tổng Kho Gỗ Nhựa Pvc Fami)",
+      "category": "PROJECT",
+      "total_media_files": 5,
+      "size_mb": 0.41,
+      "latest_mtime_iso": "2026-10-27 15:12:19",
+      "top_senders": [
+        {
+          "uid": "5178601008979548442",
+          "name": "Tổng Kho Gỗ Nhựa Pvc Fami",
+          "aliasName": null,
+          "zName": "Tổng Kho Gỗ Nhựa Pvc Fami",
+          "file_count": 3
+        },
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g5074905813115513769",
+      "group_name": "Trao đổi PG Home (Phú Gia Hiệp G)",
+      "category": "PROJECT",
+      "total_media_files": 1,
+      "size_mb": 0.38,
+      "latest_mtime_iso": "2026-10-01 15:35:31",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g4497078995038557868",
+      "group_name": "Trao đổi PG Home (Phú Gia Hiệp G)",
+      "category": "PROJECT",
+      "total_media_files": 1,
+      "size_mb": 0.13,
+      "latest_mtime_iso": "2026-08-07 05:16:41",
+      "top_senders": [
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "aliasName": "Phú Gia Hiệp G",
+          "zName": "Hiệp Nội Thất Phu Gia Home Luxury",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g333529921250042980",
+      "group_name": "Trao đổi PG Home (Dũng PG Home)",
+      "category": "PROJECT",
+      "total_media_files": 2,
+      "size_mb": 0.06,
+      "latest_mtime_iso": "2026-08-06 23:57:50",
+      "top_senders": [
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "aliasName": "Dũng PG Home",
+          "zName": "Dũng Đường Pg",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g8381927460131088022",
+      "group_name": "Trao đổi PG Home (Nghĩa Guru)",
+      "category": "PROJECT",
+      "total_media_files": 1,
+      "size_mb": 0.01,
+      "latest_mtime_iso": "2026-10-22 23:53:41",
+      "top_senders": [
+        {
+          "uid": "2304805760907141944",
+          "name": "Nghĩa Guru",
+          "aliasName": null,
+          "zName": "Nghĩa Guru",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g3520788964083100696",
+      "group_name": "Nhóm (Hồ Kiều Trinh)",
+      "category": "OTHER",
+      "total_media_files": 310,
+      "size_mb": 3273.71,
+      "latest_mtime_iso": "2026-11-06 18:55:58",
+      "top_senders": [
+        {
+          "uid": "1803349965471653826",
+          "name": "Hồ Kiều Trinh",
+          "aliasName": null,
+          "zName": "Hồ Kiều Trinh",
+          "file_count": 120
+        },
+        {
+          "uid": "2157747101147327541",
+          "name": "Thuong Truong",
+          "aliasName": null,
+          "zName": "Thuong Truong",
+          "file_count": 12
+        },
+        {
+          "uid": "3297031789117172741",
+          "name": "Cherry",
+          "aliasName": null,
+          "zName": "Cherry",
+          "file_count": 11
+        },
+        {
+          "uid": "912904712770135919",
+          "name": "Quỳnh Nga",
+          "aliasName": null,
+          "zName": "Quỳnh Nga",
+          "file_count": 10
+        },
+        {
+          "uid": "5748705245332146179",
+          "name": "a Bá TLinh",
+          "aliasName": "a Bá TLinh",
+          "zName": "a Bá TLinh",
+          "file_count": 9
+        }
+      ]
+    },
+    {
+      "group_id": "g1023694868405271280",
+      "group_name": "Nhóm (Phương Đông)",
+      "category": "OTHER",
+      "total_media_files": 780,
+      "size_mb": 383.8,
+      "latest_mtime_iso": "2026-11-04 18:02:54",
+      "top_senders": [
+        {
+          "uid": "6712078147946478562",
+          "name": "Phương Đông",
+          "aliasName": null,
+          "zName": "Phương Đông",
+          "file_count": 554
+        },
+        {
+          "uid": "3272002571838670252",
+          "name": "Nguyễn Quỳnh Hương",
+          "aliasName": null,
+          "zName": "Nguyễn Quỳnh Hương",
+          "file_count": 63
+        },
+        {
+          "uid": "6664077619447834559",
+          "name": "Trần Thảo Envy",
+          "aliasName": null,
+          "zName": "Trần Thảo Envy",
+          "file_count": 58
+        },
+        {
+          "uid": "2526782532592382932",
+          "name": "Thanh Bình",
+          "aliasName": null,
+          "zName": "Thanh Bình",
+          "file_count": 29
+        },
+        {
+          "uid": "5677071978895607565",
+          "name": "Văn Phòng Trường Anber",
+          "aliasName": "Văn Phòng Trường Anber",
+          "zName": "Albert Einstein School",
+          "file_count": 19
+        }
+      ]
+    },
+    {
+      "group_id": "g3773966279987948443",
+      "group_name": "Nhóm (Bình Chốt Nhanh)",
+      "category": "OTHER",
+      "total_media_files": 173,
+      "size_mb": 356.52,
+      "latest_mtime_iso": "2026-11-05 10:26:50",
+      "top_senders": [
+        {
+          "uid": "5830483451951495726",
+          "name": "Bình Chốt Nhanh",
+          "aliasName": null,
+          "zName": "Bình Chốt Nhanh",
+          "file_count": 169
+        },
+        {
+          "uid": "1961693254891774717",
+          "name": "Nguyễn Long",
+          "aliasName": null,
+          "zName": "Nguyễn Long",
+          "file_count": 4
+        }
+      ]
+    },
+    {
+      "group_id": "g2030211306534514920",
+      "group_name": "Nhóm (Thủy Tiên Gems Az)",
+      "category": "OTHER",
+      "total_media_files": 204,
+      "size_mb": 281.12,
+      "latest_mtime_iso": "2026-11-05 09:24:23",
+      "top_senders": [
+        {
+          "uid": "747827213943106212",
+          "name": "Thủy Tiên Gems Az",
+          "aliasName": null,
+          "zName": "Thủy Tiên Gems Az",
+          "file_count": 204
+        }
+      ]
+    },
+    {
+      "group_id": "g6533039140377325678",
+      "group_name": "Nhóm (Thủy Tiên Gems Az)",
+      "category": "OTHER",
+      "total_media_files": 95,
+      "size_mb": 203.89,
+      "latest_mtime_iso": "2026-11-05 09:24:23",
+      "top_senders": [
+        {
+          "uid": "747827213943106212",
+          "name": "Thủy Tiên Gems Az",
+          "aliasName": null,
+          "zName": "Thủy Tiên Gems Az",
+          "file_count": 95
+        }
+      ]
+    },
+    {
+      "group_id": "g3663634856255743251",
+      "group_name": "Nhóm (Hpcigar Nguyễn xì gà)",
+      "category": "OTHER",
+      "total_media_files": 1169,
+      "size_mb": 173.39,
+      "latest_mtime_iso": "2026-11-06 22:36:38",
+      "top_senders": [
+        {
+          "uid": "506466590447272131",
+          "name": "Hpcigar Nguyễn xì gà",
+          "aliasName": "Hpcigar Nguyễn xì gà",
+          "zName": "Hpcigar Nguyễn",
+          "file_count": 1169
+        }
+      ]
+    },
+    {
+      "group_id": "g996543936175003920",
+      "group_name": "Nhóm (Bình Chốt Nhanh)",
+      "category": "OTHER",
+      "total_media_files": 144,
+      "size_mb": 145.86,
+      "latest_mtime_iso": "2026-08-25 09:29:29",
+      "top_senders": [
+        {
+          "uid": "5830483451951495726",
+          "name": "Bình Chốt Nhanh",
+          "aliasName": null,
+          "zName": "Bình Chốt Nhanh",
+          "file_count": 112
+        },
+        {
+          "uid": "2296794857568452635",
+          "name": "Titan",
+          "aliasName": null,
+          "zName": "Titan",
+          "file_count": 20
+        },
+        {
+          "uid": "662962274335439607",
+          "name": "Trang Chốt Nhanh",
+          "aliasName": null,
+          "zName": "Trang Chốt Nhanh",
+          "file_count": 12
+        }
+      ]
+    },
+    {
+      "group_id": "g801326169651058138",
+      "group_name": "Nhóm (Chuyên Cigar Cuba - Mỹ)",
+      "category": "OTHER",
+      "total_media_files": 582,
+      "size_mb": 97.92,
+      "latest_mtime_iso": "2026-11-06 10:31:20",
+      "top_senders": [
+        {
+          "uid": "4712059926897927584",
+          "name": "Chuyên Cigar Cuba - Mỹ",
+          "aliasName": null,
+          "zName": "Chuyên Cigar Cuba - Mỹ",
+          "file_count": 362
+        },
+        {
+          "uid": "5099644736021496577",
+          "name": "Cigar Tốt",
+          "aliasName": null,
+          "zName": "Cigar Tốt",
+          "file_count": 220
+        }
+      ]
+    },
+    {
+      "group_id": "g5747446802473716743",
+      "group_name": "Nhóm (12h Tuan Duc)",
+      "category": "OTHER",
+      "total_media_files": 46,
+      "size_mb": 92.08,
+      "latest_mtime_iso": "2026-11-01 11:23:17",
+      "top_senders": [
+        {
+          "uid": "2883120685158869702",
+          "name": "12h Tuan Duc",
+          "aliasName": "12h Tuan Duc",
+          "zName": "Tuấn Nguyễn",
+          "file_count": 15
+        },
+        {
+          "uid": "2574504630973143422",
+          "name": "Phong Vi",
+          "aliasName": "Phong Vi",
+          "zName": "Nam Phong Gtvt",
+          "file_count": 6
+        },
+        {
+          "uid": "99154459291738532",
+          "name": "Tran Kim Dien",
+          "aliasName": null,
+          "zName": "Tran Kim Dien",
+          "file_count": 5
+        },
+        {
+          "uid": "3657062464843477508",
+          "name": "12H Hoàng Thu",
+          "aliasName": "12H Hoàng Thu",
+          "zName": "Tran Hoang",
+          "file_count": 3
+        },
+        {
+          "uid": "3927552390987953989",
+          "name": "Tuan Hung",
+          "aliasName": null,
+          "zName": "Tuan Hung",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g5680473647600540433",
+      "group_name": "Nhóm (Minh Nguyệt Rainmaker)",
+      "category": "OTHER",
+      "total_media_files": 55,
+      "size_mb": 86.68,
+      "latest_mtime_iso": "2026-10-23 09:14:25",
+      "top_senders": [
+        {
+          "uid": "8212643558652151869",
+          "name": "Minh Nguyệt Rainmaker",
+          "aliasName": null,
+          "zName": "Minh Nguyệt Rainmaker",
+          "file_count": 44
+        },
+        {
+          "uid": "3319708919746576341",
+          "name": "TRỢ LÝ HOÀNG BÁ TẦU",
+          "aliasName": null,
+          "zName": "TRỢ LÝ HOÀNG BÁ TẦU",
+          "file_count": 9
+        },
+        {
+          "uid": "1049010198370811978",
+          "name": "Hoàng Bá Tầu",
+          "aliasName": null,
+          "zName": "Hoàng Bá Tầu",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g6077523573135737747",
+      "group_name": "Nhóm (Phùng Gia Khánh)",
+      "category": "OTHER",
+      "total_media_files": 70,
+      "size_mb": 85.15,
+      "latest_mtime_iso": "2026-10-24 06:18:28",
+      "top_senders": [
+        {
+          "uid": "3636203054991393970",
+          "name": "Phùng Gia Khánh",
+          "aliasName": null,
+          "zName": "Phùng Gia Khánh",
+          "file_count": 16
+        },
+        {
+          "uid": "7891220350409698887",
+          "name": "Hoàng Đức Mạnh",
+          "aliasName": null,
+          "zName": "Hoàng Đức Mạnh",
+          "file_count": 15
+        },
+        {
+          "uid": "3574725683182676575",
+          "name": "Tín",
+          "aliasName": null,
+          "zName": "Tín",
+          "file_count": 10
+        },
+        {
+          "uid": "8253050672478222924",
+          "name": "Phong Đồ Gỗ tool + TK",
+          "aliasName": "Phong Đồ Gỗ tool + TK",
+          "zName": "Phong Đồ Gỗ",
+          "file_count": 9
+        },
+        {
+          "uid": "7011034030243425672",
+          "name": "Boss Electrolux",
+          "aliasName": null,
+          "zName": "Boss Electrolux",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g1705557263597223023",
+      "group_name": "Nhóm (Hop Bu)",
+      "category": "OTHER",
+      "total_media_files": 46,
+      "size_mb": 79.52,
+      "latest_mtime_iso": "2026-11-06 14:42:36",
+      "top_senders": [
+        {
+          "uid": "4639846290172060832",
+          "name": "Hop Bu",
+          "aliasName": "Hop Bu",
+          "zName": "Nguyên Thị Bích Hơp",
+          "file_count": 40
+        },
+        {
+          "uid": "4432240275670286150",
+          "name": "Ha Le",
+          "aliasName": "Ha Le",
+          "zName": "Hà Trần",
+          "file_count": 4
+        },
+        {
+          "uid": "6017400595088200006",
+          "name": "Nguyenthuhien",
+          "aliasName": null,
+          "zName": "Nguyenthuhien",
+          "file_count": 1
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g6547443287129294617",
+      "group_name": "Nhóm (Trần Thảo Envy)",
+      "category": "OTHER",
+      "total_media_files": 296,
+      "size_mb": 76.2,
+      "latest_mtime_iso": "2026-11-06 18:35:41",
+      "top_senders": [
+        {
+          "uid": "6664077619447834559",
+          "name": "Trần Thảo Envy",
+          "aliasName": null,
+          "zName": "Trần Thảo Envy",
+          "file_count": 128
+        },
+        {
+          "uid": "8662880786495750396",
+          "name": "Thủy Nguyễn",
+          "aliasName": null,
+          "zName": "Thủy Nguyễn",
+          "file_count": 38
+        },
+        {
+          "uid": "6002458192137133705",
+          "name": "Mai Phuong",
+          "aliasName": null,
+          "zName": "Mai Phuong",
+          "file_count": 25
+        },
+        {
+          "uid": "1367221679861721917",
+          "name": "Quynhnhu",
+          "aliasName": null,
+          "zName": "Quynhnhu",
+          "file_count": 11
+        },
+        {
+          "uid": "8099201478533224098",
+          "name": "Thuyluong Tran",
+          "aliasName": null,
+          "zName": "Thuyluong Tran",
+          "file_count": 11
+        }
+      ]
+    },
+    {
+      "group_id": "g6053553624236676806",
+      "group_name": "Nhóm (Phạm Minh Ngọc khóa học)",
+      "category": "OTHER",
+      "total_media_files": 337,
+      "size_mb": 70.58,
+      "latest_mtime_iso": "2026-11-01 13:04:55",
+      "top_senders": [
+        {
+          "uid": "6148414948067346071",
+          "name": "Phạm Minh Ngọc khóa học",
+          "aliasName": "Phạm Minh Ngọc khóa học",
+          "zName": "Phạm Minh Ngọc",
+          "file_count": 68
+        },
+        {
+          "uid": "2776890269410242381",
+          "name": "Nguyễn Phương Vy",
+          "aliasName": null,
+          "zName": "Nguyễn Phương Vy",
+          "file_count": 64
+        },
+        {
+          "uid": "4159338050611478908",
+          "name": "Lê Cẩm Tú",
+          "aliasName": null,
+          "zName": "Lê Cẩm Tú",
+          "file_count": 58
+        },
+        {
+          "uid": "4442914217630143852",
+          "name": "Hà Kim Hiệp",
+          "aliasName": null,
+          "zName": "Hà Kim Hiệp",
+          "file_count": 48
+        },
+        {
+          "uid": "3607359831695211979",
+          "name": "Hoàng Thùy Linh",
+          "aliasName": null,
+          "zName": "Hoàng Thùy Linh",
+          "file_count": 32
+        }
+      ]
+    },
+    {
+      "group_id": "g5765788556657022144",
+      "group_name": "Nhóm (Nguyen Tung)",
+      "category": "OTHER",
+      "total_media_files": 48,
+      "size_mb": 66.18,
+      "latest_mtime_iso": "2026-11-05 09:05:50",
+      "top_senders": [
+        {
+          "uid": "2926757575813739865",
+          "name": "Nguyen Tung",
+          "aliasName": null,
+          "zName": "Nguyen Tung",
+          "file_count": 48
+        }
+      ]
+    },
+    {
+      "group_id": "g1882721773576698596",
+      "group_name": "Nhóm (Trần Nhàn)",
+      "category": "OTHER",
+      "total_media_files": 679,
+      "size_mb": 65.07,
+      "latest_mtime_iso": "2026-11-07 09:56:18",
+      "top_senders": [
+        {
+          "uid": "3962718871815440442",
+          "name": "Trần Nhàn",
+          "aliasName": null,
+          "zName": "Trần Nhàn",
+          "file_count": 676
+        },
+        {
+          "uid": "9198789258264565612",
+          "name": "Trần Quế Trợ Lý Trần Nhàn Vps",
+          "aliasName": null,
+          "zName": "Trần Quế Trợ Lý Trần Nhàn Vps",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g6688046098270686228",
+      "group_name": "Nhóm (Huy)",
+      "category": "OTHER",
+      "total_media_files": 731,
+      "size_mb": 62.32,
+      "latest_mtime_iso": "2026-11-06 20:02:51",
+      "top_senders": [
+        {
+          "uid": "9212313518149707548",
+          "name": "Huy",
+          "aliasName": null,
+          "zName": "Huy",
+          "file_count": 278
+        },
+        {
+          "uid": "4206890530093980581",
+          "name": "Ryo",
+          "aliasName": null,
+          "zName": "Ryo",
+          "file_count": 164
+        },
+        {
+          "uid": "3344898140421539247",
+          "name": "Trần Anh Tuấn",
+          "aliasName": null,
+          "zName": "Trần Anh Tuấn",
+          "file_count": 72
+        },
+        {
+          "uid": "6429187899213144317",
+          "name": "Vo Thanh",
+          "aliasName": null,
+          "zName": "Vo Thanh",
+          "file_count": 48
+        },
+        {
+          "uid": "449328816330291960",
+          "name": "Phạm Tiến Đức",
+          "aliasName": null,
+          "zName": "Phạm Tiến Đức",
+          "file_count": 34
+        }
+      ]
+    },
+    {
+      "group_id": "g7867798175018376692",
+      "group_name": "Nhóm (Chung Nguyen Minh)",
+      "category": "OTHER",
+      "total_media_files": 175,
+      "size_mb": 60.91,
+      "latest_mtime_iso": "2026-09-03 11:01:20",
+      "top_senders": [
+        {
+          "uid": "920777107659868931",
+          "name": "Chung Nguyen Minh",
+          "aliasName": null,
+          "zName": "Chung Nguyen Minh",
+          "file_count": 175
+        }
+      ]
+    },
+    {
+      "group_id": "g3042447983829422844",
+      "group_name": "Nhóm (Kts Phạm Ngọc Thiên Ân)",
+      "category": "OTHER",
+      "total_media_files": 189,
+      "size_mb": 58.1,
+      "latest_mtime_iso": "2026-11-05 18:02:53",
+      "top_senders": [
+        {
+          "uid": "1701753817085807193",
+          "name": "Kts Phạm Ngọc Thiên Ân",
+          "aliasName": null,
+          "zName": "Kts Phạm Ngọc Thiên Ân",
+          "file_count": 64
+        },
+        {
+          "uid": "1854018823386407806",
+          "name": "Ngọc Linh",
+          "aliasName": null,
+          "zName": "Ngọc Linh",
+          "file_count": 47
+        },
+        {
+          "uid": "4948919050265684586",
+          "name": "Trường Nguyễn",
+          "aliasName": null,
+          "zName": "Trường Nguyễn",
+          "file_count": 28
+        },
+        {
+          "uid": "6953179704590966458",
+          "name": "Nguyenhuytu",
+          "aliasName": null,
+          "zName": "Nguyenhuytu",
+          "file_count": 22
+        },
+        {
+          "uid": "2303245496258586930",
+          "name": "Jega Việt Nam",
+          "aliasName": null,
+          "zName": "Jega Việt Nam",
+          "file_count": 16
+        }
+      ]
+    },
+    {
+      "group_id": "g1995079786700780651",
+      "group_name": "Nhóm (Heo)",
+      "category": "OTHER",
+      "total_media_files": 90,
+      "size_mb": 49.46,
+      "latest_mtime_iso": "2026-11-06 18:37:02",
+      "top_senders": [
+        {
+          "uid": "5190571945358311628",
+          "name": "Heo",
+          "aliasName": null,
+          "zName": "Heo",
+          "file_count": 58
+        },
+        {
+          "uid": "940345518373306824",
+          "name": "Sò Điệp",
+          "aliasName": null,
+          "zName": "Sò Điệp",
+          "file_count": 32
+        }
+      ]
+    },
+    {
+      "group_id": "g4059958919434137491",
+      "group_name": "Nhóm (Hoàng)",
+      "category": "OTHER",
+      "total_media_files": 87,
+      "size_mb": 43.17,
+      "latest_mtime_iso": "2026-10-25 17:35:54",
+      "top_senders": [
+        {
+          "uid": "8654138397878378973",
+          "name": "Hoàng",
+          "aliasName": null,
+          "zName": "Hoàng",
+          "file_count": 87
+        }
+      ]
+    },
+    {
+      "group_id": "g4769496995609899764",
+      "group_name": "Nhóm (Thiết kế nội thất tuấn tú)",
+      "category": "OTHER",
+      "total_media_files": 75,
+      "size_mb": 42.02,
+      "latest_mtime_iso": "2026-11-06 12:24:52",
+      "top_senders": [
+        {
+          "uid": "7526539950371806135",
+          "name": "Thiết kế nội thất tuấn tú",
+          "aliasName": "Thiết kế nội thất tuấn tú",
+          "zName": "Tu",
+          "file_count": 66
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 6
+        },
+        {
+          "uid": "1726095040050488112",
+          "name": "2026 - A Thạch CA Đức Thọ",
+          "aliasName": "2026 - A Thạch CA Đức Thọ",
+          "zName": "2026 - A Thạch CA Đức Thọ",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g3397108071583812576",
+      "group_name": "Nhóm (Chí Thái)",
+      "category": "OTHER",
+      "total_media_files": 79,
+      "size_mb": 37.36,
+      "latest_mtime_iso": "2026-11-04 16:24:06",
+      "top_senders": [
+        {
+          "uid": "1961983448532951550",
+          "name": "Chí Thái",
+          "aliasName": "Chí Thái",
+          "zName": "Chí Thái",
+          "file_count": 21
+        },
+        {
+          "uid": "6176553651004957299",
+          "name": "Huyennt",
+          "aliasName": null,
+          "zName": "Huyennt",
+          "file_count": 17
+        },
+        {
+          "uid": "8222776629191372761",
+          "name": "Chí Thái",
+          "aliasName": "Chí Thái",
+          "zName": "Chí Thái",
+          "file_count": 11
+        },
+        {
+          "uid": "6973870624517367820",
+          "name": "Mẹ Tuyết Bố Dinh",
+          "aliasName": "Mẹ Tuyết Bố Dinh",
+          "zName": "Bùi Tuyết",
+          "file_count": 9
+        },
+        {
+          "uid": "8388008796580060332",
+          "name": "Chủ Tịch Dinh",
+          "aliasName": "Chủ Tịch Dinh",
+          "zName": "Lê Đức Dinh",
+          "file_count": 5
+        }
+      ]
+    },
+    {
+      "group_id": "g7885447982331626410",
+      "group_name": "Nhóm (Bear)",
+      "category": "OTHER",
+      "total_media_files": 230,
+      "size_mb": 33.23,
+      "latest_mtime_iso": "2026-11-06 00:52:07",
+      "top_senders": [
+        {
+          "uid": "8875248982556332271",
+          "name": "Bear",
+          "aliasName": null,
+          "zName": "Bear",
+          "file_count": 46
+        },
+        {
+          "uid": "7548363798809061637",
+          "name": "Vu Phan",
+          "aliasName": null,
+          "zName": "Vu Phan",
+          "file_count": 15
+        },
+        {
+          "uid": "1407736558225758797",
+          "name": "Nguyễn Công Danh",
+          "aliasName": null,
+          "zName": "Nguyễn Công Danh",
+          "file_count": 11
+        },
+        {
+          "uid": "7408889880707643157",
+          "name": "Hoài Nguyên",
+          "aliasName": null,
+          "zName": "Hoài Nguyên",
+          "file_count": 11
+        },
+        {
+          "uid": "7986469388198787857",
+          "name": "Thông Nguyễn",
+          "aliasName": null,
+          "zName": "Thông Nguyễn",
+          "file_count": 10
+        }
+      ]
+    },
+    {
+      "group_id": "g4775686767366079618",
+      "group_name": "Nhóm (Xưởng May Nt Kids)",
+      "category": "OTHER",
+      "total_media_files": 78,
+      "size_mb": 29.25,
+      "latest_mtime_iso": "2026-08-23 22:44:47",
+      "top_senders": [
+        {
+          "uid": "6874469933316225187",
+          "name": "Xưởng May Nt Kids",
+          "aliasName": null,
+          "zName": "Xưởng May Nt Kids",
+          "file_count": 78
+        }
+      ]
+    },
+    {
+      "group_id": "g8627115753566490237",
+      "group_name": "Nhóm (Đức Aman)",
+      "category": "OTHER",
+      "total_media_files": 106,
+      "size_mb": 27.13,
+      "latest_mtime_iso": "2026-11-05 07:24:08",
+      "top_senders": [
+        {
+          "uid": "8437416578528305875",
+          "name": "Đức Aman",
+          "aliasName": null,
+          "zName": "Đức Aman",
+          "file_count": 106
+        }
+      ]
+    },
+    {
+      "group_id": "g8456250824682614686",
+      "group_name": "Nhóm (Nguyễn Phi Long)",
+      "category": "OTHER",
+      "total_media_files": 142,
+      "size_mb": 26.17,
+      "latest_mtime_iso": "2026-11-05 14:30:18",
+      "top_senders": [
+        {
+          "uid": "4395639980626591172",
+          "name": "Nguyễn Phi Long",
+          "aliasName": null,
+          "zName": "Nguyễn Phi Long",
+          "file_count": 126
+        },
+        {
+          "uid": "6691935191814537754",
+          "name": "Ht Nguyễn Phi Long",
+          "aliasName": null,
+          "zName": "Ht Nguyễn Phi Long",
+          "file_count": 5
+        },
+        {
+          "uid": "6549240090024720679",
+          "name": "Nguyễn Trung Hiếu",
+          "aliasName": null,
+          "zName": "Nguyễn Trung Hiếu",
+          "file_count": 2
+        },
+        {
+          "uid": "6060887401222228184",
+          "name": "Hà Phương",
+          "aliasName": null,
+          "zName": "Hà Phương",
+          "file_count": 2
+        },
+        {
+          "uid": "4036741775670492609",
+          "name": "UID_4036741775670492609",
+          "aliasName": null,
+          "zName": null,
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g1596807444033093356",
+      "group_name": "Nhóm (Cha)",
+      "category": "OTHER",
+      "total_media_files": 1,
+      "size_mb": 22.52,
+      "latest_mtime_iso": "2026-10-03 10:26:46",
+      "top_senders": [
+        {
+          "uid": "5911546111214016718",
+          "name": "Cha",
+          "aliasName": "Cha",
+          "zName": "Nguyễn Viết Nhân",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g3591758349394766108",
+      "group_name": "Nhóm (Vu Manh Chien)",
+      "category": "OTHER",
+      "total_media_files": 183,
+      "size_mb": 21.89,
+      "latest_mtime_iso": "2026-11-05 09:18:50",
+      "top_senders": [
+        {
+          "uid": "3990879626559739302",
+          "name": "Vu Manh Chien",
+          "aliasName": null,
+          "zName": "Vu Manh Chien",
+          "file_count": 166
+        },
+        {
+          "uid": "7563704394355351347",
+          "name": "Huyền Trang",
+          "aliasName": null,
+          "zName": "Huyền Trang",
+          "file_count": 9
+        },
+        {
+          "uid": "1079960612407865912",
+          "name": "Hoàng Yến",
+          "aliasName": null,
+          "zName": "Hoàng Yến",
+          "file_count": 7
+        },
+        {
+          "uid": "5960539812437944956",
+          "name": "Khả Thưởng",
+          "aliasName": null,
+          "zName": "Khả Thưởng",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g9005540751965521470",
+      "group_name": "Nhóm (Le Chi Cuong)",
+      "category": "OTHER",
+      "total_media_files": 4,
+      "size_mb": 19.43,
+      "latest_mtime_iso": "2026-09-30 10:58:04",
+      "top_senders": [
+        {
+          "uid": "486743545196300037",
+          "name": "Le Chi Cuong",
+          "aliasName": null,
+          "zName": "Le Chi Cuong",
+          "file_count": 4
+        }
+      ]
+    },
+    {
+      "group_id": "g9044387743967476032",
+      "group_name": "Nhóm (Phạm Văn Tuấn)",
+      "category": "OTHER",
+      "total_media_files": 124,
+      "size_mb": 18.76,
+      "latest_mtime_iso": "2026-11-06 18:33:06",
+      "top_senders": [
+        {
+          "uid": "3886589471759981099",
+          "name": "Phạm Văn Tuấn",
+          "aliasName": null,
+          "zName": "Phạm Văn Tuấn",
+          "file_count": 124
+        }
+      ]
+    },
+    {
+      "group_id": "g2067235352166640756",
+      "group_name": "Nhóm (Kho Sỉ Trang Sức Đá Phong Thủy)",
+      "category": "OTHER",
+      "total_media_files": 60,
+      "size_mb": 18.26,
+      "latest_mtime_iso": "2026-11-05 09:24:20",
+      "top_senders": [
+        {
+          "uid": "2914525847841659574",
+          "name": "Kho Sỉ Trang Sức Đá Phong Thủy",
+          "aliasName": null,
+          "zName": "Kho Sỉ Trang Sức Đá Phong Thủy",
+          "file_count": 42
+        },
+        {
+          "uid": "7775813772055183917",
+          "name": "Trang Sức Thảo Linh Cn Hải Dương",
+          "aliasName": null,
+          "zName": "Trang Sức Thảo Linh Cn Hải Dương",
+          "file_count": 18
+        }
+      ]
+    },
+    {
+      "group_id": "g4246154641962227497",
+      "group_name": "Nhóm (Cola)",
+      "category": "OTHER",
+      "total_media_files": 21,
+      "size_mb": 16.32,
+      "latest_mtime_iso": "2026-08-25 17:24:48",
+      "top_senders": [
+        {
+          "uid": "6721089782308510594",
+          "name": "Cola",
+          "aliasName": null,
+          "zName": "Cola",
+          "file_count": 10
+        },
+        {
+          "uid": "8549556304899002466",
+          "name": "Austin Pham",
+          "aliasName": null,
+          "zName": "Austin Pham",
+          "file_count": 6
+        },
+        {
+          "uid": "4593516597595177083",
+          "name": "Trọng Chiến",
+          "aliasName": null,
+          "zName": "Trọng Chiến",
+          "file_count": 4
+        },
+        {
+          "uid": "638202755170685727",
+          "name": "Phương Thảo",
+          "aliasName": null,
+          "zName": "Phương Thảo",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g3386820334880927684",
+      "group_name": "Nhóm (Trần Anh Minh)",
+      "category": "OTHER",
+      "total_media_files": 3,
+      "size_mb": 14.64,
+      "latest_mtime_iso": "2026-10-15 19:21:12",
+      "top_senders": [
+        {
+          "uid": "5750545109838037258",
+          "name": "Trần Anh Minh",
+          "aliasName": null,
+          "zName": "Trần Anh Minh",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g7775929627814036013",
+      "group_name": "Nhóm (Vu Manh Chien)",
+      "category": "OTHER",
+      "total_media_files": 175,
+      "size_mb": 14.53,
+      "latest_mtime_iso": "2026-11-05 09:57:18",
+      "top_senders": [
+        {
+          "uid": "3990879626559739302",
+          "name": "Vu Manh Chien",
+          "aliasName": null,
+          "zName": "Vu Manh Chien",
+          "file_count": 175
+        }
+      ]
+    },
+    {
+      "group_id": "g2262347817525181089",
+      "group_name": "Nhóm (Laotrang)",
+      "category": "OTHER",
+      "total_media_files": 54,
+      "size_mb": 8.21,
+      "latest_mtime_iso": "2026-09-08 07:50:13",
+      "top_senders": [
+        {
+          "uid": "5888062498009442162",
+          "name": "Laotrang",
+          "aliasName": null,
+          "zName": "Laotrang",
+          "file_count": 31
+        },
+        {
+          "uid": "5927874403299726976",
+          "name": "Xuân Thành Ai",
+          "aliasName": null,
+          "zName": "Xuân Thành Ai",
+          "file_count": 9
+        },
+        {
+          "uid": "8633044659739867402",
+          "name": "Ngốc",
+          "aliasName": null,
+          "zName": "Ngốc",
+          "file_count": 4
+        },
+        {
+          "uid": "866168882896144833",
+          "name": "Quang Cắt Tóc Nam",
+          "aliasName": null,
+          "zName": "Quang Cắt Tóc Nam",
+          "file_count": 3
+        },
+        {
+          "uid": "4655904712157683033",
+          "name": "UID_4655904712157683033",
+          "aliasName": null,
+          "zName": null,
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g3508538441957736564",
+      "group_name": "Nhóm (Tâm Gemini)",
+      "category": "OTHER",
+      "total_media_files": 40,
+      "size_mb": 8.2,
+      "latest_mtime_iso": "2026-08-25 17:28:04",
+      "top_senders": [
+        {
+          "uid": "7613530061103415660",
+          "name": "Tâm Gemini",
+          "aliasName": null,
+          "zName": "Tâm Gemini",
+          "file_count": 40
+        }
+      ]
+    },
+    {
+      "group_id": "g6885505941979255114",
+      "group_name": "Nhóm (Đình Lực Enternet Vn)",
+      "category": "OTHER",
+      "total_media_files": 66,
+      "size_mb": 5.45,
+      "latest_mtime_iso": "2026-11-06 18:36:48",
+      "top_senders": [
+        {
+          "uid": "8964177911071349667",
+          "name": "Đình Lực Enternet Vn",
+          "aliasName": null,
+          "zName": "Đình Lực Enternet Vn",
+          "file_count": 66
+        }
+      ]
+    },
+    {
+      "group_id": "g6059031098064749266",
+      "group_name": "Nhóm (Hà Sukiennet)",
+      "category": "OTHER",
+      "total_media_files": 24,
+      "size_mb": 5.2,
+      "latest_mtime_iso": "2026-08-23 22:38:47",
+      "top_senders": [
+        {
+          "uid": "5454168212387068533",
+          "name": "Hà Sukiennet",
+          "aliasName": null,
+          "zName": "Hà Sukiennet",
+          "file_count": 18
+        },
+        {
+          "uid": "9012872161545415120",
+          "name": "Linh Học Viện Unica",
+          "aliasName": null,
+          "zName": "Linh Học Viện Unica",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g7283642567836561872",
+      "group_name": "Nhóm (Hà Sukiennet)",
+      "category": "OTHER",
+      "total_media_files": 20,
+      "size_mb": 4.75,
+      "latest_mtime_iso": "2026-08-23 22:38:56",
+      "top_senders": [
+        {
+          "uid": "5454168212387068533",
+          "name": "Hà Sukiennet",
+          "aliasName": null,
+          "zName": "Hà Sukiennet",
+          "file_count": 18
+        },
+        {
+          "uid": "9012872161545415120",
+          "name": "Linh Học Viện Unica",
+          "aliasName": null,
+          "zName": "Linh Học Viện Unica",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g3184586599525031413",
+      "group_name": "Nhóm (Lý Minh Hải)",
+      "category": "OTHER",
+      "total_media_files": 13,
+      "size_mb": 4.42,
+      "latest_mtime_iso": "2026-10-27 12:09:47",
+      "top_senders": [
+        {
+          "uid": "4291507983164814666",
+          "name": "Lý Minh Hải",
+          "aliasName": null,
+          "zName": "Lý Minh Hải",
+          "file_count": 4
+        },
+        {
+          "uid": "252848725982413126",
+          "name": "Trọng Lẹo Cđba43",
+          "aliasName": "Trọng Lẹo Cđba43",
+          "zName": "Anh Trong",
+          "file_count": 4
+        },
+        {
+          "uid": "4230005365774322039",
+          "name": "Do Dang Nam",
+          "aliasName": null,
+          "zName": "Do Dang Nam",
+          "file_count": 2
+        },
+        {
+          "uid": "7866144599135799278",
+          "name": "Giap Solmax",
+          "aliasName": null,
+          "zName": "Giap Solmax",
+          "file_count": 1
+        },
+        {
+          "uid": "1011421552367142861",
+          "name": "Cdba K43 TUẤN",
+          "aliasName": "Cdba K43 TUẤN",
+          "zName": "Tuan Nguyen",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g2494007551632391768",
+      "group_name": "Nhóm (Hà Sukiennet)",
+      "category": "OTHER",
+      "total_media_files": 20,
+      "size_mb": 3.1,
+      "latest_mtime_iso": "2026-08-23 22:54:58",
+      "top_senders": [
+        {
+          "uid": "5454168212387068533",
+          "name": "Hà Sukiennet",
+          "aliasName": null,
+          "zName": "Hà Sukiennet",
+          "file_count": 17
+        },
+        {
+          "uid": "9012872161545415120",
+          "name": "Linh Học Viện Unica",
+          "aliasName": null,
+          "zName": "Linh Học Viện Unica",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g1039016061557335471",
+      "group_name": "Nhóm (Minh Sen)",
+      "category": "OTHER",
+      "total_media_files": 12,
+      "size_mb": 2.58,
+      "latest_mtime_iso": "2026-08-16 15:18:18",
+      "top_senders": [
+        {
+          "uid": "5264174495220418506",
+          "name": "Minh Sen",
+          "aliasName": null,
+          "zName": "Minh Sen",
+          "file_count": 4
+        },
+        {
+          "uid": "9191051796111553097",
+          "name": "Trịnh Hiệp",
+          "aliasName": null,
+          "zName": "Trịnh Hiệp",
+          "file_count": 2
+        },
+        {
+          "uid": "5501713052734232222",
+          "name": "Tran Thi Thu Trang",
+          "aliasName": null,
+          "zName": "Tran Thi Thu Trang",
+          "file_count": 2
+        },
+        {
+          "uid": "8743935528338497948",
+          "name": "Phamthuylvt",
+          "aliasName": null,
+          "zName": "Phamthuylvt",
+          "file_count": 2
+        },
+        {
+          "uid": "4168781803562787614",
+          "name": "Long Th",
+          "aliasName": null,
+          "zName": "Long Th",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g8049123588921219952",
+      "group_name": "Nhóm (Đức Aman)",
+      "category": "OTHER",
+      "total_media_files": 20,
+      "size_mb": 2.42,
+      "latest_mtime_iso": "2026-08-16 07:31:17",
+      "top_senders": [
+        {
+          "uid": "8437416578528305875",
+          "name": "Đức Aman",
+          "aliasName": null,
+          "zName": "Đức Aman",
+          "file_count": 20
+        }
+      ]
+    },
+    {
+      "group_id": "g8530400380698203302",
+      "group_name": "Nhóm (Tú Harry)",
+      "category": "OTHER",
+      "total_media_files": 5,
+      "size_mb": 2.13,
+      "latest_mtime_iso": "2026-09-30 09:16:56",
+      "top_senders": [
+        {
+          "uid": "382766943466408587",
+          "name": "Tú Harry",
+          "aliasName": null,
+          "zName": "Tú Harry",
+          "file_count": 5
+        }
+      ]
+    },
+    {
+      "group_id": "g7549168814011755520",
+      "group_name": "Nhóm (Phong Tổng)",
+      "category": "OTHER",
+      "total_media_files": 36,
+      "size_mb": 1.88,
+      "latest_mtime_iso": "2026-08-25 17:46:11",
+      "top_senders": [
+        {
+          "uid": "8691858335970289499",
+          "name": "Phong Tổng",
+          "aliasName": null,
+          "zName": "Phong Tổng",
+          "file_count": 36
+        }
+      ]
+    },
+    {
+      "group_id": "g1279291939930427652",
+      "group_name": "Nhóm (Nguyễn Minh Tuấn)",
+      "category": "OTHER",
+      "total_media_files": 12,
+      "size_mb": 1.49,
+      "latest_mtime_iso": "2026-11-05 21:23:13",
+      "top_senders": [
+        {
+          "uid": "2763073973954018972",
+          "name": "Nguyễn Minh Tuấn",
+          "aliasName": null,
+          "zName": "Nguyễn Minh Tuấn",
+          "file_count": 9
+        },
+        {
+          "uid": "2059206380012212055",
+          "name": "Nt Digital",
+          "aliasName": null,
+          "zName": "Nt Digital",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g1756212907337893787",
+      "group_name": "Nhóm (Uyêntrợ Lý Erocathanh)",
+      "category": "OTHER",
+      "total_media_files": 7,
+      "size_mb": 1.14,
+      "latest_mtime_iso": "2026-08-25 17:46:16",
+      "top_senders": [
+        {
+          "uid": "2242179729460527833",
+          "name": "Uyêntrợ Lý Erocathanh",
+          "aliasName": null,
+          "zName": "Uyêntrợ Lý Erocathanh",
+          "file_count": 7
+        }
+      ]
+    },
+    {
+      "group_id": "g1550186064218658375",
+      "group_name": "Nhóm (Đồng Tắc Xi)",
+      "category": "OTHER",
+      "total_media_files": 13,
+      "size_mb": 1.12,
+      "latest_mtime_iso": "2026-10-13 15:56:12",
+      "top_senders": [
+        {
+          "uid": "7438880343951203320",
+          "name": "Đồng Tắc Xi",
+          "aliasName": null,
+          "zName": "Đồng Tắc Xi",
+          "file_count": 9
+        },
+        {
+          "uid": "3371342936616134413",
+          "name": "Nguyen Le Thanh Huyen",
+          "aliasName": null,
+          "zName": "Nguyen Le Thanh Huyen",
+          "file_count": 2
+        },
+        {
+          "uid": "3628603644838996383",
+          "name": "Thông Đinh",
+          "aliasName": null,
+          "zName": "Thông Đinh",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g4949635742039536756",
+      "group_name": "Nhóm (Phong Đồ Gỗ tool + TK)",
+      "category": "OTHER",
+      "total_media_files": 6,
+      "size_mb": 0.89,
+      "latest_mtime_iso": "2026-11-05 12:55:03",
+      "top_senders": [
+        {
+          "uid": "8253050672478222924",
+          "name": "Phong Đồ Gỗ tool + TK",
+          "aliasName": "Phong Đồ Gỗ tool + TK",
+          "zName": "Phong Đồ Gỗ",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g5791781168560517284",
+      "group_name": "Nhóm (Mẹ Thế Đông)",
+      "category": "OTHER",
+      "total_media_files": 8,
+      "size_mb": 0.73,
+      "latest_mtime_iso": "2026-09-17 10:45:11",
+      "top_senders": [
+        {
+          "uid": "1064636687443937282",
+          "name": "Mẹ Thế Đông",
+          "aliasName": "Mẹ Thế Đông",
+          "zName": "Hien Giang",
+          "file_count": 8
+        }
+      ]
+    },
+    {
+      "group_id": "g488855674838306316",
+      "group_name": "Nhóm (Chú Quang Tâm)",
+      "category": "OTHER",
+      "total_media_files": 3,
+      "size_mb": 0.69,
+      "latest_mtime_iso": "2026-10-28 11:00:39",
+      "top_senders": [
+        {
+          "uid": "8432912628419719875",
+          "name": "Chú Quang Tâm",
+          "aliasName": "Chú Quang Tâm",
+          "zName": "Phamquangdt",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g7827590409602125157",
+      "group_name": "Nhóm (Kt Tùng Linh)",
+      "category": "OTHER",
+      "total_media_files": 4,
+      "size_mb": 0.63,
+      "latest_mtime_iso": "2026-10-23 15:57:48",
+      "top_senders": [
+        {
+          "uid": "5429952171928686751",
+          "name": "Kt Tùng Linh",
+          "aliasName": null,
+          "zName": "Kt Tùng Linh",
+          "file_count": 2
+        },
+        {
+          "uid": "1193413708528852811",
+          "name": "Hương",
+          "aliasName": "Hương",
+          "zName": "Thu Hương",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g3055637296549383587",
+      "group_name": "Nhóm (Digital Elevenlabs Vp)",
+      "category": "OTHER",
+      "total_media_files": 6,
+      "size_mb": 0.57,
+      "latest_mtime_iso": "2026-09-08 11:37:40",
+      "top_senders": [
+        {
+          "uid": "4999309091591595173",
+          "name": "Digital Elevenlabs Vp",
+          "aliasName": null,
+          "zName": "Digital Elevenlabs Vp",
+          "file_count": 6
+        }
+      ]
+    },
+    {
+      "group_id": "g674517574011377048",
+      "group_name": "Nhóm (Ms Hạnh Dewoo)",
+      "category": "OTHER",
+      "total_media_files": 3,
+      "size_mb": 0.45,
+      "latest_mtime_iso": "2026-11-06 12:18:06",
+      "top_senders": [
+        {
+          "uid": "3014451092509817873",
+          "name": "Ms Hạnh Dewoo",
+          "aliasName": null,
+          "zName": "Ms Hạnh Dewoo",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g3516732850339577097",
+      "group_name": "Nhóm (Trần Nam)",
+      "category": "OTHER",
+      "total_media_files": 2,
+      "size_mb": 0.31,
+      "latest_mtime_iso": "2026-10-16 17:28:49",
+      "top_senders": [
+        {
+          "uid": "2367339992922913310",
+          "name": "Trần Nam",
+          "aliasName": null,
+          "zName": "Trần Nam",
+          "file_count": 1
+        },
+        {
+          "uid": "8104570881030064573",
+          "name": "Ts. gt. tuan Anh",
+          "aliasName": "Ts. gt. tuan Anh",
+          "zName": "Tuấn Anh",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g8671150654514441874",
+      "group_name": "Nhóm (Nguyễn Yến)",
+      "category": "OTHER",
+      "total_media_files": 1,
+      "size_mb": 0.22,
+      "latest_mtime_iso": "2026-10-22 19:54:44",
+      "top_senders": [
+        {
+          "uid": "7382862443641934769",
+          "name": "Nguyễn Yến",
+          "aliasName": null,
+          "zName": "Nguyễn Yến",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g5956745909438904430",
+      "group_name": "Nhóm (Mẹ Bích Phương)",
+      "category": "OTHER",
+      "total_media_files": 1,
+      "size_mb": 0.15,
+      "latest_mtime_iso": "2026-10-23 09:12:42",
+      "top_senders": [
+        {
+          "uid": "7116154903498498821",
+          "name": "Mẹ Bích Phương",
+          "aliasName": "Mẹ Bích Phương",
+          "zName": "Ndlinh",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g6587229576848257454",
+      "group_name": "Nhóm (Huyền)",
+      "category": "OTHER",
+      "total_media_files": 2,
+      "size_mb": 0.08,
+      "latest_mtime_iso": "2026-10-22 15:35:47",
+      "top_senders": [
+        {
+          "uid": "6348967663962735832",
+          "name": "Huyền",
+          "aliasName": null,
+          "zName": "Huyền",
+          "file_count": 2
+        }
+      ]
+    },
+    {
+      "group_id": "g8707457957916946195",
+      "group_name": "Nhóm (2025 E Duẩn CAT)",
+      "category": "OTHER",
+      "total_media_files": 1,
+      "size_mb": 0.01,
+      "latest_mtime_iso": "2026-11-06 12:21:37",
+      "top_senders": [
+        {
+          "uid": "1431819089335012634",
+          "name": "2025 E Duẩn CAT",
+          "aliasName": "2025 E Duẩn CAT",
+          "zName": "Quoc Duan",
+          "file_count": 1
+        }
+      ]
+    },
+    {
+      "group_id": "g1187107943943629245",
+      "group_name": "Nhóm g1187107943943629245",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g122834079893665136",
+      "group_name": "Nhóm g122834079893665136",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g1267334924894373714",
+      "group_name": "Nhóm g1267334924894373714",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g1280699502973867009",
+      "group_name": "Nhóm g1280699502973867009",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g1525723268434213352",
+      "group_name": "Nhóm g1525723268434213352",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g1680815052456379543",
+      "group_name": "Nhóm g1680815052456379543",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g2114570837210809756",
+      "group_name": "Nhóm g2114570837210809756",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g2124230352298764222",
+      "group_name": "Nhóm g2124230352298764222",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g2206337315225239642",
+      "group_name": "Nhóm g2206337315225239642",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g2321307502186370802",
+      "group_name": "Nhóm g2321307502186370802",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g2720533576108467205",
+      "group_name": "Nhóm g2720533576108467205",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g2892370722401324007",
+      "group_name": "Nhóm g2892370722401324007",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g3246236652306997704",
+      "group_name": "Nhóm g3246236652306997704",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g3291228463145779560",
+      "group_name": "Nhóm g3291228463145779560",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g3597350413890084136",
+      "group_name": "Nhóm g3597350413890084136",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g3668277654596475436",
+      "group_name": "Nhóm g3668277654596475436",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g4836752158246755547",
+      "group_name": "Nhóm g4836752158246755547",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g5119368401920904399",
+      "group_name": "Nhóm g5119368401920904399",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g5323163342975899163",
+      "group_name": "Nhóm g5323163342975899163",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g536039590956627892",
+      "group_name": "Nhóm g536039590956627892",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g5406334230651129027",
+      "group_name": "Nhóm g5406334230651129027",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g5931856583994343574",
+      "group_name": "Nhóm g5931856583994343574",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g60484032038884882",
+      "group_name": "Nhóm g60484032038884882",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g6063448112192614881",
+      "group_name": "Nhóm g6063448112192614881",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g635545888948017429",
+      "group_name": "Nhóm g635545888948017429",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g6394757330030290554",
+      "group_name": "Nhóm g6394757330030290554",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g64428357689926688",
+      "group_name": "Nhóm g64428357689926688",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g6546888086694822175",
+      "group_name": "Nhóm g6546888086694822175",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g6562088025233476309",
+      "group_name": "Nhóm g6562088025233476309",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g6573856872882299135",
+      "group_name": "Nhóm g6573856872882299135",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g7125881846169503264",
+      "group_name": "Nhóm g7125881846169503264",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g7344992978071751466",
+      "group_name": "Nhóm g7344992978071751466",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g7832474776892530294",
+      "group_name": "Nhóm g7832474776892530294",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g7908048461554242171",
+      "group_name": "Nhóm g7908048461554242171",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g7933386588589520861",
+      "group_name": "Nhóm g7933386588589520861",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g7958147797413371829",
+      "group_name": "Nhóm g7958147797413371829",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8091863036172090504",
+      "group_name": "Nhóm g8091863036172090504",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8110625981374135882",
+      "group_name": "Nhóm g8110625981374135882",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8119880104379670379",
+      "group_name": "Nhóm g8119880104379670379",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8292411422859192272",
+      "group_name": "Nhóm g8292411422859192272",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8513795846060364259",
+      "group_name": "Nhóm g8513795846060364259",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8637514761162500378",
+      "group_name": "Nhóm g8637514761162500378",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g8728458298637408485",
+      "group_name": "Nhóm g8728458298637408485",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g9002602060905812779",
+      "group_name": "Nhóm g9002602060905812779",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g9024123973581390328",
+      "group_name": "Nhóm g9024123973581390328",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    },
+    {
+      "group_id": "g909708590192563035",
+      "group_name": "Nhóm g909708590192563035",
+      "category": "OTHER",
+      "total_media_files": 0,
+      "size_mb": 0.0,
+      "latest_mtime_iso": null,
+      "top_senders": []
+    }
+  ]
+}

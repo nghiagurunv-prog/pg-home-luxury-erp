@@ -1,0 +1,50 @@
+# Ignore Python & Node artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+node_modules/
+.vercel/
+.env
+.env.*
+
+# Ignore large raw folders & local backups, keep only web_app, api, rules & core JSON data
+1. Nhân sự/
+2. Tài chính - Kế toán/
+3. Dự án - Báo giá/
+4. Xưởng sản xuất/
+5. Tài liệu/
+6. Đối tác - NCC/
+backups/
+logs/
+tmp/
+*.xlsx
+*.xls
+*.pdf
+*.docx
+*.doc
+*.zip
+*.rar
+*.mp4
+*.avi
+*.mov
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Keep essential web_app assets
+!web_app/*.pdf
+!web_app/*.xlsx
+!web_app/*.docx
+!web_app/*.jpg
+!web_app/*.png
+
+# Ignore bulky raw Zalo pulled batches & backup snapshots inside data/
+data/backups/
+data/zalo_pulled_batches/
+data/zalo_media/
+data/raw_*/
+data/*.bak
+data/*_backup*

@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "pg-home-luxury-erp",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/data/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/",
+      "destination": "/web_app/index.html"
+    },
+    {
+      "source": "/web_app/(.*)",
+      "destination": "/web_app/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/web_app/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, must-revalidate" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
+}

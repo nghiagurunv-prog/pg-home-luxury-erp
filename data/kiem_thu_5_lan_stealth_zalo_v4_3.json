@@ -1,0 +1,116 @@
+{
+  "test_date": "2026-11-04 02:27:36",
+  "all_passed": true,
+  "total_tests": 5,
+  "results": [
+    {
+      "test_id": 1,
+      "name": "Đọc ngầm tin nhắn khi Zalo thu nhỏ (Minimized)",
+      "passed": true,
+      "duration_sec": 8.17,
+      "total_messages": 10,
+      "group_name": "14  Bảng chấm công xưởng  14   Quản trị PG Home",
+      "focus_stolen": false,
+      "placement_before": {
+        "showCmd": 2,
+        "is_visible": true,
+        "is_iconic": true,
+        "rcNormalPosition": [
+          200,
+          100,
+          1400,
+          900
+        ]
+      },
+      "placement_after": {
+        "showCmd": 2,
+        "is_visible": true,
+        "is_iconic": true,
+        "rcNormalPosition": [
+          200,
+          100,
+          1400,
+          900
+        ]
+      },
+      "placement_safe": true
+    },
+    {
+      "test_id": 2,
+      "name": "Đọc ngầm nhóm mục tiêu cụ thể (Bảng chấm công xưởng)",
+      "passed": true,
+      "duration_sec": 8.08,
+      "total_messages": 10,
+      "group_name": "14  Bảng chấm công xưởng  14   Quản trị PG Home",
+      "focus_stolen": false,
+      "placement_after": {
+        "showCmd": 2,
+        "is_visible": true,
+        "is_iconic": true,
+        "rcNormalPosition": [
+          200,
+          100,
+          1400,
+          900
+        ]
+      },
+      "placement_safe": true
+    },
+    {
+      "test_id": 3,
+      "name": "Quét danh sách toàn bộ hội thoại hiển thị (--list-groups)",
+      "passed": true,
+      "duration_sec": 2.81,
+      "total_groups_found": 5,
+      "groups_sample": [
+        "(SAE) Lớp 6A6 - Môn Tiếng Anh",
+        "Cổng Game Zalo",
+        "ZA War - Survival VN",
+        "Cờ Tỷ Phú Online",
+        "Thiết kế nhà Dì Lệ"
+      ],
+      "focus_stolen": false,
+      "placement_after": {
+        "showCmd": 2,
+        "is_visible": true,
+        "is_iconic": true,
+        "rcNormalPosition": [
+          200,
+          100,
+          1400,
+          900
+        ]
+      },
+      "placement_safe": true
+    },
+    {
+      "test_id": 4,
+      "name": "Cơ chế Focus Guard: Nhường quyền 100% khi Giám Đốc đang thao tác trên Zalo",
+      "passed": true,
+      "duration_sec": 0.14,
+      "zalo_was_foreground": true,
+      "yielded_correctly": true,
+      "response_message": "Giám Đốc đang thao tác trực tiếp trên Zalo. Script tự động nhường quyền 100% để không làm gián đoạn."
+    },
+    {
+      "test_id": 5,
+      "name": "Khôi phục cửa sổ Zalo & Đọc tin trực tiếp trên màn hình",
+      "passed": true,
+      "restore_status": "SUCCESS",
+      "is_openable": true,
+      "read_while_visible": "SUCCESS",
+      "final_placement": {
+        "showCmd": 2,
+        "is_visible": true,
+        "is_iconic": true,
+        "rcNormalPosition": [
+          200,
+          100,
+          1400,
+          900
+        ]
+      },
+      "final_safe": true
+    }
+  ]
+}

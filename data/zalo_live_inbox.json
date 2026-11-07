@@ -1,0 +1,1585 @@
+{
+  "engine_version": "6.0-PURE-DISK-SQLITE-FILENOISE",
+  "last_updated": "2026-11-06 18:57:33",
+  "scan_duration_sec": 0.224,
+  "stealth_mode": "100% PURE DISK (ZERO APP TOUCH, CPU < 0.2% IDLE)",
+  "zalo_window_touched": false,
+  "metrics": {
+    "contacts_mapped_count": 8156,
+    "priority_groups_count": 4,
+    "priority_media_count": 3943,
+    "verified_checksum_docs_count": 6,
+    "filenoise_files_count": 321,
+    "cached_conversations_count": 0
+  },
+  "verified_documents": [
+    {
+      "checksum": "fa552d1e7b482a374cab2d4d5e450f81",
+      "file_name": "báo giá nha anh Nam.xlsx",
+      "document_type": "QUOTE_XLSX",
+      "size_bytes": 16815,
+      "is_group": false,
+      "timestamp_ms": 1793933002202,
+      "timestamp_str": "2026-11-06 09:43:22",
+      "download_url": "https://file-stal-3.dlfl.vn/no/21c94f61f764233a7a75/AgHc8GC1CKxj8M1mLJPldr56UghZ5uf3jYKFeaRGq",
+      "local_noise_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\fa552d1e7b482a374cab2d4d5e450f81",
+      "is_locally_cached": true
+    },
+    {
+      "checksum": "ba632e9037b5fc32252c6c59ae35f10a",
+      "file_name": "PHIEU_GHI_THOI_GIAN_LAM_VIEC_THUC_TE.docx",
+      "document_type": "TIMESHEET_OR_SUMMARY",
+      "size_bytes": 38972,
+      "is_group": false,
+      "timestamp_ms": 1793842993562,
+      "timestamp_str": "2026-11-05 08:43:13",
+      "download_url": "https://file-stal-14.dlfl.vn/no/7e76d2866fd1bb8fe2c0/AgHc8GB20wKM4EO3zJkceAAIpy3dAe9rUGUFUo3jU",
+      "local_noise_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\ba632e9037b5fc32252c6c59ae35f10a",
+      "is_locally_cached": true
+    },
+    {
+      "checksum": "7be19ff11e041e6cdf4090c1f0cecf96",
+      "file_name": "MAU_D02_LT_DANH_SACH_BHXH_DONG_3_THANG.docx",
+      "document_type": "INSURANCE_DOCX",
+      "size_bytes": 41794,
+      "is_group": false,
+      "timestamp_ms": 1793770494956,
+      "timestamp_str": "2026-11-04 12:34:54",
+      "download_url": "https://file-stal-13.dlfl.vn/no/f03b15a27e14ab4af205/AgHc8GAEjRt3QX6eISHKGO5YT2R420V10m1GrIRdY",
+      "local_noise_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\7be19ff11e041e6cdf4090c1f0cecf96",
+      "is_locally_cached": true
+    },
+    {
+      "checksum": "b13bfd83e801e9619e4c8ba3a75e2fa4",
+      "file_name": "MAU_TK3_TS_DANG_KY_BHXH_DONG_3_THANG.docx",
+      "document_type": "INSURANCE_DOCX",
+      "size_bytes": 19463,
+      "is_group": false,
+      "timestamp_ms": 1793770494751,
+      "timestamp_str": "2026-11-04 12:34:54",
+      "download_url": "https://file-stal-14.dlfl.vn/no/1429574b3cfde9a3b0ec/AgHc8GAEjRUupAWKQhpbRH039XO84S9KSjPAa0OSO",
+      "local_noise_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\b13bfd83e801e9619e4c8ba3a75e2fa4",
+      "is_locally_cached": true
+    },
+    {
+      "checksum": "a1f44791d6de30fd007e824a84d817b2",
+      "file_name": "HOP_DONG_LAO_DONG_XUONG_DONG_BHXH.docx",
+      "document_type": "INSURANCE_DOCX",
+      "size_bytes": 41076,
+      "is_group": false,
+      "timestamp_ms": 1793766739602,
+      "timestamp_str": "2026-11-04 11:32:19",
+      "download_url": "https://file-stal-15.dlfl.vn/no/53f1628e843b5165082a/AgHc8GACB8pdrmFsUSAKs9QkNmyyG2EU7WFgcvyOe",
+      "local_noise_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\a1f44791d6de30fd007e824a84d817b2",
+      "is_locally_cached": true
+    },
+    {
+      "checksum": "4678aac70a9d0e095155e37c09821075",
+      "file_name": "DANH_SACH_KHACH_HANG_NOI_THAT_THANG_10_PHU_GIA.docx",
+      "document_type": "OTHER",
+      "size_bytes": 29475,
+      "is_group": true,
+      "timestamp_ms": 1793340155327,
+      "timestamp_str": "2026-10-30 13:02:35",
+      "download_url": "https://file-stal-1.dlfl.vn/gr/983dfe80efed3ab363fc/AgHc8G5WCmwR2cjPoLzfzB8nD4BSi1SynP4OyT4VM",
+      "local_noise_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\4678aac70a9d0e095155e37c09821075",
+      "is_locally_cached": true
+    }
+  ],
+  "priority_groups": {
+    "g3755853110317591515": {
+      "group_id": "g3755853110317591515",
+      "title": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
+      "category": "WORKSHOP_AND_SITE",
+      "description": "Chỉ đạo sản xuất xưởng, thi công lắp đặt thực tế công trình",
+      "exists_on_disk": true,
+      "total_media_files": 1457,
+      "subfolders": {
+        "g3755853110317591515": 0,
+        "Cache": 852,
+        "fileNoise": 16,
+        "picture": 577,
+        "richThumb": 4,
+        "video": 12
+      },
+      "active_members": [
+        {
+          "name": "Phú Gia Hiệp G",
+          "media_count": 442
+        },
+        {
+          "name": "Dũng PG Home",
+          "media_count": 442
+        },
+        {
+          "name": "Vũ",
+          "media_count": 239
+        },
+        {
+          "name": "Thái Pg Home 2026",
+          "media_count": 197
+        },
+        {
+          "name": "Nghĩa Guru",
+          "media_count": 134
+        },
+        {
+          "name": "Hương",
+          "media_count": 3
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-11-06 17:33:04",
+          "timestamp_ms": 1793961184941,
+          "sender_name": "Thái Pg Home 2026",
+          "sender_uid": "1266851172782015824",
+          "folder": "Cache",
+          "file_name": "1793961184941_1266851172782015824_g3755853110317591515_h",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793961184941_1266851172782015824_g3755853110317591515_h"
+        },
+        {
+          "timestamp": "2026-11-06 17:33:04",
+          "timestamp_ms": 1793961184941,
+          "sender_name": "Thái Pg Home 2026",
+          "sender_uid": "1266851172782015824",
+          "folder": "Cache",
+          "file_name": "1793961184941_1266851172782015824_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793961184941_1266851172782015824_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-06 17:33:04",
+          "timestamp_ms": 1793961184941,
+          "sender_name": "Thái Pg Home 2026",
+          "sender_uid": "1266851172782015824",
+          "folder": "Cache",
+          "file_name": "1793961184941_1266851172782015824_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793961184941_1266851172782015824_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-06 17:33:04",
+          "timestamp_ms": 1793961184941,
+          "sender_name": "Thái Pg Home 2026",
+          "sender_uid": "1266851172782015824",
+          "folder": "picture",
+          "file_name": "1793961184941_1266851172782015824_g3755853110317591515_1cd15597db3d37dc790cfa32a896246c.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793961184941_1266851172782015824_g3755853110317591515_1cd15597db3d37dc790cfa32a896246c.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 14:30:32",
+          "timestamp_ms": 1793950232776,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "Cache",
+          "file_name": "1793950232776_7617747951538527859_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793950232776_7617747951538527859_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-06 14:30:32",
+          "timestamp_ms": 1793950232776,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "Cache",
+          "file_name": "1793950232776_7617747951538527859_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793950232776_7617747951538527859_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-06 14:30:32",
+          "timestamp_ms": 1793950232776,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "picture",
+          "file_name": "1793950232776_7617747951538527859_g3755853110317591515_67e41a0f52d99d8ce1c8b3daa87a4b6e.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793950232776_7617747951538527859_g3755853110317591515_67e41a0f52d99d8ce1c8b3daa87a4b6e.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 14:09:45",
+          "timestamp_ms": 1793948985004,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "Cache",
+          "file_name": "1793948985004_2589261669335747882_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793948985004_2589261669335747882_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-06 14:09:45",
+          "timestamp_ms": 1793948985004,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "Cache",
+          "file_name": "1793948985004_2589261669335747882_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793948985004_2589261669335747882_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-06 14:09:45",
+          "timestamp_ms": 1793948985004,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "picture",
+          "file_name": "1793948985004_2589261669335747882_g3755853110317591515_c871b7ace602761e4033312268db8226.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793948985004_2589261669335747882_g3755853110317591515_c871b7ace602761e4033312268db8226.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 07:38:47",
+          "timestamp_ms": 1793925527506,
+          "sender_name": "Thái Pg Home 2026",
+          "sender_uid": "1266851172782015824",
+          "folder": "Cache",
+          "file_name": "1793925527506_1266851172782015824_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793925527506_1266851172782015824_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-06 07:38:47",
+          "timestamp_ms": 1793925527506,
+          "sender_name": "Thái Pg Home 2026",
+          "sender_uid": "1266851172782015824",
+          "folder": "Cache",
+          "file_name": "1793925527506_1266851172782015824_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793925527506_1266851172782015824_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-06 07:38:47",
+          "timestamp_ms": 1793925527506,
+          "sender_name": "Thái Pg Home 2026",
+          "sender_uid": "1266851172782015824",
+          "folder": "picture",
+          "file_name": "1793925527506_1266851172782015824_g3755853110317591515_d5855642511ca2f0d8b58aba4c6d9624.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793925527506_1266851172782015824_g3755853110317591515_d5855642511ca2f0d8b58aba4c6d9624.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 07:35:33",
+          "timestamp_ms": 1793925333717,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793925333717_2845688247116683961_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793925333717_2845688247116683961_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-06 07:35:33",
+          "timestamp_ms": 1793925333717,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793925333717_2845688247116683961_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793925333717_2845688247116683961_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-06 07:35:33",
+          "timestamp_ms": 1793925333717,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "picture",
+          "file_name": "1793925333717_2845688247116683961_g3755853110317591515_f4cb6939bf896e09b52334551a28e2a9.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793925333717_2845688247116683961_g3755853110317591515_f4cb6939bf896e09b52334551a28e2a9.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 07:26:06",
+          "timestamp_ms": 1793924766102,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "Cache",
+          "file_name": "1793924766102_2589261669335747882_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793924766102_2589261669335747882_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-06 07:26:06",
+          "timestamp_ms": 1793924766102,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "Cache",
+          "file_name": "1793924766102_2589261669335747882_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793924766102_2589261669335747882_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-06 07:26:06",
+          "timestamp_ms": 1793924766102,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "picture",
+          "file_name": "1793924766102_2589261669335747882_g3755853110317591515_83c4817e7b0d70deaed90cdaf32e717b.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793924766102_2589261669335747882_g3755853110317591515_83c4817e7b0d70deaed90cdaf32e717b.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 07:08:25",
+          "timestamp_ms": 1793923705350,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "Cache",
+          "file_name": "1793923705350_7617747951538527859_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793923705350_7617747951538527859_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-06 07:08:25",
+          "timestamp_ms": 1793923705350,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "Cache",
+          "file_name": "1793923705350_7617747951538527859_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793923705350_7617747951538527859_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-06 07:08:25",
+          "timestamp_ms": 1793923705350,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "picture",
+          "file_name": "1793923705350_7617747951538527859_g3755853110317591515_58e27846ba3768530e25ef3784c36e9a.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793923705350_7617747951538527859_g3755853110317591515_58e27846ba3768530e25ef3784c36e9a.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 18:26:20",
+          "timestamp_ms": 1793877980275,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793877980275_2845688247116683961_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793877980275_2845688247116683961_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-05 18:26:20",
+          "timestamp_ms": 1793877980275,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793877980275_2845688247116683961_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793877980275_2845688247116683961_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-05 18:26:20",
+          "timestamp_ms": 1793877980275,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "picture",
+          "file_name": "1793877980275_2845688247116683961_g3755853110317591515_f7237df61dae748d7793876b1f35104a.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793877980275_2845688247116683961_g3755853110317591515_f7237df61dae748d7793876b1f35104a.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 14:15:16",
+          "timestamp_ms": 1793862916803,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "Cache",
+          "file_name": "1793862916803_7617747951538527859_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793862916803_7617747951538527859_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-05 14:15:16",
+          "timestamp_ms": 1793862916803,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "Cache",
+          "file_name": "1793862916803_7617747951538527859_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793862916803_7617747951538527859_g3755853110317591515_t"
+        },
+        {
+          "timestamp": "2026-11-05 14:15:16",
+          "timestamp_ms": 1793862916803,
+          "sender_name": "Phú Gia Hiệp G",
+          "sender_uid": "7617747951538527859",
+          "folder": "picture",
+          "file_name": "1793862916803_7617747951538527859_g3755853110317591515_f4ff841eca42d0ae2b1d544dcb352a28.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\picture\\1793862916803_7617747951538527859_g3755853110317591515_f4ff841eca42d0ae2b1d544dcb352a28.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 13:56:39",
+          "timestamp_ms": 1793861799144,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "Cache",
+          "file_name": "1793861799144_2589261669335747882_g3755853110317591515_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793861799144_2589261669335747882_g3755853110317591515_n"
+        },
+        {
+          "timestamp": "2026-11-05 13:56:39",
+          "timestamp_ms": 1793861799144,
+          "sender_name": "Dũng PG Home",
+          "sender_uid": "2589261669335747882",
+          "folder": "Cache",
+          "file_name": "1793861799144_2589261669335747882_g3755853110317591515_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g3755853110317591515\\Cache\\1793861799144_2589261669335747882_g3755853110317591515_t"
+        }
+      ]
+    },
+    "g795402381131416269": {
+      "group_id": "g795402381131416269",
+      "title": "Nhóm Ghim Ưu Tiên Giám Đốc #1 (1.65 GB)",
+      "category": "PINNED_VIP_GROUP",
+      "description": "Nhóm hội thoại ghim ưu tiên cao nhất của Giám Đốc",
+      "exists_on_disk": true,
+      "total_media_files": 1178,
+      "subfolders": {
+        "g795402381131416269": 0,
+        "Cache": 351,
+        "fileNoise": 2,
+        "picture": 625,
+        "richThumb": 93,
+        "video": 200
+      },
+      "active_members": [
+        {
+          "name": "Nguyễn Minh",
+          "media_count": 715
+        },
+        {
+          "name": "Sonminhtu",
+          "media_count": 192
+        },
+        {
+          "name": "Điền",
+          "media_count": 174
+        },
+        {
+          "name": "Rub - Nội Thất Và Xây Dựng",
+          "media_count": 36
+        },
+        {
+          "name": "Thương Uchiha",
+          "media_count": 11
+        },
+        {
+          "name": "Tuyết",
+          "media_count": 11
+        },
+        {
+          "name": "Nguyễn Thu Hà",
+          "media_count": 10
+        },
+        {
+          "name": "Phường SHE",
+          "media_count": 10
+        },
+        {
+          "name": "Nghĩa Guru",
+          "media_count": 9
+        },
+        {
+          "name": "Hieu Ho",
+          "media_count": 3
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-11-06 18:33:43",
+          "timestamp_ms": 1793964823417,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793964823417_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793964823417_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 18:33:43",
+          "timestamp_ms": 1793964823417,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "video",
+          "file_name": "1793964823417_2926353819792553048_g795402381131416269",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\video\\1793964823417_2926353819792553048_g795402381131416269"
+        },
+        {
+          "timestamp": "2026-11-06 17:14:07",
+          "timestamp_ms": 1793960047157,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793960047157_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793960047157_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 17:14:07",
+          "timestamp_ms": 1793960047157,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "video",
+          "file_name": "1793960047157_2926353819792553048_g795402381131416269",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\video\\1793960047157_2926353819792553048_g795402381131416269"
+        },
+        {
+          "timestamp": "2026-11-06 14:28:03",
+          "timestamp_ms": 1793950083389,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793950083389_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793950083389_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 14:28:03",
+          "timestamp_ms": 1793950083389,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "picture",
+          "file_name": "1793950083389_2926353819792553048_g795402381131416269_533f2f683a6aebf5c9bf102ca9f6c5d9.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793950083389_2926353819792553048_g795402381131416269_533f2f683a6aebf5c9bf102ca9f6c5d9.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 14:26:24",
+          "timestamp_ms": 1793949984513,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793949984513_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793949984513_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 14:26:24",
+          "timestamp_ms": 1793949984513,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "picture",
+          "file_name": "1793949984513_2926353819792553048_g795402381131416269_1cb33bc26eb98a8cbaf719488578b5e3.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793949984513_2926353819792553048_g795402381131416269_1cb33bc26eb98a8cbaf719488578b5e3.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 13:42:40",
+          "timestamp_ms": 1793947360846,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793947360846_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793947360846_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 13:42:40",
+          "timestamp_ms": 1793947360846,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "picture",
+          "file_name": "1793947360846_2926353819792553048_g795402381131416269_f798b48f0f05ce68e634b2c75cd477a7.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793947360846_2926353819792553048_g795402381131416269_f798b48f0f05ce68e634b2c75cd477a7.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 11:50:13",
+          "timestamp_ms": 1793940613022,
+          "sender_name": "Sonminhtu",
+          "sender_uid": "8637268198362425881",
+          "folder": "Cache",
+          "file_name": "1793940613022_8637268198362425881_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793940613022_8637268198362425881_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 11:50:13",
+          "timestamp_ms": 1793940613022,
+          "sender_name": "Sonminhtu",
+          "sender_uid": "8637268198362425881",
+          "folder": "picture",
+          "file_name": "1793940613022_8637268198362425881_g795402381131416269_2e139dc20f4ecb197dfdf9dd7af0d6ba.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793940613022_8637268198362425881_g795402381131416269_2e139dc20f4ecb197dfdf9dd7af0d6ba.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 10:21:40",
+          "timestamp_ms": 1793935300745,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793935300745_2926353819792553048_g795402381131416269_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793935300745_2926353819792553048_g795402381131416269_n"
+        },
+        {
+          "timestamp": "2026-11-06 10:21:40",
+          "timestamp_ms": 1793935300745,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793935300745_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793935300745_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 10:21:40",
+          "timestamp_ms": 1793935300745,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "picture",
+          "file_name": "1793935300745_2926353819792553048_g795402381131416269_2ae297441582e1d320dc8110f4a63d8a.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793935300745_2926353819792553048_g795402381131416269_2ae297441582e1d320dc8110f4a63d8a.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 09:51:43",
+          "timestamp_ms": 1793933503804,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793933503804_2926353819792553048_g795402381131416269_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793933503804_2926353819792553048_g795402381131416269_n"
+        },
+        {
+          "timestamp": "2026-11-06 09:51:43",
+          "timestamp_ms": 1793933503804,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793933503804_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793933503804_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 09:51:43",
+          "timestamp_ms": 1793933503804,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "picture",
+          "file_name": "1793933503804_2926353819792553048_g795402381131416269_7b5ae330de92164d536dfc84c3d49149.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793933503804_2926353819792553048_g795402381131416269_7b5ae330de92164d536dfc84c3d49149.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 09:44:32",
+          "timestamp_ms": 1793933072142,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793933072142_2926353819792553048_g795402381131416269_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793933072142_2926353819792553048_g795402381131416269_n"
+        },
+        {
+          "timestamp": "2026-11-06 09:44:32",
+          "timestamp_ms": 1793933072142,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793933072142_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793933072142_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 09:44:32",
+          "timestamp_ms": 1793933072142,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "picture",
+          "file_name": "1793933072142_2926353819792553048_g795402381131416269_c6eed4b895c18e3b0b9df06bc8bfee58.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793933072142_2926353819792553048_g795402381131416269_c6eed4b895c18e3b0b9df06bc8bfee58.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 07:03:05",
+          "timestamp_ms": 1793923385031,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793923385031_2926353819792553048_g795402381131416269_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793923385031_2926353819792553048_g795402381131416269_n"
+        },
+        {
+          "timestamp": "2026-11-06 07:03:05",
+          "timestamp_ms": 1793923385031,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793923385031_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793923385031_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 07:03:05",
+          "timestamp_ms": 1793923385031,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "picture",
+          "file_name": "1793923385031_2926353819792553048_g795402381131416269_53ea30dbf606087a7bd3a53d433979d2.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793923385031_2926353819792553048_g795402381131416269_53ea30dbf606087a7bd3a53d433979d2.jxl"
+        },
+        {
+          "timestamp": "2026-11-06 06:32:22",
+          "timestamp_ms": 1793921542169,
+          "sender_name": "Sonminhtu",
+          "sender_uid": "8637268198362425881",
+          "folder": "Cache",
+          "file_name": "1793921542169_8637268198362425881_g795402381131416269_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793921542169_8637268198362425881_g795402381131416269_n"
+        },
+        {
+          "timestamp": "2026-11-06 06:32:22",
+          "timestamp_ms": 1793921542169,
+          "sender_name": "Sonminhtu",
+          "sender_uid": "8637268198362425881",
+          "folder": "Cache",
+          "file_name": "1793921542169_8637268198362425881_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793921542169_8637268198362425881_g795402381131416269_t"
+        },
+        {
+          "timestamp": "2026-11-06 06:32:22",
+          "timestamp_ms": 1793921542169,
+          "sender_name": "Sonminhtu",
+          "sender_uid": "8637268198362425881",
+          "folder": "picture",
+          "file_name": "1793921542169_8637268198362425881_g795402381131416269_e5b485b5d520417a5528497c891ebb5e.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\picture\\1793921542169_8637268198362425881_g795402381131416269_e5b485b5d520417a5528497c891ebb5e.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 22:01:03",
+          "timestamp_ms": 1793890863409,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793890863409_2926353819792553048_g795402381131416269_h",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793890863409_2926353819792553048_g795402381131416269_h"
+        },
+        {
+          "timestamp": "2026-11-05 22:01:03",
+          "timestamp_ms": 1793890863409,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793890863409_2926353819792553048_g795402381131416269_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793890863409_2926353819792553048_g795402381131416269_n"
+        },
+        {
+          "timestamp": "2026-11-05 22:01:03",
+          "timestamp_ms": 1793890863409,
+          "sender_name": "Nguyễn Minh",
+          "sender_uid": "2926353819792553048",
+          "folder": "Cache",
+          "file_name": "1793890863409_2926353819792553048_g795402381131416269_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g795402381131416269\\Cache\\1793890863409_2926353819792553048_g795402381131416269_t"
+        }
+      ]
+    },
+    "g1588348021340609742": {
+      "group_id": "g1588348021340609742",
+      "title": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+      "category": "PINNED_VIP_GROUP",
+      "description": "Nhóm trao đổi chiến lược & hồ sơ công trình VIP",
+      "exists_on_disk": true,
+      "total_media_files": 1185,
+      "subfolders": {
+        "g1588348021340609742": 0,
+        "Cache": 686,
+        "picture": 497,
+        "richThumb": 14,
+        "video": 1,
+        "voice": 1
+      },
+      "active_members": [
+        {
+          "name": "Hà Huy Trọng",
+          "media_count": 244
+        },
+        {
+          "name": "Thanh Xuân",
+          "media_count": 48
+        },
+        {
+          "name": "Hữu Chính",
+          "media_count": 45
+        },
+        {
+          "name": "Ryo",
+          "media_count": 40
+        },
+        {
+          "name": "Bộ Trưởnq Đây",
+          "media_count": 38
+        },
+        {
+          "name": "Truong Nguyen",
+          "media_count": 35
+        },
+        {
+          "name": "Cương Trịnh",
+          "media_count": 30
+        },
+        {
+          "name": "Thành",
+          "media_count": 27
+        },
+        {
+          "name": "Huy",
+          "media_count": 26
+        },
+        {
+          "name": "Nguyễn Hưng",
+          "media_count": 25
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-11-05 22:02:25",
+          "timestamp_ms": 1793890945172,
+          "sender_name": "Hà Huy Trọng",
+          "sender_uid": "3799628397263949438",
+          "folder": "Cache",
+          "file_name": "1793890945172_3799628397263949438_g1588348021340609742_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793890945172_3799628397263949438_g1588348021340609742_n"
+        },
+        {
+          "timestamp": "2026-11-05 22:02:25",
+          "timestamp_ms": 1793890945172,
+          "sender_name": "Hà Huy Trọng",
+          "sender_uid": "3799628397263949438",
+          "folder": "Cache",
+          "file_name": "1793890945172_3799628397263949438_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793890945172_3799628397263949438_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-05 22:02:25",
+          "timestamp_ms": 1793890945172,
+          "sender_name": "Hà Huy Trọng",
+          "sender_uid": "3799628397263949438",
+          "folder": "picture",
+          "file_name": "1793890945172_3799628397263949438_g1588348021340609742_6404cbe9099072d54dfacd7936059a93.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793890945172_3799628397263949438_g1588348021340609742_6404cbe9099072d54dfacd7936059a93.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 19:43:58",
+          "timestamp_ms": 1793882638011,
+          "sender_name": "Thanh Xuân",
+          "sender_uid": "2165331731385979592",
+          "folder": "Cache",
+          "file_name": "1793882638011_2165331731385979592_g1588348021340609742_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793882638011_2165331731385979592_g1588348021340609742_n"
+        },
+        {
+          "timestamp": "2026-11-05 19:43:58",
+          "timestamp_ms": 1793882638011,
+          "sender_name": "Thanh Xuân",
+          "sender_uid": "2165331731385979592",
+          "folder": "Cache",
+          "file_name": "1793882638011_2165331731385979592_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793882638011_2165331731385979592_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-05 19:43:58",
+          "timestamp_ms": 1793882638011,
+          "sender_name": "Thanh Xuân",
+          "sender_uid": "2165331731385979592",
+          "folder": "picture",
+          "file_name": "1793882638011_2165331731385979592_g1588348021340609742_cbe76b9af4b9604ba7fbfdacfe40d218.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793882638011_2165331731385979592_g1588348021340609742_cbe76b9af4b9604ba7fbfdacfe40d218.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 14:33:39",
+          "timestamp_ms": 1793864019668,
+          "sender_name": "Lê Nguyên",
+          "sender_uid": "2774888202435142726",
+          "folder": "Cache",
+          "file_name": "1793864019668_2774888202435142726_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793864019668_2774888202435142726_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-05 14:33:39",
+          "timestamp_ms": 1793864019668,
+          "sender_name": "Lê Nguyên",
+          "sender_uid": "2774888202435142726",
+          "folder": "picture",
+          "file_name": "1793864019668_2774888202435142726_g1588348021340609742_7b5c10d9d289ddbdcc5bf0f1eee1d84f.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793864019668_2774888202435142726_g1588348021340609742_7b5c10d9d289ddbdcc5bf0f1eee1d84f.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 09:21:07",
+          "timestamp_ms": 1793845267523,
+          "sender_name": "Hà Huy Trọng",
+          "sender_uid": "3799628397263949438",
+          "folder": "Cache",
+          "file_name": "1793845267523_3799628397263949438_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793845267523_3799628397263949438_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-05 09:21:07",
+          "timestamp_ms": 1793845267523,
+          "sender_name": "Hà Huy Trọng",
+          "sender_uid": "3799628397263949438",
+          "folder": "picture",
+          "file_name": "1793845267523_3799628397263949438_g1588348021340609742_25715d1d895d85fac0464f5257f2e59a.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793845267523_3799628397263949438_g1588348021340609742_25715d1d895d85fac0464f5257f2e59a.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 22:43:22",
+          "timestamp_ms": 1793807002708,
+          "sender_name": "Phạm Nhật Duy",
+          "sender_uid": "6820016113556978529",
+          "folder": "Cache",
+          "file_name": "1793807002708_6820016113556978529_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793807002708_6820016113556978529_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 22:43:22",
+          "timestamp_ms": 1793807002708,
+          "sender_name": "Phạm Nhật Duy",
+          "sender_uid": "6820016113556978529",
+          "folder": "picture",
+          "file_name": "1793807002708_6820016113556978529_g1588348021340609742_11a1aa1e4fdd8cc36eaf4fe730b5bef1.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793807002708_6820016113556978529_g1588348021340609742_11a1aa1e4fdd8cc36eaf4fe730b5bef1.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 22:40:58",
+          "timestamp_ms": 1793806858462,
+          "sender_name": "Đỉnh",
+          "sender_uid": "3995227806867900085",
+          "folder": "Cache",
+          "file_name": "1793806858462_3995227806867900085_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793806858462_3995227806867900085_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 22:40:58",
+          "timestamp_ms": 1793806858462,
+          "sender_name": "Đỉnh",
+          "sender_uid": "3995227806867900085",
+          "folder": "picture",
+          "file_name": "1793806858462_3995227806867900085_g1588348021340609742_571975b9be9d397b59cab3caf783912f.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793806858462_3995227806867900085_g1588348021340609742_571975b9be9d397b59cab3caf783912f.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 15:24:48",
+          "timestamp_ms": 1793780688282,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "Cache",
+          "file_name": "1793780688282_6709112964637116127_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793780688282_6709112964637116127_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 15:24:48",
+          "timestamp_ms": 1793780688282,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "picture",
+          "file_name": "1793780688282_6709112964637116127_g1588348021340609742_0d256a40f2e2de8547e242ca82b7ba47.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793780688282_6709112964637116127_g1588348021340609742_0d256a40f2e2de8547e242ca82b7ba47.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 14:59:34",
+          "timestamp_ms": 1793779174939,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "Cache",
+          "file_name": "1793779174939_6709112964637116127_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793779174939_6709112964637116127_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 14:59:34",
+          "timestamp_ms": 1793779174939,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "picture",
+          "file_name": "1793779174939_6709112964637116127_g1588348021340609742_47fbb280c777304c46b3ea18e48d51a1.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793779174939_6709112964637116127_g1588348021340609742_47fbb280c777304c46b3ea18e48d51a1.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 14:56:51",
+          "timestamp_ms": 1793779011038,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "Cache",
+          "file_name": "1793779011038_6709112964637116127_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793779011038_6709112964637116127_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 14:56:51",
+          "timestamp_ms": 1793779011038,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "picture",
+          "file_name": "1793779011038_6709112964637116127_g1588348021340609742_2cdfb52622d20ce2b1beaa359bdb27a7.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793779011038_6709112964637116127_g1588348021340609742_2cdfb52622d20ce2b1beaa359bdb27a7.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 14:42:09",
+          "timestamp_ms": 1793778129198,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "Cache",
+          "file_name": "1793778129198_6709112964637116127_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793778129198_6709112964637116127_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 14:42:09",
+          "timestamp_ms": 1793778129198,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "picture",
+          "file_name": "1793778129198_6709112964637116127_g1588348021340609742_5b2142a15c0899a6380bfa936b37c039.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793778129198_6709112964637116127_g1588348021340609742_5b2142a15c0899a6380bfa936b37c039.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 14:34:11",
+          "timestamp_ms": 1793777651339,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "Cache",
+          "file_name": "1793777651339_6709112964637116127_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793777651339_6709112964637116127_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 14:34:11",
+          "timestamp_ms": 1793777651339,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "picture",
+          "file_name": "1793777651339_6709112964637116127_g1588348021340609742_77165b8f2e24e9df88068a530224a152.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793777651339_6709112964637116127_g1588348021340609742_77165b8f2e24e9df88068a530224a152.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 14:29:03",
+          "timestamp_ms": 1793777343190,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "Cache",
+          "file_name": "1793777343190_6709112964637116127_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793777343190_6709112964637116127_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 14:29:03",
+          "timestamp_ms": 1793777343190,
+          "sender_name": "Mai Anh",
+          "sender_uid": "6709112964637116127",
+          "folder": "picture",
+          "file_name": "1793777343190_6709112964637116127_g1588348021340609742_9409ed34ec80c8c0530928e83e164540.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793777343190_6709112964637116127_g1588348021340609742_9409ed34ec80c8c0530928e83e164540.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 08:53:18",
+          "timestamp_ms": 1793757198213,
+          "sender_name": "3472555187905659124",
+          "sender_uid": "3472555187905659124",
+          "folder": "Cache",
+          "file_name": "1793757198213_3472555187905659124_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793757198213_3472555187905659124_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-04 08:53:18",
+          "timestamp_ms": 1793757198213,
+          "sender_name": "3472555187905659124",
+          "sender_uid": "3472555187905659124",
+          "folder": "picture",
+          "file_name": "1793757198213_3472555187905659124_g1588348021340609742_1b6086cc623cb953e09e19843cc4d5b4.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793757198213_3472555187905659124_g1588348021340609742_1b6086cc623cb953e09e19843cc4d5b4.jxl"
+        },
+        {
+          "timestamp": "2026-11-03 21:34:13",
+          "timestamp_ms": 1793716453505,
+          "sender_name": "Ychangjun",
+          "sender_uid": "5627535656161761245",
+          "folder": "Cache",
+          "file_name": "1793716453505_5627535656161761245_g1588348021340609742_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\Cache\\1793716453505_5627535656161761245_g1588348021340609742_t"
+        },
+        {
+          "timestamp": "2026-11-03 21:34:13",
+          "timestamp_ms": 1793716453505,
+          "sender_name": "Ychangjun",
+          "sender_uid": "5627535656161761245",
+          "folder": "picture",
+          "file_name": "1793716453505_5627535656161761245_g1588348021340609742_b26238577597bc07ae8d2999ea47436a.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1588348021340609742\\picture\\1793716453505_5627535656161761245_g1588348021340609742_b26238577597bc07ae8d2999ea47436a.jxl"
+        }
+      ]
+    },
+    "g2539027971900219384": {
+      "group_id": "g2539027971900219384",
+      "title": "Nhóm Đặt Hàng Vật Tư & Thanh Toán NCC (Vũ + Chị Hương)",
+      "category": "SUPPLIER_ORDER_UNC",
+      "description": "Đề xuất vật tư xưởng, duyệt đơn, ủy nhiệm chi và hóa đơn nhà cung cấp",
+      "exists_on_disk": true,
+      "total_media_files": 123,
+      "subfolders": {
+        "g2539027971900219384": 0,
+        "Cache": 50,
+        "fileNoise": 30,
+        "picture": 42,
+        "video": 1
+      },
+      "active_members": [
+        {
+          "name": "Duong Tam",
+          "media_count": 52
+        },
+        {
+          "name": "Vũ",
+          "media_count": 34
+        },
+        {
+          "name": "Hương",
+          "media_count": 10
+        },
+        {
+          "name": "Tô Thị Ngũ",
+          "media_count": 10
+        },
+        {
+          "name": "Giang Còi",
+          "media_count": 8
+        },
+        {
+          "name": "Bích Hạnh",
+          "media_count": 7
+        },
+        {
+          "name": "Thái Pg Home 2026",
+          "media_count": 2
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-11-05 14:38:40",
+          "timestamp_ms": 1793864320430,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793864320430_2845688247116683961_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793864320430_2845688247116683961_g2539027971900219384_n"
+        },
+        {
+          "timestamp": "2026-11-05 14:38:40",
+          "timestamp_ms": 1793864320430,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793864320430_2845688247116683961_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793864320430_2845688247116683961_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-05 14:38:40",
+          "timestamp_ms": 1793864320430,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "picture",
+          "file_name": "1793864320430_2845688247116683961_g2539027971900219384_d6a937b4c9e4313b61337bbbd940014d.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793864320430_2845688247116683961_g2539027971900219384_d6a937b4c9e4313b61337bbbd940014d.jxl"
+        },
+        {
+          "timestamp": "2026-11-05 07:44:30",
+          "timestamp_ms": 1793839470365,
+          "sender_name": "Giang Còi",
+          "sender_uid": "337278748333353578",
+          "folder": "fileNoise",
+          "file_name": "1793839470365_337278748333353578_g2539027971900219384",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\fileNoise\\1793839470365_337278748333353578_g2539027971900219384"
+        },
+        {
+          "timestamp": "2026-11-04 18:01:36",
+          "timestamp_ms": 1793790096069,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "fileNoise",
+          "file_name": "1793790096069_2845688247116683961_g2539027971900219384",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\fileNoise\\1793790096069_2845688247116683961_g2539027971900219384"
+        },
+        {
+          "timestamp": "2026-11-04 16:00:09",
+          "timestamp_ms": 1793782809669,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793782809669_5055011331062292963_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793782809669_5055011331062292963_g2539027971900219384_n"
+        },
+        {
+          "timestamp": "2026-11-04 16:00:09",
+          "timestamp_ms": 1793782809669,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793782809669_5055011331062292963_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793782809669_5055011331062292963_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-04 16:00:09",
+          "timestamp_ms": 1793782809669,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "picture",
+          "file_name": "1793782809669_5055011331062292963_g2539027971900219384_5923cbd6d399015708fbb66fa65958d3.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793782809669_5055011331062292963_g2539027971900219384_5923cbd6d399015708fbb66fa65958d3.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 16:00:02",
+          "timestamp_ms": 1793782802856,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793782802856_5055011331062292963_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793782802856_5055011331062292963_g2539027971900219384_n"
+        },
+        {
+          "timestamp": "2026-11-04 16:00:02",
+          "timestamp_ms": 1793782802856,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793782802856_5055011331062292963_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793782802856_5055011331062292963_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-04 16:00:02",
+          "timestamp_ms": 1793782802856,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "picture",
+          "file_name": "1793782802856_5055011331062292963_g2539027971900219384_bff23e0a5fddd6417bbac0efa8802360.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793782802856_5055011331062292963_g2539027971900219384_bff23e0a5fddd6417bbac0efa8802360.jxl"
+        },
+        {
+          "timestamp": "2026-11-04 09:24:38",
+          "timestamp_ms": 1793759078847,
+          "sender_name": "Hương",
+          "sender_uid": "1193413708528852811",
+          "folder": "Cache",
+          "file_name": "1793759078847_1193413708528852811_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793759078847_1193413708528852811_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-04 09:24:38",
+          "timestamp_ms": 1793759078847,
+          "sender_name": "Hương",
+          "sender_uid": "1193413708528852811",
+          "folder": "picture",
+          "file_name": "1793759078847_1193413708528852811_g2539027971900219384_bd1b411324d0dbdc0cb688add47b951b.jpg",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793759078847_1193413708528852811_g2539027971900219384_bd1b411324d0dbdc0cb688add47b951b.jpg"
+        },
+        {
+          "timestamp": "2026-11-03 17:14:35",
+          "timestamp_ms": 1793700875189,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793700875189_5055011331062292963_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793700875189_5055011331062292963_g2539027971900219384_n"
+        },
+        {
+          "timestamp": "2026-11-03 17:14:35",
+          "timestamp_ms": 1793700875189,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793700875189_5055011331062292963_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793700875189_5055011331062292963_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-03 17:14:35",
+          "timestamp_ms": 1793700875189,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "picture",
+          "file_name": "1793700875189_5055011331062292963_g2539027971900219384_f0b1b0bc8ecee86c36a288ad47ce8cc7.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793700875189_5055011331062292963_g2539027971900219384_f0b1b0bc8ecee86c36a288ad47ce8cc7.jxl"
+        },
+        {
+          "timestamp": "2026-11-03 17:13:23",
+          "timestamp_ms": 1793700803926,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793700803926_5055011331062292963_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793700803926_5055011331062292963_g2539027971900219384_n"
+        },
+        {
+          "timestamp": "2026-11-03 17:13:23",
+          "timestamp_ms": 1793700803926,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "Cache",
+          "file_name": "1793700803926_5055011331062292963_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793700803926_5055011331062292963_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-03 17:13:23",
+          "timestamp_ms": 1793700803926,
+          "sender_name": "Duong Tam",
+          "sender_uid": "5055011331062292963",
+          "folder": "picture",
+          "file_name": "1793700803926_5055011331062292963_g2539027971900219384_13066d2070374e9fb677ad5a32d68fc8.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793700803926_5055011331062292963_g2539027971900219384_13066d2070374e9fb677ad5a32d68fc8.jxl"
+        },
+        {
+          "timestamp": "2026-11-03 15:39:50",
+          "timestamp_ms": 1793695190196,
+          "sender_name": "Giang Còi",
+          "sender_uid": "337278748333353578",
+          "folder": "fileNoise",
+          "file_name": "1793695190196_337278748333353578_g2539027971900219384",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\fileNoise\\1793695190196_337278748333353578_g2539027971900219384"
+        },
+        {
+          "timestamp": "2026-11-03 15:29:05",
+          "timestamp_ms": 1793694545320,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793694545320_2845688247116683961_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793694545320_2845688247116683961_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-03 15:29:05",
+          "timestamp_ms": 1793694545320,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "video",
+          "file_name": "1793694545320_2845688247116683961_g2539027971900219384",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\video\\1793694545320_2845688247116683961_g2539027971900219384"
+        },
+        {
+          "timestamp": "2026-11-03 15:29:00",
+          "timestamp_ms": 1793694540166,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793694540166_2845688247116683961_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793694540166_2845688247116683961_g2539027971900219384_n"
+        },
+        {
+          "timestamp": "2026-11-03 15:29:00",
+          "timestamp_ms": 1793694540166,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793694540166_2845688247116683961_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793694540166_2845688247116683961_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-03 15:29:00",
+          "timestamp_ms": 1793694540166,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "picture",
+          "file_name": "1793694540166_2845688247116683961_g2539027971900219384_eaf3b3c8fc279a7659c69ff784324da4.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793694540166_2845688247116683961_g2539027971900219384_eaf3b3c8fc279a7659c69ff784324da4.jxl"
+        },
+        {
+          "timestamp": "2026-11-03 15:28:54",
+          "timestamp_ms": 1793694534042,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793694534042_2845688247116683961_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793694534042_2845688247116683961_g2539027971900219384_n"
+        },
+        {
+          "timestamp": "2026-11-03 15:28:54",
+          "timestamp_ms": 1793694534042,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "Cache",
+          "file_name": "1793694534042_2845688247116683961_g2539027971900219384_t",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793694534042_2845688247116683961_g2539027971900219384_t"
+        },
+        {
+          "timestamp": "2026-11-03 15:28:54",
+          "timestamp_ms": 1793694534042,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "picture",
+          "file_name": "1793694534042_2845688247116683961_g2539027971900219384_f9dddf0ba604abb864bc7509d3ace444.jxl",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\picture\\1793694534042_2845688247116683961_g2539027971900219384_f9dddf0ba604abb864bc7509d3ace444.jxl"
+        },
+        {
+          "timestamp": "2026-11-03 15:28:22",
+          "timestamp_ms": 1793694502378,
+          "sender_name": "Vũ",
+          "sender_uid": "2845688247116683961",
+          "folder": "fileNoise",
+          "file_name": "1793694502378_2845688247116683961_g2539027971900219384",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\fileNoise\\1793694502378_2845688247116683961_g2539027971900219384"
+        },
+        {
+          "timestamp": "2026-11-02 15:40:40",
+          "timestamp_ms": 1793608840968,
+          "sender_name": "Tô Thị Ngũ",
+          "sender_uid": "7455619656818200755",
+          "folder": "Cache",
+          "file_name": "1793608840968_7455619656818200755_g2539027971900219384_n",
+          "file_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\Cache\\1793608840968_7455619656818200755_g2539027971900219384_n"
+        }
+      ]
+    }
+  },
+  "filenoise_recent_files": [
+    {
+      "filename": "ff5d3c13cf917e2377f343df9697d52f",
+      "folder": "group",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\ff5d3c13cf917e2377f343df9697d52f",
+      "size_bytes": 797088,
+      "mtime": "2026-11-06 18:34:51",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "fa552d1e7b482a374cab2d4d5e450f81",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\fa552d1e7b482a374cab2d4d5e450f81",
+      "size_bytes": 16821,
+      "mtime": "2026-11-06 09:43:23",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "026d0a589e9bfac37b433f6d7e6a8005",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\026d0a589e9bfac37b433f6d7e6a8005",
+      "size_bytes": 287386,
+      "mtime": "2026-11-06 09:33:41",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "b413af82f2c61e9c583bf058b87102d1",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\b413af82f2c61e9c583bf058b87102d1",
+      "size_bytes": 819880,
+      "mtime": "2026-11-06 09:33:29",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "ce6e3a2559027eac39cbe10a08f6cc5c",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\ce6e3a2559027eac39cbe10a08f6cc5c",
+      "size_bytes": 722224,
+      "mtime": "2026-11-06 09:32:21",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "4de4b56a5d28798b24f27e910e90dd73",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\4de4b56a5d28798b24f27e910e90dd73",
+      "size_bytes": 22749,
+      "mtime": "2026-11-05 16:18:40",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "cd3acd36fb7ce8224c725e92cbfee391",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\cd3acd36fb7ce8224c725e92cbfee391",
+      "size_bytes": 63000682,
+      "mtime": "2026-11-05 11:58:00",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "4fd10bb459282271259f0246abe5394a",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\4fd10bb459282271259f0246abe5394a",
+      "size_bytes": 85410169,
+      "mtime": "2026-11-05 11:57:28",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "ba632e9037b5fc32252c6c59ae35f10a",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\ba632e9037b5fc32252c6c59ae35f10a",
+      "size_bytes": 38978,
+      "mtime": "2026-11-05 08:43:15",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "c89ea769edad8ebbb0f23b2bebd25e2a",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\c89ea769edad8ebbb0f23b2bebd25e2a",
+      "size_bytes": 114422,
+      "mtime": "2026-11-05 08:38:18",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "d93aa34e02afbf349cf569ae24785922",
+      "folder": "group",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\d93aa34e02afbf349cf569ae24785922",
+      "size_bytes": 254770,
+      "mtime": "2026-11-05 07:44:31",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "107556a35809e2438bd163fb8ac81aae",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\107556a35809e2438bd163fb8ac81aae",
+      "size_bytes": 89618238,
+      "mtime": "2026-11-05 07:24:13",
+      "decoded_type": "OTHER"
+    },
+    {
+      "filename": "0aa431b83a1898000a95a72472e35b90",
+      "folder": "group",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\0aa431b83a1898000a95a72472e35b90",
+      "size_bytes": 18518,
+      "mtime": "2026-11-04 18:01:37",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "7be19ff11e041e6cdf4090c1f0cecf96",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\7be19ff11e041e6cdf4090c1f0cecf96",
+      "size_bytes": 41800,
+      "mtime": "2026-11-04 12:35:05",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "b13bfd83e801e9619e4c8ba3a75e2fa4",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\b13bfd83e801e9619e4c8ba3a75e2fa4",
+      "size_bytes": 19469,
+      "mtime": "2026-11-04 12:34:57",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "e2847c1556a4cc0a58146a767b521201",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\e2847c1556a4cc0a58146a767b521201",
+      "size_bytes": 28713,
+      "mtime": "2026-11-04 11:39:18",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "94d199788b93f89958f3dcf357c19e02",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\94d199788b93f89958f3dcf357c19e02",
+      "size_bytes": 61449,
+      "mtime": "2026-11-04 11:39:16",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "a1f44791d6de30fd007e824a84d817b2",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\a1f44791d6de30fd007e824a84d817b2",
+      "size_bytes": 41082,
+      "mtime": "2026-11-04 11:32:23",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "a224960bb5cceca97f842c79b9533466",
+      "folder": "group",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\a224960bb5cceca97f842c79b9533466",
+      "size_bytes": 444110,
+      "mtime": "2026-11-04 10:35:54",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "4ba0fd08b43b5bc578e1f8c904a2825a",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\4ba0fd08b43b5bc578e1f8c904a2825a",
+      "size_bytes": 62470,
+      "mtime": "2026-11-04 10:35:40",
+      "decoded_type": "OTHER"
+    },
+    {
+      "filename": "7a727ee32938bcbe19d22b43a17456de",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\7a727ee32938bcbe19d22b43a17456de",
+      "size_bytes": 10330,
+      "mtime": "2026-11-04 10:35:37",
+      "decoded_type": "OTHER"
+    },
+    {
+      "filename": "4ff8083e1f8fedb394c3c0cf4b692334",
+      "folder": "group",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\4ff8083e1f8fedb394c3c0cf4b692334",
+      "size_bytes": 153408,
+      "mtime": "2026-11-03 19:59:18",
+      "decoded_type": "PDF"
+    },
+    {
+      "filename": "641baf34630356f37cbb55f0d3579847",
+      "folder": "group",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\641baf34630356f37cbb55f0d3579847",
+      "size_bytes": 16656,
+      "mtime": "2026-11-03 16:20:47",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "d3afc4cd2f2836ac288c8bd1bb570edc",
+      "folder": "group",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\group\\d3afc4cd2f2836ac288c8bd1bb570edc",
+      "size_bytes": 163790,
+      "mtime": "2026-11-03 16:20:47",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    },
+    {
+      "filename": "411b60feadb36d2b65699f59cef0d1f2",
+      "folder": "fileNoise",
+      "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\411b60feadb36d2b65699f59cef0d1f2",
+      "size_bytes": 44220,
+      "mtime": "2026-11-03 11:11:48",
+      "decoded_type": "ZIP_XLSX_DOCX"
+    }
+  ],
+  "cached_conversations": []
+}

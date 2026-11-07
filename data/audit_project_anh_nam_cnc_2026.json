@@ -1,0 +1,2551 @@
+{
+  "metadata": {
+    "project_title": "Báo cáo Kiểm toán Báo giá 3 Cấp & Định mức Tấm CNC Thực chiến - Dự án Nhà Anh Nam",
+    "auditor_role": "Sub-Agent Flash #08: Kỹ sư Kiểm toán Báo giá 3 Cấp & Định mức CNC",
+    "audit_timestamp": "2026-11-07T10:45:00+07:00",
+    "source_file_info": {
+      "storage_location": "ZaloDownloads/resource/7617747951538527859/fileNoise/1793933002496_2304805760907141944_7617747951538527859",
+      "original_filename": "báo giá nha anh Nam.xlsx",
+      "decoding_method": "In-Memory XOR 0x93 (first 100 bytes) + Strip 6-byte suffix"
+    },
+    "standard_governance": {
+      "authority": "Giám Đốc Nguyễn Viết Nghĩa - PG Home Luxury",
+      "rule_file": "luat_sat_chi_tiet/SO_TAY_03_DU_TOAN_SALE_DINH_MUC_CNC_VA_DIEU_QUAN.md",
+      "standard_sections": [
+        "Mục 24.1: Bảng định mức tấm cắt CNC chuẩn thực chiến xưởng PG Home (Khổ ván 1220x2440 = 2.9768 m2/tấm)",
+        "Mục 24.2: 5 bài học xương máu khi làm báo giá, tính định mức & đo lường"
+      ]
+    }
+  },
+  "executive_summary": {
+    "pricing_tier_comparison": {
+      "tier_1_mdf_an_cuong": {
+        "quoted_total_in_excel": 314797000,
+        "excel_cell": "J57",
+        "formula_status": "Hợp lệ (=SUM(J4:J56))",
+        "recalculated_sum_if_r52_formula_fixed": 317207000,
+        "variance_if_fixed": "+2,410,000 đ (+0.77%)"
+      },
+      "tier_2_mdf_thai_lan": {
+        "quoted_total_in_excel": null,
+        "excel_cell": "L57 (TRỐNG CÔNG THỨC & SỐ TIỀN)",
+        "actual_sum_of_items": 245426000,
+        "variance_vs_an_cuong": -69371000,
+        "discount_percentage_vs_ac": -22.04,
+        "recalculated_sum_if_r52_formula_fixed": 246251000
+      },
+      "tier_3_plywood_a1": {
+        "quoted_total_in_excel": 284360000,
+        "excel_cell": "N57",
+        "formula_status": "Bị thiếu dòng N20 (Giường bọc da 15,000,000 đ bị để trống ô N20)",
+        "actual_sum_including_r20": 299360000,
+        "variance_vs_an_cuong": -15437000,
+        "discount_percentage_vs_ac": -4.9,
+        "recalculated_sum_if_r52_formula_fixed": 300760000
+      }
+    },
+    "cnc_sheet_breakdown_totals": {
+      "mdf_17mm_chong_am_sheets": 75.87,
+      "mdf_hau_day_ngan_keo_6mm_sheets": 15.95,
+      "nhua_dac_pvc_pitech_17mm_sheets": 13.29,
+      "nhua_hau_6mm_sheets": 0.86,
+      "canh_acrylic_noline_sheets": 4.85,
+      "canh_acrylic_noline_m2_approx": 10.83,
+      "plywood_a1_17mm_sheets": 2.0,
+      "canh_kinh_khung_nhom_m2": 3.66,
+      "guong_soi_led_units": 4,
+      "don_ngoi_units": 2,
+      "cua_giau_khuon_sets": 1
+    },
+    "cost_benchmark_54_percent_audit": {
+      "an_cuong_tier": {
+        "revenue_quoted": 314797000,
+        "estimated_materials_cost": 129316000,
+        "materials_cost_ratio": "41.08%",
+        "estimated_workshop_labor_cost_15pct": 43316250,
+        "labor_cost_ratio": "13.76%",
+        "total_direct_cost": 172632250,
+        "total_cost_ratio": "54.84%",
+        "benchmark_compliance": "ĐẠT CHUẨN AN TOÀN (~54%) -> Đảm bảo lợi nhuận ròng 18% - 20% cho BGĐ"
+      },
+      "thai_lan_tier": {
+        "revenue_quoted": 245426000,
+        "estimated_materials_cost": 108500000,
+        "materials_cost_ratio": "44.21%",
+        "estimated_workshop_labor_cost_15pct": 33800000,
+        "labor_cost_ratio": "13.77%",
+        "total_direct_cost": 142300000,
+        "total_cost_ratio": "57.98%",
+        "benchmark_compliance": "CẢNH BÁO NGUY HIỂM (>54%) -> Biên lợi nhuận ròng bị co hẹp xuống còn 10% - 12% do giảm giá quá sâu ở cánh Acrylic và nhựa PVC"
+      }
+    }
+  },
+  "critical_audit_findings": [
+    {
+      "finding_id": "AUDIT-FINDING-01",
+      "severity": "CRITICAL",
+      "title": "Lỗi công thức Excel: Ô L57 trống và Ô N20 trống làm sai lệch tổng tiền gói Thái Lan & Plywood",
+      "details": "Ô L57 (Tổng cộng MDF Thái Lan) hoàn toàn không có công thức SUM và không có giá trị (None). Ô N20 (Giường bọc da 15,000,000 đ) không có công thức khiến N57 =SUM(N4:N56) chỉ đạt 284,360,000 đ (thiếu đúng 15 triệu đ). Tổng thực tế của Plywood A1 phải là 299,360,000 đ."
+    },
+    {
+      "finding_id": "AUDIT-FINDING-02",
+      "severity": "CRITICAL",
+      "title": "Vi phạm Bài học số 4 Mục 24.2: Giảm giá sâu bất hợp lý trên đồ Cánh Acrylic và Nhựa PVC ở cột Thái Lan",
+      "details": "Tại R08 (Tủ bếp trên) và R10 (Tủ bếp kịch trần), giá Thái Lan bị giảm từ 3,700,000 đ xuống 2,700,000 đ (-27.0%, giảm 1,000,000 đ/md). Tuy nhiên theo định mức Mục 24.1, 1 md thùng chỉ tốn 0.74 - 1.15 tấm ván, chênh phôi ván AC vs TL chỉ ~281,000 - 437,000 đ, trong khi cánh Acrylic Noline nhà máy và phụ kiện giữ nguyên giá 100%. Tương tự R12 (Tủ kho cánh Acrylic) giảm -24.7%, R13 (Bàn đảo cánh Acrylic) giảm -24.7%. Việc giảm giá cào bằng này làm tỷ lệ chi phí cost vọt lên 58% làm giảm sâu lợi nhuận của BGĐ."
+    },
+    {
+      "finding_id": "AUDIT-FINDING-03",
+      "severity": "HIGH",
+      "title": "Lỗi gõ cứng số tiền tại R52 (Ốp phẳng kết hợp CNC sau bàn thờ) làm thất thoát doanh số",
+      "details": "R52 có khối lượng 6.55 m2. Đơn giá AC là 2,200,000 đ/m2 (thành tiền đúng: 14,410,000 đ) nhưng ô J52 bị gõ cứng số 12,000,000 đ (thiếu 2,410,000 đ). Cột TL đơn giá 1,500,000 đ (thành tiền đúng 9,825,000 đ) bị gõ cứng 9,000,000 đ (thiếu 825,000 đ). Cột PLY đơn giá 2,000,000 đ (thành tiền đúng 13,100,000 đ) bị gõ cứng 11,700,000 đ (thiếu 1,400,000 đ)."
+    },
+    {
+      "finding_id": "AUDIT-FINDING-04",
+      "severity": "MEDIUM",
+      "title": "Bỏ sót đơn giá tại R48 (Đợt sách phòng ngủ con trai)",
+      "details": "Hạng mục R48 (Đợt sách 1028x250x34) bị bỏ trống toàn bộ đơn giá và thành tiền ở cả 3 cấp vật liệu."
+    },
+    {
+      "finding_id": "AUDIT-FINDING-05",
+      "severity": "INFO_POSITIVE",
+      "title": "Tuân thủ chuẩn mực khóa giá cố định trên đồ thương mại, cánh kính và nhựa chuyên dụng",
+      "details": "Báo giá đã tuân thủ đúng nguyên tắc giữ nguyên 100% đơn giá giữa 3 cấp vật liệu cho: R09 (Tủ bếp dưới thùng Pitech cánh Acrylic = 3,500,000 đ/md), R20 (Giường ngủ bọc da = 15,000,000 đ), R28 (Cánh kính khung nhôm = 1,700,000 đ/m2), R17, R31, R37, R56 (Gương soi viền/LED = 1,200,000 đ) và R38 (Đôn ngồi = 700,000 đ)."
+    }
+  ],
+  "line_items_audit": [
+    {
+      "row_index": 4,
+      "room": "I. Phòng khách",
+      "item_number": 1,
+      "item_name": "Kệ tivi bo cong",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 4600,
+        "depth_mm": 400,
+        "height_mm": 300
+      },
+      "unit": "Md",
+      "quantity": 4.6,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2300000,
+          "total_in_excel": 10580000,
+          "calculated_total": 10580000.0,
+          "formula_in_excel": "=I4*H4",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1700000,
+          "total_in_excel": 7820000,
+          "calculated_total": 7820000.0,
+          "formula_in_excel": "=H4*K4",
+          "variance_amount_vs_ac": -2760000.0,
+          "discount_percentage_vs_ac": -26.09
+        },
+        "plywood_a1": {
+          "unit_price": 2200000,
+          "total_in_excel": 10120000,
+          "calculated_total": 10120000.0,
+          "formula_in_excel": "=M4*H4",
+          "variance_amount_vs_ac": -460000.0,
+          "discount_percentage_vs_ac": -4.35
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 2.76,
+        "back_6mm": 0.69,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 8",
+        "category": "Kệ tivi",
+        "tech_notes": "Sâu 400 cao 300: 0.60 tấm 17mm/md + 0.15 tấm hậu/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 5,
+      "room": "I. Phòng khách",
+      "item_number": 2,
+      "item_name": "Hộc tủ tivi trang trí",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn",
+      "dimensions": {
+        "length_mm": 4600,
+        "depth_mm": 200,
+        "height_mm": 1850
+      },
+      "unit": "M2",
+      "quantity": 8.51,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2100000,
+          "total_in_excel": 17871000,
+          "calculated_total": 17871000.0,
+          "formula_in_excel": "=I5*H5",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1550000,
+          "total_in_excel": 13190500,
+          "calculated_total": 13190500.0,
+          "formula_in_excel": "=H5*K5",
+          "variance_amount_vs_ac": -4680500.0,
+          "discount_percentage_vs_ac": -26.19
+        },
+        "plywood_a1": {
+          "unit_price": 2000000,
+          "total_in_excel": 17020000,
+          "calculated_total": 17020000.0,
+          "formula_in_excel": "=H5*M5",
+          "variance_amount_vs_ac": -851000.0,
+          "discount_percentage_vs_ac": -4.76
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 4.25,
+        "back_6mm": 2.13,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 5",
+        "category": "Hộc tủ trang trí nông",
+        "tech_notes": "Sâu 200 xẻ 6 dải/tấm: 0.50 tấm 17mm/m2 + 0.25 tấm hậu/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 6,
+      "room": "I. Phòng khách",
+      "item_number": 3,
+      "item_name": "Ốp phẳng trang trí",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn (trừ kệ tivi 4600x300, hộc tivi 4600x1850)",
+      "dimensions": {
+        "length_mm": 5200,
+        "depth_mm": null,
+        "height_mm": 3000
+      },
+      "unit": "M2",
+      "quantity": 5.71,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1100000,
+          "total_in_excel": 6281000,
+          "calculated_total": 6281000.0,
+          "formula_in_excel": "=I6*H6",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 750000,
+          "total_in_excel": 4282500,
+          "calculated_total": 4282500.0,
+          "formula_in_excel": "=H6*K6",
+          "variance_amount_vs_ac": -1998500.0,
+          "discount_percentage_vs_ac": -31.82
+        },
+        "plywood_a1": {
+          "unit_price": 1050000,
+          "total_in_excel": 5995500,
+          "calculated_total": 5995500.0,
+          "formula_in_excel": "=M6*H6",
+          "variance_amount_vs_ac": -285500.0,
+          "discount_percentage_vs_ac": -4.55
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 2.28,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6",
+        "category": "Vách ốp phẳng",
+        "tech_notes": "Vách phẳng: 0.40 tấm/m2 (hao hụt ghép vân 15%)"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 8,
+      "room": "II. Phòng bếp",
+      "item_number": 1,
+      "item_name": "Tủ bếp trên (cánh phủ Acrylic)",
+      "material_description": "Hệ khung gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, cánh gỗ MDF An Cường chống ẩm phủ Acrylic không đường line sản xuất nhà máy, bản lề giảm chấn, ray bi 3 tầng (hông theo thùng)",
+      "dimensions": {
+        "length_mm": 3770,
+        "depth_mm": 350,
+        "height_mm": 750
+      },
+      "unit": "Md",
+      "quantity": 3.77,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3700000,
+          "total_in_excel": 13949000,
+          "calculated_total": 13949000.0,
+          "formula_in_excel": "=I8*H8",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 2700000,
+          "total_in_excel": 10179000,
+          "calculated_total": 10179000.0,
+          "formula_in_excel": "=K8*H8",
+          "variance_amount_vs_ac": -3770000.0,
+          "discount_percentage_vs_ac": -27.03
+        },
+        "plywood_a1": {
+          "unit_price": 3500000,
+          "total_in_excel": 13195000,
+          "calculated_total": 13195000.0,
+          "formula_in_excel": "=M8*H8",
+          "variance_amount_vs_ac": -754000.0,
+          "discount_percentage_vs_ac": -5.41
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 2.79,
+        "back_6mm": 1.06,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 1.13,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 2",
+        "category": "Tủ bếp trên",
+        "tech_notes": "Sâu 350 xẻ 3 dải/tấm: Thùng 0.74 tấm/md + Cánh Acrylic 0.30 tấm/md + Hậu 6mm 0.28 tấm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 9,
+      "room": "II. Phòng bếp",
+      "item_number": 2,
+      "item_name": "Tủ bếp dưới (cánh phủ Acrylic)",
+      "material_description": "Thùng nhựa Pitech thebest chống nước, hậu nhựa pitech 6li, cánh cốt nhựa phủ Acrylic không đường line sản xuất nhà máy An Cường, bản lề giảm chấn, ray bi 3 tầng.",
+      "dimensions": {
+        "length_mm": 3770,
+        "depth_mm": 600,
+        "height_mm": 860
+      },
+      "unit": "Md",
+      "quantity": 3.77,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3500000,
+          "total_in_excel": 13195000,
+          "calculated_total": 13195000.0,
+          "formula_in_excel": "=I9*H9",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3500000,
+          "total_in_excel": 13195000,
+          "calculated_total": 13195000.0,
+          "formula_in_excel": "=K9*H9",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 3500000,
+          "total_in_excel": 13195000,
+          "calculated_total": 13195000.0,
+          "formula_in_excel": "=M9*H9",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 4.3,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 1.17,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 1",
+        "category": "Tủ bếp dưới",
+        "tech_notes": "Thùng nhựa Pitech thebest 1.14 tấm/md + Cánh cốt nhựa phủ Acrylic An Cường 0.31 tấm/md (Tổng 5.47 tấm)"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 10,
+      "room": "II. Phòng bếp",
+      "item_number": 3,
+      "item_name": "Tủ bếp trên kịch trần (cánh phủ Acrylic)",
+      "material_description": "Hệ khung gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, cánh gỗ MDF An Cường chống ẩm phủ Acrylic không đường line sản xuất nhà máy, bản lề giảm chấn, ray bi 3 tầng (hông theo thùng)",
+      "dimensions": {
+        "length_mm": 3770,
+        "depth_mm": 700,
+        "height_mm": 720
+      },
+      "unit": "Md",
+      "quantity": 3.77,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3700000,
+          "total_in_excel": 13949000,
+          "calculated_total": 13949000.0,
+          "formula_in_excel": "=I10*H10",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 2700000,
+          "total_in_excel": 10179000,
+          "calculated_total": 10179000.0,
+          "formula_in_excel": "=K10*H10",
+          "variance_amount_vs_ac": -3770000.0,
+          "discount_percentage_vs_ac": -27.03
+        },
+        "plywood_a1": {
+          "unit_price": 3500000,
+          "total_in_excel": 13195000,
+          "calculated_total": 13195000.0,
+          "formula_in_excel": "=M10*H10",
+          "variance_amount_vs_ac": -754000.0,
+          "discount_percentage_vs_ac": -5.41
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 4.34,
+        "back_6mm": 1.02,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 1.09,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 3",
+        "category": "Tủ bếp kịch trần",
+        "tech_notes": "Sâu 700: Thùng 1.15 tấm/md + Cánh Acrylic 0.29 tấm/md + Hậu 6mm 0.27 tấm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 11,
+      "room": "II. Phòng bếp",
+      "item_number": 4,
+      "item_name": "Bao tủ lạnh kết hợp thùng trên tủ lạnh",
+      "material_description": "Khung gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, cánh gỗ MDF An Cường chống ẩm phủ Acrylic không đường line sản xuất nhà máy, bản lề giảm chấn",
+      "dimensions": {
+        "length_mm": 1000,
+        "depth_mm": 700,
+        "height_mm": 3000
+      },
+      "unit": "M2",
+      "quantity": 3,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2700000,
+          "total_in_excel": 8100000,
+          "calculated_total": 8100000,
+          "formula_in_excel": "=I11*H11",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1900000,
+          "total_in_excel": 5700000,
+          "calculated_total": 5700000,
+          "formula_in_excel": "=H11*K11",
+          "variance_amount_vs_ac": -2400000,
+          "discount_percentage_vs_ac": -29.63
+        },
+        "plywood_a1": {
+          "unit_price": 2500000,
+          "total_in_excel": 7500000,
+          "calculated_total": 7500000,
+          "formula_in_excel": "=M11*H11",
+          "variance_amount_vs_ac": -600000,
+          "discount_percentage_vs_ac": -7.41
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 2.7,
+        "back_6mm": 0.6,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.5,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Bao tủ lạnh kịch trần",
+        "category": "Bao tủ lạnh",
+        "tech_notes": "2 hồi sâu 700 cao 3000 + nóc + thùng trên cánh Acrylic"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 12,
+      "room": "II. Phòng bếp",
+      "item_number": 5,
+      "item_name": "Tủ kho có đợt (cánh phủ Acrylic)",
+      "material_description": "Khung gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, cánh gỗ MDF An Cường chống ẩm phủ Acrylic không đường line sản xuất nhà máy, bản lề giảm chấn, ray bi 3 tầng.",
+      "dimensions": {
+        "length_mm": 450,
+        "depth_mm": 700,
+        "height_mm": 3000
+      },
+      "unit": "M2",
+      "quantity": 1.35,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 4450000,
+          "total_in_excel": 6007500,
+          "calculated_total": 6007500.0,
+          "formula_in_excel": "=I12*H12",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3350000,
+          "total_in_excel": 4522500,
+          "calculated_total": 4522500.0,
+          "formula_in_excel": "=H12*K12",
+          "variance_amount_vs_ac": -1485000.0,
+          "discount_percentage_vs_ac": -24.72
+        },
+        "plywood_a1": {
+          "unit_price": 4230000,
+          "total_in_excel": 5710500,
+          "calculated_total": 5710500.0,
+          "formula_in_excel": "=M12*H12",
+          "variance_amount_vs_ac": -297000.0,
+          "discount_percentage_vs_ac": -4.94
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.62,
+        "back_6mm": 0.47,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.54,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Tủ kho cánh Acrylic",
+        "category": "Tủ kho",
+        "tech_notes": "Sâu 700 nhiều đợt: 1.20 tấm 17mm/m2 + Cánh Acrylic 0.40 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 13,
+      "room": "II. Phòng bếp",
+      "item_number": 6,
+      "item_name": "Bàn đảo (ko gồm đá) (1 mặt cánh phủ Acrylic)",
+      "material_description": "Khung gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, cánh gỗ MDF An Cường chống ẩm phủ Acrylic không đường line sản xuất nhà máy, bản lề giảm chấn, ray bi 3 tầng.",
+      "dimensions": {
+        "length_mm": 1200,
+        "depth_mm": 800,
+        "height_mm": 900
+      },
+      "unit": "Md",
+      "quantity": 1.2,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 4650000,
+          "total_in_excel": 5580000,
+          "calculated_total": 5580000.0,
+          "formula_in_excel": "=I13*H13",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3500000,
+          "total_in_excel": 4200000,
+          "calculated_total": 4200000.0,
+          "formula_in_excel": "=K13*H13",
+          "variance_amount_vs_ac": -1380000.0,
+          "discount_percentage_vs_ac": -24.73
+        },
+        "plywood_a1": {
+          "unit_price": 4550000,
+          "total_in_excel": 5460000,
+          "calculated_total": 5460000.0,
+          "formula_in_excel": "=M13*H13",
+          "variance_amount_vs_ac": -120000.0,
+          "discount_percentage_vs_ac": -2.15
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.8,
+        "back_6mm": 0.3,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.42,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Bàn đảo cánh Acrylic",
+        "category": "Bàn đảo",
+        "tech_notes": "Sâu 800 cao 900: Thùng 1.5 tấm/md + Cánh Acrylic 0.35 tấm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 15,
+      "room": "III. Phòng WC tầng 1",
+      "item_number": 1,
+      "item_name": "Tủ lavabor treo",
+      "material_description": "Hệ khung cánh nhựa đặc An Cường cao cấp phủ PVC màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1320,
+        "depth_mm": 500,
+        "height_mm": 250
+      },
+      "unit": "Md",
+      "quantity": 1.32,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3500000,
+          "total_in_excel": 4620000,
+          "calculated_total": 4620000.0,
+          "formula_in_excel": "=I15*H15",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3050000,
+          "total_in_excel": 4026000,
+          "calculated_total": 4026000.0,
+          "formula_in_excel": "=K15*H15",
+          "variance_amount_vs_ac": -594000.0,
+          "discount_percentage_vs_ac": -12.86
+        },
+        "plywood_a1": {
+          "unit_price": 3500000,
+          "total_in_excel": 4620000,
+          "calculated_total": 4620000.0,
+          "formula_in_excel": "=M15*H15",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.86,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Tủ lavabor nhựa đặc",
+        "category": "Tủ lavabor",
+        "tech_notes": "Nhựa đặc An Cường chống nước: 0.65 tấm PVC 17mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 16,
+      "room": "III. Phòng WC tầng 1",
+      "item_number": 2,
+      "item_name": "Tủ lavabor đặt",
+      "material_description": "Hệ khung cánh nhựa đặc An Cường cao cấp phủ PVC màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1385,
+        "depth_mm": 500,
+        "height_mm": 750
+      },
+      "unit": "Md",
+      "quantity": 1.39,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3700000,
+          "total_in_excel": 5143000,
+          "calculated_total": 5143000.0,
+          "formula_in_excel": "=I16*H16",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3250000,
+          "total_in_excel": 4517500,
+          "calculated_total": 4517500.0,
+          "formula_in_excel": "=K16*H16",
+          "variance_amount_vs_ac": -625500.0,
+          "discount_percentage_vs_ac": -12.16
+        },
+        "plywood_a1": {
+          "unit_price": 3700000,
+          "total_in_excel": 5143000,
+          "calculated_total": 5143000.0,
+          "formula_in_excel": "=M16*H16",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 1.53,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Tủ lavabor nhựa đặc",
+        "category": "Tủ lavabor",
+        "tech_notes": "Nhựa đặc An Cường chống nước: 1.1 tấm PVC 17mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 17,
+      "room": "III. Phòng WC tầng 1",
+      "item_number": 3,
+      "item_name": "Gương soi",
+      "material_description": "Gương soi 5ly viền nhôm đen",
+      "dimensions": {
+        "length_mm": 1385,
+        "depth_mm": null,
+        "height_mm": 900
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=I17*H17",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=K17*H17",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=M17*H17",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Thương mại / Mua ngoài",
+        "category": "Thương mại / Kính",
+        "tech_notes": "Gương soi có LED, Cánh kính khung nhôm, Đôn đệm da"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 18,
+      "room": "III. Phòng WC tầng 1",
+      "item_number": 4,
+      "item_name": "Ốp phẳng trang trí",
+      "material_description": "Nhựa đặc An Cường cao cấp phủ PVC màu tự chọn kết hợp nẹp nhôm đen trang trí",
+      "dimensions": {
+        "length_mm": 1570,
+        "depth_mm": 17,
+        "height_mm": 3000
+      },
+      "unit": "M2",
+      "quantity": 4.71,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1150000,
+          "total_in_excel": 5416500,
+          "calculated_total": 5416500.0,
+          "formula_in_excel": "=I18*H18",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 850000,
+          "total_in_excel": 4003500,
+          "calculated_total": 4003500.0,
+          "formula_in_excel": "=K18*H18",
+          "variance_amount_vs_ac": -1413000.0,
+          "discount_percentage_vs_ac": -26.09
+        },
+        "plywood_a1": {
+          "unit_price": 1150000,
+          "total_in_excel": 5416500,
+          "calculated_total": 5416500.0,
+          "formula_in_excel": "=M18*H18",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 1.88,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6 (Nhựa)",
+        "category": "Vách ốp nhựa PVC",
+        "tech_notes": "Nhựa đặc PVC 17mm: 0.40 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 20,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 1,
+      "item_name": "Giường ngủ bọc da",
+      "material_description": "Khung gỗ tự nhiên kết hợp Plywood tạo dáng, mút Việt Nhật K43 bọc da Hàn Quốc cao cấp màu tự chọn",
+      "dimensions": {
+        "length_mm": 1800,
+        "depth_mm": 2000,
+        "height_mm": 400
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 15000000,
+          "total_in_excel": 15000000,
+          "calculated_total": 15000000,
+          "formula_in_excel": "=I20*H20",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 15000000,
+          "total_in_excel": 15000000,
+          "calculated_total": 15000000,
+          "formula_in_excel": "=K20*H20",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 15000000,
+          "total_in_excel": 0,
+          "calculated_total": 15000000,
+          "formula_in_excel": "None",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 2.0,
+        "rule_ref": "Giường ngủ bọc da",
+        "category": "Giường ngủ bọc da",
+        "tech_notes": "Gỗ tự nhiên + Plywood định hình (2.0 tấm) + Mút K43 + Da Hàn Quốc"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 21,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 2,
+      "item_name": "Ốp phẳng kết hợp lam trang trí sau giường",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn.",
+      "dimensions": {
+        "length_mm": 3700,
+        "depth_mm": 150,
+        "height_mm": 1000
+      },
+      "unit": "M2",
+      "quantity": 3.7,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1700000,
+          "total_in_excel": 6290000,
+          "calculated_total": 6290000.0,
+          "formula_in_excel": "=I21*H21",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1300000,
+          "total_in_excel": 4810000,
+          "calculated_total": 4810000.0,
+          "formula_in_excel": "=K21*H21",
+          "variance_amount_vs_ac": -1480000.0,
+          "discount_percentage_vs_ac": -23.53
+        },
+        "plywood_a1": {
+          "unit_price": 1690000,
+          "total_in_excel": 6253000,
+          "calculated_total": 6253000.0,
+          "formula_in_excel": "=M21*H21",
+          "variance_amount_vs_ac": -37000.0,
+          "discount_percentage_vs_ac": -0.59
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.92,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6 (Lam/CNC)",
+        "category": "Vách Lam / CNC",
+        "tech_notes": "Vách lam gỗ: 0.52 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 22,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 3,
+      "item_name": "Táp đầu giường bo góc",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng (1 ngăn kéo)",
+      "dimensions": {
+        "length_mm": 600,
+        "depth_mm": 400,
+        "height_mm": 200
+      },
+      "unit": "Cái",
+      "quantity": 2,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 2400000,
+          "calculated_total": 2400000,
+          "formula_in_excel": "=I22*H22",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 800000,
+          "total_in_excel": 1600000,
+          "calculated_total": 1600000,
+          "formula_in_excel": "=K22*H22",
+          "variance_amount_vs_ac": -800000,
+          "discount_percentage_vs_ac": -33.33
+        },
+        "plywood_a1": {
+          "unit_price": 1050000,
+          "total_in_excel": 2100000,
+          "calculated_total": 2100000,
+          "formula_in_excel": "=M22*H22",
+          "variance_amount_vs_ac": -300000,
+          "discount_percentage_vs_ac": -12.5
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.7,
+        "back_6mm": 0.16,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Táp đầu giường",
+        "category": "Táp đầu giường",
+        "tech_notes": "Táp bo góc: 0.35 tấm 17mm + 0.08 tấm đáy 6mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 23,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 4,
+      "item_name": "Ốp vân đá sau tivi",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn.",
+      "dimensions": {
+        "length_mm": 2200,
+        "depth_mm": 50,
+        "height_mm": 1650
+      },
+      "unit": "M2",
+      "quantity": 3.63,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1300000,
+          "total_in_excel": 4719000,
+          "calculated_total": 4719000.0,
+          "formula_in_excel": "=I23*H23",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 900000,
+          "total_in_excel": 3267000,
+          "calculated_total": 3267000.0,
+          "formula_in_excel": "=K23*H23",
+          "variance_amount_vs_ac": -1452000.0,
+          "discount_percentage_vs_ac": -30.77
+        },
+        "plywood_a1": {
+          "unit_price": 1200000,
+          "total_in_excel": 4356000,
+          "calculated_total": 4356000.0,
+          "formula_in_excel": "=M23*H23",
+          "variance_amount_vs_ac": -363000.0,
+          "discount_percentage_vs_ac": -7.69
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.45,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6",
+        "category": "Vách ốp phẳng",
+        "tech_notes": "Vách ốp phẳng: 0.40 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 24,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 5,
+      "item_name": "Bàn trang điểm",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1650,
+        "depth_mm": 450,
+        "height_mm": 750
+      },
+      "unit": "Md",
+      "quantity": 1.65,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2700000,
+          "total_in_excel": 4455000,
+          "calculated_total": 4455000.0,
+          "formula_in_excel": "=I24*H24",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 2000000,
+          "total_in_excel": 3300000,
+          "calculated_total": 3300000.0,
+          "formula_in_excel": "=K24*H24",
+          "variance_amount_vs_ac": -1155000.0,
+          "discount_percentage_vs_ac": -25.93
+        },
+        "plywood_a1": {
+          "unit_price": 2500000,
+          "total_in_excel": 4125000,
+          "calculated_total": 4125000.0,
+          "formula_in_excel": "=M24*H24",
+          "variance_amount_vs_ac": -330000.0,
+          "discount_percentage_vs_ac": -7.41
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.99,
+        "back_6mm": 0.25,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 8",
+        "category": "Bàn trang điểm / bàn học",
+        "tech_notes": "Bàn treo bo góc: 0.60 tấm 17mm/md + 0.15 tấm đáy 6mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 25,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 6,
+      "item_name": "Ốp trang trí sau bàn trang điểm",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, kết hợp gương soi có led (kích thước gương 850x2700)",
+      "dimensions": {
+        "length_mm": 1650,
+        "depth_mm": null,
+        "height_mm": 2700
+      },
+      "unit": "M2",
+      "quantity": 4.46,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 5352000,
+          "calculated_total": 5352000.0,
+          "formula_in_excel": "=I25*H25",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 750000,
+          "total_in_excel": 3345000,
+          "calculated_total": 3345000.0,
+          "formula_in_excel": "=K25*H25",
+          "variance_amount_vs_ac": -2007000.0,
+          "discount_percentage_vs_ac": -37.5
+        },
+        "plywood_a1": {
+          "unit_price": 1050000,
+          "total_in_excel": 4683000,
+          "calculated_total": 4683000.0,
+          "formula_in_excel": "=M25*H25",
+          "variance_amount_vs_ac": -669000.0,
+          "discount_percentage_vs_ac": -12.5
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.78,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6",
+        "category": "Vách ốp phẳng",
+        "tech_notes": "Vách ốp phẳng: 0.40 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 26,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 7,
+      "item_name": "Đợt trang trí",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn.",
+      "dimensions": {
+        "length_mm": 500,
+        "depth_mm": 150,
+        "height_mm": 17
+      },
+      "unit": "Cái",
+      "quantity": 2,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 350000,
+          "total_in_excel": 700000,
+          "calculated_total": 700000,
+          "formula_in_excel": "=I26*H26",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 200000,
+          "total_in_excel": 400000,
+          "calculated_total": 400000,
+          "formula_in_excel": "=K26*H26",
+          "variance_amount_vs_ac": -300000,
+          "discount_percentage_vs_ac": -42.86
+        },
+        "plywood_a1": {
+          "unit_price": 300000,
+          "total_in_excel": 600000,
+          "calculated_total": 600000,
+          "formula_in_excel": "=M26*H26",
+          "variance_amount_vs_ac": -100000,
+          "discount_percentage_vs_ac": -14.29
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.16,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Đợt / Giá sách",
+        "category": "Giá sách / Đợt trang trí",
+        "tech_notes": "Đợt/giá sách: 0.08 tấm 17mm/cái"
+      },
+      "notes_in_excel": "TẶNG 1 TỦ GIÀY"
+    },
+    {
+      "row_index": 27,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 8,
+      "item_name": "Tủ quần áo",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng (trừ cửa giấu khuôn 750x2150)",
+      "dimensions": {
+        "length_mm": 5120,
+        "depth_mm": 600,
+        "height_mm": 2700
+      },
+      "unit": "M2",
+      "quantity": 12.21,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2700000,
+          "total_in_excel": 32967000,
+          "calculated_total": 32967000.0,
+          "formula_in_excel": "=I27*H27",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 2000000,
+          "total_in_excel": 24420000,
+          "calculated_total": 24420000.0,
+          "formula_in_excel": "=K27*H27",
+          "variance_amount_vs_ac": -8547000.0,
+          "discount_percentage_vs_ac": -25.93
+        },
+        "plywood_a1": {
+          "unit_price": 2500000,
+          "total_in_excel": 30525000,
+          "calculated_total": 30525000.0,
+          "formula_in_excel": "=M27*H27",
+          "variance_amount_vs_ac": -2442000.0,
+          "discount_percentage_vs_ac": -7.41
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 11.36,
+        "back_6mm": 4.4,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 4",
+        "category": "Tủ quần áo",
+        "tech_notes": "Tủ áo Master 12.21 m2: 12.82 tấm trừ cánh kính 3.66 m2 (1.46 tấm) = 11.36 tấm 17mm + 4.40 tấm hậu."
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 28,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 9,
+      "item_name": "Cánh kính tủ áo",
+      "material_description": "Cánh kính cường lực 5ly bo khung hợp kim nhôm 2ly công nghệ Anode nhiệt nhập khẩu",
+      "dimensions": {
+        "length_mm": 1700,
+        "depth_mm": null,
+        "height_mm": 2150
+      },
+      "unit": "M2",
+      "quantity": 3.66,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1700000,
+          "total_in_excel": 6222000,
+          "calculated_total": 6222000.0,
+          "formula_in_excel": "=I28*H28",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1700000,
+          "total_in_excel": 6222000,
+          "calculated_total": 6222000.0,
+          "formula_in_excel": "=K28*H28",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 1700000,
+          "total_in_excel": 6222000,
+          "calculated_total": 6222000.0,
+          "formula_in_excel": "=M28*H28",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Thương mại / Mua ngoài",
+        "category": "Thương mại / Kính",
+        "tech_notes": "Gương soi có LED, Cánh kính khung nhôm, Đôn đệm da"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 29,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 10,
+      "item_name": "Cửa ra vào giấu khuôn",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin vân gỗ.(Đã bao gồm khóa tay gạt và bản lề âm).",
+      "dimensions": {
+        "length_mm": 750,
+        "depth_mm": null,
+        "height_mm": 2150
+      },
+      "unit": "Bộ",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 4200000,
+          "total_in_excel": 4200000,
+          "calculated_total": 4200000,
+          "formula_in_excel": "=I29*H29",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3500000,
+          "total_in_excel": 3500000,
+          "calculated_total": 3500000,
+          "formula_in_excel": "=K29*H29",
+          "variance_amount_vs_ac": -700000,
+          "discount_percentage_vs_ac": -16.67
+        },
+        "plywood_a1": {
+          "unit_price": 4000000,
+          "total_in_excel": 4000000,
+          "calculated_total": 4000000,
+          "formula_in_excel": "=M29*H29",
+          "variance_amount_vs_ac": -200000,
+          "discount_percentage_vs_ac": -4.76
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.2,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Cửa giấu khuôn",
+        "category": "Cửa thông phòng",
+        "tech_notes": "Cánh phẳng chập ván 2 mặt: 1.20 tấm 17mm"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 30,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 11,
+      "item_name": "Tủ lavabor",
+      "material_description": "Hệ khung cánh nhựa đặc An Cường cao cấp phủ PVC màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1600,
+        "depth_mm": 500,
+        "height_mm": 200
+      },
+      "unit": "Md",
+      "quantity": 1.6,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3700000,
+          "total_in_excel": 5920000,
+          "calculated_total": 5920000.0,
+          "formula_in_excel": "=I30*H30",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3250000,
+          "total_in_excel": 5200000,
+          "calculated_total": 5200000.0,
+          "formula_in_excel": "=K30*H30",
+          "variance_amount_vs_ac": -720000.0,
+          "discount_percentage_vs_ac": -12.16
+        },
+        "plywood_a1": {
+          "unit_price": 3700000,
+          "total_in_excel": 5920000,
+          "calculated_total": 5920000.0,
+          "formula_in_excel": "=M30*H30",
+          "variance_amount_vs_ac": 0.0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 1.04,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Tủ lavabor nhựa đặc",
+        "category": "Tủ lavabor",
+        "tech_notes": "Nhựa đặc An Cường chống nước: 0.65 tấm PVC 17mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 31,
+      "room": "IV. Phòng ngủ Master",
+      "item_number": 12,
+      "item_name": "Gương soi",
+      "material_description": "Gương soi 5ly không viền mài cạnh",
+      "dimensions": {
+        "length_mm": 1600,
+        "depth_mm": null,
+        "height_mm": 800
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=I31*H31",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=K31*H31",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=M31*H31",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Thương mại / Mua ngoài",
+        "category": "Thương mại / Kính",
+        "tech_notes": "Gương soi có LED, Cánh kính khung nhôm, Đôn đệm da"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 33,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 1,
+      "item_name": "Giường ngủ bo cong (không đầu giường)",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn",
+      "dimensions": {
+        "length_mm": 1600,
+        "depth_mm": 2000,
+        "height_mm": 350
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 8000000,
+          "total_in_excel": 8000000,
+          "calculated_total": 8000000,
+          "formula_in_excel": "=I33*H33",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 6200000,
+          "total_in_excel": 6200000,
+          "calculated_total": 6200000,
+          "formula_in_excel": "=K33*H33",
+          "variance_amount_vs_ac": -1800000,
+          "discount_percentage_vs_ac": -22.5
+        },
+        "plywood_a1": {
+          "unit_price": 7800000,
+          "total_in_excel": 7800000,
+          "calculated_total": 7800000,
+          "formula_in_excel": "=M33*H33",
+          "variance_amount_vs_ac": -200000,
+          "discount_percentage_vs_ac": -2.5
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 3.4,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 7",
+        "category": "Giường ngủ bo cong",
+        "tech_notes": "Giường bo cong 1800x2000 / 1600x2000: 3.4 tấm 17mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 34,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 2,
+      "item_name": "Ốp phẳng sau giường",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn.",
+      "dimensions": {
+        "length_mm": 3280,
+        "depth_mm": null,
+        "height_mm": 750
+      },
+      "unit": "M2",
+      "quantity": 2.46,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 2952000,
+          "calculated_total": 2952000.0,
+          "formula_in_excel": "=I34*H34",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 750000,
+          "total_in_excel": 1845000,
+          "calculated_total": 1845000.0,
+          "formula_in_excel": "=K34*H34",
+          "variance_amount_vs_ac": -1107000.0,
+          "discount_percentage_vs_ac": -37.5
+        },
+        "plywood_a1": {
+          "unit_price": 1050000,
+          "total_in_excel": 2583000,
+          "calculated_total": 2583000.0,
+          "formula_in_excel": "=M34*H34",
+          "variance_amount_vs_ac": -369000.0,
+          "discount_percentage_vs_ac": -12.5
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.98,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6",
+        "category": "Vách ốp phẳng",
+        "tech_notes": "Vách ốp phẳng: 0.40 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 35,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 3,
+      "item_name": "Táp đầu giường bo góc",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng (2 ngăn kéo)",
+      "dimensions": {
+        "length_mm": 480,
+        "depth_mm": 400,
+        "height_mm": 450
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=I35*H35",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 800000,
+          "total_in_excel": 800000,
+          "calculated_total": 800000,
+          "formula_in_excel": "=H35*K35",
+          "variance_amount_vs_ac": -400000,
+          "discount_percentage_vs_ac": -33.33
+        },
+        "plywood_a1": {
+          "unit_price": 1050000,
+          "total_in_excel": 1050000,
+          "calculated_total": 1050000,
+          "formula_in_excel": "=M35*H35",
+          "variance_amount_vs_ac": -150000,
+          "discount_percentage_vs_ac": -12.5
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.45,
+        "back_6mm": 0.1,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Táp đầu giường",
+        "category": "Táp đầu giường",
+        "tech_notes": "Táp bo góc: 0.45 tấm 17mm + 0.1 tấm đáy 6mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 36,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 4,
+      "item_name": "Bàn trang điểm treo bo góc",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1000,
+        "depth_mm": 500,
+        "height_mm": 150
+      },
+      "unit": "Md",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2300000,
+          "total_in_excel": 2300000,
+          "calculated_total": 2300000,
+          "formula_in_excel": "=I36*H36",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1700000,
+          "total_in_excel": 1700000,
+          "calculated_total": 1700000,
+          "formula_in_excel": "=K36*H36",
+          "variance_amount_vs_ac": -600000,
+          "discount_percentage_vs_ac": -26.09
+        },
+        "plywood_a1": {
+          "unit_price": 2200000,
+          "total_in_excel": 2200000,
+          "calculated_total": 2200000,
+          "formula_in_excel": "=H36*M36",
+          "variance_amount_vs_ac": -100000,
+          "discount_percentage_vs_ac": -4.35
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.6,
+        "back_6mm": 0.15,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 8",
+        "category": "Bàn trang điểm / bàn học",
+        "tech_notes": "Bàn treo bo góc: 0.60 tấm 17mm/md + 0.15 tấm đáy 6mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 37,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 5,
+      "item_name": "Gương soi",
+      "material_description": "Gương soi có led không viền",
+      "dimensions": {
+        "length_mm": 850,
+        "depth_mm": null,
+        "height_mm": 1950
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=I37*H37",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=K37*H37",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=M37*H37",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Thương mại / Mua ngoài",
+        "category": "Thương mại / Kính",
+        "tech_notes": "Gương soi có LED, Cánh kính khung nhôm, Đôn đệm da"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 38,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 6,
+      "item_name": "Đôn ngồi",
+      "material_description": "Đôn ngồi bọc da Hàn Quốc màu tự chọn",
+      "dimensions": {
+        "length_mm": null,
+        "depth_mm": null,
+        "height_mm": null
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 700000,
+          "total_in_excel": 700000,
+          "calculated_total": 700000,
+          "formula_in_excel": "=I38*H38",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 700000,
+          "total_in_excel": 700000,
+          "calculated_total": 700000,
+          "formula_in_excel": "=K38*H38",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 700000,
+          "total_in_excel": 700000,
+          "calculated_total": 700000,
+          "formula_in_excel": "=M38*H38",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Thương mại / Mua ngoài",
+        "category": "Thương mại / Kính",
+        "tech_notes": "Gương soi có LED, Cánh kính khung nhôm, Đôn đệm da"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 39,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 7,
+      "item_name": "Bàn học treo bo góc",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1800,
+        "depth_mm": 550,
+        "height_mm": 150
+      },
+      "unit": "Md",
+      "quantity": 1.8,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2300000,
+          "total_in_excel": 4140000,
+          "calculated_total": 4140000.0,
+          "formula_in_excel": "=I39*H39",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1700000,
+          "total_in_excel": 3060000,
+          "calculated_total": 3060000.0,
+          "formula_in_excel": "=H39*K39",
+          "variance_amount_vs_ac": -1080000.0,
+          "discount_percentage_vs_ac": -26.09
+        },
+        "plywood_a1": {
+          "unit_price": 2200000,
+          "total_in_excel": 3960000,
+          "calculated_total": 3960000.0,
+          "formula_in_excel": "=M39*H39",
+          "variance_amount_vs_ac": -180000.0,
+          "discount_percentage_vs_ac": -4.35
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.08,
+        "back_6mm": 0.27,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 8",
+        "category": "Bàn trang điểm / bàn học",
+        "tech_notes": "Bàn treo bo góc: 0.60 tấm 17mm/md + 0.15 tấm đáy 6mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 40,
+      "room": "V. Phòng ngủ con gái",
+      "item_number": 8,
+      "item_name": "Tủ quần áo",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1670,
+        "depth_mm": 600,
+        "height_mm": 2700
+      },
+      "unit": "M2",
+      "quantity": 4.51,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2700000,
+          "total_in_excel": 12177000,
+          "calculated_total": 12177000.0,
+          "formula_in_excel": "=I40*H40",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 2000000,
+          "total_in_excel": 9020000,
+          "calculated_total": 9020000.0,
+          "formula_in_excel": "=K40*H40",
+          "variance_amount_vs_ac": -3157000.0,
+          "discount_percentage_vs_ac": -25.93
+        },
+        "plywood_a1": {
+          "unit_price": 2500000,
+          "total_in_excel": 11275000,
+          "calculated_total": 11275000.0,
+          "formula_in_excel": "=M40*H40",
+          "variance_amount_vs_ac": -902000.0,
+          "discount_percentage_vs_ac": -7.41
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 4.74,
+        "back_6mm": 1.62,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 4",
+        "category": "Tủ quần áo",
+        "tech_notes": "Tủ áo kịch trần: 1.05 tấm 17mm/m2 (4.74 tấm) + 0.36 tấm hậu 6mm/m2 (1.62 tấm)"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 42,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 1,
+      "item_name": "Giường ngủ bo cong (không đầu giường)",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn",
+      "dimensions": {
+        "length_mm": 1800,
+        "depth_mm": 2000,
+        "height_mm": 400
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 8000000,
+          "total_in_excel": 8000000,
+          "calculated_total": 8000000,
+          "formula_in_excel": "=I42*H42",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 6200000,
+          "total_in_excel": 6200000,
+          "calculated_total": 6200000,
+          "formula_in_excel": "=K42*H42",
+          "variance_amount_vs_ac": -1800000,
+          "discount_percentage_vs_ac": -22.5
+        },
+        "plywood_a1": {
+          "unit_price": 7800000,
+          "total_in_excel": 7800000,
+          "calculated_total": 7800000,
+          "formula_in_excel": "=H42*M42",
+          "variance_amount_vs_ac": -200000,
+          "discount_percentage_vs_ac": -2.5
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 3.4,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 7",
+        "category": "Giường ngủ bo cong",
+        "tech_notes": "Giường bo cong 1800x2000 / 1600x2000: 3.4 tấm 17mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 43,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 2,
+      "item_name": "Ốp phẳng sau giường",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn.",
+      "dimensions": {
+        "length_mm": 4970,
+        "depth_mm": null,
+        "height_mm": 900
+      },
+      "unit": "M2",
+      "quantity": 4.47,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1100000,
+          "total_in_excel": 4917000,
+          "calculated_total": 4917000.0,
+          "formula_in_excel": "=I43*H43",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 750000,
+          "total_in_excel": 3352500,
+          "calculated_total": 3352500.0,
+          "formula_in_excel": "=H43*K43",
+          "variance_amount_vs_ac": -1564500.0,
+          "discount_percentage_vs_ac": -31.82
+        },
+        "plywood_a1": {
+          "unit_price": 1050000,
+          "total_in_excel": 4693500,
+          "calculated_total": 4693500.0,
+          "formula_in_excel": "=M43*H43",
+          "variance_amount_vs_ac": -223500.0,
+          "discount_percentage_vs_ac": -4.55
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.79,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6",
+        "category": "Vách ốp phẳng",
+        "tech_notes": "Vách ốp phẳng: 0.40 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 44,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 3,
+      "item_name": "Táp đầu giường 01",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 700,
+        "depth_mm": 400,
+        "height_mm": 150
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1100000,
+          "total_in_excel": 1100000,
+          "calculated_total": 1100000,
+          "formula_in_excel": "=I44*H44",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 800000,
+          "total_in_excel": 800000,
+          "calculated_total": 800000,
+          "formula_in_excel": "=K44*H44",
+          "variance_amount_vs_ac": -300000,
+          "discount_percentage_vs_ac": -27.27
+        },
+        "plywood_a1": {
+          "unit_price": 1050000,
+          "total_in_excel": 1050000,
+          "calculated_total": 1050000,
+          "formula_in_excel": "=M44*H44",
+          "variance_amount_vs_ac": -50000,
+          "discount_percentage_vs_ac": -4.55
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.35,
+        "back_6mm": 0.08,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Táp đầu giường",
+        "category": "Táp đầu giường",
+        "tech_notes": "Táp bo góc: 0.35 tấm 17mm + 0.08 tấm đáy 6mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 45,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 4,
+      "item_name": "Táp đầu giường 02",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1690,
+        "depth_mm": 400,
+        "height_mm": 150
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3500000,
+          "total_in_excel": 3500000,
+          "calculated_total": 3500000,
+          "formula_in_excel": "=I45*H45",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 2500000,
+          "total_in_excel": 2500000,
+          "calculated_total": 2500000,
+          "formula_in_excel": "=H45*K45",
+          "variance_amount_vs_ac": -1000000,
+          "discount_percentage_vs_ac": -28.57
+        },
+        "plywood_a1": {
+          "unit_price": 3300000,
+          "total_in_excel": 3300000,
+          "calculated_total": 3300000,
+          "formula_in_excel": "=M45*H45",
+          "variance_amount_vs_ac": -200000,
+          "discount_percentage_vs_ac": -5.71
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.7,
+        "back_6mm": 0.15,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Táp đầu giường",
+        "category": "Táp đầu giường",
+        "tech_notes": "Táp bo góc: 0.7 tấm 17mm + 0.15 tấm đáy 6mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 46,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 5,
+      "item_name": "Bàn học treo bo góc",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 2934,
+        "depth_mm": 550,
+        "height_mm": 150
+      },
+      "unit": "Md",
+      "quantity": 2.93,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2400000,
+          "total_in_excel": 7032000,
+          "calculated_total": 7032000.0,
+          "formula_in_excel": "=I46*H46",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1700000,
+          "total_in_excel": 4981000,
+          "calculated_total": 4981000.0,
+          "formula_in_excel": "=K46*H46",
+          "variance_amount_vs_ac": -2051000.0,
+          "discount_percentage_vs_ac": -29.17
+        },
+        "plywood_a1": {
+          "unit_price": 2200000,
+          "total_in_excel": 6446000,
+          "calculated_total": 6446000.0,
+          "formula_in_excel": "=M46*H46",
+          "variance_amount_vs_ac": -586000.0,
+          "discount_percentage_vs_ac": -8.33
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 1.76,
+        "back_6mm": 0.44,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 8",
+        "category": "Bàn trang điểm / bàn học",
+        "tech_notes": "Bàn treo bo góc: 0.60 tấm 17mm/md + 0.15 tấm đáy 6mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 47,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 6,
+      "item_name": "Giá sách không cánh",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn",
+      "dimensions": {
+        "length_mm": 1028,
+        "depth_mm": 250,
+        "height_mm": 350
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2400000,
+          "total_in_excel": 2400000,
+          "calculated_total": 2400000,
+          "formula_in_excel": "=I47*H47",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1700000,
+          "total_in_excel": 1700000,
+          "calculated_total": 1700000,
+          "formula_in_excel": "=K47*H47",
+          "variance_amount_vs_ac": -700000,
+          "discount_percentage_vs_ac": -29.17
+        },
+        "plywood_a1": {
+          "unit_price": 2200000,
+          "total_in_excel": 2200000,
+          "calculated_total": 2200000,
+          "formula_in_excel": "=M47*H47",
+          "variance_amount_vs_ac": -200000,
+          "discount_percentage_vs_ac": -8.33
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.45,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Đợt / Giá sách",
+        "category": "Giá sách / Đợt trang trí",
+        "tech_notes": "Đợt/giá sách: 0.45 tấm 17mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 48,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 7,
+      "item_name": "Đợt sách",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn",
+      "dimensions": {
+        "length_mm": 1028,
+        "depth_mm": 250,
+        "height_mm": 34
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 0,
+          "total_in_excel": 0,
+          "calculated_total": 0,
+          "formula_in_excel": "None",
+          "is_formula_valid": false
+        },
+        "mdf_thai_lan": {
+          "unit_price": 0,
+          "total_in_excel": 0,
+          "calculated_total": 0,
+          "formula_in_excel": "None",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0
+        },
+        "plywood_a1": {
+          "unit_price": 0,
+          "total_in_excel": 0,
+          "calculated_total": 0,
+          "formula_in_excel": "None",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.15,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Đợt / Giá sách",
+        "category": "Giá sách / Đợt trang trí",
+        "tech_notes": "Đợt/giá sách: 0.15 tấm 17mm/cái"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 49,
+      "room": "VI. Phòng ngủ con trai",
+      "item_number": 8,
+      "item_name": "Tủ quần áo bo góc",
+      "material_description": "Hệ khung cánh gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 2120,
+        "depth_mm": 600,
+        "height_mm": 2700
+      },
+      "unit": "M2",
+      "quantity": 5.72,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2700000,
+          "total_in_excel": 15444000,
+          "calculated_total": 15444000.0,
+          "formula_in_excel": "=I49*H49",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 2000000,
+          "total_in_excel": 11440000,
+          "calculated_total": 11440000.0,
+          "formula_in_excel": "=K49*H49",
+          "variance_amount_vs_ac": -4004000.0,
+          "discount_percentage_vs_ac": -25.93
+        },
+        "plywood_a1": {
+          "unit_price": 2500000,
+          "total_in_excel": 14300000,
+          "calculated_total": 14300000.0,
+          "formula_in_excel": "=M49*H49",
+          "variance_amount_vs_ac": -1144000.0,
+          "discount_percentage_vs_ac": -7.41
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 6.01,
+        "back_6mm": 2.06,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 4",
+        "category": "Tủ quần áo",
+        "tech_notes": "Tủ áo kịch trần: 1.05 tấm 17mm/m2 (6.01 tấm) + 0.36 tấm hậu 6mm/m2 (2.06 tấm)"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 51,
+      "room": "VII. Phòng thờ",
+      "item_number": 1,
+      "item_name": "Bộ bàn thờ 2 tầng",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn",
+      "dimensions": {
+        "length_mm": 1765,
+        "depth_mm": 810,
+        "height_mm": 1270
+      },
+      "unit": "Bộ",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 12000000,
+          "total_in_excel": 12000000,
+          "calculated_total": 12000000,
+          "formula_in_excel": "12000000",
+          "is_formula_valid": false
+        },
+        "mdf_thai_lan": {
+          "unit_price": 9000000,
+          "total_in_excel": 9000000,
+          "calculated_total": 9000000,
+          "formula_in_excel": "9000000",
+          "variance_amount_vs_ac": -3000000,
+          "discount_percentage_vs_ac": -25.0
+        },
+        "plywood_a1": {
+          "unit_price": 11700000,
+          "total_in_excel": 11700000,
+          "calculated_total": 11700000,
+          "formula_in_excel": "11700000",
+          "variance_amount_vs_ac": -300000,
+          "discount_percentage_vs_ac": -2.5
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 4.5,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Bàn thờ 2 tầng",
+        "category": "Bàn thờ",
+        "tech_notes": "Bàn thờ 2 tầng: 4.50 tấm 17mm"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 52,
+      "room": "VII. Phòng thờ",
+      "item_number": 2,
+      "item_name": "Ốp phẳng kết hợp  CNC sau bàn thờ",
+      "material_description": "Gỗ MDF An Cường chống ẩm phủ melamin màu tự chọn",
+      "dimensions": {
+        "length_mm": 2260,
+        "depth_mm": null,
+        "height_mm": 2900
+      },
+      "unit": "M2",
+      "quantity": 6.55,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 2200000,
+          "total_in_excel": 12000000,
+          "calculated_total": 14410000.0,
+          "formula_in_excel": "12000000",
+          "is_formula_valid": false
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1500000,
+          "total_in_excel": 9000000,
+          "calculated_total": 9825000.0,
+          "formula_in_excel": "9000000",
+          "variance_amount_vs_ac": -4585000.0,
+          "discount_percentage_vs_ac": -31.82
+        },
+        "plywood_a1": {
+          "unit_price": 2000000,
+          "total_in_excel": 11700000,
+          "calculated_total": 13100000.0,
+          "formula_in_excel": "11700000",
+          "variance_amount_vs_ac": -1310000.0,
+          "discount_percentage_vs_ac": -9.09
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 3.41,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Mục 24.1 - Quy tắc 6 (Lam/CNC)",
+        "category": "Vách Lam / CNC",
+        "tech_notes": "Ốp phẳng kết hợp hoa văn CNC bàn thờ: 0.52 tấm/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 54,
+      "room": "VIII. Phòng giặt là",
+      "item_number": 1,
+      "item_name": "Hệ tủ bao máy giặt sấy kết hợp tủ kho",
+      "material_description": "Hệ khung cánh nhựa đặc An Cường cao cấp phủ PVC màu tự chọn kết hợp khung sắt gia cố, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 1023,
+        "depth_mm": 600,
+        "height_mm": 2400
+      },
+      "unit": "M2",
+      "quantity": 2.46,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 3800000,
+          "total_in_excel": 9348000,
+          "calculated_total": 9348000.0,
+          "formula_in_excel": "=I54*H54",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3300000,
+          "total_in_excel": 8118000,
+          "calculated_total": 8118000.0,
+          "formula_in_excel": "=K54*H54",
+          "variance_amount_vs_ac": -1230000.0,
+          "discount_percentage_vs_ac": -13.16
+        },
+        "plywood_a1": {
+          "unit_price": 3300000,
+          "total_in_excel": 8118000,
+          "calculated_total": 8118000.0,
+          "formula_in_excel": "=M54*H54",
+          "variance_amount_vs_ac": -1230000.0,
+          "discount_percentage_vs_ac": -13.16
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 2.83,
+        "pvc_6mm": 0.86,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Tủ máy giặt sấy nhựa PVC",
+        "category": "Tủ bao máy giặt sấy",
+        "tech_notes": "Thùng cánh nhựa đặc PVC kết hợp khung sắt gia cố: 1.15 tấm 17mm/m2 + 0.35 tấm hậu/m2"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 55,
+      "room": "VIII. Phòng giặt là",
+      "item_number": 2,
+      "item_name": "Tủ lavabor",
+      "material_description": "Hệ khung cánh nhựa đặc An Cường cao cấp phủ PVC màu tự chọn, bản lề giảm chấn, ray bi 3 tầng",
+      "dimensions": {
+        "length_mm": 900,
+        "depth_mm": 600,
+        "height_mm": 550
+      },
+      "unit": "Md",
+      "quantity": 0.9,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 4300000,
+          "total_in_excel": 3870000,
+          "calculated_total": 3870000.0,
+          "formula_in_excel": "=I55*H55",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 3700000,
+          "total_in_excel": 3330000,
+          "calculated_total": 3330000.0,
+          "formula_in_excel": "=K55*H55",
+          "variance_amount_vs_ac": -540000.0,
+          "discount_percentage_vs_ac": -13.95
+        },
+        "plywood_a1": {
+          "unit_price": 3700000,
+          "total_in_excel": 3330000,
+          "calculated_total": 3330000.0,
+          "formula_in_excel": "=M55*H55",
+          "variance_amount_vs_ac": -540000.0,
+          "discount_percentage_vs_ac": -13.95
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.85,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Tủ lavabor nhựa đặc",
+        "category": "Tủ lavabor",
+        "tech_notes": "Nhựa đặc An Cường chống nước: 0.95 tấm PVC 17mm/md"
+      },
+      "notes_in_excel": ""
+    },
+    {
+      "row_index": 56,
+      "room": "VIII. Phòng giặt là",
+      "item_number": 3,
+      "item_name": "Gương soi",
+      "material_description": "Gương soi 5ly không viền mài cạnh",
+      "dimensions": {
+        "length_mm": 900,
+        "depth_mm": null,
+        "height_mm": 1150
+      },
+      "unit": "Cái",
+      "quantity": 1,
+      "pricing_tier": {
+        "mdf_an_cuong": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=I56*H56",
+          "is_formula_valid": true
+        },
+        "mdf_thai_lan": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=K56*H56",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        },
+        "plywood_a1": {
+          "unit_price": 1200000,
+          "total_in_excel": 1200000,
+          "calculated_total": 1200000,
+          "formula_in_excel": "=M56*H56",
+          "variance_amount_vs_ac": 0,
+          "discount_percentage_vs_ac": 0.0
+        }
+      },
+      "cnc_sheet_norm": {
+        "mdf_17mm": 0.0,
+        "back_6mm": 0.0,
+        "pvc_17mm": 0.0,
+        "pvc_6mm": 0.0,
+        "acrylic_sheets": 0.0,
+        "plywood_17mm": 0.0,
+        "rule_ref": "Thương mại / Mua ngoài",
+        "category": "Thương mại / Kính",
+        "tech_notes": "Gương soi có LED, Cánh kính khung nhôm, Đôn đệm da"
+      },
+      "notes_in_excel": ""
+    }
+  ],
+  "table_2_accessories_kitchen": [
+    {
+      "row_index": 60,
+      "item_code": "GDE28",
+      "item_name": "Giá bát đĩa nan dẹt Inox 304 - GARIS.",
+      "dimensions_mm": 800,
+      "unit": "Cái",
+      "quantity": 1,
+      "catalog_price": 3650000,
+      "selling_price": null
+    },
+    {
+      "row_index": 61,
+      "item_code": "GPE28",
+      "item_name": "Giá xoong nồi nan dẹt Inox 304 - GARIS.",
+      "dimensions_mm": 800,
+      "unit": "Cái",
+      "quantity": 1,
+      "catalog_price": 3420000,
+      "selling_price": null
+    },
+    {
+      "row_index": 62,
+      "item_code": "GME235",
+      "item_name": "Giá dao thớt, chai lọ Inox 304 - GARIS.",
+      "dimensions_mm": 350,
+      "unit": "Cái",
+      "quantity": 1,
+      "catalog_price": 3820000,
+      "selling_price": null
+    },
+    {
+      "row_index": 63,
+      "item_code": "GLSE68",
+      "item_name": "Giá bát đĩa di động Inox 304 - GARIS.",
+      "dimensions_mm": 800,
+      "unit": "Cái",
+      "quantity": 1,
+      "catalog_price": 10390000,
+      "selling_price": null
+    },
+    {
+      "row_index": 64,
+      "item_code": "MRB630",
+      "item_name": "Thùng gạo- GARIS.",
+      "dimensions_mm": 300,
+      "unit": "Cái",
+      "quantity": 1,
+      "catalog_price": 3790000,
+      "selling_price": null
+    },
+    {
+      "row_index": 65,
+      "item_code": "HF25",
+      "item_name": "Tay nâng Blum HF25",
+      "dimensions_mm": null,
+      "unit": "Cái",
+      "quantity": 1,
+      "catalog_price": 3950000,
+      "selling_price": null
+    }
+  ],
+  "table_3_accessories_led": [
+    {
+      "row_index": 68,
+      "item_name": "Led 168 DosLe siêu mịn chính hãng",
+      "description": "hộc tủ tivi 15md; bếp 7,55md; gương wc 2,8md; tủ áo cánh kính 4,8md; vách tivi\np.ngủ 4,4md; gương 3,2md; đầu giường con gái 3,3md; đầu giường con trai 5md; gương p.giặt 0,9md",
+      "unit": "Md",
+      "quantity": 46.95,
+      "unit_price": null
+    },
+    {
+      "row_index": 69,
+      "item_name": "Thanh nhôm tản nhiệt cao cấp NK AP1407",
+      "description": null,
+      "unit": "Md",
+      "quantity": 46.95,
+      "unit_price": null
+    },
+    {
+      "row_index": 70,
+      "item_name": "Nguồn 120 W tản nhiệt cao cấp",
+      "description": null,
+      "unit": "Cái",
+      "quantity": 4,
+      "unit_price": null
+    }
+  ]
+}

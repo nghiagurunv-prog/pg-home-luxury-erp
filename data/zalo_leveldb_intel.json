@@ -1,0 +1,730 @@
+{
+  "metadata": {
+    "scanner_version": "2.0.0-ultra-fast",
+    "scan_timestamp": "2026-11-06T18:26:12.378113",
+    "execution_time_ms": 33.45,
+    "target_sla_ms": 100,
+    "sla_met": true,
+    "process_priority_idle": true,
+    "total_files_scanned": 6,
+    "total_files_skipped": 0,
+    "total_bytes_scanned": 1392860,
+    "latest_log_scanned": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\Partitions\\zalo\\Local Storage\\leveldb\\046670.log"
+  },
+  "summary": {
+    "total_unique_groups": 126,
+    "groups_in_latest_log": 81,
+    "total_order_codes": 2,
+    "total_phone_numbers": 35,
+    "total_bank_transactions": 0
+  },
+  "extracted_entities": {
+    "groups": [
+      {
+        "group_id": "g7885447982331626410",
+        "total_occurrences": 349,
+        "in_latest_log": 346
+      },
+      {
+        "group_id": "g4775686767366079618",
+        "total_occurrences": 246,
+        "in_latest_log": 246
+      },
+      {
+        "group_id": "g795402381131416269",
+        "total_occurrences": 180,
+        "in_latest_log": 176
+      },
+      {
+        "group_id": "g7867798175018376692",
+        "total_occurrences": 121,
+        "in_latest_log": 121
+      },
+      {
+        "group_id": "g1588348021340609742",
+        "total_occurrences": 79,
+        "in_latest_log": 74
+      },
+      {
+        "group_id": "g6547443287129294617",
+        "total_occurrences": 78,
+        "in_latest_log": 78
+      },
+      {
+        "group_id": "g3591758349394766108",
+        "total_occurrences": 75,
+        "in_latest_log": 75
+      },
+      {
+        "group_id": "g2067235352166640756",
+        "total_occurrences": 70,
+        "in_latest_log": 70
+      },
+      {
+        "group_id": "g1705557263597223023",
+        "total_occurrences": 62,
+        "in_latest_log": 59
+      },
+      {
+        "group_id": "g8149011240458184403",
+        "total_occurrences": 60,
+        "in_latest_log": 60
+      },
+      {
+        "group_id": "g7736623945291314586",
+        "total_occurrences": 54,
+        "in_latest_log": 53
+      },
+      {
+        "group_id": "g1279291939930427652",
+        "total_occurrences": 38,
+        "in_latest_log": 36
+      },
+      {
+        "group_id": "g7775929627814036013",
+        "total_occurrences": 35,
+        "in_latest_log": 34
+      },
+      {
+        "group_id": "g6116598459303638566",
+        "total_occurrences": 33,
+        "in_latest_log": 31
+      },
+      {
+        "group_id": "g1995079786700780651",
+        "total_occurrences": 31,
+        "in_latest_log": 28
+      },
+      {
+        "group_id": "g9002602060905812779",
+        "total_occurrences": 27,
+        "in_latest_log": 27
+      },
+      {
+        "group_id": "g6059031098064749266",
+        "total_occurrences": 26,
+        "in_latest_log": 24
+      },
+      {
+        "group_id": "g5119368401920904399",
+        "total_occurrences": 26,
+        "in_latest_log": 26
+      },
+      {
+        "group_id": "g1882721773576698596",
+        "total_occurrences": 25,
+        "in_latest_log": 23
+      },
+      {
+        "group_id": "g3755853110317591515",
+        "total_occurrences": 23,
+        "in_latest_log": 22
+      },
+      {
+        "group_id": "g6688046098270686228",
+        "total_occurrences": 22,
+        "in_latest_log": 21
+      },
+      {
+        "group_id": "g3397108071583812576",
+        "total_occurrences": 22,
+        "in_latest_log": 20
+      },
+      {
+        "group_id": "g4769496995609899764",
+        "total_occurrences": 22,
+        "in_latest_log": 22
+      },
+      {
+        "group_id": "g3520788964083100696",
+        "total_occurrences": 21,
+        "in_latest_log": 19
+      },
+      {
+        "group_id": "g2478045048939659687",
+        "total_occurrences": 21,
+        "in_latest_log": 20
+      },
+      {
+        "group_id": "g8456250824682614686",
+        "total_occurrences": 21,
+        "in_latest_log": 21
+      },
+      {
+        "group_id": "g6053553624236676806",
+        "total_occurrences": 19,
+        "in_latest_log": 17
+      },
+      {
+        "group_id": "g5655014546979730622",
+        "total_occurrences": 19,
+        "in_latest_log": 19
+      },
+      {
+        "group_id": "g3663634856255743251",
+        "total_occurrences": 16,
+        "in_latest_log": 14
+      },
+      {
+        "group_id": "g7661062223689595797",
+        "total_occurrences": 16,
+        "in_latest_log": 15
+      },
+      {
+        "group_id": "g7732270541439804810",
+        "total_occurrences": 16,
+        "in_latest_log": 16
+      },
+      {
+        "group_id": "g6607820046510319735",
+        "total_occurrences": 15,
+        "in_latest_log": 14
+      },
+      {
+        "group_id": "g6533039140377325678",
+        "total_occurrences": 15,
+        "in_latest_log": 15
+      },
+      {
+        "group_id": "g2030211306534514920",
+        "total_occurrences": 15,
+        "in_latest_log": 15
+      },
+      {
+        "group_id": "g7283642567836561872",
+        "total_occurrences": 14,
+        "in_latest_log": 13
+      },
+      {
+        "group_id": "g801326169651058138",
+        "total_occurrences": 14,
+        "in_latest_log": 14
+      },
+      {
+        "group_id": "g2845363860871109560",
+        "total_occurrences": 14,
+        "in_latest_log": 14
+      },
+      {
+        "group_id": "g7549168814011755520",
+        "total_occurrences": 14,
+        "in_latest_log": 14
+      },
+      {
+        "group_id": "g1916408948041876060",
+        "total_occurrences": 14,
+        "in_latest_log": 14
+      },
+      {
+        "group_id": "g8049123588921219952",
+        "total_occurrences": 11,
+        "in_latest_log": 11
+      },
+      {
+        "group_id": "g8627115753566490237",
+        "total_occurrences": 11,
+        "in_latest_log": 11
+      },
+      {
+        "group_id": "g5791781168560517284",
+        "total_occurrences": 11,
+        "in_latest_log": 11
+      },
+      {
+        "group_id": "g9005540751965521470",
+        "total_occurrences": 10,
+        "in_latest_log": 8
+      },
+      {
+        "group_id": "g8353805365546949930",
+        "total_occurrences": 9,
+        "in_latest_log": 7
+      },
+      {
+        "group_id": "g5950024466591957078",
+        "total_occurrences": 9,
+        "in_latest_log": 9
+      },
+      {
+        "group_id": "g2952745558974976574",
+        "total_occurrences": 9,
+        "in_latest_log": 9
+      },
+      {
+        "group_id": "g8585018281969374176",
+        "total_occurrences": 8,
+        "in_latest_log": 8
+      },
+      {
+        "group_id": "g7958147797413371829",
+        "total_occurrences": 7,
+        "in_latest_log": 6
+      },
+      {
+        "group_id": "g1023694868405271280",
+        "total_occurrences": 6,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g2910533080592927904",
+        "total_occurrences": 6,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g1792366938218612507",
+        "total_occurrences": 6,
+        "in_latest_log": 6
+      },
+      {
+        "group_id": "g3597350413890084136",
+        "total_occurrences": 6,
+        "in_latest_log": 6
+      },
+      {
+        "group_id": "g2669782539753007560",
+        "total_occurrences": 5,
+        "in_latest_log": 3
+      },
+      {
+        "group_id": "g6885505941979255114",
+        "total_occurrences": 5,
+        "in_latest_log": 4
+      },
+      {
+        "group_id": "g4059958919434137491",
+        "total_occurrences": 5,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g3508538441957736564",
+        "total_occurrences": 5,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g2180438728065211526",
+        "total_occurrences": 5,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g3773966279987948443",
+        "total_occurrences": 5,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g7950155543910136464",
+        "total_occurrences": 5,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g9130367163296566129",
+        "total_occurrences": 5,
+        "in_latest_log": 5
+      },
+      {
+        "group_id": "g2210130381397538159",
+        "total_occurrences": 4,
+        "in_latest_log": 1
+      },
+      {
+        "group_id": "g3139659005682825558",
+        "total_occurrences": 4,
+        "in_latest_log": 4
+      },
+      {
+        "group_id": "g2539027971900219384",
+        "total_occurrences": 4,
+        "in_latest_log": 4
+      },
+      {
+        "group_id": "g7611226494849501540",
+        "total_occurrences": 4,
+        "in_latest_log": 4
+      },
+      {
+        "group_id": "g104123483123937461",
+        "total_occurrences": 4,
+        "in_latest_log": 4
+      },
+      {
+        "group_id": "g7064461189449705678",
+        "total_occurrences": 3,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g2494007551632391768",
+        "total_occurrences": 3,
+        "in_latest_log": 3
+      },
+      {
+        "group_id": "g8381927460131088022",
+        "total_occurrences": 3,
+        "in_latest_log": 3
+      },
+      {
+        "group_id": "g417791107134966",
+        "total_occurrences": 2,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g6367174019269362840",
+        "total_occurrences": 2,
+        "in_latest_log": 1
+      },
+      {
+        "group_id": "g7939793282953869776",
+        "total_occurrences": 2,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g1039016061557335471",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g3042447983829422844",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g9044387743967476032",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g495486322416346660",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g7419132552396378162",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g7667951524301013166",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g3055637296549383587",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g1596807444033093356",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g1691466633520279229",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g4212121922329497264",
+        "total_occurrences": 2,
+        "in_latest_log": 2
+      },
+      {
+        "group_id": "g1390023879398381966",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g488855674838306316",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g167166661064311",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g2975019647702524045",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g5680473647600540433",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g352078896408310069",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g6487920423603852237",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g5854842554147049860",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g5057715653268928244",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g909708590192563035",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g515610245660506759",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g8639519878116512289",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g855703008371374234",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g2206337315225239642",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g53603959095662789",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g3800190239098570872",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g162449666465586311",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g8353805365546949931",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g3942146906495746929",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g565037220809438942",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g375585311031759151",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g359175834939476610",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g84562508246826146",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g6547443287129294",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g3081413091706071303",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g5938904221495376303",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g6901544189863827459",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g2114570837210809756",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g37558531103175915",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g795814779741337182",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g6394757330030290554",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g420208780726828507",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g41040067365823969",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g78390071690991137",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g19164089480418760",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g848705710895679",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g4246154641962227497",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g514744080871319566",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g11891021098574910",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g20366769133301534",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g468934716658839831",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g1655470138424992",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g1958513548415077841",
+        "total_occurrences": 1,
+        "in_latest_log": 0
+      },
+      {
+        "group_id": "g7736623945291314",
+        "total_occurrences": 1,
+        "in_latest_log": 1
+      },
+      {
+        "group_id": "g5650372208094389422",
+        "total_occurrences": 1,
+        "in_latest_log": 1
+      }
+    ],
+    "order_codes": [
+      "DH6213146428549118",
+      "DH7"
+    ],
+    "phone_numbers": [
+      "0317260010",
+      "0317989085",
+      "0341863066",
+      "0349579396",
+      "0371383279",
+      "0383253120",
+      "0396972703",
+      "0513762678",
+      "0539708668",
+      "0567661693",
+      "0577025695",
+      "0599699050",
+      "0711366986",
+      "0721839345",
+      "0727024810",
+      "0727032174",
+      "0728512720",
+      "0728546775",
+      "0744403309",
+      "0753008337",
+      "0763336529",
+      "0772088325",
+      "0781216595",
+      "0812639862",
+      "0818815352",
+      "0835262645",
+      "0835912206",
+      "0868478269",
+      "0894611532",
+      "0936776397",
+      "0946175586",
+      "0948566445",
+      "0972381045",
+      "0974459244",
+      "0989668346"
+    ],
+    "bank_transactions": []
+  },
+  "session_intel": {
+    "app_versions": [
+      "26.11.10_Full-RC3",
+      "26.7.10"
+    ],
+    "user_ids": [
+      "2304805760907141944"
+    ],
+    "active_message_lists_sample": [
+      "g3081413091706071303",
+      "g488855674838306316"
+    ],
+    "recent_last_receive_timestamps_count": 0,
+    "recent_last_receive_timestamps_sample": {},
+    "zadn_hosts_count": 3,
+    "zadn_hosts_sample": [
+      "p-pc.zadn.vn",
+      "s160-26-ava-talk.zadn.vn",
+      "zalo-api.zadn.vn"
+    ],
+    "leveldb_files_count": 4,
+    "indexeddb_files_count": 2
+  },
+  "step_timings_ms": {
+    "idle_priority": 0.12,
+    "collect_files": 2.01,
+    "read_files": 2.89,
+    "extract_groups": 4.77,
+    "extract_orders": 7.88,
+    "extract_phones": 5.73,
+    "extract_banks": 4.25,
+    "extract_session": 5.71
+  }
+}

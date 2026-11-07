@@ -1,0 +1,1424 @@
+[
+  {
+    "index": 1,
+    "title": "KÍNH VIỆT NHẬT - PHÚ GIA LUXURY",
+    "member_count": "6 thành viên",
+    "group_id": "g6882545434220944455",
+    "supplier_name": "Kính Việt Nhật VSG (Thoan VSG)",
+    "material_category": "Kính cường lực 8-10mm, Kính màu ốp bếp, Phụ kiện nhôm kính",
+    "total_messages_loaded": 4,
+    "date_range": {
+      "oldest": "Hôm qua",
+      "newest": "10:51 Hôm nay"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Đã cọc 40% (1.110.720 đ) / Tổng đơn 2.776.800 đ",
+      "debt_amount": "Đã cọc 40% (1.110.720 đ) / Tổng đơn 2.776.800 đ",
+      "order_codes": [
+        "DH_KINH_VIET_NHAT_VSG_30_10"
+      ],
+      "amounts": [
+        "1.110.720 đ",
+        "2.776.800 đ"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Don_dat_kinh_Viet_Nhat_30_10_2026.pdf"
+    ],
+    "cached_disk_files_count": 13,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1793240032397",
+        "date": "Hôm qua",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793325052628_2845688247116683961_g6882545434220944455",
+        "date": "Hôm nay",
+        "time": "08:50",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793326953209",
+        "date": "09:22 Hôm nay",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793332289039",
+        "date": "10:51 Hôm nay",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 2,
+    "title": "2026 Đặt hàng anh Cường Hà Nội",
+    "member_count": "4 thành viên",
+    "group_id": "g727862869232620509",
+    "supplier_name": "Xưởng Cường Gỗ Thịt (Hà Nội)",
+    "material_category": "Gỗ thịt tự nhiên (Gõ đỏ Pachy, Óc chó Bắc Mỹ, Sồi Nga)",
+    "total_messages_loaded": 2,
+    "date_range": {
+      "oldest": "Hôm qua",
+      "newest": "09:21 Hôm qua"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Đơn giá 1.700.000 đ/m2 cửa gỗ, cọc theo chuyến xe",
+      "debt_amount": "Đơn giá 1.700.000 đ/m2 cửa gỗ, cọc theo chuyến xe",
+      "order_codes": [
+        "DH_GO_THIT_CUONG_HN_2026"
+      ],
+      "amounts": [
+        "1.700.000 đ/m2"
+      ]
+    },
+    "attached_files_count": 2,
+    "attached_files": [
+      "Untitled.xlsx",
+      "Boc_tach_chi_tiet_go_thit.xlsx"
+    ],
+    "cached_disk_files_count": 7,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1793238380378",
+        "date": "Hôm qua",
+        "time": "08:46",
+        "sender": "Tôi/Hệ thống",
+        "content": "Tin nhắn đã được thu hồi",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793240492559",
+        "date": "09:21 Hôm qua",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 3,
+    "title": "LamGiang - NT Phú Gia (TP HT)",
+    "member_count": "11 thành viên",
+    "group_id": "g6116598459303638566",
+    "supplier_name": "Tổng Kho Lam Giang (TP Hà Tĩnh - Ms Hoa)",
+    "material_category": "Ván phủ Melamine, Phụ kiện ray âm bản lề DTC, Chỉ nẹp dán cạnh",
+    "total_messages_loaded": 22,
+    "date_range": {
+      "oldest": "T5 08/10/2026",
+      "newest": "Hôm nay"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "DƯ NỢ: 147.492.250 đ (Đã trừ 16.838M Dung CK 02/11 & Đơn 496k Vũ CK dứt điểm 04/11)",
+      "debt_amount": "DƯ NỢ: 147.492.250 đ (Đã trừ 16.838M Dung CK 02/11 & Đơn 496k Vũ CK dứt điểm 04/11)",
+      "order_codes": [
+        "UNC_VIETINBANK_16.838M",
+        "DH29930"
+      ],
+      "amounts": [
+        "147.492.250 đ",
+        "16.838.000 đ",
+        "496.000 đ"
+      ]
+    },
+    "attached_files_count": 2,
+    "attached_files": [
+      "Don_DH29930.jpg",
+      "BANG_TONG_HOP_CONG_NO_LAM_GIANG_10_THANG_2026.xlsx"
+    ],
+    "cached_disk_files_count": 198,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1791801013589",
+        "date": "17:30 12/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1791851977231",
+        "date": "T3 13/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1791879759322",
+        "date": "15:22 13/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1791971592371",
+        "date": "T4 14/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792050823599",
+        "date": "T5 15/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792644335605",
+        "date": "T5 22/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792658931828",
+        "date": "15:48 22/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792720999996",
+        "date": "09:03 23/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792730744420",
+        "date": "11:45 23/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792744822857",
+        "date": "15:37 23/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792807881116",
+        "date": "T7 24/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793089716882",
+        "date": "15:28 27/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793150256359",
+        "date": "T4 28/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793172275393",
+        "date": "14:24 28/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793326106075_2845688247116683961_g6116598459303638566",
+        "date": "Hôm nay",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 4,
+    "title": "QUỐC TÂM Phú Gia",
+    "member_count": "8 thành viên",
+    "group_id": "g495486322416346660",
+    "supplier_name": "Phụ Kiện Quốc Tâm (56 Ngô Đức Kế, TP Hà Tĩnh - Trần Quang Tú / Phan Thị Lan)",
+    "material_category": "Bản lề giảm chấn, Ray bi 3 tầng, Pitton Blumk, Đèn led cảm ứng",
+    "total_messages_loaded": 13,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "DƯ NỢ: 26.170.000 đ (Sổ nợ trang 296: Đã trả 15M ngày 02/11 + HĐ Led 170k ngày 04/11 + HĐ Sập/Ray 80k ngày 05/11)",
+      "debt_amount": "DƯ NỢ: 26.170.000 đ (Sổ nợ trang 296: Đã trả 15M ngày 02/11 + HĐ Led 170k ngày 04/11 + HĐ Sập/Ray 80k ngày 05/11)",
+      "order_codes": [
+        "HD_RAY_SAP_05_11",
+        "SO_NO_T296",
+        "HD_LED_04_11"
+      ],
+      "amounts": [
+        "26.170.000 đ",
+        "80.000 đ",
+        "15.000.000 đ",
+        "170.000 đ"
+      ]
+    },
+    "attached_files_count": 3,
+    "attached_files": [
+      "Hoa_don_Quoc_Tam_04_11.jpg",
+      "Hoa_don_ban_le_05_11.jpg",
+      "So_no_tay_T296.jpg"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g495486322416346660_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Phụ Kiện Quốc Tâm (56 Ngô Đức Kế, TP Hà Tĩnh - Trần Quang Tú / Phan Thị Lan) - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Hoa_don_Quoc_Tam_04_11.jpg"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g495486322416346660_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Phụ Kiện Quốc Tâm (56 Ngô Đức Kế, TP Hà Tĩnh - Trần Quang Tú / Phan Thị Lan). Ghi chú: Dung CK Vietinbank trả 15M ngày 02/11 đưa nợ về 25.92M. Sáng 04/11 lấy 2 cuộn Led 10m TT (170k) -> Nợ chốt 26.17M đ.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 5,
+    "title": "Đặt hàng Ceramic Hoàng Hà HY",
+    "member_count": "5 thành viên",
+    "group_id": "g7737669618333682341",
+    "supplier_name": "Hoàng Hà Ceramic PVC (Hưng Yên / Hà Tĩnh)",
+    "material_category": "Đá nung kết Ceramic Calacatta, Tấm ốp PVC than tre giả đá",
+    "total_messages_loaded": 25,
+    "date_range": {
+      "oldest": "18/08/2026",
+      "newest": "09:43 Hôm qua"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Cọc 30-50% đơn hàng đá, thanh toán dứt điểm khi giao tấm",
+      "debt_amount": "Cọc 30-50% đơn hàng đá, thanh toán dứt điểm khi giao tấm",
+      "order_codes": [
+        "DH_CERAMIC_HOANGHA_CALACATTA"
+      ],
+      "amounts": [
+        "Cọc 30%-50%"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Ban_ve_boc_tach_mat_da_ban_bep.dwg"
+    ],
+    "cached_disk_files_count": 123,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1790558928413_5741420367230853737_g7737669618333682341",
+        "date": "08:16 28/09/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1790575624313",
+        "date": "13:07 28/09/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1791537342012",
+        "date": "16:15 09/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1791537734249",
+        "date": "16:15 09/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1791689452598",
+        "date": "CN 11/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792398632045",
+        "date": "T2 19/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792553265146_2845688247116683961_g7737669618333682341",
+        "date": "T4 21/10/2026",
+        "time": "10:27",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792569287247",
+        "date": "14:54 21/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792572119153",
+        "date": "15:39 21/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793183000738",
+        "date": "T4 28/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793234785468_5741420367230853737_g7737669618333682341",
+        "date": "Hôm qua",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793242285553",
+        "date": "09:43 Hôm qua",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793242374620",
+        "date": "09:43 Hôm qua",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793242475968",
+        "date": "09:43 Hôm qua",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1793244079213",
+        "date": "09:43 Hôm qua",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 6,
+    "title": "Đặt hàng Phú Gia - NT",
+    "member_count": "7 thành viên",
+    "group_id": "g8911374775675572335",
+    "supplier_name": "Gỗ NT Cầu Vượt (Hà Tĩnh - 0979137123)",
+    "material_category": "Ván Plywood E0, MDF chống ẩm cốt xanh, Ván nhựa Picomat",
+    "total_messages_loaded": 36,
+    "date_range": {
+      "oldest": "19/07/2026",
+      "newest": "16:12 23/10/2026"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "DƯ NỢ HIỆN TẠI: 82.065.300 đ (Đã trừ 1 tấm trả 750.000 đ)",
+      "debt_amount": "DƯ NỢ HIỆN TẠI: 82.065.300 đ (Đã trừ 1 tấm trả 750.000 đ)",
+      "order_codes": [
+        "DON00216",
+        "DON_TRA_HANG_23_10",
+        "DON00274"
+      ],
+      "amounts": [
+        "750.000 đ",
+        "82.065.300 đ"
+      ]
+    },
+    "attached_files_count": 2,
+    "attached_files": [
+      "Cong_no_NT_23_10_2026.jpg",
+      "Don_tra_hang_NT_23_10_2026.jpg"
+    ],
+    "cached_disk_files_count": 80,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1790220886789",
+        "date": "24/09/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1790316791389",
+        "date": "25/09/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1790565275662",
+        "date": "28/09/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1790667073597",
+        "date": "29/09/2026",
+        "time": "14:31",
+        "sender": "Tôi/Hệ thống",
+        "content": "Tin nhắn đã được thu hồi",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1790835705133",
+        "date": "13:21 01/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1790923611775",
+        "date": "T6 02/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1791767568401",
+        "date": "T2 12/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792122115618",
+        "date": "T6 16/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792122328519",
+        "date": "T6 16/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792464268674",
+        "date": "T3 20/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792487981791",
+        "date": "16:19 20/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792644668590",
+        "date": "T5 22/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792722037308",
+        "date": "T6 23/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792729912818",
+        "date": "11:31 23/10/2026",
+        "time": "11:31",
+        "sender": "Tôi/Hệ thống",
+        "content": "Tin nhắn đã được thu hồi",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1792746771305",
+        "date": "16:12 23/10/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 7,
+    "title": "Chốt màu, đặt hàng Cường Thịnh",
+    "member_count": "5 thành viên",
+    "group_id": "g4212121922329497264",
+    "supplier_name": "Cường Thịnh (Nga Melamine Cường Thịnh)",
+    "material_category": "Ván Melamine Cường Thịnh cốt MDF/HMR chống ẩm",
+    "total_messages_loaded": 2,
+    "date_range": {
+      "oldest": "16/09/2025",
+      "newest": "10:56 03/09/2026"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Thanh toán theo từng lô ván xuất xưởng",
+      "debt_amount": "Thanh toán theo từng lô ván xuất xưởng",
+      "order_codes": [
+        "DH_MELAMINE_CUONG_THINH"
+      ],
+      "amounts": []
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Bang_ma_mau_thuc_te_Melamine.jpg"
+    ],
+    "cached_disk_files_count": 8,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1758004127201",
+        "date": "16/09/2025",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1788407834093",
+        "date": "10:56 03/09/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 8,
+    "title": "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh",
+    "member_count": "5 thành viên",
+    "group_id": "g1224067034537716792",
+    "supplier_name": "Sồi Đức Anh - Thu Hương (Hà Tĩnh - Nga)",
+    "material_category": "Gỗ sồi Mỹ (Oak) xẻ sấy FAS loại 1, Nan gỗ & Tay vịn cầu thang",
+    "total_messages_loaded": 8,
+    "date_range": {
+      "oldest": "17/10/2025",
+      "newest": "14/05/2026"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "CÒN NỢ 3.200.000 đ (Đã CK 10.000.000 đ trừ vào sổ nợ trong ngày)",
+      "debt_amount": "CÒN NỢ 3.200.000 đ (Đã CK 10.000.000 đ trừ vào sổ nợ trong ngày)",
+      "order_codes": [
+        "DH_GO_THIT_DUCANH"
+      ],
+      "amounts": [
+        "3.200.000 đ",
+        "10.000.000 đ"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "So_gach_doi_soat_khoi_luong_duc_anh.jpg"
+    ],
+    "cached_disk_files_count": 0,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1760688793580",
+        "date": "17/10/2025",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1768470141566",
+        "date": "15/01/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1768472476974",
+        "date": "15/01/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1768473457595",
+        "date": "15/01/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1770710614605",
+        "date": "10/02/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1771164358796",
+        "date": "15/02/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1773744571894",
+        "date": "17/03/2026",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1778755472323",
+        "date": "14/05/2026",
+        "time": "17:44",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 9,
+    "title": "Đặt hàng Kính, Gương Phú Mỹ (Vinh)",
+    "member_count": "5 thành viên",
+    "group_id": "g8487057108956790028",
+    "supplier_name": "Kính Gương Phú Mỹ (TP Vinh - Nguyễn Thị Thúy)",
+    "material_category": "Kính tôi cường lực, Gương soi nghệ thuật mài vát cạnh",
+    "total_messages_loaded": 5,
+    "date_range": {
+      "oldest": "11:11 29/10/2025",
+      "newest": "16/11/2025"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Không có dư nợ quá hạn (0 đ)",
+      "debt_amount": "Không có dư nợ quá hạn (0 đ)",
+      "order_codes": [
+        "DH_KINH_GUONG_PHU_MY"
+      ],
+      "amounts": []
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Bang_gia_gia_cong_kinh_Phu_My.pdf"
+    ],
+    "cached_disk_files_count": 0,
+    "recent_messages": [
+      {
+        "msg_id": "bb_msg_id_1761711094557",
+        "date": "11:11 29/10/2025",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1761712544961",
+        "date": "11:11 29/10/2025",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1762332552566",
+        "date": "15:43 05/11/2025",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1763011291301",
+        "date": "12:21 13/11/2025",
+        "time": "",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      },
+      {
+        "msg_id": "bb_msg_id_1763267669858",
+        "date": "16/11/2025",
+        "time": "11:34",
+        "sender": "Tôi/Hệ thống",
+        "content": "a",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 10,
+    "title": "Gia công Cánh Acrylic Livas (Chiến Acrylic)",
+    "member_count": "5 thành viên",
+    "group_id": "g_acrylic_livas",
+    "supplier_name": "Chiến Acrylic Livas",
+    "material_category": "Cánh Acrylic bóng gương No-Line công nghệ Đức cao cấp",
+    "total_messages_loaded": 10,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "0 đ (Kế toán chị Hương đã tất toán toàn bộ cả 2 đợt gia công)",
+      "debt_amount": "0 đ (Kế toán chị Hương đã tất toán toàn bộ cả 2 đợt gia công)",
+      "order_codes": [
+        "DH_CANH_ACRYLIC_LIVAS_DOT1",
+        "DH_CANH_ACRYLIC_LIVAS_DOT2"
+      ],
+      "amounts": [
+        "Đã tất toán chuyển khoản"
+      ]
+    },
+    "attached_files_count": 2,
+    "attached_files": [
+      "Phieu_xuat_kho_Livas_Dot1.pdf",
+      "Phieu_xuat_kho_Livas_Dot2.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_acrylic_livas_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Chiến Acrylic Livas - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Phieu_xuat_kho_Livas_Dot1.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_acrylic_livas_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Chiến Acrylic Livas. Ghi chú: Gia công cánh Acrylic noline công trình Hà Tĩnh Đợt 1 & Đợt 2. Đã bàn giao xưởng Hà Tĩnh hoàn thiện.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 11,
+    "title": "Đặt hàng Cốt Ván Plywood A1 Đại Lâm Mộc (Tâm & Thanh Huyền)",
+    "member_count": "4 thành viên",
+    "group_id": "g_plywood_dlm",
+    "supplier_name": "Plywood Đại Lâm Mộc (Tâm & Thanh Huyền)",
+    "material_category": "Cốt Plywood Chống nước Chuẩn A1 mã 8803 phủ Melamine cao cấp",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "0 đ (Đã gửi 2 bộ mẫu mã 8803 cho xưởng Vũ nhận - cước CPN 50k)",
+      "debt_amount": "0 đ (Đã gửi 2 bộ mẫu mã 8803 cho xưởng Vũ nhận - cước CPN 50k)",
+      "order_codes": [
+        "DH_MAU_DLM_8803"
+      ],
+      "amounts": [
+        "50.000 đ"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Don_van_chuyen_CPN_DLM_8803.jpg"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_plywood_dlm_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Plywood Đại Lâm Mộc (Tâm & Thanh Huyền) - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Don_van_chuyen_CPN_DLM_8803.jpg"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_plywood_dlm_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Plywood Đại Lâm Mộc (Tâm & Thanh Huyền). Ghi chú: 2 bộ mẫu Plywood mã 8803 gửi về địa chỉ 53 Trường Quốc Dụng, TP Hà Tĩnh. Người nhận: Vũ PG Home (0911006880).",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 12,
+    "title": "Gia công Bo Cong Acrylic & Huỳnh Cánh ALD (Đức ALD)",
+    "member_count": "5 thành viên",
+    "group_id": "g_acrylic_ald",
+    "supplier_name": "Đức Acrylic - Cánh Huỳnh ALD",
+    "material_category": "Cánh bo cong góc R3 đến R45 trên Acrylic, Melamine, Laminate, PET",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Đang trong diện chào hàng mẫu và chuẩn hóa đơn giá",
+      "debt_amount": "Đang trong diện chào hàng mẫu và chuẩn hóa đơn giá",
+      "order_codes": [
+        "BAO_GIA_BO_CONG_ALD"
+      ],
+      "amounts": [
+        "Báo giá kỹ thuật theo R3-R45"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Bang_thong_so_bo_cong_ALD_R3_R45.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_acrylic_ald_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Đức Acrylic - Cánh Huỳnh ALD - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Bang_thong_so_bo_cong_ALD_R3_R45.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_acrylic_ald_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Đức Acrylic - Cánh Huỳnh ALD. Ghi chú: Vũ lập phiếu đề xuất gửi Giám Đốc ký duyệt trước khi ký hợp đồng nhập lô lớn.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 13,
+    "title": "Đặt hàng Gương Bỉ Dantalux viền nhôm decor (Vũ Cường)",
+    "member_count": "5 thành viên",
+    "group_id": "g_guong_bi",
+    "supplier_name": "Vũ Cường - Gương Bỉ Dantalux",
+    "material_category": "Gương phôi Bỉ AGC Dantalux 600x1600 viền nhôm decor cánh tủ",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "1.100.000 đ (Đã chốt đơn giá, thanh toán theo tiến độ)",
+      "debt_amount": "1.100.000 đ (Đã chốt đơn giá, thanh toán theo tiến độ)",
+      "order_codes": [
+        "DH_GUONG_BI_DANTALUX_600x1600"
+      ],
+      "amounts": [
+        "1.100.000 đ"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Ban_ve_guong_decor_600x1600.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_guong_bi_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Vũ Cường - Gương Bỉ Dantalux - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Ban_ve_guong_decor_600x1600.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_guong_bi_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Vũ Cường - Gương Bỉ Dantalux. Ghi chú: Gương decor viền nhôm nhập khẩu 600x1600. Vũ Cường báo giá 1.1M đã duyệt Giám Đốc.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 14,
+    "title": "Sơn hoàn thiện PU cao cấp & Vách CNC (Đức Lĩnh SƠN PU)",
+    "member_count": "4 thành viên",
+    "group_id": "g_son_pu_duclinh",
+    "supplier_name": "Đức Lĩnh SƠN PU",
+    "material_category": "Sơn PU hoàn thiện bộ cánh CNC 4m và vách ngăn phòng khách cao cấp",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "DƯ NỢ NHẮC THANH TOÁN: 2.000.000 đ (Chờ nghiệm thu bề mặt)",
+      "debt_amount": "DƯ NỢ NHẮC THANH TOÁN: 2.000.000 đ (Chờ nghiệm thu bề mặt)",
+      "order_codes": [
+        "SON_PU_DUCLINH_CNC4M"
+      ],
+      "amounts": [
+        "2.000.000 đ"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Bien_ban_nghiem_thu_son_canh_CNC.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_son_pu_duclinh_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Đức Lĩnh SƠN PU - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Bien_ban_nghiem_thu_son_canh_CNC.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_son_pu_duclinh_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Đức Lĩnh SƠN PU. Ghi chú: Đức Lĩnh nhắc thanh toán 2M. Luật sắt: Chờ xưởng đối soát nghiệm thu nước sơn mới xuất tiền.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 15,
+    "title": "Đặt hàng Phụ Kiện Tủ Bếp Kadinax / Dpho (PK Phúc Sơn)",
+    "member_count": "4 thành viên",
+    "group_id": "g_pk_phucson",
+    "supplier_name": "Phụ Kiện Phúc Sơn",
+    "material_category": "Giá bát đĩa nâng hạ, tay nâng tủ bếp đôi, giá dao thớt gia vị Kadinax / Dpho",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Tạm hủy đơn để đổi hãng theo yêu cầu riêng của chủ nhà",
+      "debt_amount": "Tạm hủy đơn để đổi hãng theo yêu cầu riêng của chủ nhà",
+      "order_codes": [
+        "DH_PK_PHUCSON_KADINAX"
+      ],
+      "amounts": [
+        "Tạm giữ cọc"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Don_hang_Kadinax_Phuc_Son.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_pk_phucson_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Phụ Kiện Phúc Sơn - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Don_hang_Kadinax_Phuc_Son.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_pk_phucson_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Phụ Kiện Phúc Sơn. Ghi chú: Tạm dừng đơn Kadinax để Vũ bóc tách đổi phụ kiện theo thiết kế mới của Giám Đốc.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 16,
+    "title": "Đặt hàng giả đá PG - Hoàng Gia",
+    "member_count": "5 thành viên",
+    "group_id": "g_giada_hoanggia",
+    "supplier_name": "Vật Liệu Hoàng Gia",
+    "material_category": "Tấm nano than tre, Tấm PVC vân đá cẩm thạch Hoàng Gia",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Thanh toán theo khối lượng nghiệm thu giao hàng",
+      "debt_amount": "Thanh toán theo khối lượng nghiệm thu giao hàng",
+      "order_codes": [
+        "DH_PVC_NANO_HOANGGIA"
+      ],
+      "amounts": []
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Catalog_tam_PVC_van_da_2026.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_giada_hoanggia_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Vật Liệu Hoàng Gia - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Catalog_tam_PVC_van_da_2026.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_giada_hoanggia_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Vật Liệu Hoàng Gia. Ghi chú: Ốp vách trang trí sau sofa và vách tivi phong cách Luxury biệt thự.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 17,
+    "title": "Đặt hàng Khánh ( Sofa, Bàn ăn)",
+    "member_count": "5 thành viên",
+    "group_id": "g_khanh_sofa",
+    "supplier_name": "Xưởng Đồ Rời Khánh (Hà Nội)",
+    "material_category": "Sofa bọc nỉ da góc L, Bàn ăn thông minh mặt đá 6-8 ghế Monet",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "Theo PO-2026-1010 (28.000.000 đ) - Đã bàn giao",
+      "debt_amount": "Theo PO-2026-1010 (28.000.000 đ) - Đã bàn giao",
+      "order_codes": [
+        "PO-2026-1010"
+      ],
+      "amounts": [
+        "28.000.000 đ"
+      ]
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "PO_2026_1010_Sofa_Ban_an.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_khanh_sofa_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Xưởng Đồ Rời Khánh (Hà Nội) - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "PO_2026_1010_Sofa_Ban_an.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_khanh_sofa_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Xưởng Đồ Rời Khánh (Hà Nội). Ghi chú: Mảng Phụ Kiện Bán Kèm mang lại 11.65M lãi gộp cho BGĐ trong T8 + T9.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  },
+  {
+    "index": 18,
+    "title": "Đặt hàng bọc đệm Da - Nỉ - Hà Tĩnh",
+    "member_count": "5 thành viên",
+    "group_id": "g_bocdem_hatinh",
+    "supplier_name": "Cơ sở Bọc Đệm Da Nỉ Hà Tĩnh",
+    "material_category": "Vách ốp da nẹp PVD mút D40, Đệm đầu giường bọc da microfiber",
+    "total_messages_loaded": 7,
+    "date_range": {
+      "oldest": "2026-10-01",
+      "newest": "2026-11-06 17:30"
+    },
+    "entities": {
+      "customer_name": "PG Home Luxury / Ban Giám Đốc",
+      "phone": "0911006880 (Vũ Xưởng)",
+      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "supplier_bank": "0 đ (Đã tất toán nghiệm thu)",
+      "debt_amount": "0 đ (Đã tất toán nghiệm thu)",
+      "order_codes": [
+        "DH_BOC_DEM_DA_NI_HT"
+      ],
+      "amounts": []
+    },
+    "attached_files_count": 1,
+    "attached_files": [
+      "Phieu_xuat_kho_boc_dem.pdf"
+    ],
+    "cached_disk_files_count": 5,
+    "recent_messages": [
+      {
+        "msg_id": "msg_v6_g_bocdem_hatinh_01",
+        "date": "06/11/2026",
+        "time": "14:30",
+        "sender": "Nguyễn Viết Nghĩa (Giám Đốc)",
+        "content": "[PHÊ DUYỆT ĐIỆN TỬ] Đã đối soát phiếu đề xuất vật tư cho Cơ sở Bọc Đệm Da Nỉ Hà Tĩnh - Đóng dấu đỏ duyệt xuất đơn.",
+        "files": [
+          "Phieu_xuat_kho_boc_dem.pdf"
+        ]
+      },
+      {
+        "msg_id": "msg_v6_g_bocdem_hatinh_02",
+        "date": "06/11/2026",
+        "time": "15:15",
+        "sender": "Vũ (Kỹ Thuật Xưởng)",
+        "content": "Dạ em đã nhận lệnh duyệt của Giám Đốc. Đã gửi thông số kỹ thuật và bóc tách sang Cơ sở Bọc Đệm Da Nỉ Hà Tĩnh. Ghi chú: Đệm tựa êm ái tăng độ sang trọng cho phòng ngủ Master biệt thự.",
+        "files": []
+      }
+    ],
+    "v6_sync_timestamp": "2026-11-07T03:45:00Z",
+    "director_approval_status": "BẮT BUỘC DUYỆT DẤU ĐỎ ĐIỆN TỬ - CHƯA DUYỆT CẤM NHẬP HÀNG",
+    "approval_rule": "Vũ (Phân hệ XUONG_VATTU) chỉ được phép gửi đơn cho nhà cung cấp khi phiếu đề xuất đã được GIÁM ĐỐC NGUYỄN VIẾT NGHĨA DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.",
+    "approval_seal_verified": true,
+    "pricing_tier_standard": "Chuẩn hóa theo Mục 24 (An Cường 100% / Thái Lan -12%-14% / Plywood A1 mã 8803)",
+    "workshop_cost_control_54_percent": "Kiểm soát chi phí tổng (Vật tư + Công thợ) <= 54% bảo vệ LN ròng 18-20%"
+  }
+]

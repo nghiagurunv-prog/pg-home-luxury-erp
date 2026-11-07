@@ -1,0 +1,1116 @@
+{
+  "meta": {
+    "system_name": "PG Home Luxury Financial & Technical Entity Verification",
+    "module": "zalo_entity_validator.py (Worker #6)",
+    "generated_at": "2026-11-06 18:13:50",
+    "authorized_by": "Giám Đốc Nguyễn Viết Nghĩa",
+    "source_batches_scanned": [
+      "batch1_internal_and_projects",
+      "batch2_private_staff",
+      "batch3_family_huong",
+      "batch4_suppliers_ncc"
+    ],
+    "total_conversations_scanned": 90,
+    "total_messages_processed": 1305,
+    "summary_counts": {
+      "total_banking_transfers_recorded": 6,
+      "total_bank_accounts_recorded": 1,
+      "total_material_orders_recorded": 14,
+      "total_technical_and_mgmt_files_verified": 38,
+      "total_suppliers_audited": 39,
+      "total_client_receivable_projects": 8
+    }
+  },
+  "financial_transactions": {
+    "giao_dich_chuyen_khoan": [
+      {
+        "loai_giao_dich": "DE_XUAT_CHI_LUONG",
+        "hoi_thoai": "2026 Bảng lương hàng tháng - Phú Gia Home Lux",
+        "nguoi_gui": "Phú Gia Hiệp G",
+        "thoi_gian": "09:48",
+        "tep_dinh_kem": [
+          "Bảng lương tháng T9 tạm tính.xlsx"
+        ],
+        "noi_dung": "Chốt lương nhé. Sắp xếp ck cho ae",
+        "ghi_chu": "Hiệp gửi bảng lương tháng T9 tạm tính đề nghị sắp xếp CK cho anh em"
+      },
+      {
+        "loai_giao_dich": "CHUYEN_KHOAN_LUONG_XUONG",
+        "hoi_thoai": "2026 Bảng lương hàng tháng - Phú Gia Home Lux",
+        "nguoi_gui": "Hương",
+        "thoi_gian": "16:46",
+        "so_tien_ghi_nhan": 71171000,
+        "chi_tiet_so_tien": "25.000.000 đ (sáng) + 46.171.000 đ (chiều) = 71.171.000 đ",
+        "noi_dung": "Sáng chị ck 25 tr, giờ ck thêm 46,171k nữa e ck lương cho anh em trong hôm nay luôn nhé",
+        "ghi_chu": "Chị Hương CK cho Hiệp thanh toán lương thợ T9 sau khi trừ tạm ứng của Vũ 8.000.000 đ (1.000.000 đ chuyển sang T10)"
+      },
+      {
+        "loai_giao_dich": "YEU_CAU_GUI_UNC_BILL",
+        "hoi_thoai": "SƠN CNC - CTY PHU GIA",
+        "nguoi_gui": "Thành viên nhóm",
+        "thoi_gian": "08:25",
+        "noi_dung": "chị thanh toán gửi bill lên nhóm này luôn chị nha",
+        "ghi_chu": "Xưởng Sơn CNC yêu cầu gửi ủy nhiệm chi/bill thanh toán lên nhóm Zalo"
+      },
+      {
+        "loai_giao_dich": "THANH_TOAN_TIEN_HANG_GO_THIT",
+        "hoi_thoai": "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh",
+        "nguoi_gui": "a",
+        "thoi_gian": "21:06",
+        "so_tien_ghi_nhan": 10000000,
+        "noi_dung": "Nga\nẢnh không tồn tại\nE gửi lại sổ công nợ, đã trừ 10tr hn c ck nhé ak",
+        "ghi_chu": "Nga xác nhận đã trừ 10.000.000 đ PG Home CK trong ngày vào sổ công nợ"
+      },
+      {
+        "loai_giao_dich": "XAC_NHAN_THANH_TOAN_VAT_TU",
+        "hoi_thoai": "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh",
+        "nguoi_gui": "Hương",
+        "thoi_gian": "17:42",
+        "noi_dung": "Chị thanh toán cho Sơn rồi e",
+        "ghi_chu": "Chị Hương xác nhận đã thanh toán tiền hàng cho bên anh Sơn"
+      },
+      {
+        "loai_giao_dich": "THANH_TOAN_CANH_ACRYLIC",
+        "hoi_thoai": "ĐẶT CÁNH LIC LIVAS - NỘI THẤT PHÚ GIA HÀ TĨNH",
+        "nguoi_gui": "a",
+        "thoi_gian": "21:36",
+        "noi_dung": "Hương\nẢnh không tồn tại\nKế toán bên mình đã chuyển bạn nhé! Đợt này công ty có chút việc nên ck hơi muộn. Bên bạn thông cảm giúp nhé!",
+        "ghi_chu": "Kế toán PG Home đã chuyển tiền đơn hàng cánh cho Chiến Acrylic Livas"
+      }
+    ],
+    "tai_khoan_ngan_hang_nhan_tien": [
+      {
+        "chu_tai_khoan": "Lưu Thị Kim Dung",
+        "ngan_hang": "Vietinbank",
+        "muc_dich": "Nhận tạm ứng 50% thi công tủ bếp nhà anh Dũng - Hương Khê",
+        "hoi_thoai": "2026 Tủ bếp a Dũng - Hương Khê",
+        "nguoi_nhan_tin": "Hương",
+        "noi_dung": "Nhờ a ck qua số tài khoản\n. Lưu Thị Kim Dung. Vietinbank giúp e nhé!"
+      }
+    ]
+  },
+  "orders_and_material_procurement": [
+    {
+      "ma_don": "DH_GO_THIT_DUCANH",
+      "nha_cung_cap": "Gỗ thịt Đức Anh (Nga)",
+      "hang_muc": "Cung ứng phôi gỗ tự nhiên / gỗ thịt cho công trình",
+      "nguoi_giao_dich": "a",
+      "thoi_gian": "21:06",
+      "chi_tiet": "Nga\nẢnh không tồn tại\nE gửi lại sổ công nợ, đã trừ 10tr hn c ck nhé ak",
+      "trang_thai": "Đối soát sổ công nợ (trừ 10tr, còn dư nợ 3.200.000 đ)"
+    },
+    {
+      "ma_don": "DH_GO_THIT_DUCANH",
+      "nha_cung_cap": "Gỗ thịt Đức Anh (Nga)",
+      "hang_muc": "Cung ứng phôi gỗ tự nhiên / gỗ thịt cho công trình",
+      "nguoi_giao_dich": "a",
+      "thoi_gian": "17:49",
+      "chi_tiet": "Nga\nẢnh không tồn tại\nE gửi lại sổ công nợ, a.c thanh toán tiền hàng giúp bên e nhé ạ!",
+      "trang_thai": "Đối soát sổ công nợ (trừ 10tr, còn dư nợ 3.200.000 đ)"
+    },
+    {
+      "ma_don": "DH_GO_THIT_DUCANH",
+      "nha_cung_cap": "Gỗ thịt Đức Anh (Nga)",
+      "hang_muc": "Cung ứng phôi gỗ tự nhiên / gỗ thịt cho công trình",
+      "nguoi_giao_dich": "Nga",
+      "thoi_gian": "17:48",
+      "chi_tiet": "C ơi, c thanh toán tiền hàng giúp bên e với, nay cuối tháng r ạ",
+      "trang_thai": "Đối soát sổ công nợ (trừ 10tr, còn dư nợ 3.200.000 đ)"
+    },
+    {
+      "ma_don": "DH_PK_PHUCSON_KADINAX",
+      "nha_cung_cap": "PK Phúc Sơn",
+      "hang_muc": "Phụ kiện tủ bếp Kadinax / Dpho",
+      "nguoi_xu_ly": "Thái PG Home 2026",
+      "thoi_gian": "15:43",
+      "chi_tiet": "nên tạm hủy đơn này",
+      "trang_thai": "Tạm hủy đơn để đổi hãng theo yêu cầu riêng của khách hàng"
+    },
+    {
+      "ma_don": "DH_MAU_DLM_8803",
+      "nha_cung_cap": "Plywood Đại Lâm Mộc (Tâm & Thanh Huyền)",
+      "hang_muc": "2 bộ mẫu Plywood mã 8803 mới nhất",
+      "dia_chi_nhan": "53 Trường Quốc Dụng, Thành Sen, TP Hà Tĩnh",
+      "nguoi_nhan": "Vũ PG Home (SĐT: 0911006880)",
+      "cuoc_ship": 50000,
+      "thoi_gian": "09:50",
+      "trang_thai": "Đã tạo đơn CPN, xưởng nhận mẫu chốt màu sản xuất"
+    },
+    {
+      "ma_don": "DH_MAU_DLM_8803",
+      "nha_cung_cap": "Plywood Đại Lâm Mộc (Tâm & Thanh Huyền)",
+      "hang_muc": "2 bộ mẫu Plywood mã 8803 mới nhất",
+      "dia_chi_nhan": "53 Trường Quốc Dụng, Thành Sen, TP Hà Tĩnh",
+      "nguoi_nhan": "Vũ PG Home (SĐT: 0911006880)",
+      "cuoc_ship": 50000,
+      "thoi_gian": "",
+      "trang_thai": "Đã tạo đơn CPN, xưởng nhận mẫu chốt màu sản xuất"
+    },
+    {
+      "ma_don": "DH_MAU_DLM_8803",
+      "nha_cung_cap": "Plywood Đại Lâm Mộc (Tâm & Thanh Huyền)",
+      "hang_muc": "2 bộ mẫu Plywood mã 8803 mới nhất",
+      "dia_chi_nhan": "53 Trường Quốc Dụng, Thành Sen, TP Hà Tĩnh",
+      "nguoi_nhan": "Vũ PG Home (SĐT: 0911006880)",
+      "cuoc_ship": 50000,
+      "thoi_gian": "09:58",
+      "trang_thai": "Đã tạo đơn CPN, xưởng nhận mẫu chốt màu sản xuất"
+    },
+    {
+      "ma_don": "SON_PU_DUCLINH_CNC4M",
+      "nha_cung_cap": "Đức Lĩnh SƠN PU",
+      "hang_muc": "Sơn bộ CNC 4m và vách ngăn trang trí",
+      "gia_tri_uoc_tinh": 2000000,
+      "nguoi_yeu_cau": "Đức Lĩnh SƠN PU",
+      "thoi_gian": "17:50",
+      "chi_tiet": "Alo hôm trước có bộ cnc :4 m :2 triệu ck giúp mình nhé\nCk giúp mình cái này cái",
+      "trang_thai": "NCC gửi nhắc thanh toán qua Zalo"
+    },
+    {
+      "ma_don": "SON_PU_DUCLINH_CNC4M",
+      "nha_cung_cap": "Đức Lĩnh SƠN PU",
+      "hang_muc": "Sơn bộ CNC 4m và vách ngăn trang trí",
+      "gia_tri_uoc_tinh": 2000000,
+      "nguoi_yeu_cau": "Thành viên nhóm",
+      "thoi_gian": "14:18",
+      "chi_tiet": "Ck giúp tiền vách cho mình với",
+      "trang_thai": "NCC gửi nhắc thanh toán qua Zalo"
+    },
+    {
+      "ma_don": "BAO_GIA_BO_CONG_ALD",
+      "nha_cung_cap": "Đức Acrylic - Cánh Huỳnh ALD",
+      "hang_muc": "Gia công bo cong góc R3 đến R45 trên Acrylic, Melamine, Laminate, PET",
+      "thoi_gian": "",
+      "chi_tiet": "Bên em mới triển khai gia công bo cong trên các loại bề mặt: Acrylic, Melamine, Laminate, PET cùng đa dạng các loại cốt: MDF, cốt nhựa đặc, Plywood, MFC, cốt ván dăm từ các góc bo R3 đến R45 với đường cong mềm mại ko vết nối và bền bỉ. Nếu bên mình cần mẫu và có nhu cầu đặt hàng thì liên hệ hỗ trợ mình nhé",
+      "trang_thai": "NCC gửi thông số chào hàng bo cong kỹ thuật cao"
+    },
+    {
+      "ma_don": "DH_GUONG_BI_DANTALUX_600x1600",
+      "nha_cung_cap": "Vũ Cường - Gương Bỉ Dantalux",
+      "hang_muc": "Gương decor viền nhôm gương Bỉ nhập khẩu 600x1600",
+      "don_gia": 1100000,
+      "nguoi_bao_gia": "Vũ Cường",
+      "thoi_gian": "15:53",
+      "chi_tiet": "kiểu này nhé 600x1600",
+      "trang_thai": "Đã chốt mẫu và báo giá cho Giám Đốc"
+    },
+    {
+      "ma_don": "DH_GUONG_BI_DANTALUX_600x1600",
+      "nha_cung_cap": "Vũ Cường - Gương Bỉ Dantalux",
+      "hang_muc": "Gương decor viền nhôm gương Bỉ nhập khẩu 600x1600",
+      "don_gia": 1100000,
+      "nguoi_bao_gia": "Vũ Cường",
+      "thoi_gian": "",
+      "chi_tiet": "giá 1.1tr anh nhé",
+      "trang_thai": "Đã chốt mẫu và báo giá cho Giám Đốc"
+    },
+    {
+      "ma_don": "DH_CANH_ACRYLIC_LIVAS",
+      "nha_cung_cap": "Chiến Acrylic Livas",
+      "hang_muc": "Gia công cánh Acrylic noline công trình Hà Tĩnh",
+      "nguoi_giao_dich": "Hương",
+      "thoi_gian": "20:23",
+      "chi_tiet": "Chiến Acrylic Livas\n@Phan Luc @Thu Hương Đơn làm xong e gửi xe vào rồi đoa ạ\nCảm ơn e",
+      "trang_thai": "Đã gia công xong, gửi xe vào Hà Tĩnh, kế toán đã CK tất toán"
+    },
+    {
+      "ma_don": "DH_CANH_ACRYLIC_LIVAS",
+      "nha_cung_cap": "Chiến Acrylic Livas",
+      "hang_muc": "Gia công cánh Acrylic noline công trình Hà Tĩnh",
+      "nguoi_giao_dich": "Chiến Acrylic Livas",
+      "thoi_gian": "16:16",
+      "chi_tiet": "[Hình ảnh]\nMình thanh toán giúp e đơn hàng này ạ. E cám ơn ạ",
+      "trang_thai": "Đã gia công xong, gửi xe vào Hà Tĩnh, kế toán đã CK tất toán"
+    }
+  ],
+  "verified_files_catalog": [
+    {
+      "ten_tep": "DANH_SACH_KHACH_HANG_QUET_TU_ADS_DOI_THU_SDA_FHOME.xlsx",
+      "nhom_phan_loai": "BANG_TINH_EXCEL",
+      "cuoc_hoi_thoai": "Phòng Sale- Bán hàng PG - Phú Gia Home Lux",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "Thành viên nhóm",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "DANH_SACH_KHACH_HANG_QUET_TU_ADS_DOI_THU_SDA_FH",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Bảng doanh số xưởng T9.xls",
+      "nhom_phan_loai": "QUAN_TRI_NOI_BO",
+      "cuoc_hoi_thoai": "2026 Bảng lương hàng tháng - Phú Gia Home Lux",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "Bảng",
+      "thoi_gian_gui": "14:30",
+      "noi_dung_kem_theo": "doanh số xưởn g",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Bảng lương tháng T9 tạm tính.xlsx",
+      "nhom_phan_loai": "QUAN_TRI_NOI_BO",
+      "cuoc_hoi_thoai": "2026 Bảng lương hàng tháng - Phú Gia Home Lux",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "Phú Gia Hiệp G",
+      "thoi_gian_gui": "09:48",
+      "noi_dung_kem_theo": "Chốt lương nhé. Sắp xếp ck cho ae",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Chị Phượng làm lại cuôi.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "Bản cập nhật giá trị cuối cùng của ct để làm lương",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "Chị",
+      "thoi_gian_gui": "15:35",
+      "noi_dung_kem_theo": "Phượng làm lại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "BẢNG THỐNG KÊ VẬT TƯ MỚI + CŨ.xlsx",
+      "nhom_phan_loai": "QUAN_TRI_NOI_BO",
+      "cuoc_hoi_thoai": "2026 VẬT TƯ XƯỞNG - DỰ KIẾN NHẬP HÀNG",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "BẢNG",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "THỐNG KÊ VẬT TƯ MỚI + File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "2143 MB NHA A THACH.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "2025. Duyệt báo giá PG Home",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "2143",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "MB NHA A T File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Nhà anh Thạch Đức Thọ.xlsx",
+      "nhom_phan_loai": "BANG_TINH_EXCEL",
+      "cuoc_hoi_thoai": "2025. Duyệt báo giá PG Home",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "Hùng GĐ",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "Nhà anh Thạch Đức File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "KC NHA B HUNG A GIAP.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "2025. Duyệt báo giá PG Home",
+      "nhom_chuc_nang": "INTERNAL",
+      "nguoi_gui": "Hương",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "KC NHA B HUNG A File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Anh Toản 2010.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "2026 TK và TC nhà Anh Toản - Đức Minh",
+      "nhom_chuc_nang": "PROJECT",
+      "nguoi_gui": "Dũng PG Home",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "Anh Toản",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "PHAN KIEN TRUC- LAM NOI THAT ANH HA -TPO.dwg",
+      "nhom_phan_loai": "BAN_VE_CAD_KY_THUAT",
+      "cuoc_hoi_thoai": "2026 - Nhà bạn Hà K36 Hương Khê",
+      "nhom_chuc_nang": "PROJECT",
+      "nguoi_gui": "Lê Thảo",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "DWG PHAN KIEN TRUC- LAM NOI THAT ANH HA File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "KC NHA B HUNG A GIAP.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "2026 Nhà a Giáp Hương Khê",
+      "nhom_chuc_nang": "PROJECT",
+      "nguoi_gui": "Hương",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "KC NHA B HUNG A File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Anh Giáp Hương Khê.xlsx",
+      "nhom_phan_loai": "BANG_TINH_EXCEL",
+      "cuoc_hoi_thoai": "2026 Nhà a Giáp Hương Khê",
+      "nhom_chuc_nang": "PROJECT",
+      "nguoi_gui": "Anh",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "Giáp Hương File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Anh Can - Kỳ thư.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "Báo giá thi công nhà anh Can",
+      "nhom_chuc_nang": "PROJECT",
+      "nguoi_gui": "Dũng PG Home",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "Anh Can - Kỳ File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Dự toán khối lượng tủ bếp nhà a Dũng - Hương Khê .pdf",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "2026 Tủ bếp a Dũng - Hương Khê",
+      "nhom_chuc_nang": "PROJECT",
+      "nguoi_gui": "Hương",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "Vậy trước mắt cứ chốt theo khối lượng này anh nhé",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Chốt Kl, mã màu em Hùng_Plywood 6C_08.01.pdf",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "thi công quyết toán_hùng NX",
+      "nhom_chuc_nang": "PROJECT",
+      "nguoi_gui": "Hùng GĐ",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "Chốt Kl, mã màu em Hùng_Plywood 6C_0 File không tồn tại",
+      "nguon_batch": "batch1_internal_and_projects"
+    },
+    {
+      "ten_tep": "Khối lượng Anh Công.xlsx",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "Hùng GĐ",
+      "nhom_chuc_nang": "STAFF",
+      "nguoi_gui": "Khối",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "lượng Anh C",
+      "nguon_batch": "batch2_private_staff"
+    },
+    {
+      "ten_tep": "ME.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "Bình Pg Home Thạch Hà",
+      "nhom_chuc_nang": "STAFF",
+      "nguoi_gui": "Thành viên nhóm",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "File không tồn tại",
+      "nguon_batch": "batch2_private_staff"
+    },
+    {
+      "ten_tep": "1. KIẾN TRÚC.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "Bình Pg Home Thạch Hà",
+      "nhom_chuc_nang": "STAFF",
+      "nguoi_gui": "1.",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "KIẾN File không tồn tại",
+      "nguon_batch": "batch2_private_staff"
+    },
+    {
+      "ten_tep": "DN A DUNG HA TINH.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "DN",
+      "thoi_gian_gui": "14:29",
+      "noi_dung_kem_theo": "A DUNG HA File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "2143 MB NHA A THACH.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "2143",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "MB NHA A T File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "Nhà anh Văn Mai Phụ.xlsx",
+      "nhom_phan_loai": "BANG_TINH_EXCEL",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "Nhà",
+      "thoi_gian_gui": "16:38",
+      "noi_dung_kem_theo": "anh Văn Mai File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "Dự toán nội thất - Nhà anh Hải Toàn Lưu.xlsx",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "Dự",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "toán nội thất - Nhà anh Hải Toàn File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "Dự toán nội thất - Nhà anh Hải Toàn Lưu.pdf",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "Dự",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "toán nội thất - Nhà anh Hải Toàn File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "Nhà anh Văn Mai Phụ.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "Nhà",
+      "thoi_gian_gui": "13:09",
+      "noi_dung_kem_theo": "anh Văn Mai File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "Nhà anh Dũng Tỉnh đội.xlsx",
+      "nhom_phan_loai": "BANG_TINH_EXCEL",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "Nhà",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "anh Dũng Tỉnh File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "Nhà anh Dũng Tỉnh đội.pdf",
+      "nhom_phan_loai": "TAI_LIEU_PDF",
+      "cuoc_hoi_thoai": "List khách hàng Hương",
+      "nhom_chuc_nang": "HUONG_FAMILY",
+      "nguoi_gui": "Nhà",
+      "thoi_gian_gui": "13:26",
+      "noi_dung_kem_theo": "anh Dũng Tỉnh File không tồn tại",
+      "nguon_batch": "batch3_family_huong"
+    },
+    {
+      "ten_tep": "BẢNG THỐNG KÊ VẬT TƯ MỚI + CŨ.xlsx",
+      "nhom_phan_loai": "QUAN_TRI_NOI_BO",
+      "cuoc_hoi_thoai": "Đại Lý Phụ Kiện",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "BẢNG",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "THỐNG KÊ VẬT TƯ MỚI +",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "BẢNG GIÁ CHI TIẾT CỬA DEWOO_2026.pdf",
+      "nhom_phan_loai": "CATALOG_BANG_GIA_NCC",
+      "cuoc_hoi_thoai": "Tư vấn cửa Composite Phú Gia - Hà Tĩnh",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "BẢNG",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "GIÁ CHI TIẾT CỬA DEWOO_ File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "GON Lighting Catalog_2026_V1.pdf",
+      "nhom_phan_loai": "CATALOG_BANG_GIA_NCC",
+      "cuoc_hoi_thoai": "Hoàng Việt - Đèn Led Gon Lighting",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "GON",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "Lighting Catalog_202 File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "CATALOG 0889820020 TÚ ANH - T4.2026.pdf",
+      "nhom_phan_loai": "CATALOG_BANG_GIA_NCC",
+      "cuoc_hoi_thoai": "Mr Tú Bàn Ghế",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "CATALOG",
+      "thoi_gian_gui": "11:10",
+      "noi_dung_kem_theo": "0889820020 TÚ ANH - T4. File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "BẢNG GIÁ CẬP NHẬT T7.26.xlsx",
+      "nhom_phan_loai": "CATALOG_BANG_GIA_NCC",
+      "cuoc_hoi_thoai": "Trung Plywood Đại Lâm Mộc",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "BẢNG",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "GIÁ CẬP NHẬT T7 File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "CATALOG 0815380033 TÚ ANH T4.2026.pdf",
+      "nhom_phan_loai": "CATALOG_BANG_GIA_NCC",
+      "cuoc_hoi_thoai": "Mr Sơn Bàn Ghế",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "CATALOG",
+      "thoi_gian_gui": "09:31",
+      "noi_dung_kem_theo": "0815380033 TÚ ANH T4. File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "Bản sao Bản sao Bản giá trungkien.xlsx",
+      "nhom_phan_loai": "BANG_TINH_EXCEL",
+      "cuoc_hoi_thoai": "Tuệ Nhàn Cánh Kính",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "Bản",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "sao giá trungk File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "BẢNG BÁO GIÁ ACRYLIC NĂM 2026 (1).pdf",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "Đặt cánh Lic Hoàng Mai",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "Thao Cánh Lic",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "BẢNG BÁO GIÁ ACRYLIC NĂM 2026 File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "Báo giá tấm nhôm xuyên sáng_010325.2.pdf",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "Tổng Kho Led Nhôm Hà Nội",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "Báo",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "giá tấm nhôm xuyên sáng_0103 File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "Catalouge _ Tấm nhôm xuyên sáng.pdf",
+      "nhom_phan_loai": "CATALOG_BANG_GIA_NCC",
+      "cuoc_hoi_thoai": "Tổng Kho Led Nhôm Hà Nội",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "Catalouge",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "_ Tấm nhôm xuyên File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "CATALOGE 2026_NHÔM XUYÊN SÁNG.pdf",
+      "nhom_phan_loai": "CATALOG_BANG_GIA_NCC",
+      "cuoc_hoi_thoai": "Tổng Kho Led Nhôm Hà Nội",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "CATALOGE",
+      "thoi_gian_gui": "Trong luồng tin nhắn",
+      "noi_dung_kem_theo": "2026_NHÔM XUYÊN File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    },
+    {
+      "ten_tep": "Bùi Lý EVEREST- BG KTS,NT - LED THANH NHÔM MỚI NĂM 2026.pdf",
+      "nhom_phan_loai": "BAO_GIA_DU_TOAN",
+      "cuoc_hoi_thoai": "Bùi Lý Đèn Led Everest",
+      "nhom_chuc_nang": "SUPPLIER",
+      "nguoi_gui": "Bùi",
+      "thoi_gian_gui": "07:26",
+      "noi_dung_kem_theo": "Lý EVEREST- BG KTS,NT - LED THANH NHÔM MỚI NĂM File không tồn tại",
+      "nguon_batch": "batch4_suppliers_ncc"
+    }
+  ],
+  "supplier_debt_audit": {
+    "tong_so_ncc_doi_soat": 39,
+    "tong_cong_no_ncc_can_chu_y": {
+      "go_thit_duc_anh": 3200000,
+      "duc_linh_son_pu": 2000000
+    },
+    "danh_sach_ncc": [
+      {
+        "ncc_id": "NCC_01",
+        "ten_nha_cung_cap": "Gỗ thịt Đức Anh (Thu Hương Hà Tĩnh - Nga)",
+        "chuyen_nganh": "Phôi gỗ tự nhiên & gỗ sồi",
+        "tinh_trang_cong_no": "CÒN NỢ 3.200.000 đ",
+        "so_tien_no_con_lai": 3200000,
+        "lich_su_thanh_toan": "Đã CK thanh toán 10.000.000 đ trong ngày (Nga đã xác nhận trừ vào sổ công nợ)",
+        "hoi_thoai_zalo": "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh",
+        "trang_thai_doi_soat": "ĐỐI SOÁT CHÍNH XÁC 100%"
+      },
+      {
+        "ncc_id": "NCC_02",
+        "ten_nha_cung_cap": "Đức Lĩnh SƠN PU",
+        "chuyen_nganh": "Gia công sơn PU & sơn hoàn thiện vách CNC",
+        "tinh_trang_cong_no": "CÔNG NỢ ĐANG ĐỐI SOÁT (2.000.000 đ bộ CNC 4m + tiền vách)",
+        "so_tien_no_con_lai": 2000000,
+        "lich_su_thanh_toan": "Đức Lĩnh nhắn nhắc chuyển khoản tiền vách và bộ CNC 4m",
+        "hoi_thoai_zalo": "Đức Lĩnh SƠN PU",
+        "trang_thai_doi_soat": "CHỜ GIÁM ĐỐC DUYỆT CHI"
+      },
+      {
+        "ncc_id": "NCC_03",
+        "ten_nha_cung_cap": "Chiến Acrylic Livas",
+        "chuyen_nganh": "Gia công cánh kính & cánh Acrylic Noline cao cấp",
+        "tinh_trang_cong_no": "ĐÃ TẤT TOÁN 100%",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Kế toán PG Home đã chuyển khoản tất toán sau khi hàng gửi xe vào Hà Tĩnh",
+        "hoi_thoai_zalo": "ĐẶT CÁNH LIC LIVAS - NỘI THẤT PHÚ GIA HÀ TĨNH",
+        "trang_thai_doi_soat": "ĐÃ HOÀN TẤT"
+      },
+      {
+        "ncc_id": "NCC_04",
+        "ten_nha_cung_cap": "PK Phúc Sơn - Phú Gia Home",
+        "chuyen_nganh": "Phụ kiện điện nước & phụ kiện tủ bếp",
+        "tinh_trang_cong_no": "KHÔNG PHÁT SINH NỢ (ĐÃ HỦY ĐƠN ĐỔI HÃNG)",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Đơn hàng Kadinax tạm hủy do khách chọn đổi sang hãng khác",
+        "hoi_thoai_zalo": "PK Phúc Sơn - Phú Gia Home",
+        "trang_thai_doi_soat": "KHÔNG CÔNG NỢ"
+      },
+      {
+        "ncc_id": "NCC_05",
+        "ten_nha_cung_cap": "Plywood DLM - Đại Lâm Mộc (Tâm & Thanh Huyền)",
+        "chuyen_nganh": "Ván ép Plywood phủ Melamine",
+        "tinh_trang_cong_no": "THEO ĐƠN THỰC TẾ (Cước mẫu 50.000 đ)",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Nhận mẫu màu 8803 tại 53 Trường Quốc Dụng; chào giá đơn hàng > 50 triệu",
+        "hoi_thoai_zalo": "Plywood DLM - SX Nội thất Phú Gia Home",
+        "trang_thai_doi_soat": "THEO HỢP ĐỒNG ĐƠN TỔNG"
+      },
+      {
+        "ncc_id": "NCC_06",
+        "ten_nha_cung_cap": "Vũ Cường - Gương Bỉ Dantalux",
+        "chuyen_nganh": "Gương decor viền nhôm, gương đèn LED nghệ thuật",
+        "tinh_trang_cong_no": "THEO BÁO GIÁ ĐƠN (1.100.000 đ/tấm 600x1600)",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Chào báo giá mẫu gương viền nhôm Bỉ 600x1600",
+        "hoi_thoai_zalo": "Vũ Cường - Gương Bỉ Dantalux / Đặt Gương - PG Home",
+        "trang_thai_doi_soat": "CHỜ ĐẶT HÀNG THỰC TẾ"
+      },
+      {
+        "ncc_id": "NCC_07",
+        "ten_nha_cung_cap": "Sơn CNC - Cty Phú Gia",
+        "chuyen_nganh": "Xưởng gia công sơn CNC nội bộ",
+        "tinh_trang_cong_no": "THEO BILL TỪNG ĐƠN HÀNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Yêu cầu thanh toán gửi ủy nhiệm chi/bill trực tiếp lên nhóm Zalo",
+        "hoi_thoai_zalo": "SƠN CNC - CTY PHU GIA",
+        "trang_thai_doi_soat": "QUẢN TRỊ NỘI BỘ"
+      },
+      {
+        "ncc_id": "NCC_08",
+        "ten_nha_cung_cap": "Phụ Kiện Tủ Bếp Aroki (Thanh Huyền & Quyên)",
+        "chuyen_nganh": "Giá bát nâng hạ, xoong nồi bát đĩa Inox 304, thiết bị bếp",
+        "tinh_trang_cong_no": "THANH TOÁN THEO TỪNG CHUYẾN",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Chính sách ưu đãi tuần lễ vàng giảm 200k-300k, đơn > 23M tặng hút mùi",
+        "hoi_thoai_zalo": "Thanh Huyền Pk Tủ Bếp Aroki / Nguyễn Quyên Aroki",
+        "trang_thai_doi_soat": "ĐỐI TÁC THƯỜNG XUYÊN"
+      },
+      {
+        "ncc_id": "NCC_09",
+        "ten_nha_cung_cap": "Bùi Lý Đèn Led Everest",
+        "chuyen_nganh": "Đèn Led COB 24V 320 mắt/m, Led thanh nhôm định hình",
+        "tinh_trang_cong_no": "THEO BÁO GIÁ ĐƠN HÀNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Gửi bảng giá KTS, NT Led thanh nhôm mới 2026",
+        "hoi_thoai_zalo": "Bùi Lý Đèn Led Everest",
+        "trang_thai_doi_soat": "CHỜ ĐẶT ĐƠN"
+      },
+      {
+        "ncc_id": "NCC_10",
+        "ten_nha_cung_cap": "Cửa Composite Dewoo (Tư vấn cửa Composite)",
+        "chuyen_nganh": "Cửa nhựa Composite kháng nước",
+        "tinh_trang_cong_no": "THEO HỢP ĐỒNG CÔNG TRÌNH",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Gửi bảng giá chi tiết cửa Dewoo 2026",
+        "hoi_thoai_zalo": "Tư vấn cửa Composite Phú Gia - Hà Tĩnh",
+        "trang_thai_doi_soat": "CHỜ BÓC TÁCH CÔNG TRÌNH"
+      },
+      {
+        "ncc_id": "NCC_11",
+        "ten_nha_cung_cap": "Anh Cường Gỗ Thịt Hà Nội",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Anh Cường Gỗ Thịt Hà Nội",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_12",
+        "ten_nha_cung_cap": "Bàn Ghế Ăn Nk An Phong",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Bàn Ghế Ăn Nk An Phong",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_13",
+        "ten_nha_cung_cap": "Cty Sao Việt Hà Nam",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Cty Sao Việt Hà Nam",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_14",
+        "ten_nha_cung_cap": "Công Duyên Phụ Kiện",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Công Duyên Phụ Kiện",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_15",
+        "ten_nha_cung_cap": "Dung Cánh Kính Bình An",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Dung Cánh Kính Bình An",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_16",
+        "ten_nha_cung_cap": "Gỗ NT cầu vượt",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Gỗ NT cầu vượt",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_17",
+        "ten_nha_cung_cap": "Hoàng Việt - Đèn Led Gon Lighting",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Hoàng Việt - Đèn Led Gon Lighting",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_18",
+        "ten_nha_cung_cap": "Huyền Hc Plywood",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Huyền Hc Plywood",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_19",
+        "ten_nha_cung_cap": "Kho Led Nhôm Định Hình",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Kho Led Nhôm Định Hình",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_20",
+        "ten_nha_cung_cap": "Long Hưng Plywood",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Long Hưng Plywood",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_21",
+        "ten_nha_cung_cap": "Lê Mai Phương ốp đá nung kết",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Lê Mai Phương ốp đá nung kết",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_22",
+        "ten_nha_cung_cap": "Mr Sơn Bàn Ghế",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Mr Sơn Bàn Ghế",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_23",
+        "ten_nha_cung_cap": "Mr Tú Bàn Ghế",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Mr Tú Bàn Ghế",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_24",
+        "ten_nha_cung_cap": "Ngân Khánh Pvc - Sao Việt",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Ngân Khánh Pvc - Sao Việt",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_25",
+        "ten_nha_cung_cap": "Phú Cánh Kính Bình An",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Phú Cánh Kính Bình An",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_26",
+        "ten_nha_cung_cap": "Phương Anh Đèn Led Thanh Ray Dlvlighting",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Phương Anh Đèn Led Thanh Ray Dlvlighting",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_27",
+        "ten_nha_cung_cap": "Setup Thiết Bị Bếp Tiến Thành",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Setup Thiết Bị Bếp Tiến Thành",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_28",
+        "ten_nha_cung_cap": "Thanh Huyền Plywood Đại Lâm Mộc",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Thanh Huyền Plywood Đại Lâm Mộc",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_29",
+        "ten_nha_cung_cap": "Trung Plywood Đại Lâm Mộc",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Trung Plywood Đại Lâm Mộc",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_30",
+        "ten_nha_cung_cap": "Tuệ Nhàn Cánh Kính",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Tuệ Nhàn Cánh Kính",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_31",
+        "ten_nha_cung_cap": "Tâm Quốc",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Tâm Quốc",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_32",
+        "ten_nha_cung_cap": "Tổng Kho Led Nhôm Hà Nội",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Tổng Kho Led Nhôm Hà Nội",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_33",
+        "ten_nha_cung_cap": "Vợ Sồi Đức Anh",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Vợ Sồi Đức Anh",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_34",
+        "ten_nha_cung_cap": "nguyen thuy Ái Linh An Cường",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "nguyen thuy Ái Linh An Cường",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_35",
+        "ten_nha_cung_cap": "Điện Nước Phúc Sơn",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Điện Nước Phúc Sơn",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_36",
+        "ten_nha_cung_cap": "ĐẠI LÂM MỘC - Melamin plywood",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "ĐẠI LÂM MỘC - Melamin plywood",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_37",
+        "ten_nha_cung_cap": "Đại Lý Phụ Kiện",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Đại Lý Phụ Kiện",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_38",
+        "ten_nha_cung_cap": "Đặt cánh Lic Hoàng Mai",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Đặt cánh Lic Hoàng Mai",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      },
+      {
+        "ncc_id": "NCC_39",
+        "ten_nha_cung_cap": "Đức Acrylic- Cánh Huỳnh Ald",
+        "chuyen_nganh": "Vật tư & Phụ kiện nội thất",
+        "tinh_trang_cong_no": "KHÔNG GHI NHẬN CÔNG NỢ TỒN ĐỌNG",
+        "so_tien_no_con_lai": 0,
+        "lich_su_thanh_toan": "Giao dịch / Chào giá catalog trong luồng hội thoại Zalo",
+        "hoi_thoai_zalo": "Đức Acrylic- Cánh Huỳnh Ald",
+        "trang_thai_doi_soat": "THEO DÕI ĐỊNH KỲ"
+      }
+    ]
+  },
+  "client_receivables_audit": {
+    "tong_so_du_an": 8,
+    "du_an_trong_diem_bac_phat_26_03": {
+      "khach_hang": "Bác Phát",
+      "dia_chi": "Đường 26/03, TP Hà Tĩnh",
+      "tong_hop_dong": 220000000,
+      "da_thu_50_phan_tram": 110000000,
+      "con_phai_thu_50_phan_tram": 110000000,
+      "trang_thai": "Chuẩn bị thu tất toán khi bàn giao"
+    },
+    "danh_sach_cong_trinh": [
+      {
+        "du_an_id": "DA_01",
+        "ten_khach_hang": "Bác Phát - Công Trình Biệt Thự / Nhà Phố Đường 26/03",
+        "dia_chi": "Đường 26/03, TP Hà Tĩnh",
+        "tong_gia_tri_hop_dong": 220000000,
+        "ty_le_tam_ung": "50%",
+        "so_tien_da_thu": 110000000,
+        "so_tien_con_phai_thu": 110000000,
+        "dieu_khoan_thanh_toan": "Tạm ứng đợt 1 là 50% (110.000.000 đ) khi ký HĐ & nhập vật tư; Thu 50% còn lại (110.000.000 đ) khi hoàn thiện nghiệm thu bàn giao",
+        "trang_thai_du_an": "Đang triển khai thi công - Chờ nghiệm thu bàn giao tất toán",
+        "ghi_chu_kiem_soat": "Cưỡng chế bảo vệ dòng tiền theo quy chuẩn Giám Đốc: Đảm bảo thu đủ 110M còn lại trước khi bàn giao hồ sơ bảo hành"
+      },
+      {
+        "du_an_id": "DA_02",
+        "ten_khach_hang": "Anh Dũng - Công Trình Tủ Bếp Hương Khê",
+        "dia_chi": "Huyện Hương Khê, Hà Tĩnh",
+        "tong_gia_tri_hop_dong": "Theo khối lượng thực tế (Dự toán khối lượng tủ bếp.pdf)",
+        "ty_le_tam_ung": "50%",
+        "so_tien_da_thu": "Đã đề xuất tạm ứng 50% qua STK Vietinbank Lưu Thị Kim Dung",
+        "so_tien_con_phai_thu": "50% còn lại thanh toán sau khi bàn giao nghiệm thu",
+        "dieu_khoan_thanh_toan": "Tạm ứng trước 50% để đặt vật tư và cho SX, lắp đặt. Số còn lại sau khi bàn giao tất toán",
+        "trang_thai_du_an": "Đã chốt thiết kế & bản dự toán tủ bếp",
+        "tep_lien_quan": "Dự toán khối lượng tủ bếp nhà a Dũng - Hương Khê .pdf"
+      },
+      {
+        "du_an_id": "DA_03",
+        "ten_khach_hang": "Anh Toản - Công Trình Đức Minh",
+        "dia_chi": "Xã Đức Minh, Hà Tĩnh",
+        "tong_gia_tri_hop_dong": "Theo báo giá thực tế sau khi đo đạc",
+        "ty_le_tam_ung": "Theo tiến độ",
+        "so_tien_da_thu": "Theo hợp đồng",
+        "so_tien_con_phai_thu": "Gồm các hạng mục phát sinh (tô vàng) đã đối soát lại với chủ nhà",
+        "dieu_khoan_thanh_toan": "Thanh toán theo nghiệm thu thực tế khối lượng phát sinh",
+        "trang_thai_du_an": "Đã chốt bảng màu sản xuất (Thái PG Home note sản xuất)",
+        "tep_lien_quan": "Anh Toản 2010.pdf"
+      },
+      {
+        "du_an_id": "DA_04",
+        "ten_khach_hang": "Anh Can - Công Trình Kỳ Thư",
+        "dia_chi": "Kỳ Thư, Kỳ Anh, Hà Tĩnh",
+        "tong_gia_tri_hop_dong": "Đã gửi báo giá Khách + Bếp",
+        "ty_le_tam_ung": "Đang tư vấn chốt vật liệu",
+        "so_tien_da_thu": 0,
+        "so_tien_con_phai_thu": "Chờ ký HĐ chính thức",
+        "dieu_khoan_thanh_toan": "Tư vấn so sánh MDF An Cường vs Plywood A1 (chênh lệch 25-40%)",
+        "trang_thai_du_an": "Giai đoạn báo giá và chốt giải pháp xử lý chống mối",
+        "tep_lien_quan": "Anh Can - Kỳ thư.pdf"
+      },
+      {
+        "du_an_id": "DA_05",
+        "ten_khach_hang": "Anh Thạch - CA Đức Thọ",
+        "dia_chi": "Đức Thọ, Hà Tĩnh",
+        "tong_gia_tri_hop_dong": "Theo file dự toán phê duyệt",
+        "ty_le_tam_ung": "Theo hợp đồng",
+        "so_tien_da_thu": "Theo giai đoạn",
+        "so_tien_con_phai_thu": "Theo tiến độ bàn giao",
+        "dieu_khoan_thanh_toan": "Giám Đốc Hùng duyệt báo giá",
+        "trang_thai_du_an": "Đã hoàn thành duyệt báo giá thiết kế & thi công",
+        "tep_lien_quan": "Nhà anh Thạch Đức Thọ.xlsx, 2143 MB NHA A THACH.pdf"
+      },
+      {
+        "du_an_id": "DA_06",
+        "ten_khach_hang": "Anh Giáp / Bác Giáp - Hương Khê & Kỳ Anh",
+        "dia_chi": "Hương Khê / Kỳ Anh, Hà Tĩnh",
+        "tong_gia_tri_hop_dong": "Theo bảng tính kết cấu & dự toán full nhà",
+        "ty_le_tam_ung": "Theo giai đoạn",
+        "so_tien_da_thu": "Theo hợp đồng",
+        "so_tien_con_phai_thu": "Theo tiến độ bàn giao",
+        "dieu_khoan_thanh_toan": "Chị Hương chỉ đạo: Khu vực có mối nên tủ bếp làm nhựa đặc hoàn toàn",
+        "trang_thai_du_an": "Đang lên khối lượng full nhà",
+        "tep_lien_quan": "KC NHA B HUNG A GIAP.pdf, Anh Giáp Hương Khê.xlsx"
+      },
+      {
+        "du_an_id": "DA_07",
+        "ten_khach_hang": "Em Hùng - Quyết Toán NX",
+        "dia_chi": "Hà Tĩnh",
+        "tong_gia_tri_hop_dong": "Theo bảng chốt khối lượng mã màu Plywood 6C",
+        "ty_le_tam_ung": "Đã tạm ứng theo đợt",
+        "so_tien_da_thu": "Theo đợt",
+        "so_tien_con_phai_thu": "Quyết toán sau khi lắp đặt hoàn thiện",
+        "dieu_khoan_thanh_toan": "Quyết toán hoàn thiện công trình",
+        "trang_thai_du_an": "Đã chốt KL và mã màu thi công",
+        "tep_lien_quan": "Chốt Kl, mã màu em Hùng_Plywood 6C_08.01.pdf"
+      },
+      {
+        "du_an_id": "DA_08",
+        "ten_khach_hang": "Các Khách Hàng Khác Trong Danh Mục Quản Trị Của Chị Hương",
+        "dia_chi": "Hà Tĩnh",
+        "tong_gia_tri_hop_dong": "Tổng hợp nhiều công trình",
+        "ty_le_tam_ung": "Theo từng HĐ",
+        "so_tien_da_thu": "Theo từng HĐ",
+        "so_tien_con_phai_thu": "Theo dõi qua file Excel / PDF",
+        "dieu_khoan_thanh_toan": "Theo quy chế tài chính PG Home",
+        "trang_thai_du_an": "Đang bám sát thu tiền công nợ",
+        "tep_lien_quan": "Nhà anh Văn Mai Phụ.xlsx, Dự toán nội thất - Nhà anh Hải Toàn Lưu.xlsx, Nhà anh Dũng Tỉnh đội.xlsx"
+      }
+    ]
+  }
+}

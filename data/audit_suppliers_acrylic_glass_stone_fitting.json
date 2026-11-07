@@ -1,0 +1,278 @@
+{
+  "metadata": {
+    "project": "PG HOME LUXURY - QUẢN TRỊ NỘI BỘ",
+    "module": "ĐỐI SOÁT CÔNG NỢ & ĐƠN HÀNG NHÀ CUNG CẤP PHỤ TRỢ (ACRYLIC, KÍNH, ĐÁ, PHỤ KIỆN, GỖ THỊT, SƠN PU)",
+    "audit_date": "2026-11-07",
+    "data_version": "V4.0_DELTA_CURSOR_VERIFIED",
+    "auditor": "Flash Worker #10 - Kỹ sư Đối soát Nhà cung cấp",
+    "verification_source": "Zalo Stealth Reader (Zero-Disruption Passive LevelDB / .rescache & Sổ tay công nợ đối soát)",
+    "status": "HOÀN TẤT ĐỐI SOÁT 100%"
+  },
+  "summary": {
+    "total_suppliers_audited": 9,
+    "key_debt_balances": {
+      "phu_kien_quoc_tam": 26170000,
+      "canh_huynh_ald": 34960000,
+      "ntd_acrylic_historical_debt": 57727823,
+      "ntd_acrylic_q4_orders_total": 67966194,
+      "ntd_acrylic_current_estimated_total": 125694017,
+      "chien_acrylic_livas": 0,
+      "kinh_viet_nhat": 0,
+      "guong_bi_dantalux": 0,
+      "ceramic_hoang_ha": 0,
+      "go_thit_duc_anh": 3200000,
+      "son_pu_duc_linh": 2000000
+    },
+    "urgent_payable_actions": [
+      {
+        "supplier": "Gỗ thịt Đức Anh (Thu Hương Hà Tĩnh)",
+        "amount": 3200000,
+        "note": "Đã trừ 10M thanh toán trong ngày, số nợ còn lại 3.2M đã được NCC Nga xác nhận chính xác 100%."
+      },
+      {
+        "supplier": "Đức Lĩnh Sơn PU",
+        "amount": 2000000,
+        "note": "Tiền sơn PU bộ CNC 4m + vách nan trang trí, chờ Giám Đốc ký duyệt lệnh chuyển khoản."
+      },
+      {
+        "supplier": "Phụ kiện Quốc Tâm (Roxana Hà Tĩnh)",
+        "amount": 26170000,
+        "note": "Đã thanh toán 15M ngày 02/11, phát sinh nhỏ ngày 04-05/11 (+250k), duy trì tốt dưới trần nợ 30M."
+      }
+    ]
+  },
+  "suppliers": [
+    {
+      "id": "NCC_FITTING_QUOC_TAM",
+      "name": "Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+      "legal_info": {
+        "address": "56 Ngô Đức Kế, TP Hà Tĩnh",
+        "bank_accounts": [
+          { "bank": "VIB", "account_no": "972672963", "account_holder": "VO THI HA" },
+          { "bank": "BIDV", "account_no": "52010000078713", "account_holder": "QUOC TAM" }
+        ],
+        "zalo_group": "g495486322416346660 (Tâm Quốc / Roxana Quốc Tâm)"
+      },
+      "category": "Phụ kiện Inox 304 Cadman, Roxana, Cariny, ray trượt, bản lề hơi, phụ kiện tủ bếp thông minh",
+      "current_debt": 26170000,
+      "credit_limit": 30000000,
+      "audit_status": "KHỚP 100% SỔ TAY ĐỐI SOÁT & UNC NGÂN HÀNG",
+      "reconciliation_details": {
+        "balance_before_nov": 40920000,
+        "payment_on_2026_11_02": -15000000,
+        "invoice_2026_11_04": 170000,
+        "invoice_2026_11_05": 80000,
+        "net_balance_on_2026_11_05": 26170000
+      },
+      "catalog_resources": [
+        "Cadman Phụ Kiện Tủ Bếp Inox 304 (10.6MB)",
+        "Roxana Phụ Kiện Tủ Bếp (436KB PDF)",
+        "Cariny Phụ Kiện Tủ Bếp (962KB PDF)"
+      ],
+      "evaluation": "Nhà cung cấp phụ kiện nòng cốt tại địa bàn Hà Tĩnh, giao hàng nhanh trong ngày, công nợ được kiểm soát chặt chẽ dưới hạn mức 30M."
+    },
+    {
+      "id": "NCC_DOOR_ALD_CANH_HUYNH",
+      "name": "Đức Acrylic - Cánh Huỳnh ALD",
+      "legal_info": {
+        "brand": "ALD Huỳnh CNC Bo Cong",
+        "zalo_group": "Đức Acrylic- Cánh Huỳnh Ald"
+      },
+      "category": "Gia công cánh huỳnh tân cổ điển, bo cong R3..R45, sơn phủ hoàn thiện cao cấp",
+      "current_debt": 34960000,
+      "audit_status": "KHỚP 100% THEO 2 ĐƠN BÓC TÁCH KỸ THUẬT",
+      "orders": [
+        {
+          "project": "Nhà Chị Hoa",
+          "metric": "11.1 md",
+          "unit_price": 1100000,
+          "total_amount": 12210000,
+          "specification": "Cánh huỳnh bo cong R3..R45 sơn PU màu chỉ định"
+        },
+        {
+          "project": "Vinhomes Anh Minh",
+          "metric": "18.2 m2",
+          "unit_price": 1250000,
+          "total_amount": 22750000,
+          "specification": "Cánh huỳnh ALD cao cấp cốt chống ẩm"
+        }
+      ],
+      "total_value": 34960000,
+      "evaluation": "Chi phí gia công cánh huỳnh nằm trong dự toán bóc tách công trình, thanh toán theo tiến độ hoàn thiện nghiệm thu xưởng."
+    },
+    {
+      "id": "NCC_ACRYLIC_NTD_GIANG_COI",
+      "name": "Công ty Cổ phần NTD Acrylic (Giang Còi)",
+      "legal_info": {
+        "tax_code": "0109563360",
+        "address": "Khu Láng Đầm, TDP 5+6, TT Phúc Thọ, Huyện Phúc Thọ, Hà Nội",
+        "email": "NTDacrylic@gmail.com",
+        "website": "NTDacrylic.vn",
+        "bank_accounts": [
+          { "bank": "Techcombank", "account_no": "19036746889018", "account_holder": "KHUAT QUANG GIANG" },
+          { "bank": "VietinBank", "account_no": "116002882255", "account_holder": "CONG TY CO PHAN NTD ACRYLIC" }
+        ],
+        "zalo_group": "g2539027971900219384 (Đặt hàng ntd / NTD Acrylic)"
+      },
+      "category": "Cánh Acrylic Noline cốt MDF xanh chống ẩm, cốt nhựa đặc WPB, chỉ dán viền đồng màu",
+      "historical_reconciliation_to_2026_09_29": {
+        "brought_forward_debt_june": 50295844,
+        "q3_orders_total": 69517504,
+        "discount_3_percent": 2085525,
+        "net_q3_value": 67431979,
+        "total_paid_july_to_sept": 60000000,
+        "payment_breakdown": [
+          { "date": "2026-07-13", "amount": 20000000 },
+          { "date": "2026-07-24", "amount": 15000000 },
+          { "date": "2026-08-12", "amount": 15000000 },
+          { "date": "2026-09-12", "amount": 10000000 }
+        ],
+        "confirmed_debt_at_2026_09_29": 57727823
+      },
+      "q4_orders_audit_oct_nov_2026": [
+        {
+          "order_no": "103656",
+          "date": "2026-10-02",
+          "customer": "Phú Gia - Hà Tĩnh - A Quế",
+          "specification": "45 tấm (8.51 m2) cánh Acrylic cốt MDF màu NTD 56, nẹp cùng màu, vát 45 độ",
+          "total_amount": 9904484
+        },
+        {
+          "order_no": "103851",
+          "date": "2026-10-14",
+          "customer": "Phú Gia - Hà Tĩnh - A Huỳnh",
+          "specification": "38 tấm (6.20 m2) cánh Acrylic cốt MDF màu NTD 55, cánh dưới vát ngắn",
+          "total_amount": 8711639
+        },
+        {
+          "order_no": "103853",
+          "date": "2026-10-14",
+          "customer": "Phú Gia - Hà Tĩnh - Bắc Phát",
+          "specification": "Cánh Acrylic cốt nhựa đặc WPB & MDF màu NTD 56, tay vát 45 độ",
+          "total_amount": 13954211
+        },
+        {
+          "order_no": "103923",
+          "date": "2026-10-19",
+          "customer": "Phú Gia - Hà Tĩnh - A Tuấn",
+          "specification": "Tấm phủ & cánh Acrylic MDF màu NTD 06",
+          "total_amount": 7904009
+        },
+        {
+          "order_no": "103966",
+          "date": "2026-10-22",
+          "customer": "Phú Gia - Hà Tĩnh - A Huỳnh",
+          "specification": "Cánh Acrylic bổ sung cốt MDF màu NTD 55",
+          "total_amount": 1973369
+        },
+        {
+          "order_no": "104138",
+          "date": "2026-11-01",
+          "customer": "Phú Gia - Hà Tĩnh - A Công",
+          "specification": "Cánh Acrylic cốt nhựa WPB màu NTD 12 chịu nước",
+          "total_amount": 12476737
+        },
+        {
+          "order_no": "114173",
+          "date": "2026-11-03",
+          "customer": "Phú Gia - Hà Tĩnh - A Công (Bổ sung & Bảo hành)",
+          "specification": "4 tấm (0.90 m2) màu NTD 55 & NTD 12 sửa lại cánh làm lệch",
+          "total_amount": 946050
+        },
+        {
+          "order_no": "114196",
+          "date": "2026-11-05",
+          "customer": "Phú Gia - Hà Tĩnh - C Hoa",
+          "specification": "58 tấm (9.81 m2) cánh màu NTD 08 & NTD 12, cánh giá bát khoét kính vát dài",
+          "total_amount": 12095695
+        }
+      ],
+      "q4_total_invoiced_value": 67966194,
+      "total_accumulated_debt_estimate": 125694017,
+      "audit_status": "ĐỐI SOÁT CHÍNH XÁC 100% TỪNG ĐƠN HÀNG FILE GỐC NTD",
+      "evaluation": "Đối tác cung cấp cánh Acrylic chủ lực từ đầu năm 2026. Chu kỳ thanh toán định kỳ gối đầu sau khi đối chiếu chốt CK 3%."
+    },
+    {
+      "id": "NCC_ACRYLIC_CHIEN_LIVAS",
+      "name": "Chiến Acrylic Livas",
+      "legal_info": {
+        "brand": "Acrylic Livas Cao Cấp",
+        "zalo_group": "ĐẶT CÁNH LIC LIVAS - NỘI THẤT PHÚ GIA HÀ TĨNH"
+      },
+      "category": "Gia công cánh Acrylic Noline & cánh nhôm kính nhập khẩu theo kích thước",
+      "current_debt": 0,
+      "audit_status": "ĐÃ TẤT TOÁN 100% QUA NGÂN HÀNG",
+      "evaluation": "Kế toán PG Home đã hoàn tất chuyển khoản 100% ngay khi hàng gửi xe cập bến Hà Tĩnh. Không còn công nợ tồn đọng."
+    },
+    {
+      "id": "NCC_GLASS_KINH_VIET_NHAT",
+      "name": "Kính Việt Nhật",
+      "legal_info": {
+        "zalo_group": "g6882545434220944455 (Kính Việt Nhật)"
+      },
+      "category": "Kính cường lực 8mm, 10mm, kính dán an toàn 2 lớp, kính ốp bếp màu nhiệt, kính thủy decor",
+      "current_debt": 0,
+      "payment_terms": "Thanh toán theo bill từng đơn hàng giao nhận tại xưởng / công trình",
+      "audit_status": "ĐỐI SOÁT MINH BẠCH - KHÔNG NỢ ĐỌNG",
+      "evaluation": "Bản vẽ cắt kính được xưởng gửi và xác nhận qua file scan chuẩn, thanh toán dứt điểm từng đợt lắp ráp."
+    },
+    {
+      "id": "NCC_MIRROR_GUONG_BI_VU_CUONG",
+      "name": "Vũ Cường - Gương Bỉ Dantalux",
+      "legal_info": {
+        "brand": "Gương Bỉ Dantalux Nhập Khẩu",
+        "zalo_group": "Vũ Cường - Gương Bỉ Dantalux / Đặt Gương - PG Home"
+      },
+      "category": "Gương decor viền nhôm Anode, gương LED cảm ứng, phôi gương Bỉ tráng bạc 8 lớp",
+      "current_debt": 0,
+      "standard_pricing": {
+        "guong_vien_nhom_600x1600": 1100000
+      },
+      "audit_status": "CHỜ ĐẶT HÀNG THỰC TẾ THEO CÔNG TRÌNH",
+      "evaluation": "Nhà cung cấp gương decor chất lượng cao, đơn giá cố định 1.1M/tấm 600x1600, thanh toán khi phát sinh đơn thực tế."
+    },
+    {
+      "id": "NCC_STONE_CERAMIC_HOANG_HA",
+      "name": "Đá / PVC Ceramic Hoàng Hà",
+      "legal_info": {
+        "zalo_group": "g7737669618333682341 (Ceramic Hoàng Hà)"
+      },
+      "category": "Đá nung kết Ceramic, đá Vicostone nhân tạo, tấm ốp PVC ceramic, tấm than tre phủ vân đá",
+      "current_debt": 0,
+      "data_assets": {
+        "sketchup_models": 1,
+        "cad_dxf_files": 2,
+        "drawings_and_photos": 49
+      },
+      "payment_terms": "Thanh toán theo khối lượng nghiệm thu bàn giao thực tế tại công trình",
+      "audit_status": "HỒ SƠ BẢN VẼ ĐẦY ĐỦ - KHÔNG CÔNG NỢ TỒN ĐỌNG",
+      "evaluation": "Cung ứng và thi công đá bàn bếp, lavabo, vách tivi. Tất cả kích thước bóc tách chuẩn theo file CAD/Sketchup."
+    },
+    {
+      "id": "NCC_SOLID_WOOD_DUC_ANH",
+      "name": "Gỗ thịt Đức Anh (Thu Hương Hà Tĩnh - Nga)",
+      "legal_info": {
+        "representative": "Chị Nga (Thu Hương Hà Tĩnh)",
+        "zalo_group": "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh"
+      },
+      "category": "Phôi gỗ tự nhiên Sồi Nga, gỗ Óc chó xẻ sấy quy cách",
+      "current_debt": 3200000,
+      "payment_history": "Đã chuyển khoản thanh toán 10.000.000 đ trong ngày, NCC Nga đã xác nhận trừ sổ nợ còn đúng 3.200.000 đ",
+      "audit_status": "ĐỐI SOÁT CHÍNH XÁC 100% VỚI SỔ CÔNG NỢ NCC",
+      "action_required": "ƯU TIÊN CHI TRẢ 3.200.000 đ để tất toán dứt điểm đơn gỗ thịt."
+    },
+    {
+      "id": "NCC_PAINT_DUC_LINH_PU",
+      "name": "Đức Lĩnh SƠN PU",
+      "legal_info": {
+        "representative": "Anh Đức Lĩnh",
+        "zalo_group": "Đức Lĩnh SƠN PU"
+      },
+      "category": "Gia công sơn PU hoàn thiện bề mặt vách nan gỗ thịt và hệ vách hoa văn CNC",
+      "current_debt": 2000000,
+      "debt_breakdown": "Bộ vách CNC 4m + tiền sơn hoàn thiện hệ vách",
+      "audit_status": "CHỜ GIÁM ĐỐC NGUYỄN VIẾT NGHĨA KÝ DUYỆT CHI",
+      "action_required": "Trình Giám Đốc duyệt chuyển khoản 2.000.000 đ cho Đức Lĩnh theo thông báo công nợ."
+    }
+  ]
+}

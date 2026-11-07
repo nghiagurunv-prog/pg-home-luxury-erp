@@ -1,0 +1,194 @@
+{
+  "report_id": "ZHS-20261107-110449",
+  "timestamp": "2026-11-07 11:04:49",
+  "duration_sec": 5.472,
+  "engine": "Zalo Health Shield & Window Sentinel V1.0",
+  "author": "Công Nhân Flash #7 - PG Home Luxury",
+  "compliance_rules": [
+    "WCS-UL10 Master SOP: 100% Zero-Disruption Stealth Zalo",
+    "Pre-Response Hard-Lock: Số liệu đọc trực tiếp ổ cứng thực tế",
+    "Auto-Rescue: Chỉ can thiệp khi tọa độ âm / dính Cloak; không quấy rầy khi bình thường"
+  ],
+  "summary": {
+    "window_sentinel_status": "OPERATIONAL_HEALTHY",
+    "windows_detected": 3,
+    "windows_rescued": 0,
+    "security_audit_status": "PASSED_100_PERCENT_CLEAN",
+    "all_scripts_clean": true,
+    "storage_leveldb_status": "HEALTHY_ACCESSIBLE",
+    "storage_resource_status": "HEALTHY_ACCESSIBLE",
+    "storage_filenoise_status": "HEALTHY_ACCESSIBLE"
+  },
+  "window_sentinel": {
+    "status": "SUCCESS",
+    "total_detected": 3,
+    "rescued_count": 0,
+    "normal_count": 3,
+    "rescued_windows": [],
+    "normal_windows": [
+      {
+        "hwnd": 67096,
+        "title": "Zalo",
+        "class_name": "Chrome_WidgetWin_1",
+        "rect": [
+          784,
+          479,
+          1136,
+          561
+        ],
+        "is_visible": false,
+        "is_iconic": false,
+        "cloaked": 0,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 67136,
+        "title": "ZaloCap",
+        "class_name": "Qt5QWindowToolSaveBits",
+        "rect": [
+          -9999,
+          -9999,
+          -9978,
+          -9955
+        ],
+        "is_visible": false,
+        "is_iconic": false,
+        "cloaked": 0,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 132532,
+        "title": "Zalo",
+        "class_name": "Chrome_WidgetWin_1",
+        "rect": [
+          -32000,
+          -32000,
+          -31840,
+          -31972
+        ],
+        "is_visible": true,
+        "is_iconic": true,
+        "cloaked": 0,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      }
+    ],
+    "safety_guarantee": "ZERO-DISRUPTION: Healthy windows left untouched, rescues executed with SWP_NOACTIVATE"
+  },
+  "security_audit": {
+    "timestamp": "2026-11-07 11:04:43",
+    "overall_status": "PASSED_100_PERCENT_CLEAN",
+    "audited_files_count": 3,
+    "results": {
+      "monitor_all_phu_gia_groups.py": {
+        "file": "monitor_all_phu_gia_groups.py",
+        "path": "f:\\PG Home - Quản trị\\monitor_all_phu_gia_groups.py",
+        "total_lines": 914,
+        "is_100_clean": true,
+        "active_violations_count": 0,
+        "occurrences_count": 0,
+        "occurrences": [],
+        "verdict": "100% CLEAN - TUÂN THỦ TUYỆT ĐỐI LUẬT SẮT ZERO-DISRUPTION"
+      },
+      "zalo_stealth_reader.py": {
+        "file": "zalo_stealth_reader.py",
+        "path": "f:\\PG Home - Quản trị\\tools\\_legacy_scripts\\zalo_stealth_reader.py",
+        "total_lines": 601,
+        "is_100_clean": true,
+        "active_violations_count": 0,
+        "occurrences_count": 2,
+        "occurrences": [
+          {
+            "line": 12,
+            "token": "DWMWA_CLOAK",
+            "category": "DOCSTRING_POLICY",
+            "severity": "SAFE",
+            "snippet": "- CẤM UIAutomation, CẤM SetForegroundWindow, CẤM DWMWA_CLOAK, CẤM SetWindowPos, CẤM PostMessageW."
+          },
+          {
+            "line": 12,
+            "token": "PostMessageW",
+            "category": "DOCSTRING_POLICY",
+            "severity": "SAFE",
+            "snippet": "- CẤM UIAutomation, CẤM SetForegroundWindow, CẤM DWMWA_CLOAK, CẤM SetWindowPos, CẤM PostMessageW."
+          }
+        ],
+        "verdict": "100% CLEAN - TUÂN THỦ TUYỆT ĐỐI LUẬT SẮT ZERO-DISRUPTION"
+      },
+      "read_zalo_messages.py": {
+        "file": "read_zalo_messages.py",
+        "path": "f:\\PG Home - Quản trị\\tools\\_legacy_scripts\\read_zalo_messages.py",
+        "total_lines": 431,
+        "is_100_clean": true,
+        "active_violations_count": 0,
+        "occurrences_count": 0,
+        "occurrences": [],
+        "verdict": "100% CLEAN - TUÂN THỦ TUYỆT ĐỐI LUẬT SẮT ZERO-DISRUPTION"
+      }
+    }
+  },
+  "storage_benchmark": {
+    "timestamp": "2026-11-07 11:04:49",
+    "storage_hubs": {
+      "leveldb": {
+        "name": "leveldb",
+        "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\Partitions\\zalo\\Local Storage\\leveldb",
+        "exists": true,
+        "total_files": 9,
+        "total_directories": 0,
+        "total_size_mb": 1.58,
+        "scan_time_ms": 1.71,
+        "benchmark_sample_count": 9,
+        "benchmark_bytes_read_mb": 0.86,
+        "read_time_ms": 100.83,
+        "throughput_mb_s": 8.55,
+        "avg_latency_per_file_ms": 11.203,
+        "newest_file": {
+          "name": "LOG",
+          "size_kb": 15.49,
+          "modified": "2026-11-07 11:04:02"
+        },
+        "status": "HEALTHY_ACCESSIBLE"
+      },
+      "resource": {
+        "name": "resource",
+        "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource",
+        "exists": true,
+        "total_files": 21558,
+        "total_directories": 1084,
+        "total_size_mb": 12212.19,
+        "scan_time_ms": 5091.58,
+        "benchmark_sample_count": 50,
+        "benchmark_bytes_read_mb": 2.59,
+        "read_time_ms": 23.34,
+        "throughput_mb_s": 110.91,
+        "avg_latency_per_file_ms": 0.467,
+        "newest_file": {
+          "name": "1793975465087_2926353819792553048_g795402381131416269_n",
+          "size_kb": 247.46,
+          "modified": "2026-11-07 10:49:31"
+        },
+        "status": "HEALTHY_ACCESSIBLE"
+      },
+      "fileNoise": {
+        "name": "fileNoise",
+        "path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise",
+        "exists": true,
+        "total_files": 324,
+        "total_directories": 1,
+        "total_size_mb": 845.43,
+        "scan_time_ms": 63.65,
+        "benchmark_sample_count": 30,
+        "benchmark_bytes_read_mb": 3.04,
+        "read_time_ms": 165.66,
+        "throughput_mb_s": 18.37,
+        "avg_latency_per_file_ms": 5.522,
+        "newest_file": {
+          "name": ".rescache",
+          "size_kb": 5.37,
+          "modified": "2026-11-07 09:56:06"
+        },
+        "status": "HEALTHY_ACCESSIBLE"
+      }
+    }
+  }
+}

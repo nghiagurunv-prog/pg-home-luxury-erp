@@ -1,0 +1,414 @@
+{
+  "metadata": {
+    "he_thong": "PG Home Luxury Management System",
+    "chuyen_de": "Sổ Cái Đối Soát Chứng Từ UNC, Hóa Đơn & Thanh Toán NCC Chị Hương",
+    "phien_ban": "1.0-STRICT",
+    "ngay_lap_so": "2026-11-07 10:37:40",
+    "nguoi_kiem_soat": "Công Nhân Flash #06 (Kỹ Sư Đối Soát Chứng Từ UNC Chị Hương)",
+    "tong_so_media_quet": 633,
+    "phan_bo_thu_muc": {
+      "picture": 385,
+      "Cache": 234,
+      "video": 12,
+      "file": 1,
+      "voice": 1
+    },
+    "tong_so_luong_nguoi_gui": {
+      "chi_huong_1193413708528852811": 450,
+      "giam_doc_2304805760907141944": 183
+    }
+  },
+  "thong_ke_theo_thang": {
+    "2026-07": {
+      "month_label": "T7/2026",
+      "chung_tu_anh_goc_picture": {
+        "chi_huong": 2,
+        "giam_doc": 0,
+        "tong_anh_goc": 2
+      },
+      "anh_cache_thumbnail": {
+        "chi_huong": 0,
+        "giam_doc": 0,
+        "tong_cache": 0
+      },
+      "phuong_tien_khac_video_file_voice": {
+        "chi_huong": 0,
+        "giam_doc": 0,
+        "tong_khac": 0
+      },
+      "tong_toan_bo_media": {
+        "chi_huong": 2,
+        "giam_doc": 0,
+        "tong_media": 2
+      }
+    },
+    "2026-08": {
+      "month_label": "T8/2026",
+      "chung_tu_anh_goc_picture": {
+        "chi_huong": 39,
+        "giam_doc": 37,
+        "tong_anh_goc": 76
+      },
+      "anh_cache_thumbnail": {
+        "chi_huong": 48,
+        "giam_doc": 51,
+        "tong_cache": 99
+      },
+      "phuong_tien_khac_video_file_voice": {
+        "chi_huong": 2,
+        "giam_doc": 1,
+        "tong_khac": 3
+      },
+      "tong_toan_bo_media": {
+        "chi_huong": 89,
+        "giam_doc": 89,
+        "tong_media": 178
+      }
+    },
+    "2026-09": {
+      "month_label": "T9/2026",
+      "chung_tu_anh_goc_picture": {
+        "chi_huong": 26,
+        "giam_doc": 17,
+        "tong_anh_goc": 43
+      },
+      "anh_cache_thumbnail": {
+        "chi_huong": 30,
+        "giam_doc": 10,
+        "tong_cache": 40
+      },
+      "phuong_tien_khac_video_file_voice": {
+        "chi_huong": 4,
+        "giam_doc": 0,
+        "tong_khac": 4
+      },
+      "tong_toan_bo_media": {
+        "chi_huong": 60,
+        "giam_doc": 27,
+        "tong_media": 87
+      }
+    },
+    "2026-10": {
+      "month_label": "T10/2026",
+      "chung_tu_anh_goc_picture": {
+        "chi_huong": 31,
+        "giam_doc": 16,
+        "tong_anh_goc": 47
+      },
+      "anh_cache_thumbnail": {
+        "chi_huong": 29,
+        "giam_doc": 27,
+        "tong_cache": 56
+      },
+      "phuong_tien_khac_video_file_voice": {
+        "chi_huong": 0,
+        "giam_doc": 0,
+        "tong_khac": 0
+      },
+      "tong_toan_bo_media": {
+        "chi_huong": 60,
+        "giam_doc": 43,
+        "tong_media": 103
+      }
+    },
+    "2026-11": {
+      "month_label": "T11/2026",
+      "chung_tu_anh_goc_picture": {
+        "chi_huong": 211,
+        "giam_doc": 6,
+        "tong_anh_goc": 217
+      },
+      "anh_cache_thumbnail": {
+        "chi_huong": 26,
+        "giam_doc": 13,
+        "tong_cache": 39
+      },
+      "phuong_tien_khac_video_file_voice": {
+        "chi_huong": 2,
+        "giam_doc": 5,
+        "tong_khac": 7
+      },
+      "tong_toan_bo_media": {
+        "chi_huong": 239,
+        "giam_doc": 24,
+        "tong_media": 263
+      }
+    }
+  },
+  "top_20_chung_tu_anh_moi_nhat_thang_11_2026": [
+    {
+      "thu_tu": 1,
+      "thoi_gian": "2026-11-07 10:16:12",
+      "timestamp_ms": 1794021372752,
+      "nguoi_gui_id": "2304805760907141944",
+      "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
+      "ten_tep": "1794021372752_2304805760907141944_1193413708528852811_281b7b26afc5632930d5bff82a02fd81.jxl",
+      "kich_thuoc_bytes": 762654,
+      "ma_bam_sha256": "da9c2a538d60df2f37f1094d67d422ea402318450fb1b44fdf4fc6adb0dd8bce"
+    },
+    {
+      "thu_tu": 2,
+      "thoi_gian": "2026-11-07 10:15:24",
+      "timestamp_ms": 1794021324079,
+      "nguoi_gui_id": "2304805760907141944",
+      "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
+      "ten_tep": "1794021324079_2304805760907141944_1193413708528852811_25f968777bb6acf46fbb3e81665901e3.jxl",
+      "kich_thuoc_bytes": 574886,
+      "ma_bam_sha256": "3d8e4162cb18786f924b2741c57ef1cb8de98b4043da8ed190fddce1b3697344"
+    },
+    {
+      "thu_tu": 3,
+      "thoi_gian": "2026-11-07 10:15:18",
+      "timestamp_ms": 1794021318608,
+      "nguoi_gui_id": "2304805760907141944",
+      "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
+      "ten_tep": "1794021318608_2304805760907141944_1193413708528852811_f4c7d99b14e803a445196012069ef016.jxl",
+      "kich_thuoc_bytes": 395825,
+      "ma_bam_sha256": "096ebcc14fb86d82a381b257933eb4aeb1c6f569eaf364c5b03ae1e9b6ba9b68"
+    },
+    {
+      "thu_tu": 4,
+      "thoi_gian": "2026-11-07 10:12:26",
+      "timestamp_ms": 1794021146847,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794021146847_1193413708528852811_1193413708528852811_7e0dd607e827353858572c3004c7a2be.jxl",
+      "kich_thuoc_bytes": 89647,
+      "ma_bam_sha256": "049c541e7fee2b67f33c75651f9630e7d17de85f31d27621d4af2bb9d7eb7a70"
+    },
+    {
+      "thu_tu": 5,
+      "thoi_gian": "2026-11-07 10:01:37",
+      "timestamp_ms": 1794020497539,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794020497539_1193413708528852811_1193413708528852811_af2439b4b341657e5b9db9bf45d01418.jxl",
+      "kich_thuoc_bytes": 688761,
+      "ma_bam_sha256": "fea483e5b02c096e795daa4728fb87a513f9bc4915e4d79755b02df17ba4b9b9"
+    },
+    {
+      "thu_tu": 6,
+      "thoi_gian": "2026-11-07 10:01:11",
+      "timestamp_ms": 1794020471573,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794020471573_1193413708528852811_1193413708528852811_4c09355ce4443ac2d802f69c6b3f9b45.jxl",
+      "kich_thuoc_bytes": 771918,
+      "ma_bam_sha256": "c0d93e334f741905ca6b0e97924c64d04bcee84e0b71a0bac948d7882183ff55"
+    },
+    {
+      "thu_tu": 7,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840677,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840677_1193413708528852811_1193413708528852811_ef8680cfbcadf68d13b78454a2798441.jxl",
+      "kich_thuoc_bytes": 674944,
+      "ma_bam_sha256": "5adcd47c11bccb9429a0ab7cdb470a31a61d5e991f72764974b8b757da0502bf"
+    },
+    {
+      "thu_tu": 8,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840650,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840650_1193413708528852811_1193413708528852811_ae2f30729e215203440ea9b22c4cc305.jxl",
+      "kich_thuoc_bytes": 641316,
+      "ma_bam_sha256": "c05f04b4fcfc9a975a1f064351631d9cb2cb89c839e90a410fc0d76c7d1b1b79"
+    },
+    {
+      "thu_tu": 9,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840625,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840625_1193413708528852811_1193413708528852811_71ed67559476cf2c034d2c4ff28148a9.jxl",
+      "kich_thuoc_bytes": 797244,
+      "ma_bam_sha256": "d619aa6883b4387b0e79d6e7567a6e80c7a7997908f9d14175583208ca9f9dd5"
+    },
+    {
+      "thu_tu": 10,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840599,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840599_1193413708528852811_1193413708528852811_95f932b45fad164a6cc90f04fb7b4d13.jxl",
+      "kich_thuoc_bytes": 435400,
+      "ma_bam_sha256": "bec502df7d776d2427e0ee7c3dcd262160e2c5a8abd818c0da517bd6c1304170"
+    },
+    {
+      "thu_tu": 11,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840573,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840573_1193413708528852811_1193413708528852811_3fa05b2fc6f858c73244c462aff6689d.jxl",
+      "kich_thuoc_bytes": 345002,
+      "ma_bam_sha256": "7399e22e00634da4ac25f48c890c30ab0c1c4cf58a3b900f97fd457622c57fed"
+    },
+    {
+      "thu_tu": 12,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840546,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840546_1193413708528852811_1193413708528852811_b62a1e4b3ea2b45ad1f66338d8956240.jxl",
+      "kich_thuoc_bytes": 343466,
+      "ma_bam_sha256": "0f6dc726f3c1632b78e55c8011825724f3b7b6df47b0ff1e6f9ca1b59110bfa3"
+    },
+    {
+      "thu_tu": 13,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840520,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840520_1193413708528852811_1193413708528852811_e761c1f4c37142c7e45051be70250152.jxl",
+      "kich_thuoc_bytes": 408195,
+      "ma_bam_sha256": "3e0b3f9c3a48e695696f1e26c08bc93af458a12f9765c8de9939c3fbbf15da4f"
+    },
+    {
+      "thu_tu": 14,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840497,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840497_1193413708528852811_1193413708528852811_b3cf0808764347304081c71cab0d0829.jxl",
+      "kich_thuoc_bytes": 469004,
+      "ma_bam_sha256": "e1c0a66319c09079866dfb234340c24b8d7d7114d000234639fb90a8941e55ad"
+    },
+    {
+      "thu_tu": 15,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840474,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840474_1193413708528852811_1193413708528852811_8e2afbec4effb653c34de087fdef6abf.jxl",
+      "kich_thuoc_bytes": 464939,
+      "ma_bam_sha256": "c2fa74885a0300252c54b419bf7c28636bfcb9d03ee239821f4689c57c93f033"
+    },
+    {
+      "thu_tu": 16,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840451,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840451_1193413708528852811_1193413708528852811_6ffd9d64b2e1bbb7336d150dbc9e819d.jxl",
+      "kich_thuoc_bytes": 533497,
+      "ma_bam_sha256": "e156257d87dfa740914dc79f64f055cba0af044d9de28f374bc7bd47b1ae71b1"
+    },
+    {
+      "thu_tu": 17,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840428,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840428_1193413708528852811_1193413708528852811_252fc3e845e439666622cc1b5d851593.jxl",
+      "kich_thuoc_bytes": 434592,
+      "ma_bam_sha256": "f90d8f9abd4d223bc8da7db59794473f6d24458655d120352ced32365f027171"
+    },
+    {
+      "thu_tu": 18,
+      "thoi_gian": "2026-11-07 09:00:40",
+      "timestamp_ms": 1794016840403,
+      "nguoi_gui_id": "1193413708528852811",
+      "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ten_tep": "1794016840403_1193413708528852811_1193413708528852811_e4d02cb08a338913443c029995e8959e.jxl",
+      "kich_thuoc_bytes": 575198,
+      "ma_bam_sha256": "6b64faa6baf276a406b57a76aa0751bccc9339b5b7907f7f54ace9f837925612"
+    },
+    {
+      "thu_tu": 19,
+      "thoi_gian": "2026-11-06 16:51:03",
+      "timestamp_ms": 1793958663372,
+      "nguoi_gui_id": "2304805760907141944",
+      "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
+      "ten_tep": "1793958663372_2304805760907141944_1193413708528852811_5344ddd2a3682c5432ed361f7fe0bcee.jxl",
+      "kich_thuoc_bytes": 263825,
+      "ma_bam_sha256": "15aae57c665adacdf7920d13148bcba6c0405c3a44ebb6a76971f3a50d37207e"
+    },
+    {
+      "thu_tu": 20,
+      "thoi_gian": "2026-11-06 15:47:12",
+      "timestamp_ms": 1793954832260,
+      "nguoi_gui_id": "2304805760907141944",
+      "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
+      "ten_tep": "1793954832260_2304805760907141944_1193413708528852811_51f244c493613a07cf448103ee08f8bb.jxl",
+      "kich_thuoc_bytes": 189870,
+      "ma_bam_sha256": "9bca089a109399e980e3044972b25f2618920290e40451a41c918df81c3b95e7"
+    }
+  ],
+  "cac_khoan_thanh_toan_ncc_da_xac_nhan": [
+    {
+      "stt": 1,
+      "nha_cung_cap": "Gỗ thịt Đức Anh (Nga)",
+      "loai_giao_dich": "THANH_TOAN_TIEN_HANG_GO_THIT",
+      "so_tien_chuyen": 10000000,
+      "don_vi_tien_te": "VND",
+      "nguoi_thuc_hien": "Chị Hương (Kế toán)",
+      "nguoi_xac_nhan": "Nga (Gỗ thịt Đức Anh)",
+      "hoi_thoai": "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh",
+      "noi_dung_doi_soat": "Nga xác nhận: 'E gửi lại sổ công nợ, đã trừ 10tr hn c ck nhé ak'. Dư nợ còn lại 3.200.000 đ.",
+      "trang_thai": "ĐÃ XÁC NHẬN TRỪ SỔ CÔNG NỢ"
+    },
+    {
+      "stt": 2,
+      "nha_cung_cap": "Chiến Acrylic Livas",
+      "loai_giao_dich": "THANH_TOAN_CANH_ACRYLIC",
+      "so_tien_chuyen": "Theo phiếu đặt hàng cánh Livas",
+      "don_vi_tien_te": "VND",
+      "nguoi_thuc_hien": "Chị Hương (Kế toán)",
+      "nguoi_xac_nhan": "Chiến Acrylic Livas",
+      "hoi_thoai": "ĐẶT CÁNH LIC LIVAS - NỘI THẤT PHÚ GIA HÀ TĨNH",
+      "noi_dung_doi_soat": "Chị Hương xác nhận kế toán đã chuyển khoản thanh toán khi hàng gia công xong gửi xe vào Hà Tĩnh.",
+      "trang_thai": "ĐÃ XÁC NHẬN TẤT TOÁN KHI GỬI XE"
+    },
+    {
+      "stt": 3,
+      "nha_cung_cap": "Sơn CNC - CTY PHÚ GIA",
+      "loai_giao_dich": "YEU_CAU_GUI_UNC_BILL",
+      "so_tien_chuyen": "Theo khối lượng cắt CNC & ván thực tế",
+      "don_vi_tien_te": "VND",
+      "nguoi_thuc_hien": "Chị Hương (Kế toán)",
+      "nguoi_xac_nhan": "Xưởng Sơn CNC",
+      "hoi_thoai": "SƠN CNC - CTY PHU GIA",
+      "noi_dung_doi_soat": "Xưởng Sơn CNC gửi yêu cầu: 'chị thanh toán gửi bill lên nhóm này luôn chị nha'. Chị Hương xác nhận đã thanh toán xong cho anh Sơn.",
+      "trang_thai": "ĐÃ XÁC NHẬN THANH TOÁN TIỀN GIA CÔNG"
+    },
+    {
+      "stt": 4,
+      "nha_cung_cap": "Đức Lĩnh SƠN PU",
+      "loai_giao_dich": "THANH_TOAN_GIA_CONG_SON_PU",
+      "so_tien_chuyen": 2000000,
+      "don_vi_tien_te": "VND",
+      "nguoi_thuc_hien": "Chị Hương (Kế toán)",
+      "nguoi_xac_nhan": "Đức Lĩnh SƠN PU",
+      "hoi_thoai": "Đức Lĩnh SƠN PU",
+      "noi_dung_doi_soat": "Đức Lĩnh nhắc công nợ: 'Alo hôm trước có bộ cnc: 4 m: 2 triệu ck giúp mình nhé'. Đã đối soát vào danh mục chi phí xưởng.",
+      "trang_thai": "ĐÃ GHI NHẬN ĐỐI SOÁT CHI PHÍ"
+    },
+    {
+      "stt": 5,
+      "nha_cung_cap": "Lương Xưởng Sản Xuất (Thợ Xưởng)",
+      "loai_giao_dich": "CHUYEN_KHOAN_LUONG_XUONG_T9",
+      "so_tien_chuyen": 71171000,
+      "don_vi_tien_te": "VND",
+      "nguoi_thuc_hien": "Chị Hương (Kế toán)",
+      "nguoi_xac_nhan": "Phú Gia Hiệp G (Sale Admin / Quản lý xưởng)",
+      "hoi_thoai": "2026 Bảng lương hàng tháng - Phú Gia Home Lux",
+      "noi_dung_doi_soat": "Chị Hương chuyển 2 đợt trong ngày: 25.000.000 đ (sáng) + 46.171.000 đ (chiều) = 71.171.000 đ. Đã khấu trừ tạm ứng Vũ 8.000.000 đ (1.000.000 đ chuyển sang T10).",
+      "trang_thai": "ĐÃ TẤT TOÁN LƯƠNG XƯỞNG T9"
+    },
+    {
+      "stt": 6,
+      "nha_cung_cap": "Khách hàng Tủ Bếp a Dũng - Hương Khê",
+      "loai_giao_dich": "THU_TIEN_TAM_UNG_HOP_DONG",
+      "so_tien_chuyen": "50% giá trị hợp đồng tủ bếp",
+      "don_vi_tien_te": "VND",
+      "nguoi_thuc_hien": "Khách hàng anh Dũng",
+      "nguoi_xac_nhan": "Chị Hương (Kế toán)",
+      "hoi_thoai": "2026 Tủ bếp a Dũng - Hương Khê",
+      "noi_dung_doi_soat": "Chị Hương chỉ định tài khoản nhận tiền cọc: Lưu Thị Kim Dung - Vietinbank.",
+      "trang_thai": "ĐÃ CUNG CẤP TÀI KHOẢN THU TẠM ỨNG"
+    }
+  ]
+}
