@@ -73,12 +73,12 @@ has_boastful_words = any(k in html.lower() for k in ['đẳng cấp thế giới
 audit_results["11_boastful_words"] = not has_boastful_words
 print(f"[Lỗi 11] Rà soát mỹ từ sáo rỗng, bốc phét trên HTML: {'ĐẠT (Đã xóa sạch)' if not has_boastful_words else 'THẤT BẠI (Còn từ sáo rỗng!)'}")
 
-# Lỗi 12: Bộ nhớ đệm Cache & LocalStorage (phải là v21 UI Pro và Cache v12.0)
-ver_v20 = ('CURRENT_APP_VERSION = "2026.11.06_v21_UI_50_OPTIMIZED"' in js) or ('CURRENT_APP_VERSION = "2026.11.05_v20_CLEAN_DATA_FIXED"' in js)
+# Lỗi 12: Bộ nhớ đệm Cache & LocalStorage (phải là v21+ UI Pro và Cache v12.0+)
+ver_v20 = ('CURRENT_APP_VERSION = "2026.11.08_v23_PERMANENT_CLOUD_SOP"' in js) or ('CURRENT_APP_VERSION = "2026.11.06_v22_BAC_PHAT_CONTRACT_SYNC"' in js) or ('CURRENT_APP_VERSION = "2026.11.06_v21_UI_50_OPTIMIZED"' in js) or ('CURRENT_APP_VERSION = "2026.11.05_v20_CLEAN_DATA_FIXED"' in js)
 sw_txt = open(r'f:\PG Home - Quản trị\web_app\sw.js', encoding='utf-8').read()
-sw_valid = ('pghome-v12.2-clean-ui-2026' in sw_txt) or ('pghome-v12-ui-pro-2026' in sw_txt) or ('pghome-v11-zalo-v4-live' in sw_txt) or ('pghome-v9-stable-fixed' in sw_txt)
+sw_valid = ('pghome-v15.0-permanent-cloud-2026' in sw_txt) or ('pghome-v12.2-clean-ui-2026' in sw_txt) or ('pghome-v12-ui-pro-2026' in sw_txt) or ('pghome-v11-zalo-v4-live' in sw_txt) or ('pghome-v9-stable-fixed' in sw_txt)
 audit_results["12_cache_version"] = ver_v20 and sw_valid
-print(f"[Lỗi 12] Rà soát phiên bản App v21 & Service Worker v12.0: {'ĐẠT (Đồng bộ v21 & Cache v12.0)' if (ver_v20 and sw_valid) else 'THẤT BẠI'}")
+print(f"[Lỗi 12] Rà soát phiên bản App v23 & Service Worker v15.0: {'ĐẠT (Đồng bộ v23 & Cache v15.0)' if (ver_v20 and sw_valid) else 'THẤT BẠI'}")
 
 print("="*80)
 total_pass = sum(1 for v in audit_results.values() if v)

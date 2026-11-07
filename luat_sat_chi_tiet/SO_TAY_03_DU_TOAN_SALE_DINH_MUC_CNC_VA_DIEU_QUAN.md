@@ -175,13 +175,14 @@ ightarrow$ Dòng tiền BGĐ.
   10. Lỗi tính ảo lợi nhuận Col BG 2.2% khi âm quỹ thợ -> Khóa cứng Col BG = 0 đ, lợi nhuận ròng đúng 44.090.721 đ.
   11. Lỗi bốc phét, tô hồng ("đẳng cấp thế giới", "ánh kim lộng lẫy", shimmer) -> Xóa sạch 100%.
   12. Lỗi cache cũ của trình duyệt -> Nâng cấp `CURRENT_APP_VERSION = "2026.11.05_v20_CLEAN_DATA_FIXED"` và SW Cache `pghome-v9-stable-fixed`.
-- **6 Cổng Chốt Chặn Bắt Buộc Trước Khi Xuất Báo Cáo:**
-  * Cổng 1: `node -c "f:\PG Home - Quản trị\web_app\app.js"` mã 0.
-  * Cổng 2: `node "f:\PG Home - Quản trị\scratch\test_all_renders.js"` PASS 17/17.
-  * Cổng 3: `python "f:\PG Home - Quản trị\scratch\deep_error_audit.py"` PASS 12/12.
-  * Cổng 4: Đồng bộ cache v20 và SW v9.0.
-  * Cổng 5: Đối soát chéo 3 chiều Zalo - Sổ sách - Ngân hàng.
-  * Cổng 6: Executive Privacy Shield (che giấu tỷ lệ khoán & lợi nhuận) & Stealth Protocol an toàn.
+- **7 Cổng Chốt Chặn Tự Động Bắt Buộc Trước Khi Xuất Báo Cáo (`python "f:\PG Home - Quản trị\tools\sop_pre_response_gate.py"`):**
+  * Cổng 1: Kiểm tra cú pháp `node -c` toàn bộ `app.js`, `sw.js` và 50 modules `w01..w50` (Mã thoát `0`).
+  * Cổng 2: Cô lập DOM (`Zero-Global-Overwrite`) — Cấm tuyệt đối mọi module dùng `document.body.innerHTML = ...` ghi đè làm mất thanh Sidebar/Topbar.
+  * Cổng 3: `node "f:\PG Home - Quản trị\scratch\test_all_renders.js"` PASS 18/18 hàm render UI (bao gồm `renderDashboard` với Chart Canvas).
+  * Cổng 4: `python "f:\PG Home - Quản trị\scratch\deep_error_audit.py"` PASS 12/12 hạng mục lịch sử & tài chính CCSC.
+  * Cổng 5: Rà soát thương hiệu & Hotline chuẩn `0986.722.324` (sạch 100% số điện thoại bịa đặt `0973.562.789`).
+  * Cổng 6: Máy chủ Localhost `http://localhost:8080/index.html` chạy qua `web_app/server.py` (trả về `HTTP 200 OK` + mở cổng API `/api/zalo-live-inbox`).
+  * Cổng 7: **CẤM TUYỆT ĐỐI LINK TẠM THỜI `.tmp.now` (`npx vercel deploy --temporary`) TỰ HỦY SAU 60 PHÚT!** Bắt buộc dùng Link Cloud Vĩnh Viễn trên GitHub Pages (`https://nghiagurunv-prog.github.io/pg-home-luxury-erp/web_app/index.html` và `https://nghiagurunv-prog.github.io/pg-home-luxury-erp/`) kiểm tra `HTTP 200 OK` thực tế trước khi gửi Giám Đốc.
 
 ---
 

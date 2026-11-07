@@ -873,7 +873,7 @@ const DEFAULT_TIMESHEETS = {"8": {"month": 8, "days": [{"day": 1, "dow": "T2"}, 
 // Danh sách nhân sự đã nghỉ việc (thanh lọc vĩnh viễn khỏi toàn hệ thống)
 const RETIRED_STAFF = ["Phan Thanh Lực", "Phan Xuân Hùng", "Phan Văn Bình", "Dương Thị Tuyết"];
 
-const CURRENT_APP_VERSION = "2026.11.06_v22_BAC_PHAT_CONTRACT_SYNC";
+const CURRENT_APP_VERSION = "2026.11.08_v23_PERMANENT_CLOUD_SOP";
 
 function loadState() {
   const saved = localStorage.getItem("PG_HOME_CCSC_APP_STATE");

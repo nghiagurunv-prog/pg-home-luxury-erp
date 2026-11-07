@@ -26,7 +26,8 @@ function createElementMock(id, tag = 'div') {
         querySelector: function() { return null; },
         querySelectorAll: function() { return []; },
         closest: function() { return null; },
-        appendChild: function() {}
+        appendChild: function() {},
+        getContext: function() { return {}; }
     };
 }
 

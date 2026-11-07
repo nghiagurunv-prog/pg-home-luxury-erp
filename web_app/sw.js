@@ -4,7 +4,7 @@
  */
 
 // Legacy compatibility marker: "pghome-v12.2-clean-ui-2026"
-const CACHE_NAME = "pghome-v14.5-flash50-atelier-2026";
+const CACHE_NAME = "pghome-v15.0-permanent-cloud-2026";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
