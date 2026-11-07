@@ -9,7 +9,7 @@
  * - Mã số ĐKKD/MST: 042203002931 (Đăng ký lần đầu: 13/01/2025 - Đại diện: Nguyễn Trọng Nghĩa)
  * - Địa chỉ ĐKKD: Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh
  * - Tổ hợp VP & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * - Hotline chuẩn: 0973.562.789
+ * - Hotline chuẩn: 0986.722.324
  * - Giám Đốc Điều Hành: Nguyễn Viết Nghĩa
  * ===============================================================================================
  */
@@ -35,7 +35,7 @@
     DIRECTOR: 'Nguyễn Viết Nghĩa',
     FACTORY_OFFICE_ADDRESS: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
     REGISTERED_ADDRESS: 'Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh',
-    HOTLINE: '0973.562.789',
+    HOTLINE: '0986.722.324',
     EMAIL: 'pghomeluxury.hatinh@gmail.com',
     WEBSITE: 'https://pghome.vn',
     SLOGAN: 'Kiến Tạo Không Gian Sống Đẳng Cấp & Bền Vững'

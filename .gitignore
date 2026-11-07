@@ -50,3 +50,5 @@ data/*.bak
 data/*_backup*
 
 .vercel
+
+.vercel

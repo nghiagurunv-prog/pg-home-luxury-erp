@@ -3,7 +3,7 @@
  * HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA PG HOME LUXURY
  * TỔ HỢP VĂN PHÒNG & NHÀ MÁY SẢN XUẤT NỘI THẤT PHÚ GIA
  * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * Hotline: 0973.562.789 | MST: 042203002931
+ * Hotline: 0986.722.324 | MST: 042203002931
  * ==============================================================================
  * MODULE W38: BẢNG TÍNH LƯƠNG & PHỤ CẤP QUẢN LÝ (THÁI - VŨ - HIỆP - DŨNG)
  * TÁCH BIỆT RÕ LƯƠNG CỨNG HÀNG THÁNG & QUỸ THƯỞNG VƯỢT DOANH SỐ > 500M CUỐI NĂM
@@ -343,7 +343,7 @@
                 Bảng Tính Lương & Quỹ Thưởng Quản Lý Nòng Cốt
               </h1>
               <p class="text-xs md:text-sm text-slate-600 mt-0.5">
-                Tổ hợp VP & Nhà máy Sản xuất: <strong>Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh</strong> | Hotline: <strong>0973.562.789</strong>
+                Tổ hợp VP & Nhà máy Sản xuất: <strong>Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh</strong> | Hotline: <strong>0986.722.324</strong>
               </p>
             </div>
 

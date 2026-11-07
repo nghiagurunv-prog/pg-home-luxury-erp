@@ -3,7 +3,7 @@
  * MODULE W03: QUẢN TRỊ QUỸ THỢ NÒNG CỐT HÒA & HÀO (LUẬT SẮT C1)
  * Hệ thống Quản trị & Tự động hóa PG Home Luxury (Hộ Kinh Doanh Phú Gia)
  * Đơn vị: Hộ Kinh Doanh Phú Gia - Mã số ĐKKD/MST: 042203002931
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
  * ============================================================================
  * NGUYÊN TẮC LUẬT SẮT C1:
  * - Trích 20.000 đ/công vào Quỹ Thợ Nòng Cốt giữ đến tất niên cuối năm mới chi trả.
@@ -27,7 +27,7 @@
       rate_per_day: 20000,
       legal_entity: "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)",
       address: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
-      hotline: "0973.562.789",
+      hotline: "0986.722.324",
       updated_at: "2026-11-07 10:46:00",
       status: "VERIFIED_ACCURATE_100_PERCENT"
     },
@@ -239,7 +239,7 @@
                 QUẢN TRỊ QUỸ THỢ NÒNG CỐT HÒA & HÀO (TRÍCH 20.000 Đ/CÔNG)
               </h1>
               <p style="margin: 0; font-size: 13px; color: #94a3b8;">
-                Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia (PG Home Luxury) | Hotline: <strong style="color: #38bdf8;">0973.562.789</strong>
+                Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia (PG Home Luxury) | Hotline: <strong style="color: #38bdf8;">0986.722.324</strong>
               </p>
             </div>
             <div style="text-align: right; background: rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);">

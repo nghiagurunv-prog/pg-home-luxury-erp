@@ -2,7 +2,7 @@
  * ============================================================================
  * PG HOME LUXURY - ENTERPRISE OPTIMIZATION ARCHITECTURE
  * HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG
- * Mã số HKD: 042203002931 | Hotline: 0973.562.789
+ * Mã số HKD: 042203002931 | Hotline: 0986.722.324
  * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
  * ============================================================================
  * 
@@ -301,7 +301,7 @@
             return {
                 company: 'HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG',
                 legalTaxId: '042203002931',
-                hotline: '0973.562.789',
+                hotline: '0986.722.324',
                 address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
                 system: 'PG Home Luxury Enterprise Web App',
                 timestamp: new Date().toISOString(),

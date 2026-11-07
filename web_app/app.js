@@ -408,7 +408,7 @@ const DEFAULT_DATA = {
   ],
 
   users: [
-    { id: 1, username: "giamdoc", password: "123", fullName: "Nguyễn Viết Nghĩa", phone: "0973.562.789", role: "ADMIN", dept: "Ban Giám Đốc", createdAt: "2026-08-01", status: "ACTIVE" },
+    { id: 1, username: "giamdoc", password: "123", fullName: "Nguyễn Viết Nghĩa", phone: "0986.722.324", role: "ADMIN", dept: "Ban Giám Đốc", createdAt: "2026-08-01", status: "ACTIVE" },
     { id: 2, username: "thaixuong", password: "123", fullName: "Nguyễn Văn Thái", phone: "0915.223.456", role: "XUONG_VATTU", dept: "Quản lý xưởng sản xuất", createdAt: "2026-08-01", status: "ACTIVE" },
     { id: 3, username: "vuvattu", password: "123", fullName: "Hoàng Công Vũ", phone: "0988.223.344", role: "XUONG_VATTU", dept: "Kỹ thuật bóc tách vật tư / CNC", createdAt: "2026-08-15", status: "ACTIVE" },
     { id: 4, username: "hoatho", password: "123", fullName: "Hà Viết Hòa", phone: "0972.334.556", role: "THO_XUONG", dept: "Thợ Cả / Kết cấu", createdAt: "2026-08-01", status: "ACTIVE" },
@@ -2344,7 +2344,7 @@ function renderDynamicFormFields(type) {
       <div class="form-row">
         <div class="form-group">
           <label>Số điện thoại:</label>
-          <input type="text" id="inpUserPhone" class="form-control" placeholder="VD: 0973.562.789">
+          <input type="text" id="inpUserPhone" class="form-control" placeholder="VD: 0986.722.324">
         </div>
         <div class="form-group">
           <label>Phân quyền vai trò:</label>
@@ -4900,7 +4900,7 @@ function downloadPOAsImage(code) {
   ctx.fillStyle = "#64748B";
   ctx.font = "13px Arial";
   ctx.fillText("Tổ hợp VP & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh", 60, 132);
-  ctx.fillText("Mã số HKD: 042203002931  |  Hotline: 0973.562.789", 60, 152);
+  ctx.fillText("Mã số HKD: 042203002931  |  Hotline: 0986.722.324", 60, 152);
 
   // Số phiếu & Ngày ở góc phải
   ctx.fillStyle = "#B91C1C";
@@ -5335,7 +5335,7 @@ function downloadReceiptAsImage() {
 
   ctx.fillStyle = "#64748B";
   ctx.font = "12px Arial";
-  ctx.fillText("Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh  |  Hotline: 0973.562.789", 60, 122);
+  ctx.fillText("Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh  |  Hotline: 0986.722.324", 60, 122);
 
   // Mã biên lai
   ctx.textAlign = "right";

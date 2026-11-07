@@ -328,7 +328,7 @@
           </div>
           <div style="text-align: right;">
             <div style="font-size: 12px; color: #cbd5e1; font-weight: 600;">HỘ KINH DOANH PHÚ GIA</div>
-            <div style="font-size: 11px; color: #64748b;">Hotline: 0973.562.789 - TP. Hà Tĩnh</div>
+            <div style="font-size: 11px; color: #64748b;">Hotline: 0986.722.324 - TP. Hà Tĩnh</div>
           </div>
         </div>
 

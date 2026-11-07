@@ -5,7 +5,7 @@
  * Chuẩn hóa từ: Sổ Tay 03 - Mục 24.1 & Mục 24.2 (Audit Công trình Anh Nam ngày 06/11/2026)
  * Khổ ván chuẩn: 1220 x 2440 mm = 2.9768 m²/tấm
  * Mã đơn vị pháp lý: HKD 042203002931 - Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh
- * Hotline: 0973.562.789
+ * Hotline: 0986.722.324
  */
 
 (function () {
@@ -534,7 +534,7 @@
           <div style="text-align: right; background: #1e293b; padding: 8px 14px; border-radius: 8px; border: 1px solid #475569;">
             <div style="font-size: 11px; color: #94a3b8;">ĐƠN VỊ PHÁP LÝ PG HOME LUXURY</div>
             <div style="font-weight: 700; color: #e2e8f0; font-size: 13px;">HKD 042203002931 • TP. HÀ TĨNH</div>
-            <div style="font-size: 12px; color: #38bdf8; font-weight: 600;">Hotline: 0973.562.789</div>
+            <div style="font-size: 12px; color: #38bdf8; font-weight: 600;">Hotline: 0986.722.324</div>
           </div>
         </div>
 

@@ -4,7 +4,7 @@
  * MODULE W33: TRÌNH KIỂM TRA 323 THỰC THỂ TÀI CHÍNH ĐÃ XÁC THỰC TỪ ZALO V6.0
  * -------------------------------------------------------------------------------------------------
  * Bản quyền: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST/ĐKKD: 042203002931)
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
  * Phê duyệt: Giám Đốc Nguyễn Viết Nghĩa
  * Kỷ luật thép: Chạy ngầm tàng hình 100%, bảo vệ két sắt, đối soát 3 lớp chéo (Hóa đơn + Zalo + UNC)
  * =================================================================================================
@@ -31,7 +31,7 @@
         authorized_by: "Giám Đốc Nguyễn Viết Nghĩa",
         business_identity: "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)",
         headquarters: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
-        hotline: "0973.562.789",
+        hotline: "0986.722.324",
         total_entities_verified: 323,
         audit_time: "2026-11-06 18:13:50",
         source_batches: [
@@ -1457,7 +1457,7 @@
                             <div class="w33-submeta">
                                 <span>🏛️ <b>ĐKKD:</b> 042203002931</span>
                                 <span>📍 Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh</span>
-                                <span>📞 Hotline: 0973.562.789</span>
+                                <span>📞 Hotline: 0986.722.324</span>
                                 <span>🔒 <b>Phiên Bản:</b> Stealth V6.0 (Zero-Disruption)</span>
                             </div>
                         </div>

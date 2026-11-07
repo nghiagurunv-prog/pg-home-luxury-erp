@@ -115,7 +115,7 @@
     representative: "Nguyễn Trọng Nghĩa",
     address_reg: "Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh",
     address_factory: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
-    hotline: "0973.562.789"
+    hotline: "0986.722.324"
   };
 
   class ZeroTrustAuditViewer {
@@ -662,7 +662,7 @@
               CHUẨN THƯƠNG HIỆU & PHÁP LÝ
             </div>
             <p style="font-size: 12px; color: #CBD5E1; line-height: 1.5; margin: 0;">
-              Chỉ sử dụng duy nhất tên pháp lý HKD Phú Gia (MST: <b>042203002931</b>). Nhà máy chuẩn duy nhất tại <b>Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh</b>. Hotline chuẩn: <b>0973.562.789</b>. Tuyệt đối cấm địa chỉ giả mạo, cấm số điện thoại rác.
+              Chỉ sử dụng duy nhất tên pháp lý HKD Phú Gia (MST: <b>042203002931</b>). Nhà máy chuẩn duy nhất tại <b>Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh</b>. Hotline chuẩn: <b>0986.722.324</b>. Tuyệt đối cấm địa chỉ giả mạo, cấm số điện thoại rác.
             </p>
           </div>
 

@@ -6,7 +6,7 @@
  * Chuẩn hóa vĩnh viễn theo chỉ đạo của Giám Đốc Nguyễn Viết Nghĩa (Từ công trình thực tế Nhà Anh Nam 06/11/2026).
  * Quy cách khổ ván chuẩn: 1220mm x 2440mm = 2.9768 m2 / tấm.
  * Đơn vị pháp lý: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931).
- * Tổ hợp VP & Xưởng: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh. Hotline: 0973.562.789.
+ * Tổ hợp VP & Xưởng: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh. Hotline: 0986.722.324.
  * ==============================================================================================
  */
 

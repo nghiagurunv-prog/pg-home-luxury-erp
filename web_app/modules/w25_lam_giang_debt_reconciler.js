@@ -8,7 +8,7 @@
  * - Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
  * - Mã số ĐKKD/HKD: 042203002931 (Đăng ký lần đầu: 13/01/2025 - Đại diện: Nguyễn Trọng Nghĩa)
  * - Địa chỉ giao dịch: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * - Hotline: 0973.562.789 | MST: 042203002931
+ * - Hotline: 0986.722.324 | MST: 042203002931
  * 
  * NHÀ CUNG CẤP ĐỐI TÁC:
  * - Đối tác: Công Ty TNHH Quảng Cáo & Thương Mại Lam Giang (Nhà phân phối ván gỗ & nẹp chỉ)
@@ -42,7 +42,7 @@
     buyerName: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
     buyerTaxCode: '042203002931',
     buyerAddress: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-    buyerHotline: '0973.562.789',
+    buyerHotline: '0986.722.324',
     buyerRepresentative: 'Nguyễn Trọng Nghĩa',
     supplierName: 'Công Ty TNHH Quảng Cáo & Thương Mại Lam Giang',
     supplierCategory: 'Nhà phân phối Ván Gỗ Công Nghiệp & Chỉ nẹp Melamine',

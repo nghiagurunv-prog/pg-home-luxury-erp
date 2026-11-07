@@ -3,7 +3,7 @@
  * MODULE W31: BỘ LỌC BÓC TÁCH TỰ ĐỘNG GỖ TỰ NHIÊN (GỖ THỊT) & SOFA / ĐỒ MUA NGOÀI
  * 
  * Pháp lý: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
- * Mã số HKD: 042203002931 | Hotline: 0973.562.789
+ * Mã số HKD: 042203002931 | Hotline: 0986.722.324
  * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
  * 
  * KỶ LUẬT THÉP BẢO VỆ DÒNG TIỀN VÀ QUỸ KHOÁN XƯỞNG:
@@ -430,7 +430,7 @@
                 '      BẢNG BÓC TÁCH GỖ THỊT & ĐỒ MUA NGOÀI - PHÚ GIA (MODULE W31)' +
                 '    </h3>';
         html += '    <div style="font-size: 11px; color: #576574; margin-top: 4px;">' +
-                '      Kỷ luật thép: woodVal = totalVal - solidWood - accVal - commercialVal | Hotline: 0973.562.789' +
+                '      Kỷ luật thép: woodVal = totalVal - solidWood - accVal - commercialVal | Hotline: 0986.722.324' +
                 '    </div>';
         html += '  </div>';
 
@@ -534,7 +534,7 @@
             unitName: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
             licenseNumber: '042203002931',
             address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-            hotline: '0973.562.789'
+            hotline: '0986.722.324'
         },
         keywords: KEYWORDS,
         classifyItem: classifyItem,

@@ -6,7 +6,7 @@
  * Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
  * Mã số HKD / MST: 042203002931 | ĐKKD: 13/01/2025 | Đại diện: Nguyễn Trọng Nghĩa
  * Địa chỉ: Ngõ 49 Trương Quốc Dụng, Phường Thành Sen, TP. Hà Tĩnh
- * Hotline: 0973.562.789
+ * Hotline: 0986.722.324
  *
  * TUÂN THỦ NGHIÊM NGẶT QUY TẮC QUẢN TRỊ CỐT LÕI (GEMINI.md - MỤC 2):
  * 1. Phân hệ Giám Đốc (ADMIN): Quản trị toàn diện, Đóng dấu đỏ điện tử duyệt vật tư, Duyệt PENDING -> ACTIVE.
@@ -34,7 +34,7 @@
     representative: 'Nguyễn Trọng Nghĩa',
     director: 'Nguyễn Viết Nghĩa',
     address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-    hotline: '0973.562.789'
+    hotline: '0986.722.324'
   });
 
   const ROLES = Object.freeze({
@@ -175,7 +175,7 @@
       username: 'giamdoc.nghia',
       fullName: 'Nguyễn Viết Nghĩa',
       email: 'nghia.giamdoc@pghome.vn',
-      phone: '0973.562.789',
+      phone: '0986.722.324',
       role: ROLES.ADMIN,
       status: ACCOUNT_STATUS.ACTIVE,
       title: 'Giám Đốc Điều Hành (Ban Giám Đốc)',
@@ -189,7 +189,7 @@
       username: 'kythuat.vu',
       fullName: 'Vũ',
       email: 'vu.xuong@pghome.vn',
-      phone: '0973.562.789',
+      phone: '0986.722.324',
       role: ROLES.XUONG_VATTU,
       status: ACCOUNT_STATUS.ACTIVE,
       title: 'Kỹ Thuật & Vật Tư Xưởng',
@@ -203,7 +203,7 @@
       username: 'sale.hiep',
       fullName: 'Hiệp',
       email: 'hiep.sale@pghome.vn',
-      phone: '0973.562.789',
+      phone: '0986.722.324',
       role: ROLES.VANPHONG_SALE,
       status: ACCOUNT_STATUS.ACTIVE,
       title: 'Sale Admin & Quản Trị Văn Phòng',
@@ -217,7 +217,7 @@
       username: 'dutoan.dung',
       fullName: 'Dũng',
       email: 'dung.dutoan@pghome.vn',
-      phone: '0973.562.789',
+      phone: '0986.722.324',
       role: ROLES.DU_TOAN_SALE,
       status: ACCOUNT_STATUS.ACTIVE,
       title: 'Chuyên Viên Dự Toán & Bóc Tách Báo Giá',
@@ -231,7 +231,7 @@
       username: 'nhanvien.moi',
       fullName: 'Nguyễn Văn Mới',
       email: 'moi.nv@pghome.vn',
-      phone: '0973.562.789',
+      phone: '0986.722.324',
       role: null, // Chưa được gán quyền
       status: ACCOUNT_STATUS.PENDING,
       title: 'Nhân Sự Chờ Duyệt',
@@ -706,7 +706,7 @@
       return {
         success: false,
         user: user,
-        error: `Tài khoản của bạn đang ở trạng thái ${user.status}. Vui lòng liên hệ Giám Đốc 0973.562.789.`
+        error: `Tài khoản của bạn đang ở trạng thái ${user.status}. Vui lòng liên hệ Giám Đốc 0986.722.324.`
       };
     }
 

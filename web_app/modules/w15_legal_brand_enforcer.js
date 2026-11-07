@@ -22,6 +22,7 @@
     // 1. CHUẨN PHÁP LÝ & THƯƠNG HIỆU PHÚ GIA (BẤT KHẢ XÂM PHẠM)
     const LEGAL_STANDARD = Object.freeze({
         ENTITY_NAME: "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+        BRAND_COMPANY_NAME: "CÔNG TY CP PHÚ GIA VIỆT NAM",
         OFFICIAL_TRADE_NAME: "PG HOME LUXURY",
         BUSINESS_CODE: "042203002931",
         TAX_CODE: "042203002931",
@@ -30,8 +31,8 @@
         REGISTERED_ADDRESS: "Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh",
         TRADE_ADDRESS: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
         FACTORY_FACILITY_TITLE: "Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia",
-        HOTLINE: "0973.562.789",
-        HOTLINE_NUMERIC: "0973562789",
+        HOTLINE: "0986.722.324",
+        HOTLINE_NUMERIC: "0986722324",
         EMAIL_OFFICIAL: "noithatphugiahatinh@gmail.com"
     });
 
@@ -71,8 +72,8 @@
             replacement: LEGAL_STANDARD.HOTLINE
         },
         {
-            name: "Hotline rác 0986.722.324",
-            regex: /0986[\.\s\-]?722[\.\s\-]?324/g,
+            name: "Hotline bịa đặt 0973.562.789",
+            regex: /0973[\.\s\-]?562[\.\s\-]?789/g,
             replacement: LEGAL_STANDARD.HOTLINE
         },
         {

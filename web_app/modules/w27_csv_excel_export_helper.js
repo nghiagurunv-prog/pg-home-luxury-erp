@@ -3,7 +3,7 @@
  * HỆ THỐNG QUẢN TRỊ NỘI THẤT & XÂY DỰNG PG HOME LUXURY
  * MODULE: W27 - XUẤT BÁO CÁO CSV / EXCEL TIẾNG VIỆT CHUẨN UTF-8 BOM
  * Tác giả: Công nhân Flash W27 (Hệ thống Sub-Agent Tự Động Hóa PG Home)
- * Bản quyền: (c) 2026 Hộ Kinh Doanh Phú Gia - Hotline: 0973.562.789
+ * Bản quyền: (c) 2026 Hộ Kinh Doanh Phú Gia - Hotline: 0986.722.324
  * ==============================================================================
  * ĐẶC TÍNH KỸ THUẬT:
  * 1. Chèn tiền tố UTF-8 Byte Order Mark (\uFEFF) ở đầu file giúp Microsoft Excel
@@ -38,7 +38,7 @@
       name: "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
       taxId: "042203002931",
       address: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
-      hotline: "0973.562.789"
+      hotline: "0986.722.324"
     },
     ccscMonths: [
       { m: 1, name: "Tháng 1", sales: 250000000, debt: 25000000, cash: 225000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 3000000, bpkd: 15000000, qlx: 21000000, thue: 13000000, mkt: 10000000, bhxh: 6600000, pk_profit: 0, isActual: false },

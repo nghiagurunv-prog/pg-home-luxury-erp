@@ -7,7 +7,7 @@
  * TUÂN THỦ:
  *  - Kỷ luật thép & Quy chuẩn đối soát dòng tiền 3 lớp chéo (Hóa đơn thật + Nhóm Zalo + UNC ngân hàng)
  *  - Thông tin pháp lý chuẩn: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
- *  - Hotline: 0973.562.789 | Tổ hợp VP & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
+ *  - Hotline: 0986.722.324 | Tổ hợp VP & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
  * ============================================================================================
  */
 
@@ -1210,7 +1210,7 @@
       <div class="pg-w10-footer">
         <div class="pg-w10-footer-info">
           <strong>HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG</strong> • MST: 042203002931<br>
-          Tổ hợp Văn phòng & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh • Hotline: 0973.562.789
+          Tổ hợp Văn phòng & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh • Hotline: 0986.722.324
         </div>
         <div class="pg-w10-footer-actions">
           <button type="button" class="pg-btn-sm" id="w10-btn-export">📥 Xuất Dữ Liệu Đối Soát (JSON)</button>

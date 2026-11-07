@@ -59,7 +59,7 @@ module.exports = async (req, res) => {
         company: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
         email: 'pghomehatinh@gmail.com',
         tax_code: '042203002931',
-        hotline: '0973.562.789',
+        hotline: '0986.722.324',
         has_state: Object.keys(state).length > 0,
         timestamp: new Date().toISOString()
       });

@@ -1,7 +1,7 @@
 /**
  * PG HOME LUXURY - MODULE W49: CLOUD BACKUP & SNAPSHOT ENGINE
  * Quản trị & Vận hành: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
- * MST/ĐKKD: 042203002931 | Hotline: 0973.562.789
+ * MST/ĐKKD: 042203002931 | Hotline: 0986.722.324
  * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
  * 
  * Tính năng chính:
@@ -22,7 +22,7 @@
     representative: 'Nguyễn Trọng Nghĩa',
     director: 'Nguyễn Viết Nghĩa',
     address_office: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-    hotline: '0973.562.789',
+    hotline: '0986.722.324',
     email: 'pghomehatinh@gmail.com',
     engine_version: 'W49-Snapshot-V2.6'
   };

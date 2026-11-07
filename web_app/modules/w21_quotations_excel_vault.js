@@ -30,7 +30,7 @@
     legal_name: "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
     legal_mst: "042203002931",
     office_address: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
-    hotline: "0973.562.789"
+    hotline: "0986.722.324"
   };
 
   // Danh mục định mức tấm CNC chuẩn thực chiến Mục 24 GEMINI.md (Khổ ván 1220x2440)

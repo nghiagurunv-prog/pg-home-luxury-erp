@@ -262,7 +262,7 @@ Trước khi thực hiện bất kỳ lệnh nào hoặc đưa ra kết luận, 
 ### V. 5 Cải Tiến Quy Trình Điều Quân 50 Công Nhân + 5 Giám Sát Viên (Giám Sát Viên S05)
 21. **Kỷ Luật "Zero-Bothering" (Cấm Sai Vặt Giám Đốc 100%):** Mọi công việc kỹ thuật, cấu hình Git, đẩy code, tạo dự án, sửa lỗi, kiểm thử đều do Tổng Chỉ Huy và đội công nhân tự giải quyết từ A–Z.
 22. **Phân Vùng Độc Lập Tuyệt Đối (`1 Công Nhân = 1 Module Riêng`):** Chia nhỏ dự án thành 50 module độc lập (`w01`–`w50`) nạp qua `PG_OptimizationHub` (`W50`), xóa bỏ 100% xung đột ghi đè file khi 50 công nhân chạy song song.
-23. **Chuẩn Hóa Pháp Lý & Thương Hiệu Phú Gia Tự Động (`W15 Enforcer`):** Tự động rà soát và khóa cứng thông tin pháp lý trên toàn bộ biểu mẫu in ấn: `Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng`, MST/ĐKKD `042203002931`, `Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh`, Hotline `0973.562.789`.
+23. **Chuẩn Hóa Pháp Lý & Thương Hiệu Phú Gia Tự Động (`W15 Enforcer`):** Tự động rà soát và khóa cứng thông tin pháp lý trên toàn bộ biểu mẫu in ấn: `Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng`, MST/ĐKKD `042203002931`, `Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh`, Hotline `0986.722.324`.
 24. **Kiểm Toán Chéo Độc Lập Bởi 5 Giám Sát Viên (`TypeName="research"`):** Luôn tách biệt đội thi công (`W01`–`W50`) và đội thanh tra độc lập (`S01`–`S05`) để phát hiện và sửa ngay mọi sai số trước khi nghiệm thu.
 25. **Thu Hồi Quân Sạch Sẽ (`kill_all`) Sau Mỗi Chiến Dịch:** Giải phóng 100% bộ nhớ và tiến trình con ngay sau khi thu hoạch đủ báo cáo, giữ máy trạm của Giám Đốc luôn nhẹ và mượt tuyệt đối.
 

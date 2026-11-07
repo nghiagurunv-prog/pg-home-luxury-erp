@@ -1,7 +1,7 @@
 /**
  * MODULE W45: BẢNG SỐ LIỆU BỎ TÚI BAN GIÁM ĐỐC - KÉT SẮT THỰC CHI & LỢI NHUẬN RÒNG (SAFE POCKET SUMMARY CARD)
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -16,7 +16,7 @@
     companyLegal: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
     taxCode: '042203002931',
     address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-    hotline: '0973.562.789',
+    hotline: '0986.722.324',
     director: 'Nguyễn Viết Nghĩa (Đại diện HKD: Nguyễn Trọng Nghĩa)',
     t8t9Verified: {
       woodRevenue: 529834472,

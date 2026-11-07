@@ -358,7 +358,7 @@
 
                 <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400">
                   <p class="leading-relaxed">
-                    <strong>Thông tin pháp lý:</strong> Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931). Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh. Hotline: 0973.562.789.
+                    <strong>Thông tin pháp lý:</strong> Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931). Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh. Hotline: 0986.722.324.
                   </p>
                 </div>
               </div>

@@ -5,7 +5,7 @@
  * Nhiệm vụ: Biểu đồ SVG thuần (0 dependency) trực quan hóa:
  *   1. Hiệu suất quét ngầm Zalo V6.0 (Zero-Disruption, Latency ms, MB/s read speed)
  *   2. Lưu lượng tin nhắn/chứng từ công việc theo từng nhóm Zalo trọng điểm
- * Chuẩn pháp lý: Hộ Kinh Doanh Phú Gia - MST: 042203002931 - Hotline: 0973.562.789
+ * Chuẩn pháp lý: Hộ Kinh Doanh Phú Gia - MST: 042203002931 - Hotline: 0986.722.324
  * ==============================================================================
  */
 
@@ -567,7 +567,7 @@
         <!-- FOOTER PHÁP LÝ & AN TOÀN -->
         <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #64748b; border-top: 1px solid #1e293b; padding-top: 12px; flex-wrap: wrap;">
           <span>Hệ Thống Quản Trị PG Home • Hộ Kinh Doanh Phú Gia • MST: 042203002931</span>
-          <span>Hotline: 0973.562.789 • Chuẩn Vô Hình 100% (Stealth Engine V6.0)</span>
+          <span>Hotline: 0986.722.324 • Chuẩn Vô Hình 100% (Stealth Engine V6.0)</span>
         </div>
       </div>
     `;

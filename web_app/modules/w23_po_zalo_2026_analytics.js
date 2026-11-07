@@ -6,7 +6,7 @@
  * Tác giả: Công nhân Flash W23
  * Bản quyền: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST/ĐKKD: 042203002931)
  * Văn phòng & Xưởng: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * Hotline: 0973.562.789
+ * Hotline: 0986.722.324
  * Tuân thủ Kỷ luật Thép:
  *   - Mục 24: Định mức tấm CNC & Kiểm soát chi phí tổng (Vật tư + Thợ) <= 54%
  *   - Đối soát dòng tiền 3 lớp: Ảnh hóa đơn + Xác nhận Zalo + UNC ngân hàng
@@ -830,7 +830,7 @@
       html += '        <span>📋 BÁO CÁO PHÂN TÍCH ĐẶT HÀNG ZALO 2026</span>';
       html += '        <span style="font-size: 12px; background: #ef4444; color: #fff; padding: 2px 8px; border-radius: 999px; text-transform: uppercase;">DẤU ĐỎ ĐIỆN TỬ 100%</span>';
       html += '      </h2>';
-      html += '      <p style="margin: 4px 0 0 0; color: #64748b; font-size: 13px;">Hộ Kinh Doanh Phú Gia - Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789</p>';
+      html += '      <p style="margin: 4px 0 0 0; color: #64748b; font-size: 13px;">Hộ Kinh Doanh Phú Gia - Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324</p>';
       html += '    </div>';
       html += '    <div style="text-align: right;">';
       html += '      <button id="w23-btn-export-csv" style="background: #059669; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px;">📥 Xuất Báo Cáo CSV</button>';

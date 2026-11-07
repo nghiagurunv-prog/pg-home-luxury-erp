@@ -2,7 +2,7 @@
  * ======================================================================================
  * PG HOME LUXURY - HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA SẢN XUẤT NỘI THẤT
  * Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
- * Mã số ĐKKD/HKD: 042203002931 | Hotline: 0973.562.789
+ * Mã số ĐKKD/HKD: 042203002931 | Hotline: 0986.722.324
  * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
  * ======================================================================================
  * MODULE W48: DELTA-CURSOR INSPECTOR (ZALO STEALTH ENGINE V4.0)

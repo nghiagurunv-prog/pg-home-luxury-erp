@@ -33,7 +33,7 @@
     taxCode: '042203002931',
     addressDKKD: 'Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh',
     officeAndFactory: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-    hotline: '0973.562.789',
+    hotline: '0986.722.324',
     brandBadge: 'PG HOME LUXURY'
   });
 

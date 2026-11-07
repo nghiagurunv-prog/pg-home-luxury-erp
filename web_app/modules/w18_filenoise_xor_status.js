@@ -1,7 +1,7 @@
 /**
  * MODULE W18: ZALO 157 PRIVATE CHATS & FILENOISE XOR 0x93 DECODER STATUS
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {

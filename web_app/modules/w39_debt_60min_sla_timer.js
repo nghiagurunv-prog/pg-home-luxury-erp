@@ -612,7 +612,7 @@
             </div>
             <!-- FOOTER INFO -->
             <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; font-size: 11px; color: #64748b;">
-                <span>Hộ Kinh Doanh Phú Gia - Hotline: 0973.562.789 - Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh</span>
+                <span>Hộ Kinh Doanh Phú Gia - Hotline: 0986.722.324 - Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh</span>
                 <span>Module W39 SLA Engine - Chốt Nợ Tức Thời &le; 60 Phút Active</span>
             </div>
         </div>
@@ -646,7 +646,7 @@
                 name: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
                 taxCode: '042203002931',
                 address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-                hotline: '0973.562.789'
+                hotline: '0986.722.324'
             },
             summary: {
                 totalInvoices: invoices.length,

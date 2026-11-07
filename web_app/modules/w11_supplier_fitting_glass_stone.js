@@ -13,7 +13,7 @@
  * 
  * Pháp lý & Bản quyền: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
  * Mã số ĐKKD/MST: 042203002931 (ĐK: 13/01/2025 - Đại diện: Nguyễn Trọng Nghĩa)
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
  * NCC Phụ Kiện Quốc Tâm: 56 Ngô Đức Kế, TP. Hà Tĩnh
  * ==============================================================================================
  */
@@ -32,7 +32,7 @@
       verification_source: "Zalo Stealth Reader (Zero-Disruption Passive LevelDB / .rescache & Sổ tay công nợ đối soát)",
       legal_entity: "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)",
       office_factory_address: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
-      hotline: "0973.562.789",
+      hotline: "0986.722.324",
       status: "HOÀN TẤT ĐỐI SOÁT 100%"
     },
     summary: {

@@ -3,7 +3,7 @@
  * Module W05: MA TRẬN CHẤM CÔNG ĐIỂM DANH HÀNG NGÀY & GIỜ TĂNG CA OT CHUẨN T8-T10
  * Đơn vị pháp lý: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST/ĐKKD: 042203002931)
  * Trụ sở & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * Hotline: 0973.562.789
+ * Hotline: 0986.722.324
  * Nguồn dữ liệu: Đối soát chuẩn 100% nhóm Zalo Xưởng (Zalo Evidence Verified)
  */
 
@@ -655,7 +655,7 @@
             </h2>
             <div class="pg-w05-sub">
               <strong>HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG</strong> (MST/ĐKKD: 042203002931)<br>
-              Tổ hợp Văn phòng & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+              Tổ hợp Văn phòng & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
             </div>
           </div>
           <div style="text-align: right; font-size: 12px; color: #94a3b8;">

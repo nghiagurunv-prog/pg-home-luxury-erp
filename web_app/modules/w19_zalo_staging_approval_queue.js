@@ -4,7 +4,7 @@
  * PG HOME LUXURY - HỘ KINH DOANH PHÚ GIA (MST: 042203002931)
  * -----------------------------------------------------------------------------------------
  * Bản quyền: Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
  * 
  * NGUYÊN TẮC QUẢN TRỊ & LUẬT SẮT GIÁM ĐỐC:
  * 1. Chốt công nợ & chứng từ phát sinh tức thời <= 60 PHÚT (Zero-Dồn cuối tháng).
@@ -904,7 +904,7 @@
           </div>
           <div class="pg-w19-brand-meta">
             <strong>HỘ KINH DOANH PHÚ GIA</strong> (MST: 042203002931)<br>
-            Hotline: 0973.562.789 | Tổ hợp Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh
+            Hotline: 0986.722.324 | Tổ hợp Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh
           </div>
         </div>
 

@@ -3,7 +3,7 @@
  * HỆ THỐNG QUẢN TRỊ & CCSC NỘI THẤT PG HOME LUXURY - PHÚ GIA HÀ TĨNH
  * Module: W02 - CCSC 12 MONTHS ENGINE (BỘ MÁY TÍNH TOÁN CCSC & LỢI NHUẬN XƯỞNG 12 THÁNG)
  * Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST/ĐKKD: 042203002931)
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0986.722.324
  * =========================================================================================
  * 
  * NGUYÊN TẮC CỐT TỬ CỦA BAN GIÁM ĐỐC (GIÁM ĐỐC NGUYỄN VIẾT NGHĨA):

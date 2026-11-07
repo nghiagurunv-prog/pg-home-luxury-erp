@@ -6,7 +6,7 @@
  * Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
  * Mã số ĐKKD/HKD: 042203002931 (Đại diện: Nguyễn Trọng Nghĩa)
  * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * Hotline: 0973.562.789
+ * Hotline: 0986.722.324
  * 
  * QUY TẮC CỐT TỬ CỦA GIÁM ĐỐC:
  * 1. [Lớp 1: Ảnh hóa đơn thật] + [Lớp 2: Xác nhận nhóm Zalo NCC] + [Lớp 3: UNC Ngân hàng Chị Hương khớp số tiền]
@@ -615,7 +615,7 @@
               '<span style="background: #ef4444; color: #fff; font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">MODULE W12: BẢO VỆ DÒNG TIỀN</span>' +
             '</div>' +
             '<h2 style="margin: 8px 0 4px 0; font-size: 20px; font-weight: 700; color: #f1f5f9;">QUY CHUẨN ĐỐI SOÁT DÒNG TIỀN 3 LỚP CHÉO & CHỐNG TRÙNG SHA-256</h2>' +
-            '<p style="margin: 0; font-size: 12px; color: #94a3b8;">Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng | ĐKKD: <strong style="color: #cbd5e1;">042203002931</strong> | Hotline: <strong style="color: #eab308;">0973.562.789</strong> | Trụ sở: Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh</p>' +
+            '<p style="margin: 0; font-size: 12px; color: #94a3b8;">Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng | ĐKKD: <strong style="color: #cbd5e1;">042203002931</strong> | Hotline: <strong style="color: #eab308;">0986.722.324</strong> | Trụ sở: Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh</p>' +
           '</div>' +
           '<div style="text-align: right;">' +
             '<button id="w12-refresh-btn" style="background: #2563eb; hover: #1d4ed8; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; transition: 0.2s;">⚡ Quét Lại 3 Lớp</button>' +
@@ -747,7 +747,7 @@
     version: '1.0-STRICT',
     legalName: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
     taxId: '042203002931',
-    hotline: '0973.562.789',
+    hotline: '0986.722.324',
     STATUS: STATUS,
     init: init,
     auditTransaction: auditTransaction,

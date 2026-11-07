@@ -185,7 +185,7 @@
 
       // Footer thông tin quy chuẩn
       '  <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #64748b; border-top: 1px solid #334155; padding-top: 10px;">' +
-      '    <div>Hệ Thống Quản Trị PG Home &bull; Kỷ Luật Thép Điều 4 &bull; Hotline: <strong>0973.562.789</strong></div>' +
+      '    <div>Hệ Thống Quản Trị PG Home &bull; Kỷ Luật Thép Điều 4 &bull; Hotline: <strong>0986.722.324</strong></div>' +
       '    <div>Phiên bản: ' + VERSION + ' (Module W46)</div>' +
       '  </div>' +
       '</div>';

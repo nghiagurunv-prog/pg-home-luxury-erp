@@ -4,7 +4,7 @@
  * 
  * Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
  * Văn phòng & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * Hotline: 0973.562.789 | Giám Đốc: Nguyễn Viết Nghĩa
+ * Hotline: 0986.722.324 | Giám Đốc: Nguyễn Viết Nghĩa
  * 
  * Tuân thủ tuyệt đối: GEMINI.MD & SỔ TAY LUẬT SẮT 01 - 02 - 03 (Mục 24 & Mục 25)
  */
@@ -532,7 +532,7 @@
             </div>
             <div class="w16-brand-subtitle">
               <strong>Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng</strong> (MST: 042203002931) | Đại diện: Nguyễn Trọng Nghĩa - Giám Đốc Điều Hành: Nguyễn Viết Nghĩa<br/>
-              Tổ hợp Văn phòng & Nhà máy Sản xuất: <strong>Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh</strong> | Hotline: <strong>0973.562.789</strong>
+              Tổ hợp Văn phòng & Nhà máy Sản xuất: <strong>Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh</strong> | Hotline: <strong>0986.722.324</strong>
             </div>
           </div>
           <div style="text-align: right;">
