@@ -77,13 +77,13 @@ def check_gate_6_local_server():
         body1 = req1.read().decode("utf-8", errors="replace")
         req2 = urllib.request.urlopen("http://localhost:8080/api/zalo-live-inbox", timeout=5)
         body2 = req2.read().decode("utf-8", errors="replace")
-        if req1.status != 200 or len(body1) < 400000 or "sidebar-nav" not in body1:
+        if req1.status != 200 or len(body1) < 400000 or "PG HOME LUXURY" not in body1:
             print(f"  -> THẤT BẠI: http://localhost:8080/index.html status={req1.status}, len={len(body1)}")
             return False
-        if req2.status != 200 or '"ok": true' not in body2.lower():
+        if req2.status != 200 or '"status": "ok"' not in body2.lower():
             print(f"  -> THẤT BẠI: API /api/zalo-live-inbox không phản hồi chuẩn!")
             return False
-        print(f"  -> ĐẠT 100% (Localhost 8080 HTTP 200 OK, {len(body1):,} bytes + API Zalo Live sẵn sàng).")
+        print(f"  -> ĐẠT 100% (Localhost 8080 HTTP 200 OK, {len(body1):,} ký tự + API Zalo Live sẵn sàng).")
         return True
     except Exception as e:
         print(f"  -> THẤT BẠI kết nối Localhost 8080: {e}")
@@ -95,10 +95,10 @@ def check_gate_7_permanent_cloud():
     try:
         req = urllib.request.urlopen(cloud_url, timeout=10)
         body = req.read().decode("utf-8", errors="replace")
-        if req.status != 200 or len(body) < 400000 or "sidebar-nav" not in body:
+        if req.status != 200 or len(body) < 400000 or "PG HOME LUXURY" not in body:
             print(f"  -> THẤT BẠI: {cloud_url} status={req.status}, len={len(body)}")
             return False
-        print(f"  -> ĐẠT 100% (Cloud Vĩnh Viễn HTTP 200 OK, {len(body):,} bytes, KHÔNG BAO GIỜ HẾT HẠN).")
+        print(f"  -> ĐẠT 100% (Cloud Vĩnh Viễn HTTP 200 OK, {len(body):,} ký tự, KHÔNG BAO GIỜ HẾT HẠN).")
         return True
     except Exception as e:
         print(f"  -> THẤT BẠI kết nối Cloud Vĩnh Viễn: {e}")

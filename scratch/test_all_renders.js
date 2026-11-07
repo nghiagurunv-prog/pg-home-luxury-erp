@@ -27,7 +27,13 @@ function createElementMock(id, tag = 'div') {
         querySelectorAll: function() { return []; },
         closest: function() { return null; },
         appendChild: function() {},
-        getContext: function() { return {}; }
+        getContext: function() {
+            return {
+                createLinearGradient: function() {
+                    return { addColorStop: function() {} };
+                }
+            };
+        }
     };
 }
 
