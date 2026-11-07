@@ -9,6 +9,14 @@ __pycache__/
 *.rar
 *.mp4
 data/backups/
+data/zalo_pulled_batches/
+data/zalo_stealth_audit/
+data/zalo_deep_intelligence_2026.json
+data/zalo_file_transfer_ledger.json
+data/zalo_filenoise_decoded_index.json
+data/zalo_full_chat_index.json
+data/zalo_leveldb_messages_2026.json
+data/zalo_seen_cursor.json
 web_app/__pycache__/
 web_app/server.py
 .git/

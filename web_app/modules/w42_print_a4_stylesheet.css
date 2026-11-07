@@ -1,0 +1,935 @@
+/* ==========================================================================
+   PG HOME LUXURY - ENTERPRISE PRINT ENGINE v4.2 (A4 PIXEL-PERFECT)
+   File: w42_print_a4_stylesheet.css
+   Author: Cong Nhan Flash W42 (Kỷ Luật Thép PG Home)
+   Description:
+     Chuyên biệt hóa in ấn khổ A4 (Portrait & Landscape) cho toàn bộ hệ thống:
+     1. Báo Giá Khách Hàng (Quotation)
+     2. Bảng Lương & Chấm Công Thợ (Payroll / Worker Salary)
+     3. Báo Cáo CCSC (Chi Phí Sản Xuất & Lợi Nhuận Bỏ Túi BGĐ)
+     4. Phiếu Đề Xuất Đặt Hàng Vật Tư (Purchase Order - PO)
+     5. Biên Lai Thu Tiền Điện Tử (Electronic Receipt)
+     
+     ĐẶC BIỆT:
+     - Tự động ẩn 100% menu, sidebar, topbar, filter, nút bấm thao tác thừa.
+     - Khóa cứng và giữ nguyên 100% Khung Ký Duyệt & Con Dấu Đỏ Điện Tử.
+     - Triệt tiêu nền tối Minotti Espresso Walnut, chuyển sang nền trắng giấy in
+       sắc nét chuẩn A4, viền nét đơn chuẩn, độ tương phản cao, chống vỡ trang.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL PAGE CONFIGURATION & PRINT RESET
+   -------------------------------------------------------------------------- */
+@page {
+  size: A4 portrait;
+  margin: 10mm 12mm 10mm 12mm;
+}
+
+@page portrait-sheet {
+  size: A4 portrait;
+  margin: 10mm 12mm 10mm 12mm;
+}
+
+@page landscape-sheet {
+  size: A4 landscape;
+  margin: 8mm 10mm 8mm 10mm;
+}
+
+/* Kích hoạt khổ ngang A4 cho các bảng biểu nhiều cột: CCSC, Bảng lương chi tiết */
+.print-landscape,
+.page-landscape,
+[data-print-orientation="landscape"],
+#ccscSection,
+#ccscTab,
+#tab-ccsc,
+.ccsc-full-report,
+.payroll-wide-view {
+  page: landscape-sheet !important;
+}
+
+@media print {
+  /* Ép trình duyệt render chuẩn xác màu sắc nền và viền dấu đỏ */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    text-shadow: none !important;
+  }
+
+  /* Reset toàn bộ layout trang thành nền trắng giấy in A4 */
+  html, body {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #0F172A !important;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif !important;
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+    overflow: visible !important;
+  }
+
+  /* Triệt tiêu container cố định của web desktop */
+  .app-layout {
+    display: block !important;
+    min-height: auto !important;
+    width: 100% !important;
+    background: transparent !important;
+  }
+
+  .main-content,
+  .main-content.expanded,
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     2. TỰ ĐỘNG ẨN 100% MENU, THANH ĐIỀU HƯỚNG, NÚT THỪA & CÔNG CỤ TRÌNH DUYỆT
+     -------------------------------------------------------------------------- */
+  .sidebar,
+  .brand-section,
+  .brand-logo,
+  .nav-menu,
+  .sidebar-footer,
+  .topbar,
+  .topbar-left,
+  .topbar-right,
+  .topbar-utility-group,
+  .executive-sticky-ribbon,
+  .live-telemetry-ribbon,
+  .atelier-material-bar,
+  .breadcrumbs,
+  .user-session-box,
+  .user-display-role,
+  .theme-toggle,
+  .month-selector-box,
+  #globalSearchContainer,
+  #globalSearchInput,
+  .search-shortcut-badge,
+  .zalo-pulse-pill,
+  #zaloStealthBadge,
+  #zaloStealthText,
+  .privacy-toggle-btn,
+  #btnPrivacyShield,
+  #privacyStatusText,
+  .pwa-install-btn,
+  .btn,
+  .btn-gold,
+  .btn-secondary,
+  .btn-outline,
+  .btn-icon,
+  .btn-sm,
+  .btn-group,
+  .card-actions,
+  .filter-bar,
+  .radio-pill-group,
+  .vattu-filter-btn,
+  .category-tabs,
+  .nav-tabs,
+  .pagination,
+  .modal-close,
+  .modal-footer,
+  .modal-header .btn,
+  .btn-boss-approve,
+  .btn-boss-reject,
+  .btn-remove-att,
+  #btnExportExcel,
+  #btnQuickAdd,
+  .atelier-mode-switch-btn,
+  .exec-quick-actions-bar,
+  .status-pill.clickable,
+  .action-col,
+  .no-print,
+  [data-no-print="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Ẩn thanh cuộn web */
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Ẩn các tab không active khi in từ giao diện chính */
+  .tab-pane {
+    display: none !important;
+  }
+
+  .tab-pane.active {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     3. VÔ HIỆU HÓA LỚP MỜ BẢO MẬT KHI ĐANG XUẤT HÓA ĐƠN / IN BÁO CÁO CHO BGĐ
+     -------------------------------------------------------------------------- */
+  .privacy-shield-active .profit-value,
+  .privacy-shield-active .profit-sensitive,
+  .privacy-shield-active [data-profit-mask="true"],
+  .privacy-shield-active .stat-card.privacy-protected .stat-value {
+    filter: none !important;
+    user-select: auto !important;
+    color: #0F172A !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     4. CÁCH LY & CĂN CHỈNH KHI IN TỪ CÁC HỘP THOẠI MODAL (PO, BÁO GIÁ, BIÊN LAI)
+     -------------------------------------------------------------------------- */
+  /* Khi in một Modal cụ thể đang hiển thị, ẩn các phần tử ngoài modal */
+  body:has(#viewPOModal[style*="display: block"]),
+  body:has(#viewPOModal.open),
+  body:has(#viewPOModal.active),
+  body:has(#viewPOModal.show),
+  body:has(#quotationModal.open),
+  body:has(#quotationModal.active),
+  body:has(#quotationModal.show),
+  body:has(#receiptModal.open),
+  body:has(#receiptModal.active),
+  body:has(#receiptModal.show) {
+    background: #FFFFFF !important;
+  }
+
+  .modal-overlay,
+  .modal {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .modal-card {
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    transform: none !important;
+    border-radius: 0 !important;
+  }
+
+  .modal-body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     5. PHÂN HỆ 1: PHIẾU ĐỀ XUẤT ĐẶT HÀNG VẬT TƯ (PURCHASE ORDER - PO)
+     -------------------------------------------------------------------------- */
+  #poPrintArea,
+  .po-print-sheet {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  .po-sheet-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding-bottom: 10px !important;
+    border-bottom: 2px solid #0F172A !important;
+    margin-bottom: 12px !important;
+  }
+
+  .po-brand h3 {
+    font-size: 13pt !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+    margin: 0 0 2px 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .po-brand p {
+    font-size: 8pt !important;
+    color: #475569 !important;
+    margin: 1px 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  .po-meta-right {
+    text-align: right !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 4px !important;
+  }
+
+  .po-code-box {
+    background: #0F172A !important;
+    color: #F8FAFC !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    font-size: 8.5pt !important;
+    font-weight: 700 !important;
+  }
+
+  .po-code-box .val {
+    color: #FACC15 !important;
+  }
+
+  .po-date-line {
+    font-size: 8pt !important;
+    color: #64748B !important;
+  }
+
+  .po-title-block {
+    text-align: center !important;
+    margin: 12px 0 10px 0 !important;
+  }
+
+  .po-title-block h2 {
+    font-size: 14pt !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 0 4px 0 !important;
+  }
+
+  .po-info-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 16px !important;
+    background: #F8FAFC !important;
+    padding: 10px 14px !important;
+    border-radius: 4px !important;
+    border: 1px solid #CBD5E1 !important;
+    margin-bottom: 12px !important;
+    font-size: 8.5pt !important;
+  }
+
+  .info-row {
+    color: #334155 !important;
+    line-height: 1.4 !important;
+  }
+
+  .info-row strong {
+    color: #0F172A !important;
+  }
+
+  /* Bảng danh sách vật tư PO */
+  .po-print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8pt !important;
+    margin-bottom: 12px !important;
+  }
+
+  .po-print-table thead {
+    display: table-header-group !important;
+  }
+
+  .po-print-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .po-print-table th {
+    background: #0F172A !important;
+    color: #FFFFFF !important;
+    padding: 7px 8px !important;
+    font-weight: 800 !important;
+    font-size: 8pt !important;
+    border: 1px solid #0F172A !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    text-align: center !important;
+  }
+
+  .po-print-table td {
+    padding: 6px 8px !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #0F172A !important;
+    line-height: 1.35 !important;
+  }
+
+  .po-print-table tbody tr:nth-child(even) {
+    background: #F8FAFC !important;
+  }
+
+  .po-print-table tfoot td {
+    background: #FEF3C7 !important;
+    border: 1px solid #D97706 !important;
+    padding: 7px 10px !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    font-size: 8.5pt !important;
+  }
+
+  .po-note-box {
+    background: #F8FAFC !important;
+    border-left: 3px solid #D4AF37 !important;
+    border-top: 1px solid #E2E8F0 !important;
+    border-right: 1px solid #E2E8F0 !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 8px 12px !important;
+    font-size: 8pt !important;
+    color: #334155 !important;
+    margin: 8px 0 14px 0 !important;
+    border-radius: 0 4px 4px 0 !important;
+    page-break-inside: avoid !important;
+  }
+
+  .po-sheet-footer {
+    margin-top: 14px !important;
+    padding-top: 6px !important;
+    border-top: 1px solid #CBD5E1 !important;
+    font-size: 7.5pt !important;
+    color: #64748B !important;
+    text-align: center !important;
+    font-style: italic !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     6. GIỮ NGUYÊN KHUNG KÝ DUYỆT & DẤU ĐỎ ĐIỆN TỬ BẤT KHẢ XÂM PHẠM
+     -------------------------------------------------------------------------- */
+  .po-signature-section,
+  .receipt-sig-section,
+  .print-signature-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin-top: 16px !important;
+    padding-top: 8px !important;
+    position: relative !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .po-sig-box,
+  .receipt-sig-box,
+  .print-sig-col {
+    flex: 1 !important;
+    text-align: center !important;
+    position: relative !important;
+    min-height: 145px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    border: 1px dashed #CBD5E1 !important;
+    padding: 8px 6px !important;
+    border-radius: 4px !important;
+    background: #FFFFFF !important;
+    page-break-inside: avoid !important;
+  }
+
+  .sig-boss-box {
+    border: 2px dashed #DC2626 !important;
+    background: #FEF2F2 !important;
+  }
+
+  .po-sig-box .sig-title,
+  .receipt-sig-box .sig-title,
+  .print-sig-col .sig-title {
+    font-weight: 900 !important;
+    font-size: 8.5pt !important;
+    color: #0F172A !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .po-sig-box .sig-subtitle,
+  .receipt-sig-box .sig-subtitle,
+  .print-sig-col .sig-subtitle {
+    font-size: 7.5pt !important;
+    color: #64748B !important;
+    font-style: italic !important;
+    margin-top: 2px !important;
+  }
+
+  .sig-space,
+  .po-sig-box .sig-space,
+  .print-sig-col .sig-space {
+    height: 60px !important;
+    min-height: 60px !important;
+    display: block !important;
+  }
+
+  .po-sig-box .sig-name,
+  .receipt-sig-box .sig-name,
+  .print-sig-col .sig-name {
+    font-weight: 800 !important;
+    font-size: 8.5pt !important;
+    color: #0F172A !important;
+    padding-top: 6px !important;
+    border-top: 1px solid #CBD5E1 !important;
+    margin-top: auto !important;
+  }
+
+  /* CON DẤU MỘC ĐỎ ĐIỆN TỬ PG HOME - BẢO LƯU 100% */
+  .official-stamp-container,
+  .receipt-stamp-area {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    top: 28px !important;
+    left: 50% !important;
+    transform: translateX(-50%) rotate(-4deg) !important;
+    pointer-events: none !important;
+    z-index: 99 !important;
+    filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.35)) !important;
+  }
+
+  .official-company-stamp {
+    display: block !important;
+    visibility: visible !important;
+    width: 140px !important;
+    height: 140px !important;
+    position: relative !important;
+    animation: none !important;
+  }
+
+  .stamp-svg {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .stamp-svg circle,
+  .stamp-svg path,
+  .stamp-svg line,
+  .stamp-svg polygon,
+  .stamp-svg text,
+  .stamp-curved-text {
+    stroke: #DC2626 !important;
+    fill: #DC2626 !important;
+    color: #DC2626 !important;
+  }
+
+  .stamp-approved-box {
+    display: block !important;
+    visibility: visible !important;
+    position: absolute !important;
+    bottom: -4px !important;
+    right: -12px !important;
+    border: 2px solid #DC2626 !important;
+    background: #FEF2F2 !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    text-align: center !important;
+    transform: rotate(8deg) !important;
+  }
+
+  .stamp-approved-box .approved-text {
+    font-size: 8.5pt !important;
+    font-weight: 900 !important;
+    color: #DC2626 !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .stamp-approved-box .approved-sub {
+    font-size: 7pt !important;
+    font-weight: 800 !important;
+    color: #DC2626 !important;
+  }
+
+  /* Khi chưa được duyệt (Watermark) */
+  .po-watermark {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 0.9 !important;
+  }
+
+  .po-watermark span {
+    font-size: 2.2rem !important;
+    color: rgba(220, 38, 38, 0.22) !important;
+    border: 3px dashed rgba(220, 38, 38, 0.35) !important;
+    padding: 10px 28px !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     7. PHÂN HỆ 2: BÁO GIÁ CÔNG TRÌNH (QUOTATION)
+     -------------------------------------------------------------------------- */
+  #printQuotationArea,
+  .quotation-print-container,
+  #quotationModal .modal-card {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
+  .quote-header,
+  .quotation-header {
+    border-bottom: 2px solid #0F172A !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .quote-title {
+    font-size: 15pt !important;
+    font-weight: 900 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    color: #0F172A !important;
+    margin: 10px 0 !important;
+  }
+
+  .quote-info-box {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px 16px !important;
+    background: #F8FAFC !important;
+    border: 1px solid #CBD5E1 !important;
+    padding: 8px 12px !important;
+    font-size: 8.5pt !important;
+    margin-bottom: 12px !important;
+  }
+
+  .quotation-table,
+  .quote-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8pt !important;
+    margin-bottom: 14px !important;
+  }
+
+  .quotation-table thead {
+    display: table-header-group !important;
+  }
+
+  .quotation-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .quotation-table th {
+    background: #1E293B !important;
+    color: #FFFFFF !important;
+    border: 1px solid #1E293B !important;
+    padding: 6px 8px !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+  }
+
+  .quotation-table td {
+    border: 1px solid #CBD5E1 !important;
+    padding: 6px 8px !important;
+    color: #0F172A !important;
+  }
+
+  .quotation-table tfoot td {
+    background: #FEF3C7 !important;
+    border: 1px solid #F59E0B !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    font-size: 8.5pt !important;
+  }
+
+  .quote-terms {
+    background: #F8FAFC !important;
+    border: 1px solid #CBD5E1 !important;
+    padding: 8px 12px !important;
+    font-size: 8pt !important;
+    line-height: 1.4 !important;
+    margin-top: 10px !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     8. PHÂN HỆ 3: BÁO CÁO CCSC (12 THÁNG & T8+T9 BỎ TÚI BGĐ)
+     -------------------------------------------------------------------------- */
+  .print-ccsc-header {
+    display: block !important;
+    text-align: center !important;
+    margin-bottom: 12px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-ccsc-header h2 {
+    font-size: 15pt !important;
+    font-weight: 900 !important;
+    color: #000000 !important;
+    text-transform: uppercase !important;
+    margin: 0 0 4px 0 !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .print-ccsc-header p {
+    font-size: 8.5pt !important;
+    color: #334155 !important;
+    margin: 2px 0 !important;
+  }
+
+  /* Bảng số liệu CCSC & Toàn bộ Data Tables */
+  .data-table,
+  .table-card .data-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 7.8pt !important;
+    margin-bottom: 14px !important;
+    background: #FFFFFF !important;
+  }
+
+  .data-table thead {
+    display: table-header-group !important;
+  }
+
+  .data-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .data-table th {
+    background: #E2E8F0 !important;
+    color: #0F172A !important;
+    border: 1px solid #64748B !important;
+    padding: 5px 6px !important;
+    font-weight: 900 !important;
+    text-align: center !important;
+    font-size: 7.8pt !important;
+  }
+
+  .data-table td {
+    border: 1px solid #94A3B8 !important;
+    padding: 4px 6px !important;
+    color: #000000 !important;
+    font-variant-numeric: tabular-nums !important;
+    line-height: 1.3 !important;
+  }
+
+  .data-table tbody tr:nth-child(even) {
+    background: #F8FAFC !important;
+  }
+
+  .data-table tfoot th,
+  .data-table tfoot td {
+    background: #FEF3C7 !important;
+    border: 1px solid #D97706 !important;
+    border-top: 2px solid #000000 !important;
+    font-weight: 900 !important;
+    color: #000000 !important;
+    font-size: 8pt !important;
+  }
+
+  .card,
+  .table-card {
+    background: #FFFFFF !important;
+    border: 1px solid #CBD5E1 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-bottom: 14px !important;
+    border-radius: 4px !important;
+    page-break-inside: auto !important;
+  }
+
+  .card-header {
+    border-bottom: 1px solid #CBD5E1 !important;
+    padding: 8px 12px !important;
+    background: #F8FAFC !important;
+  }
+
+  .card-header h3 {
+    font-size: 11pt !important;
+    color: #0F172A !important;
+    font-weight: 800 !important;
+  }
+
+  .card-subtitle {
+    font-size: 8pt !important;
+    color: #64748B !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     9. PHÂN HỆ 4: BẢNG LƯƠNG & CHẤM CÔNG THỢ (PAYROLL / WORKER COMPENSATION)
+     -------------------------------------------------------------------------- */
+  #payrollTable,
+  #workerTable,
+  .worker-payroll-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8pt !important;
+    margin: 10px 0 !important;
+  }
+
+  .metric-comparison-box {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 8px 12px !important;
+    background: #F8FAFC !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 4px !important;
+    margin-bottom: 10px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .comp-item {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .comp-title {
+    font-size: 7.5pt !important;
+    color: #64748B !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+  }
+
+  .comp-val {
+    font-size: 10pt !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     10. PHÂN HỆ 5: BIÊN LAI THU TIỀN ĐIỆN TỬ (RECEIPT)
+     -------------------------------------------------------------------------- */
+  .receipt-sheet {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 4px !important;
+    padding: 16px 24px !important;
+    box-shadow: none !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    max-width: 180mm !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .receipt-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    border-bottom: 2px solid #CBD5E1 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .receipt-brand h3 {
+    font-size: 12pt !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+  }
+
+  .receipt-brand p {
+    font-size: 7.5pt !important;
+    color: #64748B !important;
+    margin: 2px 0 !important;
+  }
+
+  .receipt-code {
+    font-size: 11pt !important;
+    font-weight: 900 !important;
+    color: #B91C1C !important;
+  }
+
+  .receipt-title h2 {
+    font-size: 14pt !important;
+    font-weight: 900 !important;
+    text-align: center !important;
+    color: #0F172A !important;
+    text-transform: uppercase !important;
+    margin: 10px 0 !important;
+  }
+
+  .receipt-row {
+    display: flex !important;
+    margin-bottom: 8px !important;
+    font-size: 8.5pt !important;
+  }
+
+  .receipt-row .r-label {
+    width: 160px !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+  }
+
+  .receipt-row .r-val {
+    flex: 1 !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+  }
+
+  .receipt-amount-box {
+    background: #FEF3C7 !important;
+    border: 1px dashed #D4AF37 !important;
+    border-radius: 4px !important;
+    padding: 8px 14px !important;
+    margin: 14px 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 9.5pt !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     11. TINH CHỈNH TƯƠNG PHẢN & PHÒNG CHỐNG TRÀN KHỔ A4 (OVERFLOW GUARD)
+     -------------------------------------------------------------------------- */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Chống tách rời tiêu đề với nội dung phía sau */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* Đảm bảo các dòng bảng không bị cắt ngang giữa trang */
+  tr, td, th {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}

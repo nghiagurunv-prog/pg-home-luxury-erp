@@ -1,0 +1,63 @@
+{
+  "status": "SUCCESS",
+  "stealth_mode": "OFFSCREEN_VIRTUAL",
+  "zalo_was_open_on_screen": 0,
+  "total_groups": 5,
+  "groups": [
+    {
+      "index": 0,
+      "name": "Chém Gió Về Chứng Khoán",
+      "recent_time": "",
+      "rect": [
+        -29936,
+        -29880,
+        -29592,
+        -29802
+      ]
+    },
+    {
+      "index": 1,
+      "name": "My Documents",
+      "recent_time": "2",
+      "rect": [
+        -29936,
+        -29802,
+        -29592,
+        -29724
+      ]
+    },
+    {
+      "index": 5,
+      "name": "Nguyễn Quang Huy",
+      "recent_time": "40",
+      "rect": [
+        -29936,
+        -29490,
+        -29592,
+        -29412
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Đức Thuận gem pro",
+      "recent_time": "1",
+      "rect": [
+        -29936,
+        -29412,
+        -29592,
+        -29334
+      ]
+    },
+    {
+      "index": 8,
+      "name": "Bảng chấm công xưởng",
+      "recent_time": "3",
+      "rect": [
+        -29936,
+        -29256,
+        -29592,
+        -29178
+      ]
+    }
+  ]
+}

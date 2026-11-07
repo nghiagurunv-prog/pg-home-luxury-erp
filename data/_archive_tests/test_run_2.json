@@ -1,0 +1,171 @@
+{
+  "status": "SUCCESS",
+  "timestamp": "2026-11-04 01:25:07",
+  "duration_sec": 4.83,
+  "stealth_mode": "OFFSCREEN_VIRTUAL",
+  "zalo_was_open_on_screen": 0,
+  "group_name": "14  Bảng chấm công xưởng  14   Quản trị PG Home",
+  "total_messages": 10,
+  "messages": [
+    {
+      "msg_id": "bb_msg_id_1793626814389",
+      "sender": "Anh Trần",
+      "direction": "INCOMING",
+      "time": "20:40",
+      "content": "Anh (ngày 2/11 ) \nsáng 7h30-11h30\nchiều 13h30-20h\ntca 2,5h ctrinh anh huỳnh",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [
+          "tca"
+        ],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "bb_msg_id_1793627095241",
+      "sender": "Anh Tuan",
+      "direction": "INCOMING",
+      "time": "20:44",
+      "content": "Tuấn anh (ngày 2/11\nsáng 7h30-11h30\nchiều 13h30-20h\ntca 2,5h ở xưởng",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [
+          "tca"
+        ],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "",
+      "sender": "Thành viên nhóm",
+      "direction": "INCOMING",
+      "time": "",
+      "content": "22:35 02/11/2026",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "bb_msg_id_1793633735393",
+      "sender": "Hòa Pghome",
+      "direction": "INCOMING",
+      "time": "22:35",
+      "content": "Hoà 7h30-21h tc 4,5h cả trưa ở xường",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "",
+      "sender": "Thành viên nhóm",
+      "direction": "INCOMING",
+      "time": "",
+      "content": "Hôm qua",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "bb_msg_id_1793715627725",
+      "sender": "Lương Thế Hào",
+      "direction": "INCOMING",
+      "time": "21:20",
+      "content": "Tin nhắn đã được thu hồi",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "bb_msg_id_1793715711285",
+      "sender": "Anh Trần",
+      "direction": "INCOMING",
+      "time": "21:21",
+      "content": "Anh (ngày 3/11 ) \nsáng 7h30-12h\nchiều 13h30-20h30\ntca 3,5h ctrinh anh huỳnh",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [
+          "tca"
+        ],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "bb_msg_id_1793715716421",
+      "sender": "Lương Thế Hào",
+      "direction": "INCOMING",
+      "time": "21:21",
+      "content": "Hào (ngày 3/11 ) \nsáng 7h30-12h\nchiều 13h30-20h30\ntca 3,5h ctrinh anh huỳnh",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [
+          "tca"
+        ],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "",
+      "sender": "Thành viên nhóm",
+      "direction": "INCOMING",
+      "time": "",
+      "content": "22:51 Hôm qua",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    },
+    {
+      "msg_id": "bb_msg_id_1793721071256",
+      "sender": "Anh Tuan",
+      "direction": "INCOMING",
+      "time": "22:51",
+      "content": "Tuấn anh 3/ 11 7h30 18h00 tac 1h ở xưởng",
+      "files": [],
+      "images": [],
+      "entities": {
+        "attendance": [
+          "tac"
+        ],
+        "order_codes": [],
+        "debt_mentions": [],
+        "bank_accounts": []
+      }
+    }
+  ]
+}

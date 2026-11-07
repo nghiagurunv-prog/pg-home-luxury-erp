@@ -644,7 +644,7 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
             new_files_count = 0 if is_first_baseline else len(new_keys)
 
             # Nếu là lần khởi tạo con trỏ đầu tiên, lấy 1 file mới nhất của mỗi nhóm để đưa vào Staging Inbox
-            keys_to_inspect = new_keys[-15:] if not is_first_baseline else (cache_items[-1:] if cache_items else [])
+            keys_to_inspect = new_keys if not is_first_baseline else (cache_items[-1:] if cache_items else [])
 
             newest_intel = None
             for fn in keys_to_inspect:

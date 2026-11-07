@@ -48,3 +48,5 @@ data/zalo_media/
 data/raw_*/
 data/*.bak
 data/*_backup*
+
+.vercel

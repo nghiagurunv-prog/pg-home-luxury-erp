@@ -4,7 +4,7 @@
  */
 
 // Legacy compatibility marker: "pghome-v12.2-clean-ui-2026"
-const CACHE_NAME = "pghome-v14.0-italian-atelier-2026";
+const CACHE_NAME = "pghome-v14.5-flash50-atelier-2026";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
@@ -12,7 +12,10 @@ const ASSETS_TO_CACHE = [
   "./app.js",
   "./manifest.json",
   "./icon-192.png",
-  "./icon-512.png"
+  "./icon-512.png",
+  "./modules/w41_luxury_gold_theme_tokens.css",
+  "./modules/w42_print_a4_stylesheet.css",
+  "./modules/w50_master_hub_loader.js"
 ];
 
 self.addEventListener("install", (e) => {

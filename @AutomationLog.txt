@@ -1,0 +1,4 @@
+2026-10-31 15:40:38.889 read_vp_chamcong.py[52] <module> -> Find Control Timeout(10s): {AutomationId: 'sidebarNav', ControlType: GroupControl}
+2026-10-31 15:41:41.663 read_vp_chamcong.py[58] <module> -> Find Control Timeout(10s): {AutomationId: 'messageViewContainer', ControlType: GroupControl}
+2026-11-01 19:26:59.112 check_current_chat.py[19] <module> -> Find Control Timeout(10s): {AutomationId: 'chat-header', ControlType: GroupControl}
+2026-11-01 19:29:06.231 click_vp_stealth.py[65] <module> -> Find Control Timeout(10s): {AutomationId: 'chat-header', ControlType: GroupControl}

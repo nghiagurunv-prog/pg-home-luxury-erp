@@ -250,5 +250,11 @@
     "group": "Phụ Kiện Quốc Tâm",
     "event": "[Delta v6.0] Bắt tức thì 3 tệp mới từ Tâm Quốc (INVOICE_OR_DELIVERY_NOTE)",
     "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-08 02:10:11",
+    "group": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
+    "event": "[Delta v6.0] Bắt tức thì 2 tệp mới từ Nguyễn Minh (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
   }
 ]

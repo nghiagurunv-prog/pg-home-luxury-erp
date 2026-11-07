@@ -846,9 +846,9 @@ const DEFAULT_DATA = {
 // BẢNG LƯƠNG ĐÃ ĐỐI SOÁT CHUẨN 100% THEO KỲ THÁNG (T8, T9, T10)
 const DEFAULT_WORKERS_BY_MONTH = {
   "8": [
-    { code: "NV01", name: "HÀ VIẾT HOÀ", skill: "Thợ Cả / Kết cấu", base: 13780000, days: 21, daySalary: 11130000, ot: 347813, allowance: 420000, advance: 0, total: 11897813 },
+    { code: "NV01", name: "HÀ VIẾT HOÀ", skill: "Thợ Cả / Kết cấu", base: 13780000, days: 21, daySalary: 11130000, ot: 347813, allowance: 0, retained20k: 420000, advance: 0, total: 11477813 },
     { code: "NV02", name: "LÊ VĂN THOAN", skill: "Thợ Chính / Dán cạnh", base: 11700000, days: 22, daySalary: 9900000, ot: 1012500, allowance: 0, advance: 0, total: 10912500 },
-    { code: "NV03", name: "LƯƠNG THỂ HÀO", skill: "Thợ Chính / Lắp ráp", base: 11700000, days: 22.5, daySalary: 10125000, ot: 1307813, allowance: 450000, advance: 0, total: 11882813 },
+    { code: "NV03", name: "LƯƠNG THỂ HÀO", skill: "Thợ Chính / Lắp ráp", base: 11700000, days: 22.5, daySalary: 10125000, ot: 1307813, allowance: 0, retained20k: 450000, advance: 0, total: 11432813 },
     { code: "NV04", name: "TRẦN VĂN ANH", skill: "Thợ Lắp đặt / Hoàn thiện", base: 10400000, days: 18, daySalary: 7200000, ot: 262500, allowance: 0, advance: 0, total: 7462500 },
     { code: "NV05", name: "LÊ TUẤN ANH", skill: "Thợ Phụ / Đóng gói", base: 7800000, days: 0, daySalary: 0, ot: 0, allowance: 0, advance: 0, total: 0 }
   ],
@@ -5902,20 +5902,20 @@ function renderBonusPassbook() {
       name: "HÀ VIẾT HOÀ",
       role: "Thợ Cả / Kết cấu",
       rule: "20.000 đ / ngày công trách nhiệm",
-      t8: "26 công x 20k = 520.000 đ",
-      t9: "26 công x 20k = 520.000 đ",
-      t10: "27.75 công x 20k = 555.000 đ",
-      totalAccumulated: 1595000,
+      t8: "21 công x 20k = 420.000 đ",
+      t9: "24 công x 20k = 480.000 đ",
+      t10: "28 công x 20k = 560.000 đ",
+      totalAccumulated: 1460000,
       payoutRule: "Dồn quyết toán cùng thưởng Tết (Hàng tháng chi đúng 530k/công, phụ cấp = 0 đ)"
     },
     {
       name: "LƯƠNG THỂ HÀO",
       role: "Thợ Lắp Ráp Nòng Cốt",
       rule: "20.000 đ / ngày công trách nhiệm",
-      t8: "26 công x 20k = 520.000 đ",
-      t9: "26 công x 20k = 520.000 đ",
-      t10: "26 công x 20k = 520.000 đ",
-      totalAccumulated: 1560000,
+      t8: "22.5 công x 20k = 450.000 đ",
+      t9: "18.5 công x 20k = 370.000 đ",
+      t10: "30 công x 20k = 600.000 đ",
+      totalAccumulated: 1420000,
       payoutRule: "Dồn quyết toán cùng thưởng Tết (Hàng tháng chi đúng 450k/công, phụ cấp = 0 đ)"
     },
     {

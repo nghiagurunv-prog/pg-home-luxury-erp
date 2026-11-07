@@ -1,0 +1,504 @@
+/* ==========================================================================
+   PG HOME LUXURY - ENTERPRISE MANAGEMENT SYSTEM
+   MODULE: W41 LUXURY GOLD THEME TOKENS
+   Palette: Dark Obsidian & Champagne Gold (#D4AF37)
+   Focus: Financial Data High Contrast | Eye-Care Night Reading | Responsive
+   ========================================================================== */
+
+:root,
+[data-theme="luxury-gold"],
+body {
+  /* ------------------------------------------------------------------------
+     1. BRAND LUXURY GOLD PALETTE (Champagne Gold #D4AF37 & Brass Accents)
+     ------------------------------------------------------------------------ */
+  --gold-50:  #FDFBF7;
+  --gold-100: #FBF6EB;
+  --gold-200: #F5E8C8;
+  --gold-300: #EED79D;
+  --gold-400: #E5C378;
+  --gold-500: #D4AF37; /* Primary Champagne Gold Standard */
+  --gold-600: #BF9B2D;
+  --gold-700: #A38222;
+  --gold-800: #7A6017;
+  --gold-900: #4D3C0C;
+
+  /* Semantic Gold Tokens */
+  --gold-primary: #D4AF37;
+  --gold-main: #D4AF37;
+  --gold-glow: #F3DA90;
+  --gold-hover: #E5C378;
+  --gold-active: #C59B27;
+  --gold-subtle: rgba(212, 175, 55, 0.12);
+  --gold-subtle-hover: rgba(212, 175, 55, 0.20);
+  --gold-border: rgba(212, 175, 55, 0.35);
+  --gold-border-bright: rgba(212, 175, 55, 0.65);
+  --gold-gradient: linear-gradient(135deg, #F5D77F 0%, #D4AF37 50%, #AA8222 100%);
+  --gold-gradient-soft: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.04) 100%);
+  --gold-gradient-subtle: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, transparent 100%);
+
+  /* ------------------------------------------------------------------------
+     2. DARK OBSIDIAN BACKGROUND SYSTEM (Eye-Care Anti-Glare for Night Work)
+     Deep, warm obsidian tones (eliminated blue-light spike, reduced eye fatigue)
+     ------------------------------------------------------------------------ */
+  --obsidian-950: #0B0D0F; /* Deepest canvas floor */
+  --obsidian-900: #101317; /* App background base */
+  --obsidian-850: #15191F; /* Sidebar & Nav surfaces */
+  --obsidian-800: #1B2129; /* Card surface level 1 */
+  --obsidian-750: #222933; /* Card hover & Popovers */
+  --obsidian-700: #2B3340; /* Elevated modals & tooltips */
+  --obsidian-600: #384252; /* Subdued separators */
+
+  /* Application Background Mappings */
+  --bg-app: var(--obsidian-900);
+  --bg-canvas: var(--obsidian-950);
+  --bg-sidebar: var(--obsidian-850);
+  --bg-card: rgba(27, 33, 41, 0.88);
+  --bg-card-hover: rgba(34, 41, 51, 0.94);
+  --bg-card-solid: var(--obsidian-800);
+  --bg-card-glass: rgba(21, 25, 31, 0.75);
+  --bg-input: #12151B;
+  --bg-input-focus: #161A22;
+  --bg-table-header: rgba(11, 13, 15, 0.85);
+  --bg-table-zebra: rgba(255, 255, 255, 0.018);
+  --bg-table-hover: rgba(212, 175, 55, 0.06);
+
+  /* ------------------------------------------------------------------------
+     3. HIGH-CONTRAST TYPOGRAPHY (Alabaster Ivory & Champagne Accents)
+     High contrast ratios (> 7:1) against Obsidian for razor-sharp figures
+     ------------------------------------------------------------------------ */
+  --text-main: #F8F6F0;       /* Pristine Alabaster Ivory - 15.2:1 contrast */
+  --text-secondary: #DDD6C8;  /* Warm Linen - 11.5:1 contrast */
+  --text-muted: #A89E90;      /* Warm Travertine Stone - 6.2:1 contrast */
+  --text-dim: #787064;        /* Soft Charcoal Bronze */
+  --text-gold: #E5C378;       /* Glowing Champagne Gold for totals & titles */
+  --text-gold-bright: #F5D77F;
+  --text-inverse: #0B0D0F;    /* Deep obsidian text for gold buttons */
+
+  /* ------------------------------------------------------------------------
+     4. FINANCIAL DATA PRECISION COLOR PALETTE (Strict Financial Semantic)
+     Razor-sharp distinction between Profits, Costs, Debts, and Settlements
+     ------------------------------------------------------------------------ */
+  /* Positive / Revenue / Net Profit (Col BG) / Active */
+  --fin-positive: #10B981;
+  --fin-positive-glow: #34D399;
+  --fin-positive-subtle: rgba(16, 185, 129, 0.15);
+  --fin-positive-border: rgba(16, 185, 129, 0.35);
+
+  /* Negative / Material Cost / Supplier Debt / Over-budget */
+  --fin-negative: #F43F5E;
+  --fin-negative-glow: #FB7185;
+  --fin-negative-subtle: rgba(244, 63, 94, 0.15);
+  --fin-negative-border: rgba(244, 63, 94, 0.35);
+
+  /* Warning / Pending Approval / Holding Retainage (Quỹ Thợ Nòng Cốt 20k) */
+  --fin-warning: #F59E0B;
+  --fin-warning-glow: #FBBF24;
+  --fin-warning-subtle: rgba(245, 158, 11, 0.15);
+  --fin-warning-border: rgba(245, 158, 11, 0.35);
+
+  /* Reconciled / Bank UNC / 3-NCC Matched / Info */
+  --fin-info: #06B6D4;
+  --fin-info-glow: #22D3EE;
+  --fin-info-subtle: rgba(6, 182, 212, 0.15);
+  --fin-info-border: rgba(6, 182, 212, 0.35);
+
+  /* Executive Royalty / Bonus > 500M / Admin Privileged */
+  --fin-executive: #A855F7;
+  --fin-executive-glow: #C084FC;
+  --fin-executive-subtle: rgba(168, 85, 247, 0.15);
+  --fin-executive-border: rgba(168, 85, 247, 0.35);
+
+  /* ------------------------------------------------------------------------
+     5. BORDERS, SEPARATORS & ELEVATION
+     ------------------------------------------------------------------------ */
+  --border-subtle: rgba(248, 246, 240, 0.08);
+  --border-medium: rgba(248, 246, 240, 0.14);
+  --border-card: rgba(212, 175, 55, 0.22);
+  --border-card-hover: rgba(212, 175, 55, 0.45);
+  --border-focus: var(--gold-primary);
+
+  /* Glassmorphism & Shadow Architecture */
+  --glass-blur: blur(16px);
+  --glass-blur-deep: blur(24px);
+  --shadow-obsidian-sm: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-obsidian-md: 0 10px 28px -6px rgba(0, 0, 0, 0.65);
+  --shadow-obsidian-lg: 0 20px 48px -10px rgba(0, 0, 0, 0.85);
+  --shadow-gold-subtle: 0 0 24px rgba(212, 175, 55, 0.18);
+  --shadow-gold-medium: 0 0 36px rgba(212, 175, 55, 0.28);
+  --shadow-gold-button: 0 4px 16px rgba(212, 175, 55, 0.32);
+
+  /* Transitions & Curves */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Typography Font Families */
+  --font-editorial: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   6. EYE-CARE NIGHT READING & ANTI-GLARE ENHANCEMENTS
+   -------------------------------------------------------------------------- */
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle Champagne & Obsidian Ambient Background Glow */
+.app-layout, body {
+  background-image: 
+    radial-gradient(ellipse at 15% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 90%, rgba(6, 182, 212, 0.03) 0%, transparent 50%),
+    linear-gradient(180deg, var(--obsidian-900) 0%, var(--obsidian-950) 100%);
+  background-attachment: fixed;
+}
+
+/* --------------------------------------------------------------------------
+   7. FINANCIAL NUMERIC STYLING & HIGH-CONTRAST TABULAR METRICS
+   -------------------------------------------------------------------------- */
+.font-mono,
+.val-currency,
+.stat-value,
+.comp-val,
+.kpi-mini-val,
+.data-table td.numeric,
+.ccsc-val {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1, "zero" 1, "cv01" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Financial Semantic Classes */
+.text-fin-positive {
+  color: var(--fin-positive) !important;
+  text-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+}
+
+.text-fin-negative {
+  color: var(--fin-negative) !important;
+  text-shadow: 0 0 12px rgba(244, 63, 94, 0.35);
+}
+
+.text-fin-warning {
+  color: var(--fin-warning) !important;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
+}
+
+.text-fin-info {
+  color: var(--fin-info) !important;
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.35);
+}
+
+.text-fin-gold {
+  color: var(--gold-glow) !important;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}
+
+/* Badge System for Financial Records */
+.badge-luxury-gold {
+  background: var(--gold-subtle);
+  color: var(--gold-hover);
+  border: 1px solid var(--gold-border);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.badge-fin-positive {
+  background: var(--fin-positive-subtle);
+  color: var(--fin-positive-glow);
+  border: 1px solid var(--fin-positive-border);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.badge-fin-negative {
+  background: var(--fin-negative-subtle);
+  color: var(--fin-negative-glow);
+  border: 1px solid var(--fin-negative-border);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* --------------------------------------------------------------------------
+   8. LUXURY CARD ELEVATION & OBSERVATION SYSTEM
+   -------------------------------------------------------------------------- */
+.card-luxury {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-obsidian-md);
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-luxury::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold-primary) 50%, transparent 100%);
+  opacity: 0.45;
+  transition: var(--transition-normal);
+}
+
+.card-luxury:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-obsidian-lg), var(--shadow-gold-subtle);
+}
+
+.card-luxury:hover::before {
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   9. HIGH-DENSITY CCSC FINANCIAL DATA TABLES
+   Night-Optimized: Sticky Headers, Distinct Zebra, Tabular Alignment
+   -------------------------------------------------------------------------- */
+.data-table-luxury {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.88rem;
+}
+
+.data-table-luxury thead th {
+  background: var(--bg-table-header);
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--gold-border);
+  border-top: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.data-table-luxury tbody tr {
+  background: transparent;
+  transition: background-color var(--transition-fast);
+}
+
+.data-table-luxury tbody tr:nth-child(even) {
+  background: var(--bg-table-zebra);
+}
+
+.data-table-luxury tbody tr:hover {
+  background: var(--bg-table-hover);
+}
+
+.data-table-luxury tbody td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.data-table-luxury tbody tr:hover td {
+  color: var(--text-main);
+}
+
+.data-table-luxury tfoot th,
+.data-table-luxury tfoot td {
+  background: var(--obsidian-950);
+  border-top: 2px solid var(--gold-primary);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 16px 18px;
+  font-weight: 800;
+  color: var(--gold-glow);
+}
+
+/* --------------------------------------------------------------------------
+   10. BUTTONS & INTERACTIVE CONTROLS
+   -------------------------------------------------------------------------- */
+.btn-luxury-gold {
+  background: var(--gold-gradient);
+  color: #0B0D0F;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  padding: 10px 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid #F3DA90;
+  box-shadow: var(--shadow-gold-button);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-luxury-gold:hover {
+  background: linear-gradient(135deg, #FFF0B8 0%, #E5C378 50%, #BF9B2D 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.45);
+}
+
+.btn-luxury-gold:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+}
+
+.btn-luxury-outline {
+  background: rgba(212, 175, 55, 0.06);
+  color: var(--gold-hover);
+  border: 1px solid var(--gold-border);
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+}
+
+.btn-luxury-outline:hover {
+  background: var(--gold-subtle);
+  border-color: var(--gold-border-bright);
+  color: var(--gold-glow);
+  box-shadow: var(--shadow-gold-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   11. RESPONSIVE OPTIMIZATIONS (TABLET & MOBILE)
+   Ensuring flawless night inspection on iPad Pro, iPhone & Android devices
+   -------------------------------------------------------------------------- */
+/* Tablet & Medium Screen (< 1024px) */
+@media screen and (max-width: 1024px) {
+  :root {
+    --glass-blur: blur(10px);
+  }
+
+  .main-content {
+    padding: 18px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-value {
+    font-size: 1.55rem;
+  }
+
+  .data-table-luxury thead th,
+  .data-table-luxury tbody td {
+    padding: 11px 14px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Mobile Devices (< 768px) */
+@media screen and (max-width: 768px) {
+  :root {
+    --radius-lg: 12px;
+    --radius-md: 10px;
+  }
+
+  /* Safe Area Support for Modern Mobile Viewports */
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  .topbar {
+    padding: 12px 0;
+    gap: 14px;
+  }
+
+  .page-title-group h1 {
+    font-size: 1.35rem;
+  }
+
+  .stat-value {
+    font-size: 1.35rem;
+  }
+
+  /* Touch Target Enhancements (Minimum 44px hit-box) */
+  .btn,
+  .btn-luxury-gold,
+  .btn-luxury-outline,
+  .theme-toggle,
+  .mobile-toggle,
+  .nav-item {
+    min-height: 44px;
+  }
+
+  /* Touch scroll tables with smooth scrolling */
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-card);
+  }
+
+  .data-table-luxury thead th {
+    font-size: 0.72rem;
+    padding: 10px 12px;
+  }
+
+  .data-table-luxury tbody td {
+    padding: 10px 12px;
+    font-size: 0.78rem;
+  }
+}
+
+/* Small Smartphone (< 480px) */
+@media screen and (max-width: 480px) {
+  .stat-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .month-selector-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-luxury-gold {
+    width: 100%;
+    padding: 12px 16px;
+  }
+}
+
+/* High contrast & reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

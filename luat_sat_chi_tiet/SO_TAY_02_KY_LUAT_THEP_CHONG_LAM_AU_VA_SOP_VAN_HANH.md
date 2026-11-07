@@ -206,7 +206,7 @@ Trước khi thực hiện bất kỳ lệnh nào hoặc đưa ra kết luận, 
    - **Số liệu thực tế:** Truy xuất trực tiếp **8,406 hồ sơ người dùng** trong bảng `[info-cache]` và toàn bộ lịch sử truyền nhận file đính kèm trong bảng `[db-stchecksum]`.
    - **Hiệu năng & An toàn:** Cơ chế Read-Only URI đảm bảo **0% database lock contention** (tuyệt đối không khóa file, không gây xung đột tiến trình với Zalo PC đang mở), thời gian đọc sub-millisecond, hoàn toàn độc lập với phiên làm việc của người dùng.
 
-2. **Giải mã In-Memory `fileNoise` ([zalo_filenoise_decoder.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/zalo_filenoise_decoder.py)):**
+2. **Giải mã In-Memory `fileNoise` ([zalo_filenoise_decoder.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/tools/zalo_filenoise_decoder.py)):**
    - **Cơ chế hoạt động:** Giải mã tức thời **459 files** (tổng dung lượng **1.54 GB** gồm 185 PDF, 156 XLSX, 40 DOCX, v.v.) nằm trong các thư mục cache `ZaloDownloads\fileNoise` và `resource\*\fileNoise`.
    - **Thuật toán giải mã chuẩn:**
      * Cắt bỏ 6-byte footer nhận dạng của Zalo: `\x07zAlO\x07` ở cuối file.
@@ -214,15 +214,56 @@ Trước khi thực hiện bất kỳ lệnh nào hoặc đưa ra kết luận, 
      * Xử lý 100% In-Memory (trên RAM), không sinh bất kỳ tệp tin tạm rác nào ra ổ cứng.
      * Tự động tính toán mã băm `SHA-256` 64 ký tự chống trùng lặp dữ liệu và bảo đảm tính toàn vẹn vật lý của từng hóa đơn, UNC ngân hàng và hồ sơ kỹ thuật.
 
-3. **Quét nhị phân LevelDB & `.rescache` siêu tốc ([zalo_leveldb_scanner.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/zalo_leveldb_scanner.py)):**
+3. **Quét nhị phân LevelDB & `.rescache` siêu tốc ([zalo_leveldb_scanner.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/tools/zalo_leveldb_scanner.py)):**
    - **Tốc độ kỷ lục:** Quét nhị phân toàn bộ cơ sở dữ liệu LevelDB dung lượng **1.39 MB** chỉ trong **`33.45 ms`**.
    - **Quy mô xử lý:** Rà soát xuyên suốt **332 thư mục `resource`** chứa **20,519 files** với tổng dung lượng **11.89 GB**, bóc tách toàn bộ hình ảnh hóa đơn, ảnh nghiệm thu xưởng và biên bản giao hàng.
    - **Mức ưu tiên hệ thống:** Luôn chạy ở mức độ ưu tiên nhàn rỗi tuyệt đối `IDLE_PRIORITY_CLASS` (`0x00000040`), mức sử dụng CPU $\le 0.3\%$, hoàn toàn vô hình và không gây độ trễ cho máy trạm của Giám Đốc.
 
-4. **Lá chắn an toàn cửa sổ ([zalo_health_shield.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/zalo_health_shield.py)):**
+4. **Lá chắn an toàn cửa sổ ([zalo_health_shield.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/tools/zalo_health_shield.py)):**
    - **Kiểm toán tĩnh tự động (Static Audit):** Sử dụng AST và Regular Expressions phân tích liên tục toàn bộ script chạy ngầm nhằm ngăn chặn từ trong trứng nước mọi đoạn mã nguy hiểm.
    - **Khóa cứng tuyệt đối:** Khóa 100% các lệnh có nguy cơ tác động vào giao diện Zalo: `uiautomation`, `DWMWA_CLOAK`, `SetForegroundWindow`, `BringWindowToTop`, `mouse_event`, `SetCursorPos`, `PostMessageW` (gửi phím/chuột mù).
    - **Bảo vệ màn hình Giám Đốc:** Đảm bảo 100% cửa sổ Zalo của Giám Đốc không bị giật lag, không chớp nháy, không bị chiếm tiêu điểm (Focus Guard), tuân thủ tuyệt đối chuẩn mực Pure Stealth Zero-Disruption.
 
 ---
+
+## MỤC 16B: 25 CẢI TIẾN QUY TRÌNH LÀM VIỆC TỰ ĐỘNG HÓA 100% — KHÔNG SAI VẶT GIÁM ĐỐC (ĐỘI GIÁM SÁT VIÊN S01–S05 BAN HÀNH 08/11/2026)
+
+> [!IMPORTANT]
+> **HIẾN PHÁP TỰ ĐỘNG HÓA TỐI CAO:** Tổng Chỉ Huy và đội quân 50 Công Nhân Flash (`W01`–`W50`) + 5 Giám Sát Viên (`S01`–`S05`) bắt buộc tự chủ hoàn toàn 100% từ khâu đọc dữ liệu, sửa code, kiểm toán chéo, đồng bộ Git đến triển khai Vercel Cloud — **TUYỆT ĐỐI KHÔNG BAO GIỜ SAI VẶT GIÁM ĐỐC THAO TÁC TAY**.
+
+### I. 5 Cải Tiến Quy Trình Kiểm Soát Tài Chính & CCSC (Giám Sát Viên S01)
+1. **Khóa tự động `Col BG = MAX(0, Quỹ Khoán 15% - Lương Thợ Thực Chi)`:** Tự động đóng băng lợi nhuận xưởng về `0 đ` ngay khi tổng lương thợ vượt định mức `15%` doanh số sản xuất (`woodVal`), ngăn chặn 100% hành vi lấy lãi thương mại/phụ kiện bù lỗ cho xưởng.
+2. **Đồng bộ Sổ Quỹ Thợ Nòng Cốt Hòa & Hào (`20.000 đ/công`) Trực Tiếp Từ Bảng Chấm Công Sống:** Mọi khoản trích lập quỹ giữ chân thợ nòng cốt phải tự động nhân từ số ngày công thực tế (`T8: Hòa 21 công, Hào 22.5 công`; `T9: Hòa 24 công, Hào 18.5 công`; `T10: Hòa 28 công, Hào 30 công` $\rightarrow$ Tổng giữ lại `2.880.000 đ`), hàng tháng phụ cấp = `0 đ`.
+3. **Bóc Tách Tự Động `woodVal = totalVal - solidWood - accVal` Trước Khi Tính Khoán:** Mọi đơn hàng có gỗ tự nhiên (gỗ thịt) hoặc phụ kiện/đá/kính mua ngoài đều bị tách khỏi mẫu số tính định mức 40% vật tư và 15% công thợ.
+4. **Cơ Chế Phong Tỏa Thưởng Doanh Số `> 500 Triệu` Đến Tất Niên:** Quỹ thưởng vượt ngưỡng 500M của Thái (`0.5%`), Vũ (`0.3%`), Hiệp (`0.5%`) chỉ giải ngân cuối năm khi tỷ lệ thu hồi công nợ đạt $\ge 85\%$.
+5. **Đối Soát Khớp Lệnh 3 Chiều Lương Thực Chi (`app.js` $\leftrightarrow$ `verified_entities.json` $\leftrightarrow$ `CCSC Col AV`):** Chặn mọi sai lệch dù chỉ `1 đồng` giữa bảng lương chi tiết và bảng tổng hợp CCSC bỏ túi Ban Giám Đốc.
+
+### II. 5 Cải Tiến Quy Trình Định Mức CNC & Chống Thất Thoát Vật Tư Xưởng (Giám Sát Viên S02)
+6. **Cổng Kiểm Soát Tự Động 8 Định Mức CNC Thực Chiến (Nhà Anh Nam):** Khóa cứng định mức chuẩn khổ ván `1220x2440` (`R09` Bếp dưới `1.45 tấm/md`, `R08` Bếp trên `1.04 tấm/md`, `R10` Kịch trần `1.44 tấm/md`, `R27/R40/R49` Tủ áo `1.05 tấm/m²` trừ `0.40 tấm/m²` cánh kính, `R05` Tủ nông `0.50 tấm/m²`, `R06` Vách phẳng `0.40 tấm/m²`, `R33/R42` Giường bo cong `3.3–3.5 tấm/cái`, `R04/R24` Kệ treo `0.55–0.65 tấm/md`).
+7. **Thuật Toán Khấu Trừ Giao Cắt & Trừ Lỗ Mở Bắt Buộc (`Intersection Deduction`):** Tự động trừ diện tích giao cắt khi tủ trang trí đè lên vách ốp (`R06` trừ `R05`) hoặc tủ áo khoét lỗ cửa giấu khuôn (`R27` trừ `R29`).
+8. **Ma Trận Ghép Phôi Xuyên Hạng Mục (`Nesting Optimization`):** Tự động ghép dải phôi dư `500mm` từ tủ bếp kịch trần sâu `700mm` (`R10`) sang kệ tivi/lavabo sâu `400–500mm`, giảm hao hụt ván xuống dưới `4.5%`.
+9. **Khóa Định Giá 3 Cấp Vật Liệu (`An Cường` $\leftrightarrow$ `Thái Lan` $\leftrightarrow$ `Plywood A1`):** Cố định 100% chi phí Nhựa WPB (`2.550.000 đ/tấm`), Cánh Acrylic Noline, Phụ kiện và Công thợ; cột Thái Lan chỉ giảm đúng phần chênh phôi ván `~380.000 đ/tấm` (`12%–14%`).
+10. **Chốt Chặn `Cost <= 54%` Trước Khi In/Xuất Báo Giá PDF A4:** Hệ thống tự động khóa nút xuất báo giá nếu `(Tổng Vật Tư + Công Thợ) / Doanh Thu > 54%`, bảo vệ biên lợi nhuận ròng `18%–20%` của Giám Đốc.
+
+### III. 5 Cải Tiến Quy Trình Đồng Bộ Ngầm Zalo V6.0 Pure Disk (Giám Sát Viên S03)
+11. **Quét Không Giới Hạn Chùm Ảnh Hóa Đơn (`No-Slice Delta-Cursor`):** Bỏ giới hạn cắt mảng `[-15:]` trong [monitor_all_phu_gia_groups.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/monitor_all_phu_gia_groups.py#L647), đảm bảo bắt trọn 100% đợt gửi hàng chục ảnh hóa đơn/phiếu xuất kho cùng lúc.
+12. **Nén Cửa Sổ Trượt `seen_keys` Kèm Lưu Trữ Băm `SHA-256` Vĩnh Viễn:** Giữ tệp con trỏ [zalo_seen_cursor.json](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/data/zalo_seen_cursor.json) luôn gọn nhẹ, nạp RAM dưới `5 ms` mà không bao giờ quét trùng ảnh cũ.
+13. **Kết Nối SQLite URI Read-Only + Immutable (`?mode=ro`):** Đọc trực tiếp `Storage.db` ở chế độ chỉ đọc tuyệt đối, không tạo khóa WAL/SHM, cho phép Giám Đốc sử dụng Zalo PC song song 24/7.
+14. **Giải Mã `fileNoise` (`XOR 0x93`) Phân Tầng Theo Chữ Ký Magic-Bytes:** Chỉ giải mã 100 bytes đầu trên RAM để định danh PDF/XLSX/DOCX trước khi bóc tách toàn văn những chứng từ tài chính mới.
+15. **Lá Chắn Kiểm Toán Tĩnh Pre-Run (`Zalo Health Shield`):** Tự động quét AST mọi script trước khi chạy Daemon, chặn tuyệt đối mọi hàm Win32 UI có nguy cơ làm nháy cửa sổ.
+
+### IV. 5 Cải Tiến Quy Trình Cloud, PWA & Triển Khai Vercel Tự Động (Giám Sát Viên S04)
+16. **Bộ Lọc `.vercelignore` Tinh Gọn Payload `< 5 MB`:** Loại bỏ toàn bộ tệp dump Zalo thô hàng chục MB khỏi gói Serverless Function, giữ tốc độ Cold-Start API trên Vercel dưới `80 ms`.
+17. **Chiến Lược Cache Hybrid (`stale-while-revalidate` Cho Assets + `no-store` Cho API):** Tối ưu tốc độ mở giao diện Web App tức thì (`< 0.2s`) đồng thời đảm bảo số liệu tài chính luôn mới nhất 100%.
+18. **Tự Động Bơm Shim Windows Junction Khi Deploy Vercel CLI:** Khắc phục triệt để lỗi `EPERM: symlink` trên Windows thông qua `NODE_OPTIONS="--require .../win_junction_shim.js"`, triển khai hoàn toàn tự động không cần hỏi Giám Đốc.
+19. **Đồng Bộ Offline Outbox (`IndexedDB / LocalStorage Queue`):** Khi mất mạng tạm thời tại xưởng hoặc công trình, mọi thao tác duyệt phiếu/chấm công được lưu vào hàng đợi và tự động đẩy lên Cloud ngay khi có mạng.
+20. **Kiểm Tra Hậu Kiểm `HTTP 200` Đa Điểm Cuối Sau Mỗi Lần Deploy:** Tự động xác thực `/`, `/api/health`, `/api/state`, `/modules/w50_master_hub_loader.js` đạt `200 OK` trước khi báo cáo hoàn tất.
+
+### V. 5 Cải Tiến Quy Trình Điều Quân 50 Công Nhân + 5 Giám Sát Viên (Giám Sát Viên S05)
+21. **Kỷ Luật "Zero-Bothering" (Cấm Sai Vặt Giám Đốc 100%):** Mọi công việc kỹ thuật, cấu hình Git, đẩy code, tạo dự án, sửa lỗi, kiểm thử đều do Tổng Chỉ Huy và đội công nhân tự giải quyết từ A–Z.
+22. **Phân Vùng Độc Lập Tuyệt Đối (`1 Công Nhân = 1 Module Riêng`):** Chia nhỏ dự án thành 50 module độc lập (`w01`–`w50`) nạp qua `PG_OptimizationHub` (`W50`), xóa bỏ 100% xung đột ghi đè file khi 50 công nhân chạy song song.
+23. **Chuẩn Hóa Pháp Lý & Thương Hiệu Phú Gia Tự Động (`W15 Enforcer`):** Tự động rà soát và khóa cứng thông tin pháp lý trên toàn bộ biểu mẫu in ấn: `Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng`, MST/ĐKKD `042203002931`, `Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh`, Hotline `0973.562.789`.
+24. **Kiểm Toán Chéo Độc Lập Bởi 5 Giám Sát Viên (`TypeName="research"`):** Luôn tách biệt đội thi công (`W01`–`W50`) và đội thanh tra độc lập (`S01`–`S05`) để phát hiện và sửa ngay mọi sai số trước khi nghiệm thu.
+25. **Thu Hồi Quân Sạch Sẽ (`kill_all`) Sau Mỗi Chiến Dịch:** Giải phóng 100% bộ nhớ và tiến trình con ngay sau khi thu hoạch đủ báo cáo, giữ máy trạm của Giám Đốc luôn nhẹ và mượt tuyệt đối.
+
 
