@@ -1,14 +1,19 @@
 {
   "version": 2,
   "name": "pg-home-luxury-erp",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "data/*.json"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index.py"
+      "destination": "/api/index.js"
     },
     {
       "source": "/data/(.*)",
-      "destination": "/api/index.py"
+      "destination": "/api/index.js"
     },
     {
       "source": "/",
