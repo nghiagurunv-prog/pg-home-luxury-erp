@@ -1,20 +1,62 @@
-# Ignore everything except web_app, api, vercel.json, and core data/*.json
-*
-!vercel.json
-!api/
-!api/**
-!web_app/
-!web_app/**
-!data/
-!data/*.json
-
-# Exclude heavy raw data or backups inside data/
+.git/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite*
+*.log
+*.zip
+*.rar
+*.mp4
 data/backups/
 data/zalo_pulled_batches/
 data/zalo_media/
-data/*_full_*.json
 data/zalo_sqlite_contacts_and_files.json
 data/zalo_filenoise_index.json
 data/zalo_full_work_chats_inventory_2026.json
 web_app/__pycache__/
-web_app/*.py
+web_app/server.py
+.git/
+.gitignore
+.~lock.PHÚ GIA T1-T10-2026.xlsx#
+1. Bảng lương 2026/
+2. CSC - Chỉ số/
+3. Báo giá đối thủ/
+4. Báo giá/
+5. Tài liệu/
+50_DIEM_TOI_UU_GIAO_DIEN_VA_HE_THONG_WEB_APP_2026.md
+6. Quản lý vật tư/
+7. Kho bí mật - Quản trị nội bộ/
+@AutomationLog.txt
+BANG_TONG_HOP_CONG_NO_LAM_GIANG_10_THANG_2026.xlsx
+build_ccsc_2026.py
+build_standard_phom_ccsc_2026.py
+BẢNG QUẢN TRỊ TÀI CHÍNH THỰC TẾ T8 T9 NĂM 2026.xlsx
+Chay_He_Thong_Quan_Tri.bat
+DE_XUAT_20_CAI_TIEN_HE_THONG_QUAN_TRI_PHU_GIA.md
+DE_XUAT_20_TOI_UU_QUAN_TRI_VA_CHIEN_LUOC_PHEU_SAN_PHAM_2026_2027.md
+DE_XUAT_30_CAI_TIEN_TOI_UU_HE_THONG_QUAN_TRI.md
+DE_XUAT_30_TOI_UU_QUAN_TRI_TOAN_DIEN_PG_HOME_LUXURY_2026.md
+GEMINI.md
+HOP_DONG_LAO_DONG_XUONG_DONG_BHXH.docx
+HOP_DONG_LAO_DONG_XUONG_DONG_BHXH_TOI_THIEU.docx
+HUONG_DAN_TOOL_DOC_ZALO.md
+inspect_salaries.py
+inspect_salaries_detail.py
+KHOI_DONG_QUAN_TRI_PG_HOME.bat
+luat_sat_chi_tiet/
+LUU_Y_QUAN_TRI_VA_QUY_TAC_CCSC_PG_HOME.md
+MAU_D02_LT_CHUAN_HO_KINH_DOANH_PHU_GIA.docx
+MAU_TK3_TS_CHUAN_HO_KINH_DOANH_PHU_GIA.docx
+monitor_all_phu_gia_groups.py
+monitor_lam_giang_group.py
+PHÚ GIA T1-T10-2026.xlsx
+scratch/
+SESSION_MEMORY_2026_10_27.md
+SESSION_MEMORY_2026_10_28.md
+SESSION_MEMORY_2026_10_30.md
+SESSION_MEMORY_2026_11_06.md
+tools/
+update_ccsc_with_actuals_2026.py
+WCS_UL10_PROTOCOL.md
+__pycache__/
