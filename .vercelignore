@@ -1,0 +1,20 @@
+# Ignore everything except web_app, api, vercel.json, and core data/*.json
+*
+!vercel.json
+!api/
+!api/**
+!web_app/
+!web_app/**
+!data/
+!data/*.json
+
+# Exclude heavy raw data or backups inside data/
+data/backups/
+data/zalo_pulled_batches/
+data/zalo_media/
+data/*_full_*.json
+data/zalo_sqlite_contacts_and_files.json
+data/zalo_filenoise_index.json
+data/zalo_full_work_chats_inventory_2026.json
+web_app/__pycache__/
+web_app/*.py

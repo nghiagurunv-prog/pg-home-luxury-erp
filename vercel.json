@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "pg-home-luxury-erp",
   "functions": {
     "api/index.js": {
       "includeFiles": "data/*.json"
