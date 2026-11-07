@@ -9,11 +9,6 @@ __pycache__/
 *.rar
 *.mp4
 data/backups/
-data/zalo_pulled_batches/
-data/zalo_media/
-data/zalo_sqlite_contacts_and_files.json
-data/zalo_filenoise_index.json
-data/zalo_full_work_chats_inventory_2026.json
 web_app/__pycache__/
 web_app/server.py
 .git/
