@@ -4,7 +4,7 @@
   "description": "Hệ thống Quản trị Tài chính CCSC & Vận hành Doanh nghiệp PG Home Luxury",
   "start_url": "./index.html",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "background_color": "#080C15",
   "theme_color": "#D4AF37",
   "icons": [

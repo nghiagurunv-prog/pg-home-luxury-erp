@@ -1,10 +1,10 @@
 {
   "status": "SUCCESS",
-  "generated_at": "2026-11-07T10:49:50.246046",
-  "total_excel_files_scanned": 166,
+  "generated_at": "2026-11-08T06:07:58.090817",
+  "total_excel_files_scanned": 168,
   "summary": {
     "total_quotations": 86,
-    "total_ntd_acrylic_orders": 19,
+    "total_ntd_acrylic_orders": 20,
     "total_contract_tracking_files": 23
   },
   "quotations": [
@@ -871,6 +871,16 @@
   ],
   "ntd_acrylic_orders": [
     {
+      "file_id": "1794035496673_337278748333353578_g2539027971900219384",
+      "datetime": "2026-11-07 19:00:05",
+      "customer": "Chị Tuyết",
+      "project": "Đơn hàng Acrylic NTD #114236 (Cắt dán cánh thành phẩm)",
+      "total_amount": 8622948.207940001,
+      "total_formatted": "8,622,948 đ",
+      "sender": "Cty CP NTD Acrylic (Kinh doanh NTD)",
+      "group": "Nhóm Zalo Đặt Hàng NTD Acrylic"
+    },
+    {
       "file_id": "1793839470365_337278748333353578_g2539027971900219384",
       "datetime": "2026-11-05 07:44:31",
       "customer": "Chị Hoa",
@@ -1271,6 +1281,114 @@
     }
   ],
   "all_files_detail": [
+    {
+      "file_id": "1794035496673_337278748333353578_g2539027971900219384",
+      "source_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\fileNoise\\1794035496673_337278748333353578_g2539027971900219384",
+      "format": "XLSX",
+      "mtime": 1794052805.2512815,
+      "datetime": "2026-11-07 19:00:05",
+      "sender_zalo_id": "337278748333353578",
+      "sender_name": "Cty CP NTD Acrylic (Kinh doanh NTD)",
+      "chat_or_group_id": "g2539027971900219384",
+      "group_name": "Nhóm Zalo Đặt Hàng NTD Acrylic",
+      "creator": "",
+      "last_modified_by": "",
+      "doc_created": "2015-06-05T18:17:20Z",
+      "doc_modified": "2026-11-07T07:11:21Z",
+      "category": "NTD_ACRYLIC_ORDER",
+      "key_customer": "Chị Tuyết",
+      "key_project": "Đơn hàng Acrylic NTD #114236 (Cắt dán cánh thành phẩm)",
+      "key_total_amount": 8622948.207940001,
+      "key_total_formatted": "8,622,948 đ",
+      "sheets_analyzed": [
+        {
+          "type": "NTD_ACRYLIC_ORDER",
+          "sheet_name": "ĐH ",
+          "order_number": "114236",
+          "order_date": "07/11/2026",
+          "customer_name": "Chị Tuyết",
+          "raw_client_string": "Phú Gia-Hà Tĩnh-C Tuyết",
+          "total_amount": 8622948.207940001,
+          "total_amount_str": "8,622,948 đ",
+          "total_sqm": 5.64,
+          "item_count": 35,
+          "items_preview": []
+        },
+        {
+          "type": "STANDARD_QUOTATION",
+          "sheet_name": "Sheet1",
+          "title": null,
+          "customer_name": null,
+          "project_name": null,
+          "address": null,
+          "date_text": null,
+          "company_branch": "Nội Thất Phú Gia - PG Home Luxury",
+          "grand_total": 0.0,
+          "grand_total_str": null,
+          "material_tier_totals": {},
+          "garis_hardware_total": null,
+          "led_accessories_total": null,
+          "detected_rooms": [],
+          "items_count": 0
+        }
+      ]
+    },
+    {
+      "file_id": "1794027404169_2845688247116683961_g2539027971900219384",
+      "source_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2539027971900219384\\fileNoise\\1794027404169_2845688247116683961_g2539027971900219384",
+      "format": "XLSX",
+      "mtime": 1794027406.6794446,
+      "datetime": "2026-11-07 11:56:46",
+      "sender_zalo_id": "2845688247116683961",
+      "sender_name": "Vũ (Kỹ thuật xưởng PG Home - Bóc tách cắt cánh)",
+      "chat_or_group_id": "g2539027971900219384",
+      "group_name": "Nhóm Zalo Đặt Hàng NTD Acrylic",
+      "creator": "",
+      "last_modified_by": "",
+      "doc_created": "2026-11-07T04:41:26Z",
+      "doc_modified": "2026-11-07T04:56:31Z",
+      "category": "OTHER",
+      "key_customer": null,
+      "key_project": null,
+      "key_total_amount": 0.0,
+      "key_total_formatted": null,
+      "sheets_analyzed": [
+        {
+          "type": "STANDARD_QUOTATION",
+          "sheet_name": "Data",
+          "title": null,
+          "customer_name": null,
+          "project_name": null,
+          "address": null,
+          "date_text": null,
+          "company_branch": "Nội Thất Phú Gia - PG Home Luxury",
+          "grand_total": 0.0,
+          "grand_total_str": null,
+          "material_tier_totals": {},
+          "garis_hardware_total": null,
+          "led_accessories_total": null,
+          "detected_rooms": [],
+          "items_count": 36
+        },
+        {
+          "type": "STANDARD_QUOTATION",
+          "sheet_name": "Sum",
+          "title": "BẢNG DỰ TOÁN CHI PHÍ SẢN XUẤT",
+          "customer_name": null,
+          "project_name": "DatCanh",
+          "address": null,
+          "date_text": null,
+          "company_branch": "Nội Thất Phú Gia - PG Home Luxury",
+          "grand_total": 0.0,
+          "grand_total_str": null,
+          "material_tier_totals": {},
+          "garis_hardware_total": null,
+          "led_accessories_total": null,
+          "detected_rooms": [],
+          "items_count": 13
+        }
+      ]
+    },
     {
       "file_id": "fa552d1e7b482a374cab2d4d5e450f81",
       "source_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise\\fa552d1e7b482a374cab2d4d5e450f81",

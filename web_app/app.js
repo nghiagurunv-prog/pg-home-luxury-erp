@@ -964,16 +964,207 @@ function loadState() {
 }
 
 function saveState() {
-  localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(appState));
-  if (typeof fetch === "function") {
+  try {
+    if (typeof localStorage !== "undefined" && typeof appState !== "undefined") {
+      localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(appState));
+    }
+  } catch (err) {
+    console.warn("Lỗi lưu localStorage trong saveState:", err);
+  }
+  if (typeof fetch === "function" && typeof appState !== "undefined") {
     try {
+      const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role)
+        ? currentUser.role
+        : getCurrentUserRole();
       fetch("/api/save-state", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-PG-Role": role
+        },
         body: JSON.stringify(appState)
       }).catch(() => {});
     } catch (e) {}
   }
+}
+
+// Khai báo sớm biến currentUser và các hàm định danh thiết bị / phân quyền RBAC
+var currentUser = null;
+
+function isLocalMachine() {
+  if (typeof window === "undefined" || !window.location) return true;
+  const hostname = (window.location.hostname || "").toLowerCase();
+  const protocol = (window.location.protocol || "").toLowerCase();
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "::1" ||
+    hostname === "[::1]" ||
+    hostname === "" ||
+    protocol === "file:"
+  );
+}
+
+function getCurrentUserRole() {
+  if (typeof currentUser !== "undefined" && currentUser && currentUser.role) {
+    return currentUser.role;
+  }
+  try {
+    if (typeof localStorage !== "undefined") {
+      const savedUser = localStorage.getItem("PG_HOME_CURRENT_USER");
+      if (savedUser) {
+        const parsed = JSON.parse(savedUser);
+        if (parsed && parsed.role) return parsed.role;
+      }
+    }
+  } catch (e) {}
+  if (isLocalMachine()) {
+    return "ADMIN";
+  }
+  return "STAFF";
+}
+
+// Hàm Delta Sync: Gửi gói payload gọn nhẹ chứa các key vừa thay đổi đến /api/patch-state
+// Tự động fallback về /api/save-state truyền thống nếu server trả về mã 404 hoặc 501
+async function patchStateToServer(patches) {
+  if (!patches || typeof patches !== "object") {
+    saveState();
+    return;
+  }
+
+  // 1. Cập nhật tức thì vào in-memory appState
+  if (typeof appState !== "undefined" && appState && typeof appState === "object") {
+    for (const k in patches) {
+      if (Object.prototype.hasOwnProperty.call(patches, k)) {
+        appState[k] = patches[k];
+      }
+    }
+  }
+
+  // 2. Lưu ngay vào localStorage
+  try {
+    if (typeof localStorage !== "undefined" && typeof appState !== "undefined") {
+      localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(appState));
+    }
+  } catch (err) {
+    console.warn("Lỗi lưu localStorage trong patchStateToServer:", err);
+  }
+
+  // 3. Nếu môi trường không hỗ trợ fetch, dừng tại đây
+  if (typeof fetch !== "function") return;
+
+  const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role)
+    ? currentUser.role
+    : getCurrentUserRole();
+  const payload = {
+    patches: patches,
+    updatedAt: new Date().toISOString()
+  };
+
+  try {
+    const res = await fetch("/api/patch-state", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-PG-Role": role
+      },
+      body: JSON.stringify(payload)
+    });
+
+    // Nếu endpoint delta chưa được hỗ trợ (404/501), fallback về save-state đầy đủ
+    if (res.status === 404 || res.status === 501) {
+      console.warn(`[DeltaSync] Máy chủ phản hồi mã ${res.status}, tự động chuyển hướng fallback về saveState()...`);
+      saveState();
+      return;
+    }
+
+    if (!res.ok) {
+      console.warn(`[DeltaSync] /api/patch-state trả mã ${res.status}, tự động fallback về saveState()`);
+      saveState();
+      return;
+    }
+
+    return await res.json().catch(() => ({ status: "patched" }));
+  } catch (err) {
+    console.warn("[DeltaSync] Lỗi mạng khi gọi /api/patch-state, tự động fallback về saveState():", err);
+    saveState();
+  }
+}
+
+// Nạp state từ server kèm bảo mật phân quyền X-PG-Role
+async function loadStateFromServer() {
+  if (typeof fetch !== "function") return null;
+  try {
+    const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role)
+      ? currentUser.role
+      : getCurrentUserRole();
+    const res = await fetch("/api/load-state", {
+      method: "GET",
+      headers: {
+        "X-PG-Role": role
+      }
+    });
+    if (!res.ok) {
+      console.warn("Lỗi nạp state từ máy chủ:", res.status);
+      return null;
+    }
+    const data = await res.json();
+    if (data && typeof data === "object" && data.status !== "empty") {
+      if (typeof appState !== "undefined" && appState) {
+        Object.assign(appState, data);
+      }
+      try {
+        if (typeof localStorage !== "undefined") {
+          localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(appState));
+        }
+      } catch (err) {}
+      return data;
+    }
+  } catch (err) {
+    console.warn("loadStateFromServer exception:", err);
+  }
+  return null;
+}
+
+// Tự động gắn header X-PG-Role cho các truy vấn /api/load-state hoặc /api/live-state
+if (typeof window !== "undefined" && typeof window.fetch === "function") {
+  const _pgOrigFetch = window.fetch;
+  window.fetch = function(resource, init) {
+    try {
+      const urlStr = typeof resource === "string" ? resource : (resource && resource.url ? resource.url : "");
+      if (urlStr.includes("/api/load-state") || urlStr.includes("/api/live-state")) {
+        init = init ? Object.assign({}, init) : {};
+        const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role)
+          ? currentUser.role
+          : getCurrentUserRole();
+        if (init.headers instanceof Headers) {
+          if (!init.headers.has("X-PG-Role")) init.headers.set("X-PG-Role", role);
+        } else if (Array.isArray(init.headers)) {
+          const hasHeader = init.headers.some(([k]) => k.toLowerCase() === "x-pg-role");
+          if (!hasHeader) init.headers.push(["X-PG-Role", role]);
+        } else {
+          init.headers = Object.assign({ "X-PG-Role": role }, init.headers || {});
+        }
+      }
+    } catch (e) {}
+    return _pgOrigFetch.apply(this, arguments);
+  };
+}
+
+// Gắn các hàm đồng bộ vào window cho các module W01-W50 sử dụng
+if (typeof window !== "undefined") {
+  window.isLocalMachine = isLocalMachine;
+  window.getCurrentUserRole = getCurrentUserRole;
+  window.saveState = saveState;
+  window.patchStateToServer = patchStateToServer;
+  window.PG_PatchState = patchStateToServer;
+  window.syncStateToServer = function(patches) {
+    if (patches && typeof patches === "object" && Object.keys(patches).length > 0) {
+      return patchStateToServer(patches);
+    }
+    return saveState();
+  };
+  window.loadStateFromServer = loadStateFromServer;
 }
 
 // Khởi tạo state, khóa sổ các tháng đã quyết toán (DA-05) và lưu vào localStorage + ổ cứng (DA-01)
@@ -3356,7 +3547,10 @@ function recalculatePOCostSummary() {
 // 5.6 AUTHENTICATION & PHÂN QUYỀN 3 PHÂN HỆ (GIÁM ĐỐC - VŨ - HIỆP)
 // ==========================================================================
 
-let currentUser = null;
+// Biến currentUser đã được khai báo ở đầu file (var currentUser = null), giữ nguyên tham chiếu
+if (typeof currentUser === "undefined") {
+  var currentUser = null;
+}
 
 function initCurrentUser() {
   const savedUser = localStorage.getItem("PG_HOME_CURRENT_USER");
@@ -3370,14 +3564,28 @@ function initCurrentUser() {
       console.error("Lỗi đọc current user:", e);
     }
   }
-  // Mặc định ban đầu nếu chưa có user thì là Giám Đốc (Toàn quyền)
+  // Mặc định ban đầu nếu chưa có user:
+  // - Nếu trên máy trạm của Bố (localhost / 127.0.0.1) hoặc Bố đã đăng nhập: Giám Đốc (ADMIN) toàn quyền mượt mà.
+  // - Nếu người dùng truy cập từ xa (không phải localhost / 127.0.0.1) và chưa đăng nhập trong localStorage: mặc định hạ xuống quyền hạn chế ('STAFF').
   if (!currentUser) {
-    currentUser = (appState.users || [])[0] || {
-      id: 1,
-      username: "giamdoc",
-      fullName: "Nguyễn Viết Nghĩa",
-      role: "ADMIN"
-    };
+    if (isLocalMachine()) {
+      currentUser = (appState.users || [])[0] || {
+        id: 1,
+        username: "giamdoc",
+        fullName: "Nguyễn Viết Nghĩa",
+        role: "ADMIN"
+      };
+    } else {
+      currentUser = {
+        id: 9999,
+        username: "staff_remote",
+        fullName: "Nhân Viên (Truy cập từ xa)",
+        role: "STAFF"
+      };
+    }
+  }
+  if (typeof window !== "undefined") {
+    window.currentUser = currentUser;
   }
 }
 
@@ -3421,6 +3629,12 @@ function applyUserRole(user) {
   } else if (user.role === "DU_TOAN_SALE") {
     roleTitle = "Dự Toán & Khởi Tạo Báo Giá (Sale)";
     avatarIcon = "fa-calculator";
+  } else if (user.role === "STAFF") {
+    roleTitle = "Nhân Viên (Xem Hạn Chế)";
+    avatarIcon = "fa-user-lock";
+  } else {
+    roleTitle = user.role || "Nhân Viên";
+    avatarIcon = "fa-user";
   }
 
   if (topName) topName.textContent = user.fullName;
@@ -3452,6 +3666,9 @@ function applyUserRole(user) {
       } else {
         el.classList.add("role-hidden");
       }
+    } else {
+      // Quyền STAFF hoặc tài khoản hạn chế khác: ẩn toàn bộ nhóm phân hệ nhạy cảm
+      el.classList.add("role-hidden");
     }
   });
 
@@ -3475,6 +3692,12 @@ function applyUserRole(user) {
     const activeTab = document.querySelector(".tab-pane.active");
     if (!activeTab || activeTab.classList.contains("role-hidden")) {
       switchTabTo("tab-dashboard");
+    }
+  } else if (user.role === "STAFF") {
+    setTimesheetDeptFilter("all");
+    const activeTab = document.querySelector(".tab-pane.active");
+    if (!activeTab || activeTab.classList.contains("role-hidden")) {
+      switchTabTo("tab-du-toan-du-an");
     }
   }
 
@@ -3558,6 +3781,9 @@ window.quickLoginAs = function(username) {
   }
 
   currentUser = user;
+  if (typeof window !== "undefined") {
+    window.currentUser = user;
+  }
   localStorage.setItem("PG_HOME_CURRENT_USER", JSON.stringify(user));
   applyUserRole(user);
   showToast(`⚡ Đã đăng nhập vào hệ thống: ${user.fullName} (${user.dept})`);
@@ -3566,6 +3792,9 @@ window.quickLoginAs = function(username) {
 // Đăng xuất / Chuyển tài khoản
 window.logoutUser = function() {
   currentUser = null;
+  if (typeof window !== "undefined") {
+    window.currentUser = null;
+  }
   localStorage.removeItem("PG_HOME_CURRENT_USER");
   const authScreen = document.getElementById("authScreen");
   if (authScreen) authScreen.classList.add("show");
@@ -3625,6 +3854,9 @@ function setupAuthEvents() {
       }
 
       currentUser = user;
+      if (typeof window !== "undefined") {
+        window.currentUser = user;
+      }
       localStorage.setItem("PG_HOME_CURRENT_USER", JSON.stringify(user));
       applyUserRole(user);
       showToast(`Xin chào ${user.fullName}! Đăng nhập thành công.`);
@@ -6612,7 +6844,7 @@ function loadSavedCustomProjects() {
       {
         code: "DA-2026-102",
         client: "Anh Tuấn - Shophouse Vinhomes",
-        phone: "0912 345 678",
+        phone: "0986.722.324",
         address: "KĐT Vinhomes New Center, TP Hà Tĩnh",
         rep: "Đường Việt Dũng",
         projType: "Nhà Phố",

@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "title": "PG Home ERP - CRDT Field-Level LWW & HLC Synchronization Benchmark",
+    "module": "crdt_sse_sync_broker.py",
+    "timestamp": "2026-11-08 09:45:37",
+    "brand": "CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY",
+    "legal_entity": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+    "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+    "hotline": "0986.722.324",
+    "mst": "042203002931"
+  },
+  "benchmark_summary": {
+    "total_operations": 50,
+    "total_duration_ms": 8.38,
+    "latency_ms": {
+      "avg": 0.0026,
+      "min": 0.0015,
+      "max": 0.0084,
+      "p50": 0.0022,
+      "p95": 0.005,
+      "p99": 0.0084,
+      "target_max_ms": 5.0,
+      "latency_criteria_met": true
+    },
+    "data_loss_rate_percent": 0.0,
+    "zero_data_loss_verified": true,
+    "convergence_verified": true,
+    "state_hash_converged": "b326b1c5580cd374b901cff0308d3109295b1484586d16cb199f2075aace5ce6"
+  },
+  "simulated_devices": [
+    {
+      "node_id": "giam_doc",
+      "display_name": "Máy Giám đốc (Nguyễn Trọng Nghĩa)",
+      "clock_drift_ms": 0,
+      "operations_performed": 12
+    },
+    {
+      "node_id": "ke_toan",
+      "display_name": "Máy Kế toán (PG Home Kế toán)",
+      "clock_drift_ms": -850,
+      "operations_performed": 12
+    },
+    {
+      "node_id": "ky_thuat_cad",
+      "display_name": "Máy Kỹ thuật CAD (Thiết kế)",
+      "clock_drift_ms": 1200,
+      "operations_performed": 13
+    },
+    {
+      "node_id": "tablet_nha_may",
+      "display_name": "Tablet Nhà máy (Xưởng Sản xuất)",
+      "clock_drift_ms": 3500,
+      "operations_performed": 13
+    }
+  ],
+  "device_state_hashes": {
+    "central_broker": "b326b1c5580cd374b901cff0308d3109295b1484586d16cb199f2075aace5ce6",
+    "giam_doc": "b326b1c5580cd374b901cff0308d3109295b1484586d16cb199f2075aace5ce6",
+    "ke_toan": "b326b1c5580cd374b901cff0308d3109295b1484586d16cb199f2075aace5ce6",
+    "ky_thuat_cad": "b326b1c5580cd374b901cff0308d3109295b1484586d16cb199f2075aace5ce6",
+    "tablet_nha_may": "b326b1c5580cd374b901cff0308d3109295b1484586d16cb199f2075aace5ce6"
+  },
+  "sample_multi_device_records": {
+    "HD-2026-042-BIET-THU-XUAN-AN": {
+      "ghi_chu_duyet_chi": "Bố Nghĩa đã duyệt giải ngân tạm ứng đợt 1 - 50.000.000 VNĐ",
+      "trang_thai_unc": "Kế toán đã lập UNC VCB số 042203002931-89, chờ ngân hàng hạch toán",
+      "ban_ve_cad_v3": "Kỹ thuật đã hoàn tất bóc tách file CAD 3D tủ bếp gõ đỏ",
+      "tien_do_nha_may": "Nhà máy Ngõ 49 Trương Quốc Dụng đã nhập phôi gỗ và bắt đầu xẻ sấy"
+    },
+    "HD-2026-043-PENTHOUSE-VINHOMES": {
+      "trang_thai_unc": "Kế toán đã lập UNC VCB số 042203002931-89, chờ ngân hàng hạch toán",
+      "ghi_chu_duyet_chi": "Bố Nghĩa đã duyệt giải ngân tạm ứng đợt 1 - 50.000.000 VNĐ",
+      "ban_ve_cad_v3": "Kỹ thuật đã hoàn tất bóc tách file CAD 3D tủ bếp gõ đỏ",
+      "tien_do_nha_may": "Nhà máy Ngõ 49 Trương Quốc Dụng đã nhập phôi gỗ và bắt đầu xẻ sấy"
+    },
+    "HD-2026-044-NHA-PHO-THACH-HA": {
+      "trang_thai_unc": "Kế toán đã lập UNC VCB số 042203002931-89, chờ ngân hàng hạch toán",
+      "ghi_chu_duyet_chi": "Bố Nghĩa đã duyệt giải ngân tạm ứng đợt 1 - 50.000.000 VNĐ",
+      "ban_ve_cad_v3": "Kỹ thuật đã hoàn tất bóc tách file CAD 3D tủ bếp gõ đỏ",
+      "tien_do_nha_may": "Nhà máy Ngõ 49 Trương Quốc Dụng đã nhập phôi gỗ và bắt đầu xẻ sấy"
+    },
+    "HD-2026-045-CAN-HO-TRUONG-THI": {
+      "ban_ve_cad_v3": "Kỹ thuật đã hoàn tất bóc tách file CAD 3D tủ bếp gõ đỏ",
+      "ghi_chu_duyet_chi": "Bố Nghĩa đã duyệt giải ngân tạm ứng đợt 1 - 50.000.000 VNĐ",
+      "trang_thai_unc": "Kế toán đã lập UNC VCB số 042203002931-89, chờ ngân hàng hạch toán",
+      "tien_do_nha_may": "Nhà máy Ngõ 49 Trương Quốc Dụng đã nhập phôi gỗ và bắt đầu xẻ sấy"
+    },
+    "HD-2026-046-SHOWROOM-PG-HOME": {
+      "trang_thai_unc": "Kế toán đã lập UNC VCB số 042203002931-89, chờ ngân hàng hạch toán",
+      "ban_ve_cad_v3": "Kỹ thuật đã hoàn tất bóc tách file CAD 3D tủ bếp gõ đỏ",
+      "tien_do_nha_may": "Nhà máy Ngõ 49 Trương Quốc Dụng đã nhập phôi gỗ và bắt đầu xẻ sấy",
+      "ghi_chu_duyet_chi": "Bố Nghĩa đã duyệt giải ngân tạm ứng đợt 1 - 50.000.000 VNĐ"
+    }
+  },
+  "conflict_resolution_test": {
+    "record_id": "HD-2026-CONFLICT-TEST",
+    "winning_value": "2026-11-28 (Nhà máy đề xuất tăng ca)",
+    "winning_hlc": "1794105940771:2:tablet_nha_may",
+    "resolution_rule": "Field-Level Last-Write-Wins via HLC Total Order"
+  },
+  "sse_broker_stats": {
+    "active_subscribers": 4,
+    "peak_subscribers": 4,
+    "total_broadcasts": 50
+  }
+}

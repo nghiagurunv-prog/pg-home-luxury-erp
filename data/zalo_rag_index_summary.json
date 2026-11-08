@@ -1,0 +1,416 @@
+{
+  "system_name": "Phu Gia Zalo Hybrid RAG Engine (Phase 2 - R04)",
+  "generated_at": "2026-11-08 09:54:20",
+  "legal_identity": {
+    "brand_name": "CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY",
+    "legal_entity": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+    "business_code": "042203002931",
+    "representative": "Nguyễn Trọng Nghĩa",
+    "registration_date": "13/01/2025",
+    "registered_address": "Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh",
+    "headquarters_and_factory": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+    "hotline": "0986.722.324",
+    "factory_designation": "Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia",
+    "supplier_quoc_tam": "56 Ngô Đức Kế, P. Bắc Hà, TP. Hà Tĩnh (NCC Phụ kiện - Không phải trụ sở Phú Gia)"
+  },
+  "database_stats": {
+    "db_file": "F:\\PG Home - Quản trị\\data\\pg_knowledge_vault.db",
+    "db_size_bytes": 14647296,
+    "total_chunks": 2382,
+    "chunks_by_type": {
+      "LEGAL_IDENTITY": 1,
+      "QUOTATION": 86,
+      "MATERIAL_ORDER": 28,
+      "CONTRACT_TRACKING": 23,
+      "LABOR_CONTRACT": 3,
+      "CONTRACT": 40,
+      "SOCIAL_INSURANCE": 3,
+      "DRAWING_CATALOG": 187,
+      "UNC_PAYMENT": 57,
+      "SUPPLIER_DEBT": 12,
+      "CONTACT": 1605,
+      "GROUP": 176,
+      "PRIVATE_CHAT": 158,
+      "PROJECT": 2,
+      "ATTENDANCE_FUND": 1
+    },
+    "total_financial_amount_tracked_vnd": 29276328926.71931,
+    "total_financial_amount_formatted": "29,276,328,927 VNĐ"
+  },
+  "architecture": {
+    "lexical_engine": "SQLite FTS5 BM25 (tokenize='unicode61 remove_diacritics 2')",
+    "dense_vector_engine": "NumPy Subword Hashing Projection (384 dimensions, L2-normalized)",
+    "fusion_algorithm": "Reciprocal Rank Fusion (RRF, k=60)",
+    "quantitative_query_handler": "Deterministic SQL Aggregation + Citation Cards"
+  },
+  "benchmark": {
+    "metrics": {
+      "avg_latency_ms": 4.93,
+      "min_latency_ms": 4.31,
+      "max_latency_ms": 6.51,
+      "p95_latency_ms": 6.15,
+      "target_threshold_ms": 35.0,
+      "passed_target": true
+    },
+    "test_queries": [
+      {
+        "query_id": "Q_01",
+        "query_text": "Tổng hợp báo giá và hợp đồng gỗ óc chó / tủ bếp Acrylic",
+        "latency_ms": {
+          "bm25_ms": 1.77,
+          "vector_ms": 3.17,
+          "rrf_ms": 0.06,
+          "total_ms": 6.51
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "CTRACK_0cfb365a06e37678293164bc252a3eb6",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "CONTRACT_TRACKING",
+          "title": "Theo dõi tiến độ hợp đồng & thanh toán: Theo dõi hợp đồng",
+          "partner_name": "Khách hàng",
+          "amount_vnd": 0.0,
+          "date_str": "2026-08-12 04:17:14",
+          "source_path": "zalo_excel_quotations_audit.json#0cfb365a06e37678293164bc252a3eb6",
+          "content_snippet": "Bảng theo dõi tiến độ thi công và thanh toán hợp đồng dự án Theo dõi hợp đồng, đối tác: Khách hàng, tổng giá trị: 0 VNĐ. Ngày: 2026-08-12 04:17:14."
+        },
+        "financial_summary": {
+          "is_financial_query": true,
+          "matched_records_count": 5,
+          "records_with_amount_count": 1,
+          "total_amount_vnd": 289578000.0,
+          "total_amount_formatted": "289,578,000 VNĐ",
+          "average_amount_formatted": "289,578,000 VNĐ",
+          "min_amount_formatted": "289,578,000 VNĐ",
+          "max_amount_formatted": "289,578,000 VNĐ",
+          "citation_cards": [
+            {
+              "citation_id": "CIT_CTRACK_aa4dd154ccbcfd0181bbfc8e3c50a4ff",
+              "title": "Theo dõi tiến độ hợp đồng & thanh toán: Theo dõi hợp đồng",
+              "partner": "Khách hàng",
+              "amount_formatted": "289,578,000 VNĐ",
+              "amount_raw": 289578000.0,
+              "date": "2026-08-11 04:36:58",
+              "source": "zalo_excel_quotations_audit.json#aa4dd154ccbcfd0181bbfc8e3c50a4ff"
+            }
+          ]
+        }
+      },
+      {
+        "query_id": "Q_02",
+        "query_text": "Tra cứu chứng từ UNC thanh toán nhà cung cấp Quốc Tâm / Livas",
+        "latency_ms": {
+          "bm25_ms": 1.04,
+          "vector_ms": 2.01,
+          "rrf_ms": 0.04,
+          "total_ms": 4.76
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "UNC_CONFIRMED_2",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "UNC_PAYMENT",
+          "title": "Xác nhận thanh toán UNC: Chiến Acrylic Livas",
+          "partner_name": "Chiến Acrylic Livas",
+          "amount_vnd": 0.0,
+          "date_str": "2026-11-06",
+          "source_path": "zalo_huong_unc_ledger.json#confirmed_2",
+          "content_snippet": "Chứng từ thanh toán chuyển khoản qua Zalo cho nhà cung cấp: Chiến Acrylic Livas. Phân loại: THANH_TOAN_CANH_ACRYLIC. Giá trị: 0 VNĐ. Hội thoại: ĐẶT CÁNH LIC LIVAS - NỘI THẤT PHÚ GIA HÀ TĨNH. Nội dung đối soát: Chị Hương xác nhận kế toán đã chuyển khoản thanh toán khi hàng gia côn..."
+        },
+        "financial_summary": {
+          "is_financial_query": true,
+          "matched_records_count": 5,
+          "records_with_amount_count": 2,
+          "total_amount_vnd": 61130000.0,
+          "total_amount_formatted": "61,130,000 VNĐ",
+          "average_amount_formatted": "30,565,000 VNĐ",
+          "min_amount_formatted": "26,170,000 VNĐ",
+          "max_amount_formatted": "34,960,000 VNĐ",
+          "citation_cards": [
+            {
+              "citation_id": "CIT_SUPPLIER_NCC_FITTING_QUOC_TAM",
+              "title": "Hồ sơ công nợ NCC: Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+              "partner": "Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+              "amount_formatted": "26,170,000 VNĐ",
+              "amount_raw": 26170000.0,
+              "date": "2026-11-06",
+              "source": "audit_suppliers_acrylic_glass_stone_fitting.json#NCC_FITTING_QUOC_TAM"
+            },
+            {
+              "citation_id": "CIT_SUPPLIER_NCC_DOOR_ALD_CANH_HUYNH",
+              "title": "Hồ sơ công nợ NCC: Đức Acrylic - Cánh Huỳnh ALD",
+              "partner": "Đức Acrylic - Cánh Huỳnh ALD",
+              "amount_formatted": "34,960,000 VNĐ",
+              "amount_raw": 34960000.0,
+              "date": "2026-11-06",
+              "source": "audit_suppliers_acrylic_glass_stone_fitting.json#NCC_DOOR_ALD_CANH_HUYNH"
+            }
+          ]
+        }
+      },
+      {
+        "query_id": "Q_03",
+        "query_text": "Tìm khách hàng và nhóm công trình tại Thành Sen Hà Tĩnh",
+        "latency_ms": {
+          "bm25_ms": 1.0,
+          "vector_ms": 2.22,
+          "rrf_ms": 0.05,
+          "total_ms": 4.31
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "ORDER_NTD_1789810999944_5696499100057584074_g2539027971900219384",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "MATERIAL_ORDER",
+          "title": "Đơn đặt hàng cánh Acrylic NTD # - Hà Tĩnh",
+          "partner_name": "Hà Tĩnh",
+          "amount_vnd": 1475444.76,
+          "date_str": "2026-09-30 08:41:17",
+          "source_path": "zalo_excel_quotations_audit.json#",
+          "content_snippet": "Đơn đặt hàng cánh tủ bếp Acrylic NTD mã số #, khách hàng/công trình: Hà Tĩnh, tổng tiền vật tư: 1,475,445 VNĐ. Ngày: 2026-09-30 08:41:17."
+        },
+        "financial_summary": null
+      },
+      {
+        "query_id": "Q_04",
+        "query_text": "Báo giá nội thất chung cư và nhà phố năm 2024",
+        "latency_ms": {
+          "bm25_ms": 1.07,
+          "vector_ms": 2.52,
+          "rrf_ms": 0.04,
+          "total_ms": 4.43
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "QUOT_89c66e1263e4c01d196dd9b0ab5577a5",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "QUOTATION",
+          "title": "Báo giá nội thất: Nhà ở tư nhân - Dì Lệ",
+          "partner_name": "Dì Lệ",
+          "amount_vnd": 244015850.0,
+          "date_str": "2026-08-19 10:26:16",
+          "source_path": "zalo_excel_quotations_audit.json#89c66e1263e4c01d196dd9b0ab5577a5",
+          "content_snippet": "Báo giá nội thất dự án Nhà ở tư nhân, khách hàng Dì Lệ, giá trị hợp đồng/báo giá: 244,015,850 VNĐ (244,015,850 đ). Người gửi: Admin. Ngày cập nhật: 2026-08-19 10:26:16."
+        },
+        "financial_summary": null
+      },
+      {
+        "query_id": "Q_05",
+        "query_text": "Công nợ nhà cung cấp phụ kiện Quốc Tâm 56 Ngô Đức Kế",
+        "latency_ms": {
+          "bm25_ms": 1.57,
+          "vector_ms": 2.7,
+          "rrf_ms": 0.06,
+          "total_ms": 5.71
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "SUPPLIER_NCC_FITTING_QUOC_TAM",
+          "rrf_score": 0.032787,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "doc_type": "SUPPLIER_DEBT",
+          "title": "Hồ sơ công nợ NCC: Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+          "partner_name": "Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+          "amount_vnd": 26170000.0,
+          "date_str": "2026-11-06",
+          "source_path": "audit_suppliers_acrylic_glass_stone_fitting.json#NCC_FITTING_QUOC_TAM",
+          "content_snippet": "Nhà cung cấp: Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh). Ngành hàng: Phụ kiện Inox 304 Cadman, Roxana, Cariny, ray trượt, bản lề hơi, phụ kiện tủ bếp thông minh. Dư nợ hiện tại: 26,170,000 VNĐ. Hạn mức tín dụng: 30,000,000 VNĐ. Trạng thái kiểm toán: KHỚP 100% SỔ TAY ĐỐI SOÁT ..."
+        },
+        "financial_summary": {
+          "is_financial_query": true,
+          "matched_records_count": 5,
+          "records_with_amount_count": 1,
+          "total_amount_vnd": 26170000.0,
+          "total_amount_formatted": "26,170,000 VNĐ",
+          "average_amount_formatted": "26,170,000 VNĐ",
+          "min_amount_formatted": "26,170,000 VNĐ",
+          "max_amount_formatted": "26,170,000 VNĐ",
+          "citation_cards": [
+            {
+              "citation_id": "CIT_SUPPLIER_NCC_FITTING_QUOC_TAM",
+              "title": "Hồ sơ công nợ NCC: Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+              "partner": "Phụ kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+              "amount_formatted": "26,170,000 VNĐ",
+              "amount_raw": 26170000.0,
+              "date": "2026-11-06",
+              "source": "audit_suppliers_acrylic_glass_stone_fitting.json#NCC_FITTING_QUOC_TAM"
+            }
+          ]
+        }
+      },
+      {
+        "query_id": "Q_06",
+        "query_text": "Hợp đồng thi công nội thất biệt thự và thời hạn hoàn thành",
+        "latency_ms": {
+          "bm25_ms": 1.46,
+          "vector_ms": 2.14,
+          "rrf_ms": 0.04,
+          "total_ms": 4.53
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "CONTACT_7039447597597446261",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "CONTACT",
+          "title": "Danh bạ Zalo: Nội Thất Thành Công",
+          "partner_name": "Nội Thất Thành Công",
+          "amount_vnd": 0.0,
+          "date_str": "2026-11-08",
+          "source_path": "zalo_sqlite_contacts_and_files.json#7039447597597446261",
+          "content_snippet": "Danh bạ liên hệ Zalo: Nội Thất Thành Công (Tên Zalo: Nội Thất Thành Công, Bí danh: ). Nhóm từ khóa: nội thất. UID: 7039447597597446261."
+        },
+        "financial_summary": null
+      },
+      {
+        "query_id": "Q_07",
+        "query_text": "Ủy nhiệm chi ngân hàng thanh toán tiền ván An Cường",
+        "latency_ms": {
+          "bm25_ms": 1.07,
+          "vector_ms": 2.11,
+          "rrf_ms": 0.04,
+          "total_ms": 4.72
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "SUPPLIER_NCC_MIRROR_GUONG_BI_VU_CUONG",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "SUPPLIER_DEBT",
+          "title": "Hồ sơ công nợ NCC: Vũ Cường - Gương Bỉ Dantalux",
+          "partner_name": "Vũ Cường - Gương Bỉ Dantalux",
+          "amount_vnd": 0.0,
+          "date_str": "2026-11-06",
+          "source_path": "audit_suppliers_acrylic_glass_stone_fitting.json#NCC_MIRROR_GUONG_BI_VU_CUONG",
+          "content_snippet": "Nhà cung cấp: Vũ Cường - Gương Bỉ Dantalux. Ngành hàng: Gương decor viền nhôm Anode, gương LED cảm ứng, phôi gương Bỉ tráng bạc 8 lớp. Dư nợ hiện tại: 0 VNĐ. Hạn mức tín dụng: 0 VNĐ. Trạng thái kiểm toán: CHỜ ĐẶT HÀNG THỰC TẾ THEO CÔNG TRÌNH. Địa chỉ giao dịch: . Tài khoản ngân h..."
+        },
+        "financial_summary": {
+          "is_financial_query": true,
+          "matched_records_count": 5,
+          "records_with_amount_count": 0,
+          "total_amount_vnd": 0.0,
+          "total_amount_formatted": "0 VNĐ",
+          "average_amount_formatted": "0 VNĐ",
+          "min_amount_formatted": "0 VNĐ",
+          "max_amount_formatted": "0 VNĐ",
+          "citation_cards": []
+        }
+      },
+      {
+        "query_id": "Q_08",
+        "query_text": "Danh sách nhóm Zalo giám sát công trình thi công",
+        "latency_ms": {
+          "bm25_ms": 1.1,
+          "vector_ms": 2.63,
+          "rrf_ms": 0.04,
+          "total_ms": 4.58
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "CONTACT_7382436270937445815",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "CONTACT",
+          "title": "Danh bạ Zalo: Tính- Cây Ăn Quả Cây Công Trình Độc Lạ",
+          "partner_name": "Tính- Cây Ăn Quả Cây Công Trình Độc Lạ",
+          "amount_vnd": 0.0,
+          "date_str": "2026-11-08",
+          "source_path": "zalo_sqlite_contacts_and_files.json#7382436270937445815",
+          "content_snippet": "Danh bạ liên hệ Zalo: Tính- Cây Ăn Quả Cây Công Trình Độc Lạ (Tên Zalo: Tính- Cây Ăn Quả Cây Công Trình Độc Lạ, Bí danh: ). Nhóm từ khóa: công trình. UID: 7382436270937445815."
+        },
+        "financial_summary": null
+      },
+      {
+        "query_id": "Q_09",
+        "query_text": "Địa chỉ trụ sở chính và nhà máy sản xuất Phú Gia",
+        "latency_ms": {
+          "bm25_ms": 1.15,
+          "vector_ms": 2.42,
+          "rrf_ms": 0.16,
+          "total_ms": 4.61
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "PHU_GIA_LEGAL_IDENTITY",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "LEGAL_IDENTITY",
+          "title": "Hồ sơ pháp lý ĐKKD Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "partner_name": "Nguyễn Trọng Nghĩa",
+          "amount_vnd": 0.0,
+          "date_str": "2026-10-22",
+          "source_path": "THONG_TIN_DANG_KY_KINH_DOANH_PHU_GIA.json",
+          "content_snippet": "Tên đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (Thương hiệu: CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY). Mã số ĐKKD/MST: 042203002931. Đại diện: Nguyễn Trọng Nghĩa. Địa chỉ ĐKKD: Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh. Tổ hợp Văn phòng &..."
+        },
+        "financial_summary": null
+      },
+      {
+        "query_id": "Q_10",
+        "query_text": "Thống kê đơn đặt hàng vật tư phụ kiện bản lề ray trượt",
+        "latency_ms": {
+          "bm25_ms": 1.13,
+          "vector_ms": 2.56,
+          "rrf_ms": 0.04,
+          "total_ms": 5.19
+        },
+        "top_match": {
+          "rank": 1,
+          "doc_id": "ORDER_NTD_1793839470365_337278748333353578_g2539027971900219384",
+          "rrf_score": 0.016393,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "doc_type": "MATERIAL_ORDER",
+          "title": "Đơn đặt hàng cánh Acrylic NTD # - Chị Hoa",
+          "partner_name": "Chị Hoa",
+          "amount_vnd": 12095694.876449997,
+          "date_str": "2026-11-05 07:44:31",
+          "source_path": "zalo_excel_quotations_audit.json#",
+          "content_snippet": "Đơn đặt hàng cánh tủ bếp Acrylic NTD mã số #, khách hàng/công trình: Chị Hoa, tổng tiền vật tư: 12,095,695 VNĐ. Ngày: 2026-11-05 07:44:31."
+        },
+        "financial_summary": {
+          "is_financial_query": true,
+          "matched_records_count": 5,
+          "records_with_amount_count": 2,
+          "total_amount_vnd": 21942506.504150003,
+          "total_amount_formatted": "21,942,507 VNĐ",
+          "average_amount_formatted": "10,971,253 VNĐ",
+          "min_amount_formatted": "9,846,812 VNĐ",
+          "max_amount_formatted": "12,095,695 VNĐ",
+          "citation_cards": [
+            {
+              "citation_id": "CIT_ORDER_NTD_1793839470365_337278748333353578_g2539027971900219384",
+              "title": "Đơn đặt hàng cánh Acrylic NTD # - Chị Hoa",
+              "partner": "Chị Hoa",
+              "amount_formatted": "12,095,695 VNĐ",
+              "amount_raw": 12095694.876449997,
+              "date": "2026-11-05 07:44:31",
+              "source": "zalo_excel_quotations_audit.json#"
+            },
+            {
+              "citation_id": "CIT_ORDER_NTD_1789630512492_5696499100057584074_g2539027971900219384",
+              "title": "Đơn đặt hàng cánh Acrylic NTD # - Anh Hảo",
+              "partner": "Anh Hảo",
+              "amount_formatted": "9,846,812 VNĐ",
+              "amount_raw": 9846811.627700005,
+              "date": "2026-09-17 19:34:43",
+              "source": "zalo_excel_quotations_audit.json#"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

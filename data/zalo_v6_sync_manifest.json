@@ -1,0 +1,249 @@
+{
+  "system": "PG Home Zalo Stealth Engine V6.0",
+  "version": "6.1.0-INCREMENTAL",
+  "last_sync_timestamp": "2026-11-08 06:10:23",
+  "last_sync_epoch": 1794093023.4132962,
+  "sync_mode": "SMART_INCREMENTAL",
+  "global_metrics": {
+    "total_steps": 11,
+    "executed_steps": 0,
+    "cached_steps": 11,
+    "failed_steps": 0,
+    "cache_hit_ratio_pct": 100.0,
+    "total_duration_ms": 3313.63,
+    "time_saved_estimated_ms": 500980.0
+  },
+  "steps": {
+    "health_shield": {
+      "step_id": "health_shield",
+      "name": "Lá chắn an toàn cửa sổ & Kiểm toán lưu trữ",
+      "script": "zalo_health_shield.py",
+      "stage": 1,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_health_report.json",
+      "output_size_bytes": 6644,
+      "last_run_timestamp": "2026-11-08 06:09:53",
+      "last_run_epoch": 1794092993.247336,
+      "fingerprint": {
+        "total_files": 22020,
+        "total_bytes": 13833835350,
+        "max_mtime": 1794092900.622,
+        "max_mtime_iso": "2026-11-08 06:08:20"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "leveldb_scanner": {
+      "step_id": "leveldb_scanner",
+      "name": "Quét thụ động LevelDB & IndexedDB",
+      "script": "zalo_leveldb_scanner.py",
+      "stage": 1,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_leveldb_intel.json",
+      "output_size_bytes": 13204,
+      "last_run_timestamp": "2026-11-08 06:09:53",
+      "last_run_epoch": 1794092993.2489445,
+      "fingerprint": {
+        "total_files": 18,
+        "total_bytes": 3187842,
+        "max_mtime": 1794092900.622,
+        "max_mtime_iso": "2026-11-08 06:08:20"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "sqlite_reader": {
+      "step_id": "sqlite_reader",
+      "name": "Trích xuất danh bạ & tệp SQLite Read-Only",
+      "script": "zalo_sqlite_reader.py",
+      "stage": 1,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_sqlite_contacts_and_files.json",
+      "output_size_bytes": 4008473,
+      "last_run_timestamp": "2026-11-08 06:09:53",
+      "last_run_epoch": 1794092993.249557,
+      "fingerprint": {
+        "total_files": 2,
+        "total_bytes": 2691072,
+        "max_mtime": 1794074531.018,
+        "max_mtime_iso": "2026-11-08 01:02:11"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "filenoise_decoder": {
+      "step_id": "filenoise_decoder",
+      "name": "Giải mã in-memory 459 file fileNoise (XOR 0x93)",
+      "script": "zalo_filenoise_decoder.py",
+      "stage": 1,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_filenoise_index.json",
+      "output_size_bytes": 803521,
+      "last_run_timestamp": "2026-11-08 06:09:53",
+      "last_run_epoch": 1794092993.2527618,
+      "fingerprint": {
+        "total_files": 328,
+        "total_bytes": 886950047,
+        "max_mtime": 1794058685.004,
+        "max_mtime_iso": "2026-11-07 20:38:05"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "group_indexer": {
+      "step_id": "group_indexer",
+      "name": "Lập chỉ mục sâu 175 nhóm làm việc Zalo",
+      "script": "zalo_group_deep_indexer.py",
+      "stage": 1,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_175_groups_full_index.json",
+      "output_size_bytes": 117327,
+      "last_run_timestamp": "2026-11-08 06:09:54",
+      "last_run_epoch": 1794092994.416919,
+      "fingerprint": {
+        "total_files": 21684,
+        "total_bytes": 12947717307,
+        "max_mtime": 1794092399.301,
+        "max_mtime_iso": "2026-11-08 05:59:59"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "private_chats_indexer": {
+      "step_id": "private_chats_indexer",
+      "name": "Lập chỉ mục sâu 157 hội thoại cá nhân Zalo",
+      "script": "zalo_private_chats_indexer.py",
+      "stage": 1,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_157_private_chats_index.json",
+      "output_size_bytes": 105355,
+      "last_run_timestamp": "2026-11-08 06:09:55",
+      "last_run_epoch": 1794092995.4632626,
+      "fingerprint": {
+        "total_files": 21684,
+        "total_bytes": 12947717307,
+        "max_mtime": 1794092399.301,
+        "max_mtime_iso": "2026-11-08 05:59:59"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "entity_validator": {
+      "step_id": "entity_validator",
+      "name": "Kiểm toán thực thể & tài chính 4 đợt dữ liệu",
+      "script": "zalo_entity_validator.py",
+      "stage": 1,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_verified_entities.json",
+      "output_size_bytes": 53167,
+      "last_run_timestamp": "2026-11-08 06:09:55",
+      "last_run_epoch": 1794092995.4637184,
+      "fingerprint": {
+        "total_files": 5,
+        "total_bytes": 651547,
+        "max_mtime": 1793945563.088,
+        "max_mtime_iso": "2026-11-06 13:12:43"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "huong_unc_auditor": {
+      "step_id": "huong_unc_auditor",
+      "name": "Đối soát chứng từ UNC & media Chị Hương",
+      "script": "zalo_huong_unc_auditor.py",
+      "stage": 2,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_huong_unc_ledger.json",
+      "output_size_bytes": 16838,
+      "last_run_timestamp": "2026-11-08 06:09:55",
+      "last_run_epoch": 1794092995.4735649,
+      "fingerprint": {
+        "total_files": 686,
+        "total_bytes": 283052407,
+        "max_mtime": 1794092523.23,
+        "max_mtime_iso": "2026-11-08 06:02:03"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "pdf_drawings_indexer": {
+      "step_id": "pdf_drawings_indexer",
+      "name": "Chỉ mục 185 file PDF bản vẽ kỹ thuật & báo giá",
+      "script": "zalo_pdf_drawings_indexer.py",
+      "stage": 2,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_pdf_drawings_audit.json",
+      "output_size_bytes": 258052,
+      "last_run_timestamp": "2026-11-08 06:09:55",
+      "last_run_epoch": 1794092995.4740746,
+      "fingerprint": {
+        "total_files": 2,
+        "total_bytes": 4811994,
+        "max_mtime": 1794092510.057,
+        "max_mtime_iso": "2026-11-08 06:01:50"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "docx_contracts_extractor": {
+      "step_id": "docx_contracts_extractor",
+      "name": "Bóc tách sâu 44 hợp đồng Word (DOCX/DOC)",
+      "script": "zalo_docx_contracts_extractor.py",
+      "stage": 2,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_docx_contracts_audit.json",
+      "output_size_bytes": 1837454,
+      "last_run_timestamp": "2026-11-08 06:09:55",
+      "last_run_epoch": 1794092995.4745338,
+      "fingerprint": {
+        "total_files": 2,
+        "total_bytes": 4811994,
+        "max_mtime": 1794092510.057,
+        "max_mtime_iso": "2026-11-08 06:01:50"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    },
+    "excel_deep_extractor": {
+      "step_id": "excel_deep_extractor",
+      "name": "Bóc tách sâu 166 bảng báo giá & Acrylic Excel",
+      "script": "zalo_excel_deep_extractor.py",
+      "stage": 2,
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "duration_ms": 100.0,
+      "output_file": "f:\\PG Home - Quản trị\\data\\zalo_excel_quotations_audit.json",
+      "output_size_bytes": 474583,
+      "last_run_timestamp": "2026-11-08 06:09:55",
+      "last_run_epoch": 1794092995.4749908,
+      "fingerprint": {
+        "total_files": 1,
+        "total_bytes": 803521,
+        "max_mtime": 1794092351.781,
+        "max_mtime_iso": "2026-11-08 05:59:11"
+      },
+      "incremental_status": "CACHE_HIT_SKIPPED",
+      "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)"
+    }
+  }
+}

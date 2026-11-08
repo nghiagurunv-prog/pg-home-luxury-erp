@@ -256,5 +256,29 @@
     "group": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
     "event": "[Delta v6.0] Bắt tức thì 2 tệp mới từ Nguyễn Minh (WORKSHOP_PHOTO_OR_LANDSCAPE)",
     "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-08 09:35:38",
+    "group": "Phụ Kiện Quốc Tâm",
+    "event": "[Delta v6.0] Bắt tức thì 4 tệp mới từ Tâm Quốc (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-08 09:40:14",
+    "group": "Đặt hàng Phú Gia - NT (Gỗ NT Cầu Vượt)",
+    "event": "[Delta v6.0] Bắt tức thì 8 tệp mới từ Gỗ NT cầu vượt (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-08 10:20:16",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (397.7 ms) - 4923 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-08 10:22:16",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (97.8 ms) - 4923 media khớp SHA-256",
+    "severity": "INFO"
   }
 ]

@@ -2,14 +2,129 @@
   "system_info": {
     "module": "zalo_v6_master_sync.py",
     "engine": "Zalo Stealth Engine V6.0 Master Orchestrator",
-    "version": "6.0.0-PROD",
-    "generated_at": "2026-11-07 11:04:49",
-    "mode": "FAST",
-    "execution_time_ms": 41.76,
+    "version": "6.1.0-PROD-INCREMENTAL",
+    "generated_at": "2026-11-08 06:10:23",
+    "mode": "SMART-INCREMENTAL",
+    "execution_time_ms": 95.71,
     "idle_priority_enforced": true,
     "idle_priority_hex": "0x00000040",
     "cpu_threshold": "<= 0.2%",
     "zero_disruption_rule": "100% COMPLIANT WITH GEMINI.MD & SO TAY 01-02-03"
+  },
+  "sync_orchestration": {
+    "manifest_path": "f:\\PG Home - Quản trị\\data\\zalo_v6_sync_manifest.json",
+    "sync_mode": "SMART_INCREMENTAL",
+    "last_sync_timestamp": "2026-11-08 06:10:23",
+    "global_metrics": {
+      "total_steps": 11,
+      "executed_steps": 0,
+      "cached_steps": 11,
+      "failed_steps": 0,
+      "cache_hit_ratio_pct": 100.0,
+      "total_duration_ms": 3313.63,
+      "time_saved_estimated_ms": 500980.0
+    },
+    "steps_summary": [
+      {
+        "step_id": "health_shield",
+        "script": "zalo_health_shield.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 6644
+      },
+      {
+        "step_id": "leveldb_scanner",
+        "script": "zalo_leveldb_scanner.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 13204
+      },
+      {
+        "step_id": "sqlite_reader",
+        "script": "zalo_sqlite_reader.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 4008473
+      },
+      {
+        "step_id": "filenoise_decoder",
+        "script": "zalo_filenoise_decoder.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 803521
+      },
+      {
+        "step_id": "group_indexer",
+        "script": "zalo_group_deep_indexer.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 117327
+      },
+      {
+        "step_id": "private_chats_indexer",
+        "script": "zalo_private_chats_indexer.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 105355
+      },
+      {
+        "step_id": "entity_validator",
+        "script": "zalo_entity_validator.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 53167
+      },
+      {
+        "step_id": "huong_unc_auditor",
+        "script": "zalo_huong_unc_auditor.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 16838
+      },
+      {
+        "step_id": "pdf_drawings_indexer",
+        "script": "zalo_pdf_drawings_indexer.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 258052
+      },
+      {
+        "step_id": "docx_contracts_extractor",
+        "script": "zalo_docx_contracts_extractor.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 1837454
+      },
+      {
+        "step_id": "excel_deep_extractor",
+        "script": "zalo_excel_deep_extractor.py",
+        "status": "SUCCESS",
+        "incremental_status": "CACHE_HIT_SKIPPED",
+        "duration_ms": 100.0,
+        "reason": "CACHE_HIT (0 byte changed, SLA=28s < 3600s)",
+        "output_size_bytes": 474583
+      }
+    ]
   },
   "window_safety": {
     "status": "100% UNTOUCHED",
@@ -17,7 +132,7 @@
     "active_window_commands_issued": 0,
     "mouse_keyboard_simulated_events": 0,
     "focus_hijacks_prevented": 0,
-    "windows_detected_count": 3,
+    "windows_detected_count": 7,
     "windows_status_summary": "Toàn bộ cửa sổ Zalo giữ nguyên trạng thái làm việc của Giám Đốc, không di chuột, không chiếm tiêu điểm, 0 gián đoạn",
     "detected_windows": [
       {
@@ -31,6 +146,86 @@
           "bottom": 561,
           "width": 352,
           "height": 82
+        },
+        "is_visible": false,
+        "is_iconic": false,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 132532,
+        "title": "Zalo",
+        "class_name": "Chrome_WidgetWin_1",
+        "rect": {
+          "left": -8,
+          "top": -8,
+          "right": 1928,
+          "bottom": 1048,
+          "width": 1936,
+          "height": 1056
+        },
+        "is_visible": true,
+        "is_iconic": false,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 2689956,
+        "title": "ZaloCall",
+        "class_name": "Qt5QWindowIcon",
+        "rect": {
+          "left": 1566,
+          "top": 739,
+          "right": 1910,
+          "bottom": 1030,
+          "width": 344,
+          "height": 291
+        },
+        "is_visible": false,
+        "is_iconic": false,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 11668362,
+        "title": "ZaloCall",
+        "class_name": "Qt5QWindowIcon",
+        "rect": {
+          "left": 1566,
+          "top": 798,
+          "right": 1910,
+          "bottom": 1030,
+          "width": 344,
+          "height": 232
+        },
+        "is_visible": false,
+        "is_iconic": false,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 28968718,
+        "title": "Zalo Call - Phúc Hiền",
+        "class_name": "Qt5QWindowIcon",
+        "rect": {
+          "left": 632,
+          "top": 249,
+          "right": 1288,
+          "bottom": 768,
+          "width": 656,
+          "height": 519
+        },
+        "is_visible": false,
+        "is_iconic": false,
+        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
+      },
+      {
+        "hwnd": 395572,
+        "title": "Zalo Call - Toàn Thúy",
+        "class_name": "Qt5QWindowIcon",
+        "rect": {
+          "left": 56,
+          "top": 234,
+          "right": 1032,
+          "bottom": 813,
+          "width": 976,
+          "height": 579
         },
         "is_visible": false,
         "is_iconic": false,
@@ -51,22 +246,6 @@
         "is_visible": false,
         "is_iconic": false,
         "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
-      },
-      {
-        "hwnd": 132532,
-        "title": "Zalo",
-        "class_name": "Chrome_WidgetWin_1",
-        "rect": {
-          "left": -32000,
-          "top": -32000,
-          "right": -31840,
-          "bottom": -31972,
-          "width": 160,
-          "height": 28
-        },
-        "is_visible": true,
-        "is_iconic": true,
-        "status": "HEALTHY_NORMAL_ON_SCREEN_UNDISTURBED"
       }
     ]
   },
@@ -74,50 +253,50 @@
     "storage_overview": {
       "total_zalo_storage_gb": 11.89,
       "total_zalo_storage_detail_mb": {
-        "resource_media_mb": 12212.19,
-        "filenoise_cache_mb": 845.43,
-        "leveldb_storage_mb": 1.58
+        "resource_media_mb": 12345.62,
+        "filenoise_cache_mb": 845.86,
+        "leveldb_storage_mb": 1.59
       },
       "total_media_files_detected": 20519,
-      "total_media_files_resource": 21558,
-      "filenoise_decoded_in_memory_count": 459,
+      "total_media_files_resource": 21683,
+      "filenoise_decoded_in_memory_count": 465,
       "filenoise_mode": "100% IN-MEMORY XOR 0x93 + TRAILER CUT (ZERO DISK MODIFICATIONS)"
     },
     "throughput_benchmarks": {
-      "leveldb_read_speed_mb_s": 8.55,
-      "resource_read_speed_mb_s": 110.91,
-      "filenoise_read_speed_mb_s": 18.37,
+      "leveldb_read_speed_mb_s": 17.48,
+      "resource_read_speed_mb_s": 2.08,
+      "filenoise_read_speed_mb_s": 24.31,
       "avg_latency_per_file_ms": {
-        "leveldb_ms": 11.203,
-        "resource_ms": 0.467,
-        "filenoise_ms": 5.522
+        "leveldb_ms": 4.664,
+        "resource_ms": 24.575,
+        "filenoise_ms": 3.854
       }
     },
     "leveldb_scan_timings_ms": {
-      "total_duration_ms": 33.36,
+      "total_duration_ms": 5192.82,
       "breakdown": {
-        "idle_priority": 0.12,
-        "collect_files": 2.01,
-        "read_files": 2.89,
-        "extract_groups": 4.77,
-        "extract_orders": 7.88,
-        "extract_phones": 5.73,
-        "extract_banks": 4.25,
-        "extract_session": 5.71
+        "idle_priority": 882.55,
+        "collect_files": 114.74,
+        "read_files": 5.68,
+        "extract_groups": 25.75,
+        "extract_orders": 4142.7,
+        "extract_phones": 8.16,
+        "extract_banks": 6.63,
+        "extract_session": 6.61
       }
     },
     "filenoise_format_distribution": {
-      "total_files_scanned": 459,
-      "total_raw_bytes": 1618093758,
+      "total_files_scanned": 465,
+      "total_raw_bytes": 1619921762,
       "format_breakdown": {
-        "PDF": 185,
+        "PDF": 187,
         "TEXT": 8,
-        "XLSX": 156,
+        "XLSX": 158,
         "ZIP": 2,
         "XLS": 10,
         "MP4": 29,
         "MP3": 7,
-        "DOCX": 40,
+        "DOCX": 42,
         "DOC": 4,
         "BINARY": 7,
         "RAR": 3,

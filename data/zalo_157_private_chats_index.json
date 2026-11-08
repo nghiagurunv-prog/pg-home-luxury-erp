@@ -1,26 +1,26 @@
 {
   "metadata": {
     "title": "BẢN KIỂM TOÁN VÀ ĐỊNH DANH 157 HỘI THOẠI CÁ NHÂN ZALO PG HOME",
-    "generated_at": "2026-11-07 10:47:45",
+    "generated_at": "2026-11-08 06:02:01",
     "source_resource_dir": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource",
     "source_database": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\Database\\_production\\Storage.db",
     "auditor": "Công nhân Flash #02 (Kỹ sư tổng kiểm toán)",
     "priority": "IDLE_PRIORITY_CLASS (0x00000040)"
   },
   "summary": {
-    "total_private_chats": 157,
-    "total_files": 3611,
-    "files_sent_by_gd": 1053,
-    "files_sent_by_counterparts": 2558,
+    "total_private_chats": 158,
+    "total_files": 3619,
+    "files_sent_by_gd": 1060,
+    "files_sent_by_counterparts": 2559,
     "files_sent_by_others": 0,
-    "total_bytes": 2133561620,
-    "total_mb": 2034.72,
+    "total_bytes": 2134645669,
+    "total_mb": 2035.76,
     "roles_breakdown": {
       "FAMILY_FINANCE": 2,
       "CORE_STAFF": 10,
       "SUPPLIER": 54,
       "CLIENT": 46,
-      "OTHER": 45
+      "OTHER": 46
     }
   },
   "chats": [
@@ -30,7 +30,7 @@
       "aliasName": "Phú Gia Hiệp G",
       "displayName": "Phú Gia Hiệp G",
       "role": "CORE_STAFF",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/52/52d19be1711a464d94f1fbfc7ec835d4.jpg?key=bEA28glj5Ta5BsqPyEhX-Q&time=1792663878",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/52/52d19be1711a464d94f1fbfc7ec835d4.jpg?key=GfXNfLrtOOoHHdVMHwVs5Q&time=1798467445",
       "total_files": 678,
       "files_sent_by_gd": 62,
       "files_sent_by_counterpart": 616,
@@ -54,7 +54,7 @@
       "aliasName": "Hương",
       "displayName": "Hương",
       "role": "FAMILY_FINANCE",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/16/3ea665c3c4ed68d413df3be7ed0bbf8f.jpg?key=SnsjHRt63TmV595Pwxd7XA&time=1798692460",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/16/3ea665c3c4ed68d413df3be7ed0bbf8f.jpg?key=CkUyyQrgVQdjn3k7vO_wQQ&time=1791101097",
       "total_files": 676,
       "files_sent_by_gd": 200,
       "files_sent_by_counterpart": 476,
@@ -200,6 +200,27 @@
       }
     },
     {
+      "uid": "4206890530093980581",
+      "zName": "Ryo",
+      "aliasName": "",
+      "displayName": "Ryo",
+      "role": "OTHER",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/6/8060b5899aaa8eb8f34491645f3cd343.jpg?key=Ue7fLZKjn3gOX-vFRIUnQA&time=1798467445",
+      "total_files": 91,
+      "files_sent_by_gd": 85,
+      "files_sent_by_counterpart": 6,
+      "files_sent_by_other": 0,
+      "total_bytes": 5460323,
+      "total_mb": 5.21,
+      "latest_timestamp_ms": 1794026004422,
+      "latest_interaction": "2026-11-07 11:33:24",
+      "subfolders": {
+        "Cache": 58,
+        "picture": 32,
+        "richThumb": 1
+      }
+    },
+    {
       "uid": "5158766783970005075",
       "zName": "Vỹ Bình Minh Home",
       "aliasName": "",
@@ -217,27 +238,6 @@
       "subfolders": {
         "Cache": 45,
         "picture": 44
-      }
-    },
-    {
-      "uid": "4206890530093980581",
-      "zName": "Ryo",
-      "aliasName": "",
-      "displayName": "Ryo",
-      "role": "OTHER",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/6/8060b5899aaa8eb8f34491645f3cd343.jpg?key=e5T-hhdWSAxrQbYiK7SX8Q&time=1795911025",
-      "total_files": 88,
-      "files_sent_by_gd": 82,
-      "files_sent_by_counterpart": 6,
-      "files_sent_by_other": 0,
-      "total_bytes": 5274563,
-      "total_mb": 5.03,
-      "latest_timestamp_ms": 1793939855488,
-      "latest_interaction": "2026-11-06 11:37:35",
-      "subfolders": {
-        "Cache": 56,
-        "picture": 31,
-        "richThumb": 1
       }
     },
     {
@@ -286,18 +286,18 @@
       "displayName": "Quế Pl Lighting",
       "role": "SUPPLIER",
       "avatar": "https://s160-26-ava-talk.zadn.vn/6/a94ec15779f259c20e83ba6e2a3f3fd0.jpg?key=5UmDxV66jsRHI7aOdvaJEw&time=1798467445",
-      "total_files": 65,
+      "total_files": 66,
       "files_sent_by_gd": 0,
-      "files_sent_by_counterpart": 65,
+      "files_sent_by_counterpart": 66,
       "files_sent_by_other": 0,
-      "total_bytes": 51034046,
-      "total_mb": 48.67,
-      "latest_timestamp_ms": 1793000973602,
-      "latest_interaction": "2026-10-26 14:49:33",
+      "total_bytes": 51042706,
+      "total_mb": 48.68,
+      "latest_timestamp_ms": 1794037640125,
+      "latest_interaction": "2026-11-07 14:47:20",
       "subfolders": {
         "Cache": 11,
         "fileNoise": 1,
-        "picture": 49,
+        "picture": 50,
         "video": 4
       }
     },
@@ -490,7 +490,7 @@
       "aliasName": "Vũ",
       "displayName": "Vũ",
       "role": "CORE_STAFF",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/16/419b39f022a294f2ac232b2bd8854a38.jpg?key=y7ucOz1aSqVt8kHGyoNqxg&time=1792663878",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/16/419b39f022a294f2ac232b2bd8854a38.jpg?key=YFB9aKHugSsHjPqaSQCx0g&time=1798467445",
       "total_files": 30,
       "files_sent_by_gd": 12,
       "files_sent_by_counterpart": 18,
@@ -750,11 +750,11 @@
     },
     {
       "uid": "3872529864437762169",
-      "zName": "Mai Phương - Phù Thủy Nhà Đất",
+      "zName": "Mai Phương",
       "aliasName": "",
-      "displayName": "Mai Phương - Phù Thủy Nhà Đất",
+      "displayName": "Mai Phương",
       "role": "OTHER",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/34/b75ce19fb268b45bc5361af0d54775e8.jpg?key=54hwh8I1U_LddeJr_wx4JQ&time=1799205399",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/34/b75ce19fb268b45bc5361af0d54775e8.jpg?key=ekh7Sm7epm03tYGg57n-Vg&time=1799269257",
       "total_files": 11,
       "files_sent_by_gd": 3,
       "files_sent_by_counterpart": 8,
@@ -774,7 +774,7 @@
       "aliasName": "Thái Pg Home 2026",
       "displayName": "Thái Pg Home 2026",
       "role": "CORE_STAFF",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/2/1463ecf8ef5408f129c182047a6b97bf.jpg?key=LmVbN1yPv4ArD6WYT0WD-w&time=1792663878",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/2/1463ecf8ef5408f129c182047a6b97bf.jpg?key=8zsCmkMktL1_zRKBUoeB-g&time=1798467445",
       "total_files": 11,
       "files_sent_by_gd": 7,
       "files_sent_by_counterpart": 4,
@@ -1453,6 +1453,26 @@
       }
     },
     {
+      "uid": "6936710920506352768",
+      "zName": "Trần Văn Hùng",
+      "aliasName": "12h. hung Ghe 1",
+      "displayName": "12h. hung Ghe 1",
+      "role": "SUPPLIER",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/4/b2fb4f67f34058d6e95200c7c9e440ca.jpg?key=7GrBgDJEPktilNf0JEOlqw&time=1798467445",
+      "total_files": 3,
+      "files_sent_by_gd": 3,
+      "files_sent_by_counterpart": 0,
+      "files_sent_by_other": 0,
+      "total_bytes": 595564,
+      "total_mb": 0.57,
+      "latest_timestamp_ms": 1791855769962,
+      "latest_interaction": "2026-10-13 08:42:49",
+      "subfolders": {
+        "Cache": 2,
+        "picture": 1
+      }
+    },
+    {
       "uid": "2106213146428549118",
       "zName": "Phú Cánh Kính Bình An",
       "aliasName": "",
@@ -1467,6 +1487,26 @@
       "total_mb": 0.37,
       "latest_timestamp_ms": 1789202423609,
       "latest_interaction": "2026-09-12 15:40:23",
+      "subfolders": {
+        "Cache": 2,
+        "picture": 1
+      }
+    },
+    {
+      "uid": "4136822812938523052",
+      "zName": "Bố Già",
+      "aliasName": "Phúc Hiền",
+      "displayName": "Phúc Hiền",
+      "role": "CLIENT",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/11/1e8c7ea0398421a128b22d3999f9f015.jpg?key=fLuCvf2hgr3GLcg2U-pmcg&time=1798467445",
+      "total_files": 3,
+      "files_sent_by_gd": 3,
+      "files_sent_by_counterpart": 0,
+      "files_sent_by_other": 0,
+      "total_bytes": 902610,
+      "total_mb": 0.86,
+      "latest_timestamp_ms": 1789028470139,
+      "latest_interaction": "2026-09-10 15:21:10",
       "subfolders": {
         "Cache": 2,
         "picture": 1
@@ -1576,7 +1616,7 @@
       "aliasName": "A Hoài (bạn Bố)",
       "displayName": "A Hoài (bạn Bố)",
       "role": "OTHER",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/11/9ab9f1700500be8cc03157ef513a078f.jpg?key=BgFkFG--WdbnSnOWMMlntA&time=1798467445",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/11/9ab9f1700500be8cc03157ef513a078f.jpg?key=mg5N4ptvhWouPuENqwr4Bg&time=1791101097",
       "total_files": 2,
       "files_sent_by_gd": 1,
       "files_sent_by_counterpart": 1,
@@ -1781,25 +1821,6 @@
       "latest_interaction": "2026-10-13 16:07:44",
       "subfolders": {
         "fileNoise": 1
-      }
-    },
-    {
-      "uid": "6936710920506352768",
-      "zName": "Trần Văn Hùng",
-      "aliasName": "12h. hung Ghe 1",
-      "displayName": "12h. hung Ghe 1",
-      "role": "SUPPLIER",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/4/b2fb4f67f34058d6e95200c7c9e440ca.jpg?key=7GrBgDJEPktilNf0JEOlqw&time=1798467445",
-      "total_files": 1,
-      "files_sent_by_gd": 1,
-      "files_sent_by_counterpart": 0,
-      "files_sent_by_other": 0,
-      "total_bytes": 172000,
-      "total_mb": 0.16,
-      "latest_timestamp_ms": 1791855769962,
-      "latest_interaction": "2026-10-13 08:42:49",
-      "subfolders": {
-        "picture": 1
       }
     },
     {
@@ -2017,7 +2038,7 @@
       "aliasName": "Quang Tru",
       "displayName": "Quang Tru",
       "role": "CLIENT",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/2/9254f3754eb715b381d46cbd7a333418.jpg?key=AYgSVEUimbhDR3eiQ-VJCw&time=1798467445",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/2/9254f3754eb715b381d46cbd7a333418.jpg?key=jfB0xt4cPC49ikLyrOaTbg&time=1791101097",
       "total_files": 1,
       "files_sent_by_gd": 1,
       "files_sent_by_counterpart": 0,
@@ -2045,25 +2066,6 @@
       "total_mb": 0.14,
       "latest_timestamp_ms": 1789090603046,
       "latest_interaction": "2026-09-11 08:36:43",
-      "subfolders": {
-        "picture": 1
-      }
-    },
-    {
-      "uid": "4136822812938523052",
-      "zName": "Bố Già",
-      "aliasName": "Phúc Hiền",
-      "displayName": "Phúc Hiền",
-      "role": "CLIENT",
-      "avatar": "https://s160-26-ava-talk.zadn.vn/10/1e8c7ea0398421a128b22d3999f9f015.jpg?key=9YzcUj8MTEJaRVAV9LfKCg&time=1791704100",
-      "total_files": 1,
-      "files_sent_by_gd": 1,
-      "files_sent_by_counterpart": 0,
-      "files_sent_by_other": 0,
-      "total_bytes": 436545,
-      "total_mb": 0.42,
-      "latest_timestamp_ms": 1789028470139,
-      "latest_interaction": "2026-09-10 15:21:10",
       "subfolders": {
         "picture": 1
       }
@@ -2628,6 +2630,23 @@
       "displayName": "Huy Tool Claude",
       "role": "OTHER",
       "avatar": "https://s160-26-ava-talk.zadn.vn/23/7a25d86dcca81711ac014032dd494ebb.jpg?key=6YVbNYEpTbJp2OyPTleO6Q&time=1798467445",
+      "total_files": 0,
+      "files_sent_by_gd": 0,
+      "files_sent_by_counterpart": 0,
+      "files_sent_by_other": 0,
+      "total_bytes": 0,
+      "total_mb": 0.0,
+      "latest_timestamp_ms": null,
+      "latest_interaction": null,
+      "subfolders": {}
+    },
+    {
+      "uid": "5214057346791543960",
+      "zName": "Bùi Đình Hạnh",
+      "aliasName": "12h. hanh Tao. 1",
+      "displayName": "12h. hanh Tao. 1",
+      "role": "OTHER",
+      "avatar": "https://s160-26-ava-talk.zadn.vn/20/ee10e88f7e65817add63e5fb1eb55e10.jpg?key=OAe6klnGztcUEMnf0bYczw&time=1798467445",
       "total_files": 0,
       "files_sent_by_gd": 0,
       "files_sent_by_counterpart": 0,

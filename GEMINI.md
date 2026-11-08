@@ -94,23 +94,64 @@ Toàn bộ 25 mục quy chuẩn chi tiết và kinh nghiệm xương máu đư�
 
 ---
 
-## 5. QUY CHẾ ĐIỀU HÀNH ĐỘI QUÂN 15–55 SUB-AGENT FLASH + 3–5 GIÁM SÁT VIÊN LIÊN TỤC (4 KỶ LUẬT THÉP CỦA TỔNG CHỈ HUY)
-Khi TỔNG CHỈ HUY (Kiến trúc sư trưởng & Giám sát nghiệm thu) xử lý nhiều báo cáo, bảng lương, kho dữ liệu hoặc module giao diện độc lập, **BẮT BUỘC ưu tiên bung đồng loạt từ `15 – 55` công nhân `Flash` (`invoke_subagent` với `Model="flash"`) cộng với `3 – 5` Giám sát viên (`TypeName="research"`, `Model="flash"`) chạy song song trong 1 lượt (1 Wave)** để liên tục giám sát, hoàn thiện quy trình SOP và tiết kiệm tối đa thời gian của Giám Đốc, tuân thủ 4 kỷ luật thép:
-1. **BUNG 15–55 CÔNG NHÂN SONG SONG + 3–5 GIÁM SÁT VIÊN & KHOANH VÙNG ĐỘC LẬP (`1 CÔNG NHÂN = 1 KHOẢNH ĐẤT RIÊNG`):**
-   - Trong `Prompt` giao việc cho từng công nhân Flash, chỉ đích danh danh sách file/thư mục được phép đọc và sửa: *"TUYỆT ĐỐI CẤM đọc, sửa, hoặc chạy lệnh chạm vào bất kỳ file nào ngoài danh sách được giao."*
-   - Với `3–5` Giám sát viên liên tục kiểm toán & hoàn thiện quy trình (hoặc các việc chỉ tìm kiếm, đọc log, đối soát số liệu): Bắt buộc gọi `TypeName="research"`, `Model="flash"` (chế độ Read-Only).
-2. **CẤM TRANH CHẤP TÀI NGUYÊN SỐNG & CẤM CHIẾM MÀN HÌNH ZALO (`Zalo.exe`):**
-   - Cấm 2 công nhân Flash cùng lúc ghi vào 1 file, cùng truy cập 1 Database SQLite, hoặc cùng điều khiển cổng trình duyệt/tiến trình đang chạy.
-   - **TUYỆT ĐỐI CẤM** dùng `uiautomation`/`SetFocus` làm nháy hoặc chiếm quyền cửa sổ `Zalo.exe` hoặc `Chrome` của Giám Đốc; mọi tác vụ đọc dữ liệu Zalo bắt buộc chạy ngầm 100% qua kho lưu trữ local/script ngầm (`SQLite mode=ro` + `LevelDB` + `fileNoise XOR 0x93 In-Memory`).
-3. **TỔNG CHỈ HUY GIÁM SÁT & NGHIỆM THU (`ZERO-TRUST AUDIT`):**
-   - Công nhân Flash và Giám sát viên làm xong bắt buộc nộp bằng chứng (tên file đã sửa, số dòng, kết quả chạy test) qua `send_message`.
-   - Tổng chỉ huy bắt buộc tự đọc kiểm tra lại code/kết quả của từng công nhân trước khi ghép nối vào hệ thống chính.
-4. **DỌN DẸP CÔNG NHÂN CŨ (`manage_subagents`) & BÁO CÁO NỘI BỘ:**
-   - Ngay khi nghiệm thu xong một đợt 15–55 công nhân + 3–5 giám sát viên, Tổng Chỉ Huy dùng `manage_subagents(Action="kill")` / `Action="kill_all"` để thu hồi công nhân cũ trước khi bung đợt mới. Sub-agent chỉ dùng `send_message` gửi cho Tổng Chỉ Huy, không gửi trực tiếp cho người dùng.
+## 5. KỶ LUẬT TỔ CHỨC ĐỘI QUÂN SUB-AGENT & GIÁM SÁT CHÉO (5–10 CÔNG NHÂN + 1 GIÁM SÁT + 1 GIÁM SÁT TRƯỞNG / TỔ HỢP ĐA CỤM 15–55 SUB-AGENT)
+Khi TỔNG CHỈ HUY (Kiến trúc sư trưởng & Giám sát nghiệm thu) xử lý nhiều báo cáo, bảng lương, kho dữ liệu hoặc module giao diện độc lập:
+- **Tùy vào tác vụ, đánh giá và sử dụng đội quân Sub-Agent (`Model="flash"`) CÀNG NHIỀU CÀNG TỐT chạy song song** để tăng tốc tối đa tiến độ và tiết kiệm thời gian của Giám Đốc.
+- **Biên chế chuẩn mỗi cụm tác vụ:** Gồm **`5 – 10` Công Nhân Thực Thi (`Model="flash"`) + `01` Giám Sát Viên (`TypeName="research"`, `Model="flash"`) + `01` Giám Sát Trưởng (`TypeName="research"`, `Model="flash"`)**. Khi triển khai chiến dịch quy mô lớn, nhân bản nhiều cụm thành tổ hợp **`15 – 55` Công nhân + `3 – 10` Giám sát viên & Giám sát trưởng** chạy song song trong 1 đợt (Wave).
+- **Cơ chế Giám sát chéo lẫn nhau (`Mutual Cross-Supervision`) chống sai sót & chống báo cáo láo 100%:**
+  * **Công nhân chéo liền kề:** Các công nhân thực thi kiểm tra chéo đầu ra liền kề theo chu trình vòng tròn khép kín (`W1 -> W2 -> ... -> Wn -> W1`) để rà soát lỗi cú pháp, tính toàn vẹn và chuẩn quy định.
+  * **Giám sát viên kiểm tra toàn cụm:** Chuyên trách hậu kiểm, đối soát chéo độc lập toàn bộ đầu ra của tất cả công nhân trong cụm.
+  * **Giám sát trưởng kiểm tra toàn diện:** Giám sát chéo lại cả Giám sát viên lẫn đội ngũ Công nhân, đảm bảo không có bất kỳ sai sót ngầm hay báo cáo khống nào lọt qua.
+- **4 Kỷ luật thép bất khả xâm phạm:**
+  1. **Khoanh vùng độc lập (`1 Công nhân = 1 khoảnh đất riêng`):** Trong `Prompt` giao việc, chỉ định danh sách file/thư mục cụ thể được phép đọc/sửa: *"TUYỆT ĐỐI CẤM đọc, sửa, hoặc chạy lệnh chạm vào bất kỳ file nào ngoài danh sách được giao."* Giám sát viên/Giám sát trưởng chạy chế độ Read-Only (`TypeName="research"`).
+  2. **Cấm tranh chấp tài nguyên sống & Cấm chiếm màn hình Zalo (`Zalo.exe`):** Cấm 2 công nhân cùng lúc ghi vào 1 file, cùng truy cập 1 SQLite DB, hoặc tranh chấp tiến trình. TUYỆT ĐỐI CẤM dùng `uiautomation`/`SetFocus` làm nháy/cướp màn hình `Zalo.exe` hoặc `Chrome` của Giám Đốc; 100% đọc ngầm qua storage local (`SQLite mode=ro` + `LevelDB` + `fileNoise XOR 0x93 In-Memory`).
+  3. **Hậu kiểm nghiệm thu Zero-Trust (`Zero-Trust Audit`):** Công nhân, Giám sát viên và Giám sát trưởng làm xong bắt buộc nộp bằng chứng thực tế (tên file, số dòng, diff, mã kiểm thử) qua `send_message`. Tổng Chỉ Huy tự đọc kiểm tra lại toàn bộ trước khi ghép nối hệ thống.
+  4. **Dọn dẹp công nhân cũ (`manage_subagents`) & Báo cáo nội bộ:** Thu hồi toàn bộ công nhân cũ bằng `manage_subagents(Action="kill")` / `Action="kill_all"` ngay sau khi nghiệm thu từng đợt trước khi bung đợt mới. Sub-agent chỉ dùng `send_message` gửi Tổng Chỉ Huy, cấm gửi trực tiếp cho người dùng.
 
 ---
 
-## 6. QUY TẮC CỐT TỬ BẢO VỆ DÒNG TIỀN KÉT SẮT & CCSC BỎ TÚI BGĐ
+## 6. KỶ LUẬT CHỐNG QUÊN, CHỐNG TRÀN CONTEXT, BÁO CÁO SUB-AGENT SIÊU GỌN (`MINIMAL JSON <= 3 DÒNG`) & SỔ CÁI `PROJECT_STATE.md`
+
+### 6.1. Giao Thức Báo Cáo Sub-Agent Siêu Gọn (`Minimal JSON Payload <= 3 dòng`)
+- **Cấm xả log/code/báo cáo dài qua `send_message`**: Mọi báo cáo chi tiết, log thực thi, kết quả kiểm toán của Sub-Agent bắt buộc ghi ra file trên ổ cứng (`.../scratch/w*_report.md` hoặc thư mục dự án được chỉ định).
+- **Format phản hồi bắt buộc qua `send_message`**: Chỉ trả về đúng 1 dòng JSON tối giản ($\le 3$ dòng), cấu trúc:
+  ```json
+  {"status": "PASS/FAIL", "output_file": "<đường_dẫn_tuyệt_đối_file_báo_cáo>", "summary": "<tóm tắt súc tích <= 15 từ>"}
+  ```
+- **Thu hồi Sub-Agent (`Auto-Reap`)**: Ngay khi hoàn thành mỗi đợt tác vụ (Wave), Tổng Chỉ Huy bắt buộc gọi `manage_subagents(Action="kill_all")` để giải phóng context và tài nguyên hệ thống, tuyệt đối không để sub-agent chạy ngầm hoặc tích tụ rác.
+
+### 6.2. Cách Ly Ngữ Cảnh Theo Khâu (`Task Isolation`)
+- **Phân hệ nào - Sổ tay đó**: Tuyệt đối không đọc toàn bộ các sổ tay hoặc tất cả module cùng lúc gây tràn context window.
+  - Phân hệ Bảng lương / CCSC / Nhân sự: Chỉ mở [SO_TAY_01_QUAN_TRI_TAI_CHINH_CCSC_VA_NHAN_SU.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_01_QUAN_TRI_TAI_CHINH_CCSC_VA_NHAN_SU.md) và các file liên quan tại [1. Bảng lương 2026](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/1.%20B%E1%BA%A3ng%20l%C6%B0%C6%A1ng%202026), [2. CSC - Chỉ số](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/2.%20CSC%20-%20Ch%E1%BB%89%20s%E1%BB%91).
+  - Phân hệ Báo giá / Dự toán / Định mức CNC: Chỉ mở [SO_TAY_03_DU_TOAN_SALE_DINH_MUC_CNC_VA_DIEU_QUAN.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_03_DU_TOAN_SALE_DINH_MUC_CNC_VA_DIEU_QUAN.md) (Mục 17, 24) và dữ liệu bóc tách [4. Báo giá](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/4.%20B%E1%BA%A3o%20gi%C3%A1).
+  - Phân hệ Quản lý vật tư / Đối soát NCC: Chỉ mở [6. Quản lý vật tư](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/6.%20Qu%E1%BA%A3n%20l%C3%BD%20v%E1%BA%ADt%20t%C6%B0), [SO_TAY_01](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_01_QUAN_TRI_TAI_CHINH_CCSC_VA_NHAN_SU.md) (Mục 8).
+  - Phân hệ Zalo Stealth / Web App / Tools: Chỉ mở [SO_TAY_02_KY_LUAT_THEP_CHONG_LAM_AU_VA_SOP_VAN_HANH.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_02_KY_LUAT_THEP_CHONG_LAM_AU_VA_SOP_VAN_HANH.md), [SO_TAY_03](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_03_DU_TOAN_SALE_DINH_MUC_CNC_VA_DIEU_QUAN.md) (Mục 22) và module cụ thể trong [web_app/modules](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/web_app/modules).
+
+### 6.3. Sổ Cái Bộ Nhớ Ngoài Bất Tử (`PROJECT_STATE.md`)
+- **Vai trò Sổ Cái Tối Cao**: File [PROJECT_STATE.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/PROJECT_STATE.md) là bộ nhớ ngoài bất tử, lưu trữ toàn bộ trạng thái hệ thống, cấu trúc dữ liệu, lộ trình, mốc nghiệm thu, quy chuẩn pháp lý và thông tin nhạy cảm.
+- **Quy trình bắt buộc trước & sau mỗi đợt tác vụ**:
+  1. *Trước khi hành động hoặc ngay sau khi hệ thống nén lịch sử (`<CONTEXT_SUMMARY>`)*: AI BẮT BUỘC đọc file [PROJECT_STATE.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/PROJECT_STATE.md) để đồng bộ hóa ngữ cảnh chính xác, không bị mất ký ức.
+  2. *Sau khi hoàn thành công việc*: Cập nhật trạng thái mới nhất vào [PROJECT_STATE.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/PROJECT_STATE.md) (mốc thời gian, số lượng module, trạng thái DB, file mới tạo/sửa).
+
+### 6.4. Giao Thức Chống Mù Ảnh Sau Khi Nén (`Anti-Image Blindness`)
+- **Nhận diện mù ảnh**: Khi hệ thống nén ngữ cảnh (Compaction) sinh thông báo dạng `[file "...png/jpg" was omitted from context...]`, AI lập tức mất khả năng nhìn thấy nội dung ảnh hóa đơn, UNC, giấy phép kinh doanh, bản vẽ thiết kế.
+- **Hành động cưỡng chế**: AI BẮT BUỘC phải gọi lệnh `read_file` mở lại file ảnh gốc ngoài ổ cứng trước khi phân tích hoặc trả lời Giám Đốc. Nghiêm cấm bịa đặt hoặc đoán mò nội dung hình ảnh khi chưa đọc lại file.
+
+### 6.5. Vệ Sinh Đọc File (`Pagination Hygiene`) & Cổng Nghiệm Thu Vật Lý
+- **Quy chuẩn đọc file lớn (> 200 dòng)**: CẤM TUYỆT ĐỐI gọi `read_file` đọc nguyên file HTML/JS/JSON lớn (như [web_app/index.html](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/web_app/index.html) ~436 KB, [web_app/modules/w50_master_hub_loader.js](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/web_app/modules/w50_master_hub_loader.js), `pg_w50_master.bundle.js` ~1.6 MB). Bắt buộc chỉ định `StartLine` và `EndLine` phù hợp (mỗi lần $\le 200$ dòng) hoặc dùng script trích xuất mục tiêu.
+- **Cổng nghiệm thu vật lý (Physical Ground-Truth Gate)**: Chỉ được phép kết luận `PASS` khi:
+  1. Đã kiểm tra thực tế dữ liệu ghi nhận trong database SQLite ([pg_knowledge_vault.db](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/data/pg_knowledge_vault.db) hoặc `pg_home_erp.db`) và các file JSON dữ liệu thật.
+  2. Đã kiểm tra API/Server phản hồi HTTP 200 thực tế từ mã nguồn thật, không hardcode hay in giả mạo kết quả `PASS`.
+
+### 6.6. Ngưỡng Xoay Vòng Phiên Chat (`Session Rotation Threshold`)
+- **Ngưỡng an toàn**: Khi dung lượng database lưu trữ phiên chat vượt quá `40 MB` hoặc số bước tương tác vượt quá `3.000 steps`, ngữ cảnh sẽ bị suy giảm độ chính xác và nguy cơ tràn context.
+- **Quy trình xoay vòng**:
+  1. Ghi toàn bộ tiến độ, phân tích và trạng thái đang dang dở vào [PROJECT_STATE.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/PROJECT_STATE.md).
+  2. Báo cáo Giám Đốc kích hoạt lệnh `/compact` để dọn dẹp ngữ cảnh hoặc mở một phiên chat mới và đọc lại [PROJECT_STATE.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/PROJECT_STATE.md) để tiếp nối công việc liền mạch 100%.
+
+---
+
+## 7. QUY TẮC CỐT TỬ BẢO VỆ DÒNG TIỀN KÉT SẮT & CCSC BỎ TÚI BGĐ
 - **Lợi nhuận xưởng (Col BG):** Là tiền do chính thợ và máy xưởng làm ra. Cấm tuyệt đối lấy tiền mảng thương mại, đá, kính bù vào xưởng. Nếu xưởng chi lương thợ vượt định mức 15% làm âm quỹ khoán thì Col BG = **0 đ**.
 - **Quỹ thợ nòng cốt Hòa & Hào:** Trích `20.000 đ/công` giữ đến cuối năm mới chi trả nhằm gắn kết trách nhiệm. Hàng tháng chỉ tạm ứng theo công thực tế (Hòa 530k, Hào 450k + OT, phụ cấp hàng tháng = **0 đ**).
 - **Thưởng vượt doanh số > 500 Triệu:** Giữ lại đến tất niên cuối năm đối soát xong mới thanh toán (Thái 0.5%, Vũ 0.3%, Hiệp 0.5%).

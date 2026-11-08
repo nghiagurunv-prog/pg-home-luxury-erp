@@ -2,9 +2,9 @@
   "metadata": {
     "he_thong": "PG Home Luxury Management System",
     "chuyen_de": "Sổ Cái Đối Soát Chứng Từ UNC, Hóa Đơn & Thanh Toán NCC Chị Hương",
-    "phien_ban": "1.0-STRICT",
-    "ngay_lap_so": "2026-11-07 10:37:40",
-    "nguoi_kiem_soat": "Công Nhân Flash #06 (Kỹ Sư Đối Soát Chứng Từ UNC Chị Hương)",
+    "phien_ban": "2.0-MULTI-TIER-OCR",
+    "ngay_lap_so": "2026-11-08 06:21:05",
+    "nguoi_kiem_soat": "Kỹ Sư Đối Soát Chứng Từ UNC Chị Hương (W10)",
     "tong_so_media_quet": 633,
     "phan_bo_thu_muc": {
       "picture": 385,
@@ -16,7 +16,11 @@
     "tong_so_luong_nguoi_gui": {
       "chi_huong_1193413708528852811": 450,
       "giam_doc_2304805760907141944": 183
-    }
+    },
+    "tong_so_anh_da_phan_tich_ocr": 44,
+    "tong_so_bien_lai_unc_phat_hien": 7,
+    "tong_gia_tri_unc_uoc_tinh_vnd": 15000000,
+    "duong_dan_cache": "f:\\PG Home - Quản trị\\data\\zalo_unc_ocr_cache.json"
   },
   "thong_ke_theo_thang": {
     "2026-07": {
@@ -144,7 +148,49 @@
       "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
       "ten_tep": "1794021372752_2304805760907141944_1193413708528852811_281b7b26afc5632930d5bff82a02fd81.jxl",
       "kich_thuoc_bytes": 762654,
-      "ma_bam_sha256": "da9c2a538d60df2f37f1094d67d422ea402318450fb1b44fdf4fc6adb0dd8bce"
+      "ma_bam_sha256": "da9c2a538d60df2f37f1094d67d422ea402318450fb1b44fdf4fc6adb0dd8bce",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "768x1025",
+        "chieu_rong": 768,
+        "chieu_cao": 1025,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 0.7493,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": "Techcombank",
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.03,
+            "Vietcombank": 0.01,
+            "Techcombank": 6.92,
+            "MBBank": 0.0,
+            "BIDV": 0.01,
+            "Agribank": 0.17
+          },
+          "do_tin_cay_mau_sac": "TRUNG_BINH"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "THANH_CONG",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "thoi_gian_ocr_giay": 1.696,
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": {
+          "la_bien_lai_unc": false,
+          "ngan_hang": null,
+          "so_tien_vnd": 0,
+          "ma_giao_dich_ft": null,
+          "ngay_gio_gd": null,
+          "noi_dung_ck": null,
+          "nguoi_nhan": null,
+          "tai_khoan_nhan": null,
+          "ngan_hang_nhan": null,
+          "nguoi_chuyen": null,
+          "raw_text_preview": "OAILEWOPIBAOHIEU | Hingtao bangAl"
+        }
+      }
     },
     {
       "thu_tu": 2,
@@ -154,7 +200,36 @@
       "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
       "ten_tep": "1794021324079_2304805760907141944_1193413708528852811_25f968777bb6acf46fbb3e81665901e3.jxl",
       "kich_thuoc_bytes": 574886,
-      "ma_bam_sha256": "3d8e4162cb18786f924b2741c57ef1cb8de98b4043da8ed190fddce1b3697344"
+      "ma_bam_sha256": "3d8e4162cb18786f924b2741c57ef1cb8de98b4043da8ed190fddce1b3697344",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "1024x768",
+        "chieu_rong": 1024,
+        "chieu_cao": 768,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.3333,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": "Techcombank",
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 4.85,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.32
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 3,
@@ -164,7 +239,49 @@
       "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
       "ten_tep": "1794021318608_2304805760907141944_1193413708528852811_f4c7d99b14e803a445196012069ef016.jxl",
       "kich_thuoc_bytes": 395825,
-      "ma_bam_sha256": "096ebcc14fb86d82a381b257933eb4aeb1c6f569eaf364c5b03ae1e9b6ba9b68"
+      "ma_bam_sha256": "096ebcc14fb86d82a381b257933eb4aeb1c6f569eaf364c5b03ae1e9b6ba9b68",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "768x1025",
+        "chieu_rong": 768,
+        "chieu_cao": 1025,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 0.7493,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": "Techcombank",
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.31,
+            "Vietcombank": 0.0,
+            "Techcombank": 36.24,
+            "MBBank": 0.0,
+            "BIDV": 0.03,
+            "Agribank": 1.64
+          },
+          "do_tin_cay_mau_sac": "CAO"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "THANH_CONG",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "thoi_gian_ocr_giay": 1.315,
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": {
+          "la_bien_lai_unc": false,
+          "ngan_hang": null,
+          "so_tien_vnd": 0,
+          "ma_giao_dich_ft": null,
+          "ngay_gio_gd": null,
+          "noi_dung_ck": null,
+          "nguoi_nhan": null,
+          "tai_khoan_nhan": null,
+          "ngan_hang_nhan": null,
+          "nguoi_chuyen": null,
+          "raw_text_preview": "105NGUYEN | +Noidung tao bang Al"
+        }
+      }
     },
     {
       "thu_tu": 4,
@@ -174,7 +291,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794021146847_1193413708528852811_1193413708528852811_7e0dd607e827353858572c3004c7a2be.jxl",
       "kich_thuoc_bytes": 89647,
-      "ma_bam_sha256": "049c541e7fee2b67f33c75651f9630e7d17de85f31d27621d4af2bb9d7eb7a70"
+      "ma_bam_sha256": "049c541e7fee2b67f33c75651f9630e7d17de85f31d27621d4af2bb9d7eb7a70",
+      "la_bien_lai_unc": true,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "784x1280",
+        "chieu_rong": 784,
+        "chieu_cao": 1280,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 0.6125,
+        "la_khung_hinh_smartphone_doc": true,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": "Techcombank",
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.14,
+            "Vietcombank": 0.0,
+            "Techcombank": 43.24,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 2.85
+          },
+          "do_tin_cay_mau_sac": "CAO"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 5,
@@ -184,7 +330,49 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794020497539_1193413708528852811_1193413708528852811_af2439b4b341657e5b9db9bf45d01418.jxl",
       "kich_thuoc_bytes": 688761,
-      "ma_bam_sha256": "fea483e5b02c096e795daa4728fb87a513f9bc4915e4d79755b02df17ba4b9b9"
+      "ma_bam_sha256": "fea483e5b02c096e795daa4728fb87a513f9bc4915e4d79755b02df17ba4b9b9",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "1024x768",
+        "chieu_rong": 1024,
+        "chieu_cao": 768,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.3333,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": "Techcombank",
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.01,
+            "Vietcombank": 0.0,
+            "Techcombank": 5.05,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.36
+          },
+          "do_tin_cay_mau_sac": "TRUNG_BINH"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "THANH_CONG",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "thoi_gian_ocr_giay": 0.975,
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": {
+          "la_bien_lai_unc": false,
+          "ngan_hang": null,
+          "so_tien_vnd": 0,
+          "ma_giao_dich_ft": null,
+          "ngay_gio_gd": null,
+          "noi_dung_ck": null,
+          "nguoi_nhan": null,
+          "tai_khoan_nhan": null,
+          "ngan_hang_nhan": null,
+          "nguoi_chuyen": null,
+          "raw_text_preview": "DOCONHIETDOI | DOANH NGHEP | MAUSF03"
+        }
+      }
     },
     {
       "thu_tu": 6,
@@ -194,7 +382,49 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794020471573_1193413708528852811_1193413708528852811_4c09355ce4443ac2d802f69c6b3f9b45.jxl",
       "kich_thuoc_bytes": 771918,
-      "ma_bam_sha256": "c0d93e334f741905ca6b0e97924c64d04bcee84e0b71a0bac948d7882183ff55"
+      "ma_bam_sha256": "c0d93e334f741905ca6b0e97924c64d04bcee84e0b71a0bac948d7882183ff55",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "768x1025",
+        "chieu_rong": 768,
+        "chieu_cao": 1025,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 0.7493,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": "Techcombank",
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.03,
+            "Vietcombank": 0.01,
+            "Techcombank": 7.39,
+            "MBBank": 0.0,
+            "BIDV": 0.01,
+            "Agribank": 0.17
+          },
+          "do_tin_cay_mau_sac": "TRUNG_BINH"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "THANH_CONG",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "thoi_gian_ocr_giay": 0.971,
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": {
+          "la_bien_lai_unc": false,
+          "ngan_hang": null,
+          "so_tien_vnd": 0,
+          "ma_giao_dich_ft": null,
+          "ngay_gio_gd": null,
+          "noi_dung_ck": null,
+          "nguoi_nhan": null,
+          "tai_khoan_nhan": null,
+          "ngan_hang_nhan": null,
+          "nguoi_chuyen": null,
+          "raw_text_preview": "OAEOBAOHIEU | DO GO NHIET BOI"
+        }
+      }
     },
     {
       "thu_tu": 7,
@@ -204,7 +434,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840677_1193413708528852811_1193413708528852811_ef8680cfbcadf68d13b78454a2798441.jxl",
       "kich_thuoc_bytes": 674944,
-      "ma_bam_sha256": "5adcd47c11bccb9429a0ab7cdb470a31a61d5e991f72764974b8b757da0502bf"
+      "ma_bam_sha256": "5adcd47c11bccb9429a0ab7cdb470a31a61d5e991f72764974b8b757da0502bf",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "301x301",
+        "chieu_rong": 301,
+        "chieu_cao": 301,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.0,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.02,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.04
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 8,
@@ -214,7 +473,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840650_1193413708528852811_1193413708528852811_ae2f30729e215203440ea9b22c4cc305.jxl",
       "kich_thuoc_bytes": 641316,
-      "ma_bam_sha256": "c05f04b4fcfc9a975a1f064351631d9cb2cb89c839e90a410fc0d76c7d1b1b79"
+      "ma_bam_sha256": "c05f04b4fcfc9a975a1f064351631d9cb2cb89c839e90a410fc0d76c7d1b1b79",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "301x301",
+        "chieu_rong": 301,
+        "chieu_cao": 301,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.0,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.02,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.02
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 9,
@@ -224,7 +512,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840625_1193413708528852811_1193413708528852811_71ed67559476cf2c034d2c4ff28148a9.jxl",
       "kich_thuoc_bytes": 797244,
-      "ma_bam_sha256": "d619aa6883b4387b0e79d6e7567a6e80c7a7997908f9d14175583208ca9f9dd5"
+      "ma_bam_sha256": "d619aa6883b4387b0e79d6e7567a6e80c7a7997908f9d14175583208ca9f9dd5",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "301x301",
+        "chieu_rong": 301,
+        "chieu_cao": 301,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.0,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.1,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.09
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 10,
@@ -234,7 +551,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840599_1193413708528852811_1193413708528852811_95f932b45fad164a6cc90f04fb7b4d13.jxl",
       "kich_thuoc_bytes": 435400,
-      "ma_bam_sha256": "bec502df7d776d2427e0ee7c3dcd262160e2c5a8abd818c0da517bd6c1304170"
+      "ma_bam_sha256": "bec502df7d776d2427e0ee7c3dcd262160e2c5a8abd818c0da517bd6c1304170",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.01,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.01,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.11
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 11,
@@ -244,7 +590,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840573_1193413708528852811_1193413708528852811_3fa05b2fc6f858c73244c462aff6689d.jxl",
       "kich_thuoc_bytes": 345002,
-      "ma_bam_sha256": "7399e22e00634da4ac25f48c890c30ab0c1c4cf58a3b900f97fd457622c57fed"
+      "ma_bam_sha256": "7399e22e00634da4ac25f48c890c30ab0c1c4cf58a3b900f97fd457622c57fed",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.09,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.05,
+            "BIDV": 0.0,
+            "Agribank": 0.02
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 12,
@@ -254,7 +629,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840546_1193413708528852811_1193413708528852811_b62a1e4b3ea2b45ad1f66338d8956240.jxl",
       "kich_thuoc_bytes": 343466,
-      "ma_bam_sha256": "0f6dc726f3c1632b78e55c8011825724f3b7b6df47b0ff1e6f9ca1b59110bfa3"
+      "ma_bam_sha256": "0f6dc726f3c1632b78e55c8011825724f3b7b6df47b0ff1e6f9ca1b59110bfa3",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.03,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.01,
+            "BIDV": 0.0,
+            "Agribank": 0.01
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 13,
@@ -264,7 +668,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840520_1193413708528852811_1193413708528852811_e761c1f4c37142c7e45051be70250152.jxl",
       "kich_thuoc_bytes": 408195,
-      "ma_bam_sha256": "3e0b3f9c3a48e695696f1e26c08bc93af458a12f9765c8de9939c3fbbf15da4f"
+      "ma_bam_sha256": "3e0b3f9c3a48e695696f1e26c08bc93af458a12f9765c8de9939c3fbbf15da4f",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.03,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.03
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 14,
@@ -274,7 +707,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840497_1193413708528852811_1193413708528852811_b3cf0808764347304081c71cab0d0829.jxl",
       "kich_thuoc_bytes": 469004,
-      "ma_bam_sha256": "e1c0a66319c09079866dfb234340c24b8d7d7114d000234639fb90a8941e55ad"
+      "ma_bam_sha256": "e1c0a66319c09079866dfb234340c24b8d7d7114d000234639fb90a8941e55ad",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.0
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 15,
@@ -284,7 +746,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840474_1193413708528852811_1193413708528852811_8e2afbec4effb653c34de087fdef6abf.jxl",
       "kich_thuoc_bytes": 464939,
-      "ma_bam_sha256": "c2fa74885a0300252c54b419bf7c28636bfcb9d03ee239821f4689c57c93f033"
+      "ma_bam_sha256": "c2fa74885a0300252c54b419bf7c28636bfcb9d03ee239821f4689c57c93f033",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.02
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 16,
@@ -294,7 +785,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840451_1193413708528852811_1193413708528852811_6ffd9d64b2e1bbb7336d150dbc9e819d.jxl",
       "kich_thuoc_bytes": 533497,
-      "ma_bam_sha256": "e156257d87dfa740914dc79f64f055cba0af044d9de28f374bc7bd47b1ae71b1"
+      "ma_bam_sha256": "e156257d87dfa740914dc79f64f055cba0af044d9de28f374bc7bd47b1ae71b1",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.01
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 17,
@@ -304,7 +824,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840428_1193413708528852811_1193413708528852811_252fc3e845e439666622cc1b5d851593.jxl",
       "kich_thuoc_bytes": 434592,
-      "ma_bam_sha256": "f90d8f9abd4d223bc8da7db59794473f6d24458655d120352ced32365f027171"
+      "ma_bam_sha256": "f90d8f9abd4d223bc8da7db59794473f6d24458655d120352ced32365f027171",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.04,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.02
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 18,
@@ -314,7 +863,36 @@
       "nguoi_gui_ten": "Chị Hương (Kế toán / Vợ Giám Đốc)",
       "ten_tep": "1794016840403_1193413708528852811_1193413708528852811_e4d02cb08a338913443c029995e8959e.jxl",
       "kich_thuoc_bytes": 575198,
-      "ma_bam_sha256": "6b64faa6baf276a406b57a76aa0751bccc9339b5b7907f7f54ace9f837925612"
+      "ma_bam_sha256": "6b64faa6baf276a406b57a76aa0751bccc9339b5b7907f7f54ace9f837925612",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "THANH_CONG",
+        "kich_thuoc_px": "299x201",
+        "chieu_rong": 299,
+        "chieu_cao": 201,
+        "dinh_dang": "JPEG",
+        "ty_le_khung_hinh": 1.4876,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": {
+          "nhan_dien_ngan_hang_qua_mau": null,
+          "ty_le_mau_ngan_hang_percent": {
+            "VietinBank": 0.0,
+            "Vietcombank": 0.0,
+            "Techcombank": 0.0,
+            "MBBank": 0.0,
+            "BIDV": 0.0,
+            "Agribank": 0.01
+          },
+          "do_tin_cay_mau_sac": "THAP"
+        },
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "LOI_OCR: float() argument must be a string or a real number, not 'NoneType'",
+        "ocr_engine": "rapidocr_onnxruntime",
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 19,
@@ -324,7 +902,22 @@
       "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
       "ten_tep": "1793958663372_2304805760907141944_1193413708528852811_5344ddd2a3682c5432ed361f7fe0bcee.jxl",
       "kich_thuoc_bytes": 263825,
-      "ma_bam_sha256": "15aae57c665adacdf7920d13148bcba6c0405c3a44ebb6a76971f3a50d37207e"
+      "ma_bam_sha256": "15aae57c665adacdf7920d13148bcba6c0405c3a44ebb6a76971f3a50d37207e",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "FILE_KHONG_TON_TAI_HOAC_CHUA_RESOLVE",
+        "kich_thuoc_px": null,
+        "ty_le_khung_hinh": null,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": null,
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "FILE_KHONG_TON_TAI_HOAC_CHUA_RESOLVE",
+        "ocr_engine": null,
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     },
     {
       "thu_tu": 20,
@@ -334,7 +927,22 @@
       "nguoi_gui_ten": "Giám Đốc (Nguyễn Viết Nghĩa)",
       "ten_tep": "1793954832260_2304805760907141944_1193413708528852811_51f244c493613a07cf448103ee08f8bb.jxl",
       "kich_thuoc_bytes": 189870,
-      "ma_bam_sha256": "9bca089a109399e980e3044972b25f2618920290e40451a41c918df81c3b95e7"
+      "ma_bam_sha256": "9bca089a109399e980e3044972b25f2618920290e40451a41c918df81c3b95e7",
+      "la_bien_lai_unc": false,
+      "phan_tich_tang_1_hinh_anh": {
+        "trang_thai": "FILE_KHONG_TON_TAI_HOAC_CHUA_RESOLVE",
+        "kich_thuoc_px": null,
+        "ty_le_khung_hinh": null,
+        "la_khung_hinh_smartphone_doc": false,
+        "bang_mau_ngan_hang": null,
+        "metadata_exif": {}
+      },
+      "phan_tich_tang_2_ocr": {
+        "trang_thai": "FILE_KHONG_TON_TAI_HOAC_CHUA_RESOLVE",
+        "ocr_engine": null,
+        "la_bien_lai_unc": false,
+        "du_lieu_boc_tach": null
+      }
     }
   ],
   "cac_khoan_thanh_toan_ncc_da_xac_nhan": [
@@ -409,6 +1017,113 @@
       "hoi_thoai": "2026 Tủ bếp a Dũng - Hương Khê",
       "noi_dung_doi_soat": "Chị Hương chỉ định tài khoản nhận tiền cọc: Lưu Thị Kim Dung - Vietinbank.",
       "trang_thai": "ĐÃ CUNG CẤP TÀI KHOẢN THU TẠM ỨNG"
+    }
+  ],
+  "danh_sach_chung_tu_unc_boc_tach": [
+    {
+      "ten_tep": "1793412915506_1193413708528852811_1193413708528852811_838b868f1798f6b0aa7b3378dbc0a05f.jpg",
+      "thoi_gian_zalo": "2026-10-31 09:15:15",
+      "nguoi_gui_zalo": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ma_bam_sha256": "7c6897af3eef0c0e12a69e5fffe6691dec631e77484b1c1037e52601b6243998",
+      "ngan_hang_phat_hanh": "VietinBank",
+      "so_tien_vnd": 3000000,
+      "ma_giao_dich": "430C61031PQ6H5KK",
+      "thoi_gian_giao_dich": "31/10/2026 09:13",
+      "noi_dung_chuyen_khoan": "LUU THI KIM DUNG chuyen tien",
+      "nguoi_nhan": "NGUYENVIETNGHIA",
+      "tai_khoan_nhan": "9868888688",
+      "nguoi_chuyen": "LUU THI KIM DUNG",
+      "raw_text_preview": "VietinBank | Chuyen tien thanh cong | 3,000,000 VND | 31/10/202609:13·430C61031PQ6H5KK | NGUYENVIETNGHIA | 9868888688.Techcombank_Ngan | hang Ky thuong Viet Nam (TCB) | Noi dung | LUU THI KIM DUNG chuyen | tien | Ma giao dich | 6304ICBVC2ZNZ31H | Chonnha ungy | Tinh vay de da"
+    },
+    {
+      "ten_tep": "1789699129677_1193413708528852811_1193413708528852811_a1e1e2d6e2bef47155153c713e16c9c8.jpg",
+      "thoi_gian_zalo": "2026-09-18 09:38:49",
+      "nguoi_gui_zalo": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ma_bam_sha256": "11b0a3ce3c4848ff35bd539c08a615455168e5c84cb55e1f25b778776ade0556",
+      "ngan_hang_phat_hanh": "VietinBank",
+      "so_tien_vnd": 2000000,
+      "ma_giao_dich": "430C60918SDW4PU1",
+      "thoi_gian_giao_dich": "18/09/2026 09:13",
+      "noi_dung_chuyen_khoan": "LUU THI KIM DUNG chuyen tien",
+      "nguoi_nhan": "NGUYENVIETNGHIA",
+      "tai_khoan_nhan": "9868888688",
+      "nguoi_chuyen": "LUU THI KIM DUNG",
+      "raw_text_preview": "VietinBank | Chuyen tien thanh cong | 2,000,000 VND | 18/09/202609:13·430C60918SDW4PU1 | NGUYENVIETNGHIA | 9868888688·Techcombank_Ngan | hang Ky thuong Viet Nam (TCB) | Noi dung | LUU THI KIM DUNG chuyen | tien | Ma giao dich | 62611CBVC28HVQ1Y | He sinh thai | VietinBank | Pay"
+    },
+    {
+      "ten_tep": "1789381165520_1193413708528852811_1193413708528852811_51fd6224c25efaa7d60ba2c584b4d59f.jpg",
+      "thoi_gian_zalo": "2026-09-14 17:19:25",
+      "nguoi_gui_zalo": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ma_bam_sha256": "3c5961764342c084e037dc363acaa8e93836525eb0bb9d60dd6dfd65ee5b7dc9",
+      "ngan_hang_phat_hanh": "VietinBank",
+      "so_tien_vnd": 2000000,
+      "ma_giao_dich": "430K2690N2ZGQS5C",
+      "thoi_gian_giao_dich": "14/09/2026 17:15",
+      "noi_dung_chuyen_khoan": "LUU THI KIM DUNG chuyen tien He sinhthai",
+      "nguoi_nhan": "LUU THI THU HUONG",
+      "tai_khoan_nhan": "52010000474058",
+      "nguoi_chuyen": "LUU THI KIM DUNG",
+      "raw_text_preview": "VietinBank | Chuyén tien thanh cong | 2,000,000 VND | 14/09/202617:15·430K2690N2ZGQS5C | LUU THI THU HUONG | 52010000474058·BIDV_Nganhang | Dautu va Phattrien Viet Nam | Noi dung | LUU THI KIM DUNG chuyen | tien | He sinhthai | IPayMoblle | Batdongsanso | Timtoam | HomeLife | Qud"
+    },
+    {
+      "ten_tep": "1788335755782_1193413708528852811_1193413708528852811_5f1514f1c613f90e657420e80fcdca7e.jpg",
+      "thoi_gian_zalo": "2026-09-02 14:55:55",
+      "nguoi_gui_zalo": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ma_bam_sha256": "930ed0db94fc250d2436841d6482504c3dd3561b6aab2ddcd282914260ed3441",
+      "ngan_hang_phat_hanh": "VietinBank",
+      "so_tien_vnd": 2000000,
+      "ma_giao_dich": "430C6090233BXWT7",
+      "thoi_gian_giao_dich": "02/09/2026 14:44",
+      "noi_dung_chuyen_khoan": "LUU THI KIM DUNG chuyen tien",
+      "nguoi_nhan": "NGUYENVIETNGHIA",
+      "tai_khoan_nhan": "6090233",
+      "nguoi_chuyen": "LUU THI KIM DUNG",
+      "raw_text_preview": "VietinBank | Chuyen tien thanh cong | 2,000,000 VND | 02/09/202614:44·430C6090233BXWT7 | NGUYENVIETNGHIA | 9868888688Techcombank_Ngan | hangKy thuong Viet Nam (TCB) | Noi dung | LUU THI KIM DUNG chuyen | tien | Ma giao dich | 6245ICBVC2CFKUA | He sinh thai | Batdong san so | Ti"
+    },
+    {
+      "ten_tep": "1788166181849_1193413708528852811_1193413708528852811_0ec66a66e26f7aeaf4308ca5c336d205.jpg",
+      "thoi_gian_zalo": "2026-08-31 15:49:41",
+      "nguoi_gui_zalo": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ma_bam_sha256": "068d6464b95092206fa03e19a40dab9a90ff8e4fe019512307ad03eb0ceba532",
+      "ngan_hang_phat_hanh": "VietinBank",
+      "so_tien_vnd": 5000000,
+      "ma_giao_dich": "430C60831UJBQ8E8",
+      "thoi_gian_giao_dich": "31/08/2026 15:48",
+      "noi_dung_chuyen_khoan": "LUU THI KIM DUNG chuyen tien",
+      "nguoi_nhan": "NGUYENVIETNGHIA",
+      "tai_khoan_nhan": "9868888688",
+      "nguoi_chuyen": "LUU THI KIM DUNG",
+      "raw_text_preview": "VietinBank | Chuyen tien thanh cong | 5,000,000 VND | 31/08/202615:48430C60831UJBQ8E8 | NGUYENVIETNGHIA | 9868888688Techcombank_Ngan | hangKy thuong Viet Nam (TCB) | Noi dung | LUU THI KIM DUNG chuyen | tien | Ma giao dich | 6243ICBVC2CBFYE | He sinhthai | Batdong san so | Timt"
+    },
+    {
+      "ten_tep": "1785246069325_1193413708528852811_1193413708528852811_f31f7ab373eb5a570e221be373b30e76.jpg",
+      "thoi_gian_zalo": "2026-07-28 20:41:09",
+      "nguoi_gui_zalo": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ma_bam_sha256": "c13cef6bb80688859b4c255fcb88da6c093b2d1648370d256a196952bd619b0f",
+      "ngan_hang_phat_hanh": "VietinBank",
+      "so_tien_vnd": 1000000,
+      "ma_giao_dich": "430C60728LG53ZE5",
+      "thoi_gian_giao_dich": "28/07/2026 20:38",
+      "noi_dung_chuyen_khoan": "LUU THI KIM DUNG chuyen tien",
+      "nguoi_nhan": "NGUYENVIETNGHIA",
+      "tai_khoan_nhan": "9868888688",
+      "nguoi_chuyen": "LUU THI KIM DUNG",
+      "raw_text_preview": "VietinBank | Chuyen tien thanh cong | 1,000,000 VND | 28/07/202620:38430C60728LG53ZE5 | NGUYENVIETNGHIA | 9868888688.Techcombank_Ngan | hang Ky thuong Viet Nam (TCB) | Noi dung | LUU THI KIM DUNG chuyen | tien | Ma giao dich | 6209ICBVC2BFIQK7 | NANG TAM | V-ADVANCE | TRAINGHIE"
+    },
+    {
+      "ten_tep": "1794021146847_1193413708528852811_1193413708528852811_7e0dd607e827353858572c3004c7a2be.jxl",
+      "thoi_gian_zalo": "2026-11-07 10:12:26",
+      "nguoi_gui_zalo": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "ma_bam_sha256": "049c541e7fee2b67f33c75651f9630e7d17de85f31d27621d4af2bb9d7eb7a70",
+      "ngan_hang_phat_hanh": "Khác",
+      "so_tien_vnd": 0,
+      "ma_giao_dich": null,
+      "thoi_gian_giao_dich": "2026-11-07 10:12:26",
+      "noi_dung_chuyen_khoan": null,
+      "nguoi_nhan": null,
+      "tai_khoan_nhan": null,
+      "nguoi_chuyen": "Chị Hương (Kế toán / Vợ Giám Đốc)",
+      "raw_text_preview": null
     }
   ]
 }

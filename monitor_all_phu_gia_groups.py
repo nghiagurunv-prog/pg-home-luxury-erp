@@ -560,9 +560,17 @@ def scan_leveldb_stream():
         return []
 
     logs.sort(key=os.path.getmtime, reverse=True)
+    top_logs = logs[:3]
+    try:
+        sig = tuple((p, os.path.getmtime(p), os.path.getsize(p)) for p in top_logs)
+        if getattr(scan_leveldb_stream, "_last_sig", None) == sig:
+            return getattr(scan_leveldb_stream, "_last_res", [])
+    except Exception:
+        sig = None
+
     activity = []
 
-    for l_file in logs[:3]:
+    for l_file in top_logs:
         try:
             with open(l_file, "rb") as f:
                 f.seek(max(0, os.path.getsize(l_file) - 131072))
@@ -581,6 +589,9 @@ def scan_leveldb_stream():
         except Exception:
             pass
 
+    if sig is not None:
+        scan_leveldb_stream._last_sig = sig
+        scan_leveldb_stream._last_res = activity
     return activity
 
 
@@ -601,7 +612,7 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
     inbox_items = load_json(STAGING_INBOX_FILE, [])
 
     # Đảm bảo 6 chứng từ gốc T11 luôn có mặt trong Staging Inbox kèm SHA-256 thật
-    seed_ground_truth_inbox(inbox_items)
+    added_gt = seed_ground_truth_inbox(inbox_items)
     existing_hashes = {item.get("sha256_full") for item in inbox_items if item.get("sha256_full")}
 
     now_dt = datetime.datetime.now()
@@ -632,9 +643,6 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
 
             total_media_across_groups += total_indexed
 
-            # Trích xuất danh sách tên người gửi gần nhất từ Storage.db
-            senders_named, senders_detail = extract_group_senders(gid, cache_dir, limit=5)
-
             # Cơ chế Delta-Cursor v6.0: đối chiếu danh sách seen_keys của từng nhóm
             group_cursor = cursor.get("groups", {}).get(gid, {})
             seen_keys = set(group_cursor.get("seen_keys", []))
@@ -645,6 +653,14 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
 
             # Nếu là lần khởi tạo con trỏ đầu tiên, lấy 1 file mới nhất của mỗi nhóm để đưa vào Staging Inbox
             keys_to_inspect = new_keys if not is_first_baseline else (cache_items[-1:] if cache_items else [])
+
+            # Trích xuất danh sách tên người gửi gần nhất từ Storage.db (tái sử dụng bộ đệm nếu không có tệp mới)
+            prev_group_state = state.get("groups", {}).get(gid, {})
+            if not keys_to_inspect and prev_group_state.get("latest_senders_named"):
+                senders_named = prev_group_state.get("latest_senders_named", [])
+                senders_detail = prev_group_state.get("latest_senders_detail", [])
+            else:
+                senders_named, senders_detail = extract_group_senders(gid, cache_dir, limit=5)
 
             newest_intel = None
             for fn in keys_to_inspect:
@@ -708,7 +724,13 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
                     except Exception:
                         pass
 
-            # Nếu không có keys_to_inspect nhưng nhóm có sẵn cache_items, lấy thông tin file có mtime mới nhất
+            # Nếu không có keys_to_inspect, tái sử dụng thông tin latest_attachment đã lưu trong state để tránh băm lại SHA-256 & mở PIL mỗi chu kỳ
+            if newest_intel is None:
+                prev_att = state.get("groups", {}).get(gid, {}).get("latest_attachment")
+                if prev_att and isinstance(prev_att, dict) and prev_att.get("sha256"):
+                    newest_intel = prev_att
+
+            # Chỉ khi chưa có bộ đệm latest_attachment mới quét lại file có mtime mới nhất trên đĩa
             if newest_intel is None and cache_items:
                 valid_items = [f for f in cache_items if f != ".rescache"]
                 if valid_items:
@@ -839,28 +861,35 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
     state["filenoise_dir"] = FILENOISE_DIR
     state["filenoise_recent_stream"] = filenoise_recent
 
-    save_json(STATE_FILE, state)
-    save_json(LIVE_STATUS_FILE, state)
-
-    cursor["updated_at"] = scan_time
-    save_json(CURSOR_FILE, cursor)
-
     # Sắp xếp Staging Inbox: ưu tiên PENDING_DIRECTOR_REVIEW lên đầu, sau đó theo thời gian mới nhất
     pending_list = sorted([x for x in inbox_items if x.get("review_status") == "PENDING_DIRECTOR_REVIEW"], key=lambda x: x.get("detected_date", ""), reverse=True)
     processed_list = sorted([x for x in inbox_items if x.get("review_status") != "PENDING_DIRECTOR_REVIEW"], key=lambda x: x.get("detected_date", ""), reverse=True)
     inbox_items = (pending_list + processed_list)[:100]
-    save_json(STAGING_INBOX_FILE, inbox_items)
 
-    if trigger_source in ("MANUAL_INSTANT_SCAN", "CLI_ONCE"):
-        telemetry.append({
-            "timestamp": scan_time,
-            "group": "Hệ Thống Zalo v6.0",
-            "event": f"Quét tức thì {len(summary)} nhóm ({elapsed_ms} ms) - {total_media_across_groups} media khớp SHA-256",
-            "severity": "INFO"
-        })
+    has_changes = (total_new_captured > 0) or (added_gt > 0) or (trigger_source != "AUTO_DAEMON")
+    now_ts = time.time()
+    last_disk_flush = getattr(execute_scan, "_last_disk_flush", 0.0)
 
-    telemetry = telemetry[-100:]
-    save_json(TELEMETRY_LOG, telemetry)
+    if has_changes or (now_ts - last_disk_flush >= 30.0):
+        execute_scan._last_disk_flush = now_ts
+        save_json(STATE_FILE, state)
+        save_json(LIVE_STATUS_FILE, state)
+
+    if has_changes:
+        cursor["updated_at"] = scan_time
+        save_json(CURSOR_FILE, cursor)
+        save_json(STAGING_INBOX_FILE, inbox_items)
+
+        if trigger_source in ("MANUAL_INSTANT_SCAN", "CLI_ONCE"):
+            telemetry.append({
+                "timestamp": scan_time,
+                "group": "Hệ Thống Zalo v6.0",
+                "event": f"Quét tức thì {len(summary)} nhóm ({elapsed_ms} ms) - {total_media_across_groups} media khớp SHA-256",
+                "severity": "INFO"
+            })
+
+        telemetry = telemetry[-100:]
+        save_json(TELEMETRY_LOG, telemetry)
 
     return {
         "scan_time": scan_time,

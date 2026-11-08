@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-11-07 10:49:52",
+  "generated_at": "2026-11-08 06:02:09",
   "agent": "FLASH_04_DOCX_CONTRACTS_EXTRACTOR",
   "description": "Báo cáo bóc tách sâu 44 file Word (DOCX/DOC) kho FileNoise & Storage.db Phú Gia Home Luxury",
   "statistics": {
-    "total_files": 44,
-    "docx_count": 40,
+    "total_files": 46,
+    "docx_count": 42,
     "doc_count": 4,
-    "success_count": 44,
+    "success_count": 46,
     "error_count": 0,
     "categories": {
       "HOP_DONG_LAO_DONG": 9,
-      "TUYEN_DUNG_NS": 6,
+      "TUYEN_DUNG_NS": 7,
       "HO_SO_BHXH": 8,
       "CHAM_CONG_THOI_GIAN": 2,
-      "VAN_BAN_KHAC": 12,
+      "VAN_BAN_KHAC": 13,
       "PCCC_PHAP_LY": 6,
       "DANH_SACH_KHACH_HANG": 1
     },
@@ -21,12 +21,12 @@
       "HĐLĐ Nhân sự Tống Trần Hiệp (Văn phòng Tân Bình)": 2,
       "HĐLĐ Quản lý Xưởng Hoàng Công Vũ (Hà Tĩnh)": 4,
       "HĐLĐ Công ty Phú Gia Home Luxury số 26": 2,
-      "Báo cáo thống kê ứng viên & Hồ sơ tuyển dụng": 6,
+      "Báo cáo thống kê ứng viên & Hồ sơ tuyển dụng": 7,
       "Mẫu D02-LT: Danh sách tham gia BHXH, BHYT 3 tháng": 6,
       "Phiếu ghi thời gian làm việc thực tế": 2,
       "Mẫu TK3-TS: Đăng ký tham gia BHXH Hộ KD Phú Gia": 2,
       "Tài liệu học tập gia đình / Trường Albert Einstein": 8,
-      "Tài liệu văn bản": 3,
+      "Tài liệu văn bản": 4,
       "Lịch trình tour du lịch (Móng Cái - Đông Hưng)": 1,
       "Hồ sơ quản lý PCCC xưởng & Pháp lý cơ sở": 3,
       "Nghị định chi tiết Luật Phòng cháy, chữa cháy và CNCH": 3,
@@ -10015,6 +10015,118 @@
     },
     {
       "index": 33,
+      "file_name": "1794058681598_2526782532592382932_g1023694868405271280",
+      "original_display_name": "1794058681598_2526782532592382932_g1023694868405271280",
+      "extension": ".docx",
+      "source_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g1023694868405271280\\fileNoise\\1794058681598_2526782532592382932_g1023694868405271280",
+      "size_bytes": 17370,
+      "checksum": "1794058681598_2526782532592382932_g1023694868405271280",
+      "modified_time": "2026-11-07 20:38:05",
+      "transfer_metadata": {},
+      "extraction_result": {
+        "status": "SUCCESS",
+        "metadata": {
+          "creator": "User",
+          "last_modified_by": "User",
+          "created": "2026-11-05T16:03:00Z",
+          "modified": "2026-11-07T13:37:00Z"
+        },
+        "paragraphs": [
+          "ÔN LUYỆN BIỆN PHÁP TU TỪ",
+          "1. Các biện pháp tu từ đã học",
+          "2. Cách làm câu hỏi: Chỉ ra và nêu tác dụng của biện pháp tu từ",
+          "* Bước 1: chỉ ra và nêu từ ngữ chứa biện pháp tu từ",
+          "- Tác giả đã thành công sử dụng biện pháp tu từ ….. trong câu văn/ câu thơ:… (nêu hình ảnh ở ngữ liệu)",
+          "* Bước 2: Nêu tác dụng của biện pháp tu từ (3 tác dụng nhỏ)",
+          "- Tác dụng:",
+          "+ Việc sử dụng biện pháp ….  giúp cho câu văn/ câu thơ trở nên …. (nêu từ khóa tác dụng hình thức). Từ đó, gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.",
+          "+ Qua phép tu từ …., tác giả đã nhấn mạnh, làm nổi bật đặc điểm của đối tượng được miêu tả/nội dung nào đó (cần chỉ rõ cụ thể qua ngữ liệu)",
+          "+ Từ đó, bộc lộ tình cảm, thái độ gì của tác giả?",
+          "3. Một số ví dụ",
+          "a. Biện pháp tu từ so sánh",
+          "“Hai cái răng đen nhánh lúc nào cũng nhai ngoàm ngoạp như hai lưỡi liềm máy làm việc.” (Trích “Bài học đường đời đầu tiên”, Tô Hoài)",
+          "- Nhà văn Tô Hoài đã sử dụng thành công biện pháp tu từ so sánh trong câu văn trên qua việc ví “Hai cái răng đen nhánh”, “nhai ngoàm ngoạp” như “hai lưỡi liềm máy làm việc” khi miêu tả về ngoại hình của nhân vật Dế Mèn.",
+          "- Tác dụng:",
+          "+ Việc sử dụng biện pháp so sánh giúp cho câu văn tăng sức gợi hình gợi cảm, hấp dẫn, sinh động hơn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.",
+          "+ Phép tu từ so sánh đã nhấn mạnh sự sắc nhọn, khỏe khoắn của hàm răng, từ đó góp phần làm nổi bật vẻ cường tráng, mạnh mẽ về ngoại hình của nhân vật Dế Mèn.",
+          "+ Qua đó, tác giả bộc lộ sự ngợi ca, tôn vinh và trân trọng trước vẻ đẹp ngoại hình ấn tượng, thu hút ở nhân vật Dế Mèn.",
+          "b. Biện pháp tu từ nhân hóa",
+          "“Hôm nay trời nắng chang chang",
+          "Mèo con đi học chẳng mang thứ gì",
+          "Chỉ mang một chiếc bút chì",
+          "Và mang một mẩu bánh mì con con.”",
+          "- Tác giả đã sử dụng thành công biện pháp tu từ nhân hóa trong đoạn thơ qua hình ảnh “mèo con” được “đi học”, “mang bút chì” và “mang một mẩu bánh mì”.",
+          "- Tác dụng:",
+          "+ Việc sử dụng biện pháp nhân hóa giúp cho hình ảnh trong câu thơ trở nên quen thuộc, gần gũi, sinh động và hấp dẫn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.",
+          "+ Phép tu từ nhân hóa đã biến con mèo vô tri vô giác có hành động giống con người, biết đi học và mang đồ vật bên mình, góp phần nhấn mạnh sự lười biếng, ngây thơ và tinh nghịch của mèo con.",
+          "+ Qua đó, tác giả bộc lộ sự quý mến và tình cảm sâu sắc đối với động vật.",
+          "c. Biện pháp tu từ điệp ngữ",
+          "Mồ hôi mà đổ xuống đồng,",
+          "Lúa mọc trùng trùng sáng cả đồi nương.",
+          "Mồ hôi mà đổ xuống vườn,",
+          "Dâu xanh lá tốt vấn vương tơ tằm.",
+          "- Tác giả đã sử dụng thành công biện pháp tu từ điệp ngữ trong đoạn thơ khi lặp lại 2 lần “mồ hôi mà đổ xuống”",
+          "- Tác dụng:",
+          "+ Việc sử dụng biện pháp điệp ngữ giúp cho câu thơ có nhịp điệu, sinh động và hấp dẫn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.",
+          "+ Phép tu từ điệp ngữ đã nhấn mạnh sự vất vả, khổ cực của những người lao động, họ đã không ngại nắng dầm mưa để tạo ra những giá trị tốt đẹp cho đời.",
+          "+ Qua đó, tác giả đã tôn vinh, ca ngợi tinh thần lao động cần mẫn, không ngại khó khăn của con người.",
+          "d. Biện pháp tu từ ẩn dụ",
+          "Mặt trời của bắp thì nằm trên đồi",
+          "Mặt trời của mẹ em nằm trên lưng",
+          "- Tác giả đã sử dụng thành công biện pháp tu từ ẩn dụ trong câu thơ qua hình ảnh “mặt trời của mẹ”",
+          "- Tác dụng:",
+          "+ Việc sử dụng biện pháp ẩn dụ giúp cho câu thơ gợi hình gợi cảm, sinh động và hấp dẫn hơn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.",
+          "+ Phép tu từ ẩn dụ nhằm nhấn mạnh người con là ánh sáng, là mặt trời, là nguồn sống của cuộc đời mẹ.",
+          "+ Qua đó, tác giả đã ca ngợi tình mẫu tử thiêng liêng, cao đẹp."
+        ],
+        "tables": [
+          [
+            [
+              "Biện pháp tu từ",
+              "Tác dụng hình thức"
+            ],
+            [
+              "So sánh",
+              "Gợi hình gợi cảm, cụ thể, sinh động, hấp dẫn"
+            ],
+            [
+              "Nhân hóa",
+              "Gần gũi, quen thuộc, sinh động, hấp dẫn"
+            ],
+            [
+              "Điệp từ/ Điệp ngữ",
+              "Tạo nhịp điệu, hấp dẫn"
+            ],
+            [
+              "Ẩn dụ",
+              "Gợi hình gợi cảm, sinh động, hấp dẫn"
+            ]
+          ]
+        ],
+        "full_text": "ÔN LUYỆN BIỆN PHÁP TU TỪ\n1. Các biện pháp tu từ đã học\n2. Cách làm câu hỏi: Chỉ ra và nêu tác dụng của biện pháp tu từ\n* Bước 1: chỉ ra và nêu từ ngữ chứa biện pháp tu từ\n- Tác giả đã thành công sử dụng biện pháp tu từ ….. trong câu văn/ câu thơ:… (nêu hình ảnh ở ngữ liệu)\n* Bước 2: Nêu tác dụng của biện pháp tu từ (3 tác dụng nhỏ)\n- Tác dụng:\n+ Việc sử dụng biện pháp ….  giúp cho câu văn/ câu thơ trở nên …. (nêu từ khóa tác dụng hình thức). Từ đó, gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.\n+ Qua phép tu từ …., tác giả đã nhấn mạnh, làm nổi bật đặc điểm của đối tượng được miêu tả/nội dung nào đó (cần chỉ rõ cụ thể qua ngữ liệu)\n+ Từ đó, bộc lộ tình cảm, thái độ gì của tác giả?\n3. Một số ví dụ\na. Biện pháp tu từ so sánh\n“Hai cái răng đen nhánh lúc nào cũng nhai ngoàm ngoạp như hai lưỡi liềm máy làm việc.” (Trích “Bài học đường đời đầu tiên”, Tô Hoài)\n- Nhà văn Tô Hoài đã sử dụng thành công biện pháp tu từ so sánh trong câu văn trên qua việc ví “Hai cái răng đen nhánh”, “nhai ngoàm ngoạp” như “hai lưỡi liềm máy làm việc” khi miêu tả về ngoại hình của nhân vật Dế Mèn.\n- Tác dụng:\n+ Việc sử dụng biện pháp so sánh giúp cho câu văn tăng sức gợi hình gợi cảm, hấp dẫn, sinh động hơn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.\n+ Phép tu từ so sánh đã nhấn mạnh sự sắc nhọn, khỏe khoắn của hàm răng, từ đó góp phần làm nổi bật vẻ cường tráng, mạnh mẽ về ngoại hình của nhân vật Dế Mèn.\n+ Qua đó, tác giả bộc lộ sự ngợi ca, tôn vinh và trân trọng trước vẻ đẹp ngoại hình ấn tượng, thu hút ở nhân vật Dế Mèn.\nb. Biện pháp tu từ nhân hóa\n“Hôm nay trời nắng chang chang\nMèo con đi học chẳng mang thứ gì\nChỉ mang một chiếc bút chì\nVà mang một mẩu bánh mì con con.”\n- Tác giả đã sử dụng thành công biện pháp tu từ nhân hóa trong đoạn thơ qua hình ảnh “mèo con” được “đi học”, “mang bút chì” và “mang một mẩu bánh mì”.\n- Tác dụng:\n+ Việc sử dụng biện pháp nhân hóa giúp cho hình ảnh trong câu thơ trở nên quen thuộc, gần gũi, sinh động và hấp dẫn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.\n+ Phép tu từ nhân hóa đã biến con mèo vô tri vô giác có hành động giống con người, biết đi học và mang đồ vật bên mình, góp phần nhấn mạnh sự lười biếng, ngây thơ và tinh nghịch của mèo con.\n+ Qua đó, tác giả bộc lộ sự quý mến và tình cảm sâu sắc đối với động vật.\nc. Biện pháp tu từ điệp ngữ\nMồ hôi mà đổ xuống đồng,\nLúa mọc trùng trùng sáng cả đồi nương.\nMồ hôi mà đổ xuống vườn,\nDâu xanh lá tốt vấn vương tơ tằm.\n- Tác giả đã sử dụng thành công biện pháp tu từ điệp ngữ trong đoạn thơ khi lặp lại 2 lần “mồ hôi mà đổ xuống”\n- Tác dụng:\n+ Việc sử dụng biện pháp điệp ngữ giúp cho câu thơ có nhịp điệu, sinh động và hấp dẫn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.\n+ Phép tu từ điệp ngữ đã nhấn mạnh sự vất vả, khổ cực của những người lao động, họ đã không ngại nắng dầm mưa để tạo ra những giá trị tốt đẹp cho đời.\n+ Qua đó, tác giả đã tôn vinh, ca ngợi tinh thần lao động cần mẫn, không ngại khó khăn của con người.\nd. Biện pháp tu từ ẩn dụ\nMặt trời của bắp thì nằm trên đồi\nMặt trời của mẹ em nằm trên lưng\n- Tác giả đã sử dụng thành công biện pháp tu từ ẩn dụ trong câu thơ qua hình ảnh “mặt trời của mẹ”\n- Tác dụng:\n+ Việc sử dụng biện pháp ẩn dụ giúp cho câu thơ gợi hình gợi cảm, sinh động và hấp dẫn hơn. Từ đó gây ấn tượng, thu hút sự chú ý của người đọc, người nghe.\n+ Phép tu từ ẩn dụ nhằm nhấn mạnh người con là ánh sáng, là mặt trời, là nguồn sống của cuộc đời mẹ.\n+ Qua đó, tác giả đã ca ngợi tình mẫu tử thiêng liêng, cao đẹp.\n [Cột: Biện pháp tu từ ; Tác dụng hình thức]\n [Cột: So sánh ; Gợi hình gợi cảm, cụ thể, sinh động, hấp dẫn]\n [Cột: Nhân hóa ; Gần gũi, quen thuộc, sinh động, hấp dẫn]\n [Cột: Điệp từ/ Điệp ngữ ; Tạo nhịp điệu, hấp dẫn]\n [Cột: Ẩn dụ ; Gợi hình gợi cảm, sinh động, hấp dẫn]",
+        "word_count": 885,
+        "table_count": 1
+      },
+      "analysis": {
+        "classification": "VAN_BAN_KHAC",
+        "sub_type": "Tài liệu văn bản",
+        "entities": {
+          "so_hop_dong": null,
+          "ngay_lap": null,
+          "ben_a": {},
+          "ben_b": {},
+          "gia_tri_hop_dong_hoac_luong": null,
+          "dia_diem_thuc_hien": null,
+          "nhan_su_phat_hien": [],
+          "so_dien_thoai": [],
+          "so_cccd_cmnd": [],
+          "danh_sach_khach_hang_rows": [],
+          "noi_dung_chinh_tom_tat": "ÔN LUYỆN BIỆN PHÁP TU TỪ | 1. Các biện pháp tu từ đã học | 2. Cách làm câu hỏi: Chỉ ra và nêu tác dụng của biện pháp tu từ | * Bước 1: chỉ ra và nêu từ ngữ chứa biện pháp tu từ | - Tác giả đã thành công sử dụng biện pháp tu từ ….. trong câu văn/ câu thơ:… (nêu hình ảnh ở ngữ liệu)"
+        }
+      }
+    },
+    {
+      "index": 34,
       "file_name": "1787564977793_8291047054001700043_g1954826388122811364",
       "original_display_name": "1787564977793_8291047054001700043_g1954826388122811364",
       "extension": ".docx",
@@ -10111,7 +10223,7 @@
       }
     },
     {
-      "index": 34,
+      "index": 35,
       "file_name": "1787966731059_4079962228160505434_g1954826388122811364",
       "original_display_name": "1787966731059_4079962228160505434_g1954826388122811364",
       "extension": ".docx",
@@ -10300,7 +10412,482 @@
       }
     },
     {
-      "index": 35,
+      "index": 36,
+      "file_name": "1794031318807_2304805760907141944_g2210130381397538159",
+      "original_display_name": "1794031318807_2304805760907141944_g2210130381397538159",
+      "extension": ".docx",
+      "source_path": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\resource\\g2210130381397538159\\fileNoise\\1794031318807_2304805760907141944_g2210130381397538159",
+      "size_bytes": 42356,
+      "checksum": "1794031318807_2304805760907141944_g2210130381397538159",
+      "modified_time": "2026-11-07 13:02:02",
+      "transfer_metadata": {},
+      "extraction_result": {
+        "status": "SUCCESS",
+        "metadata": {
+          "creator": "python-docx",
+          "created": "2013-12-23T23:15:00Z",
+          "modified": "2013-12-23T23:15:00Z"
+        },
+        "paragraphs": [
+          "HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNGTổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú GiaMã số ĐKKD / MST: 042203002931 | Địa chỉ ĐKKD: Số 01, Ngõ 53, Đường Trương Quốc Dụng, P. Thành Sen, Tỉnh Hà TĩnhĐịa chỉ Giao dịch & Nhà máy Sản xuất: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789",
+          "BÁO CÁO NHANH DANH SÁCH ỨNG VIÊN TUYỂN DỤNG (10 NGÀY GẦN ĐÂY)BÀN GIAO BỘ PHẬN TUYỂN DỤNG & NHÂN SỰ",
+          "Kỳ trích xuất dữ liệu thực tế: 27/10/2026 – 07/11/2026 (Từ hệ thống Meta Graph API Fanpage Tuyển Dụng)Thời điểm xuất báo cáo: 12:26 ngày 07/11/2026",
+          "I. TỔNG QUAN SỐ LIỆU ỨNG VIÊN TRONG 10 NGÀY QUA (27/10/2026 – 07/11/2026)",
+          "• Tổng số lượt ứng viên tương tác ứng tuyển trong 10 ngày qua: 47 ứng viên (Gồm 41 ứng viên nhắn tin trực tiếp vào Inbox Fanpage và 6 ứng viên bình luận trên bài đăng).",
+          "• Nhóm Ưu tiên 1 — Ứng viên ĐÃ ĐỂ LẠI SỐ ĐIỆN THOẠI / ZALO: 06 ứng viên (Gồm 05 ứng viên Khối Nhà máy Sản xuất: Trần Ngọc Dương, Ngôn Phi, Nguyễn Tạo-nmn, Nguyễn Thạc Đức, Ứng viên Bình luận 0877129186; và 01 ứng viên Khối Văn phòng Sale/MKT: Lê Trang).",
+          "• Nhóm Ưu tiên 2 — Ứng viên KHỐI NHÀ MÁY SẢN XUẤT (Thợ Chính, Kỹ thuật CNC, Thợ Phụ) chưa để lại SĐT: 17 ứng viên (Mới nhất sáng 07/11/2026 có ứng viên Ha Nguyen ứng tuyển Thợ chính / Kỹ thuật CNC).",
+          "• Nhóm Ưu tiên 3 — Ứng viên KHỐI VĂN PHÒNG (Kinh doanh/Sale, Marketing, Thiết kế 3D, Kế toán nội bộ) chưa gửi SĐT/CV: 19 ứng viên (Mới nhất sáng 07/11/2026 có Tình Hùng ứng tuyển Kinh doanh/Marketing và Djj Nguyen Việt Hà ứng tuyển Thiết kế 3D).",
+          "• Hướng dẫn bàn giao cho Bộ phận Tuyển dụng: (1) Đối với Khối Sản xuất (Thợ chính, Kỹ thuật CNC, Thợ phụ): Gọi điện trực tiếp hẹn lịch qua tham quan và thử tay nghề tại Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia (Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh), không yêu cầu nộp CV; (2) Đối với Khối Văn phòng (Sale, Marketing, Thiết kế 3D, Kế toán): Kết bạn Zalo thu CV trước khi xếp lịch phỏng vấn.",
+          "II. DANH SÁCH ƯU TIÊN 1: 6 ỨNG VIÊN ĐÃ CÓ SỐ ĐIỆN THOẠI / ZALO (CẦN GỌI NGAY)",
+          "III. DANH SÁCH ƯU TIÊN 2: 17 ỨNG VIÊN KHỐI SẢN XUẤT (THỢ CHÍNH / CNC / THỢ PHỤ) CHƯA ĐỂ LẠI SĐT",
+          "IV. DANH SÁCH ƯU TIÊN 3: 19 ỨNG VIÊN KHỐI VĂN PHÒNG (SALE / MKT / THIẾT KẾ 3D / KẾ TOÁN) CHƯA GỬI SĐT & CV",
+          "V. DANH SÁCH 5 BÌNH LUẬN HỎI VIỆC TRÊN BÀI ĐĂNG TUYỂN DỤNG (CHƯA ĐỂ LẠI SĐT)",
+          "Hà Tĩnh, ngày 07 tháng 11 năm 2026BỘ PHẬN MARKETING & TRỰC PAGE BÀN GIAO(Trích xuất trực tiếp từ Meta Graph API v21.0 — Đã kiểm định Zero-Trust)"
+        ],
+        "tables": [
+          [
+            [
+              "STT",
+              "Họ tên ứng viên",
+              "Số điện thoại / Zalo",
+              "Vị trí & Khối ứng tuyển",
+              "Thời gian để lại SĐT",
+              "Nội dung trao đổi & Tay nghề ghi nhận",
+              "Bộ phận Tuyển dụng tích xử lý"
+            ],
+            [
+              "1",
+              "Trần Ngọc Dương(Inbox Page Tuyển Dụng)",
+              "0979704296",
+              "KHỐI SẢN XUẤT- Thợ phụ sản xuất (Ở Hương Khê, hỏi chỗ ăn ở tại Nhà máy)",
+              "2026-11-06 20:48",
+              "• Tin nhắn: Ứng tuyển Thợ Phụ (6 – 12 triệu/tháng) | 0979704296, số za lô đó ạ | A ở hương khê• Ghi chú: Mới để lại SĐT tối 06/11 (20:48). Ứng viên ở Hương Khê hỏi chỗ ăn ở — Cần gọi tư vấn ngay.",
+              "[  ] Đã gọi[  ] Đã hẹn PVKQ: ...................."
+            ],
+            [
+              "2",
+              "Ứng viên Bình luận (Bài tuyển dụng)(Bình luận Bài đăng)",
+              "0877129186",
+              "KHỐI SẢN XUẤT- Thợ / Phụ sản xuất (Hỏi mức lương & để lại SĐT trên bài viết)",
+              "2026-11-03 11:39",
+              "• Tin nhắn: Lương sao 0877129186• Ghi chú: Bình luận công khai 'Lương sao 0877129186' ngày 03/11 — Cần gọi điện trực tiếp hoặc kết bạn Zalo tư vấn ngay.",
+              "[  ] Đã gọi[  ] Đã hẹn PVKQ: ...................."
+            ],
+            [
+              "3",
+              "Nguyễn Tạo-nmn(Inbox Page Tuyển Dụng)",
+              "0846676888",
+              "KHỐI SẢN XUẤT- Thợ phụ / Học việc (Chưa biết nghề xin đào tạo)",
+              "2026-10-31 06:33",
+              "• Tin nhắn: Chưa biết nghề có được nhận không, lương thế nào? | 0846676888• Ghi chú: Gửi SĐT ngày 31/10 xin học nghề/thợ phụ. Page đã gửi số Mr. Hiệp (0822.056.234) — Cần kiểm tra đã gọi chưa.",
+              "[  ] Đã gọi[  ] Đã hẹn PVKQ: ...................."
+            ],
+            [
+              "4",
+              "Ngôn Phi(Inbox Page Tuyển Dụng)",
+              "0978034910",
+              "KHỐI SẢN XUẤT- Thợ / Phụ cứng (Biết đọc bản vẽ, đứng máy cắt/khoan, biết sơn cơ bản)",
+              "2026-10-30 19:10",
+              "• Tin nhắn: Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Lương thợ chính và kỹ thuật CNC là bao nhiêu? | có nhan người nua không a | biet...• Ghi chú: Đã có KN đọc bản vẽ, chỉnh máy cắt/khoan, sơn cơ bản. Báo chờ ký BHTN xong ghé Nhà máy — Cần gọi chốt lịch.",
+              "[  ] Đã gọi[  ] Đã hẹn PVKQ: ...................."
+            ],
+            [
+              "5",
+              "Nguyễn Thạc Đức(Inbox Page Tuyển Dụng)",
+              "0932358003",
+              "KHỐI SẢN XUẤT- Thợ / Phụ sản xuất (Xin địa chỉ qua Nhà máy xem việc trực tiếp)",
+              "2026-10-29 00:17",
+              "• Tin nhắn: Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | vâng ạ | 0932358003 số e đó ạ• Ghi chú: Hỏi địa chỉ qua xem trực tiếp và để lại SĐT lúc 00:17 ngày 29/10 — Cần kiểm tra kết quả hẹn qua Nhà máy.",
+              "[  ] Đã gọi[  ] Đã hẹn PVKQ: ...................."
+            ],
+            [
+              "6",
+              "Lê Trang(Inbox Page Tuyển Dụng)",
+              "0857485840",
+              "KHỐI VĂN PHÒNG- Kinh doanh (Sale) / Marketing",
+              "2026-10-28 05:32",
+              "• Tin nhắn: Tôi muốn ứng tuyển vị trí Sale / Marketing | 0857485840• Ghi chú: Ứng tuyển Sale/Marketing, để lại SĐT sáng 28/10 (05:32) — Cần kết bạn Zalo thu CV và xếp lịch phỏng vấn.",
+              "[  ] Đã gọi[  ] Đã hẹn PVKQ: ...................."
+            ]
+          ],
+          [
+            [
+              "STT",
+              "Họ tên Facebook",
+              "Vị trí quan tâm",
+              "Thời gian nhắn cuối",
+              "Nội dung câu hỏi của ứng viên",
+              "Trạng thái phản hồi trên Fanpage"
+            ],
+            [
+              "1",
+              "Ha Nguyen",
+              "Thợ chính / Kỹ thuật CNC",
+              "2026-11-07 07:05",
+              "Ứng tuyển Thợ Chính / Thợ đứng máy CNC",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "2",
+              "Hoang Bon",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-11-05 20:25",
+              "(Gửi nhãn dán / Tương tác nút tin nhắn tuyển dụng)",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "3",
+              "Nguyễn Dũng",
+              "Thợ chính / Kỹ thuật CNC",
+              "2026-11-05 08:11",
+              "Chưa biết nghề có được nhận không, lương thế nào? | Lương thợ chính và kỹ thuật CNC là bao nhiêu? | Mình muốn ứng tuyển vào vị ...",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "4",
+              "Phandinh Tai",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-11-04 20:18",
+              "ben minh con tuyen tho ko | Minh muon tuyen vao vi tri tho | Hom nao minh ghe xuong vi minh cung gan | Truoc minh lm moc roi",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "5",
+              "Tình Đời",
+              "Thợ phụ / Đào tạo nghề",
+              "2026-11-04 11:14",
+              "Chưa biết nghề có được nhận không, lương thế nào? | Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng?",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "6",
+              "Hung Nguyen",
+              "Thợ phụ / Đào tạo nghề",
+              "2026-11-04 08:15",
+              "Chưa biết nghề có được nhận không, lương thế nào?",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "7",
+              "Đặng Hoàn",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-11-02 22:08",
+              "Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Dạ",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "8",
+              "Toan Tran",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-11-02 15:12",
+              "Alo",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "9",
+              "Tuyen Bui",
+              "Thợ chính / Kỹ thuật CNC",
+              "2026-11-01 21:36",
+              "Lương thợ chính và kỹ thuật CNC là bao nhiêu? | Chuyen gỗ thịt hãy gô ép",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "10",
+              "Quang Tho Tran",
+              "Thợ phụ / Đào tạo nghề",
+              "2026-10-31 18:39",
+              "Chưa biết nghề có được nhận không, lương thế nào?",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "11",
+              "Trần Hậu Nam",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-10-31 10:35",
+              "Xưởng mình ở đâu vậy",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "12",
+              "Hiep Nguyen",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-10-31 10:13",
+              "Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng?",
+              "Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi"
+            ],
+            [
+              "13",
+              "Trung Quan",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-10-29 15:56",
+              "con tuyen ko a",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "14",
+              "Chỉnh Nguyễn",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-10-28 19:51",
+              "Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Ok",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "15",
+              "Nguyễn Hùng",
+              "Thợ phụ / Đào tạo nghề",
+              "2026-10-28 16:09",
+              "Thợ phụ lương thế nào anh",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "16",
+              "Văn Thức",
+              "Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm)",
+              "2026-10-28 07:07",
+              "Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Nhà mình chuyên làm nội thất à anh | Kệ ,tủ ,tủ bếp à | Còn nhận người ko anh",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "17",
+              "Van Vinh Nguyen",
+              "Thợ phụ / Đào tạo nghề",
+              "2026-10-27 13:27",
+              "Chưa biết nghề có được nhận không, lương thế nào? | Công việc cụ thể là gì?",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ]
+          ],
+          [
+            [
+              "STT",
+              "Họ tên Facebook",
+              "Vị trí ứng tuyển",
+              "Thời gian nhắn cuối",
+              "Nội dung đăng ký ứng tuyển",
+              "Trạng thái nhắc gửi SĐT & CV"
+            ],
+            [
+              "1",
+              "Tình Hùng",
+              "Kinh doanh (Sale) / Marketing",
+              "2026-11-07 11:14",
+              "Ứng tuyển Kinh doanh / Marketing",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "2",
+              "Djj Nguyen Việt Hà",
+              "Thiết kế 3D Nội thất",
+              "2026-11-07 09:26",
+              "Ứng tuyển Thiết kế 3D Nội thất",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "3",
+              "Lê Thị Luận",
+              "Thiết kế 3D Nội thất",
+              "2026-11-06 12:54",
+              "Ứng tuyển Thiết kế 3D Nội thất",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "4",
+              "Trần Dương",
+              "Thiết kế 3D Nội thất",
+              "2026-11-05 17:38",
+              "Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "5",
+              "Boong Bình",
+              "Thiết kế 3D Nội thất",
+              "2026-11-05 15:29",
+              "Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "6",
+              "Trần Yêm",
+              "Thiết kế 3D Nội thất",
+              "2026-11-05 07:15",
+              "Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "7",
+              "Na Lê",
+              "Kinh doanh (Sale) / Marketing",
+              "2026-11-03 20:08",
+              "E chào anh/chị ạ. Anh/chị cho e xin JD chi tiết công việc marketing bên mình với ạ",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "8",
+              "Tran Anh Tuấn",
+              "Thiết kế 3D Nội thất",
+              "2026-11-03 11:41",
+              "Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "9",
+              "Khánh Như",
+              "Thiết kế 3D Nội thất",
+              "2026-11-03 05:59",
+              "Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "10",
+              "Trần Linh",
+              "Kế toán nội bộ / Thiết kế 3D",
+              "2026-11-02 17:50",
+              "Tôi muốn ứng tuyển vị trí Kế toán nội bộ | Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "11",
+              "Minh Duc",
+              "Thiết kế 3D Nội thất",
+              "2026-11-02 11:38",
+              "Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "12",
+              "Nguyễn Văn Phúc",
+              "Kinh doanh (Sale) / Marketing",
+              "2026-11-02 06:48",
+              "Tôi muốn ứng tuyển vị trí Sale / Marketing | Dạ . Sale với mkt là 1 mảng chung công việc hay sao ạ .",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "13",
+              "Quyên Nguyễn",
+              "Kế toán nội bộ",
+              "2026-11-01 12:17",
+              "Tôi muốn ứng tuyển vị trí Kế toán nội bộ",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "14",
+              "Vo Ngọc Bich",
+              "Thiết kế 3D Nội thất",
+              "2026-11-01 11:43",
+              "Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "15",
+              "Nguyễn Thị Ngụ",
+              "Kế toán nội bộ",
+              "2026-10-28 20:01",
+              "Tôi muốn ứng tuyển vị trí Kế toán nội bộ",
+              "Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi"
+            ],
+            [
+              "16",
+              "Thơi Bà",
+              "Kế toán nội bộ / Sale / Thiết kế 3D (Chọn nhiều vị trí)",
+              "2026-10-28 19:28",
+              "Tôi muốn ứng tuyển vị trí Sale / Marketing | Tôi muốn ứng tuyển vị trí Kế toán nội bộ | Tôi muốn ứng tuyển vị trí Thiết kế 3D",
+              "Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi"
+            ],
+            [
+              "17",
+              "Conganh Vo",
+              "Kế toán nội bộ",
+              "2026-10-28 11:26",
+              "Tôi muốn ứng tuyển vị trí Kế toán nội bộ",
+              "Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi"
+            ],
+            [
+              "18",
+              "Nguyễn Diện",
+              "Kế toán nội bộ",
+              "2026-10-27 20:28",
+              "Tôi muốn ứng tuyển vị trí Kế toán nội bộ",
+              "Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi"
+            ],
+            [
+              "19",
+              "Đăng Xuân Vường",
+              "Kế toán nội bộ",
+              "2026-10-27 15:25",
+              "Tôi muốn ứng tuyển vị trí Kế toán nội bộ",
+              "Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi"
+            ]
+          ],
+          [
+            [
+              "STT",
+              "Thời gian bình luận",
+              "Nội dung bình luận trên bài viết",
+              "Hướng xử lý"
+            ],
+            [
+              "1",
+              "2026-11-06 20:45",
+              "Làm mô đó ạ",
+              "Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng"
+            ],
+            [
+              "2",
+              "2026-11-05 11:06",
+              "xưởng mình ở đâu vậy shop e hỏi cho e trai chưa biết nghề có nhận đào tạo k ạ",
+              "Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng"
+            ],
+            [
+              "3",
+              "2026-11-03 21:12",
+              "cần thợ phụ nữa không",
+              "Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng"
+            ],
+            [
+              "4",
+              "2026-11-03 11:38",
+              "Cần thợ không",
+              "Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng"
+            ],
+            [
+              "5",
+              "2026-10-27 15:46",
+              "Ok anh chị học việc mới,tháng thì tăng lương nhỉ cho biết ạ",
+              "Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng"
+            ]
+          ]
+        ],
+        "full_text": "HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNGTổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú GiaMã số ĐKKD / MST: 042203002931 | Địa chỉ ĐKKD: Số 01, Ngõ 53, Đường Trương Quốc Dụng, P. Thành Sen, Tỉnh Hà TĩnhĐịa chỉ Giao dịch & Nhà máy Sản xuất: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789\nBÁO CÁO NHANH DANH SÁCH ỨNG VIÊN TUYỂN DỤNG (10 NGÀY GẦN ĐÂY)BÀN GIAO BỘ PHẬN TUYỂN DỤNG & NHÂN SỰ\nKỳ trích xuất dữ liệu thực tế: 27/10/2026 – 07/11/2026 (Từ hệ thống Meta Graph API Fanpage Tuyển Dụng)Thời điểm xuất báo cáo: 12:26 ngày 07/11/2026\nI. TỔNG QUAN SỐ LIỆU ỨNG VIÊN TRONG 10 NGÀY QUA (27/10/2026 – 07/11/2026)\n• Tổng số lượt ứng viên tương tác ứng tuyển trong 10 ngày qua: 47 ứng viên (Gồm 41 ứng viên nhắn tin trực tiếp vào Inbox Fanpage và 6 ứng viên bình luận trên bài đăng).\n• Nhóm Ưu tiên 1 — Ứng viên ĐÃ ĐỂ LẠI SỐ ĐIỆN THOẠI / ZALO: 06 ứng viên (Gồm 05 ứng viên Khối Nhà máy Sản xuất: Trần Ngọc Dương, Ngôn Phi, Nguyễn Tạo-nmn, Nguyễn Thạc Đức, Ứng viên Bình luận 0877129186; và 01 ứng viên Khối Văn phòng Sale/MKT: Lê Trang).\n• Nhóm Ưu tiên 2 — Ứng viên KHỐI NHÀ MÁY SẢN XUẤT (Thợ Chính, Kỹ thuật CNC, Thợ Phụ) chưa để lại SĐT: 17 ứng viên (Mới nhất sáng 07/11/2026 có ứng viên Ha Nguyen ứng tuyển Thợ chính / Kỹ thuật CNC).\n• Nhóm Ưu tiên 3 — Ứng viên KHỐI VĂN PHÒNG (Kinh doanh/Sale, Marketing, Thiết kế 3D, Kế toán nội bộ) chưa gửi SĐT/CV: 19 ứng viên (Mới nhất sáng 07/11/2026 có Tình Hùng ứng tuyển Kinh doanh/Marketing và Djj Nguyen Việt Hà ứng tuyển Thiết kế 3D).\n• Hướng dẫn bàn giao cho Bộ phận Tuyển dụng: (1) Đối với Khối Sản xuất (Thợ chính, Kỹ thuật CNC, Thợ phụ): Gọi điện trực tiếp hẹn lịch qua tham quan và thử tay nghề tại Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia (Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh), không yêu cầu nộp CV; (2) Đối với Khối Văn phòng (Sale, Marketing, Thiết kế 3D, Kế toán): Kết bạn Zalo thu CV trước khi xếp lịch phỏng vấn.\nII. DANH SÁCH ƯU TIÊN 1: 6 ỨNG VIÊN ĐÃ CÓ SỐ ĐIỆN THOẠI / ZALO (CẦN GỌI NGAY)\nIII. DANH SÁCH ƯU TIÊN 2: 17 ỨNG VIÊN KHỐI SẢN XUẤT (THỢ CHÍNH / CNC / THỢ PHỤ) CHƯA ĐỂ LẠI SĐT\nIV. DANH SÁCH ƯU TIÊN 3: 19 ỨNG VIÊN KHỐI VĂN PHÒNG (SALE / MKT / THIẾT KẾ 3D / KẾ TOÁN) CHƯA GỬI SĐT & CV\nV. DANH SÁCH 5 BÌNH LUẬN HỎI VIỆC TRÊN BÀI ĐĂNG TUYỂN DỤNG (CHƯA ĐỂ LẠI SĐT)\nHà Tĩnh, ngày 07 tháng 11 năm 2026BỘ PHẬN MARKETING & TRỰC PAGE BÀN GIAO(Trích xuất trực tiếp từ Meta Graph API v21.0 — Đã kiểm định Zero-Trust)\n [Cột: STT ; Họ tên ứng viên ; Số điện thoại / Zalo ; Vị trí & Khối ứng tuyển ; Thời gian để lại SĐT ; Nội dung trao đổi & Tay nghề ghi nhận ; Bộ phận Tuyển dụng tích xử lý]\n [Cột: 1 ; Trần Ngọc Dương(Inbox Page Tuyển Dụng) ; 0979704296 ; KHỐI SẢN XUẤT- Thợ phụ sản xuất (Ở Hương Khê, hỏi chỗ ăn ở tại Nhà máy) ; 2026-11-06 20:48 ; • Tin nhắn: Ứng tuyển Thợ Phụ (6 – 12 triệu/tháng) | 0979704296, số za lô đó ạ | A ở hương khê• Ghi chú: Mới để lại SĐT tối 06/11 (20:48). Ứng viên ở Hương Khê hỏi chỗ ăn ở — Cần gọi tư vấn ngay. ; [  ] Đã gọi[  ] Đã hẹn PVKQ: ....................]\n [Cột: 2 ; Ứng viên Bình luận (Bài tuyển dụng)(Bình luận Bài đăng) ; 0877129186 ; KHỐI SẢN XUẤT- Thợ / Phụ sản xuất (Hỏi mức lương & để lại SĐT trên bài viết) ; 2026-11-03 11:39 ; • Tin nhắn: Lương sao 0877129186• Ghi chú: Bình luận công khai 'Lương sao 0877129186' ngày 03/11 — Cần gọi điện trực tiếp hoặc kết bạn Zalo tư vấn ngay. ; [  ] Đã gọi[  ] Đã hẹn PVKQ: ....................]\n [Cột: 3 ; Nguyễn Tạo-nmn(Inbox Page Tuyển Dụng) ; 0846676888 ; KHỐI SẢN XUẤT- Thợ phụ / Học việc (Chưa biết nghề xin đào tạo) ; 2026-10-31 06:33 ; • Tin nhắn: Chưa biết nghề có được nhận không, lương thế nào? | 0846676888• Ghi chú: Gửi SĐT ngày 31/10 xin học nghề/thợ phụ. Page đã gửi số Mr. Hiệp (0822.056.234) — Cần kiểm tra đã gọi chưa. ; [  ] Đã gọi[  ] Đã hẹn PVKQ: ....................]\n [Cột: 4 ; Ngôn Phi(Inbox Page Tuyển Dụng) ; 0978034910 ; KHỐI SẢN XUẤT- Thợ / Phụ cứng (Biết đọc bản vẽ, đứng máy cắt/khoan, biết sơn cơ bản) ; 2026-10-30 19:10 ; • Tin nhắn: Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Lương thợ chính và kỹ thuật CNC là bao nhiêu? | có nhan người nua không a | biet...• Ghi chú: Đã có KN đọc bản vẽ, chỉnh máy cắt/khoan, sơn cơ bản. Báo chờ ký BHTN xong ghé Nhà máy — Cần gọi chốt lịch. ; [  ] Đã gọi[  ] Đã hẹn PVKQ: ....................]\n [Cột: 5 ; Nguyễn Thạc Đức(Inbox Page Tuyển Dụng) ; 0932358003 ; KHỐI SẢN XUẤT- Thợ / Phụ sản xuất (Xin địa chỉ qua Nhà máy xem việc trực tiếp) ; 2026-10-29 00:17 ; • Tin nhắn: Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | vâng ạ | 0932358003 số e đó ạ• Ghi chú: Hỏi địa chỉ qua xem trực tiếp và để lại SĐT lúc 00:17 ngày 29/10 — Cần kiểm tra kết quả hẹn qua Nhà máy. ; [  ] Đã gọi[  ] Đã hẹn PVKQ: ....................]\n [Cột: 6 ; Lê Trang(Inbox Page Tuyển Dụng) ; 0857485840 ; KHỐI VĂN PHÒNG- Kinh doanh (Sale) / Marketing ; 2026-10-28 05:32 ; • Tin nhắn: Tôi muốn ứng tuyển vị trí Sale / Marketing | 0857485840• Ghi chú: Ứng tuyển Sale/Marketing, để lại SĐT sáng 28/10 (05:32) — Cần kết bạn Zalo thu CV và xếp lịch phỏng vấn. ; [  ] Đã gọi[  ] Đã hẹn PVKQ: ....................]\n [Cột: STT ; Họ tên Facebook ; Vị trí quan tâm ; Thời gian nhắn cuối ; Nội dung câu hỏi của ứng viên ; Trạng thái phản hồi trên Fanpage]\n [Cột: 1 ; Ha Nguyen ; Thợ chính / Kỹ thuật CNC ; 2026-11-07 07:05 ; Ứng tuyển Thợ Chính / Thợ đứng máy CNC ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 2 ; Hoang Bon ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-11-05 20:25 ; (Gửi nhãn dán / Tương tác nút tin nhắn tuyển dụng) ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 3 ; Nguyễn Dũng ; Thợ chính / Kỹ thuật CNC ; 2026-11-05 08:11 ; Chưa biết nghề có được nhận không, lương thế nào? | Lương thợ chính và kỹ thuật CNC là bao nhiêu? | Mình muốn ứng tuyển vào vị ... ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 4 ; Phandinh Tai ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-11-04 20:18 ; ben minh con tuyen tho ko | Minh muon tuyen vao vi tri tho | Hom nao minh ghe xuong vi minh cung gan | Truoc minh lm moc roi ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 5 ; Tình Đời ; Thợ phụ / Đào tạo nghề ; 2026-11-04 11:14 ; Chưa biết nghề có được nhận không, lương thế nào? | Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 6 ; Hung Nguyen ; Thợ phụ / Đào tạo nghề ; 2026-11-04 08:15 ; Chưa biết nghề có được nhận không, lương thế nào? ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 7 ; Đặng Hoàn ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-11-02 22:08 ; Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Dạ ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 8 ; Toan Tran ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-11-02 15:12 ; Alo ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 9 ; Tuyen Bui ; Thợ chính / Kỹ thuật CNC ; 2026-11-01 21:36 ; Lương thợ chính và kỹ thuật CNC là bao nhiêu? | Chuyen gỗ thịt hãy gô ép ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 10 ; Quang Tho Tran ; Thợ phụ / Đào tạo nghề ; 2026-10-31 18:39 ; Chưa biết nghề có được nhận không, lương thế nào? ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 11 ; Trần Hậu Nam ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-10-31 10:35 ; Xưởng mình ở đâu vậy ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 12 ; Hiep Nguyen ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-10-31 10:13 ; Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? ; Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi]\n [Cột: 13 ; Trung Quan ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-10-29 15:56 ; con tuyen ko a ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 14 ; Chỉnh Nguyễn ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-10-28 19:51 ; Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Ok ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 15 ; Nguyễn Hùng ; Thợ phụ / Đào tạo nghề ; 2026-10-28 16:09 ; Thợ phụ lương thế nào anh ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 16 ; Văn Thức ; Thợ / Phụ sản xuất (Hỏi địa chỉ Nhà máy & thông tin việc làm) ; 2026-10-28 07:07 ; Địa chỉ xưởng ở đâu, tôi muốn qua xem xưởng? | Nhà mình chuyên làm nội thất à anh | Kệ ,tủ ,tủ bếp à | Còn nhận người ko anh ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 17 ; Van Vinh Nguyen ; Thợ phụ / Đào tạo nghề ; 2026-10-27 13:27 ; Chưa biết nghề có được nhận không, lương thế nào? | Công việc cụ thể là gì? ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: STT ; Họ tên Facebook ; Vị trí ứng tuyển ; Thời gian nhắn cuối ; Nội dung đăng ký ứng tuyển ; Trạng thái nhắc gửi SĐT & CV]\n [Cột: 1 ; Tình Hùng ; Kinh doanh (Sale) / Marketing ; 2026-11-07 11:14 ; Ứng tuyển Kinh doanh / Marketing ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 2 ; Djj Nguyen Việt Hà ; Thiết kế 3D Nội thất ; 2026-11-07 09:26 ; Ứng tuyển Thiết kế 3D Nội thất ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 3 ; Lê Thị Luận ; Thiết kế 3D Nội thất ; 2026-11-06 12:54 ; Ứng tuyển Thiết kế 3D Nội thất ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 4 ; Trần Dương ; Thiết kế 3D Nội thất ; 2026-11-05 17:38 ; Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 5 ; Boong Bình ; Thiết kế 3D Nội thất ; 2026-11-05 15:29 ; Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 6 ; Trần Yêm ; Thiết kế 3D Nội thất ; 2026-11-05 07:15 ; Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 7 ; Na Lê ; Kinh doanh (Sale) / Marketing ; 2026-11-03 20:08 ; E chào anh/chị ạ. Anh/chị cho e xin JD chi tiết công việc marketing bên mình với ạ ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 8 ; Tran Anh Tuấn ; Thiết kế 3D Nội thất ; 2026-11-03 11:41 ; Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 9 ; Khánh Như ; Thiết kế 3D Nội thất ; 2026-11-03 05:59 ; Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 10 ; Trần Linh ; Kế toán nội bộ / Thiết kế 3D ; 2026-11-02 17:50 ; Tôi muốn ứng tuyển vị trí Kế toán nội bộ | Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 11 ; Minh Duc ; Thiết kế 3D Nội thất ; 2026-11-02 11:38 ; Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 12 ; Nguyễn Văn Phúc ; Kinh doanh (Sale) / Marketing ; 2026-11-02 06:48 ; Tôi muốn ứng tuyển vị trí Sale / Marketing | Dạ . Sale với mkt là 1 mảng chung công việc hay sao ạ . ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 13 ; Quyên Nguyễn ; Kế toán nội bộ ; 2026-11-01 12:17 ; Tôi muốn ứng tuyển vị trí Kế toán nội bộ ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 14 ; Vo Ngọc Bich ; Thiết kế 3D Nội thất ; 2026-11-01 11:43 ; Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 15 ; Nguyễn Thị Ngụ ; Kế toán nội bộ ; 2026-10-28 20:01 ; Tôi muốn ứng tuyển vị trí Kế toán nội bộ ; Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi]\n [Cột: 16 ; Thơi Bà ; Kế toán nội bộ / Sale / Thiết kế 3D (Chọn nhiều vị trí) ; 2026-10-28 19:28 ; Tôi muốn ứng tuyển vị trí Sale / Marketing | Tôi muốn ứng tuyển vị trí Kế toán nội bộ | Tôi muốn ứng tuyển vị trí Thiết kế 3D ; Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi]\n [Cột: 17 ; Conganh Vo ; Kế toán nội bộ ; 2026-10-28 11:26 ; Tôi muốn ứng tuyển vị trí Kế toán nội bộ ; Page đã nhắn tư vấn & xin SĐT/Zalo — Chờ UV phản hồi]\n [Cột: 18 ; Nguyễn Diện ; Kế toán nội bộ ; 2026-10-27 20:28 ; Tôi muốn ứng tuyển vị trí Kế toán nội bộ ; Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi]\n [Cột: 19 ; Đăng Xuân Vường ; Kế toán nội bộ ; 2026-10-27 15:25 ; Tôi muốn ứng tuyển vị trí Kế toán nội bộ ; Page đã xin SĐT & gửi số Mr. Hiệp (0822.056.234) — Chờ UV phản hồi]\n [Cột: STT ; Thời gian bình luận ; Nội dung bình luận trên bài viết ; Hướng xử lý]\n [Cột: 1 ; 2026-11-06 20:45 ; Làm mô đó ạ ; Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng]\n [Cột: 2 ; 2026-11-05 11:06 ; xưởng mình ở đâu vậy shop e hỏi cho e trai chưa biết nghề có nhận đào tạo k ạ ; Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng]\n [Cột: 3 ; 2026-11-03 21:12 ; cần thợ phụ nữa không ; Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng]\n [Cột: 4 ; 2026-11-03 11:38 ; Cần thợ không ; Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng]\n [Cột: 5 ; 2026-10-27 15:46 ; Ok anh chị học việc mới,tháng thì tăng lương nhỉ cho biết ạ ; Đã phản hồi trên bài viết & mời nhắn Inbox / liên hệ Nhà máy Ngõ 49 Trương Quốc Dụng]",
+        "word_count": 2963,
+        "table_count": 4
+      },
+      "analysis": {
+        "classification": "TUYEN_DUNG_NS",
+        "sub_type": "Báo cáo thống kê ứng viên & Hồ sơ tuyển dụng",
+        "entities": {
+          "so_hop_dong": "01",
+          "ngay_lap": "07/11/2026",
+          "ben_a": {},
+          "ben_b": {},
+          "gia_tri_hop_dong_hoac_luong": "39",
+          "dia_diem_thuc_hien": null,
+          "nhan_su_phat_hien": [],
+          "so_dien_thoai": [
+            "0846676888",
+            "0857485840",
+            "0877129186",
+            "0932358003",
+            "0978034910",
+            "0979704296"
+          ],
+          "so_cccd_cmnd": [],
+          "danh_sach_khach_hang_rows": [],
+          "noi_dung_chinh_tom_tat": "HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNGTổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú GiaMã số ĐKKD / MST: 042203002931 | Địa chỉ ĐKKD: Số 01, Ngõ 53, Đường Trương Quốc Dụng, P. Thành Sen, Tỉnh Hà TĩnhĐịa chỉ Giao dịch & Nhà máy Sản xuất: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh | Hotline: 0973.562.789 | BÁO CÁO NHANH DANH SÁCH ỨNG VIÊN TUYỂN DỤNG (10 NGÀY GẦN ĐÂY)BÀN GIAO BỘ PHẬN "
+        }
+      }
+    },
+    {
+      "index": 37,
       "file_name": "1789007071014_1803349965471653826_g3520788964083100696",
       "original_display_name": "1789007071014_1803349965471653826_g3520788964083100696",
       "extension": ".docx",
@@ -10391,7 +10978,7 @@
       }
     },
     {
-      "index": 36,
+      "index": 38,
       "file_name": "1787997112832_7617747951538527859_g3755853110317591515",
       "original_display_name": "1787997112832_7617747951538527859_g3755853110317591515",
       "extension": ".docx",
@@ -10491,7 +11078,7 @@
       }
     },
     {
-      "index": 37,
+      "index": 39,
       "file_name": "1787997112833_7617747951538527859_g3755853110317591515",
       "original_display_name": "1787997112833_7617747951538527859_g3755853110317591515",
       "extension": ".docx",
@@ -10575,7 +11162,7 @@
       }
     },
     {
-      "index": 38,
+      "index": 40,
       "file_name": "1787997112834_7617747951538527859_g3755853110317591515",
       "original_display_name": "1787997112834_7617747951538527859_g3755853110317591515",
       "extension": ".docx",
@@ -10656,7 +11243,7 @@
       }
     },
     {
-      "index": 39,
+      "index": 41,
       "file_name": "1787997112835_7617747951538527859_g3755853110317591515",
       "original_display_name": "1787997112835_7617747951538527859_g3755853110317591515",
       "extension": ".docx",
@@ -10727,7 +11314,7 @@
       }
     },
     {
-      "index": 40,
+      "index": 42,
       "file_name": "1787997112836_7617747951538527859_g3755853110317591515",
       "original_display_name": "1787997112836_7617747951538527859_g3755853110317591515",
       "extension": ".docx",
@@ -11168,7 +11755,7 @@
       }
     },
     {
-      "index": 41,
+      "index": 43,
       "file_name": "1787997112837_7617747951538527859_g3755853110317591515",
       "original_display_name": "THƯ VIỆN PHÁP LUẬT.docx",
       "extension": ".docx",
@@ -11988,7 +12575,7 @@
       }
     },
     {
-      "index": 42,
+      "index": 44,
       "file_name": "1788920751324_2589261669335747882_g3755853110317591515",
       "original_display_name": "1788920751324_2589261669335747882_g3755853110317591515",
       "extension": ".docx",
@@ -12174,7 +12761,7 @@
       }
     },
     {
-      "index": 43,
+      "index": 45,
       "file_name": "1793340153556_2304805760907141944_g3755853110317591515",
       "original_display_name": "1793340153556_2304805760907141944_g3755853110317591515",
       "extension": ".docx",
@@ -12953,7 +13540,7 @@
       }
     },
     {
-      "index": 44,
+      "index": 46,
       "file_name": "1787306838513_1193413708528852811_g8353805365546949930",
       "original_display_name": "1787306838513_1193413708528852811_g8353805365546949930",
       "extension": ".docx",

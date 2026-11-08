@@ -2,7 +2,7 @@
   "meta": {
     "system_name": "PG Home Luxury Financial & Technical Entity Verification",
     "module": "zalo_entity_validator.py (Worker #6)",
-    "generated_at": "2026-11-06 18:13:50",
+    "generated_at": "2026-11-08 06:02:03",
     "authorized_by": "Giám Đốc Nguyễn Viết Nghĩa",
     "source_batches_scanned": [
       "batch1_internal_and_projects",

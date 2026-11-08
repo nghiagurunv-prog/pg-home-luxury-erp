@@ -1,0 +1,799 @@
+{
+  "metadata": {
+    "system": "PG Home Luxury Management System",
+    "report_name": "Báo Cáo Đối Soát Kế Toán 3 Chiều PO <-> GRN/e-Invoice <-> UNC",
+    "version": "1.0-TAX-3WAY-AUDIT",
+    "generated_at": "2026-11-08 09:58:45",
+    "auditor": "Kỹ Sư Kiểm Toán Thuế & Đối Soát 3 Chiều (Worker P07)",
+    "legal_entity": {
+      "ten_don_vi_phap_ly": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+      "ten_thuong_hieu": "CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY",
+      "ma_so_thue": "042203002931",
+      "ngay_dang_ky": "13/01/2025",
+      "dai_dien_phap_luat": "Nguyễn Trọng Nghĩa",
+      "dia_chi_dkkd": "Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh",
+      "dia_chi_giao_dich_nha_may": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "hotline_chuan": "0986.722.324"
+    },
+    "stealth_protocol": "IDLE_PRIORITY_CLASS_ENABLED",
+    "matching_formula": "Score = 0.50 * I(|Delta Amount| <= 1000) + 0.30 * Sim(NCC) + 0.20 * max(0, 1 - Delta Days / 7)"
+  },
+  "summary": {
+    "total_records": 10,
+    "matched_3way_count": 4,
+    "partial_payment_count": 2,
+    "missing_invoice_or_grn_count": 2,
+    "duplicate_unc_blocked_count": 1,
+    "critical_legal_violation_count": 1,
+    "total_unc_amount_vnd": 76872000.0,
+    "total_matched_amount_vnd": 22834000.0,
+    "total_partial_amount_vnd": 25000000.0,
+    "effective_matching_rate_percent": 50.0,
+    "legal_gate_pass_rate_percent": 90.0
+  },
+  "status_distribution": {
+    "MATCHED_3WAY": 4,
+    "PARTIAL_PAYMENT": 2,
+    "MISSING_INVOICE_OR_GRN": 2,
+    "DUPLICATE_UNC_BLOCKED": 1,
+    "CRITICAL_LEGAL_VIOLATION": 1
+  },
+  "three_way_match_ledger": [
+    {
+      "match_id": "MATCH-202611-001",
+      "status": "MATCHED_3WAY",
+      "score": 1.0,
+      "score_breakdown": {
+        "amount_component": 0.5,
+        "amount_delta": 0.0,
+        "amount_status": "EXACT_AMOUNT_MATCH",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.2,
+        "days_delta": 0
+      },
+      "po": {
+        "po_id": "PO-LG-20261104-29930",
+        "po_number": "ĐH29930",
+        "po_date": "2026-11-04",
+        "supplier": "Công ty TNHH Lâm Giang",
+        "amount": 496000.0,
+        "description": "Đặt hàng bổ sung vật tư phụ kiện lắp ráp xưởng ĐH29930",
+        "items": [
+          {
+            "name": "Vật tư phụ kiện lắp ráp chi tiết ĐH29930",
+            "unit": "Bộ",
+            "quantity": 1,
+            "unit_price": 496000,
+            "amount": 496000
+          }
+        ],
+        "project": "Xưởng Nội Thất Phú Gia"
+      },
+      "einvoice_grn": {
+        "doc_type": "EINVOICE_XML",
+        "invoice_number": "0029930",
+        "invoice_series": "1C26TLG",
+        "invoice_date": "2026-11-04",
+        "seller": {
+          "name": "Công ty TNHH Thương mại và Dịch vụ Lâm Giang",
+          "tax_code": "3001859668",
+          "address": "Số 18, Đường Vũ Quang, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 496000.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": "data/xml/LG_0029930_20261104.xml"
+      },
+      "unc": {
+        "unc_id": "UNC-TCB-20261104-VU-496K",
+        "bank": "Techcombank",
+        "date": "2026-11-04",
+        "amount": 496000.0,
+        "remitter": "Hoàng Công Vũ (PG Home)",
+        "recipient": "Công ty TNHH Lâm Giang",
+        "recipient_account": "19035688888",
+        "description": "Hoang Cong Vu chuyen tien don hang DH29930",
+        "sha256": "5c1a89bf3e71234abcd5678ef901234567890abcdef1234567890abcdef12345",
+        "file_name": "05_UNC_TECHCOMBANK_VU_TRA_LAM_GIANG_496K_04_11_2026.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "ĐỐI SOÁT KHỚP 3 CHIỀU HOÀN TOÀN: Số tiền, Nhà cung cấp và Thời gian giao dịch trùng khớp trong biên độ kiểm toán cho phép."
+    },
+    {
+      "match_id": "MATCH-202611-002",
+      "status": "MATCHED_3WAY",
+      "score": 1.0,
+      "score_breakdown": {
+        "amount_component": 0.5,
+        "amount_delta": 0.0,
+        "amount_status": "EXACT_AMOUNT_MATCH",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.2,
+        "days_delta": 0
+      },
+      "po": {
+        "po_id": "PO-LG-20261102-16838M",
+        "po_number": "PO-LG-OCT-CLOSING",
+        "po_date": "2026-11-02",
+        "supplier": "Công ty TNHH Lâm Giang",
+        "amount": 16838000.0,
+        "description": "Đối soát chốt thanh toán ván MDF phủ Melamine đợt cuối T10/2026",
+        "items": [
+          {
+            "name": "Ván MDF chống ẩm phủ Melamine 17mm",
+            "unit": "Tấm",
+            "quantity": 42,
+            "unit_price": 380000,
+            "amount": 15960000
+          },
+          {
+            "name": "Chỉ dán cạnh PVC đồng màu",
+            "unit": "Cuộn",
+            "quantity": 4,
+            "unit_price": 219500,
+            "amount": 878000
+          }
+        ],
+        "project": "Dự án Tổng hợp Xưởng Phú Gia"
+      },
+      "einvoice_grn": {
+        "doc_type": "EINVOICE_XML",
+        "invoice_number": "0008452",
+        "invoice_series": "1C26TLG",
+        "invoice_date": "2026-11-02",
+        "seller": {
+          "name": "Công ty TNHH Thương mại và Dịch vụ Lâm Giang",
+          "tax_code": "3001859668",
+          "address": "Số 18, Đường Vũ Quang, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 16838000.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": "data/xml/LG_0008452_20261102.xml"
+      },
+      "unc": {
+        "unc_id": "UNC-VTB-20261102-HUONG-16838M",
+        "bank": "VietinBank",
+        "date": "2026-11-02",
+        "amount": 16838000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Công ty TNHH Lâm Giang",
+        "recipient_account": "118000086888",
+        "description": "Luu Thi Thu Huong thanh toan tien van Lam Giang",
+        "sha256": "4b2e88a09cf45123abcd8912ef0147852369abcdef0147852369abcdef014785",
+        "file_name": "01_UNC_VIETINBANK_TRA_LAM_GIANG_16_838M_02_11_2026.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "ĐỐI SOÁT KHỚP 3 CHIỀU HOÀN TOÀN: Số tiền, Nhà cung cấp và Thời gian giao dịch trùng khớp trong biên độ kiểm toán cho phép."
+    },
+    {
+      "match_id": "MATCH-202611-003",
+      "status": "PARTIAL_PAYMENT",
+      "score": 0.5,
+      "score_breakdown": {
+        "amount_component": 0.0,
+        "amount_delta": 10920000.0,
+        "amount_status": "DELTA_10,920,000VND",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.2,
+        "days_delta": 0
+      },
+      "po": {
+        "po_id": "PO-QT-20261102-SO-NO-296",
+        "po_number": "SỔ-NỢ-TRANG-296",
+        "po_date": "2026-11-02",
+        "supplier": "Phụ kiện Quốc Tâm",
+        "amount": 25920000.0,
+        "description": "Chốt công nợ sổ phụ kiện Quốc Tâm Trang 296 (dư nợ 25.92M)",
+        "items": [
+          {
+            "name": "Bản lề Inox 304 giảm chấn Roxana",
+            "unit": "Bộ",
+            "quantity": 120,
+            "unit_price": 45000,
+            "amount": 5400000
+          },
+          {
+            "name": "Ray bi giảm chấn 3 tầng 450mm",
+            "unit": "Bộ",
+            "quantity": 80,
+            "unit_price": 85000,
+            "amount": 6800000
+          },
+          {
+            "name": "Phụ kiện tay nâng & khóa tủ",
+            "unit": "Gói",
+            "quantity": 1,
+            "unit_price": 13720000,
+            "amount": 13720000
+          }
+        ],
+        "project": "Tổng kho Phụ kiện Xưởng"
+      },
+      "einvoice_grn": {
+        "doc_type": "EINVOICE_XML",
+        "invoice_number": "0001296",
+        "invoice_series": "1C26TQT",
+        "invoice_date": "2026-11-02",
+        "seller": {
+          "name": "Hộ Kinh Doanh Phụ Kiện Quốc Tâm (Tâm Quốc - Roxana Hà Tĩnh)",
+          "tax_code": "3001928445",
+          "address": "Số 56 Ngô Đức Kế, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 25920000.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": "data/xml/QT_0001296_20261102.xml"
+      },
+      "unc": {
+        "unc_id": "UNC-VTB-20261102-HUONG-15M",
+        "bank": "VietinBank",
+        "date": "2026-11-02",
+        "amount": 15000000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Phụ kiện Quốc Tâm (Tâm Quốc)",
+        "recipient_account": "102872368888",
+        "description": "Luu Thi Thu Huong thanh toan tien phu kien Quoc Tam",
+        "sha256": "9a3f77123bcde890123456789abcdef0123456789abcdef0123456789abcdef0",
+        "file_name": "02_UNC_VIETINBANK_TRA_QUOC_TAM_15M_02_11_2026.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "THANH TOÁN TỪNG PHẦN: Đã thanh toán 15,000,000 đ trên tổng công nợ đơn hàng/hóa đơn 25,920,000 đ."
+    },
+    {
+      "match_id": "MATCH-202611-004",
+      "status": "MISSING_INVOICE_OR_GRN",
+      "score": 0.5,
+      "score_breakdown": {
+        "amount_component": 0.5,
+        "amount_delta": 0.0,
+        "amount_status": "EXACT_AMOUNT_MATCH",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.2,
+        "days_delta": 0
+      },
+      "po": {
+        "po_id": "PO-QT-20261104-RAY-3M2",
+        "po_number": "PO-QT-RAY-3200K",
+        "po_date": "2026-11-04",
+        "supplier": "Phụ kiện Quốc Tâm",
+        "amount": 3200000.0,
+        "description": "Đặt mua bổ sung ray bi giảm chấn và khóa tủ lắp ráp công trình",
+        "items": [
+          {
+            "name": "Ray bi giảm chấn 3 tầng Hafele OEM",
+            "unit": "Bộ",
+            "quantity": 30,
+            "unit_price": 90000,
+            "amount": 2700000
+          },
+          {
+            "name": "Khóa tủ gập chuyên dụng",
+            "unit": "Cái",
+            "quantity": 10,
+            "unit_price": 50000,
+            "amount": 500000
+          }
+        ],
+        "project": "Dự án Tổng hợp Xưởng Phú Gia"
+      },
+      "einvoice_grn": {
+        "doc_type": "PENDING_SUPPLIER_INVOICE",
+        "invoice_number": "CHƯA_PHÁT_HÀNH",
+        "invoice_series": "",
+        "invoice_date": "2026-11-04",
+        "seller": {
+          "name": "Phụ kiện Quốc Tâm",
+          "tax_code": "3001928445",
+          "address": "56 Ngô Đức Kế, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 0.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": ""
+      },
+      "unc": {
+        "unc_id": "UNC-TCB-20261104-QT-3_2M",
+        "bank": "Techcombank",
+        "date": "2026-11-04",
+        "amount": 3200000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Phụ kiện Quốc Tâm",
+        "recipient_account": "102872368888",
+        "description": "Luu Thi Thu Huong thanh toan ray bi khoa tu Quoc Tam",
+        "sha256": "55a1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef5",
+        "file_name": "UNC_TCB_3M2_QUOC_TAM.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "THIẾU HÓA ĐƠN/GRN: Đã phát sinh giao dịch/chuyển khoản nhưng chưa nhận được Hóa đơn điện tử hoặc Phiếu nhập kho từ Nhà cung cấp."
+    },
+    {
+      "match_id": "MATCH-202611-005",
+      "status": "PARTIAL_PAYMENT",
+      "score": 0.4714,
+      "score_breakdown": {
+        "amount_component": 0.0,
+        "amount_delta": 3200000.0,
+        "amount_status": "DELTA_3,200,000VND",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.1714,
+        "days_delta": 1
+      },
+      "po": {
+        "po_id": "PO-DA-20261028-13_2M",
+        "po_number": "SỔ-GỖ-NGA-13M2",
+        "po_date": "2026-10-28",
+        "supplier": "Gỗ thịt Đức Anh (Thu Hương Hà Tĩnh - Nga)",
+        "amount": 13200000.0,
+        "description": "Gỗ gõ đỏ & gỗ sồi tự nhiên gia công khung cửa và chỉ trang trí",
+        "items": [
+          {
+            "name": "Gỗ sồi Mỹ sấy quy cách",
+            "unit": "m3",
+            "quantity": 0.6,
+            "unit_price": 22000000,
+            "amount": 13200000
+          }
+        ],
+        "project": "Dự án Bác Phát & Biệt Thự Cẩm Xuyên"
+      },
+      "einvoice_grn": {
+        "doc_type": "GRN_DELIVERY_NOTE",
+        "invoice_number": "PXK-DA-882",
+        "invoice_series": "PXK26",
+        "invoice_date": "2026-10-28",
+        "seller": {
+          "name": "Gỗ thịt Đức Anh (Nga)",
+          "tax_code": "3001889921",
+          "address": "Xã Thạch Trung, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 13200000.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": "data/grn/GRN_DUC_ANH_882.xml"
+      },
+      "unc": {
+        "unc_id": "UNC-VTB-20261029-NGA-10M",
+        "bank": "VietinBank",
+        "date": "2026-10-29",
+        "amount": 10000000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Gỗ thịt Đức Anh (Nga)",
+        "recipient_account": "108866779999",
+        "description": "Luu Thi Thu Huong ck tien go Duc Anh con lai 3.2tr",
+        "sha256": "8f3b21456789abcd0123456789abcdef0123456789abcdef0123456789abcdef1",
+        "file_name": "UNC_VTB_10M_DUC_ANH.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "THANH TOÁN TỪNG PHẦN: Đã thanh toán 10,000,000 đ trên tổng công nợ đơn hàng/hóa đơn 13,200,000 đ."
+    },
+    {
+      "match_id": "MATCH-202611-006",
+      "status": "MATCHED_3WAY",
+      "score": 0.9714,
+      "score_breakdown": {
+        "amount_component": 0.5,
+        "amount_delta": 0.0,
+        "amount_status": "EXACT_AMOUNT_MATCH",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.1714,
+        "days_delta": 1
+      },
+      "po": {
+        "po_id": "PO-DL-20261030-2M",
+        "po_number": "PO-DL-CNC-4M",
+        "po_date": "2026-10-30",
+        "supplier": "Đức Lĩnh SƠN PU",
+        "amount": 2000000.0,
+        "description": "Gia công sơn hoàn thiện bộ cánh CNC 4m",
+        "items": [
+          {
+            "name": "Sơn PU 2K men bóng hoàn thiện hệ vách CNC",
+            "unit": "Bộ (4m)",
+            "quantity": 1,
+            "unit_price": 2000000,
+            "amount": 2000000
+          }
+        ],
+        "project": "Dự án Tủ Bếp Hiện Đại"
+      },
+      "einvoice_grn": {
+        "doc_type": "GRN_SERVICE_NOTE",
+        "invoice_number": "DL-20261030",
+        "invoice_series": "DV26",
+        "invoice_date": "2026-10-30",
+        "seller": {
+          "name": "Đức Lĩnh SƠN PU",
+          "tax_code": "3002115544",
+          "address": "Đường Phan Đình Phùng, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 2000000.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": "data/grn/GRN_DUC_LINH_PU_20261030.xml"
+      },
+      "unc": {
+        "unc_id": "UNC-VTB-20261031-DL-2M",
+        "bank": "VietinBank",
+        "date": "2026-10-31",
+        "amount": 2000000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Đức Lĩnh SƠN PU",
+        "recipient_account": "109887766554",
+        "description": "Luu Thi Thu Huong ck tien bo cnc 4m duc linh",
+        "sha256": "11b0a3ce3c48261324567890abcdef01234567890abcdef01234567890abcdef2",
+        "file_name": "UNC_VIETINBANK_2M_DUC_LINH.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "ĐỐI SOÁT KHỚP 3 CHIỀU HOÀN TOÀN: Số tiền, Nhà cung cấp và Thời gian giao dịch trùng khớp trong biên độ kiểm toán cho phép."
+    },
+    {
+      "match_id": "MATCH-202611-007",
+      "status": "DUPLICATE_UNC_BLOCKED",
+      "score": 0.0,
+      "score_breakdown": {
+        "amount_component": 0.5,
+        "amount_delta": 0.0,
+        "amount_status": "EXACT_AMOUNT_MATCH",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.2,
+        "days_delta": 0
+      },
+      "po": {
+        "po_id": "PO-LG-20261102-16838M-DUP",
+        "po_number": "PO-LG-OCT-CLOSING-DUP",
+        "po_date": "2026-11-02",
+        "supplier": "Công ty TNHH Lâm Giang",
+        "amount": 16838000.0,
+        "description": "Đơn hàng thử nghiệm kiểm tra tính năng chặn trùng lặp chứng từ",
+        "items": [],
+        "project": "Kiểm toán Tự Động Phú Gia"
+      },
+      "einvoice_grn": {
+        "doc_type": "EINVOICE_XML",
+        "invoice_number": "0008452",
+        "invoice_series": "1C26TLG",
+        "invoice_date": "2026-11-02",
+        "seller": {
+          "name": "Công ty TNHH Thương mại và Dịch vụ Lâm Giang",
+          "tax_code": "3001859668",
+          "address": "Số 18, Đường Vũ Quang, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 16838000.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": "data/xml/LG_0008452_20261102.xml"
+      },
+      "unc": {
+        "unc_id": "UNC-VTB-20261102-HUONG-16838M-DUP",
+        "bank": "VietinBank",
+        "date": "2026-11-02",
+        "amount": 16838000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Công ty TNHH Lâm Giang",
+        "recipient_account": "118000086888",
+        "description": "Luu Thi Thu Huong thanh toan tien van Lam Giang",
+        "sha256": "4b2e88a09cf45123abcd8912ef0147852369abcdef0147852369abcdef014785",
+        "file_name": "01_UNC_VIETINBANK_TRA_LAM_GIANG_16_838M_02_11_2026.jpg",
+        "dedup_status": "DUPLICATE_BLOCKED"
+      },
+      "audit_notes": "CHẶN TRÙNG LẶP: Chứng từ UNC có mã băm SHA-256 '4b2e88a09cf45123...' đã tồn tại trong hệ thống đối soát."
+    },
+    {
+      "match_id": "MATCH-202611-008",
+      "status": "CRITICAL_LEGAL_VIOLATION",
+      "score": 0.0,
+      "score_breakdown": {
+        "amount_component": 0.5,
+        "amount_delta": 0.0,
+        "amount_status": "EXACT_AMOUNT_MATCH",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.2,
+        "days_delta": 0
+      },
+      "po": {
+        "po_id": "PO-FAKE-TEST-001",
+        "po_number": "PO-TEST-LEGAL-GATE",
+        "po_date": "2026-11-03",
+        "supplier": "Nhà cung cấp Giả Mạo Cảnh Báo",
+        "amount": 5000000.0,
+        "description": "Đơn hàng kiểm thử bộ lọc an ninh pháp lý (MST cấm và địa chỉ cấm)",
+        "items": [],
+        "project": "Cổng An Ninh Pháp Lý Phú Gia"
+      },
+      "einvoice_grn": {
+        "doc_type": "EINVOICE_XML_TRAP",
+        "invoice_number": "0009999",
+        "invoice_series": "1C26TXX",
+        "invoice_date": "2026-11-03",
+        "seller": {
+          "name": "Công ty TNHH Cung Cấp Vật Tư Giả Lập",
+          "tax_code": "0109988776",
+          "address": "Hà Nội"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh xưởng mộc Phú Gia",
+          "tax_code": "2500732386",
+          "address": "35 Ngô Đức Kế, đường Hàm Nghi, Hà Tĩnh"
+        },
+        "amount": 5000000.0,
+        "legal_gate_status": "CRITICAL_LEGAL_VIOLATION",
+        "xml_reference": "data/xml/TRAP_VIOLATION_0009999.xml"
+      },
+      "unc": {
+        "unc_id": "UNC-TEST-FAKE-5M",
+        "bank": "VietinBank",
+        "date": "2026-11-03",
+        "amount": 5000000.0,
+        "remitter": "Phú Gia",
+        "recipient": "Công ty TNHH Cung Cấp Vật Tư Giả Lập",
+        "recipient_account": "999888777",
+        "description": "Thanh toan tien vat tu",
+        "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "file_name": "UNC_TRAP_FAKE.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "CẢNH BÁO NGUY HIỂM: Bị Cổng Pháp Lý Phú Gia chặn đứng do vi phạm quy chuẩn MST hoặc địa chỉ/danh xưng."
+    },
+    {
+      "match_id": "MATCH-202611-009",
+      "status": "MISSING_INVOICE_OR_GRN",
+      "score": 0.5,
+      "score_breakdown": {
+        "amount_component": 0.0,
+        "amount_delta": 4500000.0,
+        "amount_status": "DELTA_4,500,000VND",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.2,
+        "days_delta": 0
+      },
+      "po": {
+        "po_id": "PO-ALD-20261105-CANH",
+        "po_number": "PO-ALD-T11-01",
+        "po_date": "2026-11-05",
+        "supplier": "Đức Acrylic - Cánh Huỳnh ALD",
+        "amount": 8500000.0,
+        "description": "Đặt gia công cánh huỳnh ALD sơn bóng phủ màng PET dự án Bác Phát",
+        "items": [
+          {
+            "name": "Cánh huỳnh ALD PET bóng gương cao cấp",
+            "unit": "m2",
+            "quantity": 12.5,
+            "unit_price": 680000,
+            "amount": 8500000
+          }
+        ],
+        "project": "Dự án Bác Phát 26-03"
+      },
+      "einvoice_grn": {
+        "doc_type": "PENDING_SUPPLIER_INVOICE",
+        "invoice_number": "CHƯA_PHÁT_HÀNH",
+        "invoice_series": "",
+        "invoice_date": "2026-11-05",
+        "seller": {
+          "name": "Đức Acrylic - Cánh Huỳnh ALD",
+          "tax_code": "3002188776",
+          "address": "Nghệ An - Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 0.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": ""
+      },
+      "unc": {
+        "unc_id": "UNC-TCB-20261105-ALD-CỌC-4M",
+        "bank": "Techcombank",
+        "date": "2026-11-05",
+        "amount": 4000000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Đức Acrylic - Cánh Huỳnh ALD",
+        "recipient_account": "190344556677",
+        "description": "Luu Thi Thu Huong dat coc 50% gia cong canh huynh ALD Bac Phat",
+        "sha256": "22c0b4de4d5937243567890abcdef01234567890abcdef01234567890abcdef3",
+        "file_name": "UNC_TCB_DAT_COC_ALD_4M.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "THIẾU HÓA ĐƠN/GRN: Đã phát sinh giao dịch/chuyển khoản nhưng chưa nhận được Hóa đơn điện tử hoặc Phiếu nhập kho từ Nhà cung cấp."
+    },
+    {
+      "match_id": "MATCH-202611-010",
+      "status": "MATCHED_3WAY",
+      "score": 0.9714,
+      "score_breakdown": {
+        "amount_component": 0.5,
+        "amount_delta": 0.0,
+        "amount_status": "EXACT_AMOUNT_MATCH",
+        "supplier_component": 0.3,
+        "supplier_similarity": 1.0,
+        "date_component": 0.1714,
+        "days_delta": 1
+      },
+      "po": {
+        "po_id": "PO-VN-20261030-KINH",
+        "po_number": "ĐH-KÍNH-30-10",
+        "po_date": "2026-10-30",
+        "supplier": "Kính Việt Nhật",
+        "amount": 3500000.0,
+        "description": "Đơn đặt kính Việt Nhật ngày 30/10/2026 làm cánh tủ áo cánh kính",
+        "items": [
+          {
+            "name": "Kính cường lực 5mm màu trà vát cạnh",
+            "unit": "m2",
+            "quantity": 7.0,
+            "unit_price": 500000,
+            "amount": 3500000
+          }
+        ],
+        "project": "Dự án Biệt Thự Cẩm Xuyên"
+      },
+      "einvoice_grn": {
+        "doc_type": "PDF_EINVOICE",
+        "invoice_number": "0004562",
+        "invoice_series": "1C26TVN",
+        "invoice_date": "2026-10-30",
+        "seller": {
+          "name": "Kính Việt Nhật (Chi nhánh Miền Trung)",
+          "tax_code": "3001776655",
+          "address": "Đường Trần Phú, TP. Hà Tĩnh"
+        },
+        "buyer": {
+          "name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+          "tax_code": "042203002931",
+          "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+        },
+        "amount": 3500000.0,
+        "legal_gate_status": "LEGAL_PASSED",
+        "xml_reference": "6. Quản lý vật tư/Don_dat_kinh_Viet_Nhat_30_10_2026.pdf"
+      },
+      "unc": {
+        "unc_id": "UNC-VTB-20261031-KINH-3_5M",
+        "bank": "VietinBank",
+        "date": "2026-10-31",
+        "amount": 3500000.0,
+        "remitter": "Lưu Thị Thu Hương (Kế toán Phú Gia)",
+        "recipient": "Kính Việt Nhật",
+        "recipient_account": "108833445566",
+        "description": "Luu Thi Thu Huong thanh toan tien kinh viet nhat",
+        "sha256": "33d0c5ef5e6048354678901bcdef012345678901bcdef012345678901bcdef4",
+        "file_name": "UNC_VTB_3M5_KINH_VIET_NHAT.jpg",
+        "dedup_status": "UNIQUE_VERIFIED"
+      },
+      "audit_notes": "ĐỐI SOÁT KHỚP 3 CHIỀU HOÀN TOÀN: Số tiền, Nhà cung cấp và Thời gian giao dịch trùng khớp trong biên độ kiểm toán cho phép."
+    }
+  ],
+  "legal_gate_audit_log": [
+    {
+      "match_id": "MATCH-202611-001",
+      "document_evaluated": "0029930",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-002",
+      "document_evaluated": "0008452",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-003",
+      "document_evaluated": "0001296",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-004",
+      "document_evaluated": "CHƯA_PHÁT_HÀNH",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-005",
+      "document_evaluated": "PXK-DA-882",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-006",
+      "document_evaluated": "DL-20261030",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-007",
+      "document_evaluated": "0008452",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-008",
+      "document_evaluated": "0009999",
+      "legal_gate_status": "CRITICAL_LEGAL_VIOLATION",
+      "buyer_tax_code_checked": "2500732386",
+      "buyer_address_checked": "35 Ngô Đức Kế, đường Hàm Nghi, Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-009",
+      "document_evaluated": "CHƯA_PHÁT_HÀNH",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    },
+    {
+      "match_id": "MATCH-202611-010",
+      "document_evaluated": "0004562",
+      "legal_gate_status": "LEGAL_PASSED",
+      "buyer_tax_code_checked": "042203002931",
+      "buyer_address_checked": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "audit_timestamp": "2026-11-08 09:58:45"
+    }
+  ],
+  "suppliers_summary": {
+    "total_suppliers_tracked": 12,
+    "active_suppliers_in_audit": [
+      "Công ty TNHH Lâm Giang",
+      "Phụ kiện Quốc Tâm (Tâm Quốc - Roxana)",
+      "Gỗ thịt Đức Anh (Thu Hương Hà Tĩnh - Nga)",
+      "Đức Lĩnh SƠN PU",
+      "Đức Acrylic - Cánh Huỳnh ALD",
+      "Kính Việt Nhật"
+    ],
+    "legal_gate_enforcement": "STRICT_ZERO_TRUST"
+  }
+}

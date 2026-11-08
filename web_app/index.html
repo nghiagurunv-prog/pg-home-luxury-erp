@@ -158,6 +158,10 @@
           <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
           <span>Chiến Lược Q4 Mục Tiêu 1 Tỷ</span>
         </a>
+        <a href="#rnd-phase2-hub" class="nav-item" data-tab="tab-rnd-phase2-hub" data-role-group="admin">
+          <i class="fa-solid fa-microchip text-cyan"></i>
+          <span>Tổ Hợp Công Nghệ R&D 2.0 (W51-W57)</span>
+        </a>
       </nav>
 
       <!-- Sidebar Footer -->
@@ -5765,6 +5769,42 @@
 
       </section>
 
+      <!-- =========================================================================
+           TAB R&D PHASE 2 HUB: TỔ HỢP CÔNG NGHỆ ĐỘT PHÁ W51 - W57 (2026)
+           ========================================================================= -->
+      <section id="tab-rnd-phase2-hub" class="tab-pane">
+        <div class="sop-hub-header" style="margin-bottom: 1.5rem;">
+          <div class="sop-hub-titles">
+            <div class="badge-tag live" style="background:linear-gradient(135deg, #38bdf8, #D4AF37); color:#000; font-weight:800;">PHÚ GIA R&D PHASE 2.0 • W51 - W57</div>
+            <h2>Tổ Hợp Công Nghệ Đột Phá: 3D Showroom PBR • CAD-to-BOM • Zalo RAG • e-Invoice 3-Way • AI OEE • CRDT • 2D CNC Nesting</h2>
+            <p>Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia • Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh • Hotline: 0986.722.324 • MST: 042203002931</p>
+          </div>
+          <div class="sop-hub-actions" style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="btn-action gold" onclick="if(window.PG_W53_ZaloRagCopilot && window.PG_W53_ZaloRagCopilot.open) window.PG_W53_ZaloRagCopilot.open();">
+              <i class="fa-solid fa-robot"></i> <span>Mở Trợ Lý AI Zalo RAG (Alt+Z)</span>
+            </button>
+            <button type="button" class="btn-action green" onclick="if(window.PG_W56_RealtimeCrdtClient && window.PG_W56_RealtimeCrdtClient.togglePanel) window.PG_W56_RealtimeCrdtClient.togglePanel();">
+              <i class="fa-solid fa-satellite-dish"></i> <span>Trạng Thái Đồng Bộ CRDT + HLC</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- W51: 3D WebGL / Gaussian Splatting Luxury Showroom & AR Preview -->
+        <div id="pg-w51-showroom-root" style="margin-bottom: 24px;"></div>
+
+        <!-- W52: Instant CAD-to-BOM & 3-Tier Quotation Engine -->
+        <div id="pg-w52-mount-point" style="margin-bottom: 24px;"></div>
+
+        <!-- W54: Automated e-Invoice XML & 3-Way Matching Audit Cockpit -->
+        <div id="w54-einvoice-audit-container" style="margin-bottom: 24px;"></div>
+
+        <!-- W55: Smart Workshop OEE & AI Attendance Dashboard -->
+        <div id="pg-w55-dashboard-root" style="margin-bottom: 24px;"></div>
+
+        <!-- W57: Interactive 2D CNC Nesting & QR Offcut Label Generator -->
+        <div id="w57-cnc-root" style="margin-bottom: 24px;"></div>
+      </section>
+
     </main>
   </div>
 
@@ -6586,7 +6626,7 @@
             <div style="width: 250px;">
               <strong style="text-transform: uppercase;">CÔNG TY CP PHÚ GIA VIỆT NAM</strong><br>
               <span style="font-size:0.85rem; font-style:italic;">(Ký tên &amp; đóng dấu)</span><br><br><br><br>
-              <strong style="font-size:1rem;">Nguyễn Viết Nghĩa</strong><br>
+              <strong style="font-size:1rem;">Nguyễn Trọng Nghĩa</strong><br>
               <span style="font-size:0.85rem; color:#64748B;">Giám Đốc Điều Hành</span>
             </div>
           </div>
@@ -6651,6 +6691,13 @@
   <script src="modules/w47_audit_trail_timeline.js" defer></script>
   <script src="modules/w48_delta_cursor_inspector.js" defer></script>
   <script src="modules/w49_cloud_backup_snapshot.js" defer></script>
+  <script src="modules/w51_luxury_3d_showroom.js" defer></script>
+  <script src="modules/w52_cad_bom_instant_quote.js" defer></script>
+  <script src="modules/w53_zalo_hybrid_rag_copilot.js" defer></script>
+  <script src="modules/w54_einvoice_3way_audit.js" defer></script>
+  <script src="modules/w55_workshop_oee_dashboard.js" defer></script>
+  <script src="modules/w56_realtime_crdt_client.js" defer></script>
+  <script src="modules/w57_cnc_nesting_qr_offcut.js" defer></script>
   <script src="modules/w50_master_hub_loader.js" defer></script>
 
 </body>

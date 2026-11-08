@@ -70,19 +70,26 @@
         'W47': { name: 'Session Token & Auto-Lock', group: 'SECURITY', desc: 'Khóa màn hình tự động khi vắng mặt bảo vệ số liệu' },
         'W48': { name: 'Sound & Toast Notification FX', group: 'UI', desc: 'Thông báo trạng thái công việc tinh tế' },
         'W49': { name: 'Analytics & System Telemetry', group: 'TELEMETRY', desc: 'Đo lường thời gian phản hồi và hiệu năng client' },
-        'W50': { name: 'Master Optimization Hub', group: 'ORCHESTRATION', desc: 'Tổng chỉ huy kết nối và điều phối 50 module' }
+        'W50': { name: 'Master Optimization Hub', group: 'ORCHESTRATION', desc: 'Tổng chỉ huy kết nối và điều phối 57 module' },
+        'W51': { name: 'Luxury 3D WebGL Showroom & AR', group: 'R&D_PHASE2', desc: 'Trình diễn 3D Gaussian Splatting / PBR Material Swapper & AR QR' },
+        'W52': { name: 'CAD/DXF/Bazis BOM Instant Quote', group: 'R&D_PHASE2', desc: 'Bóc tách bản vẽ DXF/XML tự động & Báo giá 3 cấp < 15 giây' },
+        'W53': { name: 'Zalo Hybrid RAG AI Copilot', group: 'R&D_PHASE2', desc: 'Trợ lý AI tra cứu ngữ nghĩa Hybrid RRF (BM25 + Vector 384d)' },
+        'W54': { name: 'e-Invoice XML & 3-Way Match Audit', group: 'R&D_PHASE2', desc: 'Bóc tách Hóa đơn điện tử XML Tổng Cục Thuế & Đối soát 3 chiều' },
+        'W55': { name: 'Workshop AI OEE & Face Attendance', group: 'R&D_PHASE2', desc: 'Chấm công AI Face 512d & Đo hiệu suất OEE 5 máy Tổ hợp Nhà máy' },
+        'W56': { name: 'Real-Time CRDT & HLC Sync Engine', group: 'R&D_PHASE2', desc: 'Đồng bộ đa thiết bị tức thời LWW-Element-Set CRDT + SSE' },
+        'W57': { name: '2D CNC Guillotine Nesting & QR Offcut', group: 'R&D_PHASE2', desc: 'Tối ưu cắt ván 2D MaxRects-BSSF & Định danh QR phôi ván dư' }
     };
 
     class OptimizationHub {
         constructor() {
-            this.version = '1.0.0';
+            this.version = '2.0.0';
             this.startTime = Date.now();
             this.modulesState = {};
             this.listeners = [];
             this.isInitialized = false;
 
-            // Khởi tạo trạng thái ban đầu cho toàn bộ 50 module
-            for (let i = 1; i <= 50; i++) {
+            // Khởi tạo trạng thái ban đầu cho toàn bộ 57 module
+            for (let i = 1; i <= 57; i++) {
                 const code = 'W' + String(i).padStart(2, '0');
                 const meta = MODULE_REGISTRY[code] || { name: 'Module ' + code, group: 'CORE', desc: '' };
                 this.modulesState[code] = {
@@ -115,13 +122,24 @@
                 return { id: code, type: 'CSS_STYLESHEET', active: true };
             }
 
+            const specialMap = {
+                'W51': 'PG_W51_Showroom',
+                'W52': 'PG_W52_CadBomQuote',
+                'W53': 'PG_W53_ZaloRagCopilot',
+                'W54': 'PG_W54_EInvoice3WayAudit',
+                'W55': 'PG_W55_WorkshopOeeDashboard',
+                'W56': 'PG_W56_RealtimeCrdtClient',
+                'W57': 'PG_W57_CncNestingQrOffcut'
+            };
+
             const candidates = [
                 'PG_Modules_' + code,
                 'PG_Module_' + code,
+                specialMap[code],
                 'PG_' + code,
                 code + '_Module',
                 'PG_' + code.toLowerCase()
-            ];
+            ].filter(Boolean);
 
             for (const key of candidates) {
                 if (window[key] !== undefined && window[key] !== null) {
@@ -152,14 +170,14 @@
          */
         scanAndAttachAll() {
             const summary = {
-                scanned: 50,
+                scanned: 57,
                 newlyActivated: 0,
                 alreadyActive: 0,
                 pending: 0,
                 errors: 0
             };
 
-            for (let i = 1; i <= 50; i++) {
+            for (let i = 1; i <= 57; i++) {
                 const code = 'W' + String(i).padStart(2, '0');
                 if (code === 'W50') {
                     summary.alreadyActive++;
@@ -257,7 +275,7 @@
             const list = [];
             const byGroup = {};
 
-            for (let i = 1; i <= 50; i++) {
+            for (let i = 1; i <= 57; i++) {
                 const code = 'W' + String(i).padStart(2, '0');
                 const mod = this.modulesState[code];
 
@@ -295,7 +313,7 @@
                 else byGroup[mod.group].pending++;
             }
 
-            const total = 50;
+            const total = 57;
             const healthRate = Math.round(((activeCount + loadedCount) / total) * 100);
 
             return {

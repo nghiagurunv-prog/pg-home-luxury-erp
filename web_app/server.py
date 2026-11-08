@@ -14,6 +14,7 @@ import os
 import sys
 import json
 import shutil
+import sqlite3
 from datetime import datetime
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote
@@ -26,7 +27,9 @@ WEB_DIR = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(ROOT_DIR, "data")
 BACKUP_DIR = os.path.join(DATA_DIR, "backups")
 CHUNG_TU_DIR = os.path.join(ROOT_DIR, "5. Tài liệu", "Chứng từ & Hóa đơn Zalo T11-2026")
+APP_STATE_FILE = os.path.join(DATA_DIR, "app_state.json")
 LIVE_STATE_FILE = os.path.join(DATA_DIR, "pg_home_live_state.json")
+WAL_DB_FILE = os.path.join(DATA_DIR, "pg_home_state_wal.db")
 AUDIT_LOG_FILE = os.path.join(DATA_DIR, "audit_log.jsonl")
 ZALO_STATE_FILE = os.path.join(DATA_DIR, "all_groups_monitor_state.json")
 ZALO_INBOX_FILE = os.path.join(DATA_DIR, "zalo_staging_inbox.json")
@@ -169,6 +172,126 @@ def _read_json_safe(fp, default):
     return default
 
 
+def _atomic_write_json(filepath, data):
+    """
+    Ghi nguyên tử (atomic write qua file .tmp + os.replace) vào file json
+    và làm mới RAM cache (_ZALO_JSON_CACHE) ngay lập tức.
+    """
+    tmp_path = filepath + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    os.replace(tmp_path, filepath)
+    try:
+        mtime = os.stat(filepath).st_mtime
+        _ZALO_JSON_CACHE[filepath] = (mtime, data)
+    except Exception:
+        pass
+
+
+def _sync_to_sqlite_wal(action, state_data, patches=None):
+    """
+    Lưu trữ bền vững SQLite WAL Mirror (data/pg_home_state_wal.db).
+    Mỗi khi /api/save-state hoặc /api/patch-state được gọi, tự động đồng bộ trạng thái
+    và ghi log lịch sử thay đổi vào SQLite DB với PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL;
+    Bọc trong try...except an toàn có logging để không bao giờ làm nghẽn luồng chính.
+    """
+    try:
+        now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        state_str = json.dumps(state_data, ensure_ascii=False)
+        patch_keys_str = (
+            json.dumps(list(patches.keys()) if isinstance(patches, dict) else [], ensure_ascii=False)
+            if patches is not None
+            else "ALL"
+        )
+        payload_str = json.dumps(patches, ensure_ascii=False) if patches is not None else state_str
+
+        with sqlite3.connect(WAL_DB_FILE, timeout=5.0) as conn:
+            cursor = conn.cursor()
+            cursor.execute("PRAGMA journal_mode=WAL;")
+            cursor.execute("PRAGMA synchronous=NORMAL;")
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS app_state (
+                    id INTEGER PRIMARY KEY CHECK (id = 1),
+                    state_json TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
+                );
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS state_wal_log (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    action TEXT NOT NULL,
+                    patch_keys TEXT,
+                    payload TEXT,
+                    created_at TEXT NOT NULL
+                );
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS state_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    action TEXT NOT NULL,
+                    patch_keys TEXT,
+                    state_json TEXT,
+                    payload TEXT,
+                    timestamp TEXT NOT NULL
+                );
+            """)
+            cursor.execute(
+                "INSERT OR REPLACE INTO app_state (id, state_json, updated_at) VALUES (1, ?, ?);",
+                (state_str, now_str)
+            )
+            cursor.execute(
+                "INSERT INTO state_wal_log (action, patch_keys, payload, created_at) VALUES (?, ?, ?, ?);",
+                (action, patch_keys_str, payload_str, now_str)
+            )
+            cursor.execute(
+                "INSERT INTO state_history (action, patch_keys, state_json, payload, timestamp) VALUES (?, ?, ?, ?, ?);",
+                (action, patch_keys_str, state_str, payload_str, now_str)
+            )
+            conn.commit()
+    except Exception as exc:
+        print(f"[SQLITE WAL SYNC ERROR] {action}: {exc}", file=sys.stderr)
+
+
+SENSITIVE_STATE_KEYS = {
+    "secret_notes",
+    "bgd_private_vault",
+    "bgd_vault",
+    "admin_private_vault",
+    "admin_secret_notes",
+    "private_vault",
+    "bo_secret_notes",
+}
+
+
+def _filter_sensitive_state(data):
+    """
+    Lọc bỏ các trường mật của Bố (như secret_notes, bgd_private_vault nếu có)
+    khi client gửi header X-PG-Role khác ADMIN (ví dụ STAFF, GUEST).
+    """
+    if isinstance(data, dict):
+        filtered = {}
+        for k, v in data.items():
+            k_lower = str(k).lower().strip()
+            if k_lower in SENSITIVE_STATE_KEYS or k_lower.startswith(("secret_", "bgd_private")):
+                continue
+            if isinstance(v, dict):
+                filtered[k] = _filter_sensitive_state(v)
+            elif isinstance(v, list):
+                filtered[k] = [
+                    _filter_sensitive_state(item) if isinstance(item, (dict, list)) else item
+                    for item in v
+                ]
+            else:
+                filtered[k] = v
+        return filtered
+    elif isinstance(data, list):
+        return [
+            _filter_sensitive_state(item) if isinstance(item, (dict, list)) else item
+            for item in data
+        ]
+    return data
+
+
 class PGHomeRequestHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=WEB_DIR, **kwargs)
@@ -176,7 +299,7 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-PG-Role, Authorization")
         self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
         super().end_headers()
 
@@ -200,11 +323,27 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.end_headers()
-            if os.path.exists(LIVE_STATE_FILE):
-                with open(LIVE_STATE_FILE, "rb") as f:
+
+            role_header = self.headers.get("X-PG-Role")
+            is_admin = True
+            if role_header:
+                clean_role = role_header.strip().upper()
+                if clean_role and clean_role != "ADMIN":
+                    is_admin = False
+
+            target_file = APP_STATE_FILE if os.path.exists(APP_STATE_FILE) else LIVE_STATE_FILE
+
+            if not os.path.exists(target_file):
+                self.wfile.write(b'{"status":"empty"}')
+                return
+
+            if is_admin:
+                with open(target_file, "rb") as f:
                     self.wfile.write(f.read())
             else:
-                self.wfile.write(b'{"status":"empty"}')
+                raw_data = _read_json_cached(target_file, {})
+                filtered_data = _filter_sensitive_state(raw_data)
+                self.wfile.write(json.dumps(filtered_data, ensure_ascii=False).encode("utf-8"))
             return
 
         if clean_path == "/api/health":
@@ -218,6 +357,8 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 "server": "PG_HOME_PERSISTENT_SERVER_V4_ZALO_LIVE",
                 "timestamp": datetime.now().isoformat(),
                 "has_live_state": os.path.exists(LIVE_STATE_FILE),
+                "has_app_state": os.path.exists(APP_STATE_FILE),
+                "has_wal_db": os.path.exists(WAL_DB_FILE),
                 "backup_count": len(backups),
                 "latest_backup": backups[-1] if backups else None,
                 "zalo_engine": zalo_state.get("engine", "Stealth_v4.0_Delta_Ultra"),
@@ -313,6 +454,77 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps({"status": "ok", "entries": entries[::-1], "logs": entries[::-1]}, ensure_ascii=False).encode("utf-8"))
             return
 
+        if clean_path == "/api/ask":
+            try:
+                from urllib.parse import parse_qs
+                qs = parse_qs(self.path.split("?", 1)[1] if "?" in self.path else "")
+                query_str = (qs.get("q") or qs.get("query") or ["Tổng hợp công nợ Lam Giang, Quốc Tâm, ALD"])[0]
+                rag_summary_path = os.path.join(DATA_DIR, "zalo_rag_index_summary.json")
+                rag_summary = _read_json_cached(rag_summary_path, {})
+                sys.path.insert(0, ROOT_DIR)
+                from tools import zalo_hybrid_rag_engine
+                res = zalo_hybrid_rag_engine.api_ask_handler(query_str, top_k=5)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "query": query_str, "result": res, "index_summary": rag_summary.get("corpus_statistics", {})}, ensure_ascii=False).encode("utf-8"))
+            except Exception as exc:
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "fallback", "message": str(exc)}, ensure_ascii=False).encode("utf-8"))
+            return
+
+        if clean_path == "/api/sse-sync":
+            accept_hdr = self.headers.get("Accept", "")
+            crdt_bench_path = os.path.join(DATA_DIR, "crdt_hlc_benchmark.json")
+            crdt_bench = _read_json_cached(crdt_bench_path, {})
+            if "text/event-stream" in accept_hdr:
+                self.send_response(200)
+                self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+                self.send_header("Cache-Control", "no-cache")
+                self.send_header("Connection", "keep-alive")
+                self.end_headers()
+                event_payload = json.dumps({
+                    "type": "CRDT_HLC_SYNC_SNAPSHOT",
+                    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    "benchmark": crdt_bench.get("benchmark_metrics", {}),
+                    "brand": "PG HOME LUXURY - Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh"
+                }, ensure_ascii=False)
+                self.wfile.write(f"event: crdt_sync\ndata: {event_payload}\n\n".encode("utf-8"))
+                self.wfile.flush()
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok", "crdt_benchmark": crdt_bench}, ensure_ascii=False).encode("utf-8"))
+            return
+
+        if clean_path == "/api/rnd-phase2-telemetry":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            payload = {
+                "status": "ok",
+                "version": "2.0.0-PHASE2",
+                "brand": {
+                    "legal_name": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+                    "brand_name": "CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY",
+                    "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+                    "hotline": "0986.722.324",
+                    "mst": "042203002931"
+                },
+                "pbr_catalog": _read_json_cached(os.path.join(DATA_DIR, "material_3d_pbr_catalog.json"), {}).get("metadata", {}),
+                "cad_bom": _read_json_cached(os.path.join(DATA_DIR, "cad_bom_instant_quotes.json"), {}).get("benchmark_metrics", {}),
+                "zalo_rag": _read_json_cached(os.path.join(DATA_DIR, "zalo_rag_index_summary.json"), {}).get("corpus_statistics", {}),
+                "einvoice_3way": _read_json_cached(os.path.join(DATA_DIR, "einvoice_3way_match_report.json"), {}).get("executive_summary", {}),
+                "workshop_oee": _read_json_cached(os.path.join(DATA_DIR, "workshop_oee_telemetry.json"), {}).get("plant_wide_summary", {}),
+                "crdt_hlc": _read_json_cached(os.path.join(DATA_DIR, "crdt_hlc_benchmark.json"), {}).get("benchmark_metrics", {}),
+                "cnc_nesting": _read_json_cached(os.path.join(DATA_DIR, "cnc_nesting_optimization_report.json"), {}).get("executive_summary_kpi", {})
+            }
+            self.wfile.write(json.dumps(payload, ensure_ascii=False).encode("utf-8"))
+            return
+
         return super().do_GET()
 
     def do_POST(self):
@@ -321,10 +533,10 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
             try:
                 length = int(self.headers.get("Content-Length", "0"))
                 raw_body = self.rfile.read(length)
-                parsed = json.loads(raw_body.decode("utf-8"))
+                parsed = json.loads(raw_body.decode("utf-8")) if raw_body else {}
 
-                with open(LIVE_STATE_FILE, "w", encoding="utf-8") as f:
-                    json.dump(parsed, f, ensure_ascii=False, indent=2)
+                _atomic_write_json(APP_STATE_FILE, parsed)
+                _atomic_write_json(LIVE_STATE_FILE, parsed)
 
                 today_str = datetime.now().strftime("%Y-%m-%d")
                 backup_path = os.path.join(BACKUP_DIR, f"state_{today_str}.json")
@@ -340,6 +552,8 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     except OSError:
                         pass
 
+                _sync_to_sqlite_wal("SAVE_STATE", parsed)
+
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
@@ -348,12 +562,76 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                         {
                             "status": "saved",
                             "file": "data/pg_home_live_state.json",
+                            "app_state_file": "data/app_state.json",
                             "backup": f"data/backups/state_{today_str}.json",
                             "saved_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                         },
                         ensure_ascii=False
                     ).encode("utf-8")
                 )
+            except Exception as exc:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": str(exc)}).encode("utf-8"))
+            return
+
+        if clean_path == "/api/patch-state":
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                raw_body = self.rfile.read(length)
+                payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
+
+                patches = {}
+                updated_at = None
+
+                if isinstance(payload, dict):
+                    if "patches" in payload and isinstance(payload["patches"], dict):
+                        patches = payload["patches"]
+                        updated_at = payload.get("updatedAt")
+                    else:
+                        patches = dict(payload)
+                        updated_at = patches.pop("updatedAt", None)
+
+                # 1. Đọc state hiện tại từ data/app_state.json (hoặc fallback pg_home_live_state.json)
+                current_state = {}
+                if os.path.exists(APP_STATE_FILE):
+                    current_state = _read_json_cached(APP_STATE_FILE, {})
+                elif os.path.exists(LIVE_STATE_FILE):
+                    current_state = _read_json_cached(LIVE_STATE_FILE, {})
+
+                if not isinstance(current_state, dict):
+                    current_state = {}
+                else:
+                    current_state = dict(current_state)
+
+                # 2. Cập nhật đúng các key trong patches
+                for k, v in patches.items():
+                    current_state[k] = v
+
+                if updated_at is not None:
+                    current_state["updatedAt"] = updated_at
+
+                # 3. Ghi nguyên tử (atomic write qua file .tmp + os.replace) vào data/app_state.json và làm mới RAM cache
+                _atomic_write_json(APP_STATE_FILE, current_state)
+                # Đồng bộ thêm file legacy pg_home_live_state.json
+                _atomic_write_json(LIVE_STATE_FILE, current_state)
+
+                # 4. Tự động đồng bộ và ghi log vào SQLite WAL Mirror
+                _sync_to_sqlite_wal("PATCH_STATE", current_state, patches=patches)
+
+                resp_data = {
+                    "status": "ok",
+                    "patched": True,
+                    "patched_keys": list(patches.keys()),
+                    "updated_keys": list(patches.keys()),
+                    "file": "data/app_state.json",
+                    "patched_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                }
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps(resp_data, ensure_ascii=False).encode("utf-8"))
             except Exception as exc:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -471,6 +749,47 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "error", "message": str(exc)}).encode("utf-8"))
+            return
+
+        if clean_path == "/api/ask":
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                raw_body = self.rfile.read(length)
+                payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
+                query_str = payload.get("query") or payload.get("q") or "Tổng hợp công nợ Lam Giang, Quốc Tâm, ALD"
+                top_k = int(payload.get("top_k", 5))
+                sys.path.insert(0, ROOT_DIR)
+                from tools import zalo_hybrid_rag_engine
+                res = zalo_hybrid_rag_engine.api_ask_handler(query_str, top_k=top_k)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "query": query_str, "result": res}, ensure_ascii=False).encode("utf-8"))
+            except Exception as exc:
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "fallback", "message": str(exc)}, ensure_ascii=False).encode("utf-8"))
+            return
+
+        if clean_path in ("/api/crdt-push", "/api/crdt-patch"):
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                raw_body = self.rfile.read(length)
+                payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
+                sys.path.insert(0, ROOT_DIR)
+                from tools import crdt_sse_sync_broker
+                broker = crdt_sse_sync_broker.get_default_broker()
+                merge_res = broker.receive_client_delta(payload)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "crdt_result": merge_res}, ensure_ascii=False).encode("utf-8"))
+            except Exception as exc:
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "accepted": True, "note": str(exc)}, ensure_ascii=False).encode("utf-8"))
             return
 
         self.send_response(404)

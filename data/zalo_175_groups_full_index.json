@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-11-07 10:39:24",
-  "total_groups_scanned": 175,
-  "total_media_files": 16997,
-  "total_size_mb": 10169.08,
+  "generated_at": "2026-11-08 06:01:56",
+  "total_groups_scanned": 176,
+  "total_media_files": 17118,
+  "total_size_mb": 10302.04,
   "category_summary": {
     "WORKSHOP": 9,
     "PROJECT": 43,
     "SUPPLIER": 15,
     "PINNED_VIP": 2,
-    "OTHER": 106
+    "OTHER": 107
   },
   "groups": [
     {
       "group_id": "g3755853110317591515",
       "group_name": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
       "category": "WORKSHOP",
-      "total_media_files": 1476,
-      "size_mb": 485.75,
-      "latest_mtime_iso": "2026-11-07 10:33:48",
+      "total_media_files": 1477,
+      "size_mb": 486.03,
+      "latest_mtime_iso": "2026-11-07 18:59:52",
       "top_senders": [
         {
           "uid": "2589261669335747882",
@@ -38,7 +38,7 @@
           "name": "Vũ",
           "aliasName": "Vũ",
           "zName": "Hoang Cong Vu",
-          "file_count": 245
+          "file_count": 246
         },
         {
           "uid": "1266851172782015824",
@@ -443,16 +443,16 @@
       "group_id": "g495486322416346660",
       "group_name": "Tổng Kho Phụ Kiện Quốc Tâm",
       "category": "SUPPLIER",
-      "total_media_files": 65,
-      "size_mb": 31.6,
-      "latest_mtime_iso": "2026-11-06 14:33:06",
+      "total_media_files": 71,
+      "size_mb": 31.93,
+      "latest_mtime_iso": "2026-11-07 18:59:52",
       "top_senders": [
         {
           "uid": "3689145980600156662",
           "name": "Tâm Quốc",
           "aliasName": null,
           "zName": "Tâm Quốc",
-          "file_count": 57
+          "file_count": 63
         },
         {
           "uid": "2845688247116683961",
@@ -519,23 +519,23 @@
       "group_id": "g2539027971900219384",
       "group_name": "Nhóm Đặt Hàng Vật Tư & UNC (Vũ - Chị Hương)",
       "category": "SUPPLIER",
-      "total_media_files": 123,
-      "size_mb": 16.09,
-      "latest_mtime_iso": "2026-11-06 12:15:04",
+      "total_media_files": 128,
+      "size_mb": 16.75,
+      "latest_mtime_iso": "2026-11-07 19:39:43",
       "top_senders": [
         {
           "uid": "5055011331062292963",
           "name": "Duong Tam",
           "aliasName": null,
           "zName": "Duong Tam",
-          "file_count": 52
+          "file_count": 54
         },
         {
           "uid": "2845688247116683961",
           "name": "Vũ",
           "aliasName": "Vũ",
           "zName": "Hoang Cong Vu",
-          "file_count": 34
+          "file_count": 35
         },
         {
           "uid": "1193413708528852811",
@@ -556,7 +556,7 @@
           "name": "Giang Còi",
           "aliasName": null,
           "zName": "Giang Còi",
-          "file_count": 8
+          "file_count": 10
         }
       ]
     },
@@ -757,16 +757,16 @@
       "group_id": "g795402381131416269",
       "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
       "category": "PINNED_VIP",
-      "total_media_files": 1273,
-      "size_mb": 1660.47,
-      "latest_mtime_iso": "2026-11-06 21:31:05",
+      "total_media_files": 1280,
+      "size_mb": 1661.27,
+      "latest_mtime_iso": "2026-11-08 02:10:11",
       "top_senders": [
         {
           "uid": "2926353819792553048",
           "name": "Nguyễn Minh",
           "aliasName": "Nguyễn Minh",
           "zName": "Vô Tình",
-          "file_count": 766
+          "file_count": 771
         },
         {
           "uid": "8637268198362425881",
@@ -794,7 +794,7 @@
           "name": "Nguyễn Thu Hà",
           "aliasName": null,
           "zName": "Nguyễn Thu Hà",
-          "file_count": 12
+          "file_count": 14
         }
       ]
     },
@@ -1286,16 +1286,16 @@
       "group_id": "g2210130381397538159",
       "group_name": "Công trình / Thiết kế (Hương)",
       "category": "PROJECT",
-      "total_media_files": 45,
-      "size_mb": 34.72,
-      "latest_mtime_iso": "2026-10-31 09:35:11",
+      "total_media_files": 46,
+      "size_mb": 34.76,
+      "latest_mtime_iso": "2026-11-07 13:02:02",
       "top_senders": [
         {
           "uid": "2304805760907141944",
           "name": "Nghĩa Guru",
           "aliasName": null,
           "zName": "Nghĩa Guru",
-          "file_count": 26
+          "file_count": 27
         },
         {
           "uid": "1193413708528852811",
@@ -2047,9 +2047,9 @@
       "group_id": "g3520788964083100696",
       "group_name": "Nhóm (Hồ Kiều Trinh)",
       "category": "OTHER",
-      "total_media_files": 310,
-      "size_mb": 3273.71,
-      "latest_mtime_iso": "2026-11-06 18:55:58",
+      "total_media_files": 314,
+      "size_mb": 3391.19,
+      "latest_mtime_iso": "2026-11-07 21:30:50",
       "top_senders": [
         {
           "uid": "1803349965471653826",
@@ -2059,6 +2059,13 @@
           "file_count": 120
         },
         {
+          "uid": "3297031789117172741",
+          "name": "Cherry",
+          "aliasName": null,
+          "zName": "Cherry",
+          "file_count": 12
+        },
+        {
           "uid": "2157747101147327541",
           "name": "Thuong Truong",
           "aliasName": null,
@@ -2066,11 +2073,11 @@
           "file_count": 12
         },
         {
-          "uid": "3297031789117172741",
-          "name": "Cherry",
-          "aliasName": null,
-          "zName": "Cherry",
-          "file_count": 11
+          "uid": "5748705245332146179",
+          "name": "a Bá TLinh",
+          "aliasName": "a Bá TLinh",
+          "zName": "Nguyenvanba",
+          "file_count": 10
         },
         {
           "uid": "912904712770135919",
@@ -2078,13 +2085,6 @@
           "aliasName": null,
           "zName": "Quỳnh Nga",
           "file_count": 10
-        },
-        {
-          "uid": "5748705245332146179",
-          "name": "a Bá TLinh",
-          "aliasName": "a Bá TLinh",
-          "zName": "a Bá TLinh",
-          "file_count": 9
         }
       ]
     },
@@ -2092,9 +2092,9 @@
       "group_id": "g1023694868405271280",
       "group_name": "Nhóm (Phương Đông)",
       "category": "OTHER",
-      "total_media_files": 780,
-      "size_mb": 383.8,
-      "latest_mtime_iso": "2026-11-04 18:02:54",
+      "total_media_files": 781,
+      "size_mb": 383.81,
+      "latest_mtime_iso": "2026-11-07 20:38:05",
       "top_senders": [
         {
           "uid": "6712078147946478562",
@@ -2122,7 +2122,7 @@
           "name": "Thanh Bình",
           "aliasName": null,
           "zName": "Thanh Bình",
-          "file_count": 29
+          "file_count": 30
         },
         {
           "uid": "5677071978895607565",
@@ -2267,16 +2267,23 @@
       "group_id": "g5747446802473716743",
       "group_name": "Nhóm (12h Tuan Duc)",
       "category": "OTHER",
-      "total_media_files": 46,
-      "size_mb": 92.08,
-      "latest_mtime_iso": "2026-11-01 11:23:17",
+      "total_media_files": 64,
+      "size_mb": 95.3,
+      "latest_mtime_iso": "2026-11-08 05:59:30",
       "top_senders": [
         {
           "uid": "2883120685158869702",
           "name": "12h Tuan Duc",
           "aliasName": "12h Tuan Duc",
           "zName": "Tuấn Nguyễn",
-          "file_count": 15
+          "file_count": 21
+        },
+        {
+          "uid": "7206514791559849670",
+          "name": "12h Dũng Cường",
+          "aliasName": "12h Dũng Cường",
+          "zName": "Cty Tbyt Dht",
+          "file_count": 7
         },
         {
           "uid": "2574504630973143422",
@@ -2293,18 +2300,11 @@
           "file_count": 5
         },
         {
-          "uid": "3657062464843477508",
-          "name": "12H Hoàng Thu",
-          "aliasName": "12H Hoàng Thu",
-          "zName": "Tran Hoang",
-          "file_count": 3
-        },
-        {
-          "uid": "3927552390987953989",
-          "name": "Tuan Hung",
-          "aliasName": null,
-          "zName": "Tuan Hung",
-          "file_count": 3
+          "uid": "5214057346791543960",
+          "name": "12h. hanh Tao. 1",
+          "aliasName": "12h. hanh Tao. 1",
+          "zName": "Bùi Đình Hạnh",
+          "file_count": 5
         }
       ]
     },
@@ -2469,25 +2469,25 @@
     },
     {
       "group_id": "g6053553624236676806",
-      "group_name": "Nhóm (Phạm Minh Ngọc khóa học)",
+      "group_name": "Nhóm (Nguyễn Phương Vy)",
       "category": "OTHER",
-      "total_media_files": 337,
-      "size_mb": 70.58,
-      "latest_mtime_iso": "2026-11-01 13:04:55",
+      "total_media_files": 356,
+      "size_mb": 73.54,
+      "latest_mtime_iso": "2026-11-07 11:38:21",
       "top_senders": [
+        {
+          "uid": "2776890269410242381",
+          "name": "Nguyễn Phương Vy",
+          "aliasName": null,
+          "zName": "Nguyễn Phương Vy",
+          "file_count": 71
+        },
         {
           "uid": "6148414948067346071",
           "name": "Phạm Minh Ngọc khóa học",
           "aliasName": "Phạm Minh Ngọc khóa học",
           "zName": "Phạm Minh Ngọc",
           "file_count": 68
-        },
-        {
-          "uid": "2776890269410242381",
-          "name": "Nguyễn Phương Vy",
-          "aliasName": null,
-          "zName": "Nguyễn Phương Vy",
-          "file_count": 64
         },
         {
           "uid": "4159338050611478908",
@@ -2501,14 +2501,14 @@
           "name": "Hà Kim Hiệp",
           "aliasName": null,
           "zName": "Hà Kim Hiệp",
-          "file_count": 48
+          "file_count": 50
         },
         {
-          "uid": "3607359831695211979",
-          "name": "Hoàng Thùy Linh",
+          "uid": "5675263577652759558",
+          "name": "Thanh Thanh",
           "aliasName": null,
-          "zName": "Hoàng Thùy Linh",
-          "file_count": 32
+          "zName": "Thanh Thanh",
+          "file_count": 36
         }
       ]
     },
@@ -2533,16 +2533,16 @@
       "group_id": "g1882721773576698596",
       "group_name": "Nhóm (Trần Nhàn)",
       "category": "OTHER",
-      "total_media_files": 679,
-      "size_mb": 65.07,
-      "latest_mtime_iso": "2026-11-07 09:56:18",
+      "total_media_files": 681,
+      "size_mb": 65.24,
+      "latest_mtime_iso": "2026-11-07 21:38:12",
       "top_senders": [
         {
           "uid": "3962718871815440442",
           "name": "Trần Nhàn",
           "aliasName": null,
           "zName": "Trần Nhàn",
-          "file_count": 676
+          "file_count": 678
         },
         {
           "uid": "9198789258264565612",
@@ -2664,23 +2664,23 @@
       "group_id": "g1995079786700780651",
       "group_name": "Nhóm (Heo)",
       "category": "OTHER",
-      "total_media_files": 90,
-      "size_mb": 49.46,
-      "latest_mtime_iso": "2026-11-06 18:37:02",
+      "total_media_files": 102,
+      "size_mb": 51.37,
+      "latest_mtime_iso": "2026-11-07 11:24:10",
       "top_senders": [
         {
           "uid": "5190571945358311628",
           "name": "Heo",
           "aliasName": null,
           "zName": "Heo",
-          "file_count": 58
+          "file_count": 61
         },
         {
           "uid": "940345518373306824",
           "name": "Sò Điệp",
           "aliasName": null,
           "zName": "Sò Điệp",
-          "file_count": 32
+          "file_count": 41
         }
       ]
     },
@@ -2781,16 +2781,16 @@
       "group_id": "g7885447982331626410",
       "group_name": "Nhóm (Bear)",
       "category": "OTHER",
-      "total_media_files": 230,
-      "size_mb": 33.23,
-      "latest_mtime_iso": "2026-11-06 00:52:07",
+      "total_media_files": 259,
+      "size_mb": 36.32,
+      "latest_mtime_iso": "2026-11-08 02:53:48",
       "top_senders": [
         {
           "uid": "8875248982556332271",
           "name": "Bear",
           "aliasName": null,
           "zName": "Bear",
-          "file_count": 46
+          "file_count": 51
         },
         {
           "uid": "7548363798809061637",
@@ -2800,17 +2800,17 @@
           "file_count": 15
         },
         {
-          "uid": "1407736558225758797",
-          "name": "Nguyễn Công Danh",
-          "aliasName": null,
-          "zName": "Nguyễn Công Danh",
-          "file_count": 11
-        },
-        {
           "uid": "7408889880707643157",
           "name": "Hoài Nguyên",
           "aliasName": null,
           "zName": "Hoài Nguyên",
+          "file_count": 15
+        },
+        {
+          "uid": "1407736558225758797",
+          "name": "Nguyễn Công Danh",
+          "aliasName": null,
+          "zName": "Nguyễn Công Danh",
           "file_count": 11
         },
         {
@@ -2977,16 +2977,16 @@
       "group_id": "g9044387743967476032",
       "group_name": "Nhóm (Phạm Văn Tuấn)",
       "category": "OTHER",
-      "total_media_files": 124,
-      "size_mb": 18.76,
-      "latest_mtime_iso": "2026-11-06 18:33:06",
+      "total_media_files": 126,
+      "size_mb": 19.11,
+      "latest_mtime_iso": "2026-11-08 05:49:01",
       "top_senders": [
         {
           "uid": "3886589471759981099",
           "name": "Phạm Văn Tuấn",
           "aliasName": null,
           "zName": "Phạm Văn Tuấn",
-          "file_count": 124
+          "file_count": 126
         }
       ]
     },
@@ -3149,6 +3149,51 @@
       ]
     },
     {
+      "group_id": "g3184586599525031413",
+      "group_name": "Nhóm (Do Dang Nam)",
+      "category": "OTHER",
+      "total_media_files": 24,
+      "size_mb": 5.65,
+      "latest_mtime_iso": "2026-11-08 02:09:11",
+      "top_senders": [
+        {
+          "uid": "4230005365774322039",
+          "name": "Do Dang Nam",
+          "aliasName": null,
+          "zName": "Do Dang Nam",
+          "file_count": 6
+        },
+        {
+          "uid": "4291507983164814666",
+          "name": "Lý Minh Hải",
+          "aliasName": null,
+          "zName": "Lý Minh Hải",
+          "file_count": 4
+        },
+        {
+          "uid": "252848725982413126",
+          "name": "Trọng Lẹo Cđba43",
+          "aliasName": "Trọng Lẹo Cđba43",
+          "zName": "Anh Trong",
+          "file_count": 4
+        },
+        {
+          "uid": "1011421552367142861",
+          "name": "Cdba K43 TUẤN",
+          "aliasName": "Cdba K43 TUẤN",
+          "zName": "Tuan Nguyen",
+          "file_count": 3
+        },
+        {
+          "uid": "4182987883970672328",
+          "name": "Cdba Chung Lẹo",
+          "aliasName": "Cdba Chung Lẹo",
+          "zName": "Nguyễn Quốc Chung",
+          "file_count": 3
+        }
+      ]
+    },
+    {
       "group_id": "g6885505941979255114",
       "group_name": "Nhóm (Đình Lực Enternet Vn)",
       "category": "OTHER",
@@ -3210,51 +3255,6 @@
           "aliasName": null,
           "zName": "Linh Học Viện Unica",
           "file_count": 2
-        }
-      ]
-    },
-    {
-      "group_id": "g3184586599525031413",
-      "group_name": "Nhóm (Lý Minh Hải)",
-      "category": "OTHER",
-      "total_media_files": 13,
-      "size_mb": 4.42,
-      "latest_mtime_iso": "2026-10-27 12:09:47",
-      "top_senders": [
-        {
-          "uid": "4291507983164814666",
-          "name": "Lý Minh Hải",
-          "aliasName": null,
-          "zName": "Lý Minh Hải",
-          "file_count": 4
-        },
-        {
-          "uid": "252848725982413126",
-          "name": "Trọng Lẹo Cđba43",
-          "aliasName": "Trọng Lẹo Cđba43",
-          "zName": "Anh Trong",
-          "file_count": 4
-        },
-        {
-          "uid": "4230005365774322039",
-          "name": "Do Dang Nam",
-          "aliasName": null,
-          "zName": "Do Dang Nam",
-          "file_count": 2
-        },
-        {
-          "uid": "7866144599135799278",
-          "name": "Giap Solmax",
-          "aliasName": null,
-          "zName": "Giap Solmax",
-          "file_count": 1
-        },
-        {
-          "uid": "1011421552367142861",
-          "name": "Cdba K43 TUẤN",
-          "aliasName": "Cdba K43 TUẤN",
-          "zName": "Tuan Nguyen",
-          "file_count": 1
         }
       ]
     },
@@ -3555,6 +3555,23 @@
           "name": "Ms Hạnh Dewoo",
           "aliasName": null,
           "zName": "Ms Hạnh Dewoo",
+          "file_count": 3
+        }
+      ]
+    },
+    {
+      "group_id": "g934304672488946483",
+      "group_name": "Nhóm (Cdba Chung Lẹo)",
+      "category": "OTHER",
+      "total_media_files": 3,
+      "size_mb": 0.45,
+      "latest_mtime_iso": "2026-11-08 05:59:59",
+      "top_senders": [
+        {
+          "uid": "4182987883970672328",
+          "name": "Cdba Chung Lẹo",
+          "aliasName": "Cdba Chung Lẹo",
+          "zName": "Nguyễn Quốc Chung",
           "file_count": 3
         }
       ]

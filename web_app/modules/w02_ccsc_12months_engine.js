@@ -221,27 +221,80 @@
 
   /**
    * Tính thưởng doanh số vượt 500 Triệu (Giữ đến tất niên)
+   * Đồng bộ 100% với Module W04 (w04_sales_bonus_500m_lock.js) & chuẩn build_ccsc_2026.py
+   * Hỗ trợ cấu hình window.PG_BONUS_500M_MODE: 'EXCESS' (mặc định) hoặc 'TOTAL'
+   * 
    * @param {number} totalSales - Tổng doanh số trong tháng
+   * @param {string|null} customMode - 'EXCESS' | 'TOTAL' (nếu muốn ép chế độ)
    * @returns {Object}
    */
-  function calculateOver500MBonus(totalSales = 0) {
+  function calculateOver500MBonus(totalSales = 0, customMode = null) {
     const sales = Number(totalSales || 0);
-    const isOver = sales > CONSTANTS.THRESHOLD_OVER_500M;
-    const excess = isOver ? (sales - CONSTANTS.THRESHOLD_OVER_500M) : 0;
+    const threshold = CONSTANTS.THRESHOLD_OVER_500M;
+    const isOver = sales > threshold;
+    const excess = isOver ? (sales - threshold) : 0;
 
-    const bonusThai = isOver ? Math.round(excess * CONSTANTS.RATE_THUONG_THAI) : 0;
-    const bonusVu = isOver ? Math.round(excess * CONSTANTS.RATE_THUONG_VU) : 0;
-    const bonusHiep = isOver ? Math.round(excess * CONSTANTS.RATE_THUONG_HIEP) : 0;
+    // Chế độ tính thưởng: EXCESS (mặc định) hoặc TOTAL (theo chuẩn phom A trong build_ccsc_2026.py)
+    let activeMode = 'EXCESS';
+    if (customMode && typeof customMode === 'string') {
+      activeMode = customMode.toUpperCase() === 'TOTAL' ? 'TOTAL' : 'EXCESS';
+    } else if (typeof window !== 'undefined') {
+      window.PG_BONUS_500M_MODE = window.PG_BONUS_500M_MODE || 'EXCESS';
+      activeMode = String(window.PG_BONUS_500M_MODE).toUpperCase() === 'TOTAL' ? 'TOTAL' : 'EXCESS';
+    } else if (typeof globalThis !== 'undefined' && globalThis.PG_BONUS_500M_MODE) {
+      activeMode = String(globalThis.PG_BONUS_500M_MODE).toUpperCase() === 'TOTAL' ? 'TOTAL' : 'EXCESS';
+    }
+
+    // 1. Phương án A: Tính trên TỔNG doanh số tháng khi > 500M (Chuẩn build_standard_phom_ccsc_2026.py)
+    const bonusThaiOnTotal = isOver ? Math.round(sales * CONSTANTS.RATE_THUONG_THAI) : 0;
+    const bonusVuOnTotal = isOver ? Math.round(sales * CONSTANTS.RATE_THUONG_VU) : 0;
+    const bonusHiepOnTotal = isOver ? Math.round(sales * CONSTANTS.RATE_THUONG_HIEP) : 0;
+    const totalBonusOnTotal = bonusThaiOnTotal + bonusVuOnTotal + bonusHiepOnTotal;
+
+    // 2. Phương án B: Tính trên PHẦN VƯỢT ngưỡng 500M (Chuẩn EXCESS)
+    const bonusThaiOnExcess = isOver ? Math.round(excess * CONSTANTS.RATE_THUONG_THAI) : 0;
+    const bonusVuOnExcess = isOver ? Math.round(excess * CONSTANTS.RATE_THUONG_VU) : 0;
+    const bonusHiepOnExcess = isOver ? Math.round(excess * CONSTANTS.RATE_THUONG_HIEP) : 0;
+    const totalBonusOnExcess = bonusThaiOnExcess + bonusVuOnExcess + bonusHiepOnExcess;
+
+    // 3. Số tiền áp dụng chính thức theo activeMode hiện hành
+    const bonusThai = activeMode === 'TOTAL' ? bonusThaiOnTotal : bonusThaiOnExcess;
+    const bonusVu = activeMode === 'TOTAL' ? bonusVuOnTotal : bonusVuOnExcess;
+    const bonusHiep = activeMode === 'TOTAL' ? bonusHiepOnTotal : bonusHiepOnExcess;
     const totalBonus = bonusThai + bonusVu + bonusHiep;
+
+    const note = isOver
+      ? (activeMode === 'TOTAL'
+          ? `Vượt ngưỡng 500M [Chế độ TOTAL - Tính trên tổng DS ${formatVND(sales)}]: Thái ${formatVND(bonusThai)}, Vũ ${formatVND(bonusVu)}, Hiệp ${formatVND(bonusHiep)}. Tổng ${formatVND(totalBonus)} (Chi tiết phần vượt: ${formatVND(totalBonusOnExcess)}). Khóa treo tất niên đối soát.`
+          : `Vượt ngưỡng 500M [Chế độ EXCESS - Tính trên phần vượt ${formatVND(excess)}]: Thái ${formatVND(bonusThai)}, Vũ ${formatVND(bonusVu)}, Hiệp ${formatVND(bonusHiep)}. Tổng ${formatVND(totalBonus)} (Chi tiết tổng DS: ${formatVND(totalBonusOnTotal)}). Khóa treo tất niên đối soát.`)
+      : `Không vượt ngưỡng 500M (Doanh số: ${formatVND(sales)} <= ${formatVND(threshold)}).`;
 
     return {
       isOver,
+      isQualified: isOver,
+      mode: activeMode,
+      threshold,
+      sales,
       excess,
+      // Giá trị áp dụng chính thức theo mode
       bonusThai,
       bonusVu,
       bonusHiep,
       totalBonus,
-      note: isOver ? 'Vượt ngưỡng 500M: Thưởng giữ lại đến tất niên đối soát xong mới chi trả.' : 'Không vượt ngưỡng 500M.'
+      // Giá trị chi tiết theo cả 2 phương án đối chiếu minh bạch
+      bonusThaiOnTotal,
+      bonusVuOnTotal,
+      bonusHiepOnTotal,
+      totalBonusOnTotal,
+      bonusThaiOnExcess,
+      bonusVuOnExcess,
+      bonusHiepOnExcess,
+      totalBonusOnExcess,
+      // Định dạng tiền tệ
+      totalBonusFormatted: formatVND(totalBonus),
+      totalBonusOnTotalFormatted: formatVND(totalBonusOnTotal),
+      totalBonusOnExcessFormatted: formatVND(totalBonusOnExcess),
+      note
     };
   }
 
@@ -408,6 +461,8 @@
     let totalDeficitAmount = 0;
     let totalCoreRetention = 0;
     let totalBonusOver500M = 0;
+    let totalBonusOver500MOnTotal = 0;
+    let totalBonusOver500MOnExcess = 0;
 
     for (let m = 1; m <= 12; m++) {
       const monthConfig = ccscMonths.find(item => Number(item.m) === m) || { m, name: `Tháng ${m}`, sales: 0 };
@@ -435,6 +490,8 @@
       yearlyNetProfitBG += processedMonth.netProfitBG;
       totalCoreRetention += processedMonth.coreRetention.totalRetention;
       totalBonusOver500M += processedMonth.over500MBonus.totalBonus;
+      totalBonusOver500MOnTotal += (processedMonth.over500MBonus.totalBonusOnTotal || 0);
+      totalBonusOver500MOnExcess += (processedMonth.over500MBonus.totalBonusOnExcess || 0);
 
       if (processedMonth.laborAudit.isDeficit) {
         countDeficitMonths++;
@@ -460,6 +517,13 @@
       totalDeficitAmount,
       totalCoreRetention,
       totalBonusOver500M,
+      totalBonusOver500MOnTotal,
+      totalBonusOver500MOnExcess,
+      bonusMode: (typeof window !== 'undefined' && window.PG_BONUS_500M_MODE) 
+        ? String(window.PG_BONUS_500M_MODE).toUpperCase() 
+        : (typeof globalThis !== 'undefined' && globalThis.PG_BONUS_500M_MODE 
+            ? String(globalThis.PG_BONUS_500M_MODE).toUpperCase() 
+            : 'EXCESS'),
       auditVerdict: countDeficitMonths > 0 
         ? `PHÁT HIỆN ${countDeficitMonths} THÁNG ÂM QUỸ KHOÁN THỢ (Tổng âm: ${formatVND(totalDeficitAmount)}). ĐÃ KHÓA CỨNG COL BG = 0 ĐỂ BẢO VỆ DÒNG TIỀN BAN GIÁM ĐỐC!`
         : 'TOÀN BỘ 12 THÁNG ĐẠT CHỈ TIÊU ĐỊNH MỨC QUỸ KHOÁN.'
@@ -570,12 +634,38 @@
           <strong style="color: #f8fafc;">KẾT LUẬN KIỂM TOÁN BAN GIÁM ĐỐC:</strong><br/>
           • ${yearlySummary.auditVerdict}<br/>
           • Quỹ thợ nòng cốt Hòa & Hào giữ cuối năm tất niên: <strong style="color: #fbbf24;">${formatVND(yearlySummary.totalCoreRetention)}</strong> (20k/công giữ gắn kết trách nhiệm).<br/>
-          • Thưởng vượt doanh số > 500M giữ cuối năm: <strong style="color: #fbbf24;">${formatVND(yearlySummary.totalBonusOver500M)}</strong> (Thái 0.5%, Vũ 0.3%, Hiệp 0.5%).
+          • Thưởng vượt doanh số > 500M giữ cuối năm: <strong style="color: #fbbf24;">${formatVND(yearlySummary.totalBonusOver500M)}</strong> (Thái 0.5%, Vũ 0.3%, Hiệp 0.5% - Chế độ: ${yearlySummary.bonusMode || 'EXCESS'}; Đối soát: Trên tổng DS = ${formatVND(yearlySummary.totalBonusOver500MOnTotal)}, Trên phần vượt = ${formatVND(yearlySummary.totalBonusOver500MOnExcess)}).
         </div>
       </div>
     `;
 
     targetElement.innerHTML = html;
+  }
+
+  /**
+   * Lấy chế độ tính thưởng toàn cục hiện hành
+   * @returns {string} 'EXCESS' | 'TOTAL'
+   */
+  function getBonusMode() {
+    if (typeof window !== 'undefined' && window.PG_BONUS_500M_MODE) {
+      return String(window.PG_BONUS_500M_MODE).toUpperCase() === 'TOTAL' ? 'TOTAL' : 'EXCESS';
+    }
+    if (typeof globalThis !== 'undefined' && globalThis.PG_BONUS_500M_MODE) {
+      return String(globalThis.PG_BONUS_500M_MODE).toUpperCase() === 'TOTAL' ? 'TOTAL' : 'EXCESS';
+    }
+    return 'EXCESS';
+  }
+
+  /**
+   * Đặt chế độ tính thưởng toàn cục
+   * @param {string} mode - 'EXCESS' | 'TOTAL'
+   * @returns {string}
+   */
+  function setBonusMode(mode) {
+    const m = String(mode).toUpperCase() === 'TOTAL' ? 'TOTAL' : 'EXCESS';
+    if (typeof window !== 'undefined') window.PG_BONUS_500M_MODE = m;
+    if (typeof globalThis !== 'undefined') globalThis.PG_BONUS_500M_MODE = m;
+    return m;
   }
 
   // Public API Export
@@ -587,6 +677,8 @@
     calculateColBG,
     calculateCoreWorkerRetention,
     calculateOver500MBonus,
+    getBonusMode,
+    setBonusMode,
     processMonthCCSC,
     run12MonthsEngine,
     renderCCSCSummaryTable

@@ -1,0 +1,853 @@
+{
+  "metadata": {
+    "title": "BÁO CÁO TELEMETRY GIÁM SÁT AI CHẤM CÔNG & OEE DÀN MÁY NHÀ MÁY PHÚ GIA",
+    "legal_info": {
+      "brand_name": "CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY",
+      "legal_entity": "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng",
+      "tax_and_reg_id": "042203002931",
+      "legal_representative": "Nguyễn Trọng Nghĩa",
+      "registered_address": "Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh",
+      "factory_facility_name": "Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia",
+      "operating_address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+      "hotline": "0986.722.324",
+      "engine_version": "2.7.0-PROD-2026",
+      "engine_codename": "R07-AI-FACE-OEE-ENGINE"
+    },
+    "generated_at": "2026-11-08 09:47:28",
+    "audit_status": "VERIFIED_100_PERCENT_COMPLIANT",
+    "zero_trust_signature": "bdd50384b543e9e289826fda157b014cbc089236ecc71e76f46c59c4494393dd"
+  },
+  "module_1_face_attendance": {
+    "audit_date": "2026-11-08",
+    "facility": "Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia",
+    "address": "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+    "total_enrolled_workers": 11,
+    "teams_breakdown": {
+      "TO_CNC": {
+        "team_name": "Tổ CNC",
+        "workers": [
+          {
+            "worker_id": "PG-W01-CNC",
+            "full_name": "Hà Viết Hòa",
+            "role": "Thợ cả kiêm Trưởng tổ CNC",
+            "team_key": "TO_CNC",
+            "team_name": "Tổ CNC",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          },
+          {
+            "worker_id": "PG-W02-CNC",
+            "full_name": "Nguyễn Văn Nam",
+            "role": "Kỹ thuật viên vận hành CNC Nesting 4 đầu",
+            "team_key": "TO_CNC",
+            "team_name": "Tổ CNC",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          }
+        ]
+      },
+      "TO_DAN_CANH": {
+        "team_name": "Tổ Dán Cạnh Tự Động",
+        "workers": [
+          {
+            "worker_id": "PG-W03-DC",
+            "full_name": "Trần Văn Anh",
+            "role": "Trưởng máy Dán Cạnh Tự Động Cao Cấp",
+            "team_key": "TO_DAN_CANH",
+            "team_name": "Tổ Dán Cạnh Tự Động",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          },
+          {
+            "worker_id": "PG-W04-DC",
+            "full_name": "Hoàng Văn Đạt",
+            "role": "Kỹ thuật viên dán nẹp cong & bo cạnh Laser",
+            "team_key": "TO_DAN_CANH",
+            "team_name": "Tổ Dán Cạnh Tự Động",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          }
+        ]
+      },
+      "TO_LAP_RAP": {
+        "team_name": "Tổ Lắp Ráp Tinh Chế",
+        "workers": [
+          {
+            "worker_id": "PG-W05-LR",
+            "full_name": "Lương Thể Hào",
+            "role": "Thợ lắp ráp chính / Trưởng tổ Lắp Ráp Tinh Chế",
+            "team_key": "TO_LAP_RAP",
+            "team_name": "Tổ Lắp Ráp Tinh Chế",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          },
+          {
+            "worker_id": "PG-W06-LR",
+            "full_name": "Lê Văn Thoan",
+            "role": "Thợ mộc tinh chế lắp ráp module thùng & ngăn kéo",
+            "team_key": "TO_LAP_RAP",
+            "team_name": "Tổ Lắp Ráp Tinh Chế",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          },
+          {
+            "worker_id": "PG-W07-LR",
+            "full_name": "Tuấn Anh",
+            "role": "Thợ mộc tinh chế cánh kính & phụ kiện thông minh",
+            "team_key": "TO_LAP_RAP",
+            "team_name": "Tổ Lắp Ráp Tinh Chế",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          }
+        ]
+      },
+      "TO_SON_GO_OC_CHO": {
+        "team_name": "Tổ Sơn/Hoàn Thiện Gỗ Óc Chó",
+        "workers": [
+          {
+            "worker_id": "PG-W08-SON",
+            "full_name": "Đinh Văn Tuyến",
+            "role": "Trưởng buồng sơn PU & Tinh hoàn thiện gỗ cao cấp",
+            "team_key": "TO_SON_GO_OC_CHO",
+            "team_name": "Tổ Sơn/Hoàn Thiện Gỗ Óc Chó",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          },
+          {
+            "worker_id": "PG-W09-SON",
+            "full_name": "Trần Văn Tùng",
+            "role": "Thợ chà nhám mịn & sơn lót bề mặt hoàn thiện",
+            "team_key": "TO_SON_GO_OC_CHO",
+            "team_name": "Tổ Sơn/Hoàn Thiện Gỗ Óc Chó",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "TANG_CA_TOI",
+                "check_in": "2026-11-08 18:00:00",
+                "check_out": "2026-11-08 21:00:00",
+                "hours": 3.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 3.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          }
+        ]
+      },
+      "TO_LAP_DAT_CONG_TRINH": {
+        "team_name": "Tổ Lắp Đặt Công Trình",
+        "workers": [
+          {
+            "worker_id": "PG-W10-LD",
+            "full_name": "Nguyễn Văn Kiên",
+            "role": "Đội trưởng đội cơ động lắp đặt hoàn thiện công trình",
+            "team_key": "TO_LAP_DAT_CONG_TRINH",
+            "team_name": "Tổ Lắp Đặt Công Trình",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 0.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          },
+          {
+            "worker_id": "PG-W11-LD",
+            "full_name": "Phan Văn Hùng",
+            "role": "Thợ lắp đặt nội thất chuyên nghiệp công trình cao cấp",
+            "team_key": "TO_LAP_DAT_CONG_TRINH",
+            "team_name": "Tổ Lắp Đặt Công Trình",
+            "shifts_attended": [
+              {
+                "shift_name": "CA_SANG",
+                "check_in": "2026-11-08 07:25:00",
+                "check_out": "2026-11-08 11:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              },
+              {
+                "shift_name": "CA_CHIEU",
+                "check_in": "2026-11-08 13:25:00",
+                "check_out": "2026-11-08 17:35:00",
+                "hours": 4.0,
+                "cosine_similarity": 0.9972,
+                "liveness": "PASS_LIVE_HUMAN"
+              }
+            ],
+            "total_hc_hours": 8.0,
+            "total_ot_hours": 0.0,
+            "total_cong_standard": 1.0,
+            "security_status": "CLEAN_100_VERIFIED"
+          }
+        ]
+      }
+    },
+    "anti_spoof_zero_trust_verification": [
+      {
+        "test_case": "Screen Replay Attack Simulation (Chống gian lận chụp ảnh qua điện thoại)",
+        "target_worker": "Hà Viết Hòa (PG-W01-CNC)",
+        "result": "REJECTED_SECURITY_ALERT",
+        "blocked": true,
+        "detail": "ANTI_SPOOF_FAILED: MOBILE_SCREEN_REPLAY_ATTACK"
+      },
+      {
+        "test_case": "Printed Color Photo 2D Attack (Chống gian lận in ảnh giấy)",
+        "target_worker": "Lương Thể Hào (PG-W05-LR)",
+        "result": "REJECTED_SECURITY_ALERT",
+        "blocked": true,
+        "detail": "ANTI_SPOOF_FAILED: PRINTED_PHOTO_2D_ATTACK"
+      }
+    ],
+    "total_face_scans_logged": 33
+  },
+  "module_2_machine_oee": {
+    "fleet_size": 5,
+    "workshop_average_oee": 0.8777,
+    "workshop_average_oee_pct": "87.77%",
+    "overall_status": "HIGH_PERFORMANCE_OPTIMIZED",
+    "machines": {
+      "M01_CNC_NESTING": {
+        "machine_id": "M01_CNC_NESTING",
+        "machine_name": "Máy CNC Nesting Trung Tâm 4 Đầu ATC Phay Cắt Tự Động",
+        "brand_model": "Nanxing / Syntec 4-Spindle Heavy Duty 2025",
+        "assigned_team": "TO_CNC",
+        "operational_status": "RUNNING",
+        "metrics": {
+          "planned_production_time_min": 480.0,
+          "downtime_minutes": 35.0,
+          "operating_time_minutes": 445.0,
+          "total_pieces_produced": 218,
+          "good_pieces_passed_qc": 216,
+          "defect_pieces_rework": 2,
+          "ideal_cycle_time_sec": 120
+        },
+        "oee_factors": {
+          "availability": 0.9271,
+          "availability_pct": "92.71%",
+          "performance": 0.9798,
+          "performance_pct": "97.98%",
+          "quality": 0.9908,
+          "quality_pct": "99.08%",
+          "oee_overall": 0.9,
+          "oee_overall_pct": "90.00%"
+        },
+        "world_class_benchmark": "WORLD_CLASS_EXCELLENCE",
+        "evaluation_assessment": "Đẳng cấp quốc tế (>= 85%) - Máy vận hành tối ưu không lãng phí"
+      },
+      "M02_DAN_CANH_PUR_LASER": {
+        "machine_id": "M02_DAN_CANH_PUR_LASER",
+        "machine_name": "Máy Dán Cạnh Tự Động Không Đường Line (Pur/Laser)",
+        "brand_model": "Homag High-End Zero-Line PUR Edger Pro",
+        "assigned_team": "TO_DAN_CANH",
+        "operational_status": "RUNNING",
+        "metrics": {
+          "planned_production_time_min": 480.0,
+          "downtime_minutes": 40.0,
+          "operating_time_minutes": 440.0,
+          "total_pieces_produced": 850,
+          "good_pieces_passed_qc": 846,
+          "defect_pieces_rework": 4,
+          "ideal_cycle_time_sec": 30
+        },
+        "oee_factors": {
+          "availability": 0.9167,
+          "availability_pct": "91.67%",
+          "performance": 0.9659,
+          "performance_pct": "96.59%",
+          "quality": 0.9953,
+          "quality_pct": "99.53%",
+          "oee_overall": 0.8812,
+          "oee_overall_pct": "88.12%"
+        },
+        "world_class_benchmark": "WORLD_CLASS_EXCELLENCE",
+        "evaluation_assessment": "Đẳng cấp quốc tế (>= 85%) - Máy vận hành tối ưu không lãng phí"
+      },
+      "M03_CUA_BAN_TRUOT_2LUOI": {
+        "machine_id": "M03_CUA_BAN_TRUOT_2LUOI",
+        "machine_name": "Máy Cưa Bàn Trượt 2 Lưỡi Nghiêng Độ Chính Xác Cao",
+        "brand_model": "Altendorf F45 Precision Saw 2024",
+        "assigned_team": "TO_CNC",
+        "operational_status": "RUNNING",
+        "metrics": {
+          "planned_production_time_min": 480.0,
+          "downtime_minutes": 65.0,
+          "operating_time_minutes": 415.0,
+          "total_pieces_produced": 520,
+          "good_pieces_passed_qc": 517,
+          "defect_pieces_rework": 3,
+          "ideal_cycle_time_sec": 45
+        },
+        "oee_factors": {
+          "availability": 0.8646,
+          "availability_pct": "86.46%",
+          "performance": 0.9398,
+          "performance_pct": "93.98%",
+          "quality": 0.9942,
+          "quality_pct": "99.42%",
+          "oee_overall": 0.8078,
+          "oee_overall_pct": "80.78%"
+        },
+        "world_class_benchmark": "GOOD_OPERATIONAL",
+        "evaluation_assessment": "Vận hành tốt (75% - 84%) - Đạt tiêu chuẩn xưởng công nghiệp chuẩn mực"
+      },
+      "M04_KHOAN_NGANG_CAM_CHOT": {
+        "machine_id": "M04_KHOAN_NGANG_CAM_CHOT",
+        "machine_name": "Máy Khoan Ngang Cam Chốt CNC Tia Hồng Ngoại",
+        "brand_model": "KDT Infrared CNC Horizontal Boring Machine",
+        "assigned_team": "TO_LAP_RAP",
+        "operational_status": "RUNNING",
+        "metrics": {
+          "planned_production_time_min": 480.0,
+          "downtime_minutes": 45.0,
+          "operating_time_minutes": 435.0,
+          "total_pieces_produced": 1320,
+          "good_pieces_passed_qc": 1314,
+          "defect_pieces_rework": 6,
+          "ideal_cycle_time_sec": 20
+        },
+        "oee_factors": {
+          "availability": 0.9062,
+          "availability_pct": "90.62%",
+          "performance": 1.0115,
+          "performance_pct": "101.15%",
+          "quality": 0.9955,
+          "quality_pct": "99.55%",
+          "oee_overall": 0.9125,
+          "oee_overall_pct": "91.25%"
+        },
+        "world_class_benchmark": "WORLD_CLASS_EXCELLENCE",
+        "evaluation_assessment": "Đẳng cấp quốc tế (>= 85%) - Máy vận hành tối ưu không lãng phí"
+      },
+      "M05_PHONG_PHUN_SON": {
+        "machine_id": "M05_PHONG_PHUN_SON",
+        "machine_name": "Phòng Phun Sơn Tiêu Chuẩn Màng Nước & Sấy Khô Khép Kín",
+        "brand_model": "Phú Gia Industrial Clean Room Paint Booth V3",
+        "assigned_team": "TO_SON_GO_OC_CHO",
+        "operational_status": "RUNNING",
+        "metrics": {
+          "planned_production_time_min": 480.0,
+          "downtime_minutes": 70.0,
+          "operating_time_minutes": 410.0,
+          "total_pieces_produced": 92,
+          "good_pieces_passed_qc": 91,
+          "defect_pieces_rework": 1,
+          "ideal_cycle_time_sec": 300
+        },
+        "oee_factors": {
+          "availability": 0.8542,
+          "availability_pct": "85.42%",
+          "performance": 1.05,
+          "performance_pct": "105.00%",
+          "quality": 0.9891,
+          "quality_pct": "98.91%",
+          "oee_overall": 0.8871,
+          "oee_overall_pct": "88.71%"
+        },
+        "world_class_benchmark": "WORLD_CLASS_EXCELLENCE",
+        "evaluation_assessment": "Đẳng cấp quốc tế (>= 85%) - Máy vận hành tối ưu không lãng phí"
+      }
+    }
+  },
+  "module_3_production_qr_7stages": {
+    "qr_protocol_version": "PG-QR-7STAGES-V2",
+    "stages_definition": [
+      {
+        "stage_index": 1,
+        "stage_code": "CAT_VAN_CNC",
+        "stage_name": "Cắt Ván Tự Động CNC Nesting",
+        "responsible_team": "TO_CNC",
+        "linked_machine": "M01_CNC_NESTING",
+        "qc_checkpoint": "Kiểm tra kích thước chuẩn DXF/XML, vết cắt sắc nét, không mẻ dăm"
+      },
+      {
+        "stage_index": 2,
+        "stage_code": "DAN_CANH",
+        "stage_name": "Dán Cạnh Pur/Laser Không Đường Line",
+        "responsible_team": "TO_DAN_CANH",
+        "linked_machine": "M02_DAN_CANH_PUR_LASER",
+        "qc_checkpoint": "Kiểm tra đường keo Pur tàng hình, nẹp nhựa PVC/Acrylic bám dính tuyệt đối"
+      },
+      {
+        "stage_index": 3,
+        "stage_code": "KHOAN_CAM",
+        "stage_name": "Khoan Ngang Cam Chốt CNC Hồng Ngoại",
+        "responsible_team": "TO_LAP_RAP",
+        "linked_machine": "M04_KHOAN_NGANG_CAM_CHOT",
+        "qc_checkpoint": "Định vị lỗ cam chốt chính xác 100%, độ sâu chuẩn phụ kiện Blum/Hafele"
+      },
+      {
+        "stage_index": 4,
+        "stage_code": "LAP_RAP_THU",
+        "stage_name": "Lắp Ráp Thử Khung Thùng & Căn Chỉnh Tại Nhà Máy",
+        "responsible_team": "TO_LAP_RAP",
+        "linked_machine": "None (Bàn thao tác tinh chế)",
+        "qc_checkpoint": "Đo độ vuông góc ke góc, độ êm của ray trượt, khoảng hở khe cánh <= 1.5mm"
+      },
+      {
+        "stage_index": 5,
+        "stage_code": "KIEM_DINH_QC",
+        "stage_name": "Kiểm Định Chất Lượng KCS & Phun Sơn / Hoàn Thiện",
+        "responsible_team": "TO_SON_GO_OC_CHO",
+        "linked_machine": "M05_PHONG_PHUN_SON",
+        "qc_checkpoint": "Nghiệm thu bề mặt bóng mờ 50%/70%, không hạt bụi, vân gỗ óc chó chuẩn tone màu"
+      },
+      {
+        "stage_index": 6,
+        "stage_code": "DONG_GOI",
+        "stage_name": "Đóng Gói Màng PE & Nẹp Góc Chống Va Đập",
+        "responsible_team": "TO_LAP_RAP",
+        "linked_machine": "None (Khu vực đóng gói)",
+        "qc_checkpoint": "Dán tem QR định danh cấu kiện, bọc 3 lớp chống trầy, đầy đủ ốc vít phụ kiện đi kèm"
+      },
+      {
+        "stage_index": 7,
+        "stage_code": "BAN_GIAO_LAP_DAT",
+        "stage_name": "Bàn Giao & Lắp Đặt Hoàn Thiện Tại Công Trình",
+        "responsible_team": "TO_LAP_DAT_CONG_TRINH",
+        "linked_machine": "None (Xe cơ động tại công trình)",
+        "qc_checkpoint": "Bàn giao chìa khóa trao tay cho Khách Hàng, ký biên bản nghiệm thu không tì vết"
+      }
+    ],
+    "monitored_projects": [
+      {
+        "project_id": "PJ-BAC-PHAT-2026",
+        "project_name": "Biệt thự Bác Phát (Hà Tĩnh)",
+        "contract_code": "HD-2026-BAC-PHAT-01",
+        "customer": "Bác Phát - TP. Hà Tĩnh",
+        "total_modules": 48,
+        "current_active_stage": "KIEM_DINH_QC",
+        "current_stage_index": 5,
+        "stages_tracking": [
+          {
+            "stage_code": "CAT_VAN_CNC",
+            "status": "COMPLETED",
+            "operator": "Hà Viết Hòa",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-06 08:30:00"
+          },
+          {
+            "stage_code": "DAN_CANH",
+            "status": "COMPLETED",
+            "operator": "Trần Văn Anh",
+            "qc_pass": 0.99,
+            "timestamp": "2026-11-06 14:15:00"
+          },
+          {
+            "stage_code": "KHOAN_CAM",
+            "status": "COMPLETED",
+            "operator": "Lương Thể Hào",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-07 09:20:00"
+          },
+          {
+            "stage_code": "LAP_RAP_THU",
+            "status": "COMPLETED",
+            "operator": "Lương Thể Hào",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-07 15:45:00"
+          },
+          {
+            "stage_code": "KIEM_DINH_QC",
+            "status": "IN_PROGRESS",
+            "operator": "Đinh Văn Tuyến",
+            "qc_pass": 0.98,
+            "timestamp": "2026-11-08 08:00:00"
+          },
+          {
+            "stage_code": "DONG_GOI",
+            "status": "QUEUED_PENDING",
+            "operator": "Lê Văn Thoan",
+            "qc_pass": null,
+            "timestamp": null
+          },
+          {
+            "stage_code": "BAN_GIAO_LAP_DAT",
+            "status": "QUEUED_PENDING",
+            "operator": "Nguyễn Văn Kiên",
+            "qc_pass": null,
+            "timestamp": null
+          }
+        ]
+      },
+      {
+        "project_id": "PJ-NAM-CNC-2026",
+        "project_name": "Penthouse Anh Nam (Vinh / Hà Tĩnh)",
+        "contract_code": "HD-2026-NAM-PENTHOUSE",
+        "customer": "Anh Nam",
+        "total_modules": 36,
+        "current_active_stage": "DAN_CANH",
+        "current_stage_index": 2,
+        "stages_tracking": [
+          {
+            "stage_code": "CAT_VAN_CNC",
+            "status": "COMPLETED",
+            "operator": "Nguyễn Văn Nam",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-07 10:15:00"
+          },
+          {
+            "stage_code": "DAN_CANH",
+            "status": "IN_PROGRESS",
+            "operator": "Trần Văn Anh",
+            "qc_pass": 0.99,
+            "timestamp": "2026-11-08 08:30:00"
+          },
+          {
+            "stage_code": "KHOAN_CAM",
+            "status": "QUEUED_PENDING",
+            "operator": "Lê Văn Thoan",
+            "qc_pass": null,
+            "timestamp": null
+          },
+          {
+            "stage_code": "LAP_RAP_THU",
+            "status": "QUEUED_PENDING",
+            "operator": "Tuấn Anh",
+            "qc_pass": null,
+            "timestamp": null
+          },
+          {
+            "stage_code": "KIEM_DINH_QC",
+            "status": "QUEUED_PENDING",
+            "operator": "Đinh Văn Tuyến",
+            "qc_pass": null,
+            "timestamp": null
+          },
+          {
+            "stage_code": "DONG_GOI",
+            "status": "QUEUED_PENDING",
+            "operator": "Lương Thể Hào",
+            "qc_pass": null,
+            "timestamp": null
+          },
+          {
+            "stage_code": "BAN_GIAO_LAP_DAT",
+            "status": "QUEUED_PENDING",
+            "operator": "Nguyễn Văn Kiên",
+            "qc_pass": null,
+            "timestamp": null
+          }
+        ]
+      },
+      {
+        "project_id": "PJ-THACH-HA-2026",
+        "project_name": "Biệt thự Tân Cổ Điển Thạch Hà",
+        "contract_code": "HD-2026-VILLA-THACH-HA",
+        "customer": "Chị Thanh Hà",
+        "total_modules": 54,
+        "current_active_stage": "DONG_GOI",
+        "current_stage_index": 6,
+        "stages_tracking": [
+          {
+            "stage_code": "CAT_VAN_CNC",
+            "status": "COMPLETED",
+            "operator": "Hà Viết Hòa",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-04 09:00:00"
+          },
+          {
+            "stage_code": "DAN_CANH",
+            "status": "COMPLETED",
+            "operator": "Hoàng Văn Đạt",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-04 16:30:00"
+          },
+          {
+            "stage_code": "KHOAN_CAM",
+            "status": "COMPLETED",
+            "operator": "Lương Thể Hào",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-05 10:00:00"
+          },
+          {
+            "stage_code": "LAP_RAP_THU",
+            "status": "COMPLETED",
+            "operator": "Tuấn Anh",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-05 16:00:00"
+          },
+          {
+            "stage_code": "KIEM_DINH_QC",
+            "status": "COMPLETED",
+            "operator": "Trần Văn Tùng",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-06 14:00:00"
+          },
+          {
+            "stage_code": "DONG_GOI",
+            "status": "IN_PROGRESS",
+            "operator": "Lương Thể Hào",
+            "qc_pass": 1.0,
+            "timestamp": "2026-11-08 07:45:00"
+          },
+          {
+            "stage_code": "BAN_GIAO_LAP_DAT",
+            "status": "READY_FOR_DISPATCH",
+            "operator": "Nguyễn Văn Kiên",
+            "qc_pass": null,
+            "timestamp": "2026-11-09 08:00:00"
+          }
+        ]
+      }
+    ],
+    "sync_status": "REALTIME_SYNCHRONIZED_WITH_FACTORY_FLOOR"
+  }
+}
