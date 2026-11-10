@@ -76,67 +76,102 @@
       <div class="role-badge-box" id="sidebarUserBox">
         <div class="role-icon" id="sidebarRoleIcon"><i class="fa-solid fa-user-shield"></i></div>
         <div class="role-info">
-          <span class="user-name" id="sidebarUserName">Khối Văn Phòng & Xưởng</span>
-          <span class="user-perm" id="sidebarUserRole">Bản Deploy Văn Phòng & Xưởng</span>
+          <span class="user-name" id="sidebarUserName">Điều Hành Văn Phòng & Xưởng</span>
+          <span class="user-perm" id="sidebarUserRole">Phần I: Văn Phòng • Phần II: Xưởng SX</span>
         </div>
       </div>
 
       <!-- Navigation Links (Phân 3 nhóm quyền rõ ràng: Giám Đốc, Vũ Vật Tư, Hiệp Văn Phòng) -->
             <!-- Navigation Links (5 Phân Hệ Tinh Gọn thực chiến & chuyên nghiệp) -->
+            <!-- BỘ CHUYỂN ĐỔI NHANH 2 KHỐI VẬN HÀNH: VĂN PHÒNG <-> XƯỞNG -->
+      <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 8px 12px 6px; border-bottom: 1px solid rgba(212,175,55,0.18);">
+        <div style="font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; color: #D4AF37; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+          <span><i class="fa-solid fa-layer-group"></i> CHẾ ĐỘ XEM 2 PHÂN HỆ</span>
+          <span style="color:#10B981;font-size:0.62rem;">10/10 NGHIỆP VỤ</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;">
+          <button type="button" class="div-switch-btn active" data-div-mode="all" onclick="window.switchDeployDivision('all')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(212,175,55,0.45); background: rgba(212,175,55,0.16); color: #FDE68A; font-size: 0.68rem; font-weight: 800; cursor: pointer;">
+            Cả 2 Khối
+          </button>
+          <button type="button" class="div-switch-btn" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.35); background: rgba(168,85,247,0.08); color: #E9D5FF; font-size: 0.68rem; font-weight: 700; cursor: pointer;">
+            I. Văn Phòng
+          </button>
+          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.68rem; font-weight: 700; cursor: pointer;">
+            II. Xưởng SX
+          </button>
+        </div>
+      </div>
+
+      <!-- MENU CHUẨN 2 PHẦN DỰA THEO CHỨC NĂNG NHIỆM VỤ & QUY TRÌNH KHÉP KÍN PHÚ GIA -->
       <nav class="nav-menu" id="mainNavMenu">
-        <!-- PHÂN HỆ 1: TRUNG TÂM GIÁM ĐỐC (HQ EXECUTIVE - ADMIN ONLY) -->
-        <!-- PHÂN HỆ 2: XƯỞNG SẢN XUẤT (VŨ & GIÁM ĐỐC) -->
-        <div class="nav-section-title" data-role-group="xuong"><i class="fa-solid fa-industry text-cyan"></i> XƯỞNG SẢN XUẤT</div>
-        <a href="#xuong-san-xuat" class="nav-item" data-tab="tab-xuong-san-xuat" data-role-group="xuong">
-          <i class="fa-solid fa-industry text-cyan"></i>
-          <span>Tiến Độ Công Trình Xưởng</span>
-        </a>
-        <a href="#phe-duyet-vat-tu" class="nav-item" data-tab="tab-phe-duyet-vat-tu" data-role-group="xuong">
-          <i class="fa-solid fa-stamp text-cyan"></i>
-          <span>Duyệt Đặt Hàng Vật Tư PO</span>
-        </a>
-        <a href="#vat-tu-cost" class="nav-item" data-tab="tab-vat-tu-cost" data-role-group="xuong">
-          <i class="fa-solid fa-cubes-stacked text-cyan"></i>
-          <span>Lịch Sử Đặt Hàng & NCC</span>
-        </a>
+        <!-- =========================================================================
+             PHẦN I: KHỐI VĂN PHÒNG — KINH DOANH, DỰ TOÁN & CÔNG NỢ (HIỆP & DŨNG)
+             Quy trình: Đón khách & Bóc dự toán 3 cấp (Cost <=54%) -> Ký HĐ & tách woodVal
+             -> Bán kèm Phụ kiện/Sofa -> Thu hồi công nợ 3 đợt (50-40-10) -> Chi phí VP
+             ========================================================================= -->
+        <div class="nav-section-title" data-role-group="vanphong" data-division="vanphong" style="background: rgba(168,85,247,0.12); border-left: 3px solid #A855F7; padding: 8px 10px; margin: 8px 8px 4px; border-radius: 6px; color: #E9D5FF; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span><i class="fa-solid fa-building-user text-purple"></i> PHẦN I: KHỐI VĂN PHÒNG</span>
+            <span style="background:rgba(168,85,247,0.25); color:#F3E8FF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước</span>
+          </div>
+          <div style="font-size:0.63rem; color:#C084FC; font-weight:500; margin-top:2px;">Dự toán • Hợp đồng • Phụ kiện • Công nợ • Vận hành VP</div>
+        </div>
 
-        <!-- PHÂN HỆ 3: KINH DOANH & DỰ TOÁN (HIỆP & DŨNG) -->
-        <div class="nav-section-title" data-role-group="vanphong"><i class="fa-solid fa-briefcase text-purple"></i> KINH DOANH & DỰ ÁN</div>
-        <a href="#du-toan-du-an" class="nav-item active" data-tab="tab-du-toan-du-an" data-role-group="vanphong">
+        <a href="#du-toan-du-an" class="nav-item active" data-tab="tab-du-toan-du-an" data-role-group="vanphong" data-division="vanphong" title="Bước 1 Văn Phòng: Khởi tạo dự án mới, đo bóc định mức tấm CNC, định giá 3 cấp vật liệu (An Cường / Thái Lan / Plywood) & kiểm soát Cost <= 54%">
           <i class="fa-solid fa-calculator text-purple"></i>
-          <span>Dự Toán & Tạo Dự Án Mới</span>
+          <span>1. Dự Toán & Báo Giá Công Trình</span>
         </a>
-        <a href="#van-phong-sale" class="nav-item" data-tab="tab-van-phong-sale" data-role-group="vanphong">
-          <i class="fa-solid fa-handshake text-purple"></i>
-          <span>Hợp Đồng & Doanh Số</span>
+        <a href="#van-phong-sale" class="nav-item" data-tab="tab-van-phong-sale" data-role-group="vanphong" data-division="vanphong" title="Bước 2 Văn Phòng: Quản lý hợp đồng ký kết, theo dõi doanh số Sale & bóc tách doanh số Gỗ CN (woodVal) bàn giao xuống Xưởng">
+          <i class="fa-solid fa-file-signature text-purple"></i>
+          <span>2. Hợp Đồng & Doanh Số Sale</span>
         </a>
-        <a href="#cong-no-dong-tien" class="nav-item" data-tab="tab-cong-no-dong-tien" data-role-group="vanphong">
-          <i class="fa-solid fa-money-bill-wave text-purple"></i>
-          <span>Dòng Tiền & Công Nợ Khách</span>
-        </a>
-        <a href="#phu-kien-sofa" class="nav-item" data-tab="tab-phu-kien-sofa" data-role-group="vanphong">
+        <a href="#phu-kien-sofa" class="nav-item" data-tab="tab-phu-kien-sofa" data-role-group="vanphong" data-division="vanphong" title="Bước 3 Văn Phòng: Quản lý thiết bị bếp, phụ kiện kim khí (Hafele, Eurogold, Huge) & Sofa/đồ rời thương mại bán kèm hợp đồng">
           <i class="fa-solid fa-couch text-purple"></i>
-          <span>Phụ Kiện & Sofa Thương Mại</span>
+          <span>3. Phụ Kiện Bếp & Sofa Thương Mại</span>
         </a>
-        <a href="#chi-phi-van-phong" class="nav-item" data-tab="tab-chi-phi-van-phong" data-role-group="vanphong">
-          <i class="fa-solid fa-building text-purple"></i>
-          <span>Mặt Bằng & Vận Hành VP</span>
+        <a href="#cong-no-dong-tien" class="nav-item" data-tab="tab-cong-no-dong-tien" data-role-group="vanphong" data-division="vanphong" title="Bước 4 Văn Phòng: Theo dõi thu tiền khách hàng 3 đợt (50% ký HĐ - 40% giao hàng - 10% nghiệm thu) & cảnh báo công nợ quá hạn">
+          <i class="fa-solid fa-hand-holding-dollar text-purple"></i>
+          <span>4. Thu Hồi Công Nợ & Dòng Tiền Khách</span>
         </a>
-
-        <!-- PHÂN HỆ 4: CHẤM CÔNG & NHÂN SỰ -->
-        <div class="nav-section-title"><i class="fa-solid fa-user-clock text-green"></i> CHẤM CÔNG & NHÂN SỰ</div>
-        <a href="#cham-cong-all" class="nav-item" data-tab="tab-cham-cong-all">
-          <i class="fa-solid fa-calendar-check text-green"></i>
-          <span>Bảng Chấm Công Toàn Bộ</span>
+        <a href="#chi-phi-van-phong" class="nav-item" data-tab="tab-chi-phi-van-phong" data-role-group="vanphong" data-division="vanphong" title="Bước 5 Văn Phòng: Quản lý chi phí mặt bằng Showroom Trương Quốc Dụng, Marketing/Ads, văn phòng phẩm & hành chính VP">
+          <i class="fa-solid fa-store text-purple"></i>
+          <span>5. Chi Phí Mặt Bằng & Vận Hành VP</span>
         </a>
 
-        <!-- PHÂN HỆ 5: QUY TRÌNH & HỆ THỐNG -->
-        <div class="nav-section-title"><i class="fa-solid fa-book-bookmark text-gold"></i> QUY TRÌNH & CHIẾN LƯỢC</div>
-        <a href="#sop-quy-trinh" class="nav-item" data-tab="tab-sop-quy-trinh">
-          <i class="fa-solid fa-book-bookmark text-gold"></i>
-          <span>Master SOP 4.0 & Quy Chuẩn</span>
+        <!-- =========================================================================
+             PHẦN II: KHỐI XƯỞNG SẢN XUẤT — KỸ THUẬT, VẬT TƯ & NHÂN SỰ (VŨ, THÁI & THỢ)
+             Quy trình: Nhận lệnh SX (woodVal) -> Lập PO đặt vật tư (chờ Dấu Đỏ Giám Đốc)
+             -> Đối soát kho & công nợ 3 NCC -> Chấm công HC + OT & Lương -> Định mức CNC
+             ========================================================================= -->
+        <div class="nav-section-title" data-role-group="xuong" data-division="xuong" style="background: rgba(6,182,212,0.12); border-left: 3px solid #06B6D4; padding: 8px 10px; margin: 12px 8px 4px; border-radius: 6px; color: #A5F3FC; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span><i class="fa-solid fa-industry text-cyan"></i> PHẦN II: KHỐI XƯỞNG SẢN XUẤT</span>
+            <span style="background:rgba(6,182,212,0.25); color:#ECFEFF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước</span>
+          </div>
+          <div style="font-size:0.63rem; color:#67E8F9; font-weight:500; margin-top:2px;">Tiến độ SX • Duyệt PO • Kho NCC • Chấm công • Định mức CNC</div>
+        </div>
+
+        <a href="#xuong-san-xuat" class="nav-item" data-tab="tab-xuong-san-xuat" data-role-group="xuong" data-division="xuong" title="Bước 1 Xưởng: Nhận lệnh sản xuất từ Văn phòng, theo dõi tiến độ gia công CNC & lắp đặt công trình, kiểm soát trần vật tư 40%">
+          <i class="fa-solid fa-gears text-cyan"></i>
+          <span>1. Tiến Độ Sản Xuất & Khối Lượng Xưởng</span>
         </a>
-        </nav>
+        <a href="#phe-duyet-vat-tu" class="nav-item" data-tab="tab-phe-duyet-vat-tu" data-role-group="xuong" data-division="xuong" title="Bước 2 Xưởng: Vũ lập Phiếu đề xuất vật tư theo bóc tách kỹ thuật; kiểm tra chốt chặn Dấu Đỏ Điện Tử Giám Đốc trước khi gửi NCC">
+          <i class="fa-solid fa-stamp text-cyan"></i>
+          <span>2. Đề Xuất & Duyệt Đặt Hàng Vật Tư (PO)</span>
+        </a>
+        <a href="#vat-tu-cost" class="nav-item" data-tab="tab-vat-tu-cost" data-role-group="xuong" data-division="xuong" title="Bước 3 Xưởng: Tra cứu đơn giá ván/phụ kiện, lịch sử nhập hàng & đối soát công nợ 3 lớp với NCC (Lam Giang, Quốc Tâm, ALD, Kính, Đá)">
+          <i class="fa-solid fa-boxes-stacked text-cyan"></i>
+          <span>3. Kho Vật Tư, Đơn Giá & Đối Soát NCC</span>
+        </a>
+        <a href="#cham-cong-all" class="nav-item" data-tab="tab-cham-cong-all" data-role-group="xuong" data-division="xuong" title="Bước 4 Xưởng & Nhân sự: Điểm danh hàng ngày (Công hành chính HC + Giờ tăng ca OT), quản lý tạm ứng & bảng lương đội thợ Xưởng / VP">
+          <i class="fa-solid fa-user-check text-green"></i>
+          <span>4. Chấm Công, Điểm Danh & Bảng Lương</span>
+        </a>
+        <a href="#sop-quy-trinh" class="nav-item" data-tab="tab-sop-quy-trinh" data-role-group="xuong" data-division="xuong" title="Bước 5 Xưởng & Kỹ thuật: Bảng chuẩn 8 định mức tấm cắt CNC thực chiến (khổ 1220x2440) & Quy trình phối hợp Văn Phòng - Xưởng (Master SOP 4.0)">
+          <i class="fa-solid fa-ruler-combined text-gold"></i>
+          <span>5. Quy Chuẩn Kỹ Thuật & Định Mức CNC</span>
+        </a>
+      </nav>
 
       <!-- Sidebar Footer -->
       <div class="sidebar-footer">
@@ -167,8 +202,8 @@
             <i class="fa-solid fa-bars-staggered"></i>
           </button>
           <div class="page-title-group">
-            <h1 id="pageTitle">Phân Hệ Văn Phòng & Xưởng Sản Xuất</h1>
-            <p class="breadcrumbs">PG Home Luxury / <span id="currentBreadcrumb">Dự Toán & Xưởng Sản Xuất</span></p>
+            <h1 id="pageTitle">Hệ Thống Điều Hành: I. Văn Phòng & II. Xưởng Sản Xuất</h1>
+            <p class="breadcrumbs">PG Home Luxury / <span id="currentBreadcrumb">1. Dự Toán & Báo Giá Công Trình</span></p>
           </div>
         </div>
 
@@ -190,7 +225,18 @@
             <span class="zalo-pending-pill" id="zaloPendingBadge" style="display:inline-flex; align-items:center; justify-content:center; background:#F59E0B; color:#000; font-size:0.68rem; font-weight:800; padding:1px 6px; border-radius:999px; margin-left:4px;">3</span>
           </div>
 
-          <!-- [STRIPPED FOR DEPLOY: PRIVACY SHIELD BUTTON] -->
+          <!-- TOPBAR 2-DIVISION QUICK SWITCHER (PHẦN I: VĂN PHÒNG | PHẦN II: XƯỞNG) -->
+          <div class="topbar-division-pills" style="display:inline-flex; align-items:center; gap:4px; background:rgba(15,23,42,0.85); border:1px solid rgba(212,175,55,0.3); padding:3px; border-radius:8px;">
+            <button type="button" class="top-div-pill active" data-div-mode="all" onclick="window.switchDeployDivision('all')" style="padding:4px 9px; border-radius:6px; border:none; background:rgba(212,175,55,0.22); color:#FDE68A; font-size:0.72rem; font-weight:800; cursor:pointer;" title="Hiển thị đầy đủ cả 2 phần: Văn Phòng (5 mục) & Xưởng Sản Xuất (5 mục)">
+              <i class="fa-solid fa-layer-group"></i> Cả 2 Phần (10)
+            </button>
+            <button type="button" class="top-div-pill" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding:4px 9px; border-radius:6px; border:none; background:transparent; color:#E9D5FF; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chuyển sang Phần I: Khối Văn Phòng & Kinh Doanh (Dự toán, Hợp đồng, Phụ kiện/Sofa, Công nợ khách, Chi phí VP)">
+              <i class="fa-solid fa-building-user"></i> I. Văn Phòng (5)
+            </button>
+            <button type="button" class="top-div-pill" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding:4px 9px; border-radius:6px; border:none; background:transparent; color:#A5F3FC; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chuyển sang Phần II: Khối Xưởng Sản Xuất (Tiến độ SX, Duyệt PO vật tư, Kho & NCC, Chấm công, Định mức CNC)">
+              <i class="fa-solid fa-industry"></i> II. Xưởng SX (5)
+            </button>
+          </div>
 
           <!-- ATELIER / SHOWROOM DUAL THEME SWITCHER (MINOTTI WALNUT <-> POLIFORM TRAVERTINE) -->
           <button type="button" class="atelier-mode-switch-btn" id="btnTopbarThemeSwitch" onclick="if(typeof window.toggleAtelierShowroomMode==='function'){window.toggleAtelierShowroomMode();}else{var b=document.getElementById('themeToggleBtn');if(b)b.click();}" title="Chuyển đổi không gian: Atelier Tối (Gỗ Óc Chó Minotti) / Showroom Sáng (Đá Travertine Poliform)">
@@ -232,8 +278,8 @@
           <div class="user-session-box" id="userSessionBox">
             <div class="user-avatar-circle" id="topAvatarIcon"><i class="fa-solid fa-crown"></i></div>
             <div class="user-info-text">
-              <span class="user-display-name" id="topUserFullName">Tống Trần Hiệp</span>
-              <span class="user-display-role" id="topUserRoleName">Văn Phòng & Dự Toán Sale</span>
+              <span class="user-display-name" id="topUserFullName">Văn Phòng & Xưởng SX</span>
+              <span class="user-display-role" id="topUserRoleName">2 Phân Hệ: Văn Phòng + Xưởng</span>
             </div>
             <button class="btn btn-sm btn-outline text-gold" id="btnSwitchAccount" title="Đăng xuất / Chuyển tài khoản">
               <i class="fa-solid fa-arrow-right-from-bracket"></i> <span class="hide-on-compact">Đăng Xuất</span>
@@ -3745,7 +3791,7 @@
             <h2>Hệ Điều Hành Quy Trình Vận Hành Chuẩn & 15 Nguyên Lý Quản Trị thực chiến & chuyên nghiệp</h2>
             <p>Hệ thống tương tác sống 1 chạm kẹp chặt quy trình trên Web App, bảo toàn 100% dòng tiền mặt cho Ban Giám Đốc</p>
           </div>
-          <div class="sop-hub-actions"><span class="badge live" style="background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3);padding:6px 12px;">PHÂN HỆ VĂN PHÒNG & XƯỞNG</span></div>
+          <div class="sop-hub-actions"><span class="badge live" style="background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3);padding:6px 12px;">QUY TRÌNH PHỐI HỢP: I. VĂN PHÒNG ↔ II. XƯỞNG SẢN XUẤT</span></div>
         </div>
 
         <!-- 1-CLICK TÁC CHIẾN NAVIGATION CARDS -->
@@ -4662,7 +4708,7 @@
   </div>
 
   <!-- Application Logic -->
-  <script src="app.js?v=14.0_DEPLOY_VP_XUONG_2026"></script>
+  <script src="app.js?v=15.0_DEPLOY_2PARTS_VP_XUONG"></script>
   <script>
     window.toggleAtelierShowroomMode = function() {
       document.body.classList.toggle('light-theme');

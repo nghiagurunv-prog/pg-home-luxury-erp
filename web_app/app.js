@@ -3531,22 +3531,15 @@ function initCurrentUser() {
   // Mặc định ban đầu nếu chưa có user:
   // - Nếu trên máy trạm của Bố (localhost / 127.0.0.1) hoặc Bố đã đăng nhập: Giám Đốc (ADMIN) toàn quyền mượt mà.
   // - Nếu người dùng truy cập từ xa (không phải localhost / 127.0.0.1) và chưa đăng nhập trong localStorage: mặc định hạ xuống quyền hạn chế ('STAFF').
-  if (!currentUser) {
-    if (isLocalMachine()) {
-      currentUser = (appState.users || [])[0] || {
-        id: 1,
-        username: "giamdoc",
-        fullName: "Nguyễn Viết Nghĩa",
-        role: "ADMIN"
-      };
-    } else {
-      currentUser = {
-        id: 9999,
-        username: "staff_remote",
-        fullName: "Nhân Viên (Truy cập từ xa)",
-        role: "STAFF"
-      };
-    }
+  // Trên bản Deploy (Văn phòng & Xưởng): Nếu localStorage cũ lưu STAFF hoặc ADMIN thì chuyển về chế độ hiển thị chuẩn 2 Phần (DEPLOY_BOTH)
+  if (!currentUser || currentUser.role === "STAFF" || currentUser.role === "ADMIN") {
+    currentUser = {
+      id: 100,
+      username: "hiepsale",
+      fullName: "Điều Hành Văn Phòng & Xưởng",
+      role: "DEPLOY_BOTH",
+      dept: "Phần I: Văn Phòng • Phần II: Xưởng SX"
+    };
   }
   if (typeof window !== "undefined") {
     window.currentUser = currentUser;
@@ -3613,26 +3606,22 @@ function applyUserRole(user) {
   // Nhóm 2: Xuong (Admin + Vũ)
   // Nhóm 3: Vanphong (Admin + Hiệp)
   // Nhóm 4: DuToanSale (Admin + Hiệp + Dũng)
+  // Bản Deploy Chuẩn 2 Phần (Phần I: Văn Phòng | Phần II: Xưởng Sản Xuất):
+  // Luôn giữ hiển thị rõ ràng menu 2 phần trừ khi người dùng chủ động bấm lọc riêng 1 phần
+  const savedDivMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "all";
   const roleGroups = document.querySelectorAll("[data-role-group]");
   roleGroups.forEach(el => {
     const grp = el.getAttribute("data-role-group");
-    if (user.role === "ADMIN") {
-      el.classList.remove("role-hidden");
-    } else if (user.role === "XUONG_VATTU") {
-      if (grp === "xuong") {
-        el.classList.remove("role-hidden");
-      } else {
-        el.classList.add("role-hidden");
-      }
-    } else if (user.role === "VANPHONG_SALE" || user.role === "DU_TOAN_SALE") {
-      if (grp === "vanphong") {
-        el.classList.remove("role-hidden");
-      } else {
-        el.classList.add("role-hidden");
-      }
-    } else {
-      // Quyền STAFF hoặc tài khoản hạn chế khác: ẩn toàn bộ nhóm phân hệ nhạy cảm
+    if (grp === "admin") {
       el.classList.add("role-hidden");
+      return;
+    }
+    if (savedDivMode === "vanphong") {
+      el.classList.toggle("role-hidden", grp !== "vanphong");
+    } else if (savedDivMode === "xuong") {
+      el.classList.toggle("role-hidden", grp !== "xuong");
+    } else {
+      el.classList.remove("role-hidden");
     }
   });
 
@@ -3655,7 +3644,7 @@ function applyUserRole(user) {
     // Giám đốc xem tab hiện tại hoặc Dashboard
     const activeTab = document.querySelector(".tab-pane.active");
     if (!activeTab || activeTab.classList.contains("role-hidden")) {
-      switchTabTo("tab-dashboard");
+      switchTabTo("tab-du-toan-du-an");
     }
   } else if (user.role === "STAFF") {
     setTimesheetDeptFilter("all");
@@ -7382,5 +7371,95 @@ window.approveZaloStagingItem = async function(itemId) {
     }
   } catch (e) {
     console.error("Lỗi duyệt chứng từ Zalo:", e);
+  }
+};
+
+
+// ==========================================================================
+// BỘ ĐIỀU HƯỚNG 2 PHẦN CHUẨN QUY TRÌNH TRÊN BẢN DEPLOY (I. VĂN PHÒNG | II. XƯỞNG)
+// ==========================================================================
+window.switchDeployDivision = function(mode) {
+  const validMode = (mode === "vanphong" || mode === "xuong") ? mode : "all";
+  try {
+    sessionStorage.setItem("PG_DEPLOY_DIVISION_MODE", validMode);
+  } catch (e) {}
+
+  // 1. Ẩn/hiện các mục trên Sidebar theo Phần I (vanphong) hoặc Phần II (xuong) hoặc Cả 2 (all)
+  document.querySelectorAll("[data-division]").forEach(el => {
+    const div = el.getAttribute("data-division");
+    if (validMode === "all") {
+      el.classList.remove("role-hidden");
+      el.style.display = "";
+    } else if (div === validMode) {
+      el.classList.remove("role-hidden");
+      el.style.display = "";
+    } else {
+      el.classList.add("role-hidden");
+      el.style.display = "none";
+    }
+  });
+
+  // 2. Cập nhật trạng thái active của nút bấm trên Sidebar & Topbar
+  document.querySelectorAll(".div-switch-btn, .top-div-pill").forEach(btn => {
+    const btnMode = btn.getAttribute("data-div-mode");
+    const isAct = (btnMode === validMode);
+    btn.classList.toggle("active", isAct);
+    if (btn.classList.contains("top-div-pill")) {
+      if (isAct) {
+        btn.style.background = validMode === "vanphong"
+          ? "rgba(168,85,247,0.28)"
+          : (validMode === "xuong" ? "rgba(6,182,212,0.28)" : "rgba(212,175,55,0.25)");
+        btn.style.border = "1px solid rgba(255,255,255,0.22)";
+      } else {
+        btn.style.background = "transparent";
+        btn.style.border = "none";
+      }
+    } else if (btn.classList.contains("div-switch-btn")) {
+      btn.style.opacity = isAct ? "1" : "0.65";
+      btn.style.transform = isAct ? "scale(1.02)" : "scale(1)";
+    }
+  });
+
+  // 3. Cập nhật nhãn phân hệ và tự động chuyển tới tab đầu tiên của Phần tương ứng
+  const sideName = document.getElementById("sidebarUserName");
+  const sideRole = document.getElementById("sidebarUserRole");
+  const topName = document.getElementById("topUserFullName");
+  const topRole = document.getElementById("topUserRoleName");
+
+  if (validMode === "vanphong") {
+    if (sideName) sideName.textContent = "PHẦN I: KHỐI VĂN PHÒNG";
+    if (sideRole) sideRole.textContent = "Hiệp & Dũng (Dự Toán • Hợp Đồng • Công Nợ)";
+    if (topName) topName.textContent = "Khối Văn Phòng (Hiệp & Dũng)";
+    if (topRole) topRole.textContent = "5 Nghiệp Vụ Kinh Doanh & Dự Toán";
+    if (typeof setTimesheetDeptFilter === "function") setTimesheetDeptFilter("vanphong");
+    const activeTab = document.querySelector(".tab-pane.active");
+    const vpTabs = ["tab-du-toan-du-an", "tab-van-phong-sale", "tab-phu-kien-sofa", "tab-cong-no-dong-tien", "tab-chi-phi-van-phong"];
+    if (!activeTab || !vpTabs.includes(activeTab.id)) {
+      if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
+    }
+    if (typeof showToast === "function") showToast("🏢 Đã chọn PHẦN I: KHỐI VĂN PHÒNG (Dự toán • Hợp đồng • Phụ kiện • Công nợ • Chi phí VP)");
+  } else if (validMode === "xuong") {
+    if (sideName) sideName.textContent = "PHẦN II: KHỐI XƯỞNG SX";
+    if (sideRole) sideRole.textContent = "Vũ, Thái & Đội Thợ (SX • Vật Tư • Chấm Công)";
+    if (topName) topName.textContent = "Khối Xưởng Sản Xuất (Vũ & Thái)";
+    if (topRole) topRole.textContent = "5 Nghiệp Vụ Kỹ Thuật, Vật Tư & Chấm Công";
+    if (typeof setTimesheetDeptFilter === "function") setTimesheetDeptFilter("xuong");
+    const activeTab = document.querySelector(".tab-pane.active");
+    const xuongTabs = ["tab-xuong-san-xuat", "tab-phe-duyet-vat-tu", "tab-vat-tu-cost", "tab-cham-cong-all", "tab-sop-quy-trinh"];
+    if (!activeTab || !xuongTabs.includes(activeTab.id)) {
+      if (typeof switchTabTo === "function") switchTabTo("tab-xuong-san-xuat");
+    }
+    if (typeof showToast === "function") showToast("🏭 Đã chọn PHẦN II: KHỐI XƯỞNG SẢN XUẤT (Tiến độ • Duyệt PO • Kho NCC • Chấm công • Định mức CNC)");
+  } else {
+    if (sideName) sideName.textContent = "Điều Hành Văn Phòng & Xưởng";
+    if (sideRole) sideRole.textContent = "Phần I: Văn Phòng (5) • Phần II: Xưởng (5)";
+    if (topName) topName.textContent = "Văn Phòng & Xưởng SX";
+    if (topRole) topRole.textContent = "Hiển Thị Đầy Đủ 2 Phân Hệ (10 Mục)";
+    if (typeof setTimesheetDeptFilter === "function") setTimesheetDeptFilter("all");
+    const activeTab = document.querySelector(".tab-pane.active");
+    if (!activeTab) {
+      if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
+    }
+    if (typeof showToast === "function") showToast("📋 Đang hiển thị đầy đủ CẢ 2 PHẦN: I. Khối Văn Phòng (5 mục) & II. Khối Xưởng Sản Xuất (5 mục)");
   }
 };
