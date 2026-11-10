@@ -102,28 +102,57 @@ def check_gate_4_print_isolation():
 
 
 def check_gate_6_local_server():
-    """Cổng 6: Kiểm tra Localhost:8080 (socket fast-check 0.05s tránh delay IPv6 trên Windows)"""
+    """Cổng 6: Kiểm tra Localhost:8080 (Tự động khởi chạy ngầm server.py nếu chưa bật & kiểm định HTTP 200 OK toàn bộ đường link)"""
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.settimeout(0.08)
+    sock.settimeout(0.1)
     is_open = (sock.connect_ex(("127.0.0.1", 8080)) == 0)
     sock.close()
 
-    if is_open:
+    if not is_open:
+        server_py = os.path.join(WEB_APP_DIR, "server.py")
+        if os.path.exists(server_py):
+            # Tự động bật ngầm server.py (Stealth 100%: CREATE_NO_WINDOW | DETACHED_PROCESS)
+            subprocess.Popen(
+                [sys.executable, server_py],
+                cwd=WEB_APP_DIR,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                creationflags=0x08000000 | 0x00000008
+            )
+            for _ in range(25):
+                time.sleep(0.1)
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                s.settimeout(0.1)
+                if s.connect_ex(("127.0.0.1", 8080)) == 0:
+                    is_open = True
+                    s.close()
+                    break
+                s.close()
+
+    if not is_open:
+        return False, "CRITICAL: Máy chủ Localhost:8080 KHÔNG phản hồi (CẤM đưa link chết cho Giám Đốc)!"
+
+    urls_to_verify = [
+        ("http://127.0.0.1:8080/", 50000),
+        ("http://127.0.0.1:8080/local_admin_vault/director_ccsc_full.html", 50000),
+        ("http://127.0.0.1:8080/deploy", 50000),
+        ("http://127.0.0.1:8080/web_app/index.html", 50000),
+        ("http://127.0.0.1:8080/director_app_full.js", 100000),
+        ("http://127.0.0.1:8080/app.js", 100000),
+        ("http://127.0.0.1:8080/styles.css", 20000),
+    ]
+    for url, min_bytes in urls_to_verify:
         try:
-            req = urllib.request.Request(LOCAL_URL, headers={'User-Agent': 'PGHome-SOP-Gate'})
-            with urllib.request.urlopen(req, timeout=1.0) as resp:
-                html = resp.read().decode('utf-8', errors='replace')
-                if resp.status == 200 and len(html) > 50000:
-                    return True, f"Localhost:8080 phản hồi HTTP 200 OK ({len(html):,} bytes)."
-                return False, f"Localhost:8080 phản hồi bất thường: status={resp.status}, len={len(html)}"
+            req = urllib.request.Request(url, headers={'User-Agent': 'PGHome-SOP-Gate'})
+            with urllib.request.urlopen(req, timeout=1.5) as resp:
+                body = resp.read()
+                if resp.status != 200 or len(body) < min_bytes:
+                    return False, f"Link lỗi {url}: status={resp.status}, size={len(body)} bytes (< {min_bytes})"
         except Exception as e:
-            return False, f"Lỗi đọc HTTP Localhost:8080: {e}"
-    else:
-        index_path = os.path.join(WEB_APP_DIR, "index.html")
-        app_path = os.path.join(WEB_APP_DIR, "app.js")
-        if os.path.exists(index_path) and os.path.getsize(index_path) > 50000 and os.path.exists(app_path):
-            return True, f"Bundle tĩnh index.html ({os.path.getsize(index_path):,} bytes) & app.js nguyên vẹn."
-        return False, "Không kết nối được Localhost:8080 và thiếu file bundle tĩnh."
+            return False, f"Link chết {url}: {e}"
+
+    return True, f"Tất cả {len(urls_to_verify)} đường dẫn Localhost:8080 (/ , /deploy, /local_admin_vault/..., /web_app/...) đều sống 100% HTTP 200 OK."
 
 
 def check_gate_7_permanent_cloud():

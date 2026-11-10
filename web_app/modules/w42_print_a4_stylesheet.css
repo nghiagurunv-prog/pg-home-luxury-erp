@@ -93,6 +93,9 @@
     background: transparent !important;
   }
 
+  tr, td, th, .signature-block, .red-stamp-box, .po-approval-stamp { break-inside: avoid !important; page-break-inside: avoid !important; }
+  thead { display: table-header-group !important; } tfoot { display: table-footer-group !important; }
+
   /* --------------------------------------------------------------------------
      2. TỰ ĐỘNG ẨN 100% MENU, THANH ĐIỀU HƯỚNG, NÚT THỪA & CÔNG CỤ TRÌNH DUYỆT
      -------------------------------------------------------------------------- */

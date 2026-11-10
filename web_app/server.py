@@ -40,6 +40,7 @@ ZALO_VERIFIED_ENTITIES_FILE = os.path.join(DATA_DIR, "zalo_verified_entities.jso
 ZALO_FILENOISE_INDEX_FILE = os.path.join(DATA_DIR, "zalo_filenoise_index.json")
 ZALO_LEVELDB_INTEL_FILE = os.path.join(DATA_DIR, "zalo_leveldb_intel.json")
 ZALO_SQLITE_CONTACTS_FILE = os.path.join(DATA_DIR, "zalo_sqlite_contacts_and_files.json")
+ZALO_LIVE_ATTENDANCE_FILE = os.path.join(DATA_DIR, "zalo_live_attendance.json")
 
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(BACKUP_DIR, exist_ok=True)
@@ -217,6 +218,13 @@ def _sync_to_sqlite_wal(action, state_data, patches=None):
                 );
             """)
             cursor.execute("""
+                CREATE TABLE IF NOT EXISTS kv_store (
+                    key TEXT PRIMARY KEY,
+                    value TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
+                );
+            """)
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS state_wal_log (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     action TEXT NOT NULL,
@@ -237,6 +245,14 @@ def _sync_to_sqlite_wal(action, state_data, patches=None):
             """)
             cursor.execute(
                 "INSERT OR REPLACE INTO app_state (id, state_json, updated_at) VALUES (1, ?, ?);",
+                (state_str, now_str)
+            )
+            cursor.execute(
+                "INSERT OR REPLACE INTO kv_store (key, value, updated_at) VALUES ('app_state', ?, ?);",
+                (state_str, now_str)
+            )
+            cursor.execute(
+                "INSERT OR REPLACE INTO kv_store (key, value, updated_at) VALUES ('live_state', ?, ?);",
                 (state_str, now_str)
             )
             cursor.execute(
@@ -300,7 +316,11 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, X-PG-Role, Authorization")
-        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        clean_p = unquote(getattr(self, "path", "").split("?", 1)[0].split("#", 1)[0]).lower()
+        if clean_p.endswith((".png", ".jpg", ".jpeg", ".webp", ".svg", ".woff2", ".ico")):
+            self.send_header("Cache-Control", "public, max-age=3600")
+        else:
+            self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
         super().end_headers()
 
     def do_OPTIONS(self):
@@ -311,10 +331,32 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
         clean_path = unquote(path.split("?", 1)[0].split("#", 1)[0])
         if clean_path.startswith("/data/"):
             rel = clean_path[len("/data/"):]
-            return os.path.join(DATA_DIR, rel.replace("/", os.sep))
+            rel = os.path.normpath(rel).lstrip("\\/")
+            if ".." in rel:
+                return os.path.join(WEB_DIR, "blocked_path")
+            return os.path.join(DATA_DIR, rel)
         if clean_path.startswith("/chung_tu/"):
             rel = clean_path[len("/chung_tu/"):]
-            return os.path.join(CHUNG_TU_DIR, rel.replace("/", os.sep))
+            rel = os.path.normpath(rel).lstrip("\\/")
+            if ".." in rel:
+                return os.path.join(WEB_DIR, "blocked_path")
+            return os.path.join(CHUNG_TU_DIR, rel)
+        if clean_path.startswith("/web_app/"):
+            rel = clean_path[len("/web_app/"):]
+            rel = os.path.normpath(rel).lstrip("\\/")
+            if ".." in rel:
+                return os.path.join(WEB_DIR, "blocked_path")
+            return os.path.join(WEB_DIR, rel)
+        if clean_path.startswith("/local_admin_vault/"):
+            rel = clean_path[len("/local_admin_vault/"):]
+            rel = os.path.normpath(rel).lstrip("\\/")
+            if ".." in rel:
+                return os.path.join(WEB_DIR, "blocked_path")
+            local_vault_dir = os.path.join(os.path.dirname(DATA_DIR), "local_admin_vault")
+            vault_candidate = os.path.join(local_vault_dir, rel)
+            if os.path.exists(vault_candidate):
+                return vault_candidate
+            return os.path.join(WEB_DIR, rel)
         return super().translate_path(path)
 
     def do_GET(self):
@@ -322,7 +364,7 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
         local_vault_dir = os.path.join(os.path.dirname(DATA_DIR), "local_admin_vault")
 
         # --- PHỤC VỤ BẢN NỘI BỘ MÁY TÍNH GIÁM ĐỐC & CCSC (127.0.0.1:8080 / localhost:8080) ---
-        if clean_path == "/api/local-ccsc-vault":
+        if clean_path in ("/api/local-ccsc-vault", "/local_admin_vault/ccsc_director_vault.json", "/ccsc_director_vault.json"):
             vault_json = os.path.join(local_vault_dir, "ccsc_director_vault.json")
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -334,7 +376,7 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(b'{"status":"empty"}')
             return
 
-        if clean_path == "/local-admin-assets/director_app_full.js":
+        if clean_path in ("/local-admin-assets/director_app_full.js", "/director_app_full.js", "/local_admin_vault/director_app_full.js"):
             full_js = os.path.join(local_vault_dir, "director_app_full.js")
             if os.path.exists(full_js):
                 self.send_response(200)
@@ -344,7 +386,7 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     self.wfile.write(jf.read())
                 return
 
-        if clean_path in ("/", "/index.html", "/admin", "/ccsc") and "edition=deploy" not in self.path:
+        if clean_path in ("/", "/index.html", "/admin", "/ccsc", "/director", "/local_admin_vault/director_ccsc_full.html") and "edition=deploy" not in self.path:
             director_html = os.path.join(local_vault_dir, "director_ccsc_full.html")
             if os.path.exists(director_html):
                 self.send_response(200)
@@ -354,7 +396,7 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     self.wfile.write(hf.read())
                 return
 
-        if clean_path in ("/deploy", "/vp-xuong"):
+        if clean_path in ("/deploy", "/vp-xuong", "/web_app", "/web_app/", "/web_app/index.html") or (clean_path == "/index.html" and "edition=deploy" in self.path):
             deploy_html = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html")
             if os.path.exists(deploy_html):
                 self.send_response(200)
@@ -376,18 +418,71 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 if clean_role and clean_role != "ADMIN":
                     is_admin = False
 
-            target_file = APP_STATE_FILE if os.path.exists(APP_STATE_FILE) else LIVE_STATE_FILE
+            state_data = None
+            candidate_files = [
+                os.path.join(DATA_DIR, "app_state_live.json"),
+                APP_STATE_FILE,
+                LIVE_STATE_FILE,
+                os.path.join(DATA_DIR, "app_state_live.json.bak"),
+                APP_STATE_FILE + ".bak",
+                LIVE_STATE_FILE + ".bak"
+            ]
+            for cf in candidate_files:
+                if os.path.exists(cf):
+                    try:
+                        loaded = _read_json_cached(cf, None)
+                        if loaded and isinstance(loaded, (dict, list)) and len(loaded) > 0:
+                            state_data = loaded
+                            break
+                    except Exception:
+                        pass
 
-            if not os.path.exists(target_file):
-                self.wfile.write(b'{"status":"empty"}')
-                return
+            # Tự động thử đọc từ bảng kv_store hoặc app_state trong SQLite WAL nếu file bị lỗi hoặc rỗng
+            if not state_data and os.path.exists(WAL_DB_FILE):
+                try:
+                    with sqlite3.connect(WAL_DB_FILE, timeout=3.0) as conn:
+                        cursor = conn.cursor()
+                        try:
+                            cursor.execute("SELECT value FROM kv_store WHERE key = 'app_state' OR key = 'live_state' ORDER BY updated_at DESC LIMIT 1")
+                            row = cursor.fetchone()
+                            if row and row[0]:
+                                parsed_val = json.loads(row[0])
+                                if parsed_val and isinstance(parsed_val, (dict, list)) and len(parsed_val) > 0:
+                                    state_data = parsed_val
+                        except Exception:
+                            pass
+                        if not state_data:
+                            try:
+                                cursor.execute("SELECT state_json FROM app_state WHERE id = 1 LIMIT 1")
+                                row = cursor.fetchone()
+                                if row and row[0]:
+                                    parsed_val = json.loads(row[0])
+                                    if parsed_val and isinstance(parsed_val, (dict, list)) and len(parsed_val) > 0:
+                                        state_data = parsed_val
+                            except Exception:
+                                pass
+                except Exception:
+                    pass
+
+            # Fallback đọc từ backup mới nhất
+            if not state_data and os.path.exists(BACKUP_DIR):
+                try:
+                    backups = sorted([f for f in os.listdir(BACKUP_DIR) if f.startswith("state_") and f.endswith(".json")])
+                    if backups:
+                        latest_bak = os.path.join(BACKUP_DIR, backups[-1])
+                        data = _read_json_cached(latest_bak, None)
+                        if data and isinstance(data, (dict, list)) and len(data) > 0:
+                            state_data = data
+                except Exception:
+                    pass
+
+            if not state_data:
+                state_data = {}
 
             if is_admin:
-                with open(target_file, "rb") as f:
-                    self.wfile.write(f.read())
+                self.wfile.write(json.dumps(state_data, ensure_ascii=False).encode("utf-8"))
             else:
-                raw_data = _read_json_cached(target_file, {})
-                filtered_data = _filter_sensitive_state(raw_data)
+                filtered_data = _filter_sensitive_state(state_data)
                 self.wfile.write(json.dumps(filtered_data, ensure_ascii=False).encode("utf-8"))
             return
 
@@ -439,6 +534,21 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 "v6_engine": v6_summary
             }
             self.wfile.write(json.dumps(resp, ensure_ascii=False).encode("utf-8"))
+            return
+
+        if clean_path == "/api/zalo-live-attendance":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            att_data = _read_json_cached(ZALO_LIVE_ATTENDANCE_FILE, None)
+            if not att_data or not isinstance(att_data, dict) or not att_data.get("xuong"):
+                try:
+                    import monitor_all_phu_gia_groups as zalo_monitor
+                    zalo_monitor.execute_scan(trigger_source="ATTENDANCE_ON_DEMAND")
+                    att_data = _read_json_cached(ZALO_LIVE_ATTENDANCE_FILE, {})
+                except Exception as exc:
+                    att_data = {"status": "error", "message": str(exc)}
+            self.wfile.write(json.dumps(att_data, ensure_ascii=False).encode("utf-8"))
             return
 
         if clean_path == "/api/zalo-v6-intel":
@@ -579,9 +689,30 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 length = int(self.headers.get("Content-Length", "0"))
                 raw_body = self.rfile.read(length)
                 parsed = json.loads(raw_body.decode("utf-8")) if raw_body else {}
+                state_data = parsed
 
-                _atomic_write_json(APP_STATE_FILE, parsed)
-                _atomic_write_json(LIVE_STATE_FILE, parsed)
+                if not state_data or (isinstance(state_data, dict) and len(state_data) == 0):
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "error", "message": "State data cannot be empty"}).encode("utf-8"))
+                    return
+
+                if os.path.exists(LIVE_STATE_FILE):
+                    try:
+                        shutil.copy2(LIVE_STATE_FILE, LIVE_STATE_FILE + ".bak")
+                        shutil.copy2(LIVE_STATE_FILE, os.path.join(DATA_DIR, "app_state_live.json.bak"))
+                    except Exception:
+                        pass
+                if os.path.exists(APP_STATE_FILE):
+                    try:
+                        shutil.copy2(APP_STATE_FILE, APP_STATE_FILE + ".bak")
+                    except Exception:
+                        pass
+
+                _atomic_write_json(APP_STATE_FILE, state_data)
+                _atomic_write_json(LIVE_STATE_FILE, state_data)
+                _atomic_write_json(os.path.join(DATA_DIR, "app_state_live.json"), state_data)
 
                 today_str = datetime.now().strftime("%Y-%m-%d")
                 backup_path = os.path.join(BACKUP_DIR, f"state_{today_str}.json")
@@ -597,7 +728,7 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     except OSError:
                         pass
 
-                _sync_to_sqlite_wal("SAVE_STATE", parsed)
+                _sync_to_sqlite_wal("SAVE_STATE", state_data)
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -724,6 +855,43 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                         ensure_ascii=False
                     ).encode("utf-8")
                 )
+            except Exception as exc:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": str(exc)}).encode("utf-8"))
+            return
+
+        if clean_path == "/api/zalo-sync-attendance":
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                raw_body = self.rfile.read(length) if length > 0 else b""
+                payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
+
+                import monitor_all_phu_gia_groups as zalo_monitor
+                if payload.get("override_staff_id"):
+                    existing = _read_json_cached(ZALO_LIVE_ATTENDANCE_FILE, {})
+                    if not isinstance(existing, dict):
+                        existing = {}
+                    ov = existing.setdefault("custom_overrides", {})
+                    sid = str(payload["override_staff_id"])
+                    ov.setdefault(sid, {})
+                    if "hc" in payload:
+                        ov[sid].setdefault("hc", {}).update(payload["hc"])
+                    if "ot" in payload:
+                        ov[sid].setdefault("ot", {}).update(payload["ot"])
+                    if "days" in payload:
+                        ov[sid].setdefault("days", {}).update(payload["days"])
+                    zalo_monitor.save_json(ZALO_LIVE_ATTENDANCE_FILE, existing)
+
+                zalo_monitor.execute_scan(trigger_source="ATTENDANCE_REALTIME_SYNC")
+                _ZALO_JSON_CACHE.pop(ZALO_LIVE_ATTENDANCE_FILE, None)
+                att_data = _read_json_cached(ZALO_LIVE_ATTENDANCE_FILE, {})
+
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps(att_data, ensure_ascii=False).encode("utf-8"))
             except Exception as exc:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json; charset=utf-8")

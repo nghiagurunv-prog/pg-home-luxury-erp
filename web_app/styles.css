@@ -71,6 +71,8 @@ body.light-theme {
   --border-color: #DED6C4;
   --gold-primary: #9A7432;
   --gold-main: #9A7432;
+  --gold-subtle: rgba(180, 130, 20, 0.14);
+  --gold-border: rgba(180, 130, 20, 0.42);
   --text-main: #1C1815;
   --text-muted: #5C5349;
   --text-dim: #8C8275;
@@ -388,6 +390,13 @@ body {
   gap: 20px;
   margin-bottom: 28px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 200;
+}
+
+@media print {
+  body { overflow: visible !important; }
+  .sidebar, .topbar, #deployDivisionSwitcher { display: none !important; }
 }
 
 .topbar-left {

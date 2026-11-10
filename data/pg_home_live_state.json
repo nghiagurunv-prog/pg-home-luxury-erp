@@ -178,221 +178,6 @@
       "isActual": false
     }
   ],
-  "xuongRecords": [
-    {
-      "id": 1,
-      "month": 8,
-      "client": "Cậu Chiến",
-      "address": "Hương Khê",
-      "saleRep": "Lưu Thị Thu Hương",
-      "contractVal": 154000000,
-      "solidVal": 16500000,
-      "woodVal": 137500000,
-      "pkVal": 0,
-      "pct": 1,
-      "actualXuong": 137500000,
-      "debt": 0,
-      "note": "Đã hoàn thành 100% (Bỏ gỗ thịt 16.5M cửa & bàn ghế tự nhiên)"
-    },
-    {
-      "id": 2,
-      "month": 8,
-      "client": "Thắm Minh",
-      "address": "Thạch Hưng",
-      "saleRep": "Lưu Thị Thu Hương",
-      "contractVal": 87430975,
-      "solidVal": 0,
-      "woodVal": 78590975,
-      "pkVal": 8840000,
-      "pct": 1,
-      "actualXuong": 78590975,
-      "debt": 0,
-      "note": "Đã hoàn thành 100% (Bỏ PK bán kèm 8.84M lãi gộp 30%)"
-    },
-    {
-      "id": 3,
-      "month": 8,
-      "client": "Chị Hiển",
-      "address": "Thạch Linh",
-      "saleRep": "Lưu Thị Thu Hương",
-      "contractVal": 129803651,
-      "solidVal": 0,
-      "woodVal": 129803651,
-      "pkVal": 0,
-      "pct": 0.2,
-      "actualXuong": 25960730.2,
-      "debt": 69803651,
-      "note": "Đợt 1 T8 (20%) ván HMR Thái Lan cốt xanh 388 Lam Giang"
-    },
-    {
-      "id": 4,
-      "month": 9,
-      "client": "Chị Hiển",
-      "address": "Thạch Linh",
-      "saleRep": "Lưu Thị Thu Hương",
-      "contractVal": 129803651,
-      "solidVal": 0,
-      "woodVal": 129803651,
-      "pkVal": 0,
-      "pct": 0.8,
-      "actualXuong": 103842920.8,
-      "debt": 69803651,
-      "note": "Lắp ráp hoàn thiện nốt 80% (Tổng VT 2 đợt 51.92M = đúng 40.0%)"
-    },
-    {
-      "id": 5,
-      "month": 9,
-      "client": "Chị Phượng",
-      "address": "Nghi Xuân",
-      "saleRep": "Tống Trần Hiệp",
-      "contractVal": 42462996,
-      "solidVal": 0,
-      "woodVal": 42462996,
-      "pkVal": 0,
-      "pct": 0.95,
-      "actualXuong": 40339846.2,
-      "debt": 6462996,
-      "note": "Hoàn thiện 95% (Sofa nỉ & bàn ăn 30M tính mảng đồ rời riêng)"
-    },
-    {
-      "id": 6,
-      "month": 9,
-      "client": "Anh Tuấn",
-      "address": "TP. Hà Tĩnh",
-      "saleRep": "Đường Việt Dũng",
-      "contractVal": 111800000,
-      "solidVal": 0,
-      "woodVal": 97000000,
-      "pkVal": 14800000,
-      "pct": 0.6,
-      "actualXuong": 58200000,
-      "debt": 61800000,
-      "note": "Tiến độ T9 60% (Bỏ PK Hafele 14.8M, VT T9: 23.28M = đúng 40.0%)"
-    },
-    {
-      "id": 7,
-      "month": 9,
-      "client": "Anh Hào",
-      "address": "Kỳ Anh",
-      "saleRep": "Đường Việt Dũng",
-      "contractVal": 100600000,
-      "solidVal": 0,
-      "woodVal": 85400000,
-      "pkVal": 15200000,
-      "pct": 1,
-      "actualXuong": 85400000,
-      "debt": 0,
-      "note": "Hoàn thành 100% (Bỏ PK Eurogold 15.2M, VT đủ 68 tấm ván Thái: 34.16M = đúng 40.0%)"
-    },
-    {
-      "id": 8,
-      "month": 10,
-      "client": "Chị Hoa (Biệt Thự Thạch Bàn)",
-      "address": "Thạch Bàn, Hà Tĩnh",
-      "saleRep": "Nguyễn Viết Nghĩa",
-      "contractVal": 145000000,
-      "solidVal": 22000000,
-      "woodVal": 115000000,
-      "pkVal": 30000000,
-      "pct": 0.4,
-      "actualXuong": 46000000,
-      "debt": 58000000,
-      "note": "Đã chốt KT: Bỏ Giường sồi 22M & PK Huge/Grandx 29.2M (VT GĐ1 49.4M)"
-    },
-    {
-      "id": 9,
-      "month": 10,
-      "client": "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
-      "address": "Đường 26/03, TP. Hà Tĩnh",
-      "saleRep": "Nguyễn Viết Nghĩa",
-      "contractVal": 234243218,
-      "solidVal": 0,
-      "woodVal": 219953218,
-      "pkVal": 14290000,
-      "pct": 0.95,
-      "actualXuong": 208955557,
-      "debt": 117121609,
-      "sourcePdf": "Bac_Phat_kich_thuoc_chot_final.pdf",
-      "note": "Hoàn thiện 95% (Mới thu 50% = 117.12M, còn phải thu 117.12M; Bỏ PK bếp Kadinax + Blum 14.29M)"
-    },
-    {
-      "id": 12,
-      "month": 10,
-      "client": "Nhà Anh Công (Hà Tĩnh)",
-      "address": "Hà Tĩnh",
-      "saleRep": "Tống Trần Hiệp",
-      "contractVal": 65000000,
-      "solidVal": 0,
-      "woodVal": 52000000,
-      "pkVal": 13000000,
-      "pct": 0.2,
-      "actualXuong": 10400000,
-      "debt": 35000000,
-      "note": "Vừa đặt ván HMR Thailan & nẹp Lam Giang 11.935M (ĐH DH29767)"
-    }
-  ],
-  "workers": [
-    {
-      "code": "NV01",
-      "name": "HÀ VIẾT HOÀ",
-      "skill": "Thợ Cả / Kết cấu",
-      "base": 13780000,
-      "days": 26,
-      "daySalary": 12720000,
-      "ot": 1093125,
-      "allowance": 0,
-      "advance": 0,
-      "total": 13813125
-    },
-    {
-      "code": "NV02",
-      "name": "LÊ VĂN THOAN",
-      "skill": "Thợ Chính / Dán cạnh",
-      "base": 11700000,
-      "days": 26,
-      "daySalary": 9225000,
-      "ot": 885938,
-      "allowance": 0,
-      "advance": 0,
-      "total": 10110938
-    },
-    {
-      "code": "NV03",
-      "name": "LƯƠNG THỂ HÀO",
-      "skill": "Thợ Chính / Lắp ráp",
-      "base": 11700000,
-      "days": 26,
-      "daySalary": 8325000,
-      "ot": 1096875,
-      "allowance": 0,
-      "advance": 0,
-      "total": 9421875
-    },
-    {
-      "code": "NV04",
-      "name": "TRẦN VĂN ANH",
-      "skill": "Thợ Lắp đặt / Hoàn thiện",
-      "base": 10400000,
-      "days": 26,
-      "daySalary": 7200000,
-      "ot": 600000,
-      "allowance": 0,
-      "advance": 0,
-      "total": 7800000
-    },
-    {
-      "code": "NV05",
-      "name": "LÊ TUẤN ANH",
-      "skill": "Thợ Phụ / Đóng gói",
-      "base": 7800000,
-      "days": 26,
-      "daySalary": 2850000,
-      "ot": 56250,
-      "allowance": 0,
-      "advance": 0,
-      "total": 2906250
-    }
-  ],
   "materials": [
     {
       "code": "VT-01",
@@ -721,7 +506,7 @@
     {
       "code": "VT-28",
       "name": "Ván HMR DWS 17 2M 201T cốt xanh chống ẩm Thái Lan + Cước VC (Đơn DH29930)",
-      "project": "Xưởng sản xuất PG Home (B80)",
+      "project": "Nhà Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
       "unit": "Tấm & Chuyến",
       "qty": 1,
       "price": 496000,
@@ -879,7 +664,7 @@
       "username": "vuvattu",
       "password": "123",
       "fullName": "Hoàng Công Vũ",
-      "phone": "0988.223.344",
+      "phone": "0911.006.880",
       "role": "XUONG_VATTU",
       "dept": "Kỹ thuật bóc tách vật tư / CNC",
       "createdAt": "2026-08-15",
@@ -961,17 +746,6 @@
       "dept": "Phòng Kinh Doanh & Sale dự án",
       "createdAt": "2026-08-01",
       "status": "ACTIVE"
-    },
-    {
-      "id": 11,
-      "username": "binh_pending",
-      "password": "123",
-      "fullName": "Trần Văn Bình",
-      "phone": "0966.889.900",
-      "role": "PENDING",
-      "dept": "Nhân viên mới ứng tuyển",
-      "createdAt": "2026-10-25",
-      "status": "PENDING"
     }
   ],
   "debts": [
@@ -1192,11 +966,112 @@
       "profit": 4287000
     }
   ],
+  "expenses": [
+    {
+      "id": "CP-01",
+      "name": "Tiền thuê Showroom & Văn Phòng",
+      "recipient": "Chủ nhà mặt bằng Showroom PG Home",
+      "budget": "6,000,000 đ/tháng",
+      "actual": 6000000,
+      "diff": "0 đ (Chuẩn)",
+      "note": "Hợp đồng thuê mặt bằng 2026",
+      "approver": "Ban Giám Đốc",
+      "month": 9
+    },
+    {
+      "id": "CP-02",
+      "name": "Tiền thuê Xưởng Sản Xuất",
+      "recipient": "Chủ đất xưởng sản xuất Phú Gia",
+      "budget": "7,000,000 đ/tháng",
+      "actual": 7000000,
+      "diff": "0 đ (Chuẩn)",
+      "note": "Hợp đồng thuê xưởng 2026",
+      "approver": "Ban Giám Đốc",
+      "month": 9
+    },
+    {
+      "id": "CP-03",
+      "name": "Lương Ban Lãnh Đạo (Giám Đốc Nghĩa)",
+      "recipient": "Nguyễn Viết Nghĩa",
+      "budget": "12,000,000 đ/tháng",
+      "actual": 12000000,
+      "diff": "0 đ (Chuẩn)",
+      "note": "Cố định chuẩn CCSC Col G",
+      "approver": "HĐQT / Ban GĐ",
+      "month": 9
+    },
+    {
+      "id": "CP-04",
+      "name": "Marketing & Ngân Sách Chạy Ads",
+      "recipient": "Nhân viên MKT & Quảng cáo Ads",
+      "budget": "12,000,000 đ/tháng",
+      "actual": 12000000,
+      "diff": "0 đ (Chuẩn)",
+      "note": "Lương 6M + Ngân sách Ads 6M (Col R)",
+      "approver": "Ban Giám Đốc",
+      "month": 9
+    },
+    {
+      "id": "CP-05",
+      "name": "Bảo hiểm xã hội 6 nhân sự",
+      "recipient": "Cơ quan BHXH TP Hà Tĩnh",
+      "budget": "6,600,000 đ/tháng",
+      "actual": 6600000,
+      "diff": "0 đ (Chuẩn)",
+      "note": "Đóng 1.1M/người cho 6 nòng cốt (Col BB)",
+      "approver": "Ban Giám Đốc",
+      "month": 9
+    },
+    {
+      "id": "CP-06",
+      "name": "Điện 3 pha sản xuất xưởng",
+      "recipient": "Điện lực TP Hà Tĩnh",
+      "budget": "1.5% Doanh số xưởng",
+      "actual": 4316742,
+      "diff": "Theo công tơ thực tế",
+      "note": "Tháng 8: 3,630,776 đ | Tháng 9: 4,316,742 đ",
+      "approver": "Quản lý xưởng Thái",
+      "month": 9
+    },
+    {
+      "id": "CP-07",
+      "name": "Xăng xe & bảo dưỡng xe tải",
+      "recipient": "Cây xăng & Garage xe tải xưởng",
+      "budget": "1.5% Doanh số xưởng",
+      "actual": 4316742,
+      "diff": "Theo hóa đơn định mức",
+      "note": "Tháng 8: 3,630,776 đ | Tháng 9: 4,316,742 đ",
+      "approver": "Quản lý xưởng Thái",
+      "month": 9
+    },
+    {
+      "id": "CP-08",
+      "name": "Hành chính nhân sự & VPP",
+      "recipient": "Văn phòng phẩm & Chi phí chung",
+      "budget": "4,500,000 đ/tháng",
+      "actual": 4500000,
+      "diff": "0 đ",
+      "note": "Tháng 8: 4M | Tháng 9: 4.5M (Col AG)",
+      "approver": "Hiệp Sale Admin",
+      "month": 9
+    },
+    {
+      "id": "CP-09",
+      "name": "Chi phí dự phòng & bảo hành",
+      "recipient": "Quỹ bảo hành công trình xưởng",
+      "budget": "1.0% Doanh số xưởng",
+      "actual": 2877828,
+      "diff": "Trích lập dự phòng",
+      "note": "Tháng 8: 2,420,517 đ | Tháng 9: 2,877,828 đ",
+      "approver": "Ban Giám Đốc",
+      "month": 9
+    }
+  ],
   "poList": [
     {
       "code": "PO-2026-0801",
       "date": "2026-08-25",
-      "requester": "Nguyễn Văn Vũ (Kỹ thuật xưởng)",
+      "requester": "Hoàng Công Vũ (0911.006.880 - Kỹ thuật xưởng)",
       "project": "Chị Hiển (Thạch Linh)",
       "contractVal": 129803651,
       "supplier": "Tổng Kho Lam Giang (Ván Thái Lan cốt xanh)",
@@ -1219,7 +1094,7 @@
     {
       "code": "PO-2026-0901",
       "date": "2026-09-06",
-      "requester": "Nguyễn Văn Vũ (Kỹ thuật xưởng)",
+      "requester": "Hoàng Công Vũ (0911.006.880 - Kỹ thuật xưởng)",
       "project": "Chị Phượng (Nghi Xuân)",
       "contractVal": 42462996,
       "supplier": "Phụ kiện Hafele & Gỗ Lam Giang",
@@ -1270,7 +1145,7 @@
     {
       "code": "PO-2026-0902",
       "date": "2026-09-14",
-      "requester": "Nguyễn Văn Vũ (Kỹ thuật xưởng)",
+      "requester": "Hoàng Công Vũ (0911.006.880 - Kỹ thuật xưởng)",
       "project": "Anh Tuấn (TP. Hà Tĩnh)",
       "contractVal": 111800000,
       "supplier": "Gỗ Melamine Cường Thịnh",
@@ -1338,8 +1213,8 @@
       "code": "PO-2026-1001",
       "date": "2026-10-30",
       "requester": "Hoàng Công Vũ (Kỹ thuật xưởng)",
-      "project": "Công trình 53 Trương Quốc Dụng (TP. Hà Tĩnh)",
-      "contractVal": 65000000,
+      "project": "Nhà Anh Nam (TP. Hà Tĩnh)",
+      "contractVal": 665280785,
       "supplier": "Công ty CP Kính An Toàn Việt Nhật (VSG)",
       "items": [
         {
@@ -1372,7 +1247,7 @@
         }
       ],
       "total": 2776800,
-      "costRate": 0.0427,
+      "costRate": 0.0042,
       "status": "APPROVED",
       "approvedBy": "Nguyễn Viết Nghĩa (Giám Đốc)",
       "approvedAt": "30/10/2026 16:30:00",
@@ -1429,8 +1304,8 @@
       "code": "PO-2026-1101",
       "date": "2026-11-04",
       "requester": "Hoàng Công Vũ (Kỹ thuật xưởng)",
-      "project": "Xưởng sản xuất PG Home (Đơn DH29930 B80)",
-      "contractVal": 0,
+      "project": "Nhà Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
+      "contractVal": 234243218,
       "supplier": "Tổng Kho Lam Giang",
       "items": [
         {
@@ -1449,7 +1324,7 @@
         }
       ],
       "total": 496000,
-      "costRate": 0,
+      "costRate": 0.0021,
       "status": "APPROVED",
       "approvedBy": "Nguyễn Viết Nghĩa (Giám Đốc)",
       "approvedAt": "04/11/2026 14:00",
@@ -1461,8 +1336,8 @@
       "code": "PO-2026-1102",
       "date": "2026-11-04",
       "requester": "Hoàng Công Vũ (Kỹ thuật xưởng)",
-      "project": "Bổ sung hệ thống đèn Led tủ nội thất",
-      "contractVal": 0,
+      "project": "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
+      "contractVal": 345412030,
       "supplier": "Phụ Kiện Quốc Tâm",
       "items": [
         {
@@ -1474,7 +1349,7 @@
         }
       ],
       "total": 170000,
-      "costRate": 0,
+      "costRate": 0.0005,
       "status": "APPROVED",
       "approvedBy": "Nguyễn Viết Nghĩa (Giám Đốc)",
       "approvedAt": "04/11/2026 11:30",
@@ -1486,8 +1361,8 @@
       "code": "PO-2026-1103",
       "date": "2026-11-05",
       "requester": "Lương Thể Hào (Thợ xưởng mua trực tiếp)",
-      "project": "Xưởng sản xuất lắp ráp",
-      "contractVal": 0,
+      "project": "Nhà Anh Công (Hà Tĩnh)",
+      "contractVal": 65000000,
       "supplier": "Phụ Kiện Quốc Tâm",
       "items": [
         {
@@ -1506,7 +1381,7 @@
         }
       ],
       "total": 80000,
-      "costRate": 0,
+      "costRate": 0.0012,
       "status": "APPROVED",
       "approvedBy": "Nguyễn Viết Nghĩa (Giám Đốc)",
       "approvedAt": "05/11/2026 10:15",
@@ -1698,7 +1573,7 @@
       "note": "Đệm tựa êm ái tăng độ sang trọng cho phòng ngủ Master biệt thự."
     }
   ],
-  "appVersion": "2026.11.06_v21_UI_50_OPTIMIZED",
+  "appVersion": "2026.11.10_v28_50_IMPROVEMENTS_PATCHED",
   "timesheets": {
     "8": {
       "month": 8,
@@ -3800,844 +3675,157 @@
       ]
     }
   },
-  "expenses": [
+  "xuongRecords": [
     {
-      "id": "CP-01",
-      "name": "Tiền thuê Showroom & Văn Phòng",
-      "recipient": "Chủ nhà mặt bằng Showroom PG Home",
-      "budget": "6,000,000 đ/tháng",
-      "actual": 6000000,
-      "diff": "0 đ (Chuẩn)",
-      "note": "Hợp đồng thuê mặt bằng 2026",
-      "approver": "Ban Giám Đốc",
-      "month": 9
+      "id": 1,
+      "month": 8,
+      "client": "Cậu Chiến",
+      "address": "Hương Khê",
+      "saleRep": "Lưu Thị Thu Hương",
+      "contractVal": 154000000,
+      "solidVal": 16500000,
+      "woodVal": 137500000,
+      "pkVal": 0,
+      "pct": 1,
+      "actualXuong": 137500000,
+      "debt": 0,
+      "note": "Đã hoàn thành 100% (Bỏ gỗ thịt 16.5M cửa & bàn ghế tự nhiên)"
     },
     {
-      "id": "CP-02",
-      "name": "Tiền thuê Xưởng Sản Xuất",
-      "recipient": "Chủ đất xưởng sản xuất Phú Gia",
-      "budget": "7,000,000 đ/tháng",
-      "actual": 7000000,
-      "diff": "0 đ (Chuẩn)",
-      "note": "Hợp đồng thuê xưởng 2026",
-      "approver": "Ban Giám Đốc",
-      "month": 9
+      "id": 2,
+      "month": 8,
+      "client": "Thắm Minh",
+      "address": "Thạch Hưng",
+      "saleRep": "Lưu Thị Thu Hương",
+      "contractVal": 87430975,
+      "solidVal": 0,
+      "woodVal": 78590975,
+      "pkVal": 8840000,
+      "pct": 1,
+      "actualXuong": 78590975,
+      "debt": 0,
+      "note": "Đã hoàn thành 100% (Bỏ PK bán kèm 8.84M lãi gộp 30%)"
     },
     {
-      "id": "CP-03",
-      "name": "Lương Ban Lãnh Đạo (Giám Đốc Nghĩa)",
-      "recipient": "Nguyễn Viết Nghĩa",
-      "budget": "12,000,000 đ/tháng",
-      "actual": 12000000,
-      "diff": "0 đ (Chuẩn)",
-      "note": "Cố định chuẩn CCSC Col G",
-      "approver": "HĐQT / Ban GĐ",
-      "month": 9
+      "id": 3,
+      "month": 8,
+      "client": "Chị Hiển",
+      "address": "Thạch Linh",
+      "saleRep": "Lưu Thị Thu Hương",
+      "contractVal": 129803651,
+      "solidVal": 0,
+      "woodVal": 129803651,
+      "pkVal": 0,
+      "pct": 0.2,
+      "actualXuong": 25960730.2,
+      "debt": 69803651,
+      "note": "Đợt 1 T8 (20%) ván HMR Thái Lan cốt xanh 388 Lam Giang"
     },
     {
-      "id": "CP-04",
-      "name": "Marketing & Ngân Sách Chạy Ads",
-      "recipient": "Nhân viên MKT & Quảng cáo Ads",
-      "budget": "12,000,000 đ/tháng",
-      "actual": 12000000,
-      "diff": "0 đ (Chuẩn)",
-      "note": "Lương 6M + Ngân sách Ads 6M (Col R)",
-      "approver": "Ban Giám Đốc",
-      "month": 9
+      "id": 4,
+      "month": 9,
+      "client": "Chị Hiển",
+      "address": "Thạch Linh",
+      "saleRep": "Lưu Thị Thu Hương",
+      "contractVal": 129803651,
+      "solidVal": 0,
+      "woodVal": 129803651,
+      "pkVal": 0,
+      "pct": 0.8,
+      "actualXuong": 103842920.8,
+      "debt": 69803651,
+      "note": "Lắp ráp hoàn thiện nốt 80% (Tổng VT 2 đợt 51.92M = đúng 40.0%)"
     },
     {
-      "id": "CP-05",
-      "name": "Bảo hiểm xã hội 6 nhân sự",
-      "recipient": "Cơ quan BHXH TP Hà Tĩnh",
-      "budget": "6,600,000 đ/tháng",
-      "actual": 6600000,
-      "diff": "0 đ (Chuẩn)",
-      "note": "Đóng 1.1M/người cho 6 nòng cốt (Col BB)",
-      "approver": "Ban Giám Đốc",
-      "month": 9
+      "id": 5,
+      "month": 9,
+      "client": "Chị Phượng",
+      "address": "Nghi Xuân",
+      "saleRep": "Tống Trần Hiệp",
+      "contractVal": 42462996,
+      "solidVal": 0,
+      "woodVal": 42462996,
+      "pkVal": 0,
+      "pct": 0.95,
+      "actualXuong": 40339846.2,
+      "debt": 6462996,
+      "note": "Hoàn thiện 95% (Sofa nỉ & bàn ăn 30M tính mảng đồ rời riêng)"
     },
     {
-      "id": "CP-06",
-      "name": "Điện 3 pha sản xuất xưởng",
-      "recipient": "Điện lực TP Hà Tĩnh",
-      "budget": "1.5% Doanh số xưởng",
-      "actual": 4316742,
-      "diff": "Theo công tơ thực tế",
-      "note": "Tháng 8: 3,630,776 đ | Tháng 9: 4,316,742 đ",
-      "approver": "Quản lý xưởng Thái",
-      "month": 9
+      "id": 6,
+      "month": 9,
+      "client": "Anh Tuấn",
+      "address": "TP. Hà Tĩnh",
+      "saleRep": "Đường Việt Dũng",
+      "contractVal": 111800000,
+      "solidVal": 0,
+      "woodVal": 97000000,
+      "pkVal": 14800000,
+      "pct": 0.6,
+      "actualXuong": 58200000,
+      "debt": 61800000,
+      "note": "Tiến độ T9 60% (Bỏ PK Hafele 14.8M, VT T9: 23.28M = đúng 40.0%)"
     },
     {
-      "id": "CP-07",
-      "name": "Xăng xe & bảo dưỡng xe tải",
-      "recipient": "Cây xăng & Garage xe tải xưởng",
-      "budget": "1.5% Doanh số xưởng",
-      "actual": 4316742,
-      "diff": "Theo hóa đơn định mức",
-      "note": "Tháng 8: 3,630,776 đ | Tháng 9: 4,316,742 đ",
-      "approver": "Quản lý xưởng Thái",
-      "month": 9
+      "id": 7,
+      "month": 9,
+      "client": "Anh Hào",
+      "address": "Kỳ Anh",
+      "saleRep": "Đường Việt Dũng",
+      "contractVal": 100600000,
+      "solidVal": 0,
+      "woodVal": 85400000,
+      "pkVal": 15200000,
+      "pct": 1,
+      "actualXuong": 85400000,
+      "debt": 0,
+      "note": "Hoàn thành 100% (Bỏ PK Eurogold 15.2M, VT đủ 68 tấm ván Thái: 34.16M = đúng 40.0%)"
     },
     {
-      "id": "CP-08",
-      "name": "Hành chính nhân sự & VPP",
-      "recipient": "Văn phòng phẩm & Chi phí chung",
-      "budget": "4,500,000 đ/tháng",
-      "actual": 4500000,
-      "diff": "0 đ",
-      "note": "Tháng 8: 4M | Tháng 9: 4.5M (Col AG)",
-      "approver": "Hiệp Sale Admin",
-      "month": 9
+      "id": 8,
+      "month": 10,
+      "client": "Chị Hoa (Biệt Thự Thạch Bàn)",
+      "address": "Thạch Bàn, Hà Tĩnh",
+      "saleRep": "Nguyễn Viết Nghĩa",
+      "contractVal": 145000000,
+      "solidVal": 22000000,
+      "woodVal": 115000000,
+      "pkVal": 30000000,
+      "pct": 0.4,
+      "actualXuong": 46000000,
+      "debt": 58000000,
+      "note": "Đã chốt KT: Bỏ Giường sồi 22M & PK Huge/Grandx 29.2M (VT GĐ1 49.4M)"
     },
     {
-      "id": "CP-09",
-      "name": "Chi phí dự phòng & bảo hành",
-      "recipient": "Quỹ bảo hành công trình xưởng",
-      "budget": "1.0% Doanh số xưởng",
-      "actual": 2877828,
-      "diff": "Trích lập dự phòng",
-      "note": "Tháng 8: 2,420,517 đ | Tháng 9: 2,877,828 đ",
-      "approver": "Ban Giám Đốc",
-      "month": 9
+      "id": 9,
+      "month": 10,
+      "client": "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
+      "address": "Đường 26/03, TP. Hà Tĩnh",
+      "saleRep": "Nguyễn Viết Nghĩa",
+      "contractVal": 234243218,
+      "solidVal": 0,
+      "woodVal": 219953218,
+      "pkVal": 14290000,
+      "pct": 0.95,
+      "actualXuong": 208955557,
+      "debt": 117121609,
+      "sourcePdf": "Bac_Phat_kich_thuoc_chot_final.pdf",
+      "note": "Hoàn thiện 95% (Mới thu 50% = 117.12M, còn phải thu 117.12M; Bỏ PK bếp Kadinax + Blum 14.29M)"
+    },
+    {
+      "id": 12,
+      "month": 10,
+      "client": "Nhà Anh Công (Hà Tĩnh)",
+      "address": "Hà Tĩnh",
+      "saleRep": "Tống Trần Hiệp",
+      "contractVal": 65000000,
+      "solidVal": 0,
+      "woodVal": 52000000,
+      "pkVal": 13000000,
+      "pct": 0.2,
+      "actualXuong": 10400000,
+      "debt": 35000000,
+      "note": "Vừa đặt ván HMR Thailan & nẹp Lam Giang 11.935M (ĐH DH29767)"
     }
-  ],
-  "zalo_stealth_v6": {
-    "engine_version": "v6.0-PROD",
-    "timestamp": "",
-    "scan_performance": {
-      "master_execution_time_ms": 0,
-      "live_scan_latency_ms": 568.2,
-      "idle_priority_hex": "0x00000040",
-      "cpu_load_percent": 0.28
-    },
-    "window_safety": {
-      "status": "100% CLEAN",
-      "mouse_keyboard_simulation": "ZERO",
-      "focus_hijack": "ZERO",
-      "active_windows_detected": 4,
-      "rescued_minimized_windows": 0,
-      "code_security_audit": "PASSED_100_PERCENT_CLEAN",
-      "security_checks": {}
-    },
-    "core_groups_monitoring": {
-      "monitored_groups_count": 16,
-      "total_media_indexed": 4877,
-      "groups": {
-        "g6116598459303638566": {
-          "file_count": 259,
-          "indexed_count": 268,
-          "name": "Tổng Kho Ván Lam Giang",
-          "category": "SUPPLIER_BOARD",
-          "debt_actual": 147492250,
-          "short_name": "Lam Giang",
-          "cached_files": 161,
-          "latest_attachment": {
-            "filename": "1793951632662_2845688247116683961_g6...",
-            "kind": "BANK_TRANSFER_VOUCHER",
-            "resolution": "159x300",
-            "size_kb": 9.5,
-            "sha256": "5fa02a6e6e68",
-            "mtime": "2026-11-06 15:49:35",
-            "description": "Ủy nhiệm chi / Chuyển khoản ngân hàng",
-            "sender_name": "Vũ",
-            "sender_uid": "2845688247116683961"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "paid_t11": 17334000,
-          "latest_senders_named": [
-            "Vũ",
-            "Ms Hoa Lamgiang",
-            "Nghĩa Guru",
-            "Kế Toán Gỗ Lamgiang"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "2845688247116683961",
-              "name": "Vũ",
-              "last_active": "2026-11-06 14:53:37",
-              "latest_file": "1793951617610_2845688247116683961_g6116598459303638566_t"
-            },
-            {
-              "uid": "8394467470054558651",
-              "name": "Ms Hoa Lamgiang",
-              "last_active": "2026-11-05 16:11:06",
-              "latest_file": "1793869866585_8394467470054558651_g6116598459303638566_n"
-            },
-            {
-              "uid": "2304805760907141944",
-              "name": "Nghĩa Guru",
-              "last_active": "2026-11-01 17:19:25",
-              "latest_file": "1793528365304_2304805760907141944_g6116598459303638566_t"
-            },
-            {
-              "uid": "8764761001694124902",
-              "name": "Kế Toán Gỗ Lamgiang",
-              "last_active": "2026-09-03 14:57:04",
-              "latest_file": "1788422224336_8764761001694124902_g6116598459303638566_n"
-            }
-          ],
-          "latest_sender": "Vũ"
-        },
-        "g495486322416346660": {
-          "file_count": 64,
-          "indexed_count": 65,
-          "name": "Phụ Kiện Quốc Tâm",
-          "category": "SUPPLIER_FITTING",
-          "debt_actual": 26170000,
-          "short_name": "Quốc Tâm",
-          "cached_files": 40,
-          "latest_attachment": {
-            "filename": "1793604543536_3689145980600156662_g4...",
-            "kind": "INVOICE_OR_DELIVERY_NOTE",
-            "resolution": "852x1025",
-            "sha256": "b61bbb1518eb",
-            "mtime": "2026-11-05 10:09:21",
-            "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
-            "sender_name": "Tâm Quốc",
-            "sender_uid": "3689145980600156662"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "paid_t11": 15000000,
-          "latest_senders_named": [
-            "Tâm Quốc",
-            "Hương",
-            "Vũ"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "3689145980600156662",
-              "name": "Tâm Quốc",
-              "last_active": "2026-11-02 14:29:03",
-              "latest_file": "1793604543536_3689145980600156662_g495486322416346660_n"
-            },
-            {
-              "uid": "1193413708528852811",
-              "name": "Hương",
-              "last_active": "2026-11-02 16:38:38",
-              "latest_file": "1793612318003_1193413708528852811_g495486322416346660_t"
-            },
-            {
-              "uid": "2845688247116683961",
-              "name": "Vũ",
-              "last_active": "2026-10-05 07:53:50",
-              "latest_file": "1791161630537_2845688247116683961_g495486322416346660_n"
-            }
-          ],
-          "latest_sender": "Tâm Quốc"
-        },
-        "g1792366938218612507": {
-          "file_count": 24,
-          "indexed_count": 20,
-          "name": "Xưởng Sản Xuất PG Home",
-          "category": "WORKSHOP_ATTENDANCE",
-          "short_name": "Xưởng Phú Gia",
-          "cached_files": 13,
-          "latest_attachment": {
-            "filename": "1793583284195_7617747951538527859_g1...",
-            "kind": "WORKSHOP_PHOTO_OR_LANDSCAPE",
-            "resolution": "1411x668",
-            "sha256": "6d127a79eeff",
-            "mtime": "2026-11-03 21:23:25",
-            "description": "Ảnh hiện trường xưởng / Lắp đặt công trình",
-            "sender_name": "Phú Gia Hiệp G",
-            "sender_uid": "7617747951538527859"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "latest_senders_named": [
-            "Phú Gia Hiệp G",
-            "Lương Thế Hào",
-            "Thái Pg Home 2026"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "7617747951538527859",
-              "name": "Phú Gia Hiệp G",
-              "last_active": "2026-11-02 08:34:44",
-              "latest_file": "1793583284195_7617747951538527859_g1792366938218612507_n"
-            },
-            {
-              "uid": "6568943636831859437",
-              "name": "Lương Thế Hào",
-              "last_active": "2026-10-19 17:14:57",
-              "latest_file": "1792404897338_6568943636831859437_g1792366938218612507_t"
-            },
-            {
-              "uid": "1266851172782015824",
-              "name": "Thái Pg Home 2026",
-              "last_active": "2026-10-05 09:48:42",
-              "latest_file": "1791168522968_1266851172782015824_g1792366938218612507_n"
-            }
-          ],
-          "latest_sender": "Phú Gia Hiệp G"
-        },
-        "VAN_PHONG": {
-          "name": "Văn Phòng Phú Gia Home LUXURY",
-          "short_name": "Văn Phòng PG Home",
-          "category": "OFFICE_ADMIN",
-          "indexed_count": 0,
-          "cached_files": 0,
-          "latest_attachment": null,
-          "status": "AUDITED_VERIFIED",
-          "latest_senders_named": [
-            "Hiệp Admin",
-            "Kim Dung Kế Toán"
-          ],
-          "latest_senders_detail": [],
-          "latest_sender": "Hiệp Admin"
-        },
-        "g8911374775675572335": {
-          "name": "Đặt hàng Phú Gia - NT (Gỗ NT Cầu Vượt)",
-          "short_name": "Gỗ NT Cầu Vượt",
-          "category": "SUPPLIER_BOARD",
-          "indexed_count": 80,
-          "cached_files": 50,
-          "latest_attachment": {
-            "filename": "1788741102609_9151780304348905157_g8...",
-            "kind": "INVOICE_OR_DELIVERY_NOTE",
-            "resolution": "606x850",
-            "sha256": "77eb0fc6ecd1",
-            "mtime": "2026-10-30 13:30:07",
-            "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
-            "sender_name": "Gỗ NT cầu vượt",
-            "sender_uid": "9151780304348905157"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "debt_actual": 82065300,
-          "latest_senders_named": [
-            "Gỗ NT cầu vượt",
-            "Vũ",
-            "Hương",
-            "Thái Pg Home 2026"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "9151780304348905157",
-              "name": "Gỗ NT cầu vượt",
-              "last_active": "2026-09-07 07:31:42",
-              "latest_file": "1788741102609_9151780304348905157_g8911374775675572335_n"
-            },
-            {
-              "uid": "2845688247116683961",
-              "name": "Vũ",
-              "last_active": "2026-10-22 11:51:08",
-              "latest_file": "1792644668590_2845688247116683961_g8911374775675572335_t"
-            },
-            {
-              "uid": "1193413708528852811",
-              "name": "Hương",
-              "last_active": "2026-10-02 13:46:51",
-              "latest_file": "1790923611775_1193413708528852811_g8911374775675572335_t"
-            },
-            {
-              "uid": "1266851172782015824",
-              "name": "Thái Pg Home 2026",
-              "last_active": "2026-10-20 16:57:35",
-              "latest_file": "1792490255621_1266851172782015824_g8911374775675572335_t"
-            }
-          ],
-          "latest_sender": "Gỗ NT cầu vượt"
-        },
-        "g6882545434220944455": {
-          "name": "KÍNH VIỆT NHẬT - PHÚ GIA LUXURY",
-          "short_name": "Kính Việt Nhật VSG",
-          "category": "SUPPLIER_GLASS",
-          "indexed_count": 27,
-          "cached_files": 18,
-          "latest_attachment": {
-            "filename": "1793798327211_2845688247116683961_g6...",
-            "kind": "BANK_TRANSFER_VOUCHER",
-            "resolution": "153x300",
-            "sha256": "495d97bdbc79",
-            "mtime": "2026-11-04 21:06:52",
-            "description": "Ủy nhiệm chi / Chuyển khoản ngân hàng",
-            "sender_name": "Vũ",
-            "sender_uid": "2845688247116683961"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "debt_actual": 0,
-          "latest_senders_named": [
-            "Thái Pg Home 2026",
-            "Vũ",
-            "Thoan Vsg"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "1266851172782015824",
-              "name": "Thái Pg Home 2026",
-              "last_active": "2026-10-30 15:46:02",
-              "latest_file": "1793349962661_1266851172782015824_g6882545434220944455_t"
-            },
-            {
-              "uid": "2845688247116683961",
-              "name": "Vũ",
-              "last_active": "2026-11-04 20:18:47",
-              "latest_file": "1793798327211_2845688247116683961_g6882545434220944455_t"
-            },
-            {
-              "uid": "5081626499618816833",
-              "name": "Thoan Vsg",
-              "last_active": "2026-10-30 13:59:51",
-              "latest_file": "1793343591260_5081626499618816833_g6882545434220944455_h"
-            }
-          ],
-          "latest_sender": "Thái Pg Home 2026"
-        },
-        "g4212121922329497264": {
-          "name": "Chốt màu, đặt hàng Cường Thịnh",
-          "short_name": "Ván Cường Thịnh",
-          "category": "SUPPLIER_BOARD",
-          "indexed_count": 8,
-          "cached_files": 6,
-          "latest_attachment": {
-            "filename": "1788407840327_1693710913334646341_g4...",
-            "kind": "INVOICE_OR_DELIVERY_NOTE",
-            "resolution": "1370x1759",
-            "sha256": "445fcc95ee2d",
-            "mtime": "2026-09-03 10:59:33",
-            "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
-            "sender_name": "Nga Melamine Cường Thịnh",
-            "sender_uid": "1693710913334646341"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "debt_actual": 11760000,
-          "latest_senders_named": [
-            "Nga Melamine Cường Thịnh"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "1693710913334646341",
-              "name": "Nga Melamine Cường Thịnh",
-              "last_active": "2026-09-03 10:57:20",
-              "latest_file": "1788407840327_1693710913334646341_g4212121922329497264_h"
-            }
-          ],
-          "latest_sender": "Nga Melamine Cường Thịnh"
-        },
-        "g727862869232620509": {
-          "name": "2026 Đặt hàng anh Cường Hà Nội",
-          "short_name": "Xưởng Cường Gỗ Thịt",
-          "category": "SUPPLIER_SOLID_WOOD",
-          "indexed_count": 7,
-          "cached_files": 4,
-          "latest_attachment": {
-            "filename": "1793236632827_1266851172782015824_g7...",
-            "kind": "WORKSHOP_PHOTO_OR_LANDSCAPE",
-            "resolution": "1023x565",
-            "sha256": "bbce4d735d2d",
-            "mtime": "2026-10-30 10:12:10",
-            "description": "Ảnh hiện trường xưởng / Lắp đặt công trình",
-            "sender_name": "Thái Pg Home 2026",
-            "sender_uid": "1266851172782015824"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "debt_actual": 0,
-          "latest_senders_named": [
-            "Thái Pg Home 2026"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "1266851172782015824",
-              "name": "Thái Pg Home 2026",
-              "last_active": "2026-10-29 08:17:12",
-              "latest_file": "1793236632827_1266851172782015824_g727862869232620509_n"
-            }
-          ],
-          "latest_sender": "Thái Pg Home 2026"
-        },
-        "g7737669618333682341": {
-          "name": "Đặt hàng Ceramic Hoàng Hà HY",
-          "short_name": "Hoàng Hà Ceramic",
-          "category": "SUPPLIER_STONE_PVC",
-          "indexed_count": 124,
-          "cached_files": 73,
-          "latest_attachment": {
-            "filename": "1793780762768_1193413708528852811_g7...",
-            "kind": "BANK_TRANSFER_VOUCHER",
-            "resolution": "159x300",
-            "size_kb": 9.0,
-            "sha256": "20eb4a85fe91",
-            "mtime": "2026-11-06 18:28:30",
-            "description": "Ủy nhiệm chi / Chuyển khoản ngân hàng",
-            "sender_name": "Hương",
-            "sender_uid": "1193413708528852811"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "debt_actual": 0,
-          "latest_senders_named": [
-            "Hương",
-            "Hoàng Hà Ceramic pvc",
-            "Vũ",
-            "Nghĩa Guru"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "1193413708528852811",
-              "name": "Hương",
-              "last_active": "2026-11-04 15:26:02",
-              "latest_file": "1793780762768_1193413708528852811_g7737669618333682341_t"
-            },
-            {
-              "uid": "5741420367230853737",
-              "name": "Hoàng Hà Ceramic pvc",
-              "last_active": "2026-09-28 07:40:23",
-              "latest_file": "1790556023774_5741420367230853737_g7737669618333682341_n"
-            },
-            {
-              "uid": "2845688247116683961",
-              "name": "Vũ",
-              "last_active": "2026-09-27 15:03:17",
-              "latest_file": "1790496197754_2845688247116683961_g7737669618333682341_n"
-            },
-            {
-              "uid": "2304805760907141944",
-              "name": "Nghĩa Guru",
-              "last_active": "2026-08-15 17:00:36",
-              "latest_file": "1786788036722_2304805760907141944_g7737669618333682341_t"
-            }
-          ],
-          "latest_sender": "Hương"
-        },
-        "g1224067034537716792": {
-          "name": "Đặt hàng gỗ thịt Đức Anh - Thu Hương HT",
-          "short_name": "Gỗ Thịt Đức Anh",
-          "category": "SUPPLIER_SOLID_WOOD",
-          "indexed_count": 0,
-          "cached_files": 0,
-          "latest_attachment": null,
-          "status": "ACTIVE_DELTA_V6",
-          "debt_actual": 0,
-          "latest_senders_named": [],
-          "latest_senders_detail": [],
-          "latest_sender": "Không rõ"
-        },
-        "g8487057108956790028": {
-          "name": "Đặt hàng Kính, Gương Phú Mỹ (Vinh)",
-          "short_name": "Kính Gương Phú Mỹ",
-          "category": "SUPPLIER_GLASS",
-          "indexed_count": 0,
-          "cached_files": 0,
-          "latest_attachment": null,
-          "status": "ACTIVE_DELTA_V6",
-          "debt_actual": 0,
-          "latest_senders_named": [],
-          "latest_senders_detail": [],
-          "latest_sender": "Không rõ"
-        },
-        "g8149011240458184403": {
-          "name": "Thiết kế nhà Bác Phát Đường 26/03",
-          "short_name": "Công Trình Bác Phát 26/03",
-          "category": "PROJECT_DESIGN",
-          "indexed_count": 240,
-          "cached_files": 158,
-          "latest_attachment": {
-            "filename": "1790046013448_4179747197760224197_g8...",
-            "kind": "WORKSHOP_PHOTO_OR_LANDSCAPE",
-            "resolution": "1404x760",
-            "size_kb": 167.4,
-            "sha256": "ac6db224d593",
-            "mtime": "2026-11-06 15:58:31",
-            "description": "Ảnh hiện trường xưởng / Lắp đặt công trình",
-            "sender_name": "Hà My",
-            "sender_uid": "4179747197760224197"
-          },
-          "status": "ACTIVE_DELTA_V6",
-          "latest_senders_named": [
-            "Nguyễn Đăng Phát",
-            "Thái Pg Home 2026",
-            "Hà My",
-            "Hương",
-            "Phú Gia Hiệp G"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "4548339759561286106",
-              "name": "Nguyễn Đăng Phát",
-              "last_active": "2026-09-18 14:28:28",
-              "latest_file": "1789716508107_4548339759561286106_g8149011240458184403_n"
-            },
-            {
-              "uid": "1266851172782015824",
-              "name": "Thái Pg Home 2026",
-              "last_active": "2026-09-21 09:03:04",
-              "latest_file": "1789956184734_1266851172782015824_g8149011240458184403_n"
-            },
-            {
-              "uid": "4179747197760224197",
-              "name": "Hà My",
-              "last_active": "2026-09-22 10:00:13",
-              "latest_file": "1790046013448_4179747197760224197_g8149011240458184403_n"
-            },
-            {
-              "uid": "1193413708528852811",
-              "name": "Hương",
-              "last_active": "2026-10-21 11:16:57",
-              "latest_file": "1792556217297_1193413708528852811_g8149011240458184403_t"
-            },
-            {
-              "uid": "7617747951538527859",
-              "name": "Phú Gia Hiệp G",
-              "last_active": "2026-10-15 09:46:19",
-              "latest_file": "1792032379962_7617747951538527859_g8149011240458184403_t"
-            }
-          ],
-          "latest_sender": "Nguyễn Đăng Phát"
-        },
-        "g3755853110317591515": {
-          "name": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
-          "short_name": "Xưởng & CT Trọng Điểm",
-          "category": "WORKSHOP_AND_SITE",
-          "indexed_count": 1453,
-          "cached_files": 852,
-          "latest_attachment": {
-            "filename": "1793961184941_1266851172782015824_g3...",
-            "kind": "INVOICE_OR_DELIVERY_NOTE",
-            "resolution": "225x301",
-            "size_kb": 29.1,
-            "sha256": "1b240fc3f355",
-            "mtime": "2026-11-06 18:28:44",
-            "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
-            "sender_name": "Thái Pg Home 2026",
-            "sender_uid": "1266851172782015824"
-          },
-          "latest_senders_named": [
-            "Thái Pg Home 2026",
-            "Phú Gia Hiệp G",
-            "Dũng PG Home",
-            "Vũ",
-            "Nghĩa Guru"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "1266851172782015824",
-              "name": "Thái Pg Home 2026",
-              "last_active": "2026-11-06 17:33:04",
-              "latest_file": "1793961184941_1266851172782015824_g3755853110317591515_h"
-            },
-            {
-              "uid": "7617747951538527859",
-              "name": "Phú Gia Hiệp G",
-              "last_active": "2026-11-06 14:30:32",
-              "latest_file": "1793950232776_7617747951538527859_g3755853110317591515_n"
-            },
-            {
-              "uid": "2589261669335747882",
-              "name": "Dũng PG Home",
-              "last_active": "2026-11-06 14:09:45",
-              "latest_file": "1793948985004_2589261669335747882_g3755853110317591515_t"
-            },
-            {
-              "uid": "2845688247116683961",
-              "name": "Vũ",
-              "last_active": "2026-11-06 07:35:33",
-              "latest_file": "1793925333717_2845688247116683961_g3755853110317591515_t"
-            },
-            {
-              "uid": "2304805760907141944",
-              "name": "Nghĩa Guru",
-              "last_active": "2026-11-05 08:58:14",
-              "latest_file": "1793843894488_2304805760907141944_g3755853110317591515_t"
-            }
-          ],
-          "latest_sender": "Thái Pg Home 2026",
-          "status": "ACTIVE_DELTA_V6"
-        },
-        "g795402381131416269": {
-          "name": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
-          "short_name": "Ghim Ưu Tiên #1",
-          "category": "PINNED_VIP_GROUP",
-          "indexed_count": 1263,
-          "cached_files": 351,
-          "latest_attachment": {
-            "filename": "1793964823417_2926353819792553048_g7...",
-            "kind": "BANK_TRANSFER_VOUCHER",
-            "resolution": "480x854",
-            "size_kb": 74.5,
-            "sha256": "20c8b6540bbb",
-            "mtime": "2026-11-06 18:36:27",
-            "description": "Ủy nhiệm chi / Chuyển khoản ngân hàng",
-            "sender_name": "Nguyễn Minh",
-            "sender_uid": "2926353819792553048"
-          },
-          "latest_senders_named": [
-            "Sonminhtu",
-            "Nguyễn Minh",
-            "Điền",
-            "Rub - Nội Thất Và Xây Dựng",
-            "Nguyễn Thu Hà"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "8637268198362425881",
-              "name": "Sonminhtu",
-              "last_active": "2026-11-06 11:50:13",
-              "latest_file": "1793940613022_8637268198362425881_g795402381131416269_t"
-            },
-            {
-              "uid": "2926353819792553048",
-              "name": "Nguyễn Minh",
-              "last_active": "2026-11-06 14:26:24",
-              "latest_file": "1793949984513_2926353819792553048_g795402381131416269_t"
-            },
-            {
-              "uid": "4580566312795680341",
-              "name": "Điền",
-              "last_active": "2026-11-05 11:01:09",
-              "latest_file": "1793851269065_4580566312795680341_g795402381131416269_t"
-            },
-            {
-              "uid": "8935609293065027013",
-              "name": "Rub - Nội Thất Và Xây Dựng",
-              "last_active": "2026-11-04 10:42:00",
-              "latest_file": "1793763720487_8935609293065027013_g795402381131416269_t"
-            },
-            {
-              "uid": "5818820097402048516",
-              "name": "Nguyễn Thu Hà",
-              "last_active": "2026-10-28 22:47:22",
-              "latest_file": "1793202442941_5818820097402048516_g795402381131416269_t"
-            }
-          ],
-          "latest_sender": "Sonminhtu",
-          "status": "ACTIVE_DELTA_V6"
-        },
-        "g1588348021340609742": {
-          "name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
-          "short_name": "Ghim Ưu Tiên #2",
-          "category": "PINNED_VIP_GROUP",
-          "indexed_count": 1199,
-          "cached_files": 686,
-          "latest_attachment": {
-            "filename": "1793890945172_3799628397263949438_g1...",
-            "kind": "INVOICE_OR_DELIVERY_NOTE",
-            "resolution": "225x301",
-            "size_kb": 25.9,
-            "sha256": "4614f3102911",
-            "mtime": "2026-11-06 00:37:28",
-            "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
-            "sender_name": "Hà Huy Trọng",
-            "sender_uid": "3799628397263949438"
-          },
-          "latest_senders_named": [
-            "Hà Huy Trọng",
-            "Phạm Nhật Duy",
-            "Đỉnh",
-            "Thanh Xuân",
-            "Lê Nguyên"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "3799628397263949438",
-              "name": "Hà Huy Trọng",
-              "last_active": "2026-11-05 22:02:25",
-              "latest_file": "1793890945172_3799628397263949438_g1588348021340609742_t"
-            },
-            {
-              "uid": "6820016113556978529",
-              "name": "Phạm Nhật Duy",
-              "last_active": "2026-11-04 22:43:22",
-              "latest_file": "1793807002708_6820016113556978529_g1588348021340609742_t"
-            },
-            {
-              "uid": "3995227806867900085",
-              "name": "Đỉnh",
-              "last_active": "2026-11-04 22:40:58",
-              "latest_file": "1793806858462_3995227806867900085_g1588348021340609742_t"
-            },
-            {
-              "uid": "2165331731385979592",
-              "name": "Thanh Xuân",
-              "last_active": "2026-11-05 19:43:58",
-              "latest_file": "1793882638011_2165331731385979592_g1588348021340609742_t"
-            },
-            {
-              "uid": "2774888202435142726",
-              "name": "Lê Nguyên",
-              "last_active": "2026-11-05 14:33:39",
-              "latest_file": "1793864019668_2774888202435142726_g1588348021340609742_t"
-            }
-          ],
-          "latest_sender": "Hà Huy Trọng",
-          "status": "ACTIVE_DELTA_V6"
-        },
-        "g2539027971900219384": {
-          "name": "Nhóm Đặt Hàng Vật Tư & UNC (Vũ - Chị Hương)",
-          "short_name": "Đặt Hàng & UNC Hương",
-          "category": "SUPPLIER_ORDER_UNC",
-          "indexed_count": 123,
-          "cached_files": 50,
-          "latest_attachment": {
-            "filename": "1793864320430_2845688247116683961_g2...",
-            "kind": "INVOICE_OR_DELIVERY_NOTE",
-            "resolution": "209x301",
-            "size_kb": 16.2,
-            "sha256": "20c88e136307",
-            "mtime": "2026-11-06 12:15:04",
-            "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
-            "sender_name": "Vũ",
-            "sender_uid": "2845688247116683961"
-          },
-          "latest_senders_named": [
-            "Vũ",
-            "Tô Thị Ngũ",
-            "Duong Tam",
-            "Hương"
-          ],
-          "latest_senders_detail": [
-            {
-              "uid": "2845688247116683961",
-              "name": "Vũ",
-              "last_active": "2026-11-05 14:38:40",
-              "latest_file": "1793864320430_2845688247116683961_g2539027971900219384_t"
-            },
-            {
-              "uid": "7455619656818200755",
-              "name": "Tô Thị Ngũ",
-              "last_active": "2026-11-02 15:40:40",
-              "latest_file": "1793608840968_7455619656818200755_g2539027971900219384_n"
-            },
-            {
-              "uid": "5055011331062292963",
-              "name": "Duong Tam",
-              "last_active": "2026-11-04 16:00:02",
-              "latest_file": "1793782802856_5055011331062292963_g2539027971900219384_t"
-            },
-            {
-              "uid": "1193413708528852811",
-              "name": "Hương",
-              "last_active": "2026-11-04 09:24:38",
-              "latest_file": "1793759078847_1193413708528852811_g2539027971900219384_t"
-            }
-          ],
-          "latest_sender": "Vũ",
-          "status": "ACTIVE_DELTA_V6"
-        }
-      }
-    },
-    "sqlite_ro_contacts": {
-      "total_contacts": 8406,
-      "mode": "SQLITE_READ_ONLY_WAL",
-      "lock_risk": "ZERO_LOCK"
-    },
-    "in_memory_file_decoder": {
-      "total_files_decoded": 459,
-      "method": "XOR 0x93 + Trailer Trimming",
-      "format_distribution": {}
-    },
-    "bac_phat_contract_sync": {
-      "contract_name": "Hợp đồng Biệt thự Bác Phát (Phúc Yên)",
-      "contract_date": "2026-03-26",
-      "contract_value": 220000000,
-      "advance_paid_50pct": 110000000,
-      "remaining_receivable_50pct": 110000000,
-      "status": "TIẾN ĐỘ THỰC HIỆN 50% - ĐÃ THU ĐỢT 1 110M",
-      "source_evidence": "zalo_v6_master_summary.json"
-    },
-    "storage_hubs_health": {
-      "overall_status": "HEALTHY",
-      "total_storage_gb": 11.89,
-      "hubs": {}
-    },
-    "three_tier_pricing_standard": {},
-    "supplier_debts_audited": {}
-  }
+  ]
 }

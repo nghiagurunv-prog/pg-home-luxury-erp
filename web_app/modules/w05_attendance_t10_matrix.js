@@ -155,6 +155,18 @@
           { name: "Tuấn Anh", cong_hc: 20.0, gio_ot: 22.0, don_gia_hc: 300000, don_gia_ot: 56250, tam_ung: 0, luong_hc: 6000000, luong_ot: 1237500, thuc_linh: 7237500, quy_nong_cot: 0 }
         ],
         totals: { cong_hc: 99.0, gio_ot: 160.0, thuc_linh: 54686250, quy_khoan: 68000000 }
+      },
+      T11: {
+        title: "Tháng 11/2026 (Lũy kế 01/11 - 10/11/2026)",
+        days_in_month: 30,
+        workers: [
+          { name: "Hà Viết Hòa", cong_hc: 9.0, gio_ot: 22.0, don_gia_hc: 530000, don_gia_ot: 99375, tam_ung: 0, luong_hc: 4770000, luong_ot: 2186250, thuc_linh: 6956250, quy_nong_cot: 180000 },
+          { name: "Lương Thể Hào", cong_hc: 10.0, gio_ot: 24.0, don_gia_hc: 450000, don_gia_ot: 84375, tam_ung: 0, luong_hc: 4500000, luong_ot: 2025000, thuc_linh: 6525000, quy_nong_cot: 200000 },
+          { name: "Trần Văn Anh", cong_hc: 9.0, gio_ot: 19.0, don_gia_hc: 400000, don_gia_ot: 75000, tam_ung: 0, luong_hc: 3600000, luong_ot: 1425000, thuc_linh: 5025000, quy_nong_cot: 0 },
+          { name: "Lê Văn Thoan", cong_hc: 8.0, gio_ot: 12.0, don_gia_hc: 450000, don_gia_ot: 84375, tam_ung: 0, luong_hc: 3600000, luong_ot: 1012500, thuc_linh: 4612500, quy_nong_cot: 0 },
+          { name: "Tuấn Anh", cong_hc: 7.5, gio_ot: 8.0, don_gia_hc: 300000, don_gia_ot: 56250, tam_ung: 0, luong_hc: 2250000, luong_ot: 450000, thuc_linh: 2700000, quy_nong_cot: 0 }
+        ],
+        totals: { cong_hc: 43.5, gio_ot: 85.0, thuc_linh: 25818750, quy_khoan: 28500000 }
       }
     }
   };
@@ -722,6 +734,7 @@
       <div class="pg-w05-filter-bar">
         <div class="pg-w05-filter-group">
           <span class="pg-w05-filter-label">Kỳ Chấm Công:</span>
+          <button class="pg-w05-btn-pill ${state.selectedMonth === 'T11' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T11')">⚡ Tháng 11/2026 (Lũy kế 10/11)</button>
           <button class="pg-w05-btn-pill ${state.selectedMonth === 'T10' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T10')">Tháng 10/2026 (Chi Tiết)</button>
           <button class="pg-w05-btn-pill ${state.selectedMonth === 'T09' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T09')">Tháng 09/2026</button>
           <button class="pg-w05-btn-pill ${state.selectedMonth === 'T08' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T08')">Tháng 08/2026</button>
@@ -762,7 +775,7 @@
     // Hiển thị nội dung theo Kỳ đã chọn
     if (state.selectedMonth === 'T10') {
       contentHtml += renderMonth10Matrix();
-    } else if (state.selectedMonth === 'T09' || state.selectedMonth === 'T08') {
+    } else if (state.selectedMonth === 'T11' || state.selectedMonth === 'T09' || state.selectedMonth === 'T08') {
       contentHtml += renderHistoryMonth(state.selectedMonth);
     } else {
       contentHtml += renderQuarterSummary();
