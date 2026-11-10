@@ -83,18 +83,14 @@
 
       <!-- Navigation Links (Phân 3 nhóm quyền rõ ràng: Giám Đốc, Vũ Vật Tư, Hiệp Văn Phòng) -->
             <!-- Navigation Links (5 Phân Hệ Tinh Gọn thực chiến & chuyên nghiệp) -->
-            <!-- BỘ CHUYỂN ĐỔI CÁCH LY TUYỆT ĐỐI 2 KHỐI: I. VĂN PHÒNG <-> II. XƯỞNG SẢN XUẤT -->
-      <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 8px 12px 6px; border-bottom: 1px solid rgba(212,175,55,0.18);">
-        <div style="font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; color: #D4AF37; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-          <span><i class="fa-solid fa-shield-halved"></i> CÁCH LY 2 KHỐI ĐỘC LẬP</span>
-          <span style="color:#10B981;font-size:0.60rem;">CHỐNG LỘ LỌT</span>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-          <button type="button" class="div-switch-btn active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.45); background: rgba(168,85,247,0.22); color: #F3E8FF; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
-            🏢 I. Khối Văn Phòng
+            <!-- BỘ CHUYỂN ĐỔI 2 PHÂN HỆ: I. VĂN PHÒNG <-> II. XƯỞNG SẢN XUẤT -->
+      <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 6px 10px; border-bottom: 1px solid rgba(212,175,55,0.16);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+          <button type="button" class="div-switch-btn active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 6px 6px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.45); background: rgba(168,85,247,0.22); color: #F3E8FF; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏢 I. Văn Phòng (6)
           </button>
-          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
-            🏭 II. Khối Xưởng SX
+          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 6px 6px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏭 II. Xưởng SX (5)
           </button>
         </div>
       </div>
@@ -226,12 +222,6 @@
             </button>
           </div>
 
-          <!-- 30 ZERO-ERROR GUARDRAILS COMMAND BUTTON -->
-          <button type="button" class="btn btn-sm" id="btnZeroErrorHubToggle" onclick="if(typeof window.toggleZeroErrorCommandCenter==='function'){window.toggleZeroErrorCommandCenter();}" style="background: rgba(16, 185, 129, 0.16); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.45); font-weight: 800; font-size: 0.74rem; display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 5px 11px; cursor: pointer;" title="Bấm để mở/đóng Bảng Chỉ Huy Đối Soát Cuối Ngày 30 Giây &amp; 30 Chốt Chặn Không Sai Sót">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span id="zeroErrorHubStatusText">30 Chốt Chặn: BẬT</span>
-          </button>
-
           <!-- ATELIER / SHOWROOM DUAL THEME SWITCHER (MINOTTI WALNUT <-> POLIFORM TRAVERTINE) -->
           <button type="button" class="atelier-mode-switch-btn" id="btnTopbarThemeSwitch" onclick="if(typeof window.toggleAtelierShowroomMode==='function'){window.toggleAtelierShowroomMode();}else{var b=document.getElementById('themeToggleBtn');if(b)b.click();}" title="Chuyển đổi không gian: Atelier Tối (Gỗ Óc Chó Minotti) / Showroom Sáng (Đá Travertine Poliform)">
             <i class="fa-solid fa-swatchbook" id="topbarThemeIcon"></i>
@@ -281,139 +271,6 @@
           </div>
         </div>
       </header>
-
-      <!-- LIVE TELEMETRY & STRATEGIC DEBT RIBBON -->
-      <div class="live-telemetry-ribbon" id="liveTelemetryRibbon">
-        <div class="ribbon-item">
-          <span class="status-dot pulsing green"></span>
-          <span class="ribbon-label">AI Stealth Daemon:</span>
-          <span class="ribbon-value text-green">ONLINE 24/7 (IDLE)</span>
-        </div>
-        <div class="ribbon-item">
-          <i class="fa-solid fa-boxes-stacked text-cyan"></i>
-          <span class="ribbon-label">Nợ Lam Giang:</span>
-          <span class="ribbon-value text-gold" id="ribbonDebtLamGiang">147.49M</span>
-        </div>
-        <div class="ribbon-item">
-          <i class="fa-solid fa-wrench text-purple"></i>
-          <span class="ribbon-label">Nợ Quốc Tâm:</span>
-          <span class="ribbon-value text-green" id="ribbonDebtQuocTam">26.17M (&lt;30M An Toàn)</span>
-        </div>
-        <div class="ribbon-item">
-          <i class="fa-solid fa-layer-group text-yellow"></i>
-          <span class="ribbon-label">Acrylic ALD:</span>
-          <span class="ribbon-value text-cyan">34.96M</span>
-        </div>
-        <div class="ribbon-item">
-          <i class="fa-solid fa-users text-gold"></i>
-          <span class="ribbon-label">Lương Thợ T10:</span>
-          <span class="ribbon-value text-gold">65.91M (7 Thợ Chuẩn)</span>
-        </div>
-        <div class="ribbon-item" style="cursor:pointer;" onclick="if(typeof window.toggleZeroErrorCommandCenter==='function'){window.toggleZeroErrorCommandCenter();}">
-          <i class="fa-solid fa-lock text-emerald"></i>
-          <span class="ribbon-label">Kỳ T1–T10:</span>
-          <span class="ribbon-value text-green" id="ribbonPeriodFreezeBadge">ĐÓNG BĂNG (PIN 0986)</span>
-        </div>
-      </div>
-
-      <!-- BẢNG CHỈ HUY ĐỐI SOÁT CUỐI NGÀY 30 GIÂY & TRUNG TÂM 30 CHỐT CHẶN KHÔNG SAI SÓT (#1 -> #30) -->
-      <div id="pgZeroErrorCommandCenter" class="card mb-4" style="display: none; margin: 12px 18px 0 18px; background: linear-gradient(135deg, rgba(15, 23, 42, 0.97), rgba(2, 6, 23, 0.98)); border: 1.5px solid rgba(16, 185, 129, 0.55); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);">
-        <div class="card-header" style="border-bottom: 1px solid rgba(16, 185, 129, 0.25); padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <h3 style="margin: 0; font-size: 1.05rem; color: #34D399;">
-                <i class="fa-solid fa-shield-cat"></i> BẢNG CHỈ HUY ĐỐI SOÁT CUỐI NGÀY 30 GIÂY &amp; HỆ THỐNG 30 CHỐT CHẶN KHÔNG SAI SÓT
-              </h3>
-              <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.45); font-weight: 800; font-size: 0.72rem;">
-                30/30 GUARDRAILS ACTIVE • ZERO-ERROR ERP v7.5
-              </span>
-            </div>
-            <p style="margin: 3px 0 0 0; font-size: 0.8rem; color: #94A3B8;">
-              Kiểm soát tự động 6 trụ cột vận hành: Đồng bộ Atomic • Báo giá ≤54% • Định mức CNC &amp; Phôi dư • Đối soát 3 lớp PO-HĐ-UNC • Chấm công GPS &amp; Lương • Khóa kỳ T1–T10
-            </p>
-          </div>
-          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-            <button type="button" class="btn btn-gold btn-sm" onclick="window.runZeroErrorFullDiagnostic()" style="font-weight: 800;">
-              <i class="fa-solid fa-stethoscope"></i> Rà Soát 30 Chốt Chặn Ngay
-            </button>
-            <button type="button" class="btn btn-outline btn-sm" onclick="window.promptDirectorPinUnlock()" title="Mở khóa tạm thời bằng mã PIN Giám Đốc">
-              <i class="fa-solid fa-key text-gold"></i> Mở Khóa PIN Giám Đốc
-            </button>
-            <button type="button" class="btn btn-outline btn-sm" onclick="window.toggleZeroErrorCommandCenter()">
-              <i class="fa-solid fa-xmark"></i> Đóng
-            </button>
-          </div>
-        </div>
-
-        <!-- 5 Ô CHỈ SỐ ĐỐI SOÁT CUỐI NGÀY 30 GIÂY (#30) -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.07);">
-          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 0.74rem; color: #94A3B8; font-weight: 700;">1. BIÊN COST DỰ TOÁN &amp; GỖ THỊT (#6-#10)</div>
-            <div style="font-size: 1.05rem; font-weight: 900; color: #34D399; margin-top: 3px;">Cost ≤ 54.0% • KHÓA CỨNG</div>
-            <div style="font-size: 0.72rem; color: #CBD5E1; margin-top: 2px;">Tự tách <code style="color:#FBBF24;">woodVal</code> vs <code style="color:#38BDF8;">pkVal</code> • Trừ cánh kính 0.40 tấm/m²</div>
-          </div>
-          <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 0.74rem; color: #94A3B8; font-weight: 700;">2. ĐỐI SOÁT 3 LỚP PO - HĐ - UNC (#11-#18)</div>
-            <div style="font-size: 1.05rem; font-weight: 900; color: #38BDF8; margin-top: 3px;" id="zeroErr3WaySummary">16 Nhóm • Khử trùng pHash 64-bit</div>
-            <div style="font-size: 0.72rem; color: #CBD5E1; margin-top: 2px;">Chặn chi tiền nếu thiếu PO Dấu Đỏ hoặc vượt trần 105%</div>
-          </div>
-          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 0.74rem; color: #94A3B8; font-weight: 700;">3. KHO PHÔI DƯ CNC &amp; QUOTA VÁN (#12-#14)</div>
-            <div style="font-size: 1.05rem; font-weight: 900; color: #FBBF24; margin-top: 3px;">14 Dải 500mm • 22 Dải 170mm</div>
-            <div style="font-size: 0.72rem; color: #CBD5E1; margin-top: 2px;">Ưu tiên trừ kho phôi dư trước khi Vũ tạo PO mới</div>
-          </div>
-          <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 0.74rem; color: #94A3B8; font-weight: 700;">4. CHẤM CÔNG, OT &amp; QUỸ HÒA - HÀO (#21-#25)</div>
-            <div style="font-size: 1.05rem; font-weight: 900; color: #C084FC; margin-top: 3px;">7 Thợ Chuẩn • Quỹ 20k/công</div>
-            <div style="font-size: 0.72rem; color: #CBD5E1; margin-top: 2px;">Trần tạm ứng ≤70% lương lũy kế • OT gắn mã công trình</div>
-          </div>
-          <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; padding: 10px 12px;">
-            <div style="font-size: 0.74rem; color: #94A3B8; font-weight: 700;">5. CÔNG NỢ CỌC 50% &amp; TẤT TOÁN 48H (#26-#29)</div>
-            <div style="font-size: 1.05rem; font-weight: 900; color: #FB7185; margin-top: 3px;">Chặn PO khi chưa thu Cọc Đợt 1</div>
-            <div style="font-size: 0.72rem; color: #CBD5E1; margin-top: 2px;">Báo động đỏ sau 48h lắp đặt • Đóng băng kỳ T1–T10</div>
-          </div>
-        </div>
-
-        <!-- DANH MỤC 6 NHÓM × 30 CHỐT CHẶN VẬN HÀNH CHUẨN HÓA -->
-        <div style="padding: 12px 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 10px; font-size: 0.78rem; color: #E2E8F0;">
-          <div style="background: rgba(255,255,255,0.02); padding: 9px 12px; border-radius: 6px; border-left: 3px solid #34D399;">
-            <strong style="color:#34D399;">I. Hạ Tầng, Phân Quyền &amp; Đồng Bộ (#1–#5):</strong><br>
-            • #1–#2: Tách vật lý Cloud (VP+Xưởng) vs Local CCSC.<br>
-            • #3: Khóa mã PIN Giám Đốc khi đóng Dấu Đỏ PO.<br>
-            • #4–#5: Đồng bộ Delta-Patch <code style="color:#38BDF8;">/api/patch-state</code> + Offline Outbox Queue.
-          </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 9px 12px; border-radius: 6px; border-left: 3px solid #FBBF24;">
-            <strong style="color:#FBBF24;">II. Dự Toán Sale &amp; Khóa Biên Cost ≤54% (#6–#10):</strong><br>
-            • #6: Tự tách <code style="color:#FBBF24;">woodVal</code> vs <code style="color:#38BDF8;">pkVal</code> (cấm tính nhầm 40%/15%).<br>
-            • #7–#9: Bắt buộc nhập chiều sâu <code style="color:#FBBF24;">R</code>, trừ cánh kính &amp; lỗ mở.<br>
-            • #10: Khóa cứng nút Xuất Báo Giá PDF nếu Cost &gt; 54%.
-          </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 9px 12px; border-radius: 6px; border-left: 3px solid #38BDF8;">
-            <strong style="color:#38BDF8;">III. Kỹ Thuật Xưởng, CNC &amp; Đặt Ván (#11–#15):</strong><br>
-            • #11–#12: Đóng dấu đỏ kèm mã SHA-256 &amp; trần PO ≤105% BOM.<br>
-            • #13: Bắt buộc đính kèm ảnh nghiệm thu trước khi đẩy doanh số.<br>
-            • #14–#15: Trừ kho phôi dư CNC (500mm/170mm) &amp; ngưỡng nợ QT 28M.
-          </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 9px 12px; border-radius: 6px; border-left: 3px solid #C084FC;">
-            <strong style="color:#C084FC;">IV. Zalo Stealth v6.0 &amp; Đối Soát 3 Lớp (#16–#20):</strong><br>
-            • #16–#17: Quét ngầm 16 nhóm + băm thị giác <code style="color:#C084FC;">dHash 64-bit</code> chống trùng.<br>
-            • #18: Tự động ghép 3 lớp <code style="color:#34D399;">[PO Dấu Đỏ + Hóa Đơn + UNC]</code>.<br>
-            • #19–#20: Định danh tên thật nhân sự/NCC &amp; tự đồng bộ Sổ Cái.
-          </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 9px 12px; border-radius: 6px; border-left: 3px solid #F97316;">
-            <strong style="color:#F97316;">V. Nhân Sự, Chấm Công &amp; Quỹ Lương (#21–#25):</strong><br>
-            • #21–#22: Chấm công GPS/Ảnh tại xưởng &amp; OT bắt buộc gắn dự án.<br>
-            • #23: Phím tắt <code style="color:#F97316;">Alt+B</code> làm mờ số nhạy cảm sau 3 phút.<br>
-            • #24–#25: Tạm ứng ≤70% lương lũy kế &amp; tự trích quỹ Hòa–Hào 20k/công.
-          </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 9px 12px; border-radius: 6px; border-left: 3px solid #FB7185;">
-            <strong style="color:#FB7185;">VI. Bảo Vệ Dòng Tiền &amp; Pháp Lý In Ấn (#26–#30):</strong><br>
-            • #26–#27: Chặn PO nếu chưa thu Cọc 50% &amp; báo động công nợ sau 48h.<br>
-            • #28: Đóng băng kỳ lịch sử T1–T10/2026 (chỉ mở bằng PIN Giám Đốc).<br>
-            • #29–#30: Cưỡng chế pháp lý chuẩn Phú Gia khi in A4 &amp; Bảng chỉ huy 30s.
-          </div>
-        </div>
-      </div>
 
       <!-- TAB 1: DASHBOARD EXECUTIVE (DÀNH CHO GIÁM ĐỐC) -->
       <!-- [STRIPPED FOR DEPLOY: #tab-dashboard (CCSC & Executive Dashboard) ISOLATED TO LOCAL PC 127.0.0.1:8080] -->

@@ -347,7 +347,7 @@ const DEFAULT_DATA = {
     {
         "code": "VT-28",
         "name": "Ván HMR DWS 17 2M 201T cốt xanh chống ẩm Thái Lan + Cước VC (Đơn DH29930)",
-        "project": "Xưởng sản xuất PG Home (B80)",
+        "project": "Nhà Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
         "unit": "Tấm & Chuyến",
         "qty": 1,
         "price": 496000,
@@ -509,8 +509,8 @@ const DEFAULT_DATA = {
       code: "PO-2026-1001",
       date: "2026-10-30",
       requester: "Hoàng Công Vũ (Kỹ thuật xưởng)",
-      project: "Công trình 53 Trương Quốc Dụng (TP. Hà Tĩnh)",
-      contractVal: 65000000,
+      project: "Nhà Anh Nam (TP. Hà Tĩnh)",
+      contractVal: 665280785,
       supplier: "Công ty CP Kính An Toàn Việt Nhật (VSG)",
       items: [
         { name: "Kính sóng trắng 8mm (temper) [560 x 1660 mm]", unit: "Tấm (0.90 m2)", qty: 1, price: 662160, total: 662160 },
@@ -519,7 +519,7 @@ const DEFAULT_DATA = {
         { name: "Kính sóng trắng 8mm (temper) [605 x 1660 mm]", unit: "Tấm (1.00 m2)", qty: 1, price: 738840, total: 738840 }
       ],
       total: 2776800,
-      costRate: 0.0427,
+      costRate: 0.0042,
       status: "APPROVED",
       approvedBy: "Nguyễn Viết Nghĩa (Giám Đốc)",
       approvedAt: "30/10/2026 16:30:00",
@@ -564,15 +564,15 @@ const DEFAULT_DATA = {
       code: "PO-2026-1101",
       date: "2026-11-04",
       requester: "Hoàng Công Vũ (Kỹ thuật xưởng)",
-      project: "Xưởng sản xuất PG Home (Đơn DH29930 B80)",
-      contractVal: 0,
+      project: "Nhà Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
+      contractVal: 234243218,
       supplier: "Tổng Kho Lam Giang",
       items: [
         { name: "Ván HMR DWS 17 2M 201T cốt xanh chống ẩm Thái Lan", unit: "Tấm", qty: 1, price: 446000, total: 446000 },
         { name: "Cước xe vận chuyển giao tận xưởng", unit: "Chuyến", qty: 1, price: 50000, total: 50000 }
       ],
       total: 496000,
-      costRate: 0,
+      costRate: 0.0021,
       status: "APPROVED",
       approvedBy: "Nguyễn Viết Nghĩa (Giám Đốc)",
       approvedAt: "04/11/2026 14:00",
@@ -584,14 +584,14 @@ const DEFAULT_DATA = {
       code: "PO-2026-1102",
       date: "2026-11-04",
       requester: "Hoàng Công Vũ (Kỹ thuật xưởng)",
-      project: "Bổ sung hệ thống đèn Led tủ nội thất",
-      contractVal: 0,
+      project: "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
+      contractVal: 345412030,
       supplier: "Phụ Kiện Quốc Tâm",
       items: [
         { name: "Dây Led 10 mét ánh sáng trung tính (Lét 10m TT)", unit: "Cuộn", qty: 2, price: 85000, total: 170000 }
       ],
       total: 170000,
-      costRate: 0,
+      costRate: 0.0005,
       status: "APPROVED",
       approvedBy: "Nguyễn Viết Nghĩa (Giám Đốc)",
       approvedAt: "04/11/2026 11:30",
@@ -603,15 +603,15 @@ const DEFAULT_DATA = {
       code: "PO-2026-1103",
       date: "2026-11-05",
       requester: "Lương Thể Hào (Thợ xưởng mua trực tiếp)",
-      project: "Xưởng sản xuất lắp ráp",
-      contractVal: 0,
+      project: "Nhà Anh Công (Hà Tĩnh)",
+      contractVal: 65000000,
       supplier: "Phụ Kiện Quốc Tâm",
       items: [
         { name: "Khóa sập tủ", unit: "Cái", qty: 5, price: 10000, total: 50000 },
         { name: "Ray nhôm 2m", unit: "Thanh", qty: 1, price: 30000, total: 30000 }
       ],
       total: 80000,
-      costRate: 0,
+      costRate: 0.0012,
       status: "APPROVED",
       approvedBy: "Nguyễn Viết Nghĩa (Giám Đốc)",
       approvedAt: "05/11/2026 10:15",
@@ -837,7 +837,7 @@ const DEFAULT_TIMESHEETS = {"8": {"month": 8, "days": [{"day": 1, "dow": "T2"}, 
 // Danh sách nhân sự đã nghỉ việc (thanh lọc vĩnh viễn khỏi toàn hệ thống)
 const RETIRED_STAFF = ["Phan Thanh Lực", "Phan Xuân Hùng", "Phan Văn Bình", "Dương Thị Tuyết"];
 
-const CURRENT_APP_VERSION = "2026.11.08_v23_PERMANENT_CLOUD_SOP";
+const CURRENT_APP_VERSION = "2026.11.10_v25_ZERO_MOCK_100_UI_OPTIMIZED";
 
 function loadState() {
   const saved = localStorage.getItem("PG_HOME_CCSC_APP_STATE");
@@ -2977,87 +2977,91 @@ function renderPOList(filter = "all") {
   }
 
   tbody.innerHTML = filtered.map(po => {
-    // Items preview
+    // Items preview gọn trên 1 dòng
     const itemsPreview = po.items && po.items.length > 0
-      ? `${po.items[0].name} (${po.items[0].qty} ${po.items[0].unit})${po.items.length > 1 ? ` <span class="badge info">+${po.items.length - 1} món khác</span>` : ''}`
+      ? `${po.items[0].name} (${po.items[0].qty} ${po.items[0].unit})${po.items.length > 1 ? ` <span class="badge info">+${po.items.length - 1}</span>` : ''}`
       : "Vật tư chi tiết";
 
     const isOverBudget = po.costRate > 0.40;
     const costRateBadge = isOverBudget
-      ? `<span class="badge warning" style="color: #EF4444;"><i class="fa-solid fa-triangle-exclamation"></i> ${fmtPct(po.costRate)} (Vượt 40%)</span>`
-      : `<span class="badge positive"><i class="fa-solid fa-check"></i> ${fmtPct(po.costRate)} (&le; 40%)</span>`;
+      ? `<span class="badge warning" style="color: #EF4444;"><i class="fa-solid fa-triangle-exclamation"></i> ${fmtPct(po.costRate)} (&gt;40%)</span>`
+      : `<span class="badge positive"><i class="fa-solid fa-check"></i> ${fmtPct(po.costRate)}</span>`;
 
-    // Status pill & Action buttons
+    // Status pill & Action buttons siêu gọn trên 1 dòng (không rớt dòng)
     let statusPill = "";
     let actionButtons = "";
 
     const isAdmin = currentUser && currentUser.role === "ADMIN";
 
     if (po.status === "PENDING") {
-      statusPill = `<span class="status-pill yellow" style="font-weight: 700;"><i class="fa-solid fa-hourglass-half"></i> ⏳ Chờ Giám Đốc Duyệt</span>`;
+      statusPill = `<span class="status-pill yellow" style="font-weight: 700; white-space: nowrap; padding: 3px 8px; font-size: 0.72rem;" title="Đang chờ Giám Đốc phê duyệt &amp; đóng dấu đỏ">⏳ Chờ duyệt</span>`;
       if (isAdmin) {
         actionButtons = `
-          <div class="btn-group" style="gap: 6px; flex-wrap: wrap;">
-            <button class="btn btn-sm btn-boss-approve" onclick="approvePO('${po.code}')" title="Giám Đốc duyệt & đóng con dấu mộc đỏ điện tử">
-              <i class="fa-solid fa-stamp"></i> Duyệt & Đóng Dấu Đỏ
+          <div class="btn-group pg-single-line-actions" style="gap: 4px; flex-wrap: nowrap; display: inline-flex; align-items: center;">
+            <button class="btn btn-sm btn-boss-approve" onclick="approvePO('${po.code}')" title="Giám Đốc duyệt &amp; đóng con dấu mộc đỏ điện tử">
+              <i class="fa-solid fa-stamp"></i> Duyệt
             </button>
             <button class="btn btn-sm btn-boss-reject" onclick="rejectPO('${po.code}')" title="Từ chối đề xuất của Vũ">
               <i class="fa-solid fa-ban"></i> Từ chối
             </button>
             <button class="btn btn-sm btn-outline" onclick="openViewPOModal('${po.code}')" title="Xem phiếu (Đang khóa in)">
-              <i class="fa-solid fa-eye"></i> Xem (🔒 Khóa in)
+              <i class="fa-solid fa-eye"></i> Xem
             </button>
-            ${po.sourceFile ? `<a href="${po.sourceFile}" target="_blank" class="btn btn-sm" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); text-decoration: none; padding: 4px 8px;" title="Mở xem file PDF gốc đính kèm"><i class="fa-solid fa-file-pdf"></i> File Gốc</a>` : ''}
+            ${po.sourceFile ? `<a href="${po.sourceFile}" target="_blank" class="btn btn-sm" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); text-decoration: none; padding: 3px 7px;" title="Mở xem file gốc đính kèm"><i class="fa-solid fa-file-pdf"></i> Gốc</a>` : ''}
           </div>
         `;
       } else {
         actionButtons = `
-          <div class="btn-group" style="gap: 6px;">
+          <div class="btn-group pg-single-line-actions" style="gap: 4px; flex-wrap: nowrap; display: inline-flex; align-items: center;">
             <button class="btn btn-sm btn-outline" onclick="openViewPOModal('${po.code}')" title="Xem phiếu đề xuất">
-              <i class="fa-solid fa-eye"></i> Xem Phiếu
+              <i class="fa-solid fa-eye"></i> Xem
             </button>
-            <span class="badge warning" style="font-size: 0.72rem;"><i class="fa-solid fa-lock"></i> Chờ GĐ Duyệt</span>
+            <span class="badge warning" style="font-size: 0.68rem; white-space: nowrap;"><i class="fa-solid fa-lock"></i> Khóa in</span>
           </div>
         `;
       }
     } else if (po.status === "APPROVED") {
-      statusPill = `<span class="status-pill green" style="font-weight: 700;"><i class="fa-solid fa-stamp"></i> ✅ Đã Phê Duyệt & Đóng Dấu Đỏ</span>`;
+      statusPill = `<span class="status-pill green" style="font-weight: 700; white-space: nowrap; padding: 3px 8px; font-size: 0.72rem;" title="Đã được Giám Đốc phê duyệt &amp; đóng dấu đỏ điện tử">✅ Đã đóng dấu đỏ</span>`;
       actionButtons = `
-        <div class="btn-group" style="gap: 5px; flex-wrap: wrap;">
+        <div class="btn-group pg-single-line-actions" style="gap: 4px; flex-wrap: nowrap; display: inline-flex; align-items: center;">
           <button class="btn btn-sm btn-gold" onclick="openViewPOModal('${po.code}')" title="In phiếu hoặc xuất file để Vũ gửi nhà cung cấp">
-            <i class="fa-solid fa-print"></i> In Phiếu
+            <i class="fa-solid fa-print"></i> In
           </button>
           <button class="btn btn-sm btn-outline" onclick="window.copyApprovedPOZaloMessage('${po.code}')" style="border-color: rgba(16,185,129,0.5); color: #34D399;" title="Copy tin nhắn đặt hàng chuẩn gửi vào nhóm Zalo NCC">
-            <i class="fa-solid fa-comment-dots"></i> Copy Zalo
+            <i class="fa-solid fa-comment-dots"></i> Zalo
           </button>
           <button class="btn btn-sm btn-outline" onclick="exportPOToCSV('${po.code}')" title="Tải file Excel đơn hàng">
             <i class="fa-solid fa-file-excel"></i> Excel
           </button>
-          ${po.sourceFile ? `<a href="${po.sourceFile}" target="_blank" class="btn btn-sm" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); text-decoration: none; padding: 4px 8px;" title="Mở xem ảnh/PDF hóa đơn gốc"><i class="fa-solid fa-camera"></i> Chứng Từ Gốc</a>` : ''}
+          ${po.sourceFile ? `<a href="${po.sourceFile}" target="_blank" class="btn btn-sm" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); text-decoration: none; padding: 3px 7px;" title="Mở xem ảnh/PDF hóa đơn gốc"><i class="fa-solid fa-camera"></i> Gốc</a>` : ''}
         </div>
       `;
     } else {
-      statusPill = `<span class="status-pill red" style="font-weight: 700;"><i class="fa-solid fa-circle-xmark"></i> ❌ Giám Đốc Từ Chối</span>`;
+      statusPill = `<span class="status-pill red" style="font-weight: 700; white-space: nowrap; padding: 3px 8px; font-size: 0.72rem;">❌ Đã từ chối</span>`;
       actionButtons = `
-        <div class="btn-group" style="gap: 6px;">
+        <div class="btn-group pg-single-line-actions" style="gap: 4px; flex-wrap: nowrap; display: inline-flex; align-items: center;">
           <button class="btn btn-sm btn-outline" onclick="openViewPOModal('${po.code}')">
-            <i class="fa-solid fa-eye"></i> Xem lý do
+            <i class="fa-solid fa-eye"></i> Lý do
           </button>
         </div>
       `;
     }
 
+    const reqClean = (po.requester || "").split('(')[0].trim();
+    const supClean = (po.supplier || "").split('(')[0].trim();
+    const fullItemsTitle = (po.items || []).map(i => `${i.name}: ${i.qty} ${i.unit}`).join(' | ').replace(/"/g, '&quot;');
+
     return `
-      <tr>
-        <td><strong>${po.code}</strong></td>
-        <td>${po.date}</td>
-        <td><i class="fa-solid fa-user-gear text-gold"></i> ${po.requester.split('(')[0].trim()}</td>
-        <td><strong>${po.project}</strong></td>
-        <td><span class="pill-legend teal">${po.supplier.split('(')[0].trim()}</span></td>
-        <td style="max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${(po.items || []).map(i => `${i.name}: ${i.qty} ${i.unit}`).join(' | ')}">${itemsPreview}</td>
-        <td style="font-weight: 700; color: var(--text-gold); font-size: 0.95rem;">${fmtCurr(po.total)}</td>
-        <td>${statusPill}</td>
-        <td>${actionButtons}</td>
+      <tr class="pg-compact-row">
+        <td style="white-space: nowrap;"><strong>${po.code}</strong></td>
+        <td style="white-space: nowrap;">${po.date}</td>
+        <td style="max-width: 125px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${(po.requester || '').replace(/"/g, '&quot;')}"><i class="fa-solid fa-user-gear text-gold"></i> ${reqClean}</td>
+        <td style="max-width: 175px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${(po.project || '').replace(/"/g, '&quot;')}"><strong>${po.project}</strong></td>
+        <td style="max-width: 155px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${(po.supplier || '').replace(/"/g, '&quot;')}"><span class="pill-legend teal">${supClean}</span></td>
+        <td style="max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${fullItemsTitle}">${itemsPreview}</td>
+        <td style="font-weight: 700; color: var(--text-gold); font-size: 0.88rem; white-space: nowrap; text-align: right;">${fmtCurr(po.total)}</td>
+        <td style="white-space: nowrap;">${statusPill}</td>
+        <td style="white-space: nowrap;">${actionButtons}</td>
       </tr>
     `;
   }).join("");
@@ -7457,7 +7461,7 @@ function handleCreateNewProject(event) {
     }
   }
 
-  const projCode = "DA-2026-" + String(Math.floor(Math.random() * 900) + 100);
+  const projCode = "CT-2026-" + String(Math.floor(Math.random() * 900) + 100);
   const nowStr = new Date().toLocaleDateString("vi-VN");
 
   const newProj = {
@@ -9922,6 +9926,100 @@ window.approveAllFilteredZaloItems = async function() {
     if (dupBar) dupBar.remove();
   }
 
+  // 10. HỆ THỐNG 100 CẢI TIẾN GIAO DIỆN & MẬT ĐỘ BẢNG DỮ LIỆU CHUẨN LOGIC (PG_UI_100_MASTER_OPTIMIZER_V12)
+  function apply100UiMasterOptimizations() {
+    // (A) Ẩn triệt để mọi khối mock/showcase/telemetry thừa từ các module phụ
+    const unwantedIds = [
+      "liveTelemetryRibbon",
+      "pgZeroErrorCommandCenter",
+      "btnZeroErrorHubToggle",
+      "atelierMaterialShowcase",
+      "pgModalToolTabsBar"
+    ];
+    unwantedIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = "none";
+    });
+
+    // (B) Tự động chuẩn hóa mọi bảng dữ liệu (.data-table):
+    //     - Gắn tooltip đầy đủ cho các ô bị cắt ngắn (...)
+    //     - Nhấp đúp (Double-Click) vào bất kỳ ô số liệu/mã nào để Copy nhanh vào Clipboard
+    //     - Tự động thu gọn bảng dài > 15 dòng kèm nút "Xem tất cả X dòng / Thu gọn 15 dòng"
+    document.querySelectorAll(".data-table").forEach((tbl, tblIdx) => {
+      // Gắn sự kiện ủy quyền 1 lần cho mỗi bảng
+      if (!tbl.dataset.pgUi100Bound) {
+        tbl.dataset.pgUi100Bound = "1";
+        tbl.addEventListener("mouseover", function(e) {
+          const cell = e.target.closest("td, th");
+          if (!cell) return;
+          if (!cell.getAttribute("title") && cell.scrollWidth > cell.clientWidth + 2) {
+            cell.setAttribute("title", (cell.textContent || "").trim().replace(/\s+/g, " "));
+          }
+        });
+        tbl.addEventListener("dblclick", function(e) {
+          const cell = e.target.closest("td");
+          if (!cell || e.target.closest("button, a, input, select")) return;
+          const txt = (cell.textContent || "").trim();
+          if (txt && navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(txt).then(() => {
+              if (typeof showToast === "function") showToast("📋 Đã copy nhanh: " + (txt.length > 40 ? txt.slice(0, 40) + "…" : txt));
+            }).catch(() => {});
+          }
+        });
+      }
+
+      // Kiểm soát chiều cao & phân trang thông minh cho bảng có quá nhiều dòng (> 15 dòng)
+      const tbody = tbl.querySelector("tbody");
+      if (!tbody) return;
+      const rows = Array.from(tbody.querySelectorAll(":scope > tr"));
+      const ROW_LIMIT = 15;
+      const wrapper = tbl.closest(".table-responsive") || tbl.parentElement;
+
+      if (rows.length > ROW_LIMIT && wrapper && !tbl.id.includes("Timesheet")) {
+        const isExpanded = tbl.dataset.pgExpanded === "1";
+        rows.forEach((r, idx) => {
+          if (!isExpanded && idx >= ROW_LIMIT) {
+            r.classList.add("pg-row-collapsed-by-limit");
+          } else {
+            r.classList.remove("pg-row-collapsed-by-limit");
+          }
+        });
+
+        let toggleBar = wrapper.parentElement ? wrapper.parentElement.querySelector(`.pg-table-expand-bar[data-for-tbl="${tblIdx}"]`) : null;
+        if (!toggleBar && wrapper.parentElement) {
+          toggleBar = document.createElement("div");
+          toggleBar.className = "pg-table-expand-bar";
+          toggleBar.setAttribute("data-for-tbl", String(tblIdx));
+          wrapper.insertAdjacentElement("afterend", toggleBar);
+        }
+        if (toggleBar) {
+          toggleBar.innerHTML = `
+            <span>Đang hiển thị <strong>${isExpanded ? rows.length : ROW_LIMIT} / ${rows.length}</strong> dòng dữ liệu</span>
+            <button type="button" class="pg-table-expand-btn">
+              ${isExpanded ? "🔼 Thu gọn 15 dòng đầu" : `🔽 Xem toàn bộ ${rows.length} dòng`}
+            </button>
+          `;
+          const btn = toggleBar.querySelector(".pg-table-expand-btn");
+          if (btn) {
+            btn.onclick = function() {
+              tbl.dataset.pgExpanded = (tbl.dataset.pgExpanded === "1") ? "0" : "1";
+              apply100UiMasterOptimizations();
+            };
+          }
+        }
+      } else if (wrapper && wrapper.parentElement) {
+        const oldBar = wrapper.parentElement.querySelector(`.pg-table-expand-bar[data-for-tbl="${tblIdx}"]`);
+        if (oldBar) oldBar.remove();
+      }
+    });
+
+    // (C) Chuẩn hóa các nhóm nút trong bảng (.data-table .btn-group) không bao giờ bị rớt thành nhiều dòng cao kều
+    document.querySelectorAll(".data-table .btn-group").forEach(grp => {
+      grp.style.flexWrap = "nowrap";
+      grp.style.gap = "4px";
+    });
+  }
+
   function runAllUiStreamliners() {
     enableStreamlinedBodyMode();
     streamlineTopbarButtons();
@@ -9932,6 +10030,18 @@ window.approveAllFilteredZaloItems = async function() {
     optimizeVatTuCostTab();
     optimizeMultiCardTabs();
     optimizeCreatePoModalTools();
+    apply100UiMasterOptimizations();
+  }
+
+  // Tự động chạy lại chuẩn hóa bảng gọn 1 dòng mỗi khi người dùng chuyển Tab hoặc lọc dữ liệu
+  const origRenderPOList = window.renderPOList;
+  if (typeof origRenderPOList === "function" && !origRenderPOList._pgWrapped) {
+    window.renderPOList = function() {
+      const res = origRenderPOList.apply(this, arguments);
+      setTimeout(apply100UiMasterOptimizations, 30);
+      return res;
+    };
+    window.renderPOList._pgWrapped = true;
   }
 
   if (document.readyState === "loading") {

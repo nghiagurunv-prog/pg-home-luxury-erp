@@ -121,18 +121,14 @@ def strip_html_section_by_id(html: str, section_id: str, comment_label: str) -> 
     return html[:start_idx] + f'<!-- [STRIPPED FOR DEPLOY: #{section_id} ({comment_label}) ISOLATED TO LOCAL PC 127.0.0.1:8080] -->' + html[pos:]
 
 
-DEPLOY_TWO_DIVISION_NAV_HTML = """      <!-- BỘ CHUYỂN ĐỔI CÁCH LY TUYỆT ĐỐI 2 KHỐI: I. VĂN PHÒNG <-> II. XƯỞNG SẢN XUẤT -->
-      <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 8px 12px 6px; border-bottom: 1px solid rgba(212,175,55,0.18);">
-        <div style="font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; color: #D4AF37; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-          <span><i class="fa-solid fa-shield-halved"></i> CÁCH LY 2 KHỐI ĐỘC LẬP</span>
-          <span style="color:#10B981;font-size:0.60rem;">CHỐNG LỘ LỌT</span>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-          <button type="button" class="div-switch-btn active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.45); background: rgba(168,85,247,0.22); color: #F3E8FF; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
-            🏢 I. Khối Văn Phòng
+DEPLOY_TWO_DIVISION_NAV_HTML = """      <!-- BỘ CHUYỂN ĐỔI 2 PHÂN HỆ: I. VĂN PHÒNG <-> II. XƯỞNG SẢN XUẤT -->
+      <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 6px 10px; border-bottom: 1px solid rgba(212,175,55,0.16);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+          <button type="button" class="div-switch-btn active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 6px 6px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.45); background: rgba(168,85,247,0.22); color: #F3E8FF; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏢 I. Văn Phòng (6)
           </button>
-          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
-            🏭 II. Khối Xưởng SX
+          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 6px 6px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏭 II. Xưởng SX (5)
           </button>
         </div>
       </div>
@@ -550,16 +546,22 @@ def build_deploy_js(source_js):
     division_switcher_js = """
 // ==========================================================================
 // BỘ ĐIỀU HƯỚNG & CÁCH LY TUYỆT ĐỐI 2 PHẦN TRÊN BẢN DEPLOY (I. VĂN PHÒNG | II. XƯỞNG)
+// Khóa cứng đồng bộ Sidebar <-> Nội dung chính, cấm hiển thị lệch Khối VP mà màn hình hiện tab Xưởng
 // ==========================================================================
+const PG_VP_EXCLUSIVE_TABS = ["tab-du-toan-du-an", "tab-van-phong-sale", "tab-phu-kien-sofa", "tab-cong-no-dong-tien", "tab-chi-phi-van-phong"];
+const PG_XUONG_EXCLUSIVE_TABS = ["tab-xuong-san-xuat", "tab-phe-duyet-vat-tu", "tab-vat-tu-cost", "tab-sop-quy-trinh"];
+
 window.openDivisionTimesheet = function(dept) {
   const targetDept = (dept === "xuong") ? "xuong" : "vanphong";
+  try {
+    sessionStorage.setItem("PG_DEPLOY_DIVISION_MODE", targetDept);
+  } catch (e) {}
   if (typeof switchTabTo === "function") {
     switchTabTo("tab-cham-cong-all");
   }
   if (typeof setTimesheetDeptFilter === "function") {
     setTimesheetDeptFilter(targetDept);
   }
-  // Khóa bộ nút lọc trên đầu trang Chấm công để Văn Phòng không bấm xem trộm Xưởng và ngược lại
   const btnAll = document.getElementById("btnFilterDeptAll");
   const btnXuong = document.getElementById("btnFilterDeptXuong");
   const btnVP = document.getElementById("btnFilterDeptVP");
@@ -568,7 +570,7 @@ window.openDivisionTimesheet = function(dept) {
   if (btnVP) btnVP.style.display = (targetDept === "vanphong") ? "inline-flex" : "none";
 };
 
-window.switchDeployDivision = function(mode) {
+window.switchDeployDivision = function(mode, skipAutoTabSwitch) {
   const validMode = (mode === "xuong") ? "xuong" : "vanphong";
   try {
     sessionStorage.setItem("PG_DEPLOY_DIVISION_MODE", validMode);
@@ -586,7 +588,26 @@ window.switchDeployDivision = function(mode) {
     }
   });
 
-  // 2. Cập nhật trạng thái active của nút bấm trên Sidebar & Topbar
+  // 2. Cưỡng chế khóa cứng các .tab-pane thuộc phân hệ đối lập để không bao giờ rò rỉ giao diện
+  const forbiddenTabs = (validMode === "vanphong") ? PG_XUONG_EXCLUSIVE_TABS : PG_VP_EXCLUSIVE_TABS;
+  forbiddenTabs.forEach(fid => {
+    const pane = document.getElementById(fid);
+    if (pane) {
+      pane.classList.remove("active");
+      pane.style.display = "none";
+    }
+  });
+  const allowedTabs = (validMode === "vanphong")
+    ? PG_VP_EXCLUSIVE_TABS.concat(["tab-cham-cong-all"])
+    : PG_XUONG_EXCLUSIVE_TABS.concat(["tab-cham-cong-all"]);
+  allowedTabs.forEach(aid => {
+    const pane = document.getElementById(aid);
+    if (pane) {
+      pane.style.display = "";
+    }
+  });
+
+  // 3. Cập nhật trạng thái active của nút bấm trên Sidebar & Topbar
   document.querySelectorAll(".div-switch-btn, .top-div-pill").forEach(btn => {
     const btnMode = btn.getAttribute("data-div-mode");
     const isAct = (btnMode === validMode);
@@ -607,7 +628,7 @@ window.switchDeployDivision = function(mode) {
     }
   });
 
-  // 3. Cập nhật nhãn phân hệ và tự động chuyển tới tab đầu tiên của Phần tương ứng
+  // 4. Cập nhật nhãn phân hệ và tự động chuyển tới tab đầu tiên của Phần tương ứng
   const sideName = document.getElementById("sidebarUserName");
   const sideRole = document.getElementById("sidebarUserRole");
   const topName = document.getElementById("topUserFullName");
@@ -626,12 +647,12 @@ window.switchDeployDivision = function(mode) {
     if (btnXuong) btnXuong.style.display = "none";
     if (btnVP) btnVP.style.display = "inline-flex";
 
-    const activeTab = document.querySelector(".tab-pane.active");
-    const vpTabs = ["tab-du-toan-du-an", "tab-van-phong-sale", "tab-phu-kien-sofa", "tab-cong-no-dong-tien", "tab-chi-phi-van-phong", "tab-cham-cong-all"];
-    if (!activeTab || !vpTabs.includes(activeTab.id)) {
-      if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
+    if (!skipAutoTabSwitch) {
+      const activeTab = document.querySelector(".tab-pane.active");
+      if (!activeTab || !allowedTabs.includes(activeTab.id)) {
+        if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
+      }
     }
-    if (typeof showToast === "function") showToast("🏢 Đang ở PHẦN I: KHỐI VĂN PHÒNG (Cách ly độc lập với Kho & Lương Xưởng)");
   } else {
     if (sideName) sideName.textContent = "PHẦN II: KHỐI XƯỞNG SX";
     if (sideRole) sideRole.textContent = "Vũ, Thái & Đội Thợ (SX • Vật Tư • Lương Thợ)";
@@ -645,14 +666,36 @@ window.switchDeployDivision = function(mode) {
     if (btnXuong) btnXuong.style.display = "inline-flex";
     if (btnVP) btnVP.style.display = "none";
 
-    const activeTab = document.querySelector(".tab-pane.active");
-    const xuongTabs = ["tab-xuong-san-xuat", "tab-phe-duyet-vat-tu", "tab-vat-tu-cost", "tab-cham-cong-all", "tab-sop-quy-trinh"];
-    if (!activeTab || !xuongTabs.includes(activeTab.id)) {
-      if (typeof switchTabTo === "function") switchTabTo("tab-xuong-san-xuat");
+    if (!skipAutoTabSwitch) {
+      const activeTab = document.querySelector(".tab-pane.active");
+      if (!activeTab || !allowedTabs.includes(activeTab.id)) {
+        if (typeof switchTabTo === "function") switchTabTo("tab-xuong-san-xuat");
+      }
     }
-    if (typeof showToast === "function") showToast("🏭 Đang ở PHẦN II: KHỐI XƯỞNG SẢN XUẤT (Cách ly độc lập với Hợp Đồng & Lương VP)");
   }
 };
+
+// Khóa đồng bộ 2 chiều: Bất kỳ lệnh nào gọi switchTabTo(tabId) đều tự động chuyển đúng Khối (VP hoặc Xưởng)
+(function enforceDivisionTabSync() {
+  const origSwitchTab = window.switchTabTo;
+  if (typeof origSwitchTab === "function" && !origSwitchTab._pgDivLocked) {
+    window.switchTabTo = function(tabId) {
+      if (PG_XUONG_EXCLUSIVE_TABS.includes(tabId)) {
+        const curMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "vanphong";
+        if (curMode !== "xuong") {
+          window.switchDeployDivision("xuong", true);
+        }
+      } else if (PG_VP_EXCLUSIVE_TABS.includes(tabId)) {
+        const curMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "vanphong";
+        if (curMode !== "vanphong") {
+          window.switchDeployDivision("vanphong", true);
+        }
+      }
+      return origSwitchTab.apply(this, arguments);
+    };
+    window.switchTabTo._pgDivLocked = true;
+  }
+})();
 """
 
     if "window.switchDeployDivision =" not in js:

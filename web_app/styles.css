@@ -5448,6 +5448,165 @@ body.pg-ui-streamlined .data-table td {
   border-color: #d4af37;
 }
 
+/* ==========================================================================
+   HỆ THỐNG 100 CẢI TIẾN GIAO DIỆN & MẬT ĐỘ BẢNG CHUẨN ERP (PG_UI_100_V12)
+   Giải quyết triệt để: Bảng quá to, dòng dài rớt 3-4 hàng choán diện tích,
+   banner/mock thừa, cuộn trang mất tiêu đề cột
+   ========================================================================== */
+
+/* 1. Ẩn triệt để mọi khối mock/ribbon/command center thừa */
+#liveTelemetryRibbon,
+#pgZeroErrorCommandCenter,
+#btnZeroErrorHubToggle,
+#atelierMaterialShowcase,
+#pgModalToolTabsBar {
+  display: none !important;
+}
+
+/* 2. Bảng dữ liệu (.data-table) chuẩn 1 dòng gọn gàng (Single-Line High-Density Rows) */
+body.pg-ui-streamlined .table-responsive {
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+body.pg-ui-streamlined .data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12.2px !important;
+}
+
+body.pg-ui-streamlined .data-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  background: #0f172a !important;
+  padding: 7px 9px !important;
+  font-size: 11px !important;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+body.pg-ui-streamlined .data-table tbody td {
+  padding: 5px 9px !important;
+  line-height: 1.28 !important;
+  vertical-align: middle !important;
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+/* Các cột ghi chú hoặc tên hạng mục trong bảng Dự toán vẫn cho phép hiển thị gọn tối đa 2 dòng nếu cần */
+body.pg-ui-streamlined #estItemsTable tbody td {
+  white-space: normal;
+  max-width: 320px;
+}
+
+/* 3. Nhóm nút thao tác trong bảng (.btn-group) luôn nằm gọn trên 1 hàng ngang */
+body.pg-ui-streamlined .data-table .btn-group,
+.pg-single-line-actions {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  gap: 4px !important;
+}
+
+body.pg-ui-streamlined .data-table .btn-sm {
+  padding: 3px 7px !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  border-radius: 5px !important;
+  white-space: nowrap !important;
+}
+
+body.pg-ui-streamlined .data-table .status-pill,
+body.pg-ui-streamlined .data-table .badge,
+body.pg-ui-streamlined .data-table .pill-legend {
+  padding: 2px 7px !important;
+  font-size: 11px !important;
+  white-space: nowrap !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 4. Thu gọn các dòng vượt quá giới hạn hiển thị 15 dòng mặc định */
+tr.pg-row-collapsed-by-limit {
+  display: none !important;
+}
+
+.pg-table-expand-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  margin-top: 6px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: #cbd5e1;
+}
+
+.pg-table-expand-btn {
+  background: rgba(212, 175, 55, 0.16);
+  color: #fde68a;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-size: 11.2px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pg-table-expand-btn:hover {
+  background: rgba(212, 175, 55, 0.28);
+}
+
+/* 5. Thu gọn khoảng đệm của Topbar, Main Content, Card và KPI Grid để nhường diện tích cho bảng chính */
+body.pg-ui-streamlined .topbar {
+  min-height: 46px !important;
+  padding: 4px 14px !important;
+}
+
+body.pg-ui-streamlined .main-content {
+  padding-top: 0 !important;
+}
+
+body.pg-ui-streamlined .tab-pane {
+  padding: 10px 14px !important;
+}
+
+body.pg-ui-streamlined .card {
+  margin-bottom: 10px !important;
+  padding: 10px 12px !important;
+  border-radius: 10px !important;
+}
+
+body.pg-ui-streamlined .card-header {
+  padding: 4px 0 8px 0 !important;
+  margin-bottom: 8px !important;
+}
+
+body.pg-ui-streamlined .stats-grid {
+  gap: 8px !important;
+  margin-bottom: 10px !important;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)) !important;
+}
+
+body.pg-ui-streamlined .stat-card {
+  padding: 8px 11px !important;
+  min-height: auto !important;
+}
+
+
 
 
 
