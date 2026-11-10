@@ -375,7 +375,7 @@ const DEFAULT_DATA = {
 
   users: [
         { id: 2, username: "thaixuong", password: "123", fullName: "Nguyễn Văn Thái", phone: "0915.223.456", role: "XUONG_VATTU", dept: "Quản lý xưởng sản xuất", createdAt: "2026-08-01", status: "ACTIVE" },
-    { id: 3, username: "vuvattu", password: "123", fullName: "Hoàng Công Vũ", phone: "0988.223.344", role: "XUONG_VATTU", dept: "Kỹ thuật bóc tách vật tư / CNC", createdAt: "2026-08-15", status: "ACTIVE" },
+    { id: 3, username: "vuvattu", password: "123", fullName: "Hoàng Công Vũ", phone: "0911.006.880", role: "XUONG_VATTU", dept: "Kỹ thuật bóc tách vật tư / CNC", createdAt: "2026-08-15", status: "ACTIVE" },
     { id: 4, username: "hoatho", password: "123", fullName: "Hà Viết Hòa", phone: "0972.334.556", role: "THO_XUONG", dept: "Thợ Cả / Kết cấu", createdAt: "2026-08-01", status: "ACTIVE" },
     { id: 5, username: "haotho", password: "123", fullName: "Lương Thể Hào", phone: "0983.445.667", role: "THO_XUONG", dept: "Thợ chính lắp ráp", createdAt: "2026-08-01", status: "ACTIVE" },
     { id: 6, username: "thoantho", password: "123", fullName: "Lê Văn Thoan", phone: "0976.556.778", role: "THO_XUONG", dept: "Thợ máy dán cạnh tự động & CNC", createdAt: "2026-08-01", status: "ACTIVE" },
@@ -433,7 +433,7 @@ const DEFAULT_DATA = {
     {
       code: "PO-2026-0801",
       date: "2026-08-25",
-      requester: "Nguyễn Văn Vũ (Kỹ thuật xưởng)",
+      requester: "Hoàng Công Vũ (0911.006.880 - Kỹ thuật xưởng)",
       project: "Chị Hiển (Thạch Linh)",
       contractVal: 129803651,
       supplier: "Tổng Kho Lam Giang (Ván Thái Lan cốt xanh)",
@@ -450,7 +450,7 @@ const DEFAULT_DATA = {
     {
       code: "PO-2026-0901",
       date: "2026-09-06",
-      requester: "Nguyễn Văn Vũ (Kỹ thuật xưởng)",
+      requester: "Hoàng Công Vũ (0911.006.880 - Kỹ thuật xưởng)",
       project: "Chị Phượng (Nghi Xuân)",
       contractVal: 42462996,
       supplier: "Phụ kiện Hafele & Gỗ Lam Giang",
@@ -471,7 +471,7 @@ const DEFAULT_DATA = {
     {
       code: "PO-2026-0902",
       date: "2026-09-14",
-      requester: "Nguyễn Văn Vũ (Kỹ thuật xưởng)",
+      requester: "Hoàng Công Vũ (0911.006.880 - Kỹ thuật xưởng)",
       project: "Anh Tuấn (TP. Hà Tĩnh)",
       contractVal: 111800000,
       supplier: "Gỗ Melamine Cường Thịnh",
@@ -1888,7 +1888,8 @@ function renderVatTu() {
       <td class="text-end font-monospace ${totalClass}">${totalFormatted}</td>
       <td><span class="text-light">${v.supplier}</span></td>
       <td class="text-center"><span class="status-pill ${statusPillClass}">${v.status}</span></td>
-      <td class="text-center">
+      <td class="text-center" style="white-space:nowrap;">
+        <button class="btn-action" style="padding:3px 7px; font-size:0.7rem; background:rgba(16,185,129,0.16); border:1px solid rgba(16,185,129,0.45); color:#6EE7B7; margin-right:4px;" title="Đưa thẳng món này vào Đơn Đặt Hàng của Vũ" onclick="window.addMaterialRowToPOFromCatalog && window.addMaterialRowToPOFromCatalog('${(v.name || '').replace(/'/g, "\\'")}', '${(v.unit || 'Tấm').replace(/'/g, "\\'")}', ${Number(v.price) || 0}, '${(v.supplier || '').replace(/'/g, "\\'")}')"><i class="fa-solid fa-cart-plus"></i> Đặt</button>
         <button class="btn-icon text-danger" title="Xóa" onclick="deleteVatTu('${v.code}')"><i class="fa-solid fa-trash"></i></button>
       </td>
     `;
@@ -2263,31 +2264,70 @@ function renderDynamicFormFields(type) {
   if (!container) return;
 
   if (type === "xuong_khoiluong") {
+    const projectOpts = (appState.contracts || []).map(c =>
+      `<option value="${c.client}" data-total="${c.total || 0}" data-wood="${c.wood || 0}" data-pk="${c.pk || 0}">${c.client} (HĐ: ${fmtCurr(c.total || 0)} | Gỗ CN: ${fmtCurr(c.wood || 0)})</option>`
+    ).join("");
     container.innerHTML = `
+      <div style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.28); border-radius:8px; padding:10px 12px; margin-bottom:12px;">
+        <label style="font-size:11px; color:#93c5fd; font-weight:700; display:block; margin-bottom:4px;">⚡ BƯỚC 1: CHỌN NHANH CÔNG TRÌNH TỪ HỢP ĐỒNG (TỰ ĐỘNG ĐIỀN A, B, C, D):</label>
+        <select id="inpXuongQuickPickContract" class="form-control" onchange="window.onModalXuongPickContract && window.onModalXuongPickContract(this)" style="border-color:rgba(59,130,246,0.4);">
+          <option value="">-- Chọn hợp đồng có sẵn để tự điền số liệu hoặc tự gõ bên dưới --</option>
+          ${projectOpts}
+        </select>
+      </div>
       <div class="form-row">
         <div class="form-group">
           <label>Tên Khách hàng / Công trình:</label>
-          <input type="text" id="inpXuongClient" class="form-control" required placeholder="VD: Nhà Chị Hoa">
+          <input type="text" id="inpXuongClient" class="form-control" required placeholder="VD: Nhà Chị Hoa - Cẩm Xuyên">
         </div>
         <div class="form-group">
           <label>Địa chỉ công trình:</label>
-          <input type="text" id="inpXuongAddress" class="form-control" placeholder="VD: TP. Hà Tĩnh">
+          <input type="text" id="inpXuongAddress" class="form-control" value="TP. Hà Tĩnh" placeholder="VD: TP. Hà Tĩnh">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Giá trị Hợp đồng (VNĐ):</label>
-          <input type="number" id="inpXuongHd" class="form-control" required placeholder="VD: 150000000">
+          <label>Tổng Giá trị Hợp đồng [A] (VNĐ):</label>
+          <input type="number" id="inpXuongHd" class="form-control" required placeholder="VD: 150000000" oninput="window.recalcModalXuongWood && window.recalcModalXuongWood()">
+          <div id="previewInpXuongHd" style="font-size:11px; color:#fbbf24; margin-top:3px; font-weight:700;">0 đ</div>
+          <div style="display:flex; gap:4px; margin-top:4px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpXuongHd', 10000000, 'recalcModalXuongWood')">+10Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpXuongHd', 50000000, 'recalcModalXuongWood')">+50Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpXuongHd', 100000000, 'recalcModalXuongWood')">+100Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.multiplyMoneyInput('inpXuongHd', 1000000, 'recalcModalXuongWood')">×1 Triệu</button>
+          </div>
         </div>
         <div class="form-group">
-          <label>Giá trị Xưởng Gỗ CN (VNĐ):</label>
-          <input type="number" id="inpXuongWood" class="form-control" required placeholder="VD: 130000000">
+          <label>Trừ Phụ kiện TM & Gỗ thịt [B+C] (Tách khỏi 40%/15%):</label>
+          <input type="number" id="inpXuongPkExcluded" class="form-control" value="0" placeholder="VD: 20000000" oninput="window.recalcModalXuongWood && window.recalcModalXuongWood()">
+          <div id="previewInpXuongPk" style="font-size:11px; color:#c084fc; margin-top:3px; font-weight:700;">0 đ (Tách riêng)</div>
+          <div style="display:flex; gap:4px; margin-top:4px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpXuongPkExcluded', 5000000, 'recalcModalXuongWood')">+5Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpXuongPkExcluded', 10000000, 'recalcModalXuongWood')">+10Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.multiplyMoneyInput('inpXuongPkExcluded', 1000000, 'recalcModalXuongWood')">×1 Triệu</button>
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Tỉ lệ hoàn thành trong tháng (%):</label>
-          <input type="number" id="inpXuongPct" class="form-control" min="0" max="100" value="100">
+          <label>Giá trị Xưởng Gỗ CN [D = A - B - C] (Cơ sở tính 40% VT & 15% Thợ):</label>
+          <input type="number" id="inpXuongWood" class="form-control" required placeholder="Tự động tính D = A - (B+C)" oninput="window.recalcModalXuongActual && window.recalcModalXuongActual()">
+          <div id="previewInpXuongWood" style="font-size:11px; color:#34d399; margin-top:3px; font-weight:800;">0 đ (Trần VT 40%: 0 đ | Quỹ Thợ 15%: 0 đ)</div>
+        </div>
+        <div class="form-group">
+          <label>Tỉ lệ hoàn thành nghiệm thu tháng (%):</label>
+          <input type="number" id="inpXuongPct" class="form-control" min="0" max="100" value="100" oninput="window.recalcModalXuongActual && window.recalcModalXuongActual()">
+          <div style="display:flex; gap:4px; margin-top:4px;">
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="document.getElementById('inpXuongPct').value=30; window.recalcModalXuongActual()">30% (Xong Phôi)</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="document.getElementById('inpXuongPct').value=70; window.recalcModalXuongActual()">70% (Đang Lắp)</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="document.getElementById('inpXuongPct').value=100; window.recalcModalXuongActual()">100% (Nghiệm Thu)</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Doanh số thực tính cho Xưởng kỳ này (= D × %):</label>
+          <input type="text" id="inpXuongActualPreview" class="form-control" readonly style="color:#6ee7b7; font-weight:800;" value="0 đ">
         </div>
         <div class="form-group">
           <label>Dư nợ khách hàng còn lại (VNĐ):</label>
@@ -2299,139 +2339,231 @@ function renderDynamicFormFields(type) {
     container.innerHTML = `
       <div class="form-row">
         <div class="form-group">
-          <label>Họ và tên Thợ:</label>
-          <input type="text" id="inpWorkerName" class="form-control" required placeholder="VD: Nguyễn Văn Thợ">
+          <label>Họ và tên Nhân sự / Thợ:</label>
+          <input type="text" id="inpWorkerName" class="form-control" required placeholder="VD: TRẦN VĂN HÒA">
         </div>
         <div class="form-group">
-          <label>Vị trí tay nghề:</label>
-          <input type="text" id="inpWorkerSkill" class="form-control" placeholder="VD: Thợ Chính">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Lương cơ bản (VNĐ):</label>
-          <input type="number" id="inpWorkerBase" class="form-control" required value="10000000">
-        </div>
-        <div class="form-group">
-          <label>Số ngày công làm trong tháng:</label>
-          <input type="number" id="inpWorkerDays" class="form-control" value="26">
+          <label>Vị trí tay nghề chuẩn:</label>
+          <select id="inpWorkerSkill" class="form-control" onchange="window.onModalWorkerSkillChange && window.onModalWorkerSkillChange(this.value)">
+            <option value="Thợ Chính Nòng Cốt (Gỗ CN)" data-base="13500000">Thợ Chính Nòng Cốt (13.500.000đ / 26 công)</option>
+            <option value="Vận Hành CNC & Ra Phôi" data-base="13000000">Vận Hành CNC & Ra Phôi (13.000.000đ / 26 công)</option>
+            <option value="Quản Đốc / Kỹ Thuật Xưởng" data-base="15000000">Quản Đốc / Kỹ Thuật Xưởng (15.000.000đ / 26 công)</option>
+            <option value="Thợ Phụ Lắp Đặt" data-base="8500000">Thợ Phụ Lắp Đặt (8.500.000đ / 26 công)</option>
+          </select>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Lương tăng ca / Phụ cấp (VNĐ):</label>
+          <label>Lương cơ bản 26 công (VNĐ):</label>
+          <input type="number" id="inpWorkerBase" class="form-control" required value="13500000">
+        </div>
+        <div class="form-group">
+          <label>Số ngày công thực tế trong tháng:</label>
+          <input type="number" id="inpWorkerDays" class="form-control" step="0.5" value="26">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Lương tăng ca OT / Phụ cấp (VNĐ):</label>
           <input type="number" id="inpWorkerAllow" class="form-control" value="1000000">
         </div>
         <div class="form-group">
-          <label>Tạm ứng (VNĐ):</label>
+          <label>Tạm ứng trong tháng (Chốt chặn ≤ 70% lương lũy kế):</label>
           <input type="number" id="inpWorkerAdvance" class="form-control" value="0">
         </div>
       </div>
     `;
   } else if (type === "xuong_vattu") {
+    const projOptions = Array.from(new Set([
+      ...(appState.xuongRecords || []).map(r => r.client),
+      ...(appState.contracts || []).map(c => c.client),
+      "Dự phòng xưởng"
+    ].filter(Boolean))).map(p => `<option value="${p}">${p}</option>`).join("");
+
     container.innerHTML = `
       <div class="form-row">
         <div class="form-group">
-          <label>Tên vật tư / Quy cách:</label>
-          <input type="text" id="inpVtName" class="form-control" required placeholder="VD: Ván MDF Melamine 17mm">
+          <label>1. Công trình sử dụng (Chọn chuẩn để gom thống kê):</label>
+          <select id="inpVtProject" class="form-control" required>
+            ${projOptions}
+          </select>
         </div>
         <div class="form-group">
-          <label>Công trình sử dụng:</label>
-          <input type="text" id="inpVtProject" class="form-control" required placeholder="VD: Nhà Chị Hiển">
+          <label>2. Nhóm danh mục vật tư chuẩn (8 Nhóm Thống Kê):</label>
+          <select id="inpVtCatCode" class="form-control" onchange="window.onModalVtCatChange && window.onModalVtCatChange(this.value)">
+            <option value="VAN_17MM">1. 🪵 Ván Cốt 17mm/18mm (Thái/AC/PL/WPB) [Khoán 40%]</option>
+            <option value="HAU_6MM">2. 📄 Ván Hậu 5.5mm/6mm đồng màu [Khoán 40%]</option>
+            <option value="CHI_NEP">3. 🎗️ Chỉ Dán Cạnh PVC (21×1 / 44×1) [Khoán 40%]</option>
+            <option value="CANH_ACRYLIC_KINH">4. ✨ Gia Công Cánh Acrylic / Cánh Kính [Khoán 40%]</option>
+            <option value="KINH_GUONG_DA">5. 🪞 Kính Bếp, Gương LED, Đá, Bọc Đệm [Khoán 40%]</option>
+            <option value="NGU_KIM_LED_KEO">6. 🔩 Ngũ Kim, Bản Lề, Ray, LED, Keo CNC [Khoán 40%]</option>
+            <option value="PHU_KIEN_BEP_TM">7. 🛋️ Phụ Kiện Bếp Inox / Thiết Bị / Sofa [Tách Khỏi 40%]</option>
+            <option value="GO_THIT_PU">8. 🌳 Gỗ Tự Nhiên (Gỗ Sồi) & Sơn PU [Tách Khỏi 40%]</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="flex:2;">
+          <label>3. Tên vật tư / Quy cách (Gõ mã 205T, 388, bản lề, ray... tự điền giá):</label>
+          <input type="text" id="inpVtName" class="form-control" list="dlCatalogItems" required placeholder="VD: Ván MDF Thái Lan 17mm phủ Melamine 2 mặt (Mã 205T)" oninput="window.onModalVtNameInput && window.onModalVtNameInput(this.value)">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Số lượng:</label>
-          <input type="number" id="inpVtQty" class="form-control" required value="10">
+          <label>4. Số lượng:</label>
+          <input type="number" id="inpVtQty" class="form-control" step="0.01" required value="10" oninput="window.recalcModalVtTotal && window.recalcModalVtTotal()">
         </div>
         <div class="form-group">
-          <label>Đơn vị tính:</label>
-          <input type="text" id="inpVtUnit" class="form-control" value="Tấm">
+          <label>5. Đơn vị tính chuẩn:</label>
+          <select id="inpVtUnit" class="form-control">
+            <option value="Tấm">Tấm (1220×2440)</option>
+            <option value="Cuộn">Cuộn</option>
+            <option value="m²">m²</option>
+            <option value="md">md</option>
+            <option value="Bộ">Bộ</option>
+            <option value="Cái">Cái</option>
+            <option value="Thanh">Thanh</option>
+            <option value="Cặp">Cặp</option>
+            <option value="Bao">Bao</option>
+            <option value="m³">m³</option>
+          </select>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Đơn giá (VNĐ):</label>
-          <input type="number" id="inpVtPrice" class="form-control" required value="420000">
+          <label>6. Đơn giá (VNĐ):</label>
+          <input type="number" id="inpVtPrice" class="form-control" required value="470000" oninput="window.recalcModalVtTotal && window.recalcModalVtTotal()">
         </div>
         <div class="form-group">
-          <label>Nhà cung cấp:</label>
-          <input type="text" id="inpVtSupplier" class="form-control" value="An Cường Hà Tĩnh">
+          <label>7. Nhà cung cấp chuẩn:</label>
+          <input type="text" id="inpVtSupplier" class="form-control" list="dlSuppliers" value="Tổng Kho Lam Giang">
         </div>
+      </div>
+      <div style="background:rgba(16,185,129,0.09); border:1px solid rgba(16,185,129,0.3); border-radius:8px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:12px; color:#a7f3d0;">Tổng thành tiền tự động (<span id="inpVtBucketBadge" style="font-weight:800; color:#34d399;">🪵 Khoán Xưởng 40%</span>):</span>
+        <strong id="inpVtTotalPreview" style="font-size:15px; color:#34d399;">4.700.000 đ</strong>
       </div>
     `;
   } else if (type === "vp_hopdong") {
     container.innerHTML = `
       <div class="form-row">
         <div class="form-group">
-          <label>Tên Khách hàng:</label>
-          <input type="text" id="inpHdClient" class="form-control" required placeholder="VD: Anh Nam">
+          <label>Tên Khách hàng / Công trình:</label>
+          <input type="text" id="inpHdClient" class="form-control" required placeholder="VD: Anh Nam - Vinhomes">
         </div>
         <div class="form-group">
-          <label>Nhân viên phụ trách:</label>
-          <select id="inpHdRep" class="form-control">
-            <option value="Tống Trần Hiệp">Tống Trần Hiệp (Sale Admin - 5%)</option>
-            <option value="Đường Việt Dũng">Đường Việt Dũng (BPKD)</option>
-                                    <option value="Lưu Thị Thu Hương">Lưu Thị Thu Hương (Ban GĐ)</option>
+          <label>Nhân viên phụ trách (Tự tính % hoa hồng):</label>
+          <select id="inpHdRep" class="form-control" onchange="window.recalcModalHopDong && window.recalcModalHopDong()">
+            <option value="Tống Trần Hiệp">Tống Trần Hiệp (Sale Admin - 5.0% trên Gỗ CN)</option>
+            <option value="Đường Việt Dũng">Đường Việt Dũng (BPKD - 3.5% trên Gỗ CN)</option>
+            <option value="Lưu Thị Thu Hương">Lưu Thị Thu Hương (Ban Giám Đốc)</option>
           </select>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Tổng giá trị HĐ (VNĐ):</label>
-          <input type="number" id="inpHdTotal" class="form-control" required placeholder="VD: 120000000">
+          <label>1. Tổng giá trị Hợp đồng [A] (VNĐ):</label>
+          <input type="number" id="inpHdTotal" class="form-control" required placeholder="VD: 180000000" oninput="window.recalcModalHopDong && window.recalcModalHopDong()">
+          <div id="previewInpHdTotal" style="font-size:11px; color:#fbbf24; margin-top:3px; font-weight:700;">0 đ</div>
+          <div style="display:flex; gap:4px; margin-top:4px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpHdTotal', 10000000, 'recalcModalHopDong')">+10Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpHdTotal', 50000000, 'recalcModalHopDong')">+50Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpHdTotal', 100000000, 'recalcModalHopDong')">+100Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.multiplyMoneyInput('inpHdTotal', 1000000, 'recalcModalHopDong')">×1 Triệu</button>
+          </div>
         </div>
         <div class="form-group">
-          <label>Doanh số Xưởng gỗ CN (VNĐ):</label>
-          <input type="number" id="inpHdWood" class="form-control" required placeholder="VD: 100000000">
+          <label>2. Giá trị Phụ kiện TM / Sofa / Gỗ thịt [B+C] (Tách riêng):</label>
+          <input type="number" id="inpHdPkVal" class="form-control" value="0" placeholder="VD: 30000000" oninput="window.recalcModalHopDong && window.recalcModalHopDong()">
+          <div id="previewInpHdPk" style="font-size:11px; color:#c084fc; margin-top:3px; font-weight:700;">0 đ</div>
+          <div style="display:flex; gap:4px; margin-top:4px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpHdPkVal', 5000000, 'recalcModalHopDong')">+5Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.bumpMoneyInput('inpHdPkVal', 10000000, 'recalcModalHopDong')">+10Tr</button>
+            <button type="button" class="btn btn-sm" style="padding:2px 6px; font-size:10px;" onclick="window.multiplyMoneyInput('inpHdPkVal', 1000000, 'recalcModalHopDong')">×1 Triệu</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>3. Doanh số Xưởng Gỗ CN [D = A - (B+C)] (VNĐ):</label>
+          <input type="number" id="inpHdWood" class="form-control" required placeholder="Tự động tính D = A - (B+C)">
+          <div id="previewInpHdWood" style="font-size:11px; color:#34d399; margin-top:3px; font-weight:800;">0 đ</div>
+        </div>
+        <div class="form-group">
+          <label>4. Hoa hồng Sale dự kiến (Tự động tính trên D):</label>
+          <input type="text" id="inpHdCommPreview" class="form-control" readonly style="color:#6ee7b7; font-weight:800;" value="0 đ">
         </div>
       </div>
     `;
   } else if (type === "vp_congno") {
+    const debtClientOpts = (appState.xuongRecords || []).map(r => {
+      const total = Number(r.contractVal || r.woodVal || 0);
+      const debt = Number(r.debt || 0);
+      const paid = Math.max(0, total - debt);
+      return `<option value="${r.client}" data-total="${total}" data-paid="${paid}" data-debt="${debt}">${r.client} (Tổng HĐ: ${fmtCurr(total)} | Còn nợ: ${fmtCurr(debt)})</option>`;
+    }).join("");
     container.innerHTML = `
       <div class="form-group">
-        <label>Khách hàng nộp tiền:</label>
-        <input type="text" id="inpPayClient" class="form-control" required placeholder="VD: Chị Hiển">
+        <label>1. Chọn Khách hàng nộp tiền (Tự động tra cứu công nợ):</label>
+        <select id="inpPayClientSelect" class="form-control" onchange="window.onModalPayClientChange && window.onModalPayClientChange(this)" style="margin-bottom:6px;">
+          <option value="">-- Chọn nhanh khách hàng đang có công nợ --</option>
+          ${debtClientOpts}
+        </select>
+        <input type="text" id="inpPayClient" class="form-control" required placeholder="Hoặc gõ tên khách hàng nộp tiền (VD: Chị Hiển)">
       </div>
+      <div id="modalPayDebtInfoBanner" style="display:none; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); border-radius:8px; padding:8px 12px; margin-bottom:10px; font-size:12px;"></div>
       <div class="form-row">
         <div class="form-group">
-          <label>Số tiền thu được đợt này (VNĐ):</label>
-          <input type="number" id="inpPayAmount" class="form-control" required placeholder="VD: 30000000">
+          <label>2. Số tiền thu được đợt này (VNĐ):</label>
+          <input type="number" id="inpPayAmount" class="form-control" required placeholder="VD: 50000000" oninput="window.updateModalPayPreview && window.updateModalPayPreview()">
+          <div id="previewInpPayAmount" style="font-size:12px; color:#34d399; margin-top:4px; font-weight:800;">0 đ</div>
+          <div style="display:flex; gap:5px; margin-top:6px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-sm" style="padding:3px 8px; font-size:10px; background:rgba(16,185,129,0.18); color:#6ee7b7;" onclick="window.setPayQuickPreset && window.setPayQuickPreset('COC_50')">⚡ Cọc Đợt 1 (50% HĐ)</button>
+            <button type="button" class="btn btn-sm" style="padding:3px 8px; font-size:10px; background:rgba(59,130,246,0.18); color:#93c5fd;" onclick="window.setPayQuickPreset && window.setPayQuickPreset('DOT2_35')">⚡ Thu Đợt 2 (35% HĐ)</button>
+            <button type="button" class="btn btn-sm" style="padding:3px 8px; font-size:10px; background:rgba(245,158,11,0.2); color:#fcd34d;" onclick="window.setPayQuickPreset && window.setPayQuickPreset('TAT_TOAN')">⚡ Tất Toán 100% Nợ Còn Lại</button>
+          </div>
         </div>
         <div class="form-group">
-          <label>Hình thức thu:</label>
-          <select class="form-control">
-            <option>Chuyển khoản Ngân hàng</option>
-            <option>Tiền mặt tại Văn phòng</option>
+          <label>3. Hình thức & Đợt thanh toán:</label>
+          <select id="inpPayMethod" class="form-control" style="margin-bottom:8px;">
+            <option value="Chuyển khoản Ngân hàng (UNC)">Chuyển khoản Ngân hàng (Có UNC)</option>
+            <option value="Tiền mặt tại Văn phòng">Tiền mặt tại Văn phòng</option>
           </select>
+          <input type="text" id="inpPayNote" class="form-control" placeholder="Ghi chú đợt thu (VD: Thu cọc đợt 1 - 50%)">
         </div>
       </div>
     `;
   } else if (type === "vp_phukien") {
+    const clientOpts = Array.from(new Set([
+      ...(appState.contracts || []).map(c => c.client),
+      ...(appState.xuongRecords || []).map(r => r.client)
+    ].filter(Boolean))).map(c => `<option value="${c}">${c}</option>`).join("");
     container.innerHTML = `
       <div class="form-row">
         <div class="form-group">
           <label>Tên Khách hàng / Công trình:</label>
-          <input type="text" id="inpPkClient" class="form-control" required placeholder="VD: Biệt Thự Thạch Bàn">
+          <input type="text" id="inpPkClient" class="form-control" list="dlPkClients" required placeholder="VD: Biệt Thự Thạch Bàn">
+          <datalist id="dlPkClients">${clientOpts}</datalist>
         </div>
         <div class="form-group">
-          <label>Mặt hàng Phụ kiện / Thiết bị / Sofa:</label>
-          <input type="text" id="inpPkItem" class="form-control" required placeholder="VD: Bếp từ & Hút mùi Hafele">
+          <label>Chọn nhanh Combo Phụ kiện / Sofa chuẩn:</label>
+          <select id="inpPkQuickPreset" class="form-control" onchange="window.onModalPkPresetChange && window.onModalPkPresetChange(this.value)">
+            <option value="">-- Chọn nhanh gói phụ kiện / thiết bị / sofa --</option>
+            <option value="Trọn bộ Phụ kiện Tủ bếp Inox 304 (Bát nâng hạ, Giá xoong nồi, Gia vị)|Eurogold / Hafele|16500000">1. Trọn bộ Phụ kiện Bếp Inox 304 (~16.500.000đ)</option>
+            <option value="Combo Bếp từ đôi + Hút mùi âm tủ + Chậu vòi Inox 304|Hafele / Bosch|28000000">2. Combo Thiết bị Bếp Từ + Hút Mùi + Chậu Vòi (~28.000.000đ)</option>
+            <option value="Bộ Sofa Da Cao Cấp + Bàn Trà Phòng Khách|PG Home Sofa|32000000">3. Bộ Sofa Da + Bàn Trà Phòng Khách (~32.000.000đ)</option>
+            <option value="Bộ Bàn Ăn 6 Ghế Bọc Da + Mặt Đá Ceramic|PG Home Luxury|18500000">4. Bộ Bàn Ăn 6 Ghế Mặt Đá (~18.500.000đ)</option>
+          </select>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Hãng sản xuất / Thương hiệu:</label>
-          <input type="text" id="inpPkBrand" class="form-control" value="Hafele" placeholder="Hafele, Eurogold, PG Sofa">
+          <label>Mặt hàng Phụ kiện / Thiết bị / Sofa:</label>
+          <input type="text" id="inpPkItem" class="form-control" required placeholder="VD: Bếp từ & Hút mùi Hafele">
         </div>
         <div class="form-group">
-          <label>Kỳ tháng hạch toán:</label>
-          <select id="inpPkMonth" class="form-control">
-            <option value="10" selected>Tháng 10 (⚡ Sống)</option>
-            <option value="9">Tháng 9</option>
-            <option value="8">Tháng 8</option>
-          </select>
+          <label>Hãng sản xuất / Thương hiệu:</label>
+          <input type="text" id="inpPkBrand" class="form-control" value="Hafele" placeholder="Hafele, Eurogold, PG Sofa">
         </div>
       </div>
       <div class="form-row">
@@ -2440,10 +2572,11 @@ function renderDynamicFormFields(type) {
           <input type="number" id="inpPkPrice" class="form-control" required placeholder="VD: 30000000">
         </div>
         <div class="form-group">
-          <label>Lãi gộp ước tính 30% (VNĐ):</label>
-          <input type="text" id="inpPkProfit" class="form-control" readonly placeholder="Tự động tính 30%">
+          <label>Lãi gộp 30% & Thưởng Sale 10% lãi ròng (Tự động):</label>
+          <input type="text" id="inpPkProfit" class="form-control" readonly placeholder="Tự động tính 30% lãi & 10% thưởng Sale">
         </div>
       </div>
+      <input type="hidden" id="inpPkMonth" value="10">
     `;
     setTimeout(() => {
       const priceInp = document.getElementById("inpPkPrice");
@@ -2451,26 +2584,35 @@ function renderDynamicFormFields(type) {
       if (priceInp && profitInp) {
         priceInp.addEventListener("input", () => {
           const v = parseFloat(priceInp.value) || 0;
-          profitInp.value = fmtCurr(v * 0.3);
+          const profit = v * 0.3;
+          const bonusSale = profit * 0.1;
+          profitInp.value = `Lãi: ${fmtCurr(profit)} (Sale 10%: ${fmtCurr(bonusSale)})`;
         });
       }
-    }, 100);
+    }, 80);
   } else if (type === "vp_chiphi") {
     container.innerHTML = `
       <div class="form-row">
         <div class="form-group">
-          <label>Khoản mục chi phí phát sinh:</label>
-          <input type="text" id="inpCpName" class="form-control" required placeholder="VD: Tiền điện nước, tiếp khách...">
+          <label>Chọn nhanh Nhóm Chi Phí Vận Hành Chuẩn:</label>
+          <select id="inpCpQuickPreset" class="form-control" onchange="window.onModalCpPresetChange && window.onModalCpPresetChange(this.value)">
+            <option value="">-- Chọn nhóm mục chi phí chuẩn để tự điền --</option>
+            <option value="Tiền điện 3 pha Nhà máy + Điện Văn phòng|Điện lực Hà Tĩnh|6500000">1. ⚡ Tiền điện 3 pha Nhà máy & Văn phòng (~6.5M)</option>
+            <option value="Chi phí Chạy Quảng cáo Facebook / Marketing / Media|Bộ phận Marketing|5000000">2. 📣 Chi phí Marketing & Quảng cáo (~5.0M)</option>
+            <option value="Xăng xe tải vận chuyển & Giao lắp hàng công trình|Đội Vận Chuyển Xưởng|4500000">3. 🚛 Xăng xe & Vận chuyển lắp đặt công trình (~4.5M)</option>
+            <option value="Văn phòng phẩm, In ấn hồ sơ thiết kế & Tiếp khách|Văn phòng PG Home|2500000">4. 🖨️ Văn phòng phẩm, In bản vẽ & Tiếp khách (~2.5M)</option>
+            <option value="Bảo trì máy CNC, máy dán cạnh & vật tư tiêu hao xưởng|Kỹ thuật Nhà máy|3500000">5. 🔧 Bảo trì máy CNC & Máy dán cạnh (~3.5M)</option>
+          </select>
         </div>
         <div class="form-group">
-          <label>Đơn vị thụ hưởng:</label>
+          <label>Đơn vị thụ hưởng / Người nhận:</label>
           <input type="text" id="inpCpRecipient" class="form-control" placeholder="VD: Điện lực Hà Tĩnh">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Định mức phê duyệt:</label>
-          <input type="text" id="inpCpBudget" class="form-control" value="Theo thực tế">
+          <label>Khoản mục chi phí phát sinh:</label>
+          <input type="text" id="inpCpName" class="form-control" required placeholder="VD: Tiền điện nước, tiếp khách...">
         </div>
         <div class="form-group">
           <label>Số tiền thực chi (VNĐ):</label>
@@ -2479,8 +2621,12 @@ function renderDynamicFormFields(type) {
       </div>
       <div class="form-row">
         <div class="form-group">
+          <label>Định mức phê duyệt:</label>
+          <input type="text" id="inpCpBudget" class="form-control" value="Theo thực tế">
+        </div>
+        <div class="form-group">
           <label>Chứng từ / Hóa đơn / Ghi chú:</label>
-          <input type="text" id="inpCpNote" class="form-control" placeholder="Số hóa đơn, lý do chi...">
+          <input type="text" id="inpCpNote" class="form-control" placeholder="Số hóa đơn, UNC, lý do chi...">
         </div>
       </div>
     `;
@@ -2517,8 +2663,8 @@ function renderDynamicFormFields(type) {
 
 function handleFormSubmit(type) {
   if (type === "xuong_khoiluong") {
-    const client = document.getElementById("inpXuongClient").value;
-    const address = document.getElementById("inpXuongAddress").value || "Hà Tĩnh";
+    const client = document.getElementById("inpXuongClient").value.trim();
+    const address = document.getElementById("inpXuongAddress").value || "TP. Hà Tĩnh";
     const hd = parseFloat(document.getElementById("inpXuongHd").value) || 0;
     const wood = parseFloat(document.getElementById("inpXuongWood").value) || 0;
     const pct = (parseFloat(document.getElementById("inpXuongPct").value) || 100) / 100;
@@ -2527,17 +2673,17 @@ function handleFormSubmit(type) {
 
     appState.xuongRecords.push({
       id: Date.now(),
-      month: 9,
+      month: currentGlobalMonth === "all" ? 10 : Number(currentGlobalMonth),
       client,
       address,
       saleRep: "Tống Trần Hiệp",
       contractVal: hd,
       woodVal: wood,
-      pkVal: hd - wood,
+      pkVal: Math.max(0, hd - wood),
       pct,
       actualXuong: actual,
       debt,
-      note: "Mới cập nhật"
+      note: "Cập nhật chuẩn D = A - B - C"
     });
 
     renderKhoiLuongXuong("all");
@@ -2566,30 +2712,38 @@ function handleFormSubmit(type) {
 
     renderChamCongTho();
   } else if (type === "xuong_vattu") {
-    const name = document.getElementById("inpVtName").value;
-    const project = document.getElementById("inpVtProject").value;
+    const name = document.getElementById("inpVtName").value.trim();
+    const project = document.getElementById("inpVtProject").value.trim();
+    const catCodeEl = document.getElementById("inpVtCatCode");
+    const catCode = catCodeEl ? catCodeEl.value : (window.detectMaterialCategoryCode ? window.detectMaterialCategoryCode(name) : "VAN_17MM");
     const qty = parseFloat(document.getElementById("inpVtQty").value) || 1;
     const unit = document.getElementById("inpVtUnit").value || "Tấm";
     const price = parseFloat(document.getElementById("inpVtPrice").value) || 0;
-    const supplier = document.getElementById("inpVtSupplier").value || "Nhà cung cấp";
+    const supplier = document.getElementById("inpVtSupplier").value || "Tổng Kho Lam Giang";
+    const bucket = (catCode === "PHU_KIEN_BEP_TM" || catCode === "GO_THIT_PU") ? "COMMERCIAL_PK" : "WOOD_40";
 
-    appState.materials.push({
-      code: "VT-" + (appState.materials.length + 1).toString().padStart(2, "0"),
+    appState.materials.unshift({
+      code: "VT-" + (appState.materials.length + 1).toString().padStart(3, "0"),
       name,
       project,
+      categoryCode: catCode,
+      bucket,
       unit,
       qty,
       price,
       supplier,
-      status: "Mới nhập"
+      status: "Đã nhập chuẩn danh mục"
     });
 
     renderVatTu();
+    if (typeof window.renderVtCategorySummaryStrip === "function") window.renderVtCategorySummaryStrip();
+    if (typeof window.renderVuMultiDimStatsPivot === "function") window.renderVuMultiDimStatsPivot();
   } else if (type === "vp_hopdong") {
-    const client = document.getElementById("inpHdClient").value;
+    const client = document.getElementById("inpHdClient").value.trim();
     const rep = document.getElementById("inpHdRep").value;
     const total = parseFloat(document.getElementById("inpHdTotal").value) || 0;
     const wood = parseFloat(document.getElementById("inpHdWood").value) || 0;
+    const pk = Math.max(0, total - wood);
     const comm = rep.includes("Hiệp") ? wood * 0.05 : wood * 0.035;
 
     appState.contracts.push({
@@ -2599,18 +2753,38 @@ function handleFormSubmit(type) {
       type: rep.includes("Hiệp") ? "Sale Riêng (Hiệp)" : "Sale BPKD",
       total,
       wood,
-      pk: total - wood,
+      pk,
       comm,
       date: new Date().toLocaleDateString("vi-VN"),
       status: "Mới ký kết"
     });
 
     renderHopDong();
+  } else if (type === "vp_congno") {
+    const client = (document.getElementById("inpPayClient")?.value || "").trim();
+    const amount = parseFloat(document.getElementById("inpPayAmount")?.value) || 0;
+    const method = document.getElementById("inpPayMethod")?.value || "Chuyển khoản Ngân hàng (UNC)";
+    const note = document.getElementById("inpPayNote")?.value || "Thu tiền công nợ khách hàng";
+
+    if (client && amount > 0) {
+      let matched = false;
+      (appState.xuongRecords || []).forEach(r => {
+        if (!matched && r.client && r.client.toLowerCase().includes(client.toLowerCase())) {
+          r.debt = Math.max(0, (Number(r.debt) || 0) - amount);
+          r.note = `${note} (-${fmtCurr(amount)} qua ${method})`;
+          matched = true;
+        }
+      });
+      renderKhoiLuongXuong("all");
+      if (typeof showToast === "function") {
+        showToast(`💰 Đã ghi nhận thu ${fmtCurr(amount)} từ khách hàng "${client}" (${method})!`);
+      }
+    }
   } else if (type === "vp_phukien") {
     const client = document.getElementById("inpPkClient").value;
     const item = document.getElementById("inpPkItem").value;
     const brand = document.getElementById("inpPkBrand").value || "Hafele";
-    const month = parseInt(document.getElementById("inpPkMonth").value) || 10;
+    const month = parseInt(document.getElementById("inpPkMonth")?.value) || 10;
     const price = parseFloat(document.getElementById("inpPkPrice").value) || 0;
     const cost = price * 0.70;
     const profit = price * 0.30;
@@ -2771,15 +2945,31 @@ function renderPOList(filter = "all") {
     elBadgePending.className = pendingCount > 0 ? "badge live pulse" : "badge";
   }
 
-  // Filter rows
-  const filtered = filter === "all" ? poList : poList.filter(p => p.status === filter);
+  // Filter rows (by status + supplier group + quick search)
+  const supFilterEl = document.getElementById("poSupplierQuickFilter");
+  const supFilterVal = supFilterEl ? supFilterEl.value : "ALL";
+  const searchEl = document.getElementById("poQuickSearchInput");
+  const searchVal = (searchEl ? searchEl.value : "").trim().toLowerCase();
+
+  const filtered = poList.filter(p => {
+    if (filter !== "all" && p.status !== filter) return false;
+    if (supFilterVal && supFilterVal !== "ALL") {
+      if (!(p.supplier || "").toLowerCase().includes(supFilterVal.toLowerCase())) return false;
+    }
+    if (searchVal) {
+      const itemsText = (p.items || []).map(i => i.name || "").join(" ");
+      const hay = `${p.code || ""} ${p.project || ""} ${p.supplier || ""} ${p.requester || ""} ${itemsText}`.toLowerCase();
+      if (!hay.includes(searchVal)) return false;
+    }
+    return true;
+  });
 
   if (filtered.length === 0) {
     tbody.innerHTML = `
       <tr>
         <td colspan="10" style="text-align: center; padding: 30px; color: var(--text-muted);">
           <i class="fa-solid fa-folder-open" style="font-size: 2rem; margin-bottom: 8px; display: block;"></i>
-          Không có phiếu đề xuất nào trong danh mục này.
+          Không có phiếu đề xuất nào khớp bộ lọc hiện tại.
         </td>
       </tr>
     `;
@@ -2807,7 +2997,7 @@ function renderPOList(filter = "all") {
       statusPill = `<span class="status-pill yellow" style="font-weight: 700;"><i class="fa-solid fa-hourglass-half"></i> ⏳ Chờ Giám Đốc Duyệt</span>`;
       if (isAdmin) {
         actionButtons = `
-          <div class="btn-group" style="gap: 6px;">
+          <div class="btn-group" style="gap: 6px; flex-wrap: wrap;">
             <button class="btn btn-sm btn-boss-approve" onclick="approvePO('${po.code}')" title="Giám Đốc duyệt & đóng con dấu mộc đỏ điện tử">
               <i class="fa-solid fa-stamp"></i> Duyệt & Đóng Dấu Đỏ
             </button>
@@ -2833,12 +3023,15 @@ function renderPOList(filter = "all") {
     } else if (po.status === "APPROVED") {
       statusPill = `<span class="status-pill green" style="font-weight: 700;"><i class="fa-solid fa-stamp"></i> ✅ Đã Phê Duyệt & Đóng Dấu Đỏ</span>`;
       actionButtons = `
-        <div class="btn-group" style="gap: 6px;">
+        <div class="btn-group" style="gap: 5px; flex-wrap: wrap;">
           <button class="btn btn-sm btn-gold" onclick="openViewPOModal('${po.code}')" title="In phiếu hoặc xuất file để Vũ gửi nhà cung cấp">
-            <i class="fa-solid fa-print"></i> In Phiếu / Xuất File
+            <i class="fa-solid fa-print"></i> In Phiếu
+          </button>
+          <button class="btn btn-sm btn-outline" onclick="window.copyApprovedPOZaloMessage('${po.code}')" style="border-color: rgba(16,185,129,0.5); color: #34D399;" title="Copy tin nhắn đặt hàng chuẩn gửi vào nhóm Zalo NCC">
+            <i class="fa-solid fa-comment-dots"></i> Copy Zalo
           </button>
           <button class="btn btn-sm btn-outline" onclick="exportPOToCSV('${po.code}')" title="Tải file Excel đơn hàng">
-            <i class="fa-solid fa-file-excel"></i> File NCC
+            <i class="fa-solid fa-file-excel"></i> Excel
           </button>
           ${po.sourceFile ? `<a href="${po.sourceFile}" target="_blank" class="btn btn-sm" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); text-decoration: none; padding: 4px 8px;" title="Mở xem ảnh/PDF hóa đơn gốc"><i class="fa-solid fa-camera"></i> Chứng Từ Gốc</a>` : ''}
         </div>
@@ -2861,7 +3054,7 @@ function renderPOList(filter = "all") {
         <td><i class="fa-solid fa-user-gear text-gold"></i> ${po.requester.split('(')[0].trim()}</td>
         <td><strong>${po.project}</strong></td>
         <td><span class="pill-legend teal">${po.supplier.split('(')[0].trim()}</span></td>
-        <td style="max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${itemsPreview}</td>
+        <td style="max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${(po.items || []).map(i => `${i.name}: ${i.qty} ${i.unit}`).join(' | ')}">${itemsPreview}</td>
         <td style="font-weight: 700; color: var(--text-gold); font-size: 0.95rem;">${fmtCurr(po.total)}</td>
         <td>${statusPill}</td>
         <td>${actionButtons}</td>
@@ -3175,8 +3368,445 @@ window.exportPOToCSV = function(code) {
   showToast(`Đã xuất file đơn đặt hàng ${po.code} gửi nhà cung cấp!`);
 };
 
+// ==========================================================================
+// 5B. DANH MỤC 68+ VẬT TƯ THỰC CHIẾN CỦA VŨ (HOÀNG CÔNG VŨ - 0911.006.880)
+// ==========================================================================
+window.VU_REAL_ORDER_CATALOG_2026 = [
+  // 1. VÁN CÔNG NGHIỆP & HẬU & CHỈ NẸP (LAM GIANG / NT CẦU VƯỢT / AN CƯỜNG)
+  { code: "VT-LG-205T-17", name: "Ván MDF Lõi Xanh Chống Ẩm Thái Lan 17mm - Mã 205T (Trắng Mờ Chủ Lực)", unit: "Tấm", price: 740000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["17ly 205t", "17mm 205t", "van 205t", "mdf 205t", "205t"] },
+  { code: "VT-LG-205T-06", name: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm (5.5ly) - Mã 205T (Trắng Mờ)", unit: "Tấm", price: 350000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["hau 205t", "6ly 205t", "5.5ly 205t", "hau trang"] },
+  { code: "VT-LG-202T-17", name: "Ván MDF Lõi Xanh Chống Ẩm Thái Lan 17mm - Mã 202T (Trắng Sữa)", unit: "Tấm", price: 740000, bucket: "WOOD_40", supplier: "Đặt hàng - Phú Gia & NT Cầu Vượt (Ván MDF, WPB, Trả ván dư)", keywords: ["17ly 202t", "van 202t", "202t"] },
+  { code: "VT-LG-202T-06", name: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm - Mã 202T (Trắng Sữa)", unit: "Tấm", price: 350000, bucket: "WOOD_40", supplier: "Đặt hàng - Phú Gia & NT Cầu Vượt (Ván MDF, WPB, Trả ván dư)", keywords: ["hau 202t", "6ly 202t"] },
+  { code: "VT-LG-388-17", name: "Ván MDF Lõi Xanh Thái Lan 17mm - Mã MS 388 EV (Vân Sồi Sáng)", unit: "Tấm", price: 760000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["17ly 388", "ms 388", "388"] },
+  { code: "VT-LG-388-06", name: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm - Mã MS 388 EV (Vân Sồi)", unit: "Tấm", price: 365000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["hau 388", "6ly 388"] },
+  { code: "VT-LG-612-17", name: "Ván MDF Lõi Xanh Thái Lan 17mm - Mã MS 612 (Vân Óc Chó / Xám Chì)", unit: "Tấm", price: 760000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["17ly 612", "ms 612", "612"] },
+  { code: "VT-LG-612-06", name: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm - Mã MS 612 (Vân Óc Chó / Xám)", unit: "Tấm", price: 365000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["hau 612", "6ly 612"] },
+  { code: "VT-AC-MDF17", name: "Ván MDF Lõi Xanh Chống Ẩm An Cường Chính Hãng 17mm Phủ Melamine", unit: "Tấm", price: 1120000, bucket: "WOOD_40", supplier: "Gỗ An Cường (Hà Tĩnh / Nghệ An - MDF/HDF/WPB Chính Hãng)", keywords: ["an cuong 17", "mdf an cuong"] },
+  { code: "VT-AC-MDF06", name: "Ván Hậu MDF Lõi Xanh An Cường Chính Hãng 6mm Phủ Melamine", unit: "Tấm", price: 520000, bucket: "WOOD_40", supplier: "Gỗ An Cường (Hà Tĩnh / Nghệ An - MDF/HDF/WPB Chính Hãng)", keywords: ["hau an cuong", "6ly an cuong"] },
+  { code: "VT-PLY-414PL", name: "Gỗ Plywood Chống Nước Phủ Melamine 18mm - Mã 414 PL / 8803 (Tiêu chuẩn E0)", unit: "Tấm", price: 950000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["414pl", "414 pl", "plywood 18", "8803"] },
+  { code: "VT-PLY-06", name: "Ván Hậu Plywood Chống Nước Phủ Melamine 6mm Đồng Màu", unit: "Tấm", price: 430000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["hau plywood", "hau 414"] },
+  { code: "VT-AC-WPB17", name: "Tấm Nhựa Đặc WPB An Cường 17mm Kháng Nước Tuyệt Đối (Khoang Chậu Rửa)", unit: "Tấm", price: 2550000, bucket: "WOOD_40", supplier: "Gỗ An Cường (Hà Tĩnh / Nghệ An - MDF/HDF/WPB Chính Hãng)", keywords: ["wpb", "nhua wpb"] },
+  { code: "VT-PICO-17", name: "Ván Nhựa Đặc Picomat Chống Nước 17mm (1220x2440mm - Khoang Chậu / Lavabo)", unit: "Tấm", price: 1350000, bucket: "WOOD_40", supplier: "Gỗ Minh Long / Picomat (Ván Nhựa Chống Nước & Laminate)", keywords: ["picomat", "nhua picomat", "van nhua 17"] },
+  { code: "VT-CHI-21-205T", name: "Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Đồng Màu 205T / 202T (Cuộn 200m)", unit: "Cuộn", price: 220000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["chi 21 205t", "chi 21", "nep 21", "cuon chi 21"] },
+  { code: "VT-CHI-21-VAN", name: "Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Vân Gỗ MS 388 / 612 / 414PL (Cuộn 200m)", unit: "Cuộn", price: 235000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["chi 21 388", "chi 21 612", "chi van go"] },
+  { code: "VT-CHI-44", name: "Chỉ Nhựa Dán Cạnh Bản Đôi PVC 44×1.0mm (Dán đợt chập đôi 34mm / Bo cong)", unit: "Cuộn", price: 420000, bucket: "WOOD_40", supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)", keywords: ["chi 44", "chi doi 44", "nep 44"] },
+  { code: "VT-TRA-VAN-DU", name: "↩️ Trả Ván Dư Nguyên Tấm Về Kho NCC (Khấu trừ công nợ trực tiếp)", unit: "Tấm", price: 750000, bucket: "WOOD_40", supplier: "Đặt hàng - Phú Gia & NT Cầu Vượt (Ván MDF, WPB, Trả ván dư)", keywords: ["tra van", "hoan van"] },
+
+  // 2. GIA CÔNG CÁNH ACRYLIC, CÁNH KÍNH, KÍNH ỐP BẾP, ĐÁ BẾP, GƯƠNG LED & BỌC ĐỆM
+  { code: "VT-ACR-LIVAS", name: "Gia công Cánh Acrylic Bóng Gương Dán Cạnh Không Đường Line (Livas / ALD)", unit: "m²", price: 1150000, bucket: "WOOD_40", supplier: "Livas - Phú Gia (Gia công Cánh Acrylic No-Line)", keywords: ["canh acrylic", "acrylic livas", "acrylic ald"] },
+  { code: "VT-CK-VSG", name: "Gia công Cánh Kính Cường Lực 5mm Khung Nhôm Anode Cao Cấp (Đã khoan lề)", unit: "m²", price: 1350000, bucket: "WOOD_40", supplier: "VSG - Phú Gia (Kính Ốp Bếp Cường Lực & Cánh Kính Khung Nhôm)", keywords: ["canh kinh", "kinh khung nhom"] },
+  { code: "VT-KB-VSG8", name: "Kính Cường Lực Ốp Bếp 8mm Việt Nhật VSG / Phú Mỹ Sơn Màu Nhiệt", unit: "md", price: 750000, bucket: "WOOD_40", supplier: "VSG - Phú Gia (Kính Ốp Bếp Cường Lực & Cánh Kính Khung Nhôm)", keywords: ["kinh op bep", "kinh bep 8mm", "kinh 8ly"] },
+  { code: "VT-KT-BI5", name: "Kính Thủy Bi / Gương Trang Trí Ốp Tường 5mm Mài Vát Cạnh Quả Trám", unit: "m²", price: 920000, bucket: "WOOD_40", supplier: "Phú Gia - Kính Phú Mỹ (Kính Thủy Bi, Kính Cường Lực & Cánh Kính)", keywords: ["kinh thuy", "guong op tuong"] },
+  { code: "VT-DA-HH", name: "Đá Bàn Bếp Kim Sa Trung / Đá Trắng Vân Mây Ceramic Chống Thấm Hoàng Hà", unit: "md", price: 1450000, bucket: "WOOD_40", supplier: "Đá Hoàng Hà - Phú Gia (Đá Bàn Bếp, Đá Lavabo, Đá Cầu Thang)", keywords: ["da bep", "da kim sa", "da van may", "da hoang ha"] },
+  { code: "VT-GUONG-LED", name: "Gương Bỉ 5mm Dantalux Phun Cát Đèn LED Cảm Ứng Chống Mờ (Nhà Tắm / Bàn Phấn)", unit: "m²", price: 1250000, bucket: "WOOD_40", supplier: "Gương Dantalux - Nội thất Phú Gia (Gương LED Cảm Ứng Nhà Tắm/Bàn Phấn)", keywords: ["guong led", "guong dantalux", "guong cam ung"] },
+  { code: "VT-DEM-DA", name: "Gia công Bọc Đệm Đầu Giường / Vách Nỉ Nhung / Da Công Nghiệp Cao Cấp", unit: "m²", price: 850000, bucket: "WOOD_40", supplier: "Bọc đệm Hà Tĩnh - Phú Gia (Đệm Đầu Giường, Vách Nỉ/Da, Sofa)", keywords: ["boc dem", "vach ni", "dem dau giuong"] },
+
+  // 3. NGŨ KIM XƯỞNG, ĐÈN LED, KEO HẠT JOWAT & VẬT TƯ PHỤ (NPP QUỐC TÂM - 56 NGÔ ĐỨC KẾ)
+  { code: "VT-QT-BL304", name: "Bản Lề Giảm Chấn Inox 304 Tháo Nhanh (Thẳng / Cong Vừa / Cong Nhiều - Quốc Tâm)", unit: "Cái", price: 18500, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["ban le", "ban le giam chan", "ban le inox"] },
+  { code: "VT-QT-BLCK", name: "Bản Lề Cánh Kính Khung Nhôm Giảm Chấn Chuyên Dụng (Đen Mờ / Xám Titan)", unit: "Cái", price: 42000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["ban le canh kinh"] },
+  { code: "VT-QT-RAYAM", name: "Ray Âm Giảm Chấn Toàn Phần Mở Rộng 350mm / 400mm / 450mm (Quốc Tâm / DTC)", unit: "Bộ", price: 145000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["ray am", "ray am 450", "ray am 400", "ray giam chan"] },
+  { code: "VT-QT-RAYBI", name: "Ray Bi 3 Tầng Bản Rộng 45mm Dài 350mm / 400mm / 450mm Sơn Tĩnh Điện", unit: "Bộ", price: 65000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["ray bi", "ray 3 tang"] },
+  { code: "VT-QT-PITTONG", name: "Tay Nâng Hơi / Pittong Thủy Lực Cánh Tủ Bếp Trên 100N - 120N", unit: "Cái", price: 28000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["pittong", "ti hoi", "tay nang hoi"] },
+  { code: "VT-QT-CAM", name: "Bộ Ốc Cam Liên Kết 3 Thành Phần + Chốt Gỗ CNC (Túi 1000 bộ)", unit: "Túi", price: 480000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["oc cam", "cam lien ket", "chot cam"] },
+  { code: "VT-QT-CHANNHUA", name: "Chân Nhựa Tăng Chỉnh Tủ Bếp Dưới Cao 100mm Chịu Lực Nặng", unit: "Cái", price: 8500, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["chan nhua", "chan tu bep"] },
+  { code: "VT-QT-SUOT", name: "Thanh Suốt Treo Quần Áo Hợp Kim Nhôm Màu Champagne / Đen Mờ (Cây 3m + Bát)", unit: "Cây", price: 135000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["suot treo", "suot ao"] },
+  { code: "VT-QT-NHOMLED", name: "Thanh Nhôm Định Hình Đèn LED Âm Tủ Kèm Nắp Mica Tản Sáng (Cây 3m)", unit: "Cây", price: 48000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["thanh nhom led", "mang led", "nhom led"] },
+  { code: "VT-QT-DAYLED", name: "Cuộn Dây Đèn LED Dán 12V COB / 120 Chip Siêu Sáng Vàng Nắng 4000K (Cuộn 5m)", unit: "Cuộn", price: 95000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["day led", "cuon led", "led 12v"] },
+  { code: "VT-QT-NGUON12", name: "Nguồn Đũa Siêu Mỏng / Nguồn Tổ Ong 12V - 10A/15A Chuyên Dụng Tủ Nội Thất", unit: "Cái", price: 145000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["nguon led", "nguon 12v", "nguon dua"] },
+  { code: "VT-QT-CAMBIEN", name: "Cảm Biến Vẫy Tay Tủ Bếp / Cảm Biến Đóng Mở Cánh Tủ Quần Áo 12V", unit: "Cái", price: 85000, bucket: "WOOD_40", supplier: "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)", keywords: ["cam bien", "cam bien vay", "cam bien canh"] },
+  { code: "VT-JOWAT-KEO", name: "Keo Hạt Dán Cạnh Nhiệt Độ Cao Jowat CHLB Đức Chính Hãng (Bao 25kg)", unit: "Bao", price: 2450000, bucket: "WOOD_40", supplier: "Vật tư phụ Xưởng (Keo hạt Jowat, Chỉ nẹp, Mũi CNC, Lưỡi cưa)", keywords: ["keo hat", "keo jowat", "bao keo"] },
+  { code: "VT-PHU-KEO502", name: "Keo Silicon Trung Tính Apollo A500 + Keo 502 + Keo Phun Đa Năng (Thùng)", unit: "Thùng", price: 1150000, bucket: "WOOD_40", supplier: "Vật tư phụ Xưởng (Keo hạt Jowat, Chỉ nẹp, Mũi CNC, Lưỡi cưa)", keywords: ["silicon", "apollo a500", "keo 502"] },
+  { code: "VT-PHU-MUICNC", name: "Mũi Cắt CNC Hợp Kim Xoắn 6mm (Hộp 10 mũi cắt ván MDF/Plywood)", unit: "Hộp", price: 850000, bucket: "WOOD_40", supplier: "Vật tư phụ Xưởng (Keo hạt Jowat, Chỉ nẹp, Mũi CNC, Lưỡi cưa)", keywords: ["mui cnc", "mui cat 6mm"] },
+
+  // 4. PHỤ KIỆN TỦ BẾP INOX 304, THIẾT BỊ BẾP & GỖ TỰ NHIÊN (TÁCH KHỎI KHOÁN XƯỞNG 40% -> COMMERCIAL_PK)
+  { code: "VT-PK-GIABAT", name: "Giá Bát Nâng Hạ Điện / Cơ Inox 304 Eurogold / Garis Khoang 700-800mm (Tách khỏi 40%)", unit: "Bộ", price: 4250000, bucket: "COMMERCIAL_PK", supplier: "Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)", keywords: ["gia bat nang ha", "gia bat"] },
+  { code: "VT-PK-XOONG", name: "Bộ Giá Xoong Nồi + Giá Bát Đĩa Cố Định Inox 304 Nan Oval (Cặp 2 tầng - Tách khỏi 40%)", unit: "Bộ", price: 2650000, bucket: "COMMERCIAL_PK", supplier: "Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)", keywords: ["gia xoong noi", "xoong noi"] },
+  { code: "VT-PK-DAOTHOT", name: "Giá Dao Thớt Gia Vị Đa Năng Inox 304 + Thùng Gạo Mặt Gương + Thùng Rác Đôi", unit: "Combo", price: 3450000, bucket: "COMMERCIAL_PK", supplier: "Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)", keywords: ["dao thot", "thung gao"] },
+  { code: "VT-PK-AVENTOS", name: "Bộ Tay Nâng Đôi Blum Aventos HF22 / Hafele Free Fold Chính Hãng (Tách khỏi 40%)", unit: "Bộ", price: 2450000, bucket: "COMMERCIAL_PK", supplier: "Phụ kiện Hafele / Blum Việt Nam (Bản lề, Tay nâng Aventos, Ray âm)", keywords: ["aventos", "blum hf", "tay nang blum"] },
+  { code: "VT-GOTHIT-SOI", name: "Gỗ Sồi Nga (Tần Bì) / Gỗ Gõ Đỏ Xẻ Sấy Nhập Khẩu Đóng Đồ Gỗ Thịt (Tách khỏi 40%)", unit: "m³", price: 18500000, bucket: "COMMERCIAL_PK", supplier: "Gỗ Tự Nhiên & Xưởng Xẻ Sấy (Gỗ Sồi, Gõ Đỏ, Óc Chó - Tách riêng)", keywords: ["go soi", "go go do", "go thit"] },
+  { code: "VT-SON-INCHEM", name: "Combo Sơn PU 2K Inchem (Sơn lót + Tinh màu Óc Chó + Bóng mờ 50% + Dung môi)", unit: "Bộ", price: 3200000, bucket: "COMMERCIAL_PK", supplier: "Đại lý Sơn PU Inchem / Oseven & Vật tư hoàn thiện", keywords: ["son pu", "son inchem"] }
+];
+
+// Khởi tạo Datalist gợi ý 65+ vật tư chuẩn cho Vũ
+window.populateVuMaterialDatalist = function() {
+  const dl = document.getElementById("vuMaterialCatalogDatalist");
+  if (!dl) return;
+  dl.innerHTML = (window.VU_REAL_ORDER_CATALOG_2026 || []).map(item =>
+    `<option value="${item.name}" label="${item.code} | ${item.unit} | ${fmtCurr(item.price)} (${item.bucket === 'COMMERCIAL_PK' ? 'Tách khỏi 40%' : 'Khoán 40%'})"></option>`
+  ).join("");
+};
+
+// Chuyển Tab trong Bộ 4 Công Cụ Nhập Nhanh Của Vũ
+window.switchVuSmartToolTab = function(tabKey) {
+  const keys = ["BOARD_SET", "CUSTOM_DIM", "HARDWARE_COMBO", "ZALO_PASTE"];
+  keys.forEach(k => {
+    const panel = document.getElementById(`vuToolPanel_${k}`);
+    if (panel) panel.style.display = (k === tabKey) ? "block" : "none";
+  });
+  const btnMap = {
+    BOARD_SET: "tabBtnVuBoard",
+    CUSTOM_DIM: "tabBtnVuDim",
+    HARDWARE_COMBO: "tabBtnVuCombo",
+    ZALO_PASTE: "tabBtnVuZalo"
+  };
+  Object.entries(btnMap).forEach(([k, id]) => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      if (k === tabKey) btn.classList.add("active");
+      else btn.classList.remove("active");
+    }
+  });
+};
+
+// Mở Modal Lập Đơn Thông Minh Với Kịch Bản Đặt Hàng Chọn Trước (1 Chạm Từ Bàn Làm Việc Của Vũ)
+window.openSmartPOModalWithPreset = function(presetKey) {
+  const btnOpen = document.getElementById("btnOpenCreatePOModal");
+  if (btnOpen) btnOpen.click();
+
+  const supplierSel = document.getElementById("inpPoSupplier");
+  const tbody = document.getElementById("bodyPoItemsInput");
+
+  if (presetKey === "BOARD_SET" || presetKey === "LAM_GIANG_BOARD") {
+    window.switchVuSmartToolTab("BOARD_SET");
+    if (supplierSel) supplierSel.value = "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)";
+    if (tbody) tbody.innerHTML = "";
+    window.applyVuSmartBoardSet();
+  } else if (presetKey === "CUSTOM_DIM" || presetKey === "ACRYLIC_GLASS_DIM") {
+    window.switchVuSmartToolTab("CUSTOM_DIM");
+    if (supplierSel) supplierSel.value = "Livas - Phú Gia (Gia công Cánh Acrylic No-Line)";
+    if (tbody) tbody.innerHTML = "";
+    addPOItemInputRow("Gia công Cánh Acrylic No-Line Livas [720×450mm × 6 cánh — PARC 01 Trắng bóng, khoan lỗ bản lề]", "m²", 1.94, 1150000, "WOOD_40");
+    addPOItemInputRow("Gia công Cánh Kính Cường Lực Khung Nhôm VSG [2100×500mm × 4 cánh — Kính trà, khung đen mờ]", "m²", 4.2, 1350000, "WOOD_40");
+  } else if (presetKey === "HARDWARE_COMBO" || presetKey === "QUOC_TAM_FITTING") {
+    window.switchVuSmartToolTab("HARDWARE_COMBO");
+    if (supplierSel) supplierSel.value = "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)";
+    if (tbody) tbody.innerHTML = "";
+    window.applyVuHardwareCombo("KITCHEN_FITTING");
+  } else if (presetKey === "STONE_MIRROR_PAD") {
+    window.switchVuSmartToolTab("CUSTOM_DIM");
+    if (supplierSel) supplierSel.value = "Đá Hoàng Hà - Phú Gia (Đá Bàn Bếp, Đá Lavabo, Đá Cầu Thang)";
+    const catSel = document.getElementById("vuDimCategorySelect");
+    if (catSel) catSel.value = "DA_BEP_HOANG_HA";
+    if (tbody) tbody.innerHTML = "";
+    addPOItemInputRow("Đá Bàn Bếp Trắng Vân Mây Ceramic Hoàng Hà [Dài 3850×600mm — Khoét lỗ chậu rửa & bếp từ, vát mỏ vịt]", "md", 3.85, 1450000, "WOOD_40");
+    addPOItemInputRow("Kính Cường Lực Ốp Bếp 8mm Việt Nhật VSG [Dài 3850×650mm — Sơn màu Trắng Xanh, khoét 2 ổ điện]", "md", 3.85, 750000, "WOOD_40");
+    addPOItemInputRow("Gương Bỉ 5mm Dantalux Phun Cát Đèn LED Cảm Ứng [800×1000mm × 2 phòng tắm]", "m²", 1.6, 1250000, "WOOD_40");
+  } else if (presetKey === "COMMERCIAL_SEPARATE") {
+    window.switchVuSmartToolTab("HARDWARE_COMBO");
+    if (supplierSel) supplierSel.value = "Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)";
+    if (tbody) tbody.innerHTML = "";
+    window.applyVuHardwareCombo("COMMERCIAL_KITCHEN_PK");
+  } else if (presetKey === "ZALO_PASTE") {
+    window.switchVuSmartToolTab("ZALO_PASTE");
+    const txt = document.getElementById("inpVuZaloRawText");
+    if (txt && !txt.value) {
+      txt.value = "15 tấm 17ly 205T, 5 hậu 205T, 3 cuộn chỉ 21 205T, 80 bản lề giảm chấn, 6 bộ ray âm 450, 1 bao keo hạt Jowat";
+    }
+  }
+  recalculatePOCostSummary();
+};
+
+// Công cụ 1: Nạp trọn bộ Ván 17mm + Hậu 6mm + Chỉ nẹp đồng màu + Trừ phôi dư CNC
+window.applyVuSmartBoardSet = function() {
+  const colorKey = document.getElementById("vuBoardColorSelect")?.value || "MDF_THAI_205T";
+  const rawQty17 = Math.max(1, parseInt(document.getElementById("vuBoardQty17")?.value, 10) || 15);
+  const autoBack = document.getElementById("chkVuAutoBack6mm")?.checked !== false;
+  const autoEdge44 = document.getElementById("chkVuAutoEdge44mm")?.checked === true;
+  const deductOffcut = document.getElementById("chkVuDeductOffcut")?.checked === true;
+
+  const boardPresets = {
+    MDF_THAI_205T: {
+      boardName: "Ván MDF Lõi Xanh Chống Ẩm Thái Lan 17mm - Mã 205T (Trắng Mờ Chủ Lực)", boardPrice: 740000,
+      backName: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm (5.5ly) - Mã 205T (Trắng Mờ)", backPrice: 350000,
+      edge21Name: "Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Đồng Màu 205T (Cuộn 200m)", edge21Price: 220000,
+      edge44Name: "Chỉ Nhựa Dán Cạnh Bản Đôi PVC 44×1.0mm Đồng Màu 205T (Cuộn 100m)", edge44Price: 420000,
+      supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)"
+    },
+    MDF_THAI_202T: {
+      boardName: "Ván MDF Lõi Xanh Chống Ẩm Thái Lan 17mm - Mã 202T (Trắng Sữa)", boardPrice: 740000,
+      backName: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm - Mã 202T (Trắng Sữa)", backPrice: 350000,
+      edge21Name: "Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Đồng Màu 202T (Cuộn 200m)", edge21Price: 220000,
+      edge44Name: "Chỉ Nhựa Dán Cạnh Bản Đôi PVC 44×1.0mm Đồng Màu 202T", edge44Price: 420000,
+      supplier: "Đặt hàng - Phú Gia & NT Cầu Vượt (Ván MDF, WPB, Trả ván dư)"
+    },
+    MDF_THAI_388: {
+      boardName: "Ván MDF Lõi Xanh Thái Lan 17mm - Mã MS 388 EV (Vân Sồi Sáng)", boardPrice: 760000,
+      backName: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm - Mã MS 388 EV (Vân Sồi)", backPrice: 365000,
+      edge21Name: "Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Vân Sồi MS 388 (Cuộn 200m)", edge21Price: 235000,
+      edge44Name: "Chỉ Nhựa Dán Cạnh Bản Đôi PVC 44×1.0mm Vân Sồi MS 388", edge44Price: 435000,
+      supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)"
+    },
+    MDF_THAI_612: {
+      boardName: "Ván MDF Lõi Xanh Thái Lan 17mm - Mã MS 612 (Vân Óc Chó / Xám Chì)", boardPrice: 760000,
+      backName: "Ván Hậu MDF Chống Ẩm Thái Lan 6mm - Mã MS 612 (Vân Óc Chó / Xám)", backPrice: 365000,
+      edge21Name: "Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Đồng Màu MS 612 (Cuộn 200m)", edge21Price: 235000,
+      edge44Name: "Chỉ Nhựa Dán Cạnh Bản Đôi PVC 44×1.0mm Đồng Màu MS 612", edge44Price: 435000,
+      supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)"
+    },
+    MDF_AC_17: {
+      boardName: "Ván MDF Lõi Xanh Chống Ẩm An Cường Chính Hãng 17mm Phủ Melamine", boardPrice: 1120000,
+      backName: "Ván Hậu MDF Lõi Xanh An Cường Chính Hãng 6mm Đồng Màu", backPrice: 520000,
+      edge21Name: "Chỉ Nhựa Dán Cạnh An Cường 21×1.0mm Đồng Màu (Cuộn 200m)", edge21Price: 310000,
+      edge44Name: "Chỉ Nhựa Dán Cạnh Đôi An Cường 44×1.0mm Đồng Màu", edge44Price: 540000,
+      supplier: "Gỗ An Cường (Hà Tĩnh / Nghệ An - MDF/HDF/WPB Chính Hãng)"
+    },
+    PLYWOOD_414PL: {
+      boardName: "Gỗ Plywood Chống Nước Phủ Melamine 18mm - Mã 414 PL / 8803 (Tiêu chuẩn E0)", boardPrice: 950000,
+      backName: "Ván Hậu Plywood Chống Nước Phủ Melamine 6mm Đồng Màu 414 PL", backPrice: 430000,
+      edge21Name: "Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Đồng Màu 414 PL (Cuộn 200m)", edge21Price: 235000,
+      edge44Name: "Chỉ Nhựa Dán Cạnh Đôi PVC 44×1.0mm Đồng Màu 414 PL", edge44Price: 435000,
+      supplier: "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)"
+    },
+    WPB_AC_17: {
+      boardName: "Tấm Nhựa Đặc WPB An Cường 17mm Kháng Nước Tuyệt Đối (Khoang Chậu Rửa)", boardPrice: 2550000,
+      backName: "Tấm Hậu Nhựa WPB An Cường 8mm Kháng Nước", backPrice: 1280000,
+      edge21Name: "Chỉ Nhựa WPB An Cường 21×1.0mm Trắng Sứ", edge21Price: 280000,
+      edge44Name: "Chỉ Nhựa WPB An Cường 44×1.0mm", edge44Price: 490000,
+      supplier: "Gỗ An Cường (Hà Tĩnh / Nghệ An - MDF/HDF/WPB Chính Hãng)"
+    },
+    PICOMAT_17: {
+      boardName: "Ván Nhựa Đặc Picomat Chống Nước 17mm (Khoang Chậu Rửa / Lavabo)", boardPrice: 1350000,
+      backName: "Tấm Hậu Nhựa Picomat 8mm Chống Nước", backPrice: 680000,
+      edge21Name: "Chỉ Nhựa PVC 21×1.0mm Dán Cạnh Nhựa Picomat", edge21Price: 220000,
+      edge44Name: "Chỉ Nhựa PVC 44×1.0mm Dán Cạnh Picomat", edge44Price: 420000,
+      supplier: "Gỗ Minh Long / Picomat (Ván Nhựa Chống Nước & Laminate)"
+    }
+  };
+
+  const cfg = boardPresets[colorKey] || boardPresets.MDF_THAI_205T;
+  const supSel = document.getElementById("inpPoSupplier");
+  if (supSel && cfg.supplier) supSel.value = cfg.supplier;
+
+  const finalQty17 = deductOffcut ? Math.max(1, rawQty17 - 2) : rawQty17;
+  const offcutNote = deductOffcut ? " [Đã trừ 2 tấm tận dụng phôi dư CNC 500mm/170mm trong kho]" : "";
+
+  addPOItemInputRow(cfg.boardName + offcutNote, "Tấm", finalQty17, cfg.boardPrice, "WOOD_40");
+
+  if (autoBack) {
+    const backQty = Math.max(1, Math.round(rawQty17 * 0.30));
+    const edge21Rolls = Math.max(1, Math.ceil(rawQty17 / 12));
+    addPOItemInputRow(cfg.backName, "Tấm", backQty, cfg.backPrice, "WOOD_40");
+    addPOItemInputRow(cfg.edge21Name, "Cuộn", edge21Rolls, cfg.edge21Price, "WOOD_40");
+  }
+
+  if (autoEdge44) {
+    addPOItemInputRow(cfg.edge44Name, "Cuộn", 1, cfg.edge44Price, "WOOD_40");
+  }
+
+  recalculatePOCostSummary();
+  if (typeof showToast === "function") {
+    showToast(`🪵 Đã nạp bộ Ván (${finalQty17} tấm 17mm${autoBack ? ' + Hậu 6mm + Chỉ 21mm' : ''}) vào đơn đặt hàng!`);
+  }
+};
+
+// Thêm dòng trả ván dư về kho NCC (ghi số âm để trừ công nợ như đơn NT Cầu Vượt -750.000đ)
+window.addVuReturnBoardRow = function() {
+  addPOItemInputRow("↩️ Trả Ván Dư Nguyên Tấm 17mm Về Kho NCC (Khấu trừ công nợ trực tiếp)", "Tấm", -1, 750000, "WOOD_40");
+  recalculatePOCostSummary();
+  if (typeof showToast === "function") {
+    showToast("↩️ Đã thêm dòng Trả Ván Dư (-1 tấm = -750.000 đ) để trừ trực tiếp trên đơn!");
+  }
+};
+
+// Quy đổi nhanh từ khối lượng công trình (Mục 24 CNC) ra số tấm ván 17mm
+window.calcCncSheetsToVuBoardInput = function() {
+  const bd = parseFloat(document.getElementById("inpQuickCncBd")?.value) || 0;
+  const bt = parseFloat(document.getElementById("inpQuickCncBt")?.value) || 0;
+  const kt = parseFloat(document.getElementById("inpQuickCncKt")?.value) || 0;
+  const ta = parseFloat(document.getElementById("inpQuickCncTa")?.value) || 0;
+  const vp = parseFloat(document.getElementById("inpQuickCncVp")?.value) || 0;
+
+  // Chuẩn Mục 24: Bếp dưới 1.45 tấm/md, Bếp trên 1.04 tấm/md, Kịch trần 1.44 tấm/md, Tủ áo 1.05 tấm/m², Vách phẳng 0.40 tấm/m²
+  const totalSheets = (bd * 1.45) + (bt * 1.04) + (kt * 1.44) + (ta * 1.05) + (vp * 0.40);
+  const rounded = Math.max(1, Math.ceil(totalSheets));
+  const inp = document.getElementById("vuBoardQty17");
+  if (inp) inp.value = rounded;
+  if (typeof showToast === "function") {
+    showToast(`📐 Quy đổi Mục 24 CNC: ${totalSheets.toFixed(2)} tấm -> Làm tròn ${rounded} tấm 17mm!`);
+  }
+};
+
+// Công cụ 2: Máy tính bóc tách gia công theo kích thước (Dài mm × Rộng mm × Số lượng)
+window.applyVuSmartDimensionCalc = function() {
+  const sel = document.getElementById("vuDimCategorySelect");
+  if (!sel) return;
+  const opt = sel.options[sel.selectedIndex];
+  const unit = opt.getAttribute("data-unit") || "m²";
+  const price = parseFloat(opt.getAttribute("data-price")) || 1150000;
+  const bucket = opt.getAttribute("data-bucket") || "WOOD_40";
+  const catLabel = opt.textContent.split("(")[0].trim();
+
+  const lenMm = Math.max(10, parseFloat(document.getElementById("vuDimLengthMm")?.value) || 720);
+  const widMm = Math.max(10, parseFloat(document.getElementById("vuDimWidthMm")?.value) || 450);
+  const count = Math.max(1, parseInt(document.getElementById("vuDimCount")?.value, 10) || 1);
+  const spec = (document.getElementById("vuDimTechSpec")?.value || "").trim();
+
+  let qty = 0;
+  if (unit === "md") {
+    qty = parseFloat(((lenMm / 1000) * count).toFixed(2));
+  } else {
+    qty = parseFloat((((lenMm * widMm) / 1000000) * count).toFixed(2));
+  }
+
+  const fullTitle = `${catLabel} [KT: ${lenMm}×${widMm}mm × ${count} tấm = ${qty} ${unit}${spec ? ' — ' + spec : ''}]`;
+  addPOItemInputRow(fullTitle, unit, qty, price, bucket);
+  recalculatePOCostSummary();
+  if (typeof showToast === "function") {
+    showToast(`📐 Đã tính kích thước (${lenMm}×${widMm}mm × ${count} = ${qty} ${unit}) và đưa vào bảng!`);
+  }
+};
+
+// Công cụ 3: Nạp nhanh Combo Ngũ Kim, Đèn LED, Keo Jowat, Phụ kiện Bếp 1 chạm
+window.applyVuHardwareCombo = function(comboType) {
+  const supSel = document.getElementById("inpPoSupplier");
+  if (comboType === "KITCHEN_FITTING") {
+    if (supSel) supSel.value = "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)";
+    addPOItemInputRow("Bản Lề Giảm Chấn Inox 304 Tháo Nhanh Quốc Tâm (60 Thẳng + 20 Cong vừa)", "Cái", 80, 18500, "WOOD_40");
+    addPOItemInputRow("Ray Âm Giảm Chấn Toàn Phần Mở Rộng 450mm Quốc Tâm / DTC", "Bộ", 6, 145000, "WOOD_40");
+    addPOItemInputRow("Tay Nâng Hơi / Pittong Thủy Lực Cánh Tủ Bếp Trên 100N", "Cái", 6, 28000, "WOOD_40");
+    addPOItemInputRow("Chân Nhựa Tăng Chỉnh Tủ Bếp Dưới Cao 100mm Chịu Lực", "Cái", 24, 8500, "WOOD_40");
+    addPOItemInputRow("Bộ Ốc Cam Liên Kết 3 Thành Phần + Chốt Gỗ CNC + Vít Gỗ", "Túi", 1, 480000, "WOOD_40");
+  } else if (comboType === "WARDROBE_FITTING") {
+    if (supSel) supSel.value = "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)";
+    addPOItemInputRow("Bản Lề Giảm Chấn Inox 304 Tủ Quần Áo (Quốc Tâm)", "Cái", 60, 18500, "WOOD_40");
+    addPOItemInputRow("Ray Bi 3 Tầng Bản Rộng 45mm Dài 400mm Sơn Tĩnh Điện", "Bộ", 5, 65000, "WOOD_40");
+    addPOItemInputRow("Thanh Suốt Treo Quần Áo Hợp Kim Nhôm Màu Champagne (Cây 3m + Bát)", "Cây", 3, 135000, "WOOD_40");
+    addPOItemInputRow("Tay Nắm Âm Hợp Kim Nhôm Dài 1000mm Đen Mờ / Vàng Xước", "Cái", 6, 125000, "WOOD_40");
+  } else if (comboType === "LED_LIGHTING") {
+    if (supSel) supSel.value = "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)";
+    addPOItemInputRow("Thanh Nhôm Định Hình Đèn LED Âm Tủ Kèm Nắp Mica Tản Sáng (Cây 3m)", "Cây", 8, 48000, "WOOD_40");
+    addPOItemInputRow("Cuộn Dây Đèn LED Dán 12V COB Vàng Nắng 4000K Siêu Sáng (Cuộn 5m)", "Cuộn", 5, 95000, "WOOD_40");
+    addPOItemInputRow("Nguồn Đũa Siêu Mỏng 12V - 10A/15A Chuyên Dụng Tủ Nội Thất", "Cái", 3, 145000, "WOOD_40");
+    addPOItemInputRow("Cảm Biến Vẫy Tay Tủ Bếp + Cảm Biến Đóng Mở Cánh Tủ Áo 12V", "Cái", 4, 85000, "WOOD_40");
+  } else if (comboType === "GLUE_CNC_CONSUMABLE") {
+    if (supSel) supSel.value = "Vật tư phụ Xưởng (Keo hạt Jowat, Chỉ nẹp, Mũi CNC, Lưỡi cưa)";
+    addPOItemInputRow("Keo Hạt Dán Cạnh Nhiệt Độ Cao Jowat CHLB Đức Chính Hãng (Bao 25kg)", "Bao", 1, 2450000, "WOOD_40");
+    addPOItemInputRow("Mũi Cắt CNC Hợp Kim Xoắn 6mm Cắt Ván MDF/Plywood (Hộp 10 mũi)", "Hộp", 1, 850000, "WOOD_40");
+    addPOItemInputRow("Keo Silicon Trung Tính Apollo A500 + Keo 502 + Dung Môi Lau Ván", "Thùng", 1, 1150000, "WOOD_40");
+  } else if (comboType === "COMMERCIAL_KITCHEN_PK") {
+    if (supSel) supSel.value = "Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)";
+    addPOItemInputRow("Giá Bát Nâng Hạ Inox 304 Eurogold Khoang 800mm + Tay Nâng Blum HF22 [Tách khỏi 40%]", "Bộ", 1, 4250000, "COMMERCIAL_PK");
+    addPOItemInputRow("Bộ Giá Xoong Nồi + Giá Bát Đĩa Cố Định Inox 304 Nan Oval (Cặp 2 tầng) [Tách khỏi 40%]", "Bộ", 1, 2650000, "COMMERCIAL_PK");
+    addPOItemInputRow("Giá Dao Thớt Gia Vị Đa Năng Inox 304 + Thùng Gạo Mặt Gương [Tách khỏi 40%]", "Combo", 1, 3450000, "COMMERCIAL_PK");
+  }
+  recalculatePOCostSummary();
+  if (typeof showToast === "function") {
+    showToast("🔩 Đã nạp nhanh Combo vật tư vào bảng kê đơn hàng!");
+  }
+};
+
+// Công cụ 4: Bóc tách chuỗi tin nhắn đặt hàng Zalo tự nhiên của Vũ
+window.parseVuZaloOrderText = function() {
+  const raw = (document.getElementById("inpVuZaloRawText")?.value || "").trim();
+  if (!raw) {
+    alert("Vũ vui lòng dán hoặc gõ nội dung tin nhắn đặt hàng Zalo vào ô!");
+    return;
+  }
+
+  const segments = raw.split(/[,;\n]+/).map(s => s.trim()).filter(Boolean);
+  let addedCount = 0;
+
+  segments.forEach(seg => {
+    const low = seg.toLowerCase();
+    const numMatch = seg.match(/(-?\d+(?:[.,]\d+)?)/);
+    const qty = numMatch ? parseFloat(numMatch[1].replace(",", ".")) : 1;
+
+    // So khớp thông minh với danh mục thực tế của Vũ
+    let matchedItem = null;
+    for (const item of (window.VU_REAL_ORDER_CATALOG_2026 || [])) {
+      if ((item.keywords || []).some(kw => low.includes(kw))) {
+        matchedItem = item;
+        break;
+      }
+    }
+
+    if (matchedItem) {
+      addPOItemInputRow(matchedItem.name, matchedItem.unit, qty, matchedItem.price, matchedItem.bucket);
+    } else if (low.includes("hau") || low.includes("hậu") || low.includes("6ly") || low.includes("5.5ly")) {
+      addPOItemInputRow(`Ván Hậu MDF Chống Ẩm 6mm (${seg})`, "Tấm", qty, 350000, "WOOD_40");
+    } else if (low.includes("17ly") || low.includes("17mm") || low.includes("tấm") || low.includes("tam")) {
+      addPOItemInputRow(`Ván MDF Lõi Xanh Chống Ẩm 17mm (${seg})`, "Tấm", qty, 740000, "WOOD_40");
+    } else if (low.includes("chỉ") || low.includes("chi") || low.includes("nẹp") || low.includes("cuộn")) {
+      addPOItemInputRow(`Chỉ Nhựa Dán Cạnh PVC Đồng Màu (${seg})`, "Cuộn", qty, 220000, "WOOD_40");
+    } else {
+      addPOItemInputRow(seg, "Cái", qty, 50000, "WOOD_40");
+    }
+    addedCount++;
+  });
+
+  recalculatePOCostSummary();
+  if (typeof showToast === "function") {
+    showToast(`⚡ Đã bóc tách tự động ${addedCount} dòng vật tư từ tin nhắn Zalo của Vũ!`);
+  }
+};
+
+// Xóa trắng bảng để nhập lại
+window.clearAllPOItemRows = function() {
+  const tbody = document.getElementById("bodyPoItemsInput");
+  if (tbody) tbody.innerHTML = "";
+  recalculatePOCostSummary();
+};
+
+// Nạp trực tiếp 1 vật tư từ bảng Kho Vật Tư (#tableVatTu) sang Đơn Đặt Hàng của Vũ
+window.addMaterialRowToPOFromCatalog = function(matCodeOrName, unit, price, bucket) {
+  const modalCreate = document.getElementById("createPOModal");
+  if (modalCreate && !modalCreate.classList.contains("active")) {
+    const btnOpen = document.getElementById("btnOpenCreatePOModal");
+    if (btnOpen) btnOpen.click();
+    const tbody = document.getElementById("bodyPoItemsInput");
+    if (tbody && tbody.children.length === 1) tbody.innerHTML = "";
+  }
+  addPOItemInputRow(matCodeOrName, unit || "Tấm", 5, price || 740000, bucket || "WOOD_40");
+  recalculatePOCostSummary();
+};
+
+// Copy Tin Nhắn Đặt Hàng Zalo Chuẩn Gửi Nhà Cung Cấp (Chỉ cho phép khi ĐÃ ĐÓNG DẤU ĐỎ)
+window.copyApprovedPOZaloMessage = function(code) {
+  const targetCode = code || currentViewingPOCode;
+  const po = (appState.poList || []).find(p => p.code === targetCode);
+  if (!po) return;
+
+  if (po.status !== "APPROVED") {
+    alert("⛔ CHỐT CHẶN DẤU ĐỎ GIÁM ĐỐC:\n\nPhiếu đề xuất " + po.code + " CHƯA ĐƯỢC GIÁM ĐỐC DUYỆT & ĐÓNG DẤU ĐỎ!\nVũ tuyệt đối không được copy tin nhắn gửi sang nhóm Zalo nhà cung cấp khi chưa có dấu đỏ.");
+    return;
+  }
+
+  const lines = [
+    `📦 ĐƠN ĐẶT HÀNG VẬT TƯ CHÍNH THỨC — PG HOME LUXURY`,
+    `• Mã đơn (Đã đóng dấu đỏ): ${po.code}`,
+    `• Ngày đặt: ${po.date} | Người đặt: Hoàng Công Vũ (0911.006.880)`,
+    `• Nhà cung cấp: ${po.supplier}`,
+    `• Công trình: ${po.project}`,
+    `----------------------------------------`,
+    `📋 CHI TIẾT VẬT TƯ ĐẶT GIAO:`
+  ];
+  (po.items || []).forEach((it, idx) => {
+    lines.push(`${idx + 1}. ${it.name}: ${it.qty} ${it.unit} × ${fmtCurr(it.price)} = ${fmtCurr(it.total)}`);
+  });
+  lines.push(`----------------------------------------`);
+  lines.push(`💰 TỔNG CỘNG ĐƠN HÀNG: ${fmtCurr(po.total)}`);
+  lines.push(`✅ Phê duyệt bởi: Giám đốc Nguyễn Viết Nghĩa (${po.approvedAt || "Đã đóng dấu đỏ"})`);
+  lines.push(`📍 Giao tại: Tổ hợp VP & Nhà máy Sản xuất Nội thất Phú Gia — Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh (Hotline: 0986.722.324)`);
+  if (po.note) lines.push(`📝 Ghi chú: ${po.note}`);
+
+  const msg = lines.join("\n");
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(msg).then(() => {
+      if (typeof showToast === "function") {
+        showToast(`📋 Đã copy tin nhắn đặt hàng chuẩn của đơn ${po.code}! Vũ chỉ việc dán (Ctrl+V) vào nhóm Zalo NCC.`);
+      }
+    }).catch(() => {
+      prompt("Copy nội dung tin nhắn đặt hàng gửi Zalo NCC:", msg);
+    });
+  } else {
+    prompt("Copy nội dung tin nhắn đặt hàng gửi Zalo NCC:", msg);
+  }
+};
+
 // Setup PO Modals & Events
 function setupPOModals() {
+  window.populateVuMaterialDatalist();
+
   // Radio Filter in PO Tab
   const radioPOFilters = document.querySelectorAll("input[name='poFilter']");
   radioPOFilters.forEach(radio => {
@@ -3195,6 +3825,7 @@ function setupPOModals() {
 
   if (btnOpenCreate && modalCreate) {
     btnOpenCreate.addEventListener("click", () => {
+      window.populateVuMaterialDatalist();
       // Auto-generate Code & Date
       const today = new Date().toISOString().split("T")[0];
       const randomSuffix = Math.floor(1000 + Math.random() * 9000);
@@ -3249,10 +3880,12 @@ function setupPOModals() {
         };
       }
 
-      // Reset items table with 1 blank row
+      // Reset items table with Vũ's realistic default 3-item board set (Ván 17mm 205T + Hậu 6mm 205T + Chỉ 21mm)
       const tbody = document.getElementById("bodyPoItemsInput");
       tbody.innerHTML = "";
-      addPOItemInputRow("Ván MDF chống ẩm An Cường 17mm", "Tấm", 20, 420000);
+      addPOItemInputRow("Ván MDF Lõi Xanh Chống Ẩm Thái Lan 17mm - Mã 205T (Trắng Mờ Chủ Lực)", "Tấm", 15, 740000, "WOOD_40");
+      addPOItemInputRow("Ván Hậu MDF Chống Ẩm Thái Lan 6mm (5.5ly) - Mã 205T (Trắng Mờ)", "Tấm", 5, 350000, "WOOD_40");
+      addPOItemInputRow("Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Đồng Màu 205T (Cuộn 200m)", "Cuộn", 2, 220000, "WOOD_40");
 
       recalculatePOCostSummary();
       modalCreate.classList.add("active");
@@ -3286,21 +3919,29 @@ function setupPOModals() {
       const contractVal = parseFloat(projectSelect.options[projectSelect.selectedIndex].dataset.val) || 100000000;
       const note = document.getElementById("inpPoNote").value;
 
-      // Extract item rows
+      // Extract item rows (hỗ trợ cả số lượng âm khi trả ván dư trừ công nợ)
       const rows = document.querySelectorAll(".po-item-row");
       const items = [];
       let total = 0;
+      let wood40Total = 0;
+      let commercialPkTotal = 0;
 
       rows.forEach(row => {
         const name = row.querySelector(".inp-item-name")?.value.trim();
+        const bucket = row.querySelector(".inp-item-bucket")?.value || "WOOD_40";
         const unit = row.querySelector(".inp-item-unit")?.value.trim() || "Cái";
         const qty = parseFloat(row.querySelector(".inp-item-qty")?.value) || 0;
         const price = parseFloat(row.querySelector(".inp-item-price")?.value) || 0;
-        const rowTotal = qty * price;
+        const rowTotal = Math.round(qty * price);
 
-        if (name && qty > 0) {
-          items.push({ name, unit, qty, price, total: rowTotal });
+        if (name && qty !== 0) {
+          items.push({ name, unit, qty, price, total: rowTotal, costBucket: bucket });
           total += rowTotal;
+          if (bucket === "COMMERCIAL_PK") {
+            commercialPkTotal += rowTotal;
+          } else {
+            wood40Total += rowTotal;
+          }
         }
       });
 
@@ -3318,7 +3959,8 @@ function setupPOModals() {
         return;
       }
 
-      const costRate = contractVal > 0 ? (total / contractVal) : 0;
+      // Tính tỷ lệ % định mức 40% chuẩn xác: chỉ tính trên phần Vật tư xưởng (wood40Total), không tính lầm đồ thương mại
+      const costRate = contractVal > 0 ? Math.max(0, wood40Total / contractVal) : 0;
 
       const newPO = {
         code,
@@ -3329,6 +3971,8 @@ function setupPOModals() {
         supplier,
         items,
         total,
+        wood40Total,
+        commercialPkTotal,
         costRate,
         status: "PENDING", // LUÔN LUÔN Ở TRẠNG THÁI PENDING ĐỢI GIÁM ĐỐC DUYỆT
         approvedBy: null,
@@ -3339,16 +3983,17 @@ function setupPOModals() {
       appState.poList.unshift(newPO);
       saveState();
       if (typeof window.logSystemAudit === "function") {
-        window.logSystemAudit("CREATE_PO", `Lập phiếu đề xuất mới ${code} (${project} - ${fmtCurr(total)})`);
+        window.logSystemAudit("CREATE_PO", `Lập phiếu đề xuất mới ${code} (${project} - Tổng: ${fmtCurr(total)} | Khoán xưởng: ${fmtCurr(wood40Total)})`);
       }
 
       closeCreateModal();
       renderPOList(currentActivePOFilter);
 
       alert(`✅ VŨ ĐÃ GỬI ĐỀ XUẤT ${code} THÀNH CÔNG!\n\n` +
-        `• Tổng tiền đề xuất: ${fmtCurr(total)}\n` +
+        `• Nhà cung cấp: ${supplier}\n` +
+        `• Tổng tiền đơn hàng: ${fmtCurr(total)} (Vật tư xưởng 40%: ${fmtCurr(wood40Total)} | Thương mại tách riêng: ${fmtCurr(commercialPkTotal)})\n` +
         `• Trạng thái: ⏳ CHỜ GIÁM ĐỐC DUYỆT & ĐÓNG DẤU ĐỎ\n\n` +
-        `⚠️ NHẮC NHỞ: Chưa có chữ ký & con dấu của Giám Đốc, xưởng TUYỆT ĐỐI CHƯA ĐƯỢC NHẬP HÀNG!`);
+        `⚠️ NHẮC NHỞ: Sau khi Giám Đốc đóng dấu đỏ, Vũ bấm nút "📋 Copy Zalo" để gửi đơn chuẩn sang nhóm NCC!`);
     });
   }
 
@@ -3360,6 +4005,16 @@ function setupPOModals() {
   const closeViewModal = () => modalView && modalView.classList.remove("active");
   if (closeViewBtn) closeViewBtn.addEventListener("click", closeViewModal);
   if (closeViewBtn2) closeViewBtn2.addEventListener("click", closeViewModal);
+
+  // Copy Zalo Message inside View Modal
+  const btnCopyZalo = document.getElementById("btnCopyPOZaloMsg");
+  if (btnCopyZalo) {
+    btnCopyZalo.addEventListener("click", () => {
+      if (currentViewingPOCode) {
+        window.copyApprovedPOZaloMessage(currentViewingPOCode);
+      }
+    });
+  }
 
   // Print Button Handler with STRICT Check
   const btnPrint = document.getElementById("btnPrintPO");
@@ -3391,39 +4046,92 @@ function setupPOModals() {
   }
 }
 
-// Thêm dòng vật tư động vào bảng form
-function addPOItemInputRow(defName = "", defUnit = "Tấm", defQty = 1, defPrice = 0) {
+// Tự động nhận diện nhóm hạch toán (Khoán xưởng 40% vs Thương mại/Gỗ thịt tách riêng)
+window.detectMaterialBucketByName = function(nameStr) {
+  const low = (nameStr || "").toLowerCase();
+  const commercialKw = ["giá bát", "xoong nồi", "dao thớt", "thùng gạo", "aventos", "blum", "hafele", "bosch", "malloca", "gỗ sồi", "gõ đỏ", "gỗ thịt", "inchem", "sơn pu", "sofa", "tách khỏi 40%"];
+  if (commercialKw.some(k => low.includes(k))) return "COMMERCIAL_PK";
+  return "WOOD_40";
+};
+
+// Thêm dòng vật tư động vào bảng form (Hỗ trợ Autocomplete 68+ vật tư Vũ hay đặt, Nhân bản dòng & Số âm trả ván dư)
+function addPOItemInputRow(defName = "", defUnit = "Tấm", defQty = 1, defPrice = 0, defBucket = "") {
   const tbody = document.getElementById("bodyPoItemsInput");
   if (!tbody) return;
+
+  const resolvedBucket = defBucket || window.detectMaterialBucketByName(defName);
 
   const tr = document.createElement("tr");
   tr.className = "po-item-row";
   tr.innerHTML = `
-    <td><input type="text" class="form-control inp-item-name" required placeholder="Tên & quy cách vật tư..." value="${defName}"></td>
-    <td><input type="text" class="form-control inp-item-unit" value="${defUnit}" placeholder="ĐVT"></td>
-    <td><input type="number" class="form-control inp-item-qty" min="0.1" step="any" value="${defQty}"></td>
-    <td><input type="number" class="form-control inp-item-price" min="0" step="1000" value="${defPrice}"></td>
-    <td style="font-weight: 700; color: var(--text-gold); vertical-align: middle;" class="row-total-val">${fmtCurr(defQty * defPrice)}</td>
-    <td style="text-align: center; vertical-align: middle;">
-      <button type="button" class="btn btn-sm btn-outline text-rose btn-del-row" style="padding: 4px 8px;"><i class="fa-solid fa-trash"></i></button>
+    <td>
+      <input type="text" class="form-control inp-item-name" list="vuMaterialCatalogDatalist" required placeholder="Gõ mã màu (205T, 388, 612...) hoặc tên vật tư..." value="${defName}" style="font-size: 0.8rem;">
+    </td>
+    <td>
+      <select class="form-control inp-item-bucket" style="font-size: 0.75rem; padding: 4px 6px;">
+        <option value="WOOD_40" ${resolvedBucket === "WOOD_40" ? "selected" : ""}>🪵 Khoán Xưởng 40%</option>
+        <option value="COMMERCIAL_PK" ${resolvedBucket === "COMMERCIAL_PK" ? "selected" : ""}>🛋️ Thương Mại/Gỗ Thịt</option>
+      </select>
+    </td>
+    <td>
+      <input type="text" class="form-control inp-item-unit" value="${defUnit}" placeholder="ĐVT" style="font-size: 0.8rem; text-align: center;">
+    </td>
+    <td>
+      <input type="number" class="form-control inp-item-qty" step="any" value="${defQty}" style="font-size: 0.82rem; font-weight: 700; text-align: center;" title="Nhập số âm (VD: -1) nếu trả ván dư về kho NCC">
+    </td>
+    <td>
+      <input type="number" class="form-control inp-item-price" min="0" step="500" value="${defPrice}" style="font-size: 0.8rem; text-align: right;">
+    </td>
+    <td style="font-weight: 700; color: var(--text-gold); vertical-align: middle; text-align: right;" class="row-total-val">${fmtCurr(defQty * defPrice)}</td>
+    <td style="text-align: center; vertical-align: middle; white-space: nowrap;">
+      <button type="button" class="btn btn-sm btn-outline btn-dup-row" title="Nhân bản dòng này để đổi mã màu nhanh" style="padding: 3px 6px; margin-right: 3px; color: #38BDF8; border-color: rgba(56,189,248,0.35);"><i class="fa-solid fa-copy"></i></button>
+      <button type="button" class="btn btn-sm btn-outline text-rose btn-del-row" title="Xóa dòng" style="padding: 3px 6px;"><i class="fa-solid fa-trash"></i></button>
     </td>
   `;
 
-  // Listeners on inputs to update totals
+  const nameInput = tr.querySelector(".inp-item-name");
+  const bucketSelect = tr.querySelector(".inp-item-bucket");
+  const unitInput = tr.querySelector(".inp-item-unit");
   const qtyInput = tr.querySelector(".inp-item-qty");
   const priceInput = tr.querySelector(".inp-item-price");
   const totalCell = tr.querySelector(".row-total-val");
+  const dupBtn = tr.querySelector(".btn-dup-row");
   const delBtn = tr.querySelector(".btn-del-row");
 
   const updateRowTotal = () => {
     const q = parseFloat(qtyInput.value) || 0;
     const p = parseFloat(priceInput.value) || 0;
-    totalCell.textContent = fmtCurr(q * p);
+    const rowSum = Math.round(q * p);
+    totalCell.textContent = fmtCurr(rowSum);
+    totalCell.style.color = rowSum < 0 ? "#F87171" : "var(--text-gold)";
     recalculatePOCostSummary();
   };
 
+  // Khi Vũ chọn hoặc gõ trúng vật tư trong danh mục 68+ món -> Tự điền ĐVT, Đơn giá chuẩn, Phân loại & NCC
+  nameInput.addEventListener("change", () => {
+    const val = nameInput.value.trim().toLowerCase();
+    const found = (window.VU_REAL_ORDER_CATALOG_2026 || []).find(it =>
+      it.name.toLowerCase() === val || it.code.toLowerCase() === val
+    );
+    if (found) {
+      unitInput.value = found.unit;
+      priceInput.value = found.price;
+      bucketSelect.value = found.bucket || "WOOD_40";
+      const supSel = document.getElementById("inpPoSupplier");
+      if (supSel && found.supplier) supSel.value = found.supplier;
+    } else {
+      bucketSelect.value = window.detectMaterialBucketByName(nameInput.value);
+    }
+    updateRowTotal();
+  });
+
   qtyInput.addEventListener("input", updateRowTotal);
   priceInput.addEventListener("input", updateRowTotal);
+  bucketSelect.addEventListener("change", updateRowTotal);
+
+  dupBtn.addEventListener("click", () => {
+    addPOItemInputRow(nameInput.value, unitInput.value, parseFloat(qtyInput.value) || 1, parseFloat(priceInput.value) || 0, bucketSelect.value);
+  });
 
   delBtn.addEventListener("click", () => {
     tr.remove();
@@ -3434,15 +4142,28 @@ function addPOItemInputRow(defName = "", defUnit = "Tấm", defQty = 1, defPrice
   updateRowTotal();
 }
 
-// Tính lại tóm tắt giá trị & % Cost / HĐ trong form Vũ
+// Tính lại tóm tắt giá trị & % Cost / HĐ trong form Vũ (Tách bạch Vật tư xưởng 40% vs Đồ thương mại/Gỗ thịt)
 function recalculatePOCostSummary() {
   const rows = document.querySelectorAll(".po-item-row");
   let total = 0;
+  let wood40Val = 0;
+  let commercialPkVal = 0;
+
   rows.forEach(r => {
     const q = parseFloat(r.querySelector(".inp-item-qty")?.value) || 0;
     const p = parseFloat(r.querySelector(".inp-item-price")?.value) || 0;
-    total += q * p;
+    const b = r.querySelector(".inp-item-bucket")?.value || "WOOD_40";
+    const rowVal = Math.round(q * p);
+    total += rowVal;
+    if (b === "COMMERCIAL_PK") {
+      commercialPkVal += rowVal;
+    } else {
+      wood40Val += rowVal;
+    }
   });
+
+  const lblItemCount = document.getElementById("lblPoItemCount");
+  if (lblItemCount) lblItemCount.textContent = rows.length;
 
   const projectSelect = document.getElementById("inpPoProjectSelect");
   let contractVal = 100000000;
@@ -3451,25 +4172,28 @@ function recalculatePOCostSummary() {
   }
 
   const maxBudget = contractVal * 0.40;
-  const costRate = contractVal > 0 ? (total / contractVal) : 0;
+  const costRate = contractVal > 0 ? Math.max(0, wood40Val / contractVal) : 0;
 
   const lblTotal = document.getElementById("lblPoTotalProposal");
-  const lblMax = document.getElementById("lblPoMaxBudget");
-  const lblRate = document.getElementById("lblPoCostRate");
+  const lblWood40 = document.getElementById("lblPoWood40Val");
+  const lblCommPk = document.getElementById("lblPoCommercialPkVal");
   const lblEval = document.getElementById("lblPoEvaluation");
 
   if (lblTotal) lblTotal.textContent = fmtCurr(total);
+  if (lblWood40) lblWood40.textContent = fmtCurr(wood40Val);
+  if (lblCommPk) lblCommPk.textContent = fmtCurr(commercialPkVal);
+
   if (lblEval) {
-    if (total === 0) {
+    if (rows.length === 0 || total === 0) {
       lblEval.textContent = "Chưa nhập vật tư";
       lblEval.className = "comp-val";
     } else {
-      lblEval.textContent = "Đã tính tổng tiền - Chờ gửi Giám Đốc duyệt";
+      lblEval.textContent = "Đã tách chuẩn 40% - Chờ trình GĐ duyệt";
       lblEval.className = "comp-val text-emerald";
     }
   }
 
-  // CẬP NHẬT THANH ĐO ĐỊNH MỨC VẬT TƯ 40% (TỐI ƯU 5)
+  // CẬP NHẬT THANH ĐO ĐỊNH MỨC VẬT TƯ 40% (CHỈ TÍNH TRÊN PHẦN KHOÁN XƯỞNG WOOD_40)
   const meterText = document.getElementById("poMeterRatioText");
   const meterFill = document.getElementById("poMeterFill");
   const meterFeed = document.getElementById("poMeterFeedback");
@@ -3488,16 +4212,16 @@ function recalculatePOCostSummary() {
   }
 
   if (meterFeed) {
-    if (total === 0) {
+    if (rows.length === 0) {
       meterFeed.className = "po-meter-feedback text-dim";
-      meterFeed.innerHTML = `<i class="fa-solid fa-info-circle"></i> <span>Vũ vui lòng nhập danh mục vật tư để kiểm tra định mức khoán 40%.</span>`;
+      meterFeed.innerHTML = `<i class="fa-solid fa-info-circle"></i> <span>Vũ vui lòng chọn Kịch bản nhập nhanh hoặc thêm dòng vật tư để kiểm tra định mức khoán 40%.</span>`;
     } else if (costRatioPct <= 40) {
       meterFeed.className = "po-meter-feedback text-emerald";
-      meterFeed.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>✅ TRONG ĐỊNH MỨC KHOÁN (≤ 40%). Còn dư ngân sách: ${fmtCurr(maxBudget - total)}. Đủ điều kiện gửi Giám Đốc ký duyệt.</span>`;
+      meterFeed.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>✅ TRONG ĐỊNH MỨC KHOÁN XƯỞNG (≤ 40%). Ngân sách vật tư 40% còn dư: <strong>${fmtCurr(maxBudget - wood40Val)}</strong>${commercialPkVal > 0 ? ` (Đã tách riêng ${fmtCurr(commercialPkVal)} đồ thương mại/gỗ thịt không tính lầm vào 40%)` : ''}.</span>`;
     } else {
       meterFeed.className = "po-meter-feedback text-rose";
       meterFeed.style.animation = "pulseDanger 1.5s infinite ease-in-out";
-      meterFeed.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <span>⚠️ CẢNH BÁO: VƯỢT ĐỊNH MỨC KHOÁN 40%! (Vượt trần: ${fmtCurr(total - maxBudget)}). Giám Đốc sẽ chất vấn kỹ thuật trước khi duyệt!</span>`;
+      meterFeed.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <span>⚠️ CẢNH BÁO: VƯỢT ĐỊNH MỨC KHOÁN XƯỞNG 40%! (Vượt trần: ${fmtCurr(wood40Val - maxBudget)}). Giám Đốc sẽ kiểm tra kỹ trước khi đóng dấu đỏ!</span>`;
     }
   }
 }
@@ -7808,3 +8532,1466 @@ window.approveAllFilteredZaloItems = async function() {
     }
   };
 })();
+
+/* ============================================================================
+ * SMART DATA ENTRY, 8-CATEGORY TAXONOMY & MULTI-DIMENSIONAL PIVOT ENGINE v9.0
+ * Tối ưu khâu Nhập Liệu (Tiện & Dễ Nhập) + Thống Kê Đa Chiều (Dễ Thống Kê)
+ * ============================================================================ */
+(function initSmartEntryAndMultiDimStatsEngine() {
+  // 1. BẢNG PHÂN LOẠI 8 NHÓM DANH MỤC VẬT TƯ CHUẨN XƯỞNG PG HOME
+  window.MATERIAL_CATEGORY_TAXONOMY = [
+    {
+      code: "VAN_17MM",
+      label: "1. 🪵 Ván Cốt 17mm/18mm",
+      shortLabel: "🪵 Ván 17mm",
+      defaultUnit: "Tấm",
+      defaultPrice: 470000,
+      defaultSupplier: "Tổng Kho Lam Giang",
+      bucket: "WOOD_40",
+      color: "#fbbf24"
+    },
+    {
+      code: "HAU_6MM",
+      label: "2. 📄 Ván Hậu 5.5mm/6mm",
+      shortLabel: "📄 Hậu 6mm",
+      defaultUnit: "Tấm",
+      defaultPrice: 255000,
+      defaultSupplier: "Tổng Kho Lam Giang",
+      bucket: "WOOD_40",
+      color: "#38bdf8"
+    },
+    {
+      code: "CHI_NEP",
+      label: "3. 🎗️ Chỉ Dán Cạnh PVC",
+      shortLabel: "🎗️ Chỉ PVC",
+      defaultUnit: "Cuộn",
+      defaultPrice: 120000,
+      defaultSupplier: "Tổng Kho Lam Giang",
+      bucket: "WOOD_40",
+      color: "#a78bfa"
+    },
+    {
+      code: "CANH_ACRYLIC_KINH",
+      label: "4. ✨ Gia Công Cánh Acrylic / Cánh Kính",
+      shortLabel: "✨ Cánh Acrylic/Kính",
+      defaultUnit: "m²",
+      defaultPrice: 1050000,
+      defaultSupplier: "Xưởng Cánh Kính VSG / Livas",
+      bucket: "WOOD_40",
+      color: "#34d399"
+    },
+    {
+      code: "KINH_GUONG_DA",
+      label: "5. 🪞 Kính Bếp, Gương LED, Đá, Đệm",
+      shortLabel: "🪞 Kính/Gương/Đá",
+      defaultUnit: "m²",
+      defaultPrice: 780000,
+      defaultSupplier: "Nhà Máy Kính Phú Mỹ / Đá Hoàng Hà",
+      bucket: "WOOD_40",
+      color: "#f472b6"
+    },
+    {
+      code: "NGU_KIM_LED_KEO",
+      label: "6. 🔩 Ngũ Kim, Bản Lề, Ray, LED, Keo",
+      shortLabel: "🔩 Ngũ Kim/LED/Keo",
+      defaultUnit: "Bộ",
+      defaultPrice: 85000,
+      defaultSupplier: "NPP Phụ Kiện Quốc Tâm (56 Ngô Đức Kế)",
+      bucket: "WOOD_40",
+      color: "#60a5fa"
+    },
+    {
+      code: "PHU_KIEN_BEP_TM",
+      label: "7. 🛋️ Phụ Kiện Bếp Inox / Thiết Bị / Sofa",
+      shortLabel: "🛋️ Phụ Kiện Bếp/Sofa",
+      defaultUnit: "Bộ",
+      defaultPrice: 1450000,
+      defaultSupplier: "NPP Phụ Kiện Quốc Tâm (56 Ngô Đức Kế)",
+      bucket: "COMMERCIAL_PK",
+      color: "#c084fc"
+    },
+    {
+      code: "GO_THIT_PU",
+      label: "8. 🌳 Gỗ Tự Nhiên (Gỗ Sồi) & Sơn PU",
+      shortLabel: "🌳 Gỗ Thịt/Sơn PU",
+      defaultUnit: "m³",
+      defaultPrice: 18500000,
+      defaultSupplier: "Xưởng Gỗ Sồi Đức Anh / Cường Hà Nội",
+      bucket: "COMMERCIAL_PK",
+      color: "#fb923c"
+    }
+  ];
+
+  // Nhận diện tự động Mã Nhóm Danh Mục (8 Nhóm) từ tên vật tư hoặc mã
+  window.detectMaterialCategoryCode = function(nameOrCode, explicitCat) {
+    if (explicitCat && window.MATERIAL_CATEGORY_TAXONOMY.some(c => c.code === explicitCat)) {
+      return explicitCat;
+    }
+    const s = String(nameOrCode || "").toLowerCase();
+    if (!s) return "VAN_17MM";
+    if (s.includes("gỗ sồi") || s.includes("gỗ thịt") || s.includes("gỗ óc chó") || s.includes("gỗ gõ") || s.includes("sơn pu") || s.includes("tẩm sấy")) {
+      return "GO_THIT_PU";
+    }
+    if (s.includes("bát nâng hạ") || s.includes("giá bát") || s.includes("xoong nồi") || s.includes("gia vị") || s.includes("thùng gạo") || s.includes("bếp từ") || s.includes("hút mùi") || s.includes("chậu rửa") || s.includes("sofa")) {
+      return "PHU_KIEN_BEP_TM";
+    }
+    if (s.includes("hậu") || s.includes("6mm") || s.includes("5.5mm") || s.includes("6ly")) {
+      return "HAU_6MM";
+    }
+    if (s.includes("chỉ ") || s.includes("chỉ nhựa") || s.includes("chỉ dán") || s.includes("21x1") || s.includes("44x1") || s.includes("cuộn chỉ")) {
+      return "CHI_NEP";
+    }
+    if (s.includes("acrylic") || s.includes("cánh kính") || s.includes("no-line") || s.includes("noline")) {
+      return "CANH_ACRYLIC_KINH";
+    }
+    if (s.includes("kính cường lực") || s.includes("kính bếp") || s.includes("kính ốp") || s.includes("gương") || s.includes("đá ") || s.includes("mặt đá") || s.includes("bọc đệm") || s.includes("đầu giường")) {
+      return "KINH_GUONG_DA";
+    }
+    if (s.includes("bản lề") || s.includes("ray ") || s.includes("keo ") || s.includes("jowat") || s.includes("mũi cnc") || s.includes("đèn led") || s.includes("thanh nhôm led") || s.includes("nguồn led") || s.includes("cảm biến") || s.includes("cam liên kết") || s.includes("suốt") || s.includes("tay nắm") || s.includes("piston")) {
+      return "NGU_KIM_LED_KEO";
+    }
+    return "VAN_17MM";
+  };
+
+  window.getCategoryMeta = function(catCode) {
+    return window.MATERIAL_CATEGORY_TAXONOMY.find(c => c.code === catCode) || window.MATERIAL_CATEGORY_TAXONOMY[0];
+  };
+
+  // 2. HỖ TRỢ NHẬP TIỀN THÔNG MINH & TỰ ĐỘNG TÍNH D = A - B - C TRONG MODAL
+  window.bumpMoneyInput = function(inputId, delta, callbackName) {
+    const el = document.getElementById(inputId);
+    if (!el) return;
+    const cur = parseFloat(el.value) || 0;
+    el.value = Math.max(0, cur + delta);
+    if (callbackName && typeof window[callbackName] === "function") {
+      window[callbackName]();
+    }
+  };
+
+  window.multiplyMoneyInput = function(inputId, factor, callbackName) {
+    const el = document.getElementById(inputId);
+    if (!el) return;
+    const cur = parseFloat(el.value) || 0;
+    if (cur > 0 && cur < 10000) {
+      el.value = Math.round(cur * factor);
+    }
+    if (callbackName && typeof window[callbackName] === "function") {
+      window[callbackName]();
+    }
+  };
+
+  window.onModalXuongPickContract = function(selEl) {
+    if (!selEl || !selEl.value) return;
+    const opt = selEl.options[selEl.selectedIndex];
+    const client = selEl.value;
+    const total = parseFloat(opt.getAttribute("data-total")) || 0;
+    const wood = parseFloat(opt.getAttribute("data-wood")) || total;
+    const pk = parseFloat(opt.getAttribute("data-pk")) || Math.max(0, total - wood);
+
+    const clientInp = document.getElementById("inpXuongClient");
+    const hdInp = document.getElementById("inpXuongHd");
+    const pkInp = document.getElementById("inpXuongPkExcluded");
+    const woodInp = document.getElementById("inpXuongWood");
+
+    if (clientInp) clientInp.value = client;
+    if (hdInp) hdInp.value = total;
+    if (pkInp) pkInp.value = pk;
+    if (woodInp) woodInp.value = wood;
+    window.recalcModalXuongWood();
+  };
+
+  window.recalcModalXuongWood = function() {
+    const hd = parseFloat(document.getElementById("inpXuongHd")?.value) || 0;
+    const pk = parseFloat(document.getElementById("inpXuongPkExcluded")?.value) || 0;
+    const wood = Math.max(0, hd - pk);
+    const woodInp = document.getElementById("inpXuongWood");
+    if (woodInp) woodInp.value = wood;
+
+    const prevHd = document.getElementById("previewInpXuongHd");
+    const prevPk = document.getElementById("previewInpXuongPk");
+    if (prevHd) prevHd.textContent = fmtCurr(hd);
+    if (prevPk) prevPk.textContent = `${fmtCurr(pk)} (Tách khỏi khoán xưởng)`;
+    window.recalcModalXuongActual();
+  };
+
+  window.recalcModalXuongActual = function() {
+    const wood = parseFloat(document.getElementById("inpXuongWood")?.value) || 0;
+    const pct = (parseFloat(document.getElementById("inpXuongPct")?.value) || 100) / 100;
+    const actual = Math.round(wood * pct);
+    const prevWood = document.getElementById("previewInpXuongWood");
+    const prevActual = document.getElementById("inpXuongActualPreview");
+    if (prevWood) {
+      prevWood.textContent = `${fmtCurr(wood)} (Trần VT 40%: ${fmtCurr(wood * 0.4)} | Quỹ Thợ 15%: ${fmtCurr(wood * 0.15)})`;
+    }
+    if (prevActual) {
+      prevActual.value = fmtCurr(actual);
+    }
+  };
+
+  window.onModalWorkerSkillChange = function(skillVal) {
+    const sel = document.getElementById("inpWorkerSkill");
+    const baseInp = document.getElementById("inpWorkerBase");
+    if (!sel || !baseInp) return;
+    const opt = sel.options[sel.selectedIndex];
+    const b = opt ? parseFloat(opt.getAttribute("data-base")) : 0;
+    if (b > 0) baseInp.value = b;
+  };
+
+  window.onModalVtCatChange = function(catCode) {
+    const meta = window.getCategoryMeta(catCode);
+    const unitEl = document.getElementById("inpVtUnit");
+    const priceEl = document.getElementById("inpVtPrice");
+    const supEl = document.getElementById("inpVtSupplier");
+    const badgeEl = document.getElementById("inpVtBucketBadge");
+    if (unitEl) unitEl.value = meta.defaultUnit;
+    if (priceEl) priceEl.value = meta.defaultPrice;
+    if (supEl) supEl.value = meta.defaultSupplier;
+    if (badgeEl) {
+      badgeEl.textContent = meta.bucket === "COMMERCIAL_PK" ? "🛋️ Tách Khỏi 40% (TM/Gỗ Thịt)" : "🪵 Khoán Xưởng 40%";
+      badgeEl.style.color = meta.bucket === "COMMERCIAL_PK" ? "#c084fc" : "#34d399";
+    }
+    window.recalcModalVtTotal();
+  };
+
+  window.onModalVtNameInput = function(val) {
+    const catalog = window.VU_REAL_ORDER_CATALOG_2026 || [];
+    const q = String(val || "").trim().toLowerCase();
+    const matched = catalog.find(x =>
+      x.name.toLowerCase() === q ||
+      x.code.toLowerCase() === q ||
+      `${x.code} - ${x.name}`.toLowerCase() === q ||
+      (q.length >= 4 && x.name.toLowerCase().includes(q))
+    );
+    if (matched) {
+      const nameInp = document.getElementById("inpVtName");
+      const unitInp = document.getElementById("inpVtUnit");
+      const priceInp = document.getElementById("inpVtPrice");
+      const supInp = document.getElementById("inpVtSupplier");
+      const catInp = document.getElementById("inpVtCatCode");
+      if (nameInp && (nameInp.value === matched.code || nameInp.value.includes(" - "))) {
+        nameInp.value = matched.name;
+      }
+      if (unitInp) unitInp.value = matched.unit;
+      if (priceInp) priceInp.value = matched.price;
+      if (supInp && matched.supplier) supInp.value = matched.supplier;
+      const detectedCat = window.detectMaterialCategoryCode(matched.name);
+      if (catInp) catInp.value = detectedCat;
+    }
+    window.recalcModalVtTotal();
+  };
+
+  window.recalcModalVtTotal = function() {
+    const qty = parseFloat(document.getElementById("inpVtQty")?.value) || 0;
+    const price = parseFloat(document.getElementById("inpVtPrice")?.value) || 0;
+    const totalEl = document.getElementById("inpVtTotalPreview");
+    if (totalEl) totalEl.textContent = fmtCurr(qty * price);
+  };
+
+  window.recalcModalHopDong = function() {
+    const total = parseFloat(document.getElementById("inpHdTotal")?.value) || 0;
+    const pk = parseFloat(document.getElementById("inpHdPkVal")?.value) || 0;
+    const wood = Math.max(0, total - pk);
+    const rep = document.getElementById("inpHdRep")?.value || "Tống Trần Hiệp";
+    const commRate = rep.includes("Hiệp") ? 0.05 : 0.035;
+    const comm = Math.round(wood * commRate);
+
+    const woodInp = document.getElementById("inpHdWood");
+    if (woodInp) woodInp.value = wood;
+    const prevTotal = document.getElementById("previewInpHdTotal");
+    const prevPk = document.getElementById("previewInpHdPk");
+    const prevWood = document.getElementById("previewInpHdWood");
+    const prevComm = document.getElementById("inpHdCommPreview");
+    if (prevTotal) prevTotal.textContent = fmtCurr(total);
+    if (prevPk) prevPk.textContent = `${fmtCurr(pk)} (Tách khỏi Gỗ CN)`;
+    if (prevWood) prevWood.textContent = `${fmtCurr(wood)} (Cơ sở khoán xưởng 40%/15%)`;
+    if (prevComm) prevComm.value = `${fmtCurr(comm)} (${(commRate * 100).toFixed(1)}%)`;
+  };
+
+  window.onModalPayClientChange = function(selEl) {
+    if (!selEl || !selEl.value) return;
+    const opt = selEl.options[selEl.selectedIndex];
+    const total = parseFloat(opt.getAttribute("data-total")) || 0;
+    const paid = parseFloat(opt.getAttribute("data-paid")) || 0;
+    const debt = parseFloat(opt.getAttribute("data-debt")) || 0;
+
+    const clientInp = document.getElementById("inpPayClient");
+    if (clientInp) clientInp.value = selEl.value;
+    const banner = document.getElementById("modalPayDebtInfoBanner");
+    if (banner) {
+      banner.style.display = "block";
+      banner.setAttribute("data-total", total);
+      banner.setAttribute("data-debt", debt);
+      banner.innerHTML = `📊 <strong>${selEl.value}</strong>: Tổng HĐ: <strong style="color:#fbbf24;">${fmtCurr(total)}</strong> • Đã thu: <strong style="color:#34d399;">${fmtCurr(paid)}</strong> • Dư nợ còn lại: <strong style="color:#f87171;">${fmtCurr(debt)}</strong>`;
+    }
+  };
+
+  window.setPayQuickPreset = function(mode) {
+    const banner = document.getElementById("modalPayDebtInfoBanner");
+    const total = parseFloat(banner?.getAttribute("data-total")) || 100000000;
+    const debt = parseFloat(banner?.getAttribute("data-debt")) || total;
+    const amtInp = document.getElementById("inpPayAmount");
+    const noteInp = document.getElementById("inpPayNote");
+    if (!amtInp) return;
+
+    if (mode === "COC_50") {
+      amtInp.value = Math.round(total * 0.5);
+      if (noteInp) noteInp.value = "Thu tạm ứng cọc Đợt 1 (50% giá trị HĐ)";
+    } else if (mode === "DOT2_35") {
+      amtInp.value = Math.round(total * 0.35);
+      if (noteInp) noteInp.value = "Thu thanh toán Đợt 2 (35% khi tập kết phôi lắp đặt)";
+    } else if (mode === "TAT_TOAN") {
+      amtInp.value = Math.round(debt);
+      if (noteInp) noteInp.value = "Tất toán 100% công nợ còn lại sau nghiệm thu";
+    }
+    window.updateModalPayPreview();
+  };
+
+  window.updateModalPayPreview = function() {
+    const v = parseFloat(document.getElementById("inpPayAmount")?.value) || 0;
+    const prev = document.getElementById("previewInpPayAmount");
+    if (prev) prev.textContent = fmtCurr(v);
+  };
+
+  window.onModalPkPresetChange = function(val) {
+    if (!val) return;
+    const parts = val.split("|");
+    const itemEl = document.getElementById("inpPkItem");
+    const brandEl = document.getElementById("inpPkBrand");
+    const priceEl = document.getElementById("inpPkPrice");
+    if (itemEl) itemEl.value = parts[0] || "";
+    if (brandEl) brandEl.value = parts[1] || "Hafele";
+    if (priceEl) {
+      priceEl.value = parseFloat(parts[2]) || 0;
+      priceEl.dispatchEvent(new Event("input"));
+    }
+  };
+
+  window.onModalCpPresetChange = function(val) {
+    if (!val) return;
+    const parts = val.split("|");
+    const nameEl = document.getElementById("inpCpName");
+    const recEl = document.getElementById("inpCpRecipient");
+    const actEl = document.getElementById("inpCpActual");
+    if (nameEl) nameEl.value = parts[0] || "";
+    if (recEl) recEl.value = parts[1] || "";
+    if (actEl) actEl.value = parseFloat(parts[2]) || 0;
+  };
+
+  // 3. LỌC NHANH DANH MỤC TRONG #createPOModal & CHỌN 1 CHẠM MẶT HÀNG
+  window.filterPoCatalogByCategory = function(catCode, btnEl) {
+    document.querySelectorAll("#poCatalogCategoryFilterBar .po-cat-pill").forEach(b => {
+      b.style.outline = "none";
+      b.classList.remove("active");
+    });
+    if (btnEl) {
+      btnEl.classList.add("active");
+      btnEl.style.outline = "2px solid #f59e0b";
+    }
+
+    const catalog = window.VU_REAL_ORDER_CATALOG_2026 || [];
+    const filtered = catCode === "ALL"
+      ? catalog
+      : catalog.filter(item => window.detectMaterialCategoryCode(item.name) === catCode);
+
+    const dl = document.getElementById("dlCatalogItems");
+    if (dl) {
+      dl.innerHTML = filtered.map(c =>
+        `<option value="${c.code} - ${c.name}" label="${fmtCurr(c.price)}/${c.unit} (${c.supplier || ''})"></option>`
+      ).join("");
+    }
+
+    const quickSelect = document.getElementById("poQuickPickByCatSelect");
+    if (quickSelect) {
+      const catTitle = catCode === "ALL" ? "Tất cả 25+ vật tư chuẩn" : window.getCategoryMeta(catCode).shortLabel;
+      quickSelect.innerHTML = `<option value="">⚡ Chọn 1 chạm mặt hàng (${catTitle} - ${filtered.length} món) để thêm ngay dòng...</option>` +
+        filtered.map(c => `<option value="${c.code}">[${c.code}] ${c.name} — ${fmtCurr(c.price)}/${c.unit}</option>`).join("");
+    }
+  };
+
+  window.quickInsertCatalogCodeToPO = function(code) {
+    if (!code) return;
+    const catalog = window.VU_REAL_ORDER_CATALOG_2026 || [];
+    const found = catalog.find(x => x.code === code);
+    if (!found) return;
+    if (typeof addPOItemInputRow === "function") {
+      // Xóa dòng trống mặc định nếu chỉ có 1 dòng rỗng
+      const rows = document.querySelectorAll("#tbodyPoItemsInput tr");
+      if (rows.length === 1) {
+        const firstName = rows[0].querySelector(".inp-item-name")?.value.trim();
+        if (!firstName) rows[0].remove();
+      }
+      addPOItemInputRow(found.name, 1, found.unit, found.price, found.bucket);
+    }
+    const sel = document.getElementById("poQuickPickByCatSelect");
+    if (sel) sel.value = "";
+    if (typeof showToast === "function") {
+      showToast(`➕ Đã thêm nhanh: "${found.name}" (${fmtCurr(found.price)}/${found.unit})`);
+    }
+  };
+
+  // 4. THANH NHẬP NHANH VẬT TƯ 1 DÒNG (#vtQuickInlineEntryBar) TẠI KHO VẬT TƯ
+  window.populateQuickVtInlineDropdowns = function() {
+    const projSel = document.getElementById("qvtProject");
+    if (projSel) {
+      const projects = Array.from(new Set([
+        ...(appState.xuongRecords || []).map(r => r.client),
+        ...(appState.contracts || []).map(c => c.client),
+        "Nhà Anh Nam",
+        "Nhà Chị Hiển",
+        "Chị Hoa - Cẩm Xuyên",
+        "Chị Hương - Vinhomes",
+        "Dự phòng xưởng"
+      ].filter(Boolean)));
+      const curVal = projSel.value;
+      projSel.innerHTML = projects.map(p => `<option value="${p}">${p}</option>`).join("");
+      if (curVal && projects.includes(curVal)) projSel.value = curVal;
+    }
+    window.updateQuickVtPreview();
+  };
+
+  window.onQuickVtCatChange = function(catCode) {
+    const meta = window.getCategoryMeta(catCode);
+    const unitEl = document.getElementById("qvtUnit");
+    const priceEl = document.getElementById("qvtPrice");
+    const supEl = document.getElementById("qvtSupplier");
+    if (unitEl) unitEl.value = meta.defaultUnit;
+    if (priceEl) priceEl.value = meta.defaultPrice;
+    if (supEl) supEl.value = meta.defaultSupplier;
+    window.filterPoCatalogByCategory(catCode);
+    window.updateQuickVtPreview();
+  };
+
+  window.onQuickVtNameInput = function(val) {
+    const catalog = window.VU_REAL_ORDER_CATALOG_2026 || [];
+    const q = String(val || "").trim().toLowerCase();
+    const matched = catalog.find(x =>
+      x.name.toLowerCase() === q ||
+      x.code.toLowerCase() === q ||
+      `${x.code} - ${x.name}`.toLowerCase() === q
+    );
+    if (matched) {
+      const nameEl = document.getElementById("qvtName");
+      const unitEl = document.getElementById("qvtUnit");
+      const priceEl = document.getElementById("qvtPrice");
+      const supEl = document.getElementById("qvtSupplier");
+      const catEl = document.getElementById("qvtCatCode");
+      if (nameEl) nameEl.value = matched.name;
+      if (unitEl) unitEl.value = matched.unit;
+      if (priceEl) priceEl.value = matched.price;
+      if (supEl && matched.supplier) supEl.value = matched.supplier;
+      if (catEl) catEl.value = window.detectMaterialCategoryCode(matched.name);
+    }
+    window.updateQuickVtPreview();
+  };
+
+  window.updateQuickVtPreview = function() {
+    const qty = parseFloat(document.getElementById("qvtQty")?.value) || 0;
+    const price = parseFloat(document.getElementById("qvtPrice")?.value) || 0;
+    const catCode = document.getElementById("qvtCatCode")?.value || "VAN_17MM";
+    const meta = window.getCategoryMeta(catCode);
+    const prevEl = document.getElementById("vtQuickEntryPreviewTotal");
+    if (prevEl) {
+      const bucketTag = meta.bucket === "COMMERCIAL_PK" ? "🛋️ Tách riêng TM/Gỗ thịt" : "🪵 Khoán 40%";
+      prevEl.textContent = `Tổng: ${fmtCurr(qty * price)} (${bucketTag})`;
+      prevEl.style.color = meta.bucket === "COMMERCIAL_PK" ? "#c084fc" : "#34d399";
+    }
+  };
+
+  window.submitQuickInlineVatTu = function(createPOAlso) {
+    const project = (document.getElementById("qvtProject")?.value || "Dự phòng xưởng").trim();
+    const catCode = document.getElementById("qvtCatCode")?.value || "VAN_17MM";
+    const nameEl = document.getElementById("qvtName");
+    const name = (nameEl?.value || "").trim();
+    const qty = parseFloat(document.getElementById("qvtQty")?.value) || 0;
+    const unit = document.getElementById("qvtUnit")?.value || "Tấm";
+    const price = parseFloat(document.getElementById("qvtPrice")?.value) || 0;
+    const supplier = (document.getElementById("qvtSupplier")?.value || "Tổng Kho Lam Giang").trim();
+
+    if (!name) {
+      if (typeof showToast === "function") showToast("⚠️ Vui lòng gõ tên hoặc chọn mã vật tư cần nhập!");
+      if (nameEl) nameEl.focus();
+      return;
+    }
+    if (qty === 0) {
+      if (typeof showToast === "function") showToast("⚠️ Số lượng phải khác 0!");
+      return;
+    }
+
+    const meta = window.getCategoryMeta(catCode);
+    const newCode = "VT-" + (appState.materials.length + 1).toString().padStart(3, "0");
+
+    appState.materials.unshift({
+      code: newCode,
+      name,
+      project,
+      categoryCode: catCode,
+      bucket: meta.bucket,
+      unit,
+      qty,
+      price,
+      supplier,
+      status: createPOAlso ? "Đã tạo PO chờ duyệt" : "Nhập nhanh chuẩn danh mục"
+    });
+
+    if (createPOAlso && Array.isArray(appState.purchaseOrders)) {
+      const poId = "PO-2026-" + (appState.purchaseOrders.length + 1).toString().padStart(3, "0");
+      appState.purchaseOrders.unshift({
+        id: poId,
+        date: new Date().toLocaleDateString("vi-VN"),
+        project,
+        supplier,
+        requester: "Hoàng Công Vũ (Nhập nhanh 1 dòng)",
+        items: [{ name, qty, unit, price, categoryCode: catCode, bucket: meta.bucket }],
+        totalAmount: Math.round(qty * price),
+        wood40Amount: meta.bucket === "WOOD_40" ? Math.round(qty * price) : 0,
+        commercialAmount: meta.bucket === "COMMERCIAL_PK" ? Math.round(qty * price) : 0,
+        status: "PENDING",
+        approvedBy: null,
+        approvedAt: null,
+        note: `Tạo trực tiếp từ thanh nhập nhanh (${meta.shortLabel})`
+      });
+      if (typeof renderPOList === "function") renderPOList();
+    }
+
+    if (nameEl) {
+      nameEl.value = "";
+      nameEl.focus();
+    }
+    saveState();
+    if (typeof renderVatTu === "function") renderVatTu();
+    window.renderVtCategorySummaryStrip();
+    window.renderVuMultiDimStatsPivot();
+
+    if (typeof showToast === "function") {
+      showToast(`✅ Đã ghi vào Kho: [${meta.shortLabel}] ${qty} ${unit} "${name}" (${fmtCurr(qty * price)}) — Công trình: ${project}!`);
+    }
+  };
+
+  // 5. GOM DỮ LIỆU THỐNG KÊ TỔNG HỢP TỪ CẢ KHO VẬT TƯ & ĐƠN PO CỦA VŨ
+  window.collectUnifiedMaterialRecords = function() {
+    const unified = [];
+    // Lấy từ appState.materials
+    (appState.materials || []).forEach(m => {
+      const catCode = m.categoryCode || window.detectMaterialCategoryCode(m.name);
+      const meta = window.getCategoryMeta(catCode);
+      const bucket = m.bucket || (typeof window.detectMaterialBucketByName === "function" ? window.detectMaterialBucketByName(m.name, meta.bucket) : meta.bucket);
+      const qty = parseFloat(m.qty) || 0;
+      const price = parseFloat(m.price) || 0;
+      unified.push({
+        source: "KHO_VT",
+        code: m.code || "VT",
+        name: m.name || "",
+        project: m.project || "Chưa gắn công trình",
+        supplier: m.supplier || meta.defaultSupplier,
+        categoryCode: catCode,
+        bucket,
+        qty,
+        unit: m.unit || meta.defaultUnit,
+        price,
+        amount: Math.round(qty * price),
+        status: m.status || "Đã nhập kho"
+      });
+    });
+
+    // Lấy thêm các dòng vật tư từ các đơn PO chưa đẩy sang materials để thống kê không sót
+    const existingKeys = new Set(unified.map(u => `${u.project}|${u.name}|${u.qty}`));
+    (appState.purchaseOrders || []).forEach(po => {
+      if (po.status === "REJECTED") return;
+      (po.items || []).forEach(it => {
+        const key = `${po.project}|${it.name}|${it.qty}`;
+        if (existingKeys.has(key)) return;
+        const catCode = it.categoryCode || window.detectMaterialCategoryCode(it.name);
+        const meta = window.getCategoryMeta(catCode);
+        const bucket = it.bucket || (typeof window.detectMaterialBucketByName === "function" ? window.detectMaterialBucketByName(it.name, meta.bucket) : meta.bucket);
+        const qty = parseFloat(it.qty) || 0;
+        const price = parseFloat(it.price) || 0;
+        unified.push({
+          source: po.id,
+          code: po.id,
+          name: it.name || "",
+          project: po.project || "Dự phòng xưởng",
+          supplier: po.supplier || meta.defaultSupplier,
+          categoryCode: catCode,
+          bucket,
+          qty,
+          unit: it.unit || meta.defaultUnit,
+          price,
+          amount: Math.round(qty * price),
+          status: po.status === "APPROVED" ? "Đã duyệt PO" : "Chờ duyệt PO"
+        });
+      });
+    });
+
+    return unified;
+  };
+
+  // 6. RENDER DẢI 8 THẺ THỐNG KÊ NHÓM VẬT TƯ (#vtCategorySummaryStrip) TẠI TAB KHO VẬT TƯ
+  window.activeVtCategoryFilter = "ALL";
+
+  window.filterVatTuTableByCategory = function(catCode) {
+    window.activeVtCategoryFilter = (window.activeVtCategoryFilter === catCode && catCode !== "ALL") ? "ALL" : catCode;
+    window.renderVtCategorySummaryStrip();
+
+    const tbody = document.getElementById("tbodyVatTu");
+    if (!tbody) return;
+    const rows = (appState.materials || []).filter(m => {
+      if (window.activeVtCategoryFilter === "ALL") return true;
+      return (m.categoryCode || window.detectMaterialCategoryCode(m.name)) === window.activeVtCategoryFilter;
+    });
+
+    tbody.innerHTML = rows.map(m => {
+      const catCodeDet = m.categoryCode || window.detectMaterialCategoryCode(m.name);
+      const meta = window.getCategoryMeta(catCodeDet);
+      const total = (parseFloat(m.qty) || 0) * (parseFloat(m.price) || 0);
+      return `
+        <tr>
+          <td><code>${m.code}</code></td>
+          <td>
+            <strong>${m.name}</strong>
+            <div style="margin-top:2px;">
+              <span style="font-size:10px; padding:1px 6px; border-radius:4px; background:rgba(255,255,255,0.06); color:${meta.color}; font-weight:700;">${meta.shortLabel}</span>
+              <span style="font-size:10px; padding:1px 6px; border-radius:4px; margin-left:4px; background:${meta.bucket === 'COMMERCIAL_PK' ? 'rgba(168,85,247,0.16)' : 'rgba(16,185,129,0.16)'}; color:${meta.bucket === 'COMMERCIAL_PK' ? '#d8b4fe' : '#6ee7b7'};">
+                ${meta.bucket === 'COMMERCIAL_PK' ? '🛋️ Tách riêng' : '🪵 Khoán 40%'}
+              </span>
+            </div>
+          </td>
+          <td><span class="badge-tag">${m.project}</span></td>
+          <td class="text-center">${m.unit}</td>
+          <td class="text-center font-bold" style="color:${m.qty < 0 ? '#f87171' : '#f8fafc'};">${m.qty}</td>
+          <td class="text-right">${fmtCurr(m.price)}</td>
+          <td class="text-right font-bold text-gold">${fmtCurr(total)}</td>
+          <td>${m.supplier}</td>
+          <td class="text-center"><span class="status-pill status-done">${m.status}</span></td>
+        </tr>
+      `;
+    }).join("");
+  };
+
+  window.renderVtCategorySummaryStrip = function() {
+    const strip = document.getElementById("vtCategorySummaryStrip");
+    if (!strip) return;
+    const records = window.collectUnifiedMaterialRecords();
+    const grandTotal = records.reduce((s, r) => s + r.amount, 0) || 1;
+
+    strip.innerHTML = window.MATERIAL_CATEGORY_TAXONOMY.map(cat => {
+      const items = records.filter(r => r.categoryCode === cat.code);
+      const sumQty = items.reduce((s, r) => s + (parseFloat(r.qty) || 0), 0);
+      const sumAmt = items.reduce((s, r) => s + r.amount, 0);
+      const pct = ((sumAmt / grandTotal) * 100).toFixed(1);
+      const isActive = window.activeVtCategoryFilter === cat.code;
+      return `
+        <div onclick="window.filterVatTuTableByCategory('${cat.code}')" style="cursor:pointer; background:${isActive ? 'rgba(245,158,11,0.18)' : 'rgba(15,23,42,0.75)'}; border:1px solid ${isActive ? '#f59e0b' : 'rgba(148,163,184,0.22)'}; border-radius:8px; padding:8px 10px; transition:all 0.15s;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+            <span style="font-size:11px; font-weight:800; color:${cat.color};">${cat.shortLabel}</span>
+            <span style="font-size:10px; color:#94a3b8;">${pct}%</span>
+          </div>
+          <div style="font-size:13px; font-weight:800; color:#f8fafc;">${fmtCurr(sumAmt)}</div>
+          <div style="font-size:10px; color:#cbd5e1; margin-top:2px; display:flex; justify-content:space-between;">
+            <span>SL: <strong>${sumQty.toFixed(sumQty % 1 === 0 ? 0 : 1)} ${cat.defaultUnit}</strong></span>
+            <span style="color:${cat.bucket === 'COMMERCIAL_PK' ? '#c084fc' : '#34d399'};">${cat.bucket === 'COMMERCIAL_PK' ? 'Tách TM' : 'Khoán 40%'}</span>
+          </div>
+        </div>
+      `;
+    }).join("");
+  };
+
+  // 7. TRUNG TÂM THỐNG KÊ ĐA CHIỀU (#vuMultiDimStatsCenter) TẠI TAB PHÊ DUYỆT PO
+  window.currentVuStatsPivotMode = "project";
+
+  window.switchVuStatsPivotTab = function(mode, btnEl) {
+    window.currentVuStatsPivotMode = mode || "project";
+    ["btnPivotByProject", "btnPivotByCategory", "btnPivotBySupplier"].forEach(id => {
+      const b = document.getElementById(id);
+      if (b) {
+        b.classList.remove("active");
+        b.style.background = "rgba(30,41,59,0.85)";
+        b.style.color = "#cbd5e1";
+        b.style.border = "1px solid rgba(148,163,184,0.3)";
+      }
+    });
+    if (btnEl) {
+      btnEl.classList.add("active");
+      btnEl.style.background = "rgba(16,185,129,0.22)";
+      btnEl.style.color = "#6ee7b7";
+      btnEl.style.border = "1px solid rgba(16,185,129,0.5)";
+    }
+    window.renderVuMultiDimStatsPivot(window.currentVuStatsPivotMode);
+  };
+
+  window.renderVuMultiDimStatsPivot = function(modeOverride) {
+    const mode = modeOverride || window.currentVuStatsPivotMode || "project";
+    const ribbon = document.getElementById("vuMultiDimKpiRibbon");
+    const thead = document.getElementById("theadVuMultiDimStats");
+    const tbody = document.getElementById("tbodyVuMultiDimStats");
+    if (!thead || !tbody) return;
+
+    const records = window.collectUnifiedMaterialRecords();
+    const totalWood40 = records.filter(r => r.bucket === "WOOD_40").reduce((s, r) => s + r.amount, 0);
+    const totalCommPk = records.filter(r => r.bucket === "COMMERCIAL_PK").reduce((s, r) => s + r.amount, 0);
+    const totalVan17 = records.filter(r => r.categoryCode === "VAN_17MM").reduce((s, r) => s + (parseFloat(r.qty) || 0), 0);
+    const totalHau6 = records.filter(r => r.categoryCode === "HAU_6MM").reduce((s, r) => s + (parseFloat(r.qty) || 0), 0);
+    const totalChi = records.filter(r => r.categoryCode === "CHI_NEP").reduce((s, r) => s + (parseFloat(r.qty) || 0), 0);
+
+    if (ribbon) {
+      ribbon.innerHTML = `
+        <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:8px; padding:8px 10px;">
+          <div style="font-size:10px; color:#a7f3d0;">🪵 TỔNG VẬT TƯ KHOÁN XƯỞNG (40%)</div>
+          <div style="font-size:15px; font-weight:800; color:#34d399;">${fmtCurr(totalWood40)}</div>
+        </div>
+        <div style="background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.3); border-radius:8px; padding:8px 10px;">
+          <div style="font-size:10px; color:#e9d5ff;">🛋️ PHỤ KIỆN BẾP / SOFA / GỖ THỊT (TÁCH RIÊNG)</div>
+          <div style="font-size:15px; font-weight:800; color:#c084fc;">${fmtCurr(totalCommPk)}</div>
+        </div>
+        <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); border-radius:8px; padding:8px 10px;">
+          <div style="font-size:10px; color:#fde68a;">📐 TỔNG SỐ TẤM VÁN 17MM + HẬU 6MM</div>
+          <div style="font-size:15px; font-weight:800; color:#fbbf24;">${totalVan17} tấm 17ly • ${totalHau6} tấm hậu</div>
+        </div>
+        <div style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.3); border-radius:8px; padding:8px 10px;">
+          <div style="font-size:10px; color:#bfdbfe;">🎗️ TỔNG CUỘN CHỈ PVC & DÒNG HÀNG</div>
+          <div style="font-size:15px; font-weight:800; color:#60a5fa;">${totalChi} cuộn chỉ • ${records.length} dòng VT</div>
+        </div>
+      `;
+    }
+
+    if (mode === "project") {
+      thead.innerHTML = `
+        <tr style="background:rgba(15,23,42,0.9);">
+          <th>Công Trình / Khách Hàng</th>
+          <th class="text-right">Doanh Số Gỗ CN (D)</th>
+          <th class="text-right">Trần Vật Tư 40%</th>
+          <th class="text-center">Ván 17mm</th>
+          <th class="text-center">Hậu 6mm</th>
+          <th class="text-center">Chỉ PVC</th>
+          <th class="text-right">Cánh/Kính/Đá/Ngũ Kim</th>
+          <th class="text-right">Tổng VT Khoán 40%</th>
+          <th class="text-right">TM / Gỗ Thịt (Tách)</th>
+          <th class="text-center">Tỷ Lệ % / Trạng Thái</th>
+        </tr>
+      `;
+
+      const projectNames = Array.from(new Set([
+        ...(appState.xuongRecords || []).map(r => r.client),
+        ...records.map(r => r.project)
+      ].filter(Boolean)));
+
+      tbody.innerHTML = projectNames.map(pName => {
+        const pRec = (appState.xuongRecords || []).find(x => x.client && x.client.toLowerCase() === pName.toLowerCase());
+        const woodRev = pRec ? (parseFloat(pRec.woodVal) || parseFloat(pRec.contractVal) || 0) : 0;
+        const budget40 = Math.round(woodRev * 0.40);
+        const items = records.filter(r => r.project.toLowerCase() === pName.toLowerCase());
+
+        const van17Qty = items.filter(i => i.categoryCode === "VAN_17MM").reduce((s, i) => s + i.qty, 0);
+        const hau6Qty = items.filter(i => i.categoryCode === "HAU_6MM").reduce((s, i) => s + i.qty, 0);
+        const chiQty = items.filter(i => i.categoryCode === "CHI_NEP").reduce((s, i) => s + i.qty, 0);
+        const subOtherWood = items
+          .filter(i => ["CANH_ACRYLIC_KINH", "KINH_GUONG_DA", "NGU_KIM_LED_KEO"].includes(i.categoryCode))
+          .reduce((s, i) => s + i.amount, 0);
+        const wood40Spent = items.filter(i => i.bucket === "WOOD_40").reduce((s, i) => s + i.amount, 0);
+        const commSpent = items.filter(i => i.bucket === "COMMERCIAL_PK").reduce((s, i) => s + i.amount, 0);
+        const ratioPct = woodRev > 0 ? ((wood40Spent / woodRev) * 100) : 0;
+        const isOver = woodRev > 0 && ratioPct > 40.0;
+
+        return `
+          <tr>
+            <td><strong>${pName}</strong></td>
+            <td class="text-right">${woodRev > 0 ? fmtCurr(woodRev) : '<span style="color:#64748b;">Chưa gắn HĐ</span>'}</td>
+            <td class="text-right" style="color:#93c5fd; font-weight:700;">${budget40 > 0 ? fmtCurr(budget40) : '---'}</td>
+            <td class="text-center font-bold" style="color:#fbbf24;">${van17Qty > 0 ? van17Qty + ' tấm' : '-'}</td>
+            <td class="text-center" style="color:#38bdf8;">${hau6Qty > 0 ? hau6Qty + ' tấm' : '-'}</td>
+            <td class="text-center" style="color:#a78bfa;">${chiQty > 0 ? chiQty + ' cuộn' : '-'}</td>
+            <td class="text-right">${subOtherWood > 0 ? fmtCurr(subOtherWood) : '-'}</td>
+            <td class="text-right font-bold" style="color:#34d399;">${fmtCurr(wood40Spent)}</td>
+            <td class="text-right" style="color:#c084fc;">${commSpent > 0 ? fmtCurr(commSpent) : '-'}</td>
+            <td class="text-center">
+              ${woodRev > 0
+                ? `<span class="status-pill ${isOver ? 'status-Rejected' : 'status-Approved'}">${ratioPct.toFixed(1)}% (${isOver ? '⚠️ Vượt trần' : '✅ An toàn'})</span>`
+                : `<span class="status-pill status-Pending">Kho dự phòng</span>`}
+            </td>
+          </tr>
+        `;
+      }).join("");
+    } else if (mode === "category") {
+      thead.innerHTML = `
+        <tr style="background:rgba(15,23,42,0.9);">
+          <th>Mã Nhóm</th>
+          <th>Tên Nhóm Danh Mục Vật Tư Chuẩn (8 Nhóm)</th>
+          <th class="text-center">Hạch Toán</th>
+          <th class="text-center">Số Dòng VT</th>
+          <th class="text-center">Tổng Khối Lượng</th>
+          <th class="text-right">Đơn Giá TB</th>
+          <th class="text-right">Tổng Thành Tiền (VNĐ)</th>
+          <th class="text-center">Tỷ Trọng %</th>
+        </tr>
+      `;
+      const grandTotal = records.reduce((s, r) => s + r.amount, 0) || 1;
+      tbody.innerHTML = window.MATERIAL_CATEGORY_TAXONOMY.map(cat => {
+        const items = records.filter(r => r.categoryCode === cat.code);
+        const totalQty = items.reduce((s, i) => s + (parseFloat(i.qty) || 0), 0);
+        const totalAmt = items.reduce((s, i) => s + i.amount, 0);
+        const avgPrice = totalQty !== 0 ? Math.round(totalAmt / totalQty) : cat.defaultPrice;
+        const pct = ((totalAmt / grandTotal) * 100).toFixed(1);
+        return `
+          <tr>
+            <td><code>${cat.code}</code></td>
+            <td><strong style="color:${cat.color};">${cat.label}</strong></td>
+            <td class="text-center">
+              <span class="status-pill ${cat.bucket === 'COMMERCIAL_PK' ? 'status-Pending' : 'status-Approved'}">
+                ${cat.bucket === 'COMMERCIAL_PK' ? '🛋️ Tách Khỏi 40%' : '🪵 Khoán Xưởng 40%'}
+              </span>
+            </td>
+            <td class="text-center">${items.length}</td>
+            <td class="text-center font-bold">${totalQty.toFixed(totalQty % 1 === 0 ? 0 : 2)} ${cat.defaultUnit}</td>
+            <td class="text-right">${fmtCurr(avgPrice)}</td>
+            <td class="text-right font-bold text-gold">${fmtCurr(totalAmt)}</td>
+            <td class="text-center"><strong>${pct}%</strong></td>
+          </tr>
+        `;
+      }).join("");
+    } else if (mode === "supplier") {
+      thead.innerHTML = `
+        <tr style="background:rgba(15,23,42,0.9);">
+          <th>Nhà Cung Cấp / Xưởng Gia Công</th>
+          <th>Nhóm Vật Tư Cung Ứng Chính</th>
+          <th class="text-center">Số Lượt Đặt / Nhập</th>
+          <th class="text-right">Giá Trị Khoán 40%</th>
+          <th class="text-right">Giá Trị TM / Gỗ Thịt</th>
+          <th class="text-right">Tổng Giá Trị Đặt Hàng</th>
+          <th class="text-center">Kiểm Soát Hạn Mức Nợ</th>
+        </tr>
+      `;
+      const suppliers = Array.from(new Set(records.map(r => r.supplier).filter(Boolean)));
+      tbody.innerHTML = suppliers.map(sup => {
+        const items = records.filter(r => r.supplier === sup);
+        const woodAmt = items.filter(i => i.bucket === "WOOD_40").reduce((s, i) => s + i.amount, 0);
+        const commAmt = items.filter(i => i.bucket === "COMMERCIAL_PK").reduce((s, i) => s + i.amount, 0);
+        const totalAmt = woodAmt + commAmt;
+        const mainCat = window.getCategoryMeta(items[0]?.categoryCode || "VAN_17MM");
+        const isQuocTam = sup.toLowerCase().includes("quốc tâm");
+        return `
+          <tr>
+            <td><strong>${sup}</strong></td>
+            <td><span style="color:${mainCat.color}; font-weight:700;">${mainCat.shortLabel}</span></td>
+            <td class="text-center">${items.length} dòng</td>
+            <td class="text-right" style="color:#34d399;">${woodAmt > 0 ? fmtCurr(woodAmt) : '-'}</td>
+            <td class="text-right" style="color:#c084fc;">${commAmt > 0 ? fmtCurr(commAmt) : '-'}</td>
+            <td class="text-right font-bold text-gold">${fmtCurr(totalAmt)}</td>
+            <td class="text-center">
+              ${isQuocTam
+                ? `<span class="status-pill status-Pending">⚠️ Trần nợ ≤ 30.000.000đ</span>`
+                : `<span class="status-pill status-Approved">✅ Trong hạn mức</span>`}
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+  };
+
+  // Xuất CSV Thống Kê Đa Chiều 1 Chạm
+  window.exportVuMaterialStatsCSV = function() {
+    const records = window.collectUnifiedMaterialRecords();
+    const header = ["Nguon", "Ma", "CongTrinh", "NhomDanhMuc", "HachToan", "TenVatTu", "SoLuong", "DVT", "DonGia", "ThanhTien", "NhaCungCap", "TrangThai"];
+    const csvRows = [header.join(",")];
+    records.forEach(r => {
+      const row = [
+        `"${r.source}"`,
+        `"${r.code}"`,
+        `"${String(r.project).replace(/"/g, '""')}"`,
+        `"${r.categoryCode}"`,
+        `"${r.bucket}"`,
+        `"${String(r.name).replace(/"/g, '""')}"`,
+        r.qty,
+        `"${r.unit}"`,
+        r.price,
+        r.amount,
+        `"${String(r.supplier).replace(/"/g, '""')}"`,
+        `"${r.status}"`
+      ];
+      csvRows.push(row.join(","));
+    });
+    const blob = new Blob(["\uFEFF" + csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Thong_Ke_Vat_Tu_Da_Chieu_PG_Home_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    if (typeof showToast === "function") {
+      showToast(`📥 Đã xuất file CSV Thống kê Vật tư Đa chiều (${records.length} dòng vật tư)!`);
+    }
+  };
+
+  // Tự động khởi chạy khi trang tải xong
+  setTimeout(() => {
+    window.populateQuickVtInlineDropdowns();
+    window.filterPoCatalogByCategory("ALL");
+    window.renderVtCategorySummaryStrip();
+    window.renderVuMultiDimStatsPivot("project");
+  }, 350);
+})();
+
+/* ============================================================================
+   PG HOME LUXURY ERP — UI DECLUTTERING & SUB-SECTION OPTIMIZER ENGINE v10.0
+   Tinh gọn toàn diện giao diện, thanh công cụ, banner quy chuẩn & phân khu con
+   ============================================================================ */
+(function initPgUiStreamlinerV10() {
+  // 1. Bật mặc định chế độ Giao diện Tinh gọn (Streamlined Mode)
+  function enableStreamlinedBodyMode() {
+    if (!document.body) return;
+    const savedMode = localStorage.getItem("PG_UI_STREAMLINED_V10");
+    if (savedMode !== "expanded") {
+      document.body.classList.add("pg-ui-streamlined");
+    }
+  }
+
+  window.togglePgStreamlinedMode = function() {
+    const isStreamlined = document.body.classList.toggle("pg-ui-streamlined");
+    localStorage.setItem("PG_UI_STREAMLINED_V10", isStreamlined ? "streamlined" : "expanded");
+    const btn = document.getElementById("btnToggleStreamlinedUI");
+    if (btn) {
+      btn.innerHTML = isStreamlined ? "✨ Giao Diện: Tinh Gọn" : "📐 Giao Diện: Mở Rộng";
+      btn.style.borderColor = isStreamlined ? "rgba(16,185,129,0.55)" : "rgba(212,175,55,0.45)";
+      btn.style.color = isStreamlined ? "#6ee7b7" : "#fde68a";
+    }
+    if (typeof showToast === "function") {
+      showToast(isStreamlined ? "✨ Đã bật Chế độ Giao diện Tinh Gọn (Chuẩn hóa & tối ưu không gian)" : "📐 Đã chuyển sang Chế độ Hiển thị Mở Rộng toàn bộ");
+    }
+  };
+
+  // 2. Tinh gọn Topbar: Gom các nút công cụ phụ vào Popover "⚙️ Tiện Ích"
+  function streamlineTopbarButtons() {
+    const topbarRight = document.querySelector(".topbar-right");
+    if (!topbarRight || document.getElementById("pgTopbarMoreWrap")) return;
+
+    // Thêm nút chuyển đổi Tinh Gọn / Mở Rộng
+    const densityBtn = document.createElement("button");
+    densityBtn.id = "btnToggleStreamlinedUI";
+    densityBtn.className = "btn btn-outline btn-sm";
+    densityBtn.style.cssText = "border-color:rgba(16,185,129,0.55);color:#6ee7b7;font-weight:700;";
+    densityBtn.title = "Chuyển đổi giữa Giao diện Tinh Gọn và Mở Rộng";
+    densityBtn.innerHTML = document.body.classList.contains("pg-ui-streamlined")
+      ? "✨ Giao Diện: Tinh Gọn"
+      : "📐 Giao Diện: Mở Rộng";
+    densityBtn.onclick = window.togglePgStreamlinedMode;
+
+    // Tạo Popover chứa các nút tiện ích phụ (giữ nguyên 100% ID trong DOM)
+    const moreWrap = document.createElement("div");
+    moreWrap.id = "pgTopbarMoreWrap";
+    moreWrap.className = "pg-topbar-more-wrap";
+
+    const moreBtn = document.createElement("button");
+    moreBtn.id = "btnTopbarUtilityToggle";
+    moreBtn.className = "btn btn-outline btn-sm";
+    moreBtn.style.cssText = "border-color:rgba(212,175,55,0.45);color:#fde68a;font-weight:700;";
+    moreBtn.innerHTML = "⚙️ Tiện Ích ▾";
+
+    const moreMenu = document.createElement("div");
+    moreMenu.id = "pgTopbarUtilityMenu";
+    moreMenu.className = "pg-topbar-more-menu";
+
+    moreBtn.onclick = function(e) {
+      e.stopPropagation();
+      moreMenu.classList.toggle("open");
+    };
+
+    document.addEventListener("click", function(e) {
+      if (!moreWrap.contains(e.target)) {
+        moreMenu.classList.remove("open");
+      }
+    });
+
+    // Di chuyển các nút phụ vào menu tiện ích để Topbar gọn gàng
+    const secondarySelectors = [
+      "#btnBossPrivacyBlur",
+      "#themeToggleBtn",
+      "#btnExportReport",
+      "#btnBackupJson",
+      'label[for="restoreJsonInput"]'
+    ];
+
+    secondarySelectors.forEach(sel => {
+      const el = topbarRight.querySelector(sel);
+      if (el) {
+        moreMenu.appendChild(el);
+      }
+    });
+
+    moreWrap.appendChild(moreBtn);
+    moreWrap.appendChild(moreMenu);
+
+    const logoutBtn = document.getElementById("btnLogoutPortal");
+    if (logoutBtn && logoutBtn.parentNode === topbarRight) {
+      topbarRight.insertBefore(densityBtn, logoutBtn);
+      topbarRight.insertBefore(moreWrap, logoutBtn);
+    } else {
+      topbarRight.appendChild(densityBtn);
+      topbarRight.appendChild(moreWrap);
+    }
+  }
+
+  // 3. Tinh gọn Sidebar: Ô tìm kiếm nhanh phân hệ & Thu gọn từng nhóm menu
+  function enhanceSidebarNavigation() {
+    const sidebarNav = document.querySelector(".sidebar-nav");
+    if (!sidebarNav || document.getElementById("pgSidebarQuickSearch")) return;
+
+    const searchWrap = document.createElement("div");
+    searchWrap.className = "pg-sidebar-search-wrap";
+    searchWrap.innerHTML = `
+      <input type="text" id="pgSidebarQuickSearch" class="pg-sidebar-search-input"
+        placeholder="🔍 Tìm nhanh mục menu..." autocomplete="off">
+    `;
+    sidebarNav.parentNode.insertBefore(searchWrap, sidebarNav);
+
+    const searchInput = document.getElementById("pgSidebarQuickSearch");
+    if (searchInput) {
+      searchInput.addEventListener("input", function() {
+        const kw = (this.value || "").trim().toLowerCase();
+        const items = sidebarNav.querySelectorAll(".nav-item");
+        items.forEach(item => {
+          const text = (item.textContent || "").toLowerCase();
+          if (!kw || text.includes(kw)) {
+            item.style.display = "";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+    }
+
+    // Cho phép bấm vào tiêu đề nhóm (.nav-section-title) để thu gọn/mở rộng nhóm đó
+    const sectionTitles = sidebarNav.querySelectorAll(".nav-section-title");
+    sectionTitles.forEach(titleEl => {
+      if (titleEl.dataset.pgCollapsibleWired) return;
+      titleEl.dataset.pgCollapsibleWired = "1";
+
+      const chevron = document.createElement("span");
+      chevron.className = "pg-nav-sec-chevron";
+      chevron.style.cssText = "font-size:10px;opacity:0.8;margin-left:6px;";
+      chevron.textContent = "▾";
+      titleEl.appendChild(chevron);
+
+      titleEl.addEventListener("click", function() {
+        const isCollapsed = titleEl.classList.toggle("collapsed");
+        chevron.textContent = isCollapsed ? "▸" : "▾";
+        let next = titleEl.nextElementSibling;
+        while (next && !next.classList.contains("nav-section-title")) {
+          if (next.classList.contains("nav-item")) {
+            next.style.display = isCollapsed ? "none" : "";
+          }
+          next = next.nextElementSibling;
+        }
+      });
+    });
+  }
+
+  // 4. Tự động thu gọn mọi khối .alert-banner dài dòng thành 1 dòng có nút "Chi tiết quy chuẩn ▾"
+  function compactAllAlertBanners() {
+    const banners = document.querySelectorAll(".alert-banner");
+    banners.forEach(banner => {
+      if (banner.classList.contains("pg-compact-banner")) return;
+      banner.classList.add("pg-compact-banner");
+
+      const h4 = banner.querySelector(".alert-content h4");
+      const p = banner.querySelector(".alert-content p");
+      if (h4 && p && !h4.querySelector(".pg-banner-toggle-pill")) {
+        const pill = document.createElement("span");
+        pill.className = "pg-banner-toggle-pill";
+        pill.textContent = "Chi tiết quy chuẩn ▾";
+        h4.appendChild(pill);
+
+        banner.addEventListener("click", function(e) {
+          if (e.target.tagName === "BUTTON" || e.target.tagName === "A") return;
+          const expanded = banner.classList.toggle("expanded");
+          pill.textContent = expanded ? "Thu gọn ▴" : "Chi tiết quy chuẩn ▾";
+        });
+      }
+    });
+  }
+
+  // 5. Thu gọn Lookbook Vật Liệu trên Dashboard (#atelierMaterialShowcase) thành 1 dòng mặc định
+  function streamlineDashboardShowcase() {
+    const showcase = document.getElementById("atelierMaterialShowcase");
+    if (!showcase || document.getElementById("pgShowcaseToggleBar")) return;
+
+    const toggleBar = document.createElement("div");
+    toggleBar.id = "pgShowcaseToggleBar";
+    toggleBar.style.cssText = "display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,0.75);border:1px solid rgba(212,175,55,0.3);border-radius:9px;padding:6px 12px;margin-bottom:10px;cursor:pointer;";
+    toggleBar.innerHTML = `
+      <span style="font-size:11.5px;font-weight:700;color:#fde68a;">🎨 Thư Viện Vật Liệu & Phụ Kiện Chuẩn PG Home (An Cường EV, Acrylic Noline, Cánh Kính, Blum/Hafele, Đá Vicostone)</span>
+      <span id="pgShowcaseTogglePill" class="pg-banner-toggle-pill">Mở xem 5 mẫu ▾</span>
+    `;
+
+    showcase.style.display = "none";
+    showcase.parentNode.insertBefore(toggleBar, showcase);
+
+    toggleBar.addEventListener("click", function() {
+      const isHidden = showcase.style.display === "none";
+      showcase.style.display = isHidden ? "" : "none";
+      const pill = document.getElementById("pgShowcaseTogglePill");
+      if (pill) pill.textContent = isHidden ? "Thu gọn mẫu ▴" : "Mở xem 5 mẫu ▾";
+    });
+  }
+
+  // 6. Tối ưu hóa Phân hệ Đặt Hàng PO (#tab-po-approval / #tab-phe-duyet-vat-tu)
+  function optimizePoApprovalTab() {
+    const poTab = document.getElementById("tab-phe-duyet-vat-tu") || document.getElementById("tab-po-approval");
+    if (!poTab || document.getElementById("poSubViewBar")) return;
+
+    const workstationCard = document.getElementById("vuSmartOrderWorkstation");
+    const poTable = document.getElementById("tablePOList");
+    const poListCard = poTable ? poTable.closest(".card") : null;
+    const statsCenterCard = document.getElementById("vuMultiDimStatsCenter");
+    const quotaBody = document.getElementById("poQuotaComparisonbody");
+    const quotaCard = quotaBody ? quotaBody.closest(".card") : null;
+
+    if (!poListCard) return;
+
+    // Tạo thanh Quick-Launch 1 dòng ngay phía trên bảng Danh sách PO để Vũ bấm 1 chạm mà không chiếm nửa màn hình
+    const quickStrip = document.createElement("div");
+    quickStrip.id = "pgPoQuickStrip";
+    quickStrip.className = "pg-po-quick-strip";
+    quickStrip.innerHTML = `
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+        <span style="font-size:11.5px;font-weight:800;color:#fbbf24;">⚡ Lập Đơn Nhanh Vũ:</span>
+        <div class="pg-po-quick-strip-btns">
+          <button type="button" class="pg-po-quick-pill" onclick="openVuSmartOrderScenario('WOOD_COMBO')">🪵 1. Ván+Hậu+Chỉ</button>
+          <button type="button" class="pg-po-quick-pill" onclick="openVuSmartOrderScenario('CUSTOM_CUT')">📐 2. Cánh/Kính (mm)</button>
+          <button type="button" class="pg-po-quick-pill" onclick="openVuSmartOrderScenario('HARDWARE_COMBO')">🔩 3. Ngũ Kim Quốc Tâm</button>
+          <button type="button" class="pg-po-quick-pill" onclick="openVuSmartOrderScenario('GLASS_STONE')">🪞 4. Kính/Gương/Đá</button>
+          <button type="button" class="pg-po-quick-pill" onclick="openVuSmartOrderScenario('COMMERCIAL_WOOD')">🛋️ 5. PK Bếp/Gỗ Thịt</button>
+          <button type="button" class="pg-po-quick-pill" onclick="openVuSmartOrderScenario('ZALO_PASTE')">💬 6. Dán Tin Zalo</button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#34d399;font-weight:600;">♻️ Kho dư: 14 dải 500mm • 22 dải 170mm</span>
+      </div>
+    `;
+
+    // Tạo Thanh Chuyển Đổi Phân Khu Chức Năng (Sub-Section Segmented Bar)
+    const subViewBar = document.createElement("div");
+    subViewBar.id = "poSubViewBar";
+    subViewBar.className = "pg-subview-bar";
+    subViewBar.innerHTML = `
+      <div class="pg-subview-tabs">
+        <span class="pg-subview-label">🗂️ Phân khu PO:</span>
+        <button type="button" class="pg-subview-btn active" data-po-subview="po_list" onclick="switchPoTabSubView('po_list')">
+          📋 1. Danh Sách PO & Duyệt Dấu Đỏ
+        </button>
+        <button type="button" class="pg-subview-btn" data-po-subview="po_stats" onclick="switchPoTabSubView('po_stats')">
+          📊 2. Thống Kê Đa Chiều (Pivot 3 Chiều)
+        </button>
+        <button type="button" class="pg-subview-btn" data-po-subview="po_quota40" onclick="switchPoTabSubView('po_quota40')">
+          ⚖️ 3. Đối Sánh Thực Đặt vs Khoán 40%
+        </button>
+        <button type="button" class="pg-subview-btn" data-po-subview="po_workstation" onclick="switchPoTabSubView('po_workstation')">
+          ⚡ 4. Bàn Lập Đơn Zalo & 18 Nhóm NCC
+        </button>
+        <button type="button" class="pg-subview-btn" data-po-subview="all" onclick="switchPoTabSubView('all')">
+          👁️ Hiện Tất Cả
+        </button>
+      </div>
+      <div style="font-size:11px;color:#94a3b8;">
+        Mặc định ưu tiên <strong>Bảng Duyệt Đơn PO</strong> lên đầu trang
+      </div>
+    `;
+
+    const statsGrid = poTab.querySelector(".stats-grid");
+    if (statsGrid && statsGrid.nextSibling) {
+      poTab.insertBefore(subViewBar, statsGrid.nextSibling);
+      poTab.insertBefore(quickStrip, subViewBar.nextSibling);
+    } else {
+      poTab.prepend(quickStrip);
+      poTab.prepend(subViewBar);
+    }
+
+    window.switchPoTabSubView = function(mode) {
+      const btns = subViewBar.querySelectorAll(".pg-subview-btn");
+      btns.forEach(b => {
+        b.classList.toggle("active", b.getAttribute("data-po-subview") === mode);
+      });
+
+      const setVis = (el, show) => {
+        if (!el) return;
+        el.classList.toggle("pg-subsection-hidden", !show);
+      };
+
+      if (mode === "po_list") {
+        setVis(quickStrip, true);
+        setVis(poListCard, true);
+        setVis(workstationCard, false);
+        setVis(statsCenterCard, false);
+        setVis(quotaCard, false);
+      } else if (mode === "po_stats") {
+        setVis(quickStrip, false);
+        setVis(poListCard, false);
+        setVis(workstationCard, false);
+        setVis(statsCenterCard, true);
+        setVis(quotaCard, false);
+        if (typeof window.renderVuMultiDimStatsPivot === "function") {
+          window.renderVuMultiDimStatsPivot();
+        }
+      } else if (mode === "po_quota40") {
+        setVis(quickStrip, false);
+        setVis(poListCard, false);
+        setVis(workstationCard, false);
+        setVis(statsCenterCard, false);
+        setVis(quotaCard, true);
+      } else if (mode === "po_workstation") {
+        setVis(quickStrip, false);
+        setVis(poListCard, true);
+        setVis(workstationCard, true);
+        setVis(statsCenterCard, false);
+        setVis(quotaCard, false);
+      } else {
+        setVis(quickStrip, true);
+        setVis(poListCard, true);
+        setVis(workstationCard, true);
+        setVis(statsCenterCard, true);
+        setVis(quotaCard, true);
+      }
+    };
+
+    // Mặc định hiển thị phân khu 1: Danh sách PO & Duyệt Dấu Đỏ gọn gàng
+    window.switchPoTabSubView("po_list");
+  }
+
+  // 7. Tối ưu hóa Phân hệ Kho Vật Tư & Đơn Giá (#tab-vat-tu-cost)
+  function optimizeVatTuCostTab() {
+    const vtTab = document.getElementById("tab-vat-tu-cost");
+    if (!vtTab || document.getElementById("vtSubViewBar")) return;
+
+    const catStrip = document.getElementById("vtCategorySummaryStrip");
+    const quickEntryBar = document.getElementById("vtQuickInlineEntryBar");
+    const legacyPillGroup = vtTab.querySelector(".radio-pill-group");
+    const legacyFilterLabel = legacyPillGroup ? legacyPillGroup.previousElementSibling : null;
+
+    // Ẩn dải 7 nút lọc cũ bị trùng lặp với 8 thẻ danh mục thông minh (#vtCategorySummaryStrip)
+    if (legacyPillGroup) {
+      legacyPillGroup.style.display = "none";
+      if (legacyFilterLabel && legacyFilterLabel.classList.contains("filter-label")) {
+        legacyFilterLabel.style.display = "none";
+      }
+    }
+
+    // Thu gọn khoảng cách của #vtCategorySummaryStrip thành 8 cột siêu gọn trên 1 hàng
+    if (catStrip) {
+      catStrip.style.gridTemplateColumns = "repeat(auto-fit, minmax(135px, 1fr))";
+      catStrip.style.gap = "6px";
+      catStrip.style.marginTop = "4px";
+      catStrip.style.paddingTop = "4px";
+      catStrip.style.borderTop = "none";
+    }
+
+    // Tạo thanh điều khiển phân khu gọn gàng ngay trên đầu Kho Vật Tư
+    const subViewBar = document.createElement("div");
+    subViewBar.id = "vtSubViewBar";
+    subViewBar.className = "pg-subview-bar";
+    subViewBar.innerHTML = `
+      <div class="pg-subview-tabs">
+        <span class="pg-subview-label">🎛️ Hiển thị Kho Vật Tư:</span>
+        <button type="button" class="pg-subview-btn active" data-vt-mode="streamlined" onclick="switchVtTabSubView('streamlined')">
+          ⚡ 1. Chế Độ Tinh Gọn (8 Nhóm + Nhập Nhanh + Bảng)
+        </button>
+        <button type="button" class="pg-subview-btn" data-vt-mode="table_only" onclick="switchVtTabSubView('table_only')">
+          📋 2. Chỉ Hiện Bảng Vật Tư (Rộng Tối Đa)
+        </button>
+        <button type="button" class="pg-subview-btn" data-vt-mode="go_pivot" onclick="switchVtTabSubView('go_pivot')">
+          📊 3. Mở Bảng Thống Kê Đa Chiều (Pivot 3 Chiều)
+        </button>
+        <button type="button" class="pg-subview-btn" data-vt-mode="all_filters" onclick="switchVtTabSubView('all_filters')">
+          👁️ Hiện Đầy Đủ Bộ Lọc
+        </button>
+      </div>
+      <div style="font-size:11px;color:#94a3b8;">
+        Bấm vào từng ô trong <strong>8 Nhóm Vật Tư</strong> để lọc tức thì
+      </div>
+    `;
+
+    const firstCard = vtTab.querySelector(".card");
+    const statsGrid = vtTab.querySelector(".stats-grid");
+    if (statsGrid && statsGrid.parentNode) {
+      statsGrid.parentNode.insertBefore(subViewBar, statsGrid.nextSibling);
+    } else if (firstCard) {
+      firstCard.prepend(subViewBar);
+    }
+
+    window.switchVtTabSubView = function(mode) {
+      if (mode === "go_pivot") {
+        const poNav = document.querySelector('.nav-item[data-tab="tab-phe-duyet-vat-tu"], .nav-item[data-tab="tab-po-approval"]');
+        if (poNav) poNav.click();
+        if (typeof window.switchPoTabSubView === "function") {
+          window.switchPoTabSubView("po_stats");
+        }
+        setTimeout(() => {
+          const el = document.getElementById("vuMultiDimStatsCenter");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 120);
+        return;
+      }
+
+      subViewBar.querySelectorAll(".pg-subview-btn").forEach(b => {
+        b.classList.toggle("active", b.getAttribute("data-vt-mode") === mode);
+      });
+
+      if (mode === "streamlined") {
+        if (catStrip) catStrip.style.display = "grid";
+        if (quickEntryBar) quickEntryBar.style.display = "block";
+        if (legacyPillGroup) legacyPillGroup.style.display = "none";
+      } else if (mode === "table_only") {
+        if (catStrip) catStrip.style.display = "none";
+        if (quickEntryBar) quickEntryBar.style.display = "none";
+        if (legacyPillGroup) legacyPillGroup.style.display = "none";
+      } else {
+        if (catStrip) catStrip.style.display = "grid";
+        if (quickEntryBar) quickEntryBar.style.display = "block";
+        if (legacyPillGroup) legacyPillGroup.style.display = "flex";
+      }
+    };
+  }
+
+  // 8. Tự động gắn Thanh Lọc Phân Mục Con cho mọi Tab khác có từ 3 khối .card trở lên
+  function optimizeMultiCardTabs() {
+    const skipTabIds = new Set([
+      "tab-dashboard",
+      "tab-po-approval",
+      "tab-phe-duyet-vat-tu",
+      "tab-vat-tu-cost"
+    ]);
+
+    const allTabs = document.querySelectorAll(".tab-pane, .tab-content");
+    allTabs.forEach(tab => {
+      if (!tab.id || skipTabIds.has(tab.id)) return;
+      if (tab.querySelector(".pg-subview-bar")) return;
+
+      const directCards = Array.from(tab.querySelectorAll(":scope > .card"));
+      if (directCards.length < 3) return;
+
+      const bar = document.createElement("div");
+      bar.className = "pg-subview-bar";
+
+      let buttonsHtml = `
+        <span class="pg-subview-label">📑 Phân mục nhanh:</span>
+        <button type="button" class="pg-subview-btn active" data-card-idx="ALL">
+          👁️ Tất cả (${directCards.length} mục)
+        </button>
+      `;
+
+      directCards.forEach((card, idx) => {
+        const rawTitle = (card.querySelector(".card-title, h3")?.textContent || `Mục ${idx + 1}`).trim();
+        const shortTitle = rawTitle.length > 34 ? rawTitle.slice(0, 32) + "…" : rawTitle;
+        buttonsHtml += `
+          <button type="button" class="pg-subview-btn" data-card-idx="${idx}" title="${rawTitle.replace(/"/g, '&quot;')}">
+            ${idx + 1}. ${shortTitle}
+          </button>
+        `;
+      });
+
+      bar.innerHTML = `<div class="pg-subview-tabs">${buttonsHtml}</div>`;
+      tab.insertBefore(bar, directCards[0]);
+
+      bar.addEventListener("click", function(e) {
+        const btn = e.target.closest(".pg-subview-btn");
+        if (!btn) return;
+        const targetIdx = btn.getAttribute("data-card-idx");
+        bar.querySelectorAll(".pg-subview-btn").forEach(b => b.classList.toggle("active", b === btn));
+
+        directCards.forEach((card, i) => {
+          const show = targetIdx === "ALL" || String(i) === String(targetIdx);
+          card.classList.toggle("pg-subsection-hidden", !show);
+        });
+      });
+    });
+  }
+
+  // 9. Tinh gọn 4 Công cụ Thông minh bên trong #createPOModal (Chỉ mở 1 công cụ đang chọn)
+  function optimizeCreatePoModalTools() {
+    const toolsBox = document.getElementById("vuSmartModalToolsBox");
+    if (!toolsBox || document.getElementById("pgModalToolTabsBar")) return;
+
+    const panelWood = document.getElementById("vuToolWoodComboPanel");
+    const panelCut = document.getElementById("vuToolCustomCutPanel");
+    const panelHw = document.getElementById("vuToolHardwareComboPanel");
+    const panelZalo = document.getElementById("vuToolZaloPastePanel");
+    const panels = {
+      wood: panelWood,
+      cut: panelCut,
+      hw: panelHw,
+      zalo: panelZalo
+    };
+
+    const tabBar = document.createElement("div");
+    tabBar.id = "pgModalToolTabsBar";
+    tabBar.className = "pg-modal-tool-tabs";
+    tabBar.innerHTML = `
+      <span style="font-size:11px;font-weight:800;color:#fbbf24;margin-right:4px;">🛠️ Công cụ tính nhanh:</span>
+      <button type="button" class="pg-modal-tool-tab active" data-tool-key="wood" onclick="switchPoModalToolTab('wood')">
+        🪵 1. Bộ Ván+Hậu+Chỉ & CNC
+      </button>
+      <button type="button" class="pg-modal-tool-tab" data-tool-key="cut" onclick="switchPoModalToolTab('cut')">
+        📐 2. Cánh/Kính/Đá (mm)
+      </button>
+      <button type="button" class="pg-modal-tool-tab" data-tool-key="hw" onclick="switchPoModalToolTab('hw')">
+        🔩 3. Combo Ngũ Kim Quốc Tâm
+      </button>
+      <button type="button" class="pg-modal-tool-tab" data-tool-key="zalo" onclick="switchPoModalToolTab('zalo')">
+        💬 4. Dán Tin Zalo
+      </button>
+      <button type="button" class="pg-modal-tool-tab" data-tool-key="none" onclick="switchPoModalToolTab('none')" style="margin-left:auto;">
+        🔼 Thu gọn công cụ
+      </button>
+    `;
+
+    toolsBox.insertBefore(tabBar, toolsBox.firstChild);
+
+    window.switchPoModalToolTab = function(key) {
+      tabBar.querySelectorAll(".pg-modal-tool-tab").forEach(b => {
+        b.classList.toggle("active", b.getAttribute("data-tool-key") === key);
+      });
+      Object.entries(panels).forEach(([k, el]) => {
+        if (!el) return;
+        el.style.display = k === key ? "block" : "none";
+      });
+    };
+
+    // Mặc định hiển thị gọn công cụ 1 (hoặc tự động nhảy theo kịch bản Vũ bấm)
+    window.switchPoModalToolTab("wood");
+
+    // Bọc hàm openVuSmartOrderScenario để tự động bật đúng tab công cụ tương ứng
+    const origOpenScenario = window.openVuSmartOrderScenario;
+    if (typeof origOpenScenario === "function" && !origOpenScenario._pgWrappedV10) {
+      const wrapped = function(scenarioType) {
+        const res = origOpenScenario.apply(this, arguments);
+        if (typeof window.switchPoModalToolTab === "function") {
+          if (scenarioType === "WOOD_COMBO") window.switchPoModalToolTab("wood");
+          else if (scenarioType === "CUSTOM_CUT" || scenarioType === "GLASS_STONE") window.switchPoModalToolTab("cut");
+          else if (scenarioType === "HARDWARE_COMBO") window.switchPoModalToolTab("hw");
+          else if (scenarioType === "ZALO_PASTE") window.switchPoModalToolTab("zalo");
+          else if (scenarioType === "COMMERCIAL_WOOD") window.switchPoModalToolTab("none");
+        }
+        return res;
+      };
+      wrapped._pgWrappedV10 = true;
+      window.openVuSmartOrderScenario = wrapped;
+    }
+  }
+
+  function runAllUiStreamliners() {
+    enableStreamlinedBodyMode();
+    streamlineTopbarButtons();
+    enhanceSidebarNavigation();
+    compactAllAlertBanners();
+    streamlineDashboardShowcase();
+    optimizePoApprovalTab();
+    optimizeVatTuCostTab();
+    optimizeMultiCardTabs();
+    optimizeCreatePoModalTools();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => setTimeout(runAllUiStreamliners, 120));
+  } else {
+    setTimeout(runAllUiStreamliners, 120);
+  }
+})();
+

@@ -1182,6 +1182,55 @@
                 <i class="fa-solid fa-couch"></i> Đồ rời & Đệm da (Khánh Sofa, Đệm HT)
               </button>
             </div>
+
+            <!-- BẢNG THỐNG KÊ TỨC THÌ 8 NHÓM DANH MỤC VẬT TƯ CHUẨN (TẤM / CUỘN / M2 / BỘ & THÀNH TIỀN) -->
+            <div id="vtCategorySummaryStrip" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(212, 175, 55, 0.25);">
+              <!-- Populated dynamically by renderVtCategorySummaryStrip() -->
+            </div>
+
+            <!-- THANH NHẬP NHANH VẬT TƯ 1 DÒNG (SIÊU TIỆN LỢI - ENTER LÀ LƯU & THỐNG KÊ NGAY) -->
+            <div id="vtQuickInlineEntryBar" style="margin-top: 12px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.92)); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 10px; padding: 10px 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                <span style="font-size: 0.8rem; font-weight: 800; color: #34D399; text-transform: uppercase; letter-spacing: 0.4px;">
+                  <i class="fa-solid fa-bolt"></i> Nhập Nhanh Vật Tư 1 Dòng (Chọn Nhóm $\rightarrow$ Gõ Mã Tự Nhảy Giá $\rightarrow$ Enter Là Vào Sổ &amp; Tự Cộng Thống Kê):
+                </span>
+                <span id="vtQuickEntryPreviewTotal" style="font-size: 0.82rem; font-weight: 800; color: var(--text-gold);">Thành tiền: 3.700.000 đ (🪵 Khoán Xưởng 40%)</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1.3fr 1.3fr 2.2fr 0.65fr 0.55fr 0.9fr 1.2fr auto; gap: 6px; align-items: center;">
+                <select id="qvtProject" class="form-control" style="font-size: 0.78rem; padding: 6px 8px; font-weight: 700; color: #38BDF8;" title="Chọn công trình sử dụng">
+                  <option value="Nhà Chị Hiển (Thạch Linh)">🏠 Chị Hiển (Thạch Linh)</option>
+                  <option value="Nhà Anh Nam (TP. Hà Tĩnh)">🏠 Anh Nam (TP. Hà Tĩnh)</option>
+                  <option value="Bác Phát (Đường 26/03)">🏠 Bác Phát (Đường 26/03)</option>
+                  <option value="Chị Phượng (Nghi Xuân)">🏠 Chị Phượng (Nghi Xuân)</option>
+                  <option value="Anh Tuấn (TP. Hà Tĩnh)">🏠 Anh Tuấn (TP. Hà Tĩnh)</option>
+                  <option value="Anh Hào (Kỳ Anh)">🏠 Anh Hào (Kỳ Anh)</option>
+                  <option value="Tồn Kho Xưởng PG Home">🏭 Tồn Kho Xưởng PG Home</option>
+                </select>
+                <select id="qvtCatCode" class="form-control" onchange="window.onQuickVtCatChange(this.value)" style="font-size: 0.78rem; padding: 6px 8px; font-weight: 700; color: #FBBF24;" title="Chọn 1 trong 8 nhóm thống kê chuẩn">
+                  <option value="VAN_17MM">1. 🪵 Ván Cốt 17mm (Tấm)</option>
+                  <option value="HAU_6MM">2. 📋 Ván Hậu 6mm (Tấm)</option>
+                  <option value="CHI_NEP">3. 🎗️ Chỉ Dán Cạnh PVC (Cuộn)</option>
+                  <option value="CANH_ACRYLIC_KINH">4. ✨ Cánh Acrylic / Cánh Kính (m²)</option>
+                  <option value="KINH_GUONG_DA">5. 💎 Kính Bếp / Gương / Đá (m²/md)</option>
+                  <option value="NGU_KIM_LED_KEO">6. 🔩 Ngũ Kim / Bản Lề / LED / Keo</option>
+                  <option value="PHU_KIEN_BEP_TM">7. 🛋️ Phụ Kiện Bếp / Sofa (Tách 40%)</option>
+                  <option value="GO_THIT_PU">8. 🌳 Gỗ Thịt / Sơn PU (Tách 40%)</option>
+                </select>
+                <input type="text" id="qvtName" class="form-control" list="vuMaterialCatalogDatalist" oninput="window.onQuickVtNameInput(this.value)" placeholder="Gõ mã màu (205T, 388, EV22...) hoặc chọn vật tư..." value="Ván MDF Lõi Xanh Chống Ẩm Thái Lan 17mm - Mã 205T (Trắng Mờ Chủ Lực)" style="font-size: 0.79rem; padding: 6px 8px;">
+                <input type="number" id="qvtQty" class="form-control" step="any" value="5" oninput="window.updateQuickVtPreview()" onkeydown="if(event.key==='Enter'){event.preventDefault();window.submitQuickInlineVatTu(false);}" placeholder="SL" style="font-size: 0.82rem; font-weight: 800; text-align: center; padding: 6px;">
+                <input type="text" id="qvtUnit" class="form-control" value="Tấm" placeholder="ĐVT" style="font-size: 0.78rem; text-align: center; padding: 6px;">
+                <input type="number" id="qvtPrice" class="form-control" step="500" value="740000" oninput="window.updateQuickVtPreview()" onkeydown="if(event.key==='Enter'){event.preventDefault();window.submitQuickInlineVatTu(false);}" placeholder="Đơn giá" style="font-size: 0.8rem; text-align: right; padding: 6px;">
+                <input type="text" id="qvtSupplier" class="form-control" value="Lam Giang (Tổng Kho Ván Thái Lan & Phụ Kiện)" placeholder="Nhà cung cấp" style="font-size: 0.77rem; padding: 6px 8px;">
+                <div style="display: flex; gap: 4px;">
+                  <button type="button" class="btn btn-sm btn-gold" onclick="window.submitQuickInlineVatTu(false)" title="Lưu thẳng vào Bảng Vật Tư & Cập nhật Thống Kê ngay" style="padding: 6px 10px; font-size: 0.76rem; white-space: nowrap;">
+                    <i class="fa-solid fa-plus-circle"></i> Lưu Nhanh
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline" onclick="window.submitQuickInlineVatTu(true)" title="Lưu vào Kho đồng thời tạo luôn Phiếu PO trình Giám Đốc duyệt" style="padding: 6px 8px; font-size: 0.75rem; color: #38BDF8; border-color: rgba(56,189,248,0.45); white-space: nowrap;">
+                    <i class="fa-solid fa-file-signature"></i> +Tạo PO
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="table-responsive">
@@ -2215,28 +2264,105 @@
           </div>
         </div>
 
+        <!-- BÀN LẬP ĐƠN ĐẶT HÀNG VẬT TƯ THÔNG MINH CHO VŨ (SMART ORDER WORKSTATION v8.0) -->
+        <div class="card table-card gold-glow" id="vuSmartOrderWorkstation" style="margin-bottom: 1.5rem; border: 1px solid rgba(212, 175, 55, 0.45); background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.92));">
+          <div class="card-header" style="border-bottom: 1px solid rgba(212, 175, 55, 0.25); flex-wrap: wrap; gap: 12px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 style="color: #FBBF24; margin: 0; font-size: 1.12rem;">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Bàn Lập Đơn Order Vật Tư Thông Minh Cho Vũ (Smart PO Builder v8.0 — 18 Nhóm Zalo Thực Tế)
+                </h3>
+                <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.45); font-weight: 800; font-size: 0.72rem;">
+                  HOÀNG CÔNG VŨ (0911.006.880) • AUTO-PRICE • TÁCH WOOD/PK
+                </span>
+              </div>
+              <p class="card-subtitle" style="margin-top: 4px; color: #CBD5E1;">
+                Thiết kế riêng theo đúng thói quen đặt hàng Zalo của Vũ: <strong>1 chạm sinh đủ bộ Ván + Hậu + Chỉ nẹp đồng màu</strong>, <strong>Máy tính quy đổi Dài×Rộng×SL ra m²/md</strong> (Acrylic Livas/ALD, Kính VSG, Đá Hoàng Hà), <strong>Dán tin nhắn Zalo tự tách dòng</strong> &amp; <strong>Xuất tin nhắn Zalo chuẩn có Dấu Đỏ</strong>.
+              </p>
+            </div>
+            <div class="btn-group" style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-gold btn-sm" onclick="window.openSmartPOModalWithPreset('BOARD_SET')" style="font-weight: 800;">
+                <i class="fa-solid fa-layer-group"></i> 🪵 Đặt Ván + Hậu + Chỉ Đồng Màu
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="window.openSmartPOModalWithPreset('CUSTOM_DIM')" style="border-color: #38BDF8; color: #38BDF8; font-weight: 700;">
+                <i class="fa-solid fa-ruler-combined"></i> 📐 Đặt Cánh Acrylic / Kính / Đá (Dài×Rộng)
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="window.openSmartPOModalWithPreset('HARDWARE_COMBO')" style="border-color: #34D399; color: #34D399; font-weight: 700;">
+                <i class="fa-solid fa-screwdriver-wrench"></i> 🔩 Combo Ngũ Kim Quốc Tâm / DTC
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="window.openSmartPOModalWithPreset('ZALO_PASTE')" style="border-color: #C084FC; color: #C084FC; font-weight: 700;">
+                <i class="fa-solid fa-paste"></i> ⚡ Dán Tin Nhắn Zalo Tự Bóc Tách
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Kịch Bản Đặt Hàng Thực Tế Của Vũ (Quick-Launch Cards) -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; padding: 14px 18px; background: rgba(2, 6, 23, 0.55);">
+            <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 10px 12px; cursor: pointer;" onclick="window.openSmartPOModalWithPreset('LAM_GIANG_BOARD')">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #FBBF24;"><i class="fa-solid fa-tree"></i> 1. Ván &amp; Nẹp Lam Giang / NT Cầu Vượt</div>
+              <div style="font-size: 0.74rem; color: #CBD5E1; margin-top: 4px;">Mã hay đặt: <strong>205T, 202T, MS 388, MS 612, 414 PL, 8803, Picomat</strong>. Tự kèm hậu 5.5ly + chỉ 21×1mm + trừ ván dư CNC.</div>
+            </div>
+            <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 10px 12px; cursor: pointer;" onclick="window.openSmartPOModalWithPreset('ACRYLIC_GLASS_DIM')">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #38BDF8;"><i class="fa-solid fa-vector-square"></i> 2. Cánh Acrylic Livas/ALD &amp; Kính VSG</div>
+              <div style="font-size: 0.74rem; color: #CBD5E1; margin-top: 4px;">Nhập <strong>Dài × Rộng × Số cánh</strong> → Tự tính m², ghi chú khoan bản lề, dán No-Line 4 cạnh &amp; tính cọc 40%–50%.</div>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 10px 12px; cursor: pointer;" onclick="window.openSmartPOModalWithPreset('QUOC_TAM_FITTING')">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #34D399;"><i class="fa-solid fa-gears"></i> 3. Phụ Kiện Quốc Tâm (56 Ngô Đức Kế)</div>
+              <div style="font-size: 0.74rem; color: #CBD5E1; margin-top: 4px;">Bản lề SUS304 A/B/C, Ray âm DTC 350–500mm, Ốc cam, Thanh nhôm LED + Cảm biến vẫy/đóng mở, Keo Jowat.</div>
+            </div>
+            <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; padding: 10px 12px; cursor: pointer;" onclick="window.openSmartPOModalWithPreset('STONE_MIRROR_PAD')">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #C084FC;"><i class="fa-solid fa-gem"></i> 4. Đá Hoàng Hà • Gương Bỉ • Đệm Da</div>
+              <div style="font-size: 0.74rem; color: #CBD5E1; margin-top: 4px;">Đá bếp Ceramic vát 45° khoét chậu, Gương Bỉ LED Dantalux Vũ Cường, Vách bọc da microfiber mút D40.</div>
+            </div>
+            <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; padding: 10px 12px; cursor: pointer;" onclick="window.openSmartPOModalWithPreset('COMMERCIAL_SEPARATE')">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #FB7185;"><i class="fa-solid fa-couch"></i> 5. Gỗ Thịt Cường HN • Sofa Khánh • Bếp</div>
+              <div style="font-size: 0.74rem; color: #CBD5E1; margin-top: 4px;">Tự động gắn cờ <strong>[TÁCH KHỎI KHOÁN XƯỞNG 40%]</strong> cho Eurogold/Blum Phúc Sơn, Sofa Khánh, Gỗ thịt.</div>
+            </div>
+          </div>
+        </div>
+
         <!-- TABLE CARD -->
         <div class="card table-card">
           <div class="card-header">
             <div>
               <h3><i class="fa-solid fa-file-signature"></i> Danh Sách Phiếu Đề Xuất Đặt Hàng Vật Tư (Vũ Đề Xuất - Giám Đốc Duyệt)</h3>
-              <p class="card-subtitle">Nhấp vào 'Giám Đốc Duyệt & Đóng Dấu' để cấp phép đặt hàng hoặc 'In Phiếu' để gửi nhà cung cấp</p>
+              <p class="card-subtitle">Nhấp vào 'Giám Đốc Duyệt & Đóng Dấu' để cấp phép đặt hàng, 'Copy Zalo' để gửi thẳng vào nhóm NCC hoặc 'In Phiếu'</p>
             </div>
-            <div class="btn-group">
-              <button class="btn btn-gold btn-sm" id="btnOpenCreatePOModal">
-                <i class="fa-solid fa-plus"></i> Vũ Tạo Phiếu Đề Xuất Mới
+            <div class="btn-group" style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn btn-gold btn-sm" id="btnOpenCreatePOModal" style="font-weight: 800;">
+                <i class="fa-solid fa-plus"></i> ⚡ Vũ Lập Đơn Order Vật Tư Mới (Smart PO)
               </button>
             </div>
           </div>
 
-          <!-- Filter Bar -->
-          <div class="filter-bar">
-            <span class="filter-label">Lọc theo trạng thái:</span>
-            <div class="radio-pill-group">
-              <label class="radio-pill active"><input type="radio" name="poFilter" value="all" checked> Tất cả phiếu</label>
-              <label class="radio-pill"><input type="radio" name="poFilter" value="PENDING"> ⏳ Chờ Giám Đốc duyệt</label>
-              <label class="radio-pill"><input type="radio" name="poFilter" value="APPROVED"> ✅ Giám Đốc đã đóng dấu</label>
-              <label class="radio-pill"><input type="radio" name="poFilter" value="REJECTED"> ❌ Giám Đốc từ chối</label>
+          <!-- Filter Bar + Search Bar -->
+          <div class="filter-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span class="filter-label">Lọc theo trạng thái:</span>
+              <div class="radio-pill-group">
+                <label class="radio-pill active"><input type="radio" name="poFilter" value="all" checked> Tất cả phiếu</label>
+                <label class="radio-pill"><input type="radio" name="poFilter" value="PENDING"> ⏳ Chờ Giám Đốc duyệt</label>
+                <label class="radio-pill"><input type="radio" name="poFilter" value="APPROVED"> ✅ Giám Đốc đã đóng dấu</label>
+                <label class="radio-pill"><input type="radio" name="poFilter" value="REJECTED"> ❌ Giám Đốc từ chối</label>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <select id="poSupplierQuickFilter" onchange="window.renderPOList(window.currentActivePOFilter || 'all')" style="background: rgba(15, 23, 42, 0.9); color: #F8FAFC; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem;">
+                <option value="ALL">🏢 Tất cả 18 Nhóm NCC Zalo</option>
+                <option value="Lam Giang">Tổng Kho Lam Giang (Ms Hoa / Tâm)</option>
+                <option value="NT Cầu Vượt">Gỗ NT Cầu Vượt HT (0979137123)</option>
+                <option value="Quốc Tâm">Phụ Kiện Quốc Tâm (56 Ngô Đức Kế)</option>
+                <option value="Cường Thịnh">Gỗ Cường Thịnh (Nga Melamine)</option>
+                <option value="An Cường">Gỗ An Cường / Minh Long</option>
+                <option value="Livas">Cánh Acrylic No-Line Livas / ALD</option>
+                <option value="Kính">Kính Việt Nhật VSG / Phú Mỹ Vinh</option>
+                <option value="Hoàng Hà">Đá Ceramic Hoàng Hà / Giả Đá</option>
+                <option value="Gương">Gương Bỉ Dantalux (Vũ Cường)</option>
+                <option value="Cường Hà Nội">Gỗ Thịt Cường HN / Sồi Đức Anh</option>
+                <option value="Khánh">Sofa Bàn Ăn Khánh / Bọc Đệm Da</option>
+                <option value="Hafele">Phụ Kiện Bếp Hafele / Eurogold / Blum</option>
+              </select>
+              <input type="text" id="poQuickSearchInput" oninput="window.renderPOList(window.currentActivePOFilter || 'all')" placeholder="🔍 Tìm mã PO, công trình, mã ván (205T, 388...)" style="background: rgba(15, 23, 42, 0.9); color: #F8FAFC; border: 1px solid rgba(148, 163, 184, 0.35); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; min-width: 210px;">
             </div>
           </div>
 
@@ -2258,6 +2384,45 @@
               <tbody id="bodyPOList">
                 <!-- Populated dynamically by renderPOApprovalModule() with exact 9 columns -->
               </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TRUNG TÂM THỐNG KÊ VẬT TƯ ĐA CHIỀU TỨC THÌ (DỄ NHẬP - DỄ THỐNG KÊ THEO CÔNG TRÌNH / 8 NHÓM VẬT TƯ / NHÀ CUNG CẤP) -->
+        <div class="table-card" id="vuMultiDimStatsCenter" style="margin-top: 1.5rem; border: 1px solid rgba(16, 185, 129, 0.4); background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(9, 13, 22, 0.98));">
+          <div class="table-header-bar" style="border-bottom: 1px solid rgba(16, 185, 129, 0.25); flex-wrap: wrap; gap: 10px;">
+            <div>
+              <h3 style="color: #34D399; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-chart-pie"></i> Trung Tâm Thống Kê Đặt Hàng &amp; Vật Tư Đa Chiều (Tổng Hợp Tự Động Tấm / Cuộn / m² / VNĐ)
+              </h3>
+              <p class="table-desc">Giúp Giám Đốc &amp; Vũ thống kê tức thì: <strong>Mỗi công trình đã lấy bao nhiêu tấm ván 17mm, bao nhiêu tấm hậu 6mm, bao nhiêu cuộn chỉ, % định mức 40%</strong> và tổng tiền từng Nhà cung cấp.</p>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+              <button type="button" class="btn btn-sm btn-gold vu-stats-tab-btn" data-mode="project" onclick="window.switchVuStatsPivotTab('project')" style="font-size: 0.78rem; padding: 6px 12px;">
+                <i class="fa-solid fa-building-shield"></i> 1. Theo Công Trình &amp; Trần 40%
+              </button>
+              <button type="button" class="btn btn-sm btn-outline vu-stats-tab-btn" data-mode="category" onclick="window.switchVuStatsPivotTab('category')" style="font-size: 0.78rem; padding: 6px 12px; color: #38BDF8; border-color: rgba(56,189,248,0.4);">
+                <i class="fa-solid fa-layer-group"></i> 2. Theo 8 Nhóm Vật Tư (Tấm/Cuộn/m²/Bộ)
+              </button>
+              <button type="button" class="btn btn-sm btn-outline vu-stats-tab-btn" data-mode="supplier" onclick="window.switchVuStatsPivotTab('supplier')" style="font-size: 0.78rem; padding: 6px 12px; color: #FBBF24; border-color: rgba(245,158,11,0.4);">
+                <i class="fa-solid fa-truck-field"></i> 3. Theo Nhà Cung Cấp &amp; Hạn Mức Nợ
+              </button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="window.exportVuMaterialStatsCSV()" style="font-size: 0.78rem; padding: 6px 12px; color: #34D399; border-color: rgba(16,185,129,0.45);">
+                <i class="fa-solid fa-file-csv"></i> Xuất Excel / CSV Thống Kê
+              </button>
+            </div>
+          </div>
+
+          <!-- DẢI KPI TỔNG HỢP VẬT TƯ TOÀN XƯỞNG -->
+          <div id="vuMultiDimKpiRibbon" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 10px; padding: 12px 16px; background: rgba(2, 6, 23, 0.55); border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <!-- Populated by renderVuMultiDimStatsPivot() -->
+          </div>
+
+          <!-- BẢNG PIVOT THỐNG KÊ ĐA CHIỀU -->
+          <div class="table-responsive" style="max-height: 420px; overflow-y: auto;">
+            <table class="data-table" id="tableVuMultiDimStats" style="font-size: 0.82rem;">
+              <thead id="theadVuMultiDimStats"></thead>
+              <tbody id="tbodyVuMultiDimStats"></tbody>
             </table>
           </div>
         </div>
@@ -4320,25 +4485,25 @@
     </div>
   </div>
 
-  <!-- MODAL 2: VŨ LẬP PHIẾU ĐỀ XUẤT ĐẶT HÀNG VẬT TƯ -->
+  <!-- MODAL 2: VŨ LẬP PHIẾU ĐỀ XUẤT ĐẶT HÀNG VẬT TƯ (SMART PO BUILDER V8.0) -->
   <div class="modal-overlay" id="createPOModal">
-    <div class="modal-card modal-large">
+    <div class="modal-card modal-large" style="max-width: 1120px;">
       <div class="modal-header">
-        <h3><i class="fa-solid fa-file-circle-plus"></i> Vũ Lập Phiếu Đề Xuất Đặt Hàng Vật Tư Mới</h3>
+        <h3><i class="fa-solid fa-file-circle-plus"></i> Vũ Lập Phiếu Đề Xuất Đặt Hàng Vật Tư Thông Minh (Smart PO Builder v8.0)</h3>
         <button class="modal-close" id="createPOCloseBtn">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="alert-banner warning-glow" style="margin-bottom: 16px; padding: 10px 16px;">
+        <div class="alert-banner warning-glow" style="margin-bottom: 14px; padding: 10px 16px;">
           <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation" style="color: #EF4444;"></i></div>
           <div class="alert-content">
-            <p style="font-size: 0.85rem; margin: 0; color: #FCA5A5;">
-              <strong>Quy định nghiêm ngặt cho Vũ:</strong> Phiếu sau khi lập sẽ ở trạng thái <strong>CHỜ GIÁM ĐỐC DUYỆT</strong>. Tuyệt đối <strong>KHÔNG ĐƯỢC NHẬP HÀNG</strong> khi Giám Đốc chưa bấm Duyệt và đóng dấu đỏ điện tử!
+            <p style="font-size: 0.83rem; margin: 0; color: #FCA5A5;">
+              <strong>Quy định sống còn cho Vũ (0911.006.880):</strong> Phiếu sau khi lập sẽ ở trạng thái <strong>CHỜ GIÁM ĐỐC DUYỆT</strong>. Chỉ khi Giám Đốc bấm Duyệt (PIN 0986) và đóng dấu đỏ điện tử thì mới được bấm <strong>"📋 Copy Tin Nhắn Zalo Chuẩn Gửi NCC"</strong> để đặt hàng!
             </p>
           </div>
         </div>
 
         <form id="createPOForm">
-          <div class="form-row">
+          <div class="form-row" style="grid-template-columns: repeat(4, 1fr); gap: 10px;">
             <div class="form-group">
               <label>Mã Đơn Đề Xuất (Tự động):</label>
               <input type="text" id="inpPoCode" class="form-control" readonly style="font-weight: 700; color: var(--gold-primary);">
@@ -4347,28 +4512,11 @@
               <label>Ngày đề xuất:</label>
               <input type="date" id="inpPoDate" class="form-control" required>
             </div>
-          </div>
-
-          <div class="form-row">
             <div class="form-group">
-              <label>Người lập đề xuất:</label>
-              <input type="text" id="inpPoRequester" class="form-control" value="Nguyễn Văn Vũ (Kỹ thuật bóc tách vật tư xưởng)" readonly>
+              <label>Người lập đề xuất (Kỹ thuật & Vật tư):</label>
+              <input type="text" id="inpPoRequester" class="form-control" value="Hoàng Công Vũ (0911.006.880 - Kỹ thuật & Vật tư xưởng)" readonly>
             </div>
             <div class="form-group">
-              <label>Nhà cung cấp dự kiến:</label>
-              <select id="inpPoSupplier" class="form-control" required>
-                <option value="Gỗ An Cường (Hà Tĩnh / Nghệ An)">Gỗ An Cường (Hà Tĩnh / Nghệ An)</option>
-                <option value="Phụ kiện Hafele Việt Nam">Phụ kiện Hafele Việt Nam</option>
-                <option value="Gỗ Minh Long">Gỗ Minh Long</option>
-                <option value="Phụ kiện Eurogold / Taura">Phụ kiện Eurogold / Taura</option>
-                <option value="Vật tư phụ (Keo Jowat, Chỉ nẹp, Sơn)">Vật tư phụ (Keo Jowat, Chỉ nẹp, Sơn)</option>
-                <option value="Đá Bếp / Kính Ốp Bếp">Đá Bếp / Kính Ốp Bếp</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group" style="grid-column: span 2;">
               <label>Chọn Công Trình / Khách Hàng Cần Đặt Vật Tư:</label>
               <select id="inpPoProjectSelect" class="form-control" required>
                 <!-- Populated dynamically via JS -->
@@ -4376,27 +4524,261 @@
             </div>
           </div>
 
-          <!-- DYNAMIC ITEMS TABLE -->
-          <div class="form-group" style="margin-top: 16px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <label style="font-weight: 700; color: var(--text-gold); font-size: 0.95rem; margin: 0;">
-                <i class="fa-solid fa-list-check"></i> Chi Tiết Danh Mục Vật Tư Đề Xuất Đặt Hàng:
-              </label>
-              <button type="button" class="btn btn-sm btn-outline" id="btnAddPoItemRow" style="padding: 4px 10px; font-size: 0.8rem;">
-                <i class="fa-solid fa-plus"></i> Thêm Dòng Vật Tư
-              </button>
+          <div class="form-row" style="grid-template-columns: 1.4fr 1fr; gap: 10px; margin-top: 8px;">
+            <div class="form-group">
+              <label><i class="fa-solid fa-truck-field text-gold"></i> Chọn Nhóm Zalo Nhà Cung Cấp Thực Tế (18 Nhóm NCC Chuẩn 2026):</label>
+              <select id="inpPoSupplier" class="form-control" required>
+                <optgroup label="1. Nhóm Ván Công Nghiệp, Hậu & Chỉ Nẹp (Khoán Xưởng 40%)">
+                  <option value="Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)">Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)</option>
+                  <option value="Đặt hàng - Phú Gia & NT Cầu Vượt (Ván MDF, WPB, Trả ván dư)">Đặt hàng - Phú Gia & NT Cầu Vượt (Ván MDF, WPB, Trả ván dư)</option>
+                  <option value="Gỗ An Cường (Hà Tĩnh / Nghệ An - MDF/HDF/WPB Chính Hãng)">Gỗ An Cường (Hà Tĩnh / Nghệ An - MDF/HDF/WPB Chính Hãng)</option>
+                  <option value="Gỗ Minh Long / Picomat (Ván Nhựa Chống Nước & Laminate)">Gỗ Minh Long / Picomat (Ván Nhựa Chống Nước & Laminate)</option>
+                </optgroup>
+                <optgroup label="2. Nhóm Gia Công Cánh Acrylic, Cánh Kính, Đá, Gương & Đệm">
+                  <option value="Livas - Phú Gia (Gia công Cánh Acrylic No-Line)">Livas - Phú Gia (Gia công Cánh Acrylic No-Line)</option>
+                  <option value="Cánh ALD - Phú Gia (Cánh Acrylic & Laminate Gia Công)">Cánh ALD - Phú Gia (Cánh Acrylic & Laminate Gia Công)</option>
+                  <option value="VSG - Phú Gia (Kính Ốp Bếp Cường Lực & Cánh Kính Khung Nhôm)">VSG - Phú Gia (Kính Ốp Bếp Cường Lực & Cánh Kính Khung Nhôm)</option>
+                  <option value="Phú Gia - Kính Phú Mỹ (Kính Thủy Bi, Kính Cường Lực & Cánh Kính)">Phú Gia - Kính Phú Mỹ (Kính Thủy Bi, Kính Cường Lực & Cánh Kính)</option>
+                  <option value="Đá Hoàng Hà - Phú Gia (Đá Bàn Bếp, Đá Lavabo, Đá Cầu Thang)">Đá Hoàng Hà - Phú Gia (Đá Bàn Bếp, Đá Lavabo, Đá Cầu Thang)</option>
+                  <option value="Gương Dantalux - Nội thất Phú Gia (Gương LED Cảm Ứng Nhà Tắm/Bàn Phấn)">Gương Dantalux - Nội thất Phú Gia (Gương LED Cảm Ứng Nhà Tắm/Bàn Phấn)</option>
+                  <option value="Bọc đệm Hà Tĩnh - Phú Gia (Đệm Đầu Giường, Vách Nỉ/Da, Sofa)">Bọc đệm Hà Tĩnh - Phú Gia (Đệm Đầu Giường, Vách Nỉ/Da, Sofa)</option>
+                </optgroup>
+                <optgroup label="3. Nhóm Ngũ Kim, Phụ Kiện Xưởng, Keo & Vật Tư Phụ">
+                  <option value="NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)">NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)</option>
+                  <option value="Vật tư phụ Xưởng (Keo hạt Jowat, Chỉ nẹp, Mũi CNC, Lưỡi cưa)">Vật tư phụ Xưởng (Keo hạt Jowat, Chỉ nẹp, Mũi CNC, Lưỡi cưa)</option>
+                </optgroup>
+                <optgroup label="4. Nhóm Gỗ Tự Nhiên & Sơn PU (Tách Khỏi Khoán 40%)">
+                  <option value="Gỗ Tự Nhiên & Xưởng Xẻ Sấy (Gỗ Sồi, Gõ Đỏ, Óc Chó - Tách riêng)">Gỗ Tự Nhiên & Xưởng Xẻ Sấy (Gỗ Sồi, Gõ Đỏ, Óc Chó - Tách riêng)</option>
+                  <option value="Đại lý Sơn PU Inchem / Oseven & Vật tư hoàn thiện">Đại lý Sơn PU Inchem / Oseven & Vật tư hoàn thiện</option>
+                </optgroup>
+                <optgroup label="5. Nhóm Phụ Kiện Bếp Thương Mại & Đồ Rời (Tách Khỏi Khoán 40%)">
+                  <option value="Phụ kiện Hafele / Blum Việt Nam (Bản lề, Tay nâng Aventos, Ray âm)">Phụ kiện Hafele / Blum Việt Nam (Bản lề, Tay nâng Aventos, Ray âm)</option>
+                  <option value="Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)">Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)</option>
+                  <option value="Thiết bị bếp Bosch / Malloca / Konox & Đồ rời thương mại">Thiết bị bếp Bosch / Malloca / Konox & Đồ rời thương mại</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fa-solid fa-wand-magic-sparkles text-emerald"></i> Chế Độ Nhập Nhanh Theo Thói Quen Của Vũ:</label>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-sm btn-outline active" id="tabBtnVuBoard" onclick="window.switchVuSmartToolTab('BOARD_SET')" style="font-size: 0.75rem; padding: 5px 9px; border-color: rgba(212,175,55,0.5); color: #FDE68A;">
+                  🪵 1. Ván + Hậu + Chỉ
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="tabBtnVuDim" onclick="window.switchVuSmartToolTab('CUSTOM_DIM')" style="font-size: 0.75rem; padding: 5px 9px; border-color: rgba(56,189,248,0.5); color: #7DD3FC;">
+                  📐 2. Cánh/Kính/Đá (mm)
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="tabBtnVuCombo" onclick="window.switchVuSmartToolTab('HARDWARE_COMBO')" style="font-size: 0.75rem; padding: 5px 9px; border-color: rgba(16,185,129,0.5); color: #6EE7B7;">
+                  🔩 3. Combo Ngũ Kim
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="tabBtnVuZalo" onclick="window.switchVuSmartToolTab('ZALO_PASTE')" style="font-size: 0.75rem; padding: 5px 9px; border-color: rgba(168,85,247,0.5); color: #D8B4FE;">
+                  ⚡ 4. Dán Text Zalo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- BỘ 4 CÔNG CỤ NHẬP ĐƠN THÔNG MINH CỦA VŨ NGAY TRONG MODAL -->
+          <div id="vuSmartModalToolsBox" style="margin-top: 10px; padding: 12px; border-radius: 10px; background: rgba(15,23,42,0.88); border: 1px solid rgba(212,175,55,0.32);">
+            <!-- CÔNG CỤ 1: BỘ SINH NHANH VÁN 17MM + HẬU 6MM + CHỈ NẸP ĐỒNG MÀU & TRỪ PHÔI DƯ CNC -->
+            <div id="vuToolPanel_BOARD_SET" class="vu-smart-tool-panel">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                <span style="font-size: 0.82rem; font-weight: 800; color: #FDE68A;">
+                  <i class="fa-solid fa-layer-group"></i> BỘ TÍNH NHANH VÁN 17MM + HẬU 6MM + CHỈ NẸP ĐỒNG MÀU (CHUẨN ĐƠN LAM GIANG / CẦU VƯỢT / AN CƯỜNG)
+                </span>
+                <span style="font-size: 0.73rem; color: #94A3B8;">
+                  Tự quy đổi theo định mức thực tế: <strong>Hậu 6mm = 30% số tấm 17mm</strong> | <strong>Chỉ 21×1mm = 1 cuộn / 12 tấm</strong>
+                </span>
+              </div>
+              <div style="display: grid; grid-template-columns: 2fr 0.9fr 1.8fr auto; gap: 8px; align-items: end;">
+                <div>
+                  <label style="font-size: 0.74rem; color: #CBD5E1; display: block; margin-bottom: 3px;">Chọn Mã Màu & Cốt Ván Vũ Hay Đặt:</label>
+                  <select id="vuBoardColorSelect" class="form-control" style="font-size: 0.8rem; padding: 6px 8px;">
+                    <option value="MDF_THAI_205T">MDF Lõi Xanh Thái Lan 17mm - Mã 205T (Trắng Mờ Chủ Lực - 740.000đ/tấm)</option>
+                    <option value="MDF_THAI_202T">MDF Lõi Xanh Thái Lan 17mm - Mã 202T (Trắng Sữa - 740.000đ/tấm)</option>
+                    <option value="MDF_THAI_388">MDF Lõi Xanh Thái Lan 17mm - Mã MS 388 EV (Vân Sồi Sáng - 760.000đ/tấm)</option>
+                    <option value="MDF_THAI_612">MDF Lõi Xanh Thái Lan 17mm - Mã MS 612 / Vân Óc Chó Trầm (760.000đ/tấm)</option>
+                    <option value="MDF_AC_17">MDF Chống Ẩm An Cường Chính Hãng 17mm Melamine (1.120.000đ/tấm)</option>
+                    <option value="PLYWOOD_414PL">Gỗ Plywood Chống Nước Phủ Melamine 18mm - Mã 414 PL / 8803 (950.000đ/tấm)</option>
+                    <option value="WPB_AC_17">Nhựa Đặc WPB An Cường 17mm Kháng Nước Tuyệt Đối (2.550.000đ/tấm)</option>
+                    <option value="PICOMAT_17">Ván Nhựa Đặc Picomat 17mm Khoang Chậu Rửa / Lavabo (1.350.000đ/tấm)</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size: 0.74rem; color: #CBD5E1; display: block; margin-bottom: 3px;">Số tấm 17mm:</label>
+                  <input type="number" id="vuBoardQty17" class="form-control" value="15" min="1" step="1" style="font-size: 0.85rem; font-weight: 800; color: #FDE68A; padding: 6px 8px;">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.74rem; color: #E2E8F0; padding-bottom: 2px;">
+                  <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" id="chkVuAutoBack6mm" checked> Tự kèm <strong>Ván Hậu 6mm đồng màu</strong> (~30% số tấm) + <strong>Chỉ 21×1mm</strong>
+                  </label>
+                  <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" id="chkVuAutoEdge44mm"> Kèm <strong>Chỉ nẹp đôi 44×1mm</strong> (đợt chập đôi / bo cong) &amp; <input type="checkbox" id="chkVuDeductOffcut"> Trừ <strong>2 tấm phôi dư CNC</strong> trong kho
+                  </label>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <button type="button" class="btn btn-sm btn-gold" onclick="window.applyVuSmartBoardSet()" style="padding: 7px 12px; font-size: 0.78rem; white-space: nowrap;">
+                    <i class="fa-solid fa-plus-circle"></i> Nạp Bộ Ván Vào Đơn
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline" onclick="window.addVuReturnBoardRow()" title="Trả ván dư về kho NCC (ghi số lượng âm để trừ công nợ như đơn NT Cầu Vượt -750.000đ)" style="padding: 7px 10px; font-size: 0.75rem; border-color: rgba(248,113,113,0.45); color: #FCA5A5; white-space: nowrap;">
+                    ↩️ Trả Ván Dư (-SL)
+                  </button>
+                </div>
+              </div>
+              <!-- Máy tính nhanh từ khối lượng công trình sang số tấm CNC (Mục 24) -->
+              <div style="margin-top: 8px; padding-top: 7px; border-top: 1px dashed rgba(148,163,184,0.2); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.74rem; color: #94A3B8;">
+                <span><i class="fa-solid fa-calculator text-gold"></i> <strong>Quy đổi nhanh Mục 24 CNC:</strong></span>
+                <label>Bếp dưới (md): <input type="number" id="inpQuickCncBd" placeholder="0" step="0.1" style="width: 52px; background: #0f172a; color: #fff; border: 1px solid #334155; border-radius: 4px; padding: 2px 4px;"></label>
+                <label>Bếp trên (md): <input type="number" id="inpQuickCncBt" placeholder="0" step="0.1" style="width: 52px; background: #0f172a; color: #fff; border: 1px solid #334155; border-radius: 4px; padding: 2px 4px;"></label>
+                <label>Kịch trần (md): <input type="number" id="inpQuickCncKt" placeholder="0" step="0.1" style="width: 52px; background: #0f172a; color: #fff; border: 1px solid #334155; border-radius: 4px; padding: 2px 4px;"></label>
+                <label>Tủ áo (m²): <input type="number" id="inpQuickCncTa" placeholder="0" step="0.1" style="width: 56px; background: #0f172a; color: #fff; border: 1px solid #334155; border-radius: 4px; padding: 2px 4px;"></label>
+                <label>Vách phẳng (m²): <input type="number" id="inpQuickCncVp" placeholder="0" step="0.1" style="width: 56px; background: #0f172a; color: #fff; border: 1px solid #334155; border-radius: 4px; padding: 2px 4px;"></label>
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.calcCncSheetsToVuBoardInput()" style="padding: 2px 8px; font-size: 0.72rem; color: #38BDF8; border-color: rgba(56,189,248,0.4);">
+                  = Tính Số Tấm Chuẩn Đưa Lên Ô 17mm
+                </button>
+              </div>
             </div>
 
-            <div class="table-responsive" style="max-height: 250px; overflow-y: auto; border: 1px solid var(--border-subtle); border-radius: 6px;">
-              <table class="data-table" id="tablePoItemsInput" style="font-size: 0.82rem;">
+            <!-- CÔNG CỤ 2: MÁY TÍNH BÓC TÁCH GIA CÔNG CÁNH ACRYLIC / CÁNH KÍNH / ĐÁ / GƯƠNG / ĐỆM THEO MM -->
+            <div id="vuToolPanel_CUSTOM_DIM" class="vu-smart-tool-panel" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                <span style="font-size: 0.82rem; font-weight: 800; color: #7DD3FC;">
+                  <i class="fa-solid fa-ruler-combined"></i> BÓC TÁCH GIA CÔNG THEO KÍCH THƯỚC THỰC TẾ (DÀI MM × RỘNG MM × SỐ LƯỢNG CÁNH/TẤM)
+                </span>
+                <span style="font-size: 0.73rem; color: #94A3B8;">
+                  Tự tính diện tích `m²` hoặc `md` và ghi rõ kích thước từng tấm + yêu cầu khoan bản lề / vát cạnh vào tên vật tư
+                </span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1.8fr 0.7fr 0.7fr 0.6fr 1.5fr auto; gap: 8px; align-items: end;">
+                <div>
+                  <label style="font-size: 0.74rem; color: #CBD5E1; display: block; margin-bottom: 3px;">Loại Gia Công Theo Kích Thước:</label>
+                  <select id="vuDimCategorySelect" class="form-control" style="font-size: 0.8rem; padding: 6px 8px;">
+                    <option value="ACRYLIC_LIVAS" data-unit="m²" data-price="1150000" data-bucket="WOOD_40">Cánh Acrylic No-Line Livas / ALD (1.150.000đ/m²)</option>
+                    <option value="CANH_KINH_VSG" data-unit="m²" data-price="1350000" data-bucket="WOOD_40">Cánh Kính Cường Lực Khung Nhôm VSG / Phú Mỹ (1.350.000đ/m²)</option>
+                    <option value="KINH_BEP_8MM" data-unit="md" data-price="750000" data-bucket="WOOD_40">Kính Cường Lực Ốp Bếp 8mm Sơn Màu VSG (750.000đ/md)</option>
+                    <option value="DA_BEP_HOANG_HA" data-unit="md" data-price="1450000" data-bucket="WOOD_40">Đá Bàn Bếp Kim Sa / Trắng Vân Mây Hoàng Hà (1.450.000đ/md)</option>
+                    <option value="GUONG_LED_DANTALUX" data-unit="m²" data-price="1250000" data-bucket="WOOD_40">Gương Bỉ 5mm Dantalux Phun Cát LED Cảm Ứng (1.250.000đ/m²)</option>
+                    <option value="DEM_DA_HA_TINH" data-unit="m²" data-price="850000" data-bucket="WOOD_40">Bọc Đệm Đầu Giường / Vách Nỉ Nhung / Da Công Nghiệp (850.000đ/m²)</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size: 0.74rem; color: #CBD5E1; display: block; margin-bottom: 3px;">Dài / Cao (mm):</label>
+                  <input type="number" id="vuDimLengthMm" class="form-control" value="720" min="50" step="1" style="font-size: 0.82rem; padding: 6px 8px;">
+                </div>
+                <div>
+                  <label style="font-size: 0.74rem; color: #CBD5E1; display: block; margin-bottom: 3px;">Rộng (mm):</label>
+                  <input type="number" id="vuDimWidthMm" class="form-control" value="450" min="50" step="1" style="font-size: 0.82rem; padding: 6px 8px;">
+                </div>
+                <div>
+                  <label style="font-size: 0.74rem; color: #CBD5E1; display: block; margin-bottom: 3px;">SL (Tấm/Cánh):</label>
+                  <input type="number" id="vuDimCount" class="form-control" value="6" min="1" step="1" style="font-size: 0.82rem; font-weight: 800; color: #7DD3FC; padding: 6px 8px;">
+                </div>
+                <div>
+                  <label style="font-size: 0.74rem; color: #CBD5E1; display: block; margin-bottom: 3px;">Mã màu & Ghi chú kỹ thuật (Khoan lề, khoét lỗ...):</label>
+                  <input type="text" id="vuDimTechSpec" class="form-control" placeholder="VD: PARC 01 Trắng bóng, dán No-Line 4 cạnh, khoan 2 lỗ bản lề" value="Mã PARC 01 Trắng bóng, dán No-Line 4 cạnh, khoan lỗ bản lề" style="font-size: 0.78rem; padding: 6px 8px;">
+                </div>
+                <div>
+                  <button type="button" class="btn btn-sm btn-gold" onclick="window.applyVuSmartDimensionCalc()" style="padding: 7px 12px; font-size: 0.78rem; white-space: nowrap;">
+                    <i class="fa-solid fa-plus-circle"></i> Tính m²/md &amp; Thêm Dòng
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CÔNG CỤ 3: COMBO NGŨ KIM, PHỤ KIỆN XƯỞNG, KEO JOWAT & PHỤ KIỆN THƯƠNG MẠI 1 CHẠM -->
+            <div id="vuToolPanel_HARDWARE_COMBO" class="vu-smart-tool-panel" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                <span style="font-size: 0.82rem; font-weight: 800; color: #6EE7B7;">
+                  <i class="fa-solid fa-screwdriver-wrench"></i> NẠP NHANH COMBO NGŨ KIM QUỐC TÂM / KEO JOWAT / PHỤ KIỆN BẾP (1 CHẠM ĐỦ TRỌN BỘ)
+                </span>
+                <span style="font-size: 0.73rem; color: #94A3B8;">
+                  Tự động phân loại chuẩn: <strong>Ngũ kim xưởng (Khoán 40%)</strong> vs <strong>Phụ kiện Inox / Thiết bị bếp (Tách riêng khỏi 40%)</strong>
+                </span>
+              </div>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.applyVuHardwareCombo('KITCHEN_FITTING')" style="border-color: rgba(16,185,129,0.45); color: #6EE7B7; font-size: 0.76rem; padding: 6px 10px;">
+                  🔩 + Combo Ngũ Kim 1 Bộ Tủ Bếp (80 Bản lề + 6 Ray âm + Cam chốt + Chân nhựa)
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.applyVuHardwareCombo('WARDROBE_FITTING')" style="border-color: rgba(56,189,248,0.45); color: #7DD3FC; font-size: 0.76rem; padding: 6px 10px;">
+                  🚪 + Combo Ngũ Kim Tủ Quần Áo (60 Bản lề + 4 Ray bi + Suốt treo + Tay nắm âm)
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.applyVuHardwareCombo('LED_LIGHTING')" style="border-color: rgba(250,204,21,0.45); color: #FDE047; font-size: 0.76rem; padding: 6px 10px;">
+                  💡 + Combo Đèn LED Tủ Bếp &amp; Tủ Áo (Thanh nhôm + Dây LED + Nguồn 12V + Cảm biến)
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.applyVuHardwareCombo('GLUE_CNC_CONSUMABLE')" style="border-color: rgba(212,175,55,0.45); color: #FDE68A; font-size: 0.76rem; padding: 6px 10px;">
+                  🧪 + Combo Vật Tư Phụ Xưởng (Keo hạt Jowat + Dung môi + Mũi cắt CNC 6mm)
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.applyVuHardwareCombo('COMMERCIAL_KITCHEN_PK')" style="border-color: rgba(244,114,182,0.45); color: #F472B6; font-size: 0.76rem; padding: 6px 10px;">
+                  🛋️ + Combo Phụ Kiện Bếp Inox 304 Thương Mại (Giá bát nâng hạ + Xoong nồi + Dao thớt — Tách khỏi 40%)
+                </button>
+              </div>
+            </div>
+
+            <!-- CÔNG CỤ 4: DÁN NHANH TIN NHẮN ZALO CỦA VŨ (SMART ZALO TEXT PARSER) -->
+            <div id="vuToolPanel_ZALO_PASTE" class="vu-smart-tool-panel" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
+                <span style="font-size: 0.82rem; font-weight: 800; color: #D8B4FE;">
+                  <i class="fa-solid fa-paste"></i> DÁN NHANH TIN NHẮN ĐẶT HÀNG ZALO CỦA VŨ (TỰ ĐỘNG BÓC TÁCH DÒNG &amp; ÁP ĐƠN GIÁ CHUẨN)
+                </span>
+                <span style="font-size: 0.73rem; color: #94A3B8;">
+                  Ngăn cách bằng dấu phẩy `,` hoặc xuống dòng. Hỗ trợ số âm `-1 tấm` khi trả ván dư.
+                </span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;">
+                <textarea id="inpVuZaloRawText" class="form-control" rows="2" placeholder="Ví dụ gõ hoặc dán như Vũ nhắn Zalo: 15 tấm 17ly 205T, 5 hậu 205T, 3 cuộn chỉ 21 205T, 80 bản lề giảm chấn, 6 bộ ray âm 450, 1 bao keo hạt Jowat" style="font-size: 0.8rem;"></textarea>
+                <button type="button" class="btn btn-gold" onclick="window.parseVuZaloOrderText()" style="padding: 10px 14px; font-size: 0.8rem; white-space: nowrap;">
+                  <i class="fa-solid fa-bolt"></i> Tách Dòng &amp; Điền Bảng
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATALIST 65+ VẬT TƯ CHUẨN GIÁ THỰC TẾ CỦA VŨ (AUTOCOMPLETE KHI GÕ TRONG BẢNG) -->
+          <datalist id="vuMaterialCatalogDatalist"></datalist>
+
+          <!-- DYNAMIC ITEMS TABLE -->
+          <div class="form-group" style="margin-top: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+              <label style="font-weight: 700; color: var(--text-gold); font-size: 0.92rem; margin: 0;">
+                <i class="fa-solid fa-list-check"></i> Chi Tiết Bảng Kê Vật Tư Đặt Hàng (<span id="lblPoItemCount">0</span> hạng mục — gõ Mã màu hoặc Tên vật tư để tự nhảy giá):
+              </label>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn btn-sm btn-outline" onclick="window.clearAllPOItemRows()" style="padding: 4px 10px; font-size: 0.76rem; color: #FCA5A5; border-color: rgba(239,68,68,0.35);">
+                  <i class="fa-solid fa-broom"></i> Làm Mới Bảng
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btnAddPoItemRow" style="padding: 4px 10px; font-size: 0.78rem;">
+                  <i class="fa-solid fa-plus"></i> Thêm Dòng Lẻ
+                </button>
+              </div>
+            </div>
+
+            <!-- DẢI LỌC NHANH 8 NHÓM DANH MỤC VẬT TƯ KHI NHẬP ĐƠN PO (CLICK NHÓM NÀO GỢI Ý ĐÚNG NHÓM ĐÓ + CHÈN NHANH 1 CHẠM) -->
+            <div id="poCatalogCategoryFilterBar" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; padding: 7px 10px; background: rgba(2, 6, 23, 0.65); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 8px; align-items: center;">
+              <span style="font-size: 0.74rem; font-weight: 700; color: #94A3B8; margin-right: 4px;"><i class="fa-solid fa-filter"></i> Lọc gợi ý theo mục:</span>
+              <button type="button" class="btn btn-sm btn-gold po-cat-chip" data-cat="ALL" onclick="window.filterPoCatalogByCategory('ALL')" style="padding: 3px 8px; font-size: 0.73rem;">Tất cả (68+ mã)</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="VAN_17MM" onclick="window.filterPoCatalogByCategory('VAN_17MM')" style="padding: 3px 8px; font-size: 0.73rem;">1. 🪵 Ván 17mm</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="HAU_6MM" onclick="window.filterPoCatalogByCategory('HAU_6MM')" style="padding: 3px 8px; font-size: 0.73rem;">2. 📋 Hậu 6mm</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="CHI_NEP" onclick="window.filterPoCatalogByCategory('CHI_NEP')" style="padding: 3px 8px; font-size: 0.73rem;">3. 🎗️ Chỉ PVC</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="CANH_ACRYLIC_KINH" onclick="window.filterPoCatalogByCategory('CANH_ACRYLIC_KINH')" style="padding: 3px 8px; font-size: 0.73rem;">4. ✨ Cánh Acrylic/Kính</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="KINH_GUONG_DA" onclick="window.filterPoCatalogByCategory('KINH_GUONG_DA')" style="padding: 3px 8px; font-size: 0.73rem;">5. 💎 Kính/Gương/Đá</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="NGU_KIM_LED_KEO" onclick="window.filterPoCatalogByCategory('NGU_KIM_LED_KEO')" style="padding: 3px 8px; font-size: 0.73rem;">6. 🔩 Ngũ kim/LED/Keo</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="PHU_KIEN_BEP_TM" onclick="window.filterPoCatalogByCategory('PHU_KIEN_BEP_TM')" style="padding: 3px 8px; font-size: 0.73rem; color: #FBBF24;">7. 🛋️ Phụ kiện Bếp (Tách 40%)</button>
+              <button type="button" class="btn btn-sm btn-outline po-cat-chip" data-cat="GO_THIT_PU" onclick="window.filterPoCatalogByCategory('GO_THIT_PU')" style="padding: 3px 8px; font-size: 0.73rem; color: #FBBF24;">8. 🌳 Gỗ thịt (Tách 40%)</button>
+              <select id="poQuickPickByCatSelect" class="form-control" onchange="if(this.value){window.quickInsertCatalogCodeToPO(this.value); this.value='';}" style="margin-left: auto; width: auto; max-width: 260px; font-size: 0.75rem; padding: 3px 8px; height: 28px; color: #34D399; border-color: rgba(16,185,129,0.4);">
+                <option value="">⚡ Chọn nhanh mặt hàng trong mục đang lọc...</option>
+              </select>
+            </div>
+
+            <div class="table-responsive" style="max-height: 290px; overflow-y: auto; border: 1px solid var(--border-subtle); border-radius: 8px;">
+              <table class="data-table" id="tablePoItemsInput" style="font-size: 0.81rem;">
                 <thead>
                   <tr>
-                    <th style="width: 35%;">Tên Vật Tư & Quy Cách Chi Tiết</th>
-                    <th style="width: 15%;">ĐVT</th>
-                    <th style="width: 15%;">Số Lượng</th>
-                    <th style="width: 15%;">Đơn Giá (đ)</th>
-                    <th style="width: 15%;">Thành Tiền (đ)</th>
-                    <th style="width: 5%; text-align: center;">Xóa</th>
+                    <th style="width: 34%;">Tên Vật Tư, Mã Màu &amp; Quy Cách Kỹ Thuật</th>
+                    <th style="width: 15%;">Nhóm Hạch Toán</th>
+                    <th style="width: 9%;">ĐVT</th>
+                    <th style="width: 10%;">Số Lượng</th>
+                    <th style="width: 13%;">Đơn Giá (đ)</th>
+                    <th style="width: 13%;">Thành Tiền (đ)</th>
+                    <th style="width: 6%; text-align: center;">Thao Tác</th>
                   </tr>
                 </thead>
                 <tbody id="bodyPoItemsInput">
@@ -4406,22 +4788,30 @@
             </div>
           </div>
 
-          <!-- THANH ĐO ĐỊNH MỨC VẬT TƯ 40% TRỰC QUAN (TỐI ƯU 5) -->
-          <div class="metric-comparison-box" style="margin-top: 16px;">
-            <div class="comp-item" style="flex: 1;">
-              <span class="comp-title">Tổng Giá Trị Vật Tư Đề Xuất Đặt Hàng:</span>
-              <span class="comp-val gold" id="lblPoTotalProposal" style="font-size: 1.25rem;">0 đ</span>
+          <!-- THANH ĐO ĐỊNH MỨC VẬT TƯ 40% TRỰC QUAN + TÁCH BẠCH KHOÁN XƯỞNG VS ĐỒ THƯƠNG MẠI -->
+          <div class="metric-comparison-box" style="margin-top: 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+            <div class="comp-item">
+              <span class="comp-title">Tổng Giá Trị Đơn Đặt Hàng:</span>
+              <span class="comp-val gold" id="lblPoTotalProposal" style="font-size: 1.15rem;">0 đ</span>
             </div>
-            <div class="comp-item" style="flex: 1;">
+            <div class="comp-item">
+              <span class="comp-title">🪵 Vật Tư Xưởng (Tính vào 40%):</span>
+              <span class="comp-val emerald" id="lblPoWood40Val" style="font-size: 1.02rem; font-weight: 800;">0 đ</span>
+            </div>
+            <div class="comp-item">
+              <span class="comp-title">🛋️ Thương Mại/Gỗ Thịt (Tách riêng):</span>
+              <span class="comp-val cyan" id="lblPoCommercialPkVal" style="font-size: 1.02rem; font-weight: 800;">0 đ</span>
+            </div>
+            <div class="comp-item">
               <span class="comp-title">Tình Trạng Hồ Sơ Đề Xuất:</span>
-              <span class="comp-val cyan" id="lblPoEvaluation">Chờ gửi Giám Đốc phê duyệt</span>
+              <span class="comp-val cyan" id="lblPoEvaluation" style="font-size: 0.85rem;">Chờ gửi Giám Đốc phê duyệt</span>
             </div>
           </div>
 
           <div class="po-budget-meter-box" id="poBudgetMeterBox">
             <div class="po-meter-header">
               <span style="color: var(--text-muted); font-weight: 700;">
-                <i class="fa-solid fa-scale-balanced text-gold"></i> Định Mức Trần Vật Tư 40% (Khoán Xưởng):
+                <i class="fa-solid fa-scale-balanced text-gold"></i> Định Mức Trần Vật Tư Sản Xuất 40% (Chỉ tính trên phần 🪵 Vật Tư Khoán Xưởng — Không tính lầm đồ thương mại):
               </span>
               <span id="poMeterRatioText" style="font-weight: 800; color: #10B981;">0.0% / 40.0%</span>
             </div>
@@ -4434,15 +4824,15 @@
             </div>
           </div>
 
-          <div class="form-group" style="margin-top: 14px;">
-            <label>Ghi chú / Đề xuất thêm của Vũ gửi Giám Đốc:</label>
-            <textarea id="inpPoNote" class="form-control" rows="2" placeholder="Ví dụ: Ván MDF chống ẩm dán cạnh nẹp 1.2mm tủ bếp công trình Chị Hiển, nhà cung cấp cam kết giao trong 48h..."></textarea>
+          <div class="form-group" style="margin-top: 10px;">
+            <label>Ghi chú / Yêu cầu kỹ thuật &amp; giao hàng của Vũ gửi Giám Đốc &amp; NCC:</label>
+            <textarea id="inpPoNote" class="form-control" rows="2" placeholder="Ví dụ: Giao hàng tại Tổ hợp VP & Nhà máy Sản xuất Nội thất Phú Gia (Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh). Kiểm tra đúng mã màu ván & tem chính hãng..."></textarea>
           </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" id="createPOCancelBtn">Hủy Bỏ</button>
             <button type="submit" class="btn btn-gold" id="btnSubmitPO">
-              <i class="fa-solid fa-paper-plane"></i> Vũ Lưu & Gửi Giám Đốc Phê Duyệt
+              <i class="fa-solid fa-paper-plane"></i> Vũ Lưu Đơn &amp; Trình Giám Đốc Đóng Dấu Đỏ
             </button>
           </div>
         </form>
@@ -4507,11 +4897,11 @@
             <div class="po-info-col">
               <div class="info-row"><strong>Đơn vị cung cấp:</strong> <span id="viewPoSupplier">Công ty Cổ phần Gỗ An Cường</span></div>
               <div class="info-row"><strong>Công trình / KH:</strong> <span id="viewPoProject">Chị Hiển (Thạch Linh, TP. Hà Tĩnh)</span></div>
-              <div class="info-row"><strong>Địa điểm giao hàng:</strong> <span>Xưởng sản xuất PG Home Luxury</span></div>
+              <div class="info-row"><strong>Địa điểm giao hàng:</strong> <span>Tổ hợp VP &amp; Nhà máy Sản xuất Nội thất Phú Gia (Ngõ 49 Trương Quốc Dụng)</span></div>
             </div>
             <div class="po-info-col">
-              <div class="info-row"><strong>Người lập đề xuất:</strong> <span id="viewPoRequester">Nguyễn Văn Vũ (Kỹ thuật xưởng)</span></div>
-              <div class="info-row"><strong>Bộ phận:</strong> <span>Kỹ thuật Bóc tách & Vật tư Xưởng sản xuất</span></div>
+              <div class="info-row"><strong>Người lập đề xuất:</strong> <span id="viewPoRequester">Hoàng Công Vũ (0911.006.880 - Kỹ thuật xưởng)</span></div>
+              <div class="info-row"><strong>Bộ phận:</strong> <span>Kỹ thuật Bóc tách &amp; Vật tư Xưởng sản xuất</span></div>
               <div class="info-row"><strong>Mục đích sử dụng:</strong> <span>Vật tư gia công sản xuất nội thất</span></div>
             </div>
           </div>
@@ -4522,7 +4912,7 @@
               <thead>
                 <tr>
                   <th style="width: 5%; text-align: center;">STT</th>
-                  <th style="width: 40%;">Tên vật tư & Quy cách tiêu chuẩn</th>
+                  <th style="width: 40%;">Tên vật tư &amp; Quy cách tiêu chuẩn</th>
                   <th style="width: 10%; text-align: center;">ĐVT</th>
                   <th style="width: 10%; text-align: center;">Số lượng</th>
                   <th style="width: 15%; text-align: right;">Đơn giá (VNĐ)</th>
@@ -4543,7 +4933,7 @@
 
           <!-- NOTE BOX -->
           <div class="po-note-box">
-            <strong>Ghi chú / Yêu cầu giao nhận:</strong> <span id="viewPoNote">Giao tại xưởng sản xuất PG Home Luxury. Kiểm tra tem mác chính hãng trước khi nhận hàng.</span>
+            <strong>Ghi chú / Yêu cầu giao nhận:</strong> <span id="viewPoNote">Giao tại Tổ hợp Văn phòng &amp; Nhà máy Sản xuất Nội thất Phú Gia (Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh). Kiểm tra tem mác chính hãng trước khi nhận hàng.</span>
           </div>
 
           <!-- SIGNATURES & OFFICIAL STAMP SECTION -->
@@ -4551,7 +4941,7 @@
             <div class="po-sig-box">
               <div class="sig-title">NGƯỜI ĐỀ XUẤT</div>
               <div class="sig-subtitle">(Kỹ thuật bóc tách vật tư)</div>
-              <div class="sig-name" id="viewPoRequesterSig">Nguyễn Văn Vũ</div>
+              <div class="sig-name" id="viewPoRequesterSig">Hoàng Công Vũ</div>
             </div>
 
             <div class="po-sig-box">
@@ -4561,7 +4951,7 @@
             </div>
 
             <div class="po-sig-box sig-boss-box" id="bossApprovalBox">
-              <div class="sig-title">GIÁM ĐỐC PHÊ DUYỆT & ĐÓNG DẤU</div>
+              <div class="sig-title">GIÁM ĐỐC PHÊ DUYỆT &amp; ĐÓNG DẤU</div>
               <div class="sig-subtitle">(Giám đốc phê duyệt xuất hàng)</div>
               
               <!-- OFFICIAL RED COMPANY STAMP (HIỆN KHI ĐÃ ĐƯỢC DUYỆT) -->
@@ -4604,7 +4994,7 @@
               <!-- PLACEHOLDER KHI CHƯA DUYỆT -->
               <div class="boss-unapproved-box" id="bossUnapprovedBox">
                 <i class="fa-solid fa-lock" style="font-size: 2rem; color: #DC2626; margin-bottom: 6px;"></i>
-                <div style="font-size: 0.82rem; font-weight: 700; color: #DC2626; text-transform: uppercase;">CHƯA CÓ CHỮ KÝ & DẤU CỦA GIÁM ĐỐC</div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: #DC2626; text-transform: uppercase;">CHƯA CÓ CHỮ KÝ &amp; DẤU CỦA GIÁM ĐỐC</div>
                 <div style="font-size: 0.75rem; color: #64748B;">Nghiêm cấm xuất kho / Nhập hàng</div>
               </div>
 
@@ -4614,7 +5004,7 @@
 
           <!-- FOOTER LEGAL WARNING -->
           <div class="po-sheet-footer">
-            <span>Phiếu đặt hàng chỉ có giá trị thanh toán & nhập kho khi có đầy đủ con dấu mộc đỏ điện tử của Giám Đốc PG Home Luxury.</span>
+            <span>Phiếu đặt hàng chỉ có giá trị thanh toán &amp; nhập kho khi có đầy đủ con dấu mộc đỏ điện tử của Giám Đốc PG Home Luxury.</span>
           </div>
         </div>
 
@@ -4623,8 +5013,11 @@
           <div class="action-left" id="poBossActionGroup">
             <!-- Boss quick approve buttons injected via JS -->
           </div>
-          <div class="action-right" style="display: flex; gap: 10px;">
+          <div class="action-right" style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button type="button" class="btn btn-secondary" id="viewPOCloseBtn2">Đóng</button>
+            <button type="button" class="btn btn-outline" id="btnCopyPOZaloMsg" style="border-color: rgba(16,185,129,0.55); color: #34D399; font-weight: 700;">
+              <i class="fa-solid fa-comment-dots"></i> Copy Tin Nhắn Zalo Gửi NCC
+            </button>
             <button type="button" class="btn btn-primary" id="btnExportPOExcel">
               <i class="fa-solid fa-file-excel"></i> Xuất Excel
             </button>

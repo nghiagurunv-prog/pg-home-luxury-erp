@@ -5060,6 +5060,395 @@ body.light-theme .alert-banner {
   }
 }
 
+/* ============================================================================
+   PG HOME LUXURY ERP — UI DECLUTTERING & SUB-SECTION OPTIMIZER v10.0
+   Tinh gọn toàn diện giao diện, thanh công cụ, banner quy chuẩn & phân khu con
+   ============================================================================ */
+
+/* 1. Tinh gọn Topbar & Gom nhóm nút công cụ phụ */
+body.pg-ui-streamlined .topbar {
+  padding: 8px 18px !important;
+  min-height: 54px !important;
+  gap: 10px !important;
+}
+
+body.pg-ui-streamlined .topbar-left .page-title {
+  font-size: 16px !important;
+  line-height: 1.25 !important;
+}
+
+body.pg-ui-streamlined .topbar-left .breadcrumb {
+  font-size: 11px !important;
+  margin-bottom: 1px !important;
+}
+
+body.pg-ui-streamlined .topbar-right {
+  gap: 6px !important;
+  flex-wrap: nowrap !important;
+}
+
+body.pg-ui-streamlined .topbar-right .btn {
+  padding: 6px 10px !important;
+  font-size: 11.5px !important;
+  white-space: nowrap !important;
+}
+
+/* Popover Tiện ích hệ thống trên Topbar */
+.pg-topbar-more-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pg-topbar-more-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 230px;
+  background: linear-gradient(180deg, #1b1713 0%, #120f0d 100%);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pg-topbar-more-menu.open {
+  display: flex;
+}
+
+.pg-topbar-more-menu .btn {
+  width: 100% !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  padding: 7px 10px !important;
+  font-size: 12px !important;
+}
+
+/* 2. Tinh gọn Thanh Telemetry Ribbon dưới Topbar */
+body.pg-ui-streamlined .live-telemetry-ribbon {
+  padding: 4px 18px !important;
+  min-height: 28px !important;
+  font-size: 11px !important;
+  gap: 8px !important;
+}
+
+body.pg-ui-streamlined .live-telemetry-ribbon .telemetry-divider {
+  margin: 0 4px !important;
+}
+
+/* 3. Tinh gọn Sidebar & Tìm kiếm nhanh Menu */
+body.pg-ui-streamlined .sidebar-header {
+  padding: 12px 14px !important;
+}
+
+body.pg-ui-streamlined .sidebar-role-switcher {
+  padding: 8px 12px !important;
+}
+
+body.pg-ui-streamlined .sidebar-nav {
+  padding: 8px 10px !important;
+}
+
+body.pg-ui-streamlined .nav-section-title {
+  margin: 8px 0 4px 0 !important;
+  padding: 5px 8px !important;
+  font-size: 10.5px !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.15s ease;
+}
+
+body.pg-ui-streamlined .nav-section-title:hover {
+  background: rgba(212, 175, 55, 0.12) !important;
+}
+
+body.pg-ui-streamlined .nav-item {
+  padding: 7px 10px !important;
+  margin-bottom: 2px !important;
+  font-size: 12.2px !important;
+  border-radius: 7px !important;
+}
+
+.pg-sidebar-search-wrap {
+  padding: 6px 12px 2px 12px;
+}
+
+.pg-sidebar-search-input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  color: #f8fafc;
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 11.5px;
+  outline: none;
+}
+
+.pg-sidebar-search-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.18);
+}
+
+/* 4. Thu gọn Banner Quy Chuẩn (.alert-banner) thành 1 dòng thông minh */
+body.pg-ui-streamlined .alert-banner.pg-compact-banner {
+  padding: 8px 14px !important;
+  margin-bottom: 12px !important;
+  border-radius: 9px !important;
+  align-items: center !important;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+body.pg-ui-streamlined .alert-banner.pg-compact-banner .alert-icon {
+  font-size: 16px !important;
+  margin-top: 0 !important;
+}
+
+body.pg-ui-streamlined .alert-banner.pg-compact-banner .alert-content {
+  width: 100%;
+}
+
+body.pg-ui-streamlined .alert-banner.pg-compact-banner .alert-content h4 {
+  font-size: 12.5px !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+body.pg-ui-streamlined .alert-banner.pg-compact-banner:not(.expanded) .alert-content p {
+  display: none !important;
+}
+
+body.pg-ui-streamlined .alert-banner.pg-compact-banner.expanded .alert-content p {
+  display: block !important;
+  margin-top: 6px !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+.pg-banner-toggle-pill {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 5. Tinh gọn khoảng cách Content Area, Stats Grid, Card & Bảng dữ liệu */
+body.pg-ui-streamlined .content-area {
+  padding: 14px 18px 28px 18px !important;
+}
+
+body.pg-ui-streamlined .stats-grid {
+  gap: 10px !important;
+  margin-bottom: 12px !important;
+}
+
+body.pg-ui-streamlined .stat-card {
+  padding: 11px 14px !important;
+  border-radius: 10px !important;
+}
+
+body.pg-ui-streamlined .stat-card .stat-value {
+  font-size: 18px !important;
+  margin: 3px 0 !important;
+}
+
+body.pg-ui-streamlined .stat-card .stat-label {
+  font-size: 11px !important;
+}
+
+body.pg-ui-streamlined .stat-card .stat-sub {
+  font-size: 10.5px !important;
+}
+
+body.pg-ui-streamlined .card {
+  margin-bottom: 14px !important;
+  border-radius: 11px !important;
+}
+
+body.pg-ui-streamlined .card-header {
+  padding: 11px 16px !important;
+}
+
+body.pg-ui-streamlined .card-title {
+  font-size: 14px !important;
+}
+
+body.pg-ui-streamlined .card-subtitle {
+  font-size: 11.5px !important;
+  margin-top: 2px !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.pg-ui-streamlined .card-header:hover .card-subtitle {
+  -webkit-line-clamp: unset;
+}
+
+body.pg-ui-streamlined .data-table th {
+  padding: 8px 10px !important;
+  font-size: 11px !important;
+}
+
+body.pg-ui-streamlined .data-table td {
+  padding: 8px 10px !important;
+  font-size: 12.2px !important;
+}
+
+/* 6. Thanh Phân Khu Chức Năng Con (Sub-Section Segmented Switcher) */
+.pg-subview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.85));
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.pg-subview-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.pg-subview-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pg-subview-btn {
+  background: rgba(15, 23, 42, 0.7);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 7px;
+  padding: 5px 11px;
+  font-size: 11.8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pg-subview-btn:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  color: #f8fafc;
+  background: rgba(212, 175, 55, 0.12);
+}
+
+.pg-subview-btn.active {
+  background: linear-gradient(135deg, #d4af37, #b45309);
+  color: #0f172a;
+  border-color: #f59e0b;
+  font-weight: 800;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Ẩn gọn phân khu khi không được chọn (nhưng giữ nguyên 100% DOM ID) */
+.pg-subsection-hidden {
+  display: none !important;
+}
+
+/* Thanh Quick-Launch 1 dòng cho 6 kịch bản Vũ ngay trên đầu bảng PO */
+.pg-po-quick-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  border-radius: 9px;
+  padding: 7px 12px;
+  margin-bottom: 12px;
+}
+
+.pg-po-quick-strip-btns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.pg-po-quick-pill {
+  background: rgba(30, 41, 59, 0.9);
+  color: #e2e8f0;
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 11.2px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pg-po-quick-pill:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #d4af37;
+  color: #fde68a;
+}
+
+/* Thanh chuyển đổi 4 công cụ thông minh bên trong #createPOModal */
+.pg-modal-tool-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.pg-modal-tool-tab {
+  background: rgba(15, 23, 42, 0.8);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pg-modal-tool-tab.active {
+  background: rgba(212, 175, 55, 0.22);
+  color: #fde68a;
+  border-color: #d4af37;
+}
+
+
 
 
 
