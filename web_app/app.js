@@ -367,10 +367,12 @@ const DEFAULT_DATA = {
     { code: "HĐ-2026-0902", client: "Chị Phượng", rep: "Tống Trần Hiệp", type: "Sale Riêng (Hiệp)", total: 42462996, wood: 42462996, pk: 0, comm: 2123150, date: "05/09/2026", month: 9, status: "Gần hoàn thành 95%" },
     { code: "HĐ-2026-0903", client: "Anh Tuấn", rep: "Đường Việt Dũng", type: "Sale BPKD", total: 111800000, wood: 97000000, pk: 14800000, comm: 3500000, date: "12/09/2026", month: 9, status: "Đang thi công 60%" },
     { code: "HĐ-2026-0904", client: "Anh Hào", rep: "Đường Việt Dũng", type: "Sale BPKD", total: 100600000, wood: 85400000, pk: 15200000, comm: 4500000, date: "01/09/2026", month: 9, status: "Đã bàn giao 100%" },
-    // Tháng 10 (Thực tế đã xác nhận)
+    // Tháng 10 & Tháng 11 (Thực tế đã xác nhận)
     { code: "HĐ-2026-1001", client: "Chị Hoa (Biệt Thự Thạch Bàn)", rep: "Nguyễn Viết Nghĩa", type: "Sale Ban GĐ", total: 145000000, wood: 115000000, pk: 30000000, comm: 0, date: "05/10/2026", month: 10, status: "Đang sản xuất & đặt cánh ALD" },
+    { code: "HĐ-2026-1002", client: "Bác Sĩ Duẫn (TP. Hà Tĩnh)", rep: "Nguyễn Viết Nghĩa", type: "Sale Ban GĐ", total: 345412030, wood: 289412030, pk: 56000000, comm: 0, date: "17/10/2026", month: 10, status: "Đang thi công 65%" },
     { code: "HĐ-2026-1003", client: "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", rep: "Nguyễn Viết Nghĩa", type: "Sale Ban GĐ", total: 234243218, wood: 219953218, pk: 14290000, comm: 0, date: "16/10/2026", month: 10, status: "Đã thi công 95% (Mới thu 50%)", sourcePdf: "Bac_Phat_kich_thuoc_chot_final.pdf" },
-    { code: "HĐ-2026-1005", client: "Nhà Anh Công (Hà Tĩnh)", rep: "Tống Trần Hiệp", type: "Sale Riêng (Hiệp)", total: 65000000, wood: 52000000, pk: 13000000, comm: 3250000, date: "28/10/2026", month: 10, status: "Vừa ra ván Lam Giang (ĐH29767)" }
+    { code: "HĐ-2026-1005", client: "Nhà Anh Công (Hà Tĩnh)", rep: "Tống Trần Hiệp", type: "Sale Riêng (Hiệp)", total: 65000000, wood: 52000000, pk: 13000000, comm: 3250000, date: "28/10/2026", month: 10, status: "Vừa ra ván Lam Giang (ĐH29767)" },
+    { code: "HĐ-2026-1101", client: "Nhà Anh Nam (TP. Hà Tĩnh)", rep: "Nguyễn Viết Nghĩa", type: "Sale Ban GĐ", total: 665280785, wood: 540280785, pk: 125000000, comm: 0, date: "06/11/2026", month: 11, status: "Đang sản xuất & lắp đặt 55%" }
   ],
 
   users: [
@@ -392,7 +394,10 @@ const DEFAULT_DATA = {
     { client: "Anh Tuấn (TP. Hà Tĩnh)", total: 111800000, p1: 30000000, p2: 20000000, p3: 0, collected: 50000000, remain: 61800000, deadline: "15/10/2026", risk: "Quá hạn", month: 9 },
     { client: "Anh Hào (Kỳ Anh)", total: 100600000, p1: 50000000, p2: 35000000, p3: 15600000, collected: 100600000, remain: 0, deadline: "Đã thu đủ", risk: "An toàn", month: 9 },
     { client: "Chị Hoa (Biệt Thự Thạch Bàn)", total: 145000000, p1: 50000000, p2: 37000000, p3: 0, collected: 87000000, remain: 58000000, deadline: "15/11/2026", risk: "Thấp", month: 10 },
-    { client: "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", total: 234243218, p1: 117121609, p2: 0, p3: 0, collected: 117121609, remain: 117121609, deadline: "08/11/2026 (Xong 95%)", risk: "Cần thu ngay", month: 10 }
+    { client: "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", total: 234243218, p1: 117121609, p2: 0, p3: 0, collected: 117121609, remain: 117121609, deadline: "08/11/2026 (Xong 95%)", risk: "Cần thu ngay", month: 10 },
+    { client: "Bác Sĩ Duẫn (TP. Hà Tĩnh)", total: 345412030, p1: 120000000, p2: 80000000, p3: 0, collected: 200000000, remain: 145412030, deadline: "20/11/2026", risk: "Thấp", month: 10 },
+    { client: "Nhà Anh Nam (TP. Hà Tĩnh)", total: 665280785, p1: 200000000, p2: 100000000, p3: 0, collected: 300000000, remain: 365280785, deadline: "25/11/2026", risk: "Thấp", month: 11 },
+    { client: "Nhà Anh Công (Hà Tĩnh)", total: 65000000, p1: 30000000, p2: 0, p3: 0, collected: 30000000, remain: 35000000, deadline: "18/11/2026", risk: "Thấp", month: 10 }
   ],
 
   supplierDebts: [
@@ -403,7 +408,7 @@ const DEFAULT_DATA = {
     { ncc: "Phụ Kiện Quốc Tâm", rep: "Hương Kế Toán / Trần Quang Tú (0944698797)", category: "Bản lề sỉ, ray bi 3 tầng, pitton, tay nắm, máng led", debt: 26170000, note: "Sổ nợ T296: Nợ 40.92M - Dung CK 15M (02/11 VietinBank) = 25.92M + HĐ Led 04/11 (170k) + HĐ Sập/Ray 05/11 (80k) = 26.17M (Dưới hạn mức 30M an toàn)", deadline: "15/11/2026", status: "Đúng hạn", group: "QUỐC TÂM Phú Gia" },
     { ncc: "Hoàng Hà Ceramic PVC", rep: "Hoàng Hà Ceramic Hưng Yên", category: "Đá nung kết Calacatta, PVC than tre", debt: 18600000, note: "Cọc 50%, thanh toán dứt điểm khi giao hàng", deadline: "03/11/2026", status: "Chờ nghiệm thu", group: "Đặt hàng Ceramic Hoàng Hà HY" },
     { ncc: "Gỗ Đức Anh (Gỗ sồi thịt)", rep: "Vợ Sồi Đức Anh (Thu Hương HT)", category: "Gỗ sồi Mỹ tự nhiên xẻ sấy chuẩn FAS loại 1", debt: 0, note: "Đơn 13.2M đã tất toán 100% (15/02 trả 10M + 14/05 trả 3.2M) theo Zalo Batch 4", deadline: "Đã tất toán", status: "Đã tất toán 0đ", group: "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh" },
-    { ncc: "Đặt Cánh Acrylic NTD / ALD", rep: "Kỹ thuật ALD Miền Trung (Zalo ALD)", category: "Cánh Acrylic bóng gương noline chống trầy (Chị Hoa 12.21M + Shophouse Anh Minh 22.75M)", debt: 34960000, note: "PO-1002 (11.1 md = 12.21M) + PO-1015 (18.2 m2 = 22.75M) = 34.96M", deadline: "15/11/2026", status: "Đúng hạn", group: "Đặt hàng Acrylic ALD" },
+    { ncc: "Đặt Cánh Acrylic NTD / ALD", rep: "Kỹ thuật ALD Miền Trung (Zalo ALD)", category: "Cánh Acrylic bóng gương noline chống trầy (Chị Hoa 12.21M + Nhà Anh Nam 22.75M)", debt: 34960000, note: "PO-1002 (11.1 md = 12.21M) + PO-1015 (18.2 m2 = 22.75M) = 34.96M", deadline: "15/11/2026", status: "Đúng hạn", group: "Đặt hàng Acrylic ALD" },
     { ncc: "Gương Bỉ Hà Tĩnh", rep: "Nguyễn Thị Thuý", category: "Gương tráng bạc 8 lớp, led cảm ứng", debt: 6800000, note: "Theo PO-2026-1010 phòng tắm Master", deadline: "06/11/2026", status: "Gia công", group: "Đặt hàng Kính, Gương Phú Gia" }
   ],
 
@@ -413,7 +418,9 @@ const DEFAULT_DATA = {
     { id: "PK-02", client: "Anh Tuấn (TP. Hà Tĩnh)", item: "Bộ tay nâng đôi Blum HF25 & Giá bát 2 tầng Eurogold", brand: "Blum & Eurogold", month: 9, price: 14800000, cost: 10360000, profit: 4440000 },
     { id: "PK-03", client: "Anh Hào (Kỳ Anh)", item: "Chậu rửa bát Nano 1 hố SUS304 & Kệ gia vị dao thớt", brand: "Eurogold", month: 9, price: 15200000, cost: 10640000, profit: 4560000 },
     { id: "PK-04", client: "Chị Hoa (Biệt Thự Thạch Bàn)", item: "Bộ phụ kiện bếp tủ trên tủ dưới thông minh Hafele", brand: "Hafele", month: 10, price: 30000000, cost: 21000000, profit: 9000000 },
-    { id: "PK-05", client: "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", item: "Bộ phụ kiện bếp Inox 304 Kadinax + Tay nâng Blum Áo (7 món)", brand: "Kadinax & Blum", month: 10, price: 14290000, cost: 10003000, profit: 4287000 }
+    { id: "PK-05", client: "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", item: "Bộ phụ kiện bếp Inox 304 Kadinax + Tay nâng Blum Áo (7 món)", brand: "Kadinax & Blum", month: 10, price: 14290000, cost: 10003000, profit: 4287000 },
+    { id: "PK-06", client: "Bác Sĩ Duẫn (TP. Hà Tĩnh)", item: "Bộ thiết bị bếp từ, hút mùi, chậu vòi & phụ kiện tủ bếp Eurogold", brand: "Hafele & Eurogold", month: 10, price: 56000000, cost: 39200000, profit: 16800000 },
+    { id: "PK-07", client: "Nhà Anh Nam (TP. Hà Tĩnh)", item: "Trọn bộ phụ kiện bếp Blum/Hafele, đá bàn bếp & thiết bị thông minh", brand: "Blum & Hafele", month: 11, price: 125000000, cost: 87500000, profit: 37500000 }
   ],
 
   expenses: [
@@ -843,7 +850,14 @@ const DEFAULT_TIMESHEETS = {"8": {"month": 8, "days": [{"day": 1, "dow": "T2"}, 
 // Danh sách nhân sự đã nghỉ việc (thanh lọc vĩnh viễn khỏi toàn hệ thống)
 const RETIRED_STAFF = ["Phan Thanh Lực", "Phan Xuân Hùng", "Phan Văn Bình", "Dương Thị Tuyết", "Trần Văn Bình"];
 
-const CURRENT_APP_VERSION = "2026.11.10_v31_ZALO_REALTIME_ATTENDANCE";
+const CURRENT_APP_VERSION = "2026.11.11_v32_ZERO_MOCK_SMART_PO";
+
+const SYNTHETIC_PROJECT_KEYWORDS = ["anh trung tuyết", "biệt thự cẩm xuyên", "shophouse vinhomes", "shophouse anh minh", "chị hương (vinhomes)"];
+function isSyntheticProjectRecord(item) {
+  if (!item) return false;
+  const text = `${item.client || ""} ${item.project || ""} ${item.category || ""}`.toLowerCase();
+  return SYNTHETIC_PROJECT_KEYWORDS.some(kw => text.includes(kw));
+}
 
 function mergeArrayByKey(savedArr, defaultArr, keyField) {
   if (!Array.isArray(savedArr) || savedArr.length === 0) {
@@ -873,11 +887,11 @@ function loadState() {
       if (!data.appVersion || data.appVersion !== CURRENT_APP_VERSION) {
         console.log("Cập nhật phiên bản hệ thống lên " + CURRENT_APP_VERSION + " - Hợp nhất bảo toàn dữ liệu người dùng (Delta-Merge).");
         data.appVersion = CURRENT_APP_VERSION;
-        data.xuongRecords = mergeArrayByKey(data.xuongRecords, DEFAULT_DATA.xuongRecords, "id");
-        data.contracts = mergeArrayByKey(data.contracts, DEFAULT_DATA.contracts, "code");
-        data.debts = mergeArrayByKey(data.debts, DEFAULT_DATA.debts, "id");
-        data.supplierDebts = mergeArrayByKey(data.supplierDebts, DEFAULT_DATA.supplierDebts, "id");
-        data.accessories = mergeArrayByKey(data.accessories, DEFAULT_DATA.accessories, "id");
+        data.xuongRecords = mergeArrayByKey((data.xuongRecords || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.xuongRecords, "id");
+        data.contracts = mergeArrayByKey((data.contracts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.contracts, "code");
+        data.debts = mergeArrayByKey((data.debts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.debts, "client");
+        data.supplierDebts = mergeArrayByKey((data.supplierDebts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.supplierDebts, "ncc");
+        data.accessories = mergeArrayByKey((data.accessories || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.accessories, "id");
         data.expenses = mergeArrayByKey(data.expenses, DEFAULT_DATA.expenses, "id");
         data.users = JSON.parse(JSON.stringify(DEFAULT_DATA.users));
         data.materials = mergeArrayByKey(data.materials, DEFAULT_DATA.materials, "id");
@@ -2676,11 +2690,11 @@ function renderDynamicFormFields(type) {
       <div class="form-row">
         <div class="form-group">
           <label>Họ và tên nhân sự:</label>
-          <input type="text" id="inpUserFullName" class="form-control" required placeholder="VD: Nguyễn Văn A">
+          <input type="text" id="inpUserFullName" class="form-control" required placeholder="VD: Hoàng Công Vũ">
         </div>
         <div class="form-group">
           <label>Tên đăng nhập (username):</label>
-          <input type="text" id="inpUserUsername" class="form-control" required placeholder="VD: annguyen">
+          <input type="text" id="inpUserUsername" class="form-control" required placeholder="VD: vuvattu">
         </div>
       </div>
       <div class="form-row">
@@ -3133,9 +3147,13 @@ window.normalizeProjectMatchKey = function(rawName) {
   if (s.includes("bác phát") || s.includes("bac phat") || s.includes("26/03")) return "Bác Phát";
   if (s.includes("duẫn") || s.includes("duan")) return "Bác Sĩ Duẫn";
   if (s.includes("anh công") || s.includes("anh cong")) return "Anh Công";
-  if (s.includes("chị hương") || s.includes("chi huong")) return "Chị Hương";
+  if (s.includes("chị hoa") || s.includes("chi hoa") || s.includes("thạch bàn")) return "Chị Hoa";
+  if (s.includes("chị hiển") || s.includes("chi hien")) return "Chị Hiển";
+  if (s.includes("chị phượng") || s.includes("chi phuong")) return "Chị Phượng";
   if (s.includes("anh tuấn") || s.includes("anh tuan")) return "Anh Tuấn";
-  if (s.includes("cẩm xuyên") || s.includes("cam xuyen")) return "Cẩm Xuyên";
+  if (s.includes("anh hào") || s.includes("anh hao")) return "Anh Hào";
+  if (s.includes("cậu chiến") || s.includes("cau chien")) return "Cậu Chiến";
+  if (s.includes("thắm minh") || s.includes("tham minh")) return "Thắm Minh";
   return String(rawName || "").split("(")[0].replace(/^Nhà\s+/i, "").trim();
 };
 
@@ -3944,29 +3962,29 @@ function setupPOModals() {
       if (projectSelect) {
         projectSelect.innerHTML = "";
         
-        // Combine from contracts and workshop records
-        const projectMap = new Map();
+        // Ưu tiên các công trình đang thi công thực tế T10/T11 lên đầu danh sách (lấy theo phần Gỗ Xưởng để tính chuẩn định mức 40%)
+        const projectMap = new Map([
+          ["Nhà Anh Nam (TP. Hà Tĩnh)", 540280785],
+          ["Bác Sĩ Duẫn (TP. Hà Tĩnh)", 289412030],
+          ["Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", 124840000],
+          ["Nhà Anh Công (Hà Tĩnh)", 127700000],
+          ["Chị Hoa (Biệt Thự Thạch Bàn)", 172000000]
+        ]);
         (appState.contracts || []).forEach(c => {
-          projectMap.set(c.client, c.total);
-        });
-        (appState.xuongRecords || []).forEach(x => {
-          if (!projectMap.has(x.client)) {
-            projectMap.set(x.client, x.contractVal);
+          if (c && c.client && !isSyntheticProjectRecord(c) && !projectMap.has(c.client)) {
+            projectMap.set(c.client, Number(c.wood || c.woodVal || c.total) || 0);
           }
         });
-
-        // Add additional sample projects if needed
-        if (projectMap.size === 0) {
-          projectMap.set("Chị Hiển (Thạch Linh)", 129803651);
-          projectMap.set("Chị Phượng (Nghi Xuân)", 42462996);
-          projectMap.set("Anh Tuấn (TP. Hà Tĩnh)", 111800000);
-          projectMap.set("Anh Hào (Kỳ Anh)", 100600000);
-        }
+        (appState.xuongRecords || []).forEach(x => {
+          if (x && x.client && !isSyntheticProjectRecord(x) && !projectMap.has(x.client)) {
+            projectMap.set(x.client, Number(x.woodVal || x.contractVal) || 0);
+          }
+        });
 
         projectMap.forEach((val, name) => {
           const opt = document.createElement("option");
           opt.value = name;
-          opt.textContent = `${name} - HĐ: ${fmtCurr(val)}`;
+          opt.textContent = `${name} - HĐ Gỗ: ${fmtCurr(val)}`;
           opt.dataset.val = val;
           projectSelect.appendChild(opt);
         });
@@ -3987,12 +4005,10 @@ function setupPOModals() {
         };
       }
 
-      // Reset items table with Vũ's realistic default 3-item board set (Ván 17mm 205T + Hậu 6mm 205T + Chỉ 21mm)
+      // Khởi tạo bảng nhập PO với 1 dòng trống sạch (không nhồi sẵn 3 dòng mook cứng 13.29M)
       const tbody = document.getElementById("bodyPoItemsInput");
       tbody.innerHTML = "";
-      addPOItemInputRow("Ván MDF Lõi Xanh Chống Ẩm Thái Lan 17mm - Mã 205T (Trắng Mờ Chủ Lực)", "Tấm", 15, 740000, "WOOD_40");
-      addPOItemInputRow("Ván Hậu MDF Chống Ẩm Thái Lan 6mm (5.5ly) - Mã 205T (Trắng Mờ)", "Tấm", 5, 350000, "WOOD_40");
-      addPOItemInputRow("Chỉ Nhựa Dán Cạnh PVC 21×1.0mm Đồng Màu 205T (Cuộn 200m)", "Cuộn", 2, 220000, "WOOD_40");
+      addPOItemInputRow("", "Tấm", 1, 0, "WOOD_40");
 
       recalculatePOCostSummary();
       modalCreate.classList.add("active");
@@ -6372,13 +6388,20 @@ const DEFAULT_PAYMENTS = [
   { id: "PT-2026-0904", client: "Anh Tuấn (TP. Hà Tĩnh)", project: "Căn hộ TP. Hà Tĩnh", amount: 20000000, date: "25/09/2026", method: "Chuyển khoản Vietcombank", reason: "Thanh toán Đợt 2 tiến độ 60%", collector: "Đường Việt Dũng", remaining: 61800000 },
   { id: "PT-2026-0905", client: "Anh Hào (Kỳ Anh)", project: "Nhà phố Kỳ Anh", amount: 50000000, date: "01/09/2026", method: "Chuyển khoản BIDV", reason: "Tạm ứng Đợt 1", collector: "Đường Việt Dũng", remaining: 50600000 },
   { id: "PT-2026-0906", client: "Anh Hào (Kỳ Anh)", project: "Nhà phố Kỳ Anh", amount: 35000000, date: "18/09/2026", method: "Chuyển khoản BIDV", reason: "Thanh toán Đợt 2", collector: "Đường Việt Dũng", remaining: 15600000 },
-  { id: "PT-2026-0907", client: "Anh Hào (Kỳ Anh)", project: "Nhà phố Kỳ Anh", amount: 15600000, date: "28/09/2026", method: "Tiền mặt tại công trình", reason: "Quyết toán Đợt 3 hoàn thành 100%", collector: "Đường Việt Dũng", remaining: 0 }
+  { id: "PT-2026-0907", client: "Anh Hào (Kỳ Anh)", project: "Nhà phố Kỳ Anh", amount: 15600000, date: "28/09/2026", method: "Tiền mặt tại công trình", reason: "Quyết toán Đợt 3 hoàn thành 100%", collector: "Đường Việt Dũng", remaining: 0 },
+  { id: "PT-2026-1001", client: "Chị Hoa (Biệt Thự Thạch Bàn)", project: "Biệt Thự Thạch Bàn", amount: 110000000, date: "05/10/2026", method: "Chuyển khoản Vietcombank", reason: "Tạm ứng Đợt 1 & Đợt 2 tập kết ván Thái", collector: "Tống Trần Hiệp", remaining: 110000000 },
+  { id: "PT-2026-1002", client: "Bác Sĩ Duẫn (TP. Hà Tĩnh)", project: "Nhà phố Bác Sĩ Duẫn", amount: 150000000, date: "17/10/2026", method: "Chuyển khoản Techcombank", reason: "Tạm ứng Đợt 1 ký hợp đồng & nhập ván CNC", collector: "Đường Việt Dũng", remaining: 195412030 },
+  { id: "PT-2026-1003", client: "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", project: "Nhà Bác Phát Đường 26/03", amount: 90000000, date: "26/10/2026", method: "Chuyển khoản Vietcombank", reason: "Thanh toán Đợt 1 & 2 lắp đặt tủ bếp & tủ áo", collector: "Tống Trần Hiệp", remaining: 54840000 },
+  { id: "PT-2026-1101", client: "Nhà Anh Nam (TP. Hà Tĩnh)", project: "Biệt thự Anh Nam Xuân Diệu", amount: 250000000, date: "06/11/2026", method: "Chuyển khoản Vietcombank", reason: "Tạm ứng Đợt 1 khởi công CNC toàn bộ nội thất", collector: "Tống Trần Hiệp", remaining: 415280785 }
 ];
 
 const DEFAULT_ACCESSORIES = [
   { id: "PK-01", month: 8, client: "Thắm Minh (Thạch Hưng)", item: "Phụ kiện tủ bếp Eurogold SUS304", brand: "Eurogold", price: 8840000, cost: 6188000, profit: 2652000, date: "20/08/2026" },
   { id: "PK-02", month: 9, client: "Anh Tuấn (TP. Hà Tĩnh)", item: "Bếp từ 3 vùng nấu Hafele + Hút mùi kính cong", brand: "Hafele", price: 14800000, cost: 10360000, profit: 4440000, date: "15/09/2026" },
-  { id: "PK-03", month: 9, client: "Anh Hào (Kỳ Anh)", item: "Sofa nỉ cao cấp nhập khẩu + Giá bát nâng hạ", brand: "Eurogold / Sofa", price: 15200000, cost: 10640000, profit: 4560000, date: "22/09/2026" }
+  { id: "PK-03", month: 9, client: "Anh Hào (Kỳ Anh)", item: "Sofa nỉ cao cấp nhập khẩu + Giá bát nâng hạ", brand: "Eurogold / Sofa", price: 15200000, cost: 10640000, profit: 4560000, date: "22/09/2026" },
+  { id: "PK-04", month: 10, client: "Chị Hoa (Biệt Thự Thạch Bàn)", item: "Cánh kính khung nhôm Slim & Phụ kiện Hafele", brand: "Hafele / Slim", price: 48000000, cost: 34500000, profit: 13500000, date: "10/10/2026" },
+  { id: "PK-05", month: 10, client: "Bác Sĩ Duẫn (TP. Hà Tĩnh)", item: "Phụ kiện Hafele + Cánh kính khung nhôm Anode", brand: "Hafele / Anode", price: 56000000, cost: 39200000, profit: 16800000, date: "18/10/2026" },
+  { id: "PK-06", month: 11, client: "Nhà Anh Nam (TP. Hà Tĩnh)", item: "Cánh kính tủ áo, Đá bếp Ceramic & Phụ kiện bếp đồng bộ", brand: "Hafele / Ceramic", price: 125000000, cost: 87500000, profit: 37500000, date: "06/11/2026" }
 ];
 
 // Khởi tạo paymentHistory và accessories nếu chưa có trong appState
@@ -9368,8 +9391,11 @@ window.approveAllFilteredZaloItems = async function() {
   };
 
   // 3. LỌC NHANH DANH MỤC TRONG #createPOModal & CHỌN 1 CHẠM MẶT HÀNG
+  window.addPOItemInputRow = addPOItemInputRow;
+  window.recalculatePOCostSummary = recalculatePOCostSummary;
+
   window.filterPoCatalogByCategory = function(catCode, btnEl) {
-    document.querySelectorAll("#poCatalogCategoryFilterBar .po-cat-pill").forEach(b => {
+    document.querySelectorAll("#poCatalogCategoryFilterBar .po-cat-pill, #poCatalogCategoryFilterBar .po-cat-chip").forEach(b => {
       b.style.outline = "none";
       b.classList.remove("active");
     });
@@ -9383,12 +9409,14 @@ window.approveAllFilteredZaloItems = async function() {
       ? catalog
       : catalog.filter(item => window.detectMaterialCategoryCode(item.name) === catCode);
 
-    const dl = document.getElementById("dlCatalogItems");
-    if (dl) {
-      dl.innerHTML = filtered.map(c =>
-        `<option value="${c.code} - ${c.name}" label="${fmtCurr(c.price)}/${c.unit} (${c.supplier || ''})"></option>`
-      ).join("");
-    }
+    ["dlCatalogItems", "vuMaterialCatalogDatalist"].forEach(dlId => {
+      const dl = document.getElementById(dlId);
+      if (dl) {
+        dl.innerHTML = filtered.map(c =>
+          `<option value="${c.name}" label="${c.code} | ${fmtCurr(c.price)}/${c.unit} (${c.supplier || ''})"></option>`
+        ).join("");
+      }
+    });
 
     const quickSelect = document.getElementById("poQuickPickByCatSelect");
     if (quickSelect) {
@@ -9403,15 +9431,19 @@ window.approveAllFilteredZaloItems = async function() {
     const catalog = window.VU_REAL_ORDER_CATALOG_2026 || [];
     const found = catalog.find(x => x.code === code);
     if (!found) return;
-    if (typeof addPOItemInputRow === "function") {
+    const addRowFn = window.addPOItemInputRow || addPOItemInputRow;
+    if (typeof addRowFn === "function") {
       // Xóa dòng trống mặc định nếu chỉ có 1 dòng rỗng
-      const rows = document.querySelectorAll("#tbodyPoItemsInput tr");
+      const rows = document.querySelectorAll("#bodyPoItemsInput tr, #tbodyPoItemsInput tr");
       if (rows.length === 1) {
         const firstName = rows[0].querySelector(".inp-item-name")?.value.trim();
-        if (!firstName) rows[0].remove();
+        const firstPrice = parseFloat(rows[0].querySelector(".inp-item-price")?.value) || 0;
+        if (!firstName && firstPrice === 0) rows[0].remove();
       }
-      addPOItemInputRow(found.name, 1, found.unit, found.price, found.bucket);
+      addRowFn(found.name, found.unit, 1, found.price, found.bucket);
     }
+    const supSel = document.getElementById("inpPoSupplier");
+    if (supSel && found.supplier) supSel.value = found.supplier;
     const sel = document.getElementById("poQuickPickByCatSelect");
     if (sel) sel.value = "";
     if (typeof showToast === "function") {
@@ -10166,12 +10198,6 @@ window.approveAllFilteredZaloItems = async function() {
     const quotaCard = quotaBody ? quotaBody.closest(".card, .table-card") : null;
     const zaloInboxCard = document.getElementById("zaloStagingInboxCard");
 
-    // Ẩn vĩnh viễn bảng Đối sánh CCSC 40% trên bản Nhân Viên 2 Phân Hệ (Deploy Edition)
-    if (quotaCard) {
-      quotaCard.style.setProperty("display", "none", "important");
-      quotaCard.classList.add("pg-subsection-hidden");
-    }
-
     if (!poListCard) return;
 
     // Tạo thanh Quick-Launch 1 dòng ngay phía trên bảng Danh sách PO để Vũ bấm 1 chạm mà không chiếm nửa màn hình
@@ -10208,11 +10234,14 @@ window.approveAllFilteredZaloItems = async function() {
         <button type="button" class="pg-subview-btn" data-po-subview="po_stats" onclick="switchPoTabSubView('po_stats')">
           📊 2. Thống Kê Đa Chiều (Pivot 3 Chiều)
         </button>
+        <button type="button" class="pg-subview-btn" data-po-subview="po_quota40" onclick="switchPoTabSubView('po_quota40')">
+          ⚖️ 3. Đối Sánh Thực Đặt vs Khoán 40%
+        </button>
         <button type="button" class="pg-subview-btn" data-po-subview="po_workstation" onclick="switchPoTabSubView('po_workstation')">
-          ⚡ 3. Bàn Lập Đơn Zalo & 18 Nhóm NCC
+          ⚡ 4. Bàn Lập Đơn Zalo & 18 Nhóm NCC
         </button>
         <button type="button" class="pg-subview-btn" data-po-subview="po_zalo_inbox" onclick="switchPoTabSubView('po_zalo_inbox')">
-          📥 4. Hộp Thư Hóa Đơn Zalo
+          📥 5. Hộp Thư Hóa Đơn Zalo
         </button>
         <button type="button" class="pg-subview-btn" data-po-subview="all" onclick="switchPoTabSubView('all')">
           👁️ Hiện Tất Cả
@@ -10260,6 +10289,13 @@ window.approveAllFilteredZaloItems = async function() {
         if (typeof window.renderVuMultiDimStatsPivot === "function") {
           window.renderVuMultiDimStatsPivot();
         }
+      } else if (mode === "po_quota40") {
+        setVis(quickStrip, false);
+        setVis(poListCard, false);
+        setVis(workstationCard, false);
+        setVis(statsCenterCard, false);
+        setVis(quotaCard, true);
+        setVis(zaloInboxCard, false);
       } else if (mode === "po_workstation") {
         setVis(quickStrip, false);
         setVis(poListCard, true);
@@ -10279,7 +10315,7 @@ window.approveAllFilteredZaloItems = async function() {
         setVis(poListCard, true);
         setVis(workstationCard, true);
         setVis(statsCenterCard, true);
-        setVis(quotaCard, false);
+        setVis(quotaCard, true);
         setVis(zaloInboxCard, true);
       }
     };
