@@ -1,7 +1,37 @@
 # SỔ CÁI BỘ NHỚ NGOÀI BẤT TỬ - TRẠNG THÁI HỆ THỐNG PG HOME LUXURY ERP
-> **PROJECT_STATE.md** | Bản cập nhật trạng thái toàn diện ngày 08/11/2026
+> **PROJECT_STATE.md** | Bản cập nhật trạng thái toàn diện ngày 10/11/2026
 > Đơn vị: **Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng** (Thương hiệu: **CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY**)
 > Cơ chế: Sổ Cái Bộ Nhớ Ngoài Bất Tử (External Ground-Truth State) — Cứu cánh chống quên, chống tràn context và định hướng hành động cho toàn bộ Trợ lý AI và Sub-Agent.
+
+---
+
+## 0. CHỈ THỊ MỚI NHẤT CỦA GIÁM ĐỐC & KIẾN TRÚC TÁCH ĐÔI 2 BẢN + 30 CHỐT CHẶN KHÔNG SAI SÓT (10/11/2026)
+- **Thi công hoàn tất Hệ Thống 30 Cải Tiến Chuẩn Hóa Không Sai Sót (`PG_ZERO_ERROR_ENGINE_V75`)**:
+  + **Nhóm I (Hạ tầng, Phân quyền & Đồng bộ #1–#5)**: Tách vật lý 2 bản (Cloud VP+Xưởng vs Local CCSC), xác thực Mã PIN Giám Đốc (`0986` / `2026`) khi đóng Dấu Đỏ PO hoặc duyệt chứng từ $\ge 20\text{M}$, đồng bộ nguyên tử Delta-Patch (`/api/patch-state`) kèm hàng đợi Offline Outbox (`PG_OFFLINE_OUTBOX_V75`).
+  + **Nhóm II (Dự toán Sale & Khóa Biên Cost $\le 54\%$ #6–#10)**: Tự động nhận diện từ khóa tách `woodVal` vs `pkVal` (cấm tính nhầm 40%/15% trên phụ kiện/gỗ thịt), bắt buộc chiều sâu `R`, trừ cánh kính `0.40 tấm/m²` & lỗ mở, khóa cứng xuất Báo Giá PDF nếu Cost $> 54\%$.
+  + **Nhóm III (Kỹ thuật Xưởng, CNC & Đặt ván #11–#15)**: Dấu đỏ PO gắn SHA-256, trần PO $\le 105\%$ BOM, kho phôi ván dư CNC (`14 dải 500mm` từ tủ kịch trần R10 & `22 dải 170mm` từ bếp trên R08), cảnh báo trần nợ Quốc Tâm `28M / 30M`.
+  + **Nhóm IV (Zalo Stealth v6.0 & Đối soát 3 lớp #16–#20)**: Quét ngầm 16 nhóm Zalo (`5.034 tệp`), băm thị giác Perceptual `dHash 64-bit` chống ảnh cắt viền/gửi trùng, đối soát 3 lớp chéo `[PO Dấu Đỏ + Hóa Đơn + UNC]`, bảng định danh `SENDER_ALIAS_REGISTRY` xóa bỏ hoàn toàn chuỗi `UID_...`.
+  + **Nhóm V (Nhân sự, Chấm công & Quỹ lương #21–#25)**: Chấm công GPS/Ảnh tại xưởng, OT bắt buộc gắn công trình, phím tắt `Alt+B` (Boss Privacy Blur) tự động làm mờ số nhạy cảm sau 3 phút, trần tạm ứng $\le 70\%$ lương lũy kế, tự trích quỹ Hòa & Hào `20k/công`.
+  + **Nhóm VI (Bảo vệ dòng tiền, Khóa kỳ & Pháp lý #26–#30)**: Chặn PO khi chưa thu Cọc Đợt 1 (`50%`), báo động tất toán sau `48h`, đóng băng kỳ lịch sử `T1–T10/2026` trên cả UI & `/api/patch-state`, cưỡng chế pháp lý chuẩn Phú Gia khi in A4, và **Bảng Chỉ Huy Đối Soát Cuối Ngày 30 Giây (`#pgZeroErrorCommandCenter`)** ngay trên thanh Topbar.
+- **Tách vật lý 2 phiên bản độc lập để chống lộ lọt thông tin CCSC**:
+  1. **Bản Nội Bộ Giám Đốc & CCSC (100% Local PC — Không đẩy lên Cloud)**:
+     - Đặt tại [local_admin_vault/director_ccsc_full.html](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/local_admin_vault/director_ccsc_full.html) và [local_admin_vault/ccsc_director_vault.json](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/local_admin_vault/ccsc_director_vault.json) (đã khóa trong `.gitignore`).
+     - Truy cập nội bộ trên máy tính Giám Đốc tại: `http://127.0.0.1:8080/director` (hoặc `/ccsc`).
+  2. **Bản Deploy Cloud (Chỉ có Khối Văn Phòng & Khối Xưởng Sản Xuất)**:
+     - Đặt tại [web_app/index.html](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/web_app/index.html) và [web_app/app.js](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/web_app/app.js), được tạo tự động bởi [tools/split_app_two_editions.py](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/tools/split_app_two_editions.py).
+     - **Menu & Quy trình chia chuẩn xác thành ĐÚNG 2 PHẦN (10 Bước nghiệp vụ khép kín — Không ẩn bất kỳ tab nào trên Cloud)**:
+       + **PHẦN I: KHỐI VĂN PHÒNG — KINH DOANH, DỰ TOÁN & CÔNG NỢ (Hiệp & Dũng — 5 Bước)**:
+         1. `1. Dự Toán & Báo Giá Công Trình` (`#tab-du-toan-du-an` — Kiểm soát Cost $\le 54\%$)
+         2. `2. Hợp Đồng & Doanh Số Sale` (`#tab-van-phong-sale`)
+         3. `3. Phụ Kiện Bếp & Sofa Thương Mại` (`#tab-phu-kien-sofa` — Tách khỏi khoán xưởng, chia 10% lời ròng)
+         4. `4. Thu Hồi Công Nợ & Dòng Tiền Khách` (`#tab-cong-no-dong-tien`)
+         5. `5. Chi Phí Mặt Bằng & Vận Hành VP` (`#tab-chi-phi-van-phong`)
+       + **PHẦN II: KHỐI XƯỞNG SẢN XUẤT — KỸ THUẬT, VẬT TƯ & NHÂN SỰ (Vũ, Thái & Đội Thợ — 5 Bước)**:
+         1. `1. Tiến Độ Sản Xuất & Khối Lượng Xưởng` (`#tab-xuong-san-xuat` — Theo dõi m², md, tấm CNC)
+         2. `2. Đề Xuất & Duyệt Đặt Hàng Vật Tư (PO)` (`#tab-phe-duyet-vat-tu` — Chốt chặn Dấu Đỏ Giám Đốc trước khi gửi NCC)
+         3. `3. Kho Vật Tư, Đơn Giá & Đối Soát NCC` (`#tab-vat-tu-cost` — An Cường, Lam Giang, Quốc Tâm)
+         4. `4. Chấm Công, Điểm Danh & Bảng Lương` (`#tab-cham-cong-all` — Chấm công hàng ngày, OT, tạm ứng)
+         5. `5. Quy Chuẩn Kỹ Thuật & Định Mức CNC` (`#tab-sop-quy-trinh` — Định mức tấm cắt CNC chuẩn xưởng)
 
 ---
 

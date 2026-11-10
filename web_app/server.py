@@ -638,6 +638,21 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                         patches = dict(payload)
                         updated_at = patches.pop("updatedAt", None)
 
+                # Chốt chặn #28: Đóng băng kỳ kế toán lịch sử T1-T10/2026 (Period Freeze Lock)
+                target_period = str(payload.get("period") or patches.get("activeMonth") or "")
+                director_pin = str(payload.get("director_pin") or self.headers.get("X-Director-PIN") or "")
+                locked_periods = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "T8", "T9", "T10"}
+                has_financial_mutation = any(k in patches for k in ("salaryT8", "salaryT9", "attendanceT10", "ccscT8T9", "lockedHistoryOverride"))
+                if target_period in locked_periods and has_financial_mutation and director_pin not in ("0986", "2026", "0986722324"):
+                    self.send_response(403)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({
+                        "status": "blocked_period_freeze",
+                        "message": "Kỳ kế toán lịch sử T1-T10/2026 đã đóng băng (Read-Only). Vui lòng nhập mã PIN Giám Đốc để mở khóa ghi đè."
+                    }, ensure_ascii=False).encode("utf-8"))
+                    return
+
                 # 1. Đọc state hiện tại từ data/app_state.json (hoặc fallback pg_home_live_state.json)
                 current_state = {}
                 if os.path.exists(APP_STATE_FILE):

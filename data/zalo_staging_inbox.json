@@ -1,5 +1,257 @@
 [
   {
+    "id": "ZALO-LIVE-00E695CCB8",
+    "group_id": "g795402381131416269",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 12:00:37",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #1] Ảnh hiện trường xưởng / Lắp đặt công trình (Nguyễn Minh) — Tệp gốc Zalo (1280x827px, 257.5 KB)",
+    "project_hint": "Ghim Ưu Tiên #1",
+    "preview_url": "/chung_tu/live_cache/g795402381131416269_00e695ccb8ae.jpg",
+    "source_file": "1794286714268_2926353819792553048_g795402381131416269_n",
+    "resolution": "1280x827",
+    "size_kb": 257.5,
+    "sha256": "00e695ccb8ae0802",
+    "sha256_full": "00e695ccb8ae08022be18e35dc0c7461fd48e881f073a8135653ec6559593c2c",
+    "sender_name": "Nguyễn Minh",
+    "sender_uid": "2926353819792553048",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "98b81b4909095919",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-0AFEC133B8",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:54",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Trí Dũng) — Tệp gốc Zalo (1304x92px, 22.4 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_0afec133b813.jpg",
+    "source_file": "1794285582253_621571334800255076_g1588348021340609742_n",
+    "resolution": "1304x92",
+    "size_kb": 22.4,
+    "sha256": "0afec133b813270a",
+    "sha256_full": "0afec133b813270aad2fb2d9edf55871ff6c9354f87f4e82e5a116a6ba2a118f",
+    "sender_name": "Trí Dũng",
+    "sender_uid": "621571334800255076",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "000081a3cd000070",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-64B7C5F9C5",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:54",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Hà Huy Trọng) — Tệp gốc Zalo (1325x614px, 161.3 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_64b7c5f9c5cf.jpg",
+    "source_file": "1794284745863_3799628397263949438_g1588348021340609742_n",
+    "resolution": "1325x614",
+    "size_kb": 161.3,
+    "sha256": "64b7c5f9c5cf14db",
+    "sha256_full": "64b7c5f9c5cf14dbe2b7d0a1154e7946aa1d660a0f4a4f9863c89cc278a982fe",
+    "sender_name": "Hà Huy Trọng",
+    "sender_uid": "3799628397263949438",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "8c88d1989898a000",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-FA43A44ECC",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:54",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Đoàn Trung Hiếu) — Tệp gốc Zalo (299x173px, 9.6 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_fa43a44eccba.jpg",
+    "source_file": "1794283596507_4109244056049532866_g1588348021340609742_t",
+    "resolution": "299x173",
+    "size_kb": 9.6,
+    "sha256": "fa43a44eccba2489",
+    "sha256_full": "fa43a44eccba2489b3f5f566bfc9fedc16864c1a716ec17e45435140e96937bd",
+    "sender_name": "Đoàn Trung Hiếu",
+    "sender_uid": "4109244056049532866",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "c05c7c6400301011",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-51CC86732B",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:54",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Vỷ Kỳ) — Tệp gốc Zalo (299x117px, 8.6 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_51cc86732be0.jpg",
+    "source_file": "1794238002789_1499223351667841546_g1588348021340609742_t",
+    "resolution": "299x117",
+    "size_kb": 8.6,
+    "sha256": "51cc86732be030eb",
+    "sha256_full": "51cc86732be030eb9d31a701a30c7d086f51616fb15d116a30eb98a550387b8a",
+    "sender_name": "Vỷ Kỳ",
+    "sender_uid": "1499223351667841546",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "e00e4d4d4e412e02",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-C98C52BC31",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:54",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Nguyễn Hà Phước Trọng) — Tệp gốc Zalo (134x68px, 2.5 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_c98c52bc31d1.jpg",
+    "source_file": "1794231564677_2994304261318878281_g1588348021340609742_t",
+    "resolution": "134x68",
+    "size_kb": 2.5,
+    "sha256": "c98c52bc31d1a338",
+    "sha256_full": "c98c52bc31d1a33808482a5ecdf1d70bb1d3d219894e813f11671edc8ae6612f",
+    "sender_name": "Nguyễn Hà Phước Trọng",
+    "sender_uid": "2994304261318878281",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "00006d0b0d010000",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-D5E8432D96",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:54",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Vỷ Kỳ) — Tệp gốc Zalo (300x143px, 5.9 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_d5e8432d9615.jpg",
+    "source_file": "1794229553056_1499223351667841546_g1588348021340609742_t",
+    "resolution": "300x143",
+    "size_kb": 5.9,
+    "sha256": "d5e8432d9615fddb",
+    "sha256_full": "d5e8432d9615fddb14a80b397fc02b71fe5030d43676652a9bd44605afeb8f3f",
+    "sender_name": "Vỷ Kỳ",
+    "sender_uid": "1499223351667841546",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "170e0c006060e0c0",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-ECE08224B6",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:53",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Hà Huy Trọng) — Tệp gốc Zalo (1325x614px, 162.9 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_ece08224b6e9.jpg",
+    "source_file": "1794285618778_3799628397263949438_g1588348021340609742_n",
+    "resolution": "1325x614",
+    "size_kb": 162.9,
+    "sha256": "ece08224b6e91773",
+    "sha256_full": "ece08224b6e91773e71a10e511d3786318b9f4336d6c245037670bd959a7c840",
+    "sender_name": "Hà Huy Trọng",
+    "sender_uid": "3799628397263949438",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "8cc851989898a080",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
+    "id": "ZALO-LIVE-5E999DFF02",
+    "group_id": "g1588348021340609742",
+    "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "category": "WORKSHOP_PHOTO_OR_LANDSCAPE",
+    "type_label": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+    "detected_date": "2026-11-10 11:44:53",
+    "amount": 0,
+    "summary": "[Ghim Ưu Tiên #2] Ảnh hiện trường xưởng / Lắp đặt công trình (Trí Dũng) — Tệp gốc Zalo (1018x72px, 16.3 KB)",
+    "project_hint": "Ghim Ưu Tiên #2",
+    "preview_url": "/chung_tu/live_cache/g1588348021340609742_5e999dff0282.jpg",
+    "source_file": "1794285541075_621571334800255076_g1588348021340609742_t",
+    "resolution": "1018x72",
+    "size_kb": 16.3,
+    "sha256": "5e999dff02821ad6",
+    "sha256_full": "5e999dff02821ad649552229f2dc97daf20275a33a935ce4eb180ddc9e5693a6",
+    "sender_name": "Trí Dũng",
+    "sender_uid": "621571334800255076",
+    "review_status": "PENDING_DIRECTOR_REVIEW",
+    "impact_type": "LIVE_CAPTURED_MEDIA",
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "0000020b05150800",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
+  },
+  {
     "id": "ZALO-LIVE-A007508C0D",
     "group_id": "g795402381131416269",
     "group_name": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
@@ -19,7 +271,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "b0f4e4cccccccca0",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-6269",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-7A1BA11E52",
@@ -41,7 +299,13 @@
     "sender_uid": "8637268198362425881",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "4f49cec32b1fcee6",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-6269",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-464423B4FF",
@@ -63,7 +327,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "cce8c2898d808898",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-93B2E81055",
@@ -85,7 +355,13 @@
     "sender_uid": "8637268198362425881",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "94d0c88888c8c494",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-6269",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-E8EB68FB21",
@@ -107,7 +383,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "3f33132331514b4b",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-0675488223",
@@ -129,7 +411,13 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "4694870c8c1e1b17",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-C670E4E69A",
@@ -151,7 +439,13 @@
     "sender_uid": "2589261669335747882",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "8585271d9c1c36a7",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-9DB331881E",
@@ -173,7 +467,13 @@
     "sender_uid": "7617747951538527859",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "faf038198c3e969e",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-ED114E34AD",
@@ -195,7 +495,13 @@
     "sender_uid": "2589261669335747882",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "1f0f07672d313161",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-94AF3FA801",
@@ -217,7 +523,13 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "901d561391f1f170",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-EF62ECCD88",
@@ -239,7 +551,13 @@
     "sender_uid": "7617747951538527859",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "030329a98903075f",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-8143BFC13F",
@@ -261,7 +579,13 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "19330e3e36631a9e",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-6C843547E5",
@@ -283,7 +607,13 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "92930c0d1bf3337c",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-DA0011E092",
@@ -305,7 +635,13 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "fd11191903f832fb",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-A3521285F0",
@@ -327,7 +663,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "9fa1f1e3e3cbcfcf",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-CEDC2B5A68",
@@ -349,7 +691,13 @@
     "sender_uid": "7617747951538527859",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "71f1f6e66664606c",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-2225AAC44A",
@@ -371,7 +719,13 @@
     "sender_uid": "2589261669335747882",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "7f3c0222e2c2bcdc",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-3E1AC60ABD",
@@ -393,7 +747,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "cbce94f8fc1f0b01",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-6269",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-348300EBD2",
@@ -415,7 +775,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "21222062606160e1",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-5ADF243944",
@@ -437,7 +803,14 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "6c4b4b0b41515141",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-CV-SON00337",
+    "red_stamp_verified": true,
+    "three_way_status": "WAITING_BANK_UNC",
+    "three_way_label": "Đã đối soát HĐ & Trả hàng (-750K) • Chờ lịch UNC đợt tới",
+    "group_debt_balance": 82065300
   },
   {
     "id": "ZALO-LIVE-86CDBD691D",
@@ -459,7 +832,14 @@
     "sender_uid": "9151780304348905157",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "e6eef4b0e6668296",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-CV-SON00337",
+    "red_stamp_verified": true,
+    "three_way_status": "WAITING_BANK_UNC",
+    "three_way_label": "Đã đối soát HĐ & Trả hàng (-750K) • Chờ lịch UNC đợt tới",
+    "group_debt_balance": 82065300
   },
   {
     "id": "ZALO-LIVE-14AE77DC5B",
@@ -481,7 +861,14 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "6c6b430151515151",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-CV-SON00337",
+    "red_stamp_verified": true,
+    "three_way_status": "WAITING_BANK_UNC",
+    "three_way_label": "Đã đối soát HĐ & Trả hàng (-750K) • Chờ lịch UNC đợt tới",
+    "group_debt_balance": 82065300
   },
   {
     "id": "ZALO-LIVE-39D0883A7A",
@@ -503,7 +890,14 @@
     "sender_uid": "9151780304348905157",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "e6eef4a466a68094",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-CV-SON00337",
+    "red_stamp_verified": true,
+    "three_way_status": "WAITING_BANK_UNC",
+    "three_way_label": "Đã đối soát HĐ & Trả hàng (-750K) • Chờ lịch UNC đợt tới",
+    "group_debt_balance": 82065300
   },
   {
     "id": "ZALO-LIVE-7F636B2D7A",
@@ -525,7 +919,14 @@
     "sender_uid": "3689145980600156662",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "f3436e0e5edc5031",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-QT-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Sổ nợ T296 + HĐ Led 170K/80K + UNC 15.0M)",
+    "group_debt_balance": 26170000
   },
   {
     "id": "ZALO-LIVE-3947B48B1A",
@@ -547,7 +948,14 @@
     "sender_uid": "3689145980600156662",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "70b0928a8a8ab292",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-QT-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Sổ nợ T296 + HĐ Led 170K/80K + UNC 15.0M)",
+    "group_debt_balance": 26170000
   },
   {
     "id": "ZALO-LIVE-05271018FC",
@@ -569,7 +977,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "4c8d8c0e4c4c4549",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-DBC5CFA250",
@@ -591,7 +1005,14 @@
     "sender_uid": "3689145980600156662",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "01c1e1f070b88000",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-QT-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Sổ nợ T296 + HĐ Led 170K/80K + UNC 15.0M)",
+    "group_debt_balance": 26170000
   },
   {
     "id": "ZALO-LIVE-89399F1933",
@@ -613,7 +1034,14 @@
     "sender_uid": "3689145980600156662",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "f1f19282b2310181",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-QT-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Sổ nợ T296 + HĐ Led 170K/80K + UNC 15.0M)",
+    "group_debt_balance": 26170000
   },
   {
     "id": "ZALO-LIVE-827C257008",
@@ -635,7 +1063,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "3bcf8b835b697373",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-CBBA49AF4B",
@@ -657,7 +1091,13 @@
     "sender_uid": "5818820097402048516",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "818cccf0f3630363",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-6269",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-9CAE8222C2",
@@ -679,7 +1119,13 @@
     "sender_uid": "2304805760907141944",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "072772207e7ee0e0",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-FE5CE4BD7C",
@@ -701,7 +1147,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "1c9080c7c3824000",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-7270E137A0",
@@ -723,7 +1175,13 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "2181c6c793a3b283",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-E335292EF1",
@@ -745,7 +1203,13 @@
     "sender_uid": "2589261669335747882",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "1c0104848544b0b8",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-9AFFC9E12D",
@@ -767,7 +1231,13 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "1f19174f1e1e9e76",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-1515",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-20EB4A85FE",
@@ -789,7 +1259,13 @@
     "sender_uid": "1193413708528852811",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "f971f1e4f09a9898",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-2341",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-6847914DEC",
@@ -811,7 +1287,13 @@
     "sender_uid": "4548339759561286106",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "3c060411191e181e",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-2CFE09D12F",
@@ -833,7 +1315,13 @@
     "sender_uid": "4548339759561286106",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "2f3e766676313033",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-4403",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-49B1A6AEA0",
@@ -855,7 +1343,13 @@
     "sender_uid": "4548339759561286106",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "797b554d39993979",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-6AFC1338FA",
@@ -877,7 +1371,13 @@
     "sender_uid": "4548339759561286106",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "b8dbdbd9dbeaea70",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-4403",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-AC6DB224D5",
@@ -899,7 +1399,13 @@
     "sender_uid": "4179747197760224197",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "069e929298909898",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-F8F564D88C",
@@ -921,7 +1427,13 @@
     "sender_uid": "4548339759561286106",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "a1d9d99829293919",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-BF36527658",
@@ -943,7 +1455,13 @@
     "sender_uid": "4548339759561286106",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "f0185959d91b1b9b",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-E20787AF01",
@@ -965,7 +1483,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "2327415145516171",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-E5CF893152",
@@ -987,7 +1511,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "ffc3c3c2c2c2829b",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-00A0161953",
@@ -1009,7 +1539,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "66e0e0e0e0e0e0c0",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-E155EFB38B",
@@ -1031,7 +1567,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "6698989898f0b030",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-A51AB36D1B",
@@ -1053,7 +1595,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "3038707070b09040",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-7316556031",
@@ -1075,7 +1623,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "069e929298909898",
+    "duplicate_guard": "WARN_SIMILAR_TO_ZALO-LIVE-AC6DB224D5",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-88C1E72FD0",
@@ -1097,7 +1651,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "1ee0a0e0f1f07020",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-6366E938D3",
@@ -1119,7 +1679,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "06c2d0e0e8d0d0e0",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-5FA02A6E6E",
@@ -1141,7 +1707,14 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "f971f1e0e09a9898",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-4EEA45E0AF",
@@ -1163,7 +1736,14 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "8080e08080808000",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-D359B97022",
@@ -1185,7 +1765,14 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "62606c6e60606363",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-VU-HUONG",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Đặt hàng phụ kiện Vũ - Chị Hương & UNC)",
+    "group_debt_balance": 0
   },
   {
     "id": "ZALO-LIVE-67089D34AB",
@@ -1205,7 +1792,15 @@
     "sha256_full": "67089d34ab78a867f2842ff18299c2213ea7070fde45eea322fc9247612fdf13",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V4_DELTA_CURSOR"
+    "verified_source": "ZALO_V4_DELTA_CURSOR",
+    "sender_name": "Kế Toán Lam Giang / Hoàng Công Vũ",
+    "phash": "6c6c434302105050",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-B71589BD0F",
@@ -1225,7 +1820,15 @@
     "sha256_full": "b71589bd0f69df50e0cb3d515e8d39d7f0c2c9e55abaa4248c2915b90bb906aa",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V4_DELTA_CURSOR"
+    "verified_source": "ZALO_V4_DELTA_CURSOR",
+    "sender_name": "Kế Toán Lam Giang / Hoàng Công Vũ",
+    "phash": "b08cd095b5309383",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-31054BB2D7",
@@ -1245,7 +1848,15 @@
     "sha256_full": "31054bb2d781d262f1abfdd9b18a67ffe2269ec235a30475bc502096d3938671",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V4_DELTA_CURSOR"
+    "verified_source": "ZALO_V4_DELTA_CURSOR",
+    "sender_name": "Kế Toán Lam Giang / Hoàng Công Vũ",
+    "phash": "6f6c434711004150",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-C99EFADA57",
@@ -1265,7 +1876,15 @@
     "sha256_full": "c99efada57ee0ae13cb10d37d3a0da86af0a4709b0f4c8185a35c452a1974992",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V4_DELTA_CURSOR"
+    "verified_source": "ZALO_V4_DELTA_CURSOR",
+    "sender_name": "Kế Toán Lam Giang / Hoàng Công Vũ",
+    "phash": "b09c9c3435110383",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-EB740493FD",
@@ -1287,7 +1906,13 @@
     "sender_uid": "3799628397263949438",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "0f071707070f1fbf",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-9742",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-LIVE-AC4F3A5AA1",
@@ -1309,7 +1934,13 @@
     "sender_uid": "6820016113556978529",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "2743130818181818",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-FC81EEB318",
@@ -1331,7 +1962,14 @@
     "sender_uid": "2845688247116683961",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "8080c08080808000",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-VSG-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Kính ốp bếp & Cánh kính tủ áo • Công nợ 0đ)",
+    "group_debt_balance": 0
   },
   {
     "id": "ZALO-LIVE-02D94C3A93",
@@ -1353,7 +1991,14 @@
     "sender_uid": "7455619656818200755",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "00006767672b8fc7",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-VU-HUONG",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Đặt hàng phụ kiện Vũ - Chị Hương & UNC)",
+    "group_debt_balance": 0
   },
   {
     "id": "ZALO-GT-20261105-QT07",
@@ -1373,7 +2018,15 @@
     "sha256_full": "bb7129ad1e9a2708e989f9551952ac453fb4b444f3819850c70eababf6c3f5f5",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "DEBT_INCREASE",
-    "verified_source": "ZALO_PC_GROUND_TRUTH"
+    "verified_source": "ZALO_PC_GROUND_TRUTH",
+    "sender_name": "Chị Lan Quốc Tâm / Hoàng Công Vũ",
+    "phash": "3f3f737373634918",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-QT-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Sổ nợ T296 + HĐ Led 170K/80K + UNC 15.0M)",
+    "group_debt_balance": 26170000
   },
   {
     "id": "ZALO-GT-20261104-LG05",
@@ -1393,7 +2046,15 @@
     "sha256_full": "c3e2b3ec871c83f4ee37a0def19f7415cc69daf22449d62e41448f258e2ace4b",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "PAYMENT_SETTLED",
-    "verified_source": "ZALO_PC_GROUND_TRUTH"
+    "verified_source": "ZALO_PC_GROUND_TRUTH",
+    "sender_name": "Kế Toán Lam Giang / Hoàng Công Vũ",
+    "phash": "8080e08080808000",
+    "duplicate_guard": "WARN_SIMILAR_TO_ZALO-LIVE-4EEA45E0AF",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-GT-20261104-LG04",
@@ -1413,7 +2074,15 @@
     "sha256_full": "a3fca1f4f27facd962f035725b2f15fd65c4f8176148b9b006c5ef50569d57c1",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "PO_DELIVERY",
-    "verified_source": "ZALO_PC_GROUND_TRUTH"
+    "verified_source": "ZALO_PC_GROUND_TRUTH",
+    "sender_name": "Kế Toán Lam Giang / Hoàng Công Vũ",
+    "phash": "b09c943511038080",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-6D127A79EE",
@@ -1435,7 +2104,13 @@
     "sender_uid": "7617747951538527859",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "e385c4e0c0c09295",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-EA5C3AEB5B",
@@ -1457,7 +2132,13 @@
     "sender_uid": "7617747951538527859",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "f380c4e0c8c09481",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-AA9065554D",
@@ -1479,7 +2160,14 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "cfebfbf1fbf35799",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-VSG-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Kính ốp bếp & Cánh kính tủ áo • Công nợ 0đ)",
+    "group_debt_balance": 0
   },
   {
     "id": "ZALO-LIVE-BBCE4D735D",
@@ -1501,7 +2189,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "1c18181c3c786161",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-1B015F58FE",
@@ -1523,7 +2217,13 @@
     "sender_uid": "1266851172782015824",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "d0e0e092d2c6f2f0",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "FIELD-WORKSHOP-LOG",
+    "red_stamp_verified": true,
+    "three_way_status": "FIELD_MEDIA_OK",
+    "three_way_label": "Ảnh hiện trường / Bản vẽ kỹ thuật hợp lệ"
   },
   {
     "id": "ZALO-LIVE-445FCC95EE",
@@ -1545,7 +2245,14 @@
     "sender_uid": "1693710913334646341",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "7078421222022266",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-0902",
+    "red_stamp_verified": true,
+    "three_way_status": "WAITING_BANK_UNC",
+    "three_way_label": "Đã có PO Dấu Đỏ (CT Anh Tuấn 11.76M) • Chờ UNC thanh toán",
+    "group_debt_balance": 11760000
   },
   {
     "id": "ZALO-LIVE-6101B35E23",
@@ -1567,7 +2274,14 @@
     "sender_uid": "1693710913334646341",
     "review_status": "PENDING_DIRECTOR_REVIEW",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "7078420202024266",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-0902",
+    "red_stamp_verified": true,
+    "three_way_status": "WAITING_BANK_UNC",
+    "three_way_label": "Đã có PO Dấu Đỏ (CT Anh Tuấn 11.76M) • Chờ UNC thanh toán",
+    "group_debt_balance": 11760000
   },
   {
     "id": "ZALO-LIVE-20C8B6540B",
@@ -1589,7 +2303,13 @@
     "sender_uid": "2926353819792553048",
     "review_status": "APPROVED",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V6_DELTA_CURSOR"
+    "verified_source": "ZALO_V6_DELTA_CURSOR",
+    "phash": "fcf9dffeee6e0f05",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-6269",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   },
   {
     "id": "ZALO-GT-20261102-QT03",
@@ -1609,7 +2329,15 @@
     "sha256_full": "ad7055230ba43f1d933418b22feebdfc37efad5867ededb6485eb8ef71961e36",
     "review_status": "APPROVED",
     "impact_type": "RECONCILIATION_SNAPSHOT",
-    "verified_source": "ZALO_PC_GROUND_TRUTH"
+    "verified_source": "ZALO_PC_GROUND_TRUTH",
+    "sender_name": "Chị Lan Quốc Tâm / Hoàng Công Vũ",
+    "phash": "3fb7a47030301030",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-QT-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Sổ nợ T296 + HĐ Led 170K/80K + UNC 15.0M)",
+    "group_debt_balance": 26170000
   },
   {
     "id": "ZALO-GT-20261102-QT02",
@@ -1629,7 +2357,15 @@
     "sha256_full": "93c72d94e1f96cf0434dd39231a6dd7eb1b21f649b3d99468987531831445dab",
     "review_status": "APPROVED",
     "impact_type": "DEBT_REDUCTION",
-    "verified_source": "ZALO_PC_GROUND_TRUTH"
+    "verified_source": "ZALO_PC_GROUND_TRUTH",
+    "sender_name": "Chị Lan Quốc Tâm / Hoàng Công Vũ",
+    "phash": "f971f1e4c49a9898",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-QT-T11",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (Sổ nợ T296 + HĐ Led 170K/80K + UNC 15.0M)",
+    "group_debt_balance": 26170000
   },
   {
     "id": "ZALO-GT-20261102-LG01",
@@ -1649,7 +2385,15 @@
     "sha256_full": "a6b5bb7f8adbc6e4ec5d39d157b324fb97ff013b2c50ebb3560d069211975502",
     "review_status": "APPROVED",
     "impact_type": "DEBT_REDUCTION",
-    "verified_source": "ZALO_PC_GROUND_TRUTH"
+    "verified_source": "ZALO_PC_GROUND_TRUTH",
+    "sender_name": "Kế Toán Lam Giang / Hoàng Công Vũ",
+    "phash": "f971f1e0e09ad898",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-LG-DH29930",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Khớp 3 Lớp (PO Dấu Đỏ + HĐ DH29930 + UNC 16.838M & 496K)",
+    "group_debt_balance": 147492250
   },
   {
     "id": "ZALO-LIVE-6908B1FE85",
@@ -1669,6 +2413,13 @@
     "sha256_full": "6908b1fe8525c39c82a70b889442243cae1e6c3a06ed8be54a2e1fb0a19e254a",
     "review_status": "APPROVED",
     "impact_type": "LIVE_CAPTURED_MEDIA",
-    "verified_source": "ZALO_V4_DELTA_CURSOR"
+    "verified_source": "ZALO_V4_DELTA_CURSOR",
+    "sender_name": "Hoàng Hà Ceramic",
+    "phash": "f971f1e4e09a8ea6",
+    "duplicate_guard": "UNIQUE_VERIFIED",
+    "po_code": "PO-2026-2341",
+    "red_stamp_verified": true,
+    "three_way_status": "MATCHED_3WAY",
+    "three_way_label": "Đã đối chiếu PO & Chứng từ gốc Zalo"
   }
 ]
