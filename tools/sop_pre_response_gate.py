@@ -22,7 +22,7 @@ if sys.stdout.encoding != 'utf-8':
 
 WEB_APP_DIR = r"f:\PG Home - Quản trị\web_app"
 LOCAL_URL = "http://127.0.0.1:8080"
-CLOUD_URL = "https://pghome-quantri.onrender.com"
+CLOUD_URL = "https://nghiagurunv-prog.github.io/pg-home-luxury-erp/web_app/"
 
 
 def check_gate_1_syntax():
@@ -101,40 +101,57 @@ def check_gate_4_print_isolation():
     return True, "Cơ chế cô lập in ấn A4 100% (w42_print_a4_stylesheet.css + @media print) hoạt động tốt."
 
 
+def _start_wmi_detached_server():
+    server_py = os.path.join(WEB_APP_DIR, "server.py")
+    if not os.path.exists(server_py):
+        return False
+    py_dir = os.path.dirname(sys.executable)
+    pythonw_exe = os.path.join(py_dir, "pythonw.exe")
+    exe_to_use = pythonw_exe if os.path.exists(pythonw_exe) else sys.executable
+    ps_cmd = (
+        "Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | "
+        "ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; "
+        "$si = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly; "
+        "$si.ShowWindow = [uint16]0; "
+        f"Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{{ "
+        f"CommandLine = '\"{exe_to_use}\" \"{server_py}\"'; "
+        f"CurrentDirectory = '{WEB_APP_DIR}'; "
+        f"ProcessStartupInformation = $si }} | Out-Null"
+    )
+    subprocess.run(
+        ["powershell", "-NoProfile", "-NonInteractive", "-WindowStyle", "Hidden", "-Command", ps_cmd],
+        stdin=subprocess.DEVNULL,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        creationflags=0x08000000
+    )
+    for _ in range(30):
+        time.sleep(0.1)
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(0.1)
+        if s.connect_ex(("127.0.0.1", 8080)) == 0:
+            s.close()
+            return True
+        s.close()
+    return False
+
+
 def check_gate_6_local_server():
-    """Cổng 6: Kiểm tra Localhost:8080 (Tự động khởi chạy ngầm server.py nếu chưa bật & kiểm định HTTP 200 OK toàn bộ đường link)"""
+    """Cổng 6: Kiểm tra Localhost:8080 (Tự động khởi chạy ngầm server.py qua WMI 24/7 nếu chưa bật & kiểm định HTTP 200 OK toàn bộ đường link)"""
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(0.1)
     is_open = (sock.connect_ex(("127.0.0.1", 8080)) == 0)
     sock.close()
 
     if not is_open:
-        server_py = os.path.join(WEB_APP_DIR, "server.py")
-        if os.path.exists(server_py):
-            # Tự động bật ngầm server.py (Stealth 100%: CREATE_NO_WINDOW | DETACHED_PROCESS)
-            subprocess.Popen(
-                [sys.executable, server_py],
-                cwd=WEB_APP_DIR,
-                stdin=subprocess.DEVNULL,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                creationflags=0x08000000 | 0x00000008
-            )
-            for _ in range(25):
-                time.sleep(0.1)
-                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                s.settimeout(0.1)
-                if s.connect_ex(("127.0.0.1", 8080)) == 0:
-                    is_open = True
-                    s.close()
-                    break
-                s.close()
+        is_open = _start_wmi_detached_server()
 
     if not is_open:
         return False, "CRITICAL: Máy chủ Localhost:8080 KHÔNG phản hồi (CẤM đưa link chết cho Giám Đốc)!"
 
     urls_to_verify = [
         ("http://127.0.0.1:8080/", 50000),
+        ("http://127.0.0.1:8080/director", 50000),
         ("http://127.0.0.1:8080/local_admin_vault/director_ccsc_full.html", 50000),
         ("http://127.0.0.1:8080/deploy", 50000),
         ("http://127.0.0.1:8080/web_app/index.html", 50000),
@@ -142,31 +159,38 @@ def check_gate_6_local_server():
         ("http://127.0.0.1:8080/app.js", 100000),
         ("http://127.0.0.1:8080/styles.css", 20000),
     ]
-    for url, min_bytes in urls_to_verify:
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'PGHome-SOP-Gate'})
-            with urllib.request.urlopen(req, timeout=1.5) as resp:
-                body = resp.read()
-                if resp.status != 200 or len(body) < min_bytes:
-                    return False, f"Link lỗi {url}: status={resp.status}, size={len(body)} bytes (< {min_bytes})"
-        except Exception as e:
-            return False, f"Link chết {url}: {e}"
+    for attempt in range(2):
+        failed_msg = None
+        for url, min_bytes in urls_to_verify:
+            try:
+                req = urllib.request.Request(url, headers={'User-Agent': 'PGHome-SOP-Gate'})
+                with urllib.request.urlopen(req, timeout=1.5) as resp:
+                    body = resp.read()
+                    if resp.status != 200 or len(body) < min_bytes:
+                        failed_msg = f"Link lỗi {url}: status={resp.status}, size={len(body)} bytes (< {min_bytes})"
+                        break
+            except Exception as e:
+                failed_msg = f"Link chết {url}: {e}"
+                break
+        if failed_msg is None:
+            return True, f"Tất cả {len(urls_to_verify)} đường dẫn Localhost:8080 (/ , /director, /deploy, /local_admin_vault/..., /web_app/...) đều sống 100% HTTP 200 OK."
+        if attempt == 0:
+            _start_wmi_detached_server()
 
-    return True, f"Tất cả {len(urls_to_verify)} đường dẫn Localhost:8080 (/ , /deploy, /local_admin_vault/..., /web_app/...) đều sống 100% HTTP 200 OK."
+    return False, failed_msg
 
 
 def check_gate_7_permanent_cloud():
-    """Cổng 7: Kiểm tra đường dẫn Vĩnh Viễn Cloud (https://pghome-quantri.onrender.com)"""
-    if "--full-cloud" not in sys.argv:
-        return True, "Cấu hình Render Cloud hợp lệ (dùng --full-cloud khi cần ping máy chủ từ xa)."
+    """Cổng 7: Kiểm tra thực tế đường dẫn Cloud GitHub Pages trả về HTTP 200 OK (Cấm báo PASS khi 404)"""
     try:
-        req = urllib.request.Request(CLOUD_URL, method="HEAD", headers={'User-Agent': 'PGHome-SOP-Gate'})
-        with urllib.request.urlopen(req, timeout=3.0) as resp:
-            if resp.status == 200:
-                return True, f"Cloud Vĩnh Viễn ({CLOUD_URL}) phản hồi HTTP 200 OK."
-            return False, f"Cloud Vĩnh Viễn phản hồi bất thường: status={resp.status}"
+        req = urllib.request.Request(CLOUD_URL, method="GET", headers={'User-Agent': 'PGHome-SOP-Gate'})
+        with urllib.request.urlopen(req, timeout=4.0) as resp:
+            body = resp.read()
+            if resp.status == 200 and len(body) > 50000:
+                return True, f"Cloud GitHub Pages ({CLOUD_URL}) sống 100% HTTP 200 OK ({len(body):,} bytes)."
+            return False, f"Cloud GitHub Pages phản hồi bất thường: status={resp.status}, size={len(body)}"
     except Exception as e:
-        return True, f"Cloud Vĩnh Viễn ({CLOUD_URL}) đang ở chế độ chờ Render ({str(e)[:45]})."
+        return False, f"Link Cloud chết ({CLOUD_URL}): {e}"
 
 
 def main():

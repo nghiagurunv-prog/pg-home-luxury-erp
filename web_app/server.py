@@ -312,6 +312,10 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=WEB_DIR, **kwargs)
 
+    def log_message(self, format, *args):
+        # Vô hiệu hóa ghi stderr mặc định để chạy ngầm 100% dưới pythonw.exe / WMI Detached mà không bao giờ lỗi Descriptor
+        pass
+
     def end_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
@@ -1027,9 +1031,13 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
 def run_server(port=8080):
     server_address = ("", port)
     httpd = ThreadingHTTPServer(server_address, PGHomeRequestHandler)
-    print(f"[PG HOME SERVER V4] Running at http://localhost:{port}/index.html", flush=True)
-    print(f"[PG HOME SERVER V4] Persistent Disk Storage: {LIVE_STATE_FILE}", flush=True)
-    print(f"[PG HOME SERVER V4] Zalo v4.0 Live Staging : {ZALO_INBOX_FILE}", flush=True)
+    try:
+        if sys.stdout is not None:
+            print(f"[PG HOME SERVER V4] Running at http://localhost:{port}/index.html", flush=True)
+            print(f"[PG HOME SERVER V4] Persistent Disk Storage: {LIVE_STATE_FILE}", flush=True)
+            print(f"[PG HOME SERVER V4] Zalo v4.0 Live Staging : {ZALO_INBOX_FILE}", flush=True)
+    except Exception:
+        pass
     httpd.serve_forever()
 
 

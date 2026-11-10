@@ -5,7 +5,13 @@
 
 ---
 
-## 0. CHỈ THỊ MỚI NHẤT CỦA GIÁM ĐỐC & KIẾN TRÚC TÁCH ĐÔI 2 BẢN + 30 CHỐT CHẶN + SMART PO BUILDER V8.0 + NHẬP LIỆU & THỐNG KÊ V9.0 + TINH GỌN V10.0 + CÁCH LY VP ↔ XƯỞNG V11.0 + 100 CẢI TIẾN GIAO DIỆN V12.0 + DIỆT SẠCH 100% MOOK RỖNG V13.0 + DIỆT SẠCH 100% MOOK CỨNG V14.0 + VÁ 40 LỖ HỔNG & THI CÔNG 50 CẢI TIẾN TOÀN DIỆN V15.0 + DIỆT RÁC ZALO `.RESCACHE` & ĐỒNG BỘ THỐNG KÊ ĐA CHIỀU V16.0 + CẬP NHẬT CHẤM CÔNG THÁNG 11/2026 ĐẾN 10/11 & DEPLOY TOÀN CÔNG TY V17.0 + ĐỒNG BỘ CHẤM CÔNG & OT TỪ ZALO THỜI GIAN THỰC V18.0 (`v31_ZALO_REALTIME_ATTENDANCE`) + KHÓA CHẶN LINK CHẾT (10/11/2026)
+## 0. CHỈ THỊ MỚI NHẤT CỦA GIÁM ĐỐC & KHÓA CỨNG GIAO DIỆN GỐC CHUẨN (`UI_GOLDEN_BASELINE_V1` — 11/11/2026)
+- **🔒 MỆNH LỆNH KHÓA CỨNG GIAO DIỆN GỐC (`UI_GOLDEN_BASELINE_V1` — BẤT KHẢ XÂM PHẠM)**:
+  + Giám Đốc đã nghiệm thu và chốt: **"Giao diện hiện tại đã ổn, lấy bản này làm gốc chuẩn, tuyệt đối KHÔNG sửa giao diện linh tinh nữa; chỉ tinh chỉnh tối ưu thêm trên nền gốc này."**
+  + **Quy tắc cưỡng chế cho mọi phiên làm việc tiếp theo**:
+    1. **CẤM TUYỆT ĐỐI** tự ý thay đổi bố cục (layout), cấu trúc bảng 1 dòng (`.pg-compact-row`, `.data-table`), thanh điều hướng trái (`#mainNavMenu`), hoặc tự ý bật/nhồi nhét nhiều bảng chồng dọc trên cùng 1 màn hình.
+    2. Bản sao lưu chuẩn Vàng (`Golden Baseline`) đã được khóa cứng tại Git Tag `UI_GOLDEN_BASELINE_V1` và thư mục `data/backups/golden_ui_baseline_20261111/`.
+    3. Mọi nâng cấp về sau chỉ được phép tinh chỉnh hiệu năng, logic nghiệp vụ và độ mượt trên đúng khung giao diện gốc này.
 - **Đồng Bộ Chấm Công & Tăng Ca (OT) Trực Tiếp Từ Các Nhóm Zalo Theo Thời Gian Thực (`v31_ZALO_REALTIME_ATTENDANCE` — 100% Stealth Passive Read)**:
   + **1. Quét ngầm 3 nhóm Zalo điểm danh & báo cáo tiến độ công trình (`monitor_all_phu_gia_groups.py` $\rightarrow$ `scan_live_zalo_attendance()`)**:
     * Đọc thụ động (`0x00000040 IDLE`, tuyệt đối không cướp focus hay chạm vào cửa sổ Zalo PC của Bố) từ 3 luồng:
@@ -71,9 +77,9 @@
     1. Máy chủ `web_app/server.py` trước đây chưa chạy ngầm hoặc bị tắt khiến `http://localhost:8080/...` báo `ERR_CONNECTION_REFUSED`, đồng thời đường dẫn `/local_admin_vault/director_ccsc_full.html` và `/web_app/index.html` trên `server.py` trước đây chưa được ánh xạ route trực tiếp.
     2. Bản `local_admin_vault/director_ccsc_full.html` khi mở trực tiếp bằng `file:///...` bị thiếu `styles.css` và `modules/*.js` cùng thư mục.
   + **Giải pháp khóa cứng vĩnh viễn**:
-    1. Nâng cấp [`web_app/server.py`](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/web_app/server.py): Hỗ trợ đầy đủ mọi biến thể URL (`/`, `/director`, `/local_admin_vault/director_ccsc_full.html`, `/deploy`, `/vp-xuong`, `/web_app/index.html`, `/director_app_full.js`, `/local-admin-assets/director_app_full.js`, `/app.js`, `/styles.css`) đều trả về `HTTP 200 OK`.
+    1. Nâng cấp [`web_app/server.py`](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/web_app/server.py): Hỗ trợ đầy đủ mọi biến thể URL (`/`, `/director`, `/local_admin_vault/director_ccsc_full.html`, `/deploy`, `/vp-xuong`, `/web_app/index.html`, `/director_app_full.js`, `/local-admin-assets/director_app_full.js`, `/app.js`, `/styles.css`) đều trả về `HTTP 200 OK`, đồng thời vô hiệu hóa `log_message()` ghi ra `sys.stderr` để chạy ngầm 100% dưới `pythonw.exe` mà không bị lỗi đóng kết nối (`Remote end closed connection`).
     2. Nâng cấp [`tools/split_app_two_editions.py`](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/tools/split_app_two_editions.py): Tự động đồng bộ `styles.css` và `modules/*.js` vào `local_admin_vault/` và dùng đường dẫn tương đối `director_app_full.js` để bấm mở qua cả `http://localhost:8080/...` lẫn `file:///...` đều lên giao diện đầy đủ 100%.
-    3. Nâng cấp Cổng 6 trong [`tools/sop_pre_response_gate.py`](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/tools/sop_pre_response_gate.py): Xóa bỏ nhánh lách luật khi server tắt; tự động khởi chạy ngầm `web_app/server.py` (Stealth 100% `CREATE_NO_WINDOW`) nếu cổng `8080` chưa mở, và kiểm tra thực tế `HTTP 200 OK` trên toàn bộ 7 URL cốt lõi trước khi cho phép AI trả lời Bố.
+    3. Nâng cấp Cổng 6 & Cổng 7 trong [`tools/sop_pre_response_gate.py`](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/tools/sop_pre_response_gate.py): Khởi chạy `pythonw.exe web_app/server.py` qua dịch vụ hệ thống **WMI `Win32_Process.Create` (`WmiPrvSE.exe`)** để tiến trình thoát hoàn toàn khỏi Job Object của terminal tạm thời (sống vĩnh viễn 24/7 trên cổng `8080` ngay cả khi đóng lệnh), kiểm tra thực tế `HTTP 200 OK` trên toàn bộ 8 URL Localhost + Cloud `https://nghiagurunv-prog.github.io/pg-home-luxury-erp/web_app/` và **cấm tuyệt đối** đưa link cũ đã chết (`nghia208.github.io`, `pghome-quantri.onrender.com`).
 - **Diệt Sạch 100% Mook Rỗng (`Empty Mocks / Empty States`) & Nhân Sự Giả Còn Sót (`v26_ZERO_EMPTY_MOCK_100`)**:
   + **Nạp đầy đủ danh mục BOQ thực tế (`items: [...]`) cho 3 hồ sơ dự án trong `DEFAULT_CUSTOM_PROJECTS_REAL` & `loadSavedCustomProjects()`**:
     * `CT-2026-1106: Nhà Anh Nam (06/11/2026)`: 8 hạng mục thực tế = `665.280.785 đ` (`WOOD_CN`: `540.280.785 đ`, `ACCESSORY`: `125.000.000 đ`).
