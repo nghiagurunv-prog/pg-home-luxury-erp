@@ -81,8 +81,6 @@
         </div>
       </div>
 
-      <!-- Navigation Links (Phân 3 nhóm quyền rõ ràng: Giám Đốc, Vũ Vật Tư, Hiệp Văn Phòng) -->
-            <!-- Navigation Links (5 Phân Hệ Tinh Gọn thực chiến & chuyên nghiệp) -->
             <!-- BỘ CHUYỂN ĐỔI 2 PHÂN HỆ: I. VĂN PHÒNG <-> II. XƯỞNG SẢN XUẤT -->
       <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 6px 10px; border-bottom: 1px solid rgba(212,175,55,0.16);">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
@@ -635,7 +633,8 @@
               <i class="fa-solid fa-calendar text-gold"></i> Kỳ Chấm Công:
             </label>
             <select id="timesheetMonthSelect" class="form-control" style="width: auto; padding: 6px 12px; font-weight: 700; color: var(--text-gold); background: #0E1628; border-color: var(--border-card);">
-              <option value="10" selected>Tháng 10/2026 (⚡ Kỳ Sống Thực Tế)</option>
+              <option value="11" selected>Tháng 11/2026 (⚡ Kỳ Sống - Cập nhật 10/11)</option>
+              <option value="10">Tháng 10/2026 (🔒 Đã Đối Soát Chuẩn Zalo)</option>
               <option value="9">Tháng 9/2026 (🔒 Đã Khóa Sổ)</option>
               <option value="8">Tháng 8/2026 (🔒 Đã Khóa Sổ)</option>
             </select>
@@ -665,6 +664,34 @@
             <span class="att-pill work-p" style="font-size:0.75rem;">P</span> Nghỉ phép
             <span class="att-pill work-k" style="font-size:0.75rem;">K</span> Không phép
             <span style="font-size: 0.75rem; color: var(--text-dim); margin-left: 4px;">*(Click trực tiếp vào ô để sửa)*</span>
+          </div>
+        </div>
+
+        <!-- THANH ĐỒNG BỘ CHẤM CÔNG ZALO THỜI GIAN THỰC (STEALTH 100% PASSIVE DISK READ) -->
+        <div id="zaloRealtimeAttendanceBar" class="card mb-3" style="padding: 12px 16px; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(15,23,42,0.95)); border: 1px solid rgba(16,185,129,0.38); border-radius: 10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <span class="badge live pulse" style="background:rgba(16,185,129,0.22); color:#34D399; border:1px solid rgba(16,185,129,0.5); font-weight:800; padding:4px 10px;">
+                <i class="fa-solid fa-satellite-dish"></i> ZALO REAL-TIME SYNC (15s/lần)
+              </span>
+              <span style="font-size:0.84rem; color:#E2E8F0; font-weight:700;">
+                Đang rà ngầm 3 nhóm Zalo: <strong style="color:#FBBF24;">Xưởng Sản Xuất PG Home</strong> • <strong style="color:#38BDF8;">Điều Hành Xưởng</strong> • <strong style="color:#34D399;">Chấm Công Văn Phòng</strong>
+              </span>
+              <span id="zaloAttLastSyncLabel" style="font-size:0.76rem; color:#94A3B8; font-family:monospace;">
+                (Cập nhật lúc: 10/11/2026 — Stealth 100% Passive Read)
+              </span>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button type="button" class="btn btn-sm btn-emerald" onclick="window.syncZaloAttendanceRealtime && window.syncZaloAttendanceRealtime(true)" style="font-weight:700; padding:5px 12px;">
+                <i class="fa-solid fa-rotate"></i> Quét Zalo Cập Nhật Công & OT Ngay
+              </button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="const el=document.getElementById('zaloAttendanceLiveFeedStrip'); if(el) el.style.display=(el.style.display==='none'?'grid':'none');" style="font-size:0.75rem; padding:4px 10px;">
+                <i class="fa-solid fa-list-check"></i> Nhật ký Check-in Zalo (9/9)
+              </button>
+            </div>
+          </div>
+          <div id="zaloAttendanceLiveFeedStrip" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; margin-top:10px; padding-top:10px; border-top:1px dashed rgba(148,163,184,0.2);">
+            <!-- Tự động điền bởi window.syncZaloAttendanceRealtime() -->
           </div>
         </div>
 
@@ -2468,6 +2495,9 @@
               <p class="card-subtitle">Nhấp vào 'Giám Đốc Duyệt & Đóng Dấu' để cấp phép đặt hàng, 'Copy Zalo' để gửi thẳng vào nhóm NCC hoặc 'In Phiếu'</p>
             </div>
             <div class="btn-group" style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn btn-outline btn-sm" id="btnBatchApprovePO" onclick="window.batchApprovePendingPOs && window.batchApprovePendingPOs()" style="font-weight: 800; color: #34D399; border-color: rgba(16,185,129,0.5); background: rgba(16,185,129,0.1);" title="Giám Đốc phê duyệt & đóng dấu đỏ tất cả phiếu đang chờ">
+                <i class="fa-solid fa-stamp"></i> 💮 Giám Đốc Duyệt &amp; Đóng Dấu Đỏ Tất Cả Đơn Chờ
+              </button>
               <button class="btn btn-gold btn-sm" id="btnOpenCreatePOModal" style="font-weight: 800;">
                 <i class="fa-solid fa-plus"></i> ⚡ Vũ Lập Đơn Order Vật Tư Mới (Smart PO)
               </button>
@@ -2486,6 +2516,15 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <select id="poProjectQuickFilter" onchange="window.renderPOList(window.currentActivePOFilter || 'all')" style="background: rgba(15, 23, 42, 0.9); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; font-weight: 600;">
+                <option value="ALL">🏗️ Tất cả Công trình</option>
+                <option value="Anh Nam">Nhà Anh Nam (TP. Hà Tĩnh)</option>
+                <option value="Bác Phát">Nhà Bác Phát (Đường 26/03)</option>
+                <option value="Duẫn">Bác Sĩ Duẫn (TP. Hà Tĩnh)</option>
+                <option value="Anh Công">Nhà Anh Công (Hà Tĩnh)</option>
+                <option value="Chị Hương">Chị Hương (Vinhomes)</option>
+                <option value="Anh Tuấn">Anh Tuấn (Thạch Quý)</option>
+              </select>
               <select id="poSupplierQuickFilter" onchange="window.renderPOList(window.currentActivePOFilter || 'all')" style="background: rgba(15, 23, 42, 0.9); color: #F8FAFC; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem;">
                 <option value="ALL">🏢 Tất cả 18 Nhóm NCC Zalo</option>
                 <option value="Lam Giang">Tổng Kho Lam Giang (Ms Hoa / Tâm)</option>
@@ -2591,7 +2630,7 @@
                   <th>Trạng Thái Chứng Từ Thực Tế</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="bodyDoiSanhVatTuKhoan">
                 <tr>
                   <td><strong>Chị Hiển (Thạch Trung)</strong></td>
                   <td style="text-align: right;">75.000.000 đ</td>
@@ -3556,7 +3595,7 @@
               <tbody id="bodyExpenses">
                 <tr>
                   <td><strong>Tiền thuê Showroom & VP</strong></td>
-                  <td>Chủ nhà số 49 Ngô Đức Kế</td>
+                  <td>Chủ nhà Ngõ 49 Trương Quốc Dụng, P. Thành Sen</td>
                   <td>6,000,000 đ/tháng</td>
                   <td>6,000,000 đ</td>
                   <td><span class="status-pill green">0 đ (Chuẩn)</span></td>
@@ -3636,10 +3675,10 @@
           </div>
           <div class="estimator-header-actions">
             <a href="MAU_DU_TOAN_BAO_GIA_NOI_THAT_PHU_GIA.xlsx" download class="btn-action green">
-              <i class="fa-solid fa-file-excel"></i> <span>Tải Mẫu Excel BS Duẩn</span>
+              <i class="fa-solid fa-file-excel"></i> <span>Tải File Excel Dự Toán BS Duẫn</span>
             </a>
             <button type="button" class="btn-action gold" onclick="loadSampleEstimatorDuAn()">
-              <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Nạp Dự Toán Mẫu (345M)</span>
+              <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Nạp Dự Toán Thực Tế (Anh Nam / BS Duẫn)</span>
             </button>
             <button type="button" class="btn-action purple" onclick="openPrintQuotationModal()">
               <i class="fa-solid fa-print"></i> <span>In / Xuất Báo Giá A4</span>
@@ -3702,9 +3741,9 @@
                     </select>
                   </div>
                   <div class="form-group col-8">
-                    <label>Hạng mục mẫu chuẩn Phú Gia (Chọn nhanh):</label>
+                    <label>Hạng mục chuẩn xưởng Phú Gia (Chọn nhanh):</label>
                     <select id="estInputPreset" class="form-control" onchange="onEstimatorPresetSelect()">
-                      <option value="">-- Chọn hạng mục mẫu hoặc gõ tay bên dưới --</option>
+                      <option value="">-- Chọn hạng mục chuẩn xưởng hoặc nhập bên dưới --</option>
                     </select>
                   </div>
                 </div>
@@ -3806,7 +3845,7 @@
               <form id="formCreateNewProject" onsubmit="handleCreateNewProject(event)">
                 <div class="form-group">
                   <label>Tên Khách Hàng / Dự Án (*):</label>
-                  <input type="text" id="projClientName" class="form-control" required placeholder="Ví dụ: Anh Tuấn - TP Hà Tĩnh">
+                  <input type="text" id="projClientName" class="form-control" required placeholder="VD: Nhà Anh Nam - Đường Xuân Diệu, TP. Hà Tĩnh">
                 </div>
 
                 <div class="form-row">
@@ -3820,7 +3859,7 @@
                   </div>
                   <div class="form-group col-6">
                     <label>Số Điện Thoại Khách:</label>
-                    <input type="text" id="projPhone" class="form-control" placeholder="09xx xxx xxx">
+                    <input type="text" id="projPhone" class="form-control" placeholder="0986.722.324">
                   </div>
                 </div>
 
@@ -4197,11 +4236,11 @@
 
           <div class="receipt-row">
             <div class="r-label">Người nộp tiền:</div>
-            <div class="r-val" id="receiptClientName">Chị Hiển</div>
+            <div class="r-val" id="receiptClientName">Nhà Anh Nam (CT-2026-1106)</div>
           </div>
           <div class="receipt-row">
             <div class="r-label">Công trình thi công:</div>
-            <div class="r-val" id="receiptProjectName">Biệt thự Thạch Linh, TP. Hà Tĩnh</div>
+            <div class="r-val" id="receiptProjectName">Đường Xuân Diệu, P. Thành Sen, TP. Hà Tĩnh</div>
           </div>
           <div class="receipt-row">
             <div class="r-label">Hình thức thanh toán:</div>
@@ -4912,16 +4951,16 @@
         <form id="formRegister">
           <div class="form-group">
             <label>Họ và tên nhân sự:</label>
-            <input type="text" id="regFullName" class="form-control" required placeholder="VD: Lê Văn Nam">
+            <input type="text" id="regFullName" class="form-control" required placeholder="VD: Hà Viết Hoà">
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Tên đăng nhập (Username):</label>
-              <input type="text" id="regUsername" class="form-control" required placeholder="VD: namxuong, thutrang...">
+              <input type="text" id="regUsername" class="form-control" required placeholder="VD: hoatho, vuvattu...">
             </div>
             <div class="form-group">
               <label>Số điện thoại:</label>
-              <input type="text" id="regPhone" class="form-control" required placeholder="098xxxxxxx">
+              <input type="text" id="regPhone" class="form-control" required placeholder="0986.722.324">
             </div>
           </div>
           <div class="form-row">
@@ -5049,7 +5088,7 @@
   </div>
 
   <!-- Application Logic -->
-  <script src="app.js?v=15.0_DEPLOY_2PARTS_VP_XUONG"></script>
+  <script src="app.js?v=26.0_DEPLOY_2PARTS_VP_XUONG"></script>
   <script>
     window.toggleAtelierShowroomMode = function() {
       document.body.classList.toggle('light-theme');

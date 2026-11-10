@@ -2926,6 +2926,18 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
           { name: "Tuấn Anh", cong_hc: 20.0, gio_ot: 22.0, don_gia_hc: 300000, don_gia_ot: 56250, tam_ung: 0, luong_hc: 6000000, luong_ot: 1237500, thuc_linh: 7237500, quy_nong_cot: 0 }
         ],
         totals: { cong_hc: 99.0, gio_ot: 160.0, thuc_linh: 54686250, quy_khoan: 68000000 }
+      },
+      T11: {
+        title: "Tháng 11/2026 (Lũy kế 01/11 - 10/11/2026)",
+        days_in_month: 30,
+        workers: [
+          { name: "Hà Viết Hòa", cong_hc: 9.0, gio_ot: 22.0, don_gia_hc: 530000, don_gia_ot: 99375, tam_ung: 0, luong_hc: 4770000, luong_ot: 2186250, thuc_linh: 6956250, quy_nong_cot: 180000 },
+          { name: "Lương Thể Hào", cong_hc: 10.0, gio_ot: 24.0, don_gia_hc: 450000, don_gia_ot: 84375, tam_ung: 0, luong_hc: 4500000, luong_ot: 2025000, thuc_linh: 6525000, quy_nong_cot: 200000 },
+          { name: "Trần Văn Anh", cong_hc: 9.0, gio_ot: 19.0, don_gia_hc: 400000, don_gia_ot: 75000, tam_ung: 0, luong_hc: 3600000, luong_ot: 1425000, thuc_linh: 5025000, quy_nong_cot: 0 },
+          { name: "Lê Văn Thoan", cong_hc: 8.0, gio_ot: 12.0, don_gia_hc: 450000, don_gia_ot: 84375, tam_ung: 0, luong_hc: 3600000, luong_ot: 1012500, thuc_linh: 4612500, quy_nong_cot: 0 },
+          { name: "Tuấn Anh", cong_hc: 7.5, gio_ot: 8.0, don_gia_hc: 300000, don_gia_ot: 56250, tam_ung: 0, luong_hc: 2250000, luong_ot: 450000, thuc_linh: 2700000, quy_nong_cot: 0 }
+        ],
+        totals: { cong_hc: 43.5, gio_ot: 85.0, thuc_linh: 25818750, quy_khoan: 28500000 }
       }
     }
   };
@@ -3493,6 +3505,7 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
       <div class="pg-w05-filter-bar">
         <div class="pg-w05-filter-group">
           <span class="pg-w05-filter-label">Kỳ Chấm Công:</span>
+          <button class="pg-w05-btn-pill ${state.selectedMonth === 'T11' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T11')">⚡ Tháng 11/2026 (Lũy kế 10/11)</button>
           <button class="pg-w05-btn-pill ${state.selectedMonth === 'T10' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T10')">Tháng 10/2026 (Chi Tiết)</button>
           <button class="pg-w05-btn-pill ${state.selectedMonth === 'T09' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T09')">Tháng 09/2026</button>
           <button class="pg-w05-btn-pill ${state.selectedMonth === 'T08' ? 'active' : ''}" onclick="window.PG_Modules_W05.setMonth('T08')">Tháng 08/2026</button>
@@ -3533,7 +3546,7 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
     // Hiển thị nội dung theo Kỳ đã chọn
     if (state.selectedMonth === 'T10') {
       contentHtml += renderMonth10Matrix();
-    } else if (state.selectedMonth === 'T09' || state.selectedMonth === 'T08') {
+    } else if (state.selectedMonth === 'T11' || state.selectedMonth === 'T09' || state.selectedMonth === 'T08') {
       contentHtml += renderHistoryMonth(state.selectedMonth);
     } else {
       contentHtml += renderQuarterSummary();
@@ -11521,11 +11534,11 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
     }
   });
 
-  const STORAGE_KEY_USERS = 'PG_HOME_USERS_STORE_V4';
-  const STORAGE_KEY_SESSION = 'PG_HOME_ACTIVE_SESSION_V4';
-  const STORAGE_KEY_PO_STAMPS = 'PG_HOME_PO_RED_STAMPS_V4';
+  const STORAGE_KEY_USERS = 'PG_HOME_USERS_STORE_V5';
+  const STORAGE_KEY_SESSION = 'PG_HOME_ACTIVE_SESSION_V5';
+  const STORAGE_KEY_PO_STAMPS = 'PG_HOME_PO_RED_STAMPS_V5';
 
-  // DANH SÁCH TÀI KHOẢN MẪU KHỞI TẠO BAN ĐẦU CHUẨN DOANH NGHIỆP
+  // DANH SÁCH TÀI KHOẢN KHỞI TẠO BAN ĐẦU CHUẨN DOANH NGHIỆP (KHÔNG DÙNG MOCK ẢO)
   const INITIAL_USERS = [
     {
       id: 'USR-ADMIN-01',
@@ -11544,9 +11557,9 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
     {
       id: 'USR-XUONG-01',
       username: 'kythuat.vu',
-      fullName: 'Vũ',
+      fullName: 'Hoàng Công Vũ',
       email: 'vu.xuong@pghome.vn',
-      phone: '0986.722.324',
+      phone: '0911.006.880',
       role: ROLES.XUONG_VATTU,
       status: ACCOUNT_STATUS.ACTIVE,
       title: 'Kỹ Thuật & Vật Tư Xưởng',
@@ -11558,9 +11571,9 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
     {
       id: 'USR-SALE-01',
       username: 'sale.hiep',
-      fullName: 'Hiệp',
+      fullName: 'Tống Trần Hiệp',
       email: 'hiep.sale@pghome.vn',
-      phone: '0986.722.324',
+      phone: '0944.556.789',
       role: ROLES.VANPHONG_SALE,
       status: ACCOUNT_STATUS.ACTIVE,
       title: 'Sale Admin & Quản Trị Văn Phòng',
@@ -11572,9 +11585,9 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
     {
       id: 'USR-DUTOAN-01',
       username: 'dutoan.dung',
-      fullName: 'Dũng',
+      fullName: 'Đường Việt Dũng',
       email: 'dung.dutoan@pghome.vn',
-      phone: '0986.722.324',
+      phone: '0933.778.899',
       role: ROLES.DU_TOAN_SALE,
       status: ACCOUNT_STATUS.ACTIVE,
       title: 'Chuyên Viên Dự Toán & Bóc Tách Báo Giá',
@@ -11582,20 +11595,6 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
       approvedAt: '2025-02-10T10:30:00Z',
       approvedBy: 'USR-ADMIN-01',
       notes: 'Khởi tạo dự án, kiểm soát cost <= 54% trước khi xuất báo giá.'
-    },
-    {
-      id: 'USR-PENDING-DEMO',
-      username: 'nhanvien.moi',
-      fullName: 'Nguyễn Văn Mới',
-      email: 'moi.nv@pghome.vn',
-      phone: '0986.722.324',
-      role: null, // Chưa được gán quyền
-      status: ACCOUNT_STATUS.PENDING,
-      title: 'Nhân Sự Chờ Duyệt',
-      registeredAt: new Date().toISOString(),
-      approvedAt: null,
-      approvedBy: null,
-      notes: 'Tài khoản đăng ký tự do, đang chờ Giám Đốc xét duyệt vào phân hệ.'
     }
   ];
 
@@ -11632,11 +11631,73 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
     }
   }
 
-  function _loadSessionFromStorage() {
+  function loadUsers() {
+    _loadUsersFromStorage();
+    return _users;
+  }
+
+  // --- HÀM TÍNH CHỮ KÝ KIỂM TRA TOÀN VẸN SESSION CHỐNG GIẢ MẠO DEVTOOLS ---
+  function computeSessionSig(u) {
+    if (!u) return '';
+    const raw = (u.id || '') + '|' + (u.username || '') + '|' + (u.role || '') + '|PG_RBAC_V5_SALT';
+    let h = 0;
+    for (let i = 0; i < raw.length; i++) {
+      h = Math.imul(31, h) + raw.charCodeAt(i) | 0;
+    }
+    return 'SIG_V5_' + (h >>> 0).toString(16);
+  }
+
+  function saveCurrentSession(user) {
+    try {
+      const u = user || _currentUser;
+      if (u) {
+        const sessObj = {
+          id: u.id,
+          username: u.username,
+          fullName: u.fullName,
+          role: u.role,
+          status: u.status
+        };
+        sessObj._sig = computeSessionSig(sessObj);
+        u._sig = sessObj._sig;
+        localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(sessObj));
+      } else {
+        localStorage.removeItem(STORAGE_KEY_SESSION);
+      }
+    } catch (e) {
+      console.error('[W14 RBAC] Lỗi lưu session:', e);
+    }
+  }
+
+  function getCurrentSession() {
     try {
       const sessStr = localStorage.getItem(STORAGE_KEY_SESSION);
-      if (sessStr) {
-        const sessionUser = JSON.parse(sessStr);
+      if (!sessStr) return null;
+      const parsed = JSON.parse(sessStr);
+      const userList = loadUsers();
+      const origUser = userList.find(u => (parsed.id && u.id === parsed.id) || (parsed.username && u.username === parsed.username));
+
+      // Kiểm tra chữ ký chống giả mạo session qua DevTools
+      if (parsed._sig && parsed._sig !== computeSessionSig(parsed)) {
+        console.warn('[W14 RBAC HARD-LOCK] CẢNH BÁO: Phát hiện session bị chỉnh sửa trái phép qua DevTools! Đang tự động khôi phục role gốc...');
+        if (origUser) {
+          parsed.role = origUser.role;
+          parsed.status = origUser.status;
+          parsed._sig = computeSessionSig(parsed);
+          localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(parsed));
+        }
+      }
+      return parsed;
+    } catch (e) {
+      console.error('[W14 RBAC] Lỗi getCurrentSession:', e);
+      return null;
+    }
+  }
+
+  function _loadSessionFromStorage() {
+    try {
+      const sessionUser = getCurrentSession();
+      if (sessionUser) {
         // Cập nhật lại từ danh sách mới nhất để đảm bảo status/role đồng bộ
         const found = _users.find(u => u.id === sessionUser.id || u.username === sessionUser.username);
         _currentUser = found || null;
@@ -11650,21 +11711,7 @@ if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
   }
 
   function _saveSessionToStorage() {
-    try {
-      if (_currentUser) {
-        localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify({
-          id: _currentUser.id,
-          username: _currentUser.username,
-          fullName: _currentUser.fullName,
-          role: _currentUser.role,
-          status: _currentUser.status
-        }));
-      } else {
-        localStorage.removeItem(STORAGE_KEY_SESSION);
-      }
-    } catch (e) {
-      console.error('[W14 RBAC] Lỗi lưu session:', e);
-    }
+    saveCurrentSession(_currentUser);
   }
 
   function _notifyAuthChange() {
