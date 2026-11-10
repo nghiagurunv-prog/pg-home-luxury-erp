@@ -34,12 +34,17 @@ tmp/
 *.sqlite3
 *.log
 
-# Keep essential web_app assets
+# Keep essential web_app assets (except sensitive CCSC xlsx files)
 !web_app/*.pdf
-!web_app/*.xlsx
 !web_app/*.docx
 !web_app/*.jpg
 !web_app/*.png
+
+# Physical isolation: NEVER push Director & CCSC Local Vault to GitHub/Cloud
+local_admin_vault/
+web_app/*.xlsx
+_archive_rules_backup/
+_archive_scripts/
 
 # Ignore bulky raw Zalo pulled batches & backup snapshots inside data/
 data/backups/

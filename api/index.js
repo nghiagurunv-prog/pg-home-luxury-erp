@@ -290,6 +290,29 @@ function getStateUpdatedAt(state) {
   return null;
 }
 
+// --- CÔ LẬP DỮ LIỆU TRÊN BẢN DEPLOY (CHỈ GIỮ VĂN PHÒNG & XƯỞNG, CẮT BỎ CCSC & GIÁM ĐỐC) ---
+function sanitizeStateForDeploy(rawState) {
+  if (!rawState || typeof rawState !== 'object') return {};
+  const clean = { ...rawState };
+  // Tuyệt đối không trả dữ liệu CCSC 12 tháng, lợi nhuận bỏ túi BGĐ hoặc lương BLĐ lên Cloud Deploy
+  clean.ccscMonths = [];
+  if (Array.isArray(clean.expenses)) {
+    clean.expenses = clean.expenses.filter(item => item && item.id !== 'CP-03' && !String(item.name || '').includes('Ban Lãnh Đạo'));
+  }
+  if (Array.isArray(clean.users)) {
+    clean.users = clean.users.filter(u => u && u.username !== 'giamdoc' && u.role !== 'ADMIN');
+  }
+  if (Array.isArray(clean.accessories)) {
+    clean.accessories = clean.accessories.map(acc => {
+      if (!acc || typeof acc !== 'object') return acc;
+      const copy = { ...acc };
+      delete copy.profit;
+      return copy;
+    });
+  }
+  return clean;
+}
+
 async function parseRequestBody(req) {
   if (req.body !== undefined && req.body !== null) {
     if (typeof req.body === 'object') return req.body;
@@ -332,16 +355,26 @@ module.exports = async (req, res) => {
   const pathname = urlObj.pathname;
 
   if (req.method === 'GET') {
+    if (pathname === '/api/local-ccsc-vault' || pathname.startsWith('/local-admin-assets')) {
+      return res.status(403).json({
+        status: 'error',
+        code: 'LOCAL_DIRECTOR_ONLY',
+        message: 'Phân hệ CCSC & Giám Đốc chỉ chạy nội bộ trên máy tính Giám Đốc (127.0.0.1:8080).'
+      });
+    }
+
     if (pathname === '/api/load-state' || pathname === '/api/live-state') {
-      const state = await loadCurrentState();
+      const rawState = await loadCurrentState();
+      const state = sanitizeStateForDeploy(rawState);
       const provider = getCloudProvider();
       return res.status(200).json({
         status: 'ok',
+        edition: 'DEPLOY_OFFICE_WORKSHOP_ONLY',
         data: state,
         state,
         persistenceMode: provider ? 'cloud' : 'ephemeral-tmp',
         source: provider ? 'cloud' : 'disk',
-        updatedAt: getStateUpdatedAt(state)
+        updatedAt: getStateUpdatedAt(rawState)
       });
     }
 

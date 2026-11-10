@@ -319,6 +319,51 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         clean_path = unquote(self.path.split("?", 1)[0])
+        local_vault_dir = os.path.join(os.path.dirname(DATA_DIR), "local_admin_vault")
+
+        # --- PHỤC VỤ BẢN NỘI BỘ MÁY TÍNH GIÁM ĐỐC & CCSC (127.0.0.1:8080 / localhost:8080) ---
+        if clean_path == "/api/local-ccsc-vault":
+            vault_json = os.path.join(local_vault_dir, "ccsc_director_vault.json")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            if os.path.exists(vault_json):
+                with open(vault_json, "rb") as vf:
+                    self.wfile.write(vf.read())
+            else:
+                self.wfile.write(b'{"status":"empty"}')
+            return
+
+        if clean_path == "/local-admin-assets/director_app_full.js":
+            full_js = os.path.join(local_vault_dir, "director_app_full.js")
+            if os.path.exists(full_js):
+                self.send_response(200)
+                self.send_header("Content-Type", "application/javascript; charset=utf-8")
+                self.end_headers()
+                with open(full_js, "rb") as jf:
+                    self.wfile.write(jf.read())
+                return
+
+        if clean_path in ("/", "/index.html", "/admin", "/ccsc") and "edition=deploy" not in self.path:
+            director_html = os.path.join(local_vault_dir, "director_ccsc_full.html")
+            if os.path.exists(director_html):
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.end_headers()
+                with open(director_html, "rb") as hf:
+                    self.wfile.write(hf.read())
+                return
+
+        if clean_path in ("/deploy", "/vp-xuong"):
+            deploy_html = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html")
+            if os.path.exists(deploy_html):
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.end_headers()
+                with open(deploy_html, "rb") as df:
+                    self.wfile.write(df.read())
+                return
+
         if clean_path in ("/api/load-state", "/api/live-state"):
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")

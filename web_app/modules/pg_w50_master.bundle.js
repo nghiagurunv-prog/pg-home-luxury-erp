@@ -1,94 +1,8 @@
-/**
- * ============================================================================
- * PG HOME LUXURY - ENTERPRISE OPTIMIZATION ARCHITECTURE
- * HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG
- * THƯƠNG HIỆU: CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY
- * MST/ĐKKD: 042203002931 | HOTLINE: 0986.722.324
- * ĐỊA CHỈ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * ============================================================================
- * MASTER JAVASCRIPT BUNDLE: pg_w50_master.bundle.js
- * BUILD TIMESTAMP: 2026-11-08 22:25:14
- * TOTAL MODULES: 55 JS Modules (W01–W40, W43–W50)
- * TOTAL SOURCE BYTES: 2,183,587 bytes
- * TARGET: Production Web Application Hub & Offline Runtime
- * ============================================================================
- * BUILD MANIFEST (SHA-256 INTEGRITY MATRIX):
- * [01] w01_executive_kpi_bar.js             |   33,647 B | SHA256: a0d9330df77da6d5fbe20cd686ab9b4e4027e00c430e919517f9f05118d6e850
- * [02] w02_ccsc_12months_engine.js          |   33,535 B | SHA256: 3fb090b142b4a27d7861550a9acc9f71e5da78f45107d06dd2ee3806110f19d1
- * [03] w03_core_worker_fund_hoa_hao.js      |   41,505 B | SHA256: 49d35b527f3cb214ac1086b4894c5e61730242003366d8e7628ce6d1b0a2bff5
- * [04] w04_sales_bonus_500m_lock.js         |   30,840 B | SHA256: ccca26b0ed82f782bb025378e28903d4e68cd092d25998c30b1f452df637ff49
- * [05] w05_attendance_t10_matrix.js         |   46,061 B | SHA256: 578fe2c76871516609a101fb8fdb4594ca06f5fea5f28b566541f08e5336181d
- * [06] w06_project_bac_phat_tracker.js      |   28,341 B | SHA256: c245e3a7a1ebe4d088652f0457025da67d5f075471f833ec912fa4769e67811e
- * [07] w07_project_anh_nam_cnc_norm.js      |   57,136 B | SHA256: 53264435f86654c8a30bc4ecb5518b05e8aae0022b01f201007042bfb2fddfd3
- * [08] w08_pricing_3tiers_validator.js      |   17,836 B | SHA256: 12d1b8053524fb9ec720910f30a735c345563b101bf09849b6cdc5ff49dc2b62
- * [09] w09_intersection_deduction_tool.js   |   40,598 B | SHA256: 209250f7530504e30c8f81aa568d5d1bab28659d2c4bae9aa845bc8faa5053f2
- * [10] w10_supplier_board_3ncc.js           |   82,411 B | SHA256: b2e2353a7567d00edb801defdbb5f7edfd130b73447c5174cd0de0d84eb13910
- * [11] w11_supplier_fitting_glass_stone.js  |   64,760 B | SHA256: f7829dd121e8c44e649f6bbc404c9df30f8663e33ec8ae3c05bbce1420448376
- * [12] w12_three_layer_cashflow_guard.js    |   34,097 B | SHA256: c698823d6b0d7320c147fc517afa2488c0f1b8c628d62a2a4d0fdb6e94e0a5d2
- * [13] w13_red_stamp_po_approval.js         |   43,816 B | SHA256: e9005d48baf92f89be2c3da977ccd143d99135f995ea17a76d94476725a51dea
- * [14] w14_rbac_4_portals_guard.js          |   47,568 B | SHA256: 99055e1bc5b208b1aa31a8927c322457c03109f521e85fdecd5a1b298bb852fe
- * [15] w15_legal_brand_enforcer.js          |   12,458 B | SHA256: 0cd2c15b1603b2026d7972a522c38dfe319208e70346b2c8f918cbbc9106140f
- * [16] w16_zalo_v6_stealth_cockpit.js       |   41,775 B | SHA256: 791db345ace06166d85005c44b00acad18dfc7f2968b55f559a498fc79af465e
- * [17] w17_zalo_175_groups_explorer.js      |   40,152 B | SHA256: e5375a8df09285d0dd75b64c13500c2adcbd37023463774a193908034f00325e
- * [18] w18_filenoise_xor_status.js          |    4,773 B | SHA256: 35c5938bfff2f8fbe143b97b5f75e17f06dbe273972c3c222f11923d8a56b4e2
- * [19] w19_zalo_staging_approval_queue.js   |   52,265 B | SHA256: e8550e2c06a95db99b177324de6b6df8d3c439b375e941cde7a717712b4e296f
- * [20] w20_contracts_docx_vault.js          |    5,474 B | SHA256: fd2bcaabb18a199492ff56c1d5cc2b09a1b444867bc499abf94c5ef5ce656b22
- * [21] w21_quotations_excel_vault.js        |   61,124 B | SHA256: 0b180175cb5f7b4dec427d47e7e666378741582ed575165a157fa7a029b2165d
- * [22] w22_technical_drawings_pdf_vault.js  |    3,771 B | SHA256: d47a24c5f4f7f50c468cbda408c1f22a6cd3661b2907eff16c584bad89f4925b
- * [23] w23_po_zalo_2026_analytics.js        |   52,893 B | SHA256: 59afac6ce1e0b949d165b67e6d76bbcb366bed158094f11719f17c28abcaf6be
- * [24] w24_material_catalog_search.js       |   34,720 B | SHA256: 4ed42c6b3ca06f79c257dc82a86d885ed2cf1b3d4b133eb543d92194f8cfb143
- * [25] w25_lam_giang_debt_reconciler.js     |   34,973 B | SHA256: 75b8c0192a0727cec34dbc6662be23ac9c8188d71fa1d60851d1a5d6a8968b31
- * [26] w26_print_a4_quotation_engine.js     |   43,006 B | SHA256: d4b5b83dae929931f481800cd06e65cc8d8810595dff470bd0101945def26990
- * [27] w27_csv_excel_export_helper.js       |   31,355 B | SHA256: 98e4e05dab7322ee7b0ac158ca1962cef73b14b1ac19377a2e492818d08b8af1
- * [28] w28_offline_sync_outbox.js           |   12,675 B | SHA256: a48c787cc6b457bcc4088d3d1ae644264111d198c10a475885033ed114bd99ac
- * [29] w29_command_palette_ctrl_k.js        |   24,943 B | SHA256: d03d9d6b2e84d9aacf48ba1cb4913f1fae286cffaf76e58f602b29adc8cd6fc4
- * [30] w30_realtime_health_badge.js         |   17,371 B | SHA256: 511da82aa17000790b3bfaa27087ce18608aeed43946b2622bc4d6d23ef9b72a
- * [31] w31_solid_wood_separator.js          |   29,585 B | SHA256: 569acf922025762b870cfd10a6799c57cdc542382fc09694354162d0234fe437
- * [32] w32_cnc_8categories_reference.js     |   24,253 B | SHA256: 444cb20a43ff0b86a2cef8931512c2a206cf008a71ab5bf6074a30b5d322c422
- * [33] w33_verified_entities_inspector.js   |  102,855 B | SHA256: 104ff6e8f2e81cb9bfb3a2eb0f4454584d0132a90fc04db500a2789e9bec9d4f
- * [34] w34_telemetry_performance_chart.js   |   34,116 B | SHA256: f52eb550c203f892602871923a769fad185bc55f1810c8c48fa343b8a19ac349
- * [35] w35_zero_trust_audit_viewer.js       |   33,228 B | SHA256: 1525c934fc520d184ef36830a52d272ddffda2125a561baaa84cdd10dd0dfb6a
- * [36] w36_customer_receivables_aging.js    |    3,793 B | SHA256: fdf37243a4ac6390e4a659343aaa72fa6a64462cf26dd860c335c7d900b0af4f
- * [37] w37_workshop_productivity_kpi.js     |    3,890 B | SHA256: 6c9e6c29f1fed35bb5f763873046ce0e65e47be0b63954139a80dbe5d6c4ac44
- * [38] w38_management_salary_pool.js        |   52,900 B | SHA256: c552dcae965d9c8705f83e0e488b70a62a610c8abf7e832f256837b35c1522e2
- * [39] w39_debt_60min_sla_timer.js          |   32,132 B | SHA256: 9e9c79320472197ded5b911f821c16237682fc17e28c65e730f2ff3489085c63
- * [40] w40_leveldb_keyword_highlighter.js   |   16,119 B | SHA256: 8c69f958803aa853c400b7d6f46857a1a5602cab8dbe657ee5650ddcbb5a0c68
- * [41] w43_keyboard_shortcuts_manager.js    |   11,833 B | SHA256: 1d50cd4f0a6ccc34edf492e9540c6c3c2a395a1e3b72828f770ef7a36f10de5c
- * [42] w44_data_integrity_guard.js          |   29,758 B | SHA256: fcb01fbc8438c4b1caab17ad685fcb8d2f1924226eac06605072f4e1583785ba
- * [43] w45_safe_pocket_summary_card.js      |    4,909 B | SHA256: 6bd7f2cbff636ee1f25df42277f6227d71cb3573b540e1aeb7b237d4550c61e6
- * [44] w46_mkt_safety_monitor_widget.js     |   14,645 B | SHA256: 880a41a8320e43aaeb16ff5327ca9aa64d65178dd6875656aa79a6a940143b95
- * [45] w47_audit_trail_timeline.js          |   35,347 B | SHA256: fe3adab31f447d83001cd02e5eccc9419a75ee3ca13aa0d827f930d110157cf1
- * [46] w48_delta_cursor_inspector.js        |   43,641 B | SHA256: 1be93ecf43dc7f8cb280d7491b6159a171dfc93f899597787e9f82bf9fdc8341
- * [47] w49_cloud_backup_snapshot.js         |   22,346 B | SHA256: f20a5ef8326d4f7d3c1bb65eca8e641c3e82d6f689147d494dffaddbd00b2b14
- * [48] w51_luxury_3d_showroom.js            |   68,505 B | SHA256: 164857a9673eb7bf46cc85a301194b1b806bc86a51637e25537ffdd09cd29fb8
- * [49] w52_cad_bom_instant_quote.js         |  101,359 B | SHA256: cb957da4f277236190085b81c7a403cd5187b44da17a48e66ddfffc92e454d11
- * [50] w53_zalo_hybrid_rag_copilot.js       |   72,273 B | SHA256: f15cbe2764204eef349b6596d5b59f986724be120ef07f9b841a5270b9809f59
- * [51] w54_einvoice_3way_audit.js           |  120,707 B | SHA256: eb479979f344eb5df8e676186b3e1d304e377c749ca3068bcd4a7cfaa62c5776
- * [52] w55_workshop_oee_dashboard.js        |   58,441 B | SHA256: 26be6b0d3ddee03ead30d901dc567ec867b44f3ea2e0a8b669102f3dab81c64e
- * [53] w56_realtime_crdt_client.js          |   86,787 B | SHA256: 254b633b2f24dd3f38161bc8ceba32e3c67d7c587d67493e4d089e6870d6511f
- * [54] w57_cnc_nesting_qr_offcut.js         |   80,231 B | SHA256: a0b2aed62f80606d6903acfa7ac96b307304bb485e8ee7cca221386b34293930
- * [55] w50_master_hub_loader.js             |   24,055 B | SHA256: 4a2e9d5eb6f6eb9de38f389053871aac96a5c8d724e51e3181ea74bfa541c898
- * ============================================================================
- */
+/* PG HOME LUXURY ERP - MASTER MODULE BUNDLE (2-EDITION ISOLATION AWARE) */
+window.__PG_IS_LOCAL_DIRECTOR_PC__ = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && !window.location.search.includes('edition=deploy');
 
-// Global bundle namespace initialization & safety gate
-if (typeof window !== 'undefined') {
-    window.__PG_W50_BUNDLE_INFO__ = Object.freeze({
-        name: 'pg_w50_master.bundle.js',
-        buildDate: '2026-11-08 22:25:14',
-        moduleCount: 55,
-        totalSourceBytes: 2183587,
-        brand: 'HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG',
-        mst: '042203002931',
-        hotline: '0986.722.324',
-        address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh'
-    });
-}
-
-// ============================================================================
-// [MODULE 01/55] w01_executive_kpi_bar.js
-// SOURCE SIZE: 33,647 bytes | SHA-256: a0d9330df77da6d5fbe20cd686ab9b4e4027e00c430e919517f9f05118d6e850
-// ============================================================================
+/* === MODULE: w01_executive_kpi_bar.js (LOCAL DIRECTOR PC ONLY) === */
+if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
 /**
  * ==============================================================================
  * PHÂN HỆ QUẢN TRỊ GIÁM ĐỐC (ADMIN) - PG HOME LUXURY
@@ -888,11 +802,10 @@ if (typeof window !== 'undefined') {
     };
 }));
 
+}
 
-// ============================================================================
-// [MODULE 02/55] w02_ccsc_12months_engine.js
-// SOURCE SIZE: 33,535 bytes | SHA-256: 3fb090b142b4a27d7861550a9acc9f71e5da78f45107d06dd2ee3806110f19d1
-// ============================================================================
+/* === MODULE: w02_ccsc_12months_engine.js (LOCAL DIRECTOR PC ONLY) === */
+if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
 /**
  * =========================================================================================
  * HỆ THỐNG QUẢN TRỊ & CCSC NỘI THẤT PG HOME LUXURY - PHÚ GIA HÀ TĨNH
@@ -1580,11 +1493,10 @@ if (typeof window !== 'undefined') {
   };
 });
 
+}
 
-// ============================================================================
-// [MODULE 03/55] w03_core_worker_fund_hoa_hao.js
-// SOURCE SIZE: 41,505 bytes | SHA-256: 49d35b527f3cb214ac1086b4894c5e61730242003366d8e7628ce6d1b0a2bff5
-// ============================================================================
+/* === MODULE: w03_core_worker_fund_hoa_hao.js (LOCAL DIRECTOR PC ONLY) === */
+if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
 /**
  * ============================================================================
  * MODULE W03: QUẢN TRỊ QUỸ THỢ NÒNG CỐT HÒA & HÀO (LUẬT SẮT C1)
@@ -2267,11 +2179,10 @@ if (typeof window !== 'undefined') {
 
 })(typeof window !== "undefined" ? window : this);
 
+}
 
-// ============================================================================
-// [MODULE 04/55] w04_sales_bonus_500m_lock.js
-// SOURCE SIZE: 30,840 bytes | SHA-256: ccca26b0ed82f782bb025378e28903d4e68cd092d25998c30b1f452df637ff49
-// ============================================================================
+/* === MODULE: w04_sales_bonus_500m_lock.js (LOCAL DIRECTOR PC ONLY) === */
+if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
 /**
  * ==============================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI BỘ PG HOME LUXURY - PHÚ GIA
@@ -2855,11 +2766,9 @@ if (typeof window !== 'undefined') {
   return PG_Modules_W04;
 });
 
+}
 
-// ============================================================================
-// [MODULE 05/55] w05_attendance_t10_matrix.js
-// SOURCE SIZE: 46,061 bytes | SHA-256: 578fe2c76871516609a101fb8fdb4594ca06f5fea5f28b566541f08e5336181d
-// ============================================================================
+/* === MODULE: w05_attendance_t10_matrix.js === */
 /**
  * HỆ THỐNG QUẢN TRỊ NỘI BỘ PG HOME LUXURY
  * Module W05: MA TRẬN CHẤM CÔNG ĐIỂM DANH HÀNG NGÀY & GIỜ TĂNG CA OT CHUẨN T8-T10
@@ -4009,10 +3918,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 06/55] w06_project_bac_phat_tracker.js
-// SOURCE SIZE: 28,341 bytes | SHA-256: c245e3a7a1ebe4d088652f0457025da67d5f075471f833ec912fa4769e67811e
-// ============================================================================
+/* === MODULE: w06_project_bac_phat_tracker.js === */
 /**
  * =========================================================================================
  * MODULE W06: THEO DÕI CHUYÊN SÂU HỢP ĐỒNG & CÔNG NỢ BÁC PHÁT (ĐƯỜNG 26/03)
@@ -4483,10 +4389,7 @@ if (typeof window !== 'undefined') {
 })(typeof window !== 'undefined' ? window : this);
 
 
-// ============================================================================
-// [MODULE 07/55] w07_project_anh_nam_cnc_norm.js
-// SOURCE SIZE: 57,136 bytes | SHA-256: 53264435f86654c8a30bc4ecb5518b05e8aae0022b01f201007042bfb2fddfd3
-// ============================================================================
+/* === MODULE: w07_project_anh_nam_cnc_norm.js === */
 /**
  * MODULE W07: BỘ MÁY TÍNH ĐỊNH MỨC TẤM CẮT CNC THỰC CHIẾN & KIỂM TOÁN DỰ ÁN NHÀ ANH NAM
  * 
@@ -5435,10 +5338,7 @@ if (typeof window !== 'undefined') {
 })();
 
 
-// ============================================================================
-// [MODULE 08/55] w08_pricing_3tiers_validator.js
-// SOURCE SIZE: 17,836 bytes | SHA-256: 12d1b8053524fb9ec720910f30a735c345563b101bf09849b6cdc5ff49dc2b62
-// ============================================================================
+/* === MODULE: w08_pricing_3tiers_validator.js === */
 /**
  * ============================================================================
  * HỆ THỐNG QUẢN TRỊ & DỰ TOÁN BÁO GIÁ PHÚ GIA (PG HOME LUXURY)
@@ -5822,10 +5722,7 @@ if (typeof window !== 'undefined') {
 }));
 
 
-// ============================================================================
-// [MODULE 09/55] w09_intersection_deduction_tool.js
-// SOURCE SIZE: 40,598 bytes | SHA-256: 209250f7530504e30c8f81aa568d5d1bab28659d2c4bae9aa845bc8faa5053f2
-// ============================================================================
+/* === MODULE: w09_intersection_deduction_tool.js === */
 /**
  * PG HOME LUXURY - CÔNG CỤ ĐO LƯỜNG & KHẤU TRỪ DỰ TOÁN SALE (W09)
  * File: f:\PG Home - Quản trị\web_app\modules\w09_intersection_deduction_tool.js
@@ -6585,10 +6482,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 10/55] w10_supplier_board_3ncc.js
-// SOURCE SIZE: 82,411 bytes | SHA-256: b2e2353a7567d00edb801defdbb5f7edfd130b73447c5174cd0de0d84eb13910
-// ============================================================================
+/* === MODULE: w10_supplier_board_3ncc.js === */
 /**
  * ============================================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI THẤT PG HOME LUXURY - CÔNG NHÂN FLASH W10
@@ -8506,10 +8400,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 11/55] w11_supplier_fitting_glass_stone.js
-// SOURCE SIZE: 64,760 bytes | SHA-256: f7829dd121e8c44e649f6bbc404c9df30f8663e33ec8ae3c05bbce1420448376
-// ============================================================================
+/* === MODULE: w11_supplier_fitting_glass_stone.js === */
 /**
  * ==============================================================================================
  * HỆ THỐNG QUẢN TRỊ PG HOME LUXURY - PHÂN HỆ ĐỐI SOÁT NHÀ CUNG CẤP PHỤ TRỢ (MODULE W11)
@@ -9693,10 +9584,7 @@ if (typeof window !== 'undefined') {
 })(typeof window !== 'undefined' ? window : this);
 
 
-// ============================================================================
-// [MODULE 12/55] w12_three_layer_cashflow_guard.js
-// SOURCE SIZE: 34,097 bytes | SHA-256: c698823d6b0d7320c147fc517afa2488c0f1b8c628d62a2a4d0fdb6e94e0a5d2
-// ============================================================================
+/* === MODULE: w12_three_layer_cashflow_guard.js === */
 /**
  * ============================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI BỘ PG HOME LUXURY - PHÂN HỆ GIÁM ĐỐC & TÀI CHÍNH
@@ -10461,10 +10349,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 13/55] w13_red_stamp_po_approval.js
-// SOURCE SIZE: 43,816 bytes | SHA-256: e9005d48baf92f89be2c3da977ccd143d99135f995ea17a76d94476725a51dea
-// ============================================================================
+/* === MODULE: w13_red_stamp_po_approval.js === */
 /**
  * ==============================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI THẤT & XÂY DỰNG PHÚ GIA (PG HOME LUXURY)
@@ -11469,10 +11354,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 14/55] w14_rbac_4_portals_guard.js
-// SOURCE SIZE: 47,568 bytes | SHA-256: 99055e1bc5b208b1aa31a8927c322457c03109f521e85fdecd5a1b298bb852fe
-// ============================================================================
+/* === MODULE: w14_rbac_4_portals_guard.js === */
 /**
  * =================================================================================================
  * HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA PG HOME LUXURY - PHÚ GIA
@@ -12548,10 +12430,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 15/55] w15_legal_brand_enforcer.js
-// SOURCE SIZE: 12,458 bytes | SHA-256: 0cd2c15b1603b2026d7972a522c38dfe319208e70346b2c8f918cbbc9106140f
-// ============================================================================
+/* === MODULE: w15_legal_brand_enforcer.js === */
 /**
  * =========================================================================================
  * MODULE W15: PG HOME LEGAL & BRAND DISCIPLINE ENFORCER (BẢO VỆ PHÁP LÝ & THƯƠNG HIỆU)
@@ -12872,10 +12751,7 @@ if (typeof window !== 'undefined') {
 }));
 
 
-// ============================================================================
-// [MODULE 16/55] w16_zalo_v6_stealth_cockpit.js
-// SOURCE SIZE: 41,775 bytes | SHA-256: 791db345ace06166d85005c44b00acad18dfc7f2968b55f559a498fc79af465e
-// ============================================================================
+/* === MODULE: w16_zalo_v6_stealth_cockpit.js === */
 /**
  * MODULE W16: ZALO V6.0 STEALTH READER & FINANCIAL COCKPIT
  * Bảng Điều Khiển Giám Sát Ngầm 100% Zero-Disruption Zalo Stealth Engine V6.0
@@ -13823,10 +13699,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 17/55] w17_zalo_175_groups_explorer.js
-// SOURCE SIZE: 40,152 bytes | SHA-256: e5375a8df09285d0dd75b64c13500c2adcbd37023463774a193908034f00325e
-// ============================================================================
+/* === MODULE: w17_zalo_175_groups_explorer.js === */
 /**
  * ====================================================================================================
  * PHÚ GIA HOME LUXURY - ENTERPRISE MANAGEMENT SYSTEM
@@ -14904,10 +14777,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 18/55] w18_filenoise_xor_status.js
-// SOURCE SIZE: 4,773 bytes | SHA-256: 35c5938bfff2f8fbe143b97b5f75e17f06dbe273972c3c222f11923d8a56b4e2
-// ============================================================================
+/* === MODULE: w18_filenoise_xor_status.js === */
 /**
  * MODULE W18: ZALO 157 PRIVATE CHATS & FILENOISE XOR 0x93 DECODER STATUS
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
@@ -14993,10 +14863,7 @@ if (typeof window !== 'undefined') {
 
 
 
-// ============================================================================
-// [MODULE 19/55] w19_zalo_staging_approval_queue.js
-// SOURCE SIZE: 52,265 bytes | SHA-256: e8550e2c06a95db99b177324de6b6df8d3c439b375e941cde7a717712b4e296f
-// ============================================================================
+/* === MODULE: w19_zalo_staging_approval_queue.js === */
 /**
  * =========================================================================================
  * MODULE W19: HÀNG ĐỢI DUYỆT NHANH HỘP THƯ CHỜ ZALO (ZALO STAGING APPROVAL QUEUE)
@@ -16470,10 +16337,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 20/55] w20_contracts_docx_vault.js
-// SOURCE SIZE: 5,474 bytes | SHA-256: fd2bcaabb18a199492ff56c1d5cc2b09a1b444867bc499abf94c5ef5ce656b22
-// ============================================================================
+/* === MODULE: w20_contracts_docx_vault.js === */
 /**
  * MODULE W20: KHO 40 HỢP ĐỒNG & BIÊN BẢN NGHIỆM THU DOCX (CONTRACTS VAULT)
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
@@ -16614,10 +16478,7 @@ if (typeof window !== 'undefined') {
 
 
 
-// ============================================================================
-// [MODULE 21/55] w21_quotations_excel_vault.js
-// SOURCE SIZE: 61,124 bytes | SHA-256: 0b180175cb5f7b4dec427d47e7e666378741582ed575165a157fa7a029b2165d
-// ============================================================================
+/* === MODULE: w21_quotations_excel_vault.js === */
 /**
  * ==============================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI THẤT PG HOME LUXURY - CÔNG NHÂN FLASH W21
@@ -18184,10 +18045,7 @@ if (typeof window !== 'undefined') {
 }));
 
 
-// ============================================================================
-// [MODULE 22/55] w22_technical_drawings_pdf_vault.js
-// SOURCE SIZE: 3,771 bytes | SHA-256: d47a24c5f4f7f50c468cbda408c1f22a6cd3661b2907eff16c584bad89f4925b
-// ============================================================================
+/* === MODULE: w22_technical_drawings_pdf_vault.js === */
 /**
  * MODULE W22: KHO 407 BẢN VẼ KỸ THUẬT PDF & HỒ SƠ NESTING CNC (PDF VAULT)
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
@@ -18264,10 +18122,7 @@ if (typeof window !== 'undefined') {
 
 
 
-// ============================================================================
-// [MODULE 23/55] w23_po_zalo_2026_analytics.js
-// SOURCE SIZE: 52,893 bytes | SHA-256: 59afac6ce1e0b949d165b67e6d76bbcb366bed158094f11719f17c28abcaf6be
-// ============================================================================
+/* === MODULE: w23_po_zalo_2026_analytics.js === */
 /**
  * ====================================================================================================
  * PG HOME LUXURY - QUẢN TRỊ NỘI BỘ & TỰ ĐỘNG HÓA
@@ -19267,10 +19122,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 24/55] w24_material_catalog_search.js
-// SOURCE SIZE: 34,720 bytes | SHA-256: 4ed42c6b3ca06f79c257dc82a86d885ed2cf1b3d4b133eb543d92194f8cfb143
-// ============================================================================
+/* === MODULE: w24_material_catalog_search.js === */
 /**
  * ==============================================================================
  * MODULE W24: THƯ VIỆN TRA CỨU NHANH ĐƠN GIÁ VẬT TƯ & MÃ VÁN / PHỤ KIỆN 2026
@@ -20029,10 +19881,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 25/55] w25_lam_giang_debt_reconciler.js
-// SOURCE SIZE: 34,973 bytes | SHA-256: 75b8c0192a0727cec34dbc6662be23ac9c8188d71fa1d60851d1a5d6a8968b31
-// ============================================================================
+/* === MODULE: w25_lam_giang_debt_reconciler.js === */
 /**
  * =========================================================================================
  * HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA PG HOME LUXURY - PHÚ GIA
@@ -20722,10 +20571,7 @@ if (typeof window !== 'undefined') {
 }));
 
 
-// ============================================================================
-// [MODULE 26/55] w26_print_a4_quotation_engine.js
-// SOURCE SIZE: 43,006 bytes | SHA-256: d4b5b83dae929931f481800cd06e65cc8d8810595dff470bd0101945def26990
-// ============================================================================
+/* === MODULE: w26_print_a4_quotation_engine.js === */
 /**
  * ===============================================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI BỘ PG HOME LUXURY - MODULE W26
@@ -21938,10 +21784,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 27/55] w27_csv_excel_export_helper.js
-// SOURCE SIZE: 31,355 bytes | SHA-256: 98e4e05dab7322ee7b0ac158ca1962cef73b14b1ac19377a2e492818d08b8af1
-// ============================================================================
+/* === MODULE: w27_csv_excel_export_helper.js === */
 /**
  * ==============================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI THẤT & XÂY DỰNG PG HOME LUXURY
@@ -22630,10 +22473,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 28/55] w28_offline_sync_outbox.js
-// SOURCE SIZE: 12,675 bytes | SHA-256: a48c787cc6b457bcc4088d3d1ae644264111d198c10a475885033ed114bd99ac
-// ============================================================================
+/* === MODULE: w28_offline_sync_outbox.js === */
 /**
  * PG HOME LUXURY - MODULE W28: OFFLINE SYNC OUTBOX
  * Quản lý hàng đợi lưu trữ Offline (IndexedDB / LocalStorage Outbox)
@@ -23026,10 +22866,7 @@ if (typeof window !== 'undefined') {
 })(window);
 
 
-// ============================================================================
-// [MODULE 29/55] w29_command_palette_ctrl_k.js
-// SOURCE SIZE: 24,943 bytes | SHA-256: d03d9d6b2e84d9aacf48ba1cb4913f1fae286cffaf76e58f602b29adc8cd6fc4
-// ============================================================================
+/* === MODULE: w29_command_palette_ctrl_k.js === */
 /**
  * ============================================================================
  * HỆ THỐNG QUẢN TRỊ & VẬN HÀNH PG HOME LUXURY 2026
@@ -23668,10 +23505,7 @@ if (typeof window !== 'undefined') {
 })(window, document);
 
 
-// ============================================================================
-// [MODULE 30/55] w30_realtime_health_badge.js
-// SOURCE SIZE: 17,371 bytes | SHA-256: 511da82aa17000790b3bfaa27087ce18608aeed43946b2622bc4d6d23ef9b72a
-// ============================================================================
+/* === MODULE: w30_realtime_health_badge.js === */
 /**
  * PG HOME LUXURY - REALTIME SYSTEM HEALTH BADGE MODULE (W30)
  * Module: window.PG_Modules_W30
@@ -24239,10 +24073,7 @@ if (typeof window !== 'undefined') {
 })(window, document);
 
 
-// ============================================================================
-// [MODULE 31/55] w31_solid_wood_separator.js
-// SOURCE SIZE: 29,585 bytes | SHA-256: 569acf922025762b870cfd10a6799c57cdc542382fc09694354162d0234fe437
-// ============================================================================
+/* === MODULE: w31_solid_wood_separator.js === */
 /**
  * PHU GIA LUXURY INTERIOR - QUY CHUẨN QUẢN TRỊ CCSC & BÓC TÁCH VẬT TƯ
  * MODULE W31: BỘ LỌC BÓC TÁCH TỰ ĐỘNG GỖ TỰ NHIÊN (GỖ THỊT) & SOFA / ĐỒ MUA NGOÀI
@@ -24792,10 +24623,7 @@ if (typeof window !== 'undefined') {
 }));
 
 
-// ============================================================================
-// [MODULE 32/55] w32_cnc_8categories_reference.js
-// SOURCE SIZE: 24,253 bytes | SHA-256: 444cb20a43ff0b86a2cef8931512c2a206cf008a71ab5bf6074a30b5d322c422
-// ============================================================================
+/* === MODULE: w32_cnc_8categories_reference.js === */
 /**
  * ==============================================================================================
  * HỆ THỐNG QUẢN TRỊ & DỰ TOÁN SẢN XUẤT PG HOME LUXURY - PHÚ GIA NỘI THẤT
@@ -25237,10 +25065,7 @@ if (typeof window !== 'undefined') {
 }));
 
 
-// ============================================================================
-// [MODULE 33/55] w33_verified_entities_inspector.js
-// SOURCE SIZE: 102,855 bytes | SHA-256: 104ff6e8f2e81cb9bfb3a2eb0f4454584d0132a90fc04db500a2789e9bec9d4f
-// ============================================================================
+/* === MODULE: w33_verified_entities_inspector.js === */
 /**
  * =================================================================================================
  * PG HOME LUXURY - QUẢN TRỊ TÀI CHÍNH & VẬT TƯ THỰC CHIẾN
@@ -27200,10 +27025,7 @@ if (typeof window !== 'undefined') {
 }));
 
 
-// ============================================================================
-// [MODULE 34/55] w34_telemetry_performance_chart.js
-// SOURCE SIZE: 34,116 bytes | SHA-256: f52eb550c203f892602871923a769fad185bc55f1810c8c48fa343b8a19ac349
-// ============================================================================
+/* === MODULE: w34_telemetry_performance_chart.js === */
 /**
  * ==============================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI BỘ PG HOME LUXURY - MODULE W34
@@ -27802,10 +27624,7 @@ if (typeof window !== 'undefined') {
 });
 
 
-// ============================================================================
-// [MODULE 35/55] w35_zero_trust_audit_viewer.js
-// SOURCE SIZE: 33,228 bytes | SHA-256: 1525c934fc520d184ef36830a52d272ddffda2125a561baaa84cdd10dd0dfb6a
-// ============================================================================
+/* === MODULE: w35_zero_trust_audit_viewer.js === */
 /**
  * ==============================================================================
  * PHÂN HỆ QUẢN TRỊ PG HOME LUXURY - CÔNG NHÂN FLASH W35
@@ -28680,10 +28499,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 })(window);
 
 
-// ============================================================================
-// [MODULE 36/55] w36_customer_receivables_aging.js
-// SOURCE SIZE: 3,793 bytes | SHA-256: fdf37243a4ac6390e4a659343aaa72fa6a64462cf26dd860c335c7d900b0af4f
-// ============================================================================
+/* === MODULE: w36_customer_receivables_aging.js === */
 /**
  * MODULE W36: PHÂN TÍCH TUỔI NỢ PHẢI THU KHÁCH HÀNG & LỊCH THU TIỀN (RECEIVABLES AGING)
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
@@ -28782,10 +28598,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 
 
 
-// ============================================================================
-// [MODULE 37/55] w37_workshop_productivity_kpi.js
-// SOURCE SIZE: 3,890 bytes | SHA-256: 6c9e6c29f1fed35bb5f763873046ce0e65e47be0b63954139a80dbe5d6c4ac44
-// ============================================================================
+/* === MODULE: w37_workshop_productivity_kpi.js === */
 /**
  * MODULE W37: HIỆU SUẤT SẢN XUẤT XƯỞNG & ĐỐI SOÁT QUỸ KHOÁN THỢ 15% (WORKSHOP PRODUCTIVITY KPI)
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
@@ -28895,10 +28708,8 @@ if (GetForegroundWindow() === hZaloWnd) {
 
 
 
-// ============================================================================
-// [MODULE 38/55] w38_management_salary_pool.js
-// SOURCE SIZE: 52,900 bytes | SHA-256: c552dcae965d9c8705f83e0e488b70a62a610c8abf7e832f256837b35c1522e2
-// ============================================================================
+/* === MODULE: w38_management_salary_pool.js (LOCAL DIRECTOR PC ONLY) === */
+if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
 /**
  * ==============================================================================
  * HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA PG HOME LUXURY
@@ -29830,11 +29641,9 @@ if (GetForegroundWindow() === hZaloWnd) {
   };
 }));
 
+}
 
-// ============================================================================
-// [MODULE 39/55] w39_debt_60min_sla_timer.js
-// SOURCE SIZE: 32,132 bytes | SHA-256: 9e9c79320472197ded5b911f821c16237682fc17e28c65e730f2ff3489085c63
-// ============================================================================
+/* === MODULE: w39_debt_60min_sla_timer.js === */
 /**
  * =========================================================================================
  * HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA PHÚ GIA - PG HOME LUXURY
@@ -30553,10 +30362,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 }));
 
 
-// ============================================================================
-// [MODULE 40/55] w40_leveldb_keyword_highlighter.js
-// SOURCE SIZE: 16,119 bytes | SHA-256: 8c69f958803aa853c400b7d6f46857a1a5602cab8dbe657ee5650ddcbb5a0c68
-// ============================================================================
+/* === MODULE: w40_leveldb_keyword_highlighter.js === */
 /**
  * PG Home Luxury - Hệ Thống Quản Trị & Giám Sát Dòng Tiền Zalo LevelDB
  * Module: W40 LevelDB Cash-Flow Keyword Auto-Highlighter
@@ -31057,10 +30863,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 })(typeof window !== 'undefined' ? window : (typeof global !== 'undefined' ? global : this));
 
 
-// ============================================================================
-// [MODULE 41/55] w43_keyboard_shortcuts_manager.js
-// SOURCE SIZE: 11,833 bytes | SHA-256: 1d50cd4f0a6ccc34edf492e9540c6c3c2a395a1e3b72828f770ef7a36f10de5c
-// ============================================================================
+/* === MODULE: w43_keyboard_shortcuts_manager.js === */
 /**
  * ==============================================================================
  * PG HOME LUXURY - QUẢN TRỊ DOANH NGHIỆP 2026
@@ -31401,10 +31204,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 })(window);
 
 
-// ============================================================================
-// [MODULE 42/55] w44_data_integrity_guard.js
-// SOURCE SIZE: 29,758 bytes | SHA-256: fcb01fbc8438c4b1caab17ad685fcb8d2f1924226eac06605072f4e1583785ba
-// ============================================================================
+/* === MODULE: w44_data_integrity_guard.js === */
 /**
  * =========================================================================================
  * PG HOME LUXURY - DATA INTEGRITY GUARD (MODULE W44)
@@ -32146,10 +31946,8 @@ if (GetForegroundWindow() === hZaloWnd) {
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this));
 
 
-// ============================================================================
-// [MODULE 43/55] w45_safe_pocket_summary_card.js
-// SOURCE SIZE: 4,909 bytes | SHA-256: 6bd7f2cbff636ee1f25df42277f6227d71cb3573b540e1aeb7b237d4550c61e6
-// ============================================================================
+/* === MODULE: w45_safe_pocket_summary_card.js (LOCAL DIRECTOR PC ONLY) === */
+if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {
 /**
  * MODULE W45: BẢNG SỐ LIỆU BỎ TÚI BAN GIÁM ĐỐC - KÉT SẮT THỰC CHI & LỢI NHUẬN RÒNG (SAFE POCKET SUMMARY CARD)
  * Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (MST: 042203002931)
@@ -32249,11 +32047,9 @@ if (GetForegroundWindow() === hZaloWnd) {
 });
 
 
+}
 
-// ============================================================================
-// [MODULE 44/55] w46_mkt_safety_monitor_widget.js
-// SOURCE SIZE: 14,645 bytes | SHA-256: 880a41a8320e43aaeb16ff5327ca9aa64d65178dd6875656aa79a6a940143b95
-// ============================================================================
+/* === MODULE: w46_mkt_safety_monitor_widget.js === */
 /**
  * MODULE W46: GIÁM SÁT KỶ LUẬT BẢO VỆ TÀI KHOẢN MARKETING (MKT SAFETY MONITOR)
  * HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA PHÚ GIA - PG HOME LUXURY
@@ -32473,10 +32269,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 })(window);
 
 
-// ============================================================================
-// [MODULE 45/55] w47_audit_trail_timeline.js
-// SOURCE SIZE: 35,347 bytes | SHA-256: fe3adab31f447d83001cd02e5eccc9419a75ee3ca13aa0d827f930d110157cf1
-// ============================================================================
+/* === MODULE: w47_audit_trail_timeline.js === */
 /**
  * ==============================================================================
  * HỆ THỐNG QUẢN TRỊ & SẢN XUẤT PG HOME LUXURY - KIỂM TOÁN NỘI BỘ
@@ -33312,10 +33105,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 })(window, document);
 
 
-// ============================================================================
-// [MODULE 46/55] w48_delta_cursor_inspector.js
-// SOURCE SIZE: 43,641 bytes | SHA-256: 1be93ecf43dc7f8cb280d7491b6159a171dfc93f899597787e9f82bf9fdc8341
-// ============================================================================
+/* === MODULE: w48_delta_cursor_inspector.js === */
 /**
  * ======================================================================================
  * PG HOME LUXURY - HỆ THỐNG QUẢN TRỊ & TỰ ĐỘNG HÓA SẢN XUẤT NỘI THẤT
@@ -34360,10 +34150,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 })();
 
 
-// ============================================================================
-// [MODULE 47/55] w49_cloud_backup_snapshot.js
-// SOURCE SIZE: 22,346 bytes | SHA-256: f20a5ef8326d4f7d3c1bb65eca8e641c3e82d6f689147d494dffaddbd00b2b14
-// ============================================================================
+/* === MODULE: w49_cloud_backup_snapshot.js === */
 /**
  * PG HOME LUXURY - MODULE W49: CLOUD BACKUP & SNAPSHOT ENGINE
  * Quản trị & Vận hành: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
@@ -34954,10 +34741,465 @@ if (GetForegroundWindow() === hZaloWnd) {
 })(typeof window !== 'undefined' ? window : this);
 
 
-// ============================================================================
-// [MODULE 48/55] w51_luxury_3d_showroom.js
-// SOURCE SIZE: 68,505 bytes | SHA-256: 164857a9673eb7bf46cc85a301194b1b806bc86a51637e25537ffdd09cd29fb8
-// ============================================================================
+/* === MODULE: w50_master_hub_loader.js === */
+/**
+ * ============================================================================
+ * PG HOME LUXURY - ENTERPRISE OPTIMIZATION ARCHITECTURE
+ * HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG
+ * Mã số HKD: 042203002931 | Hotline: 0986.722.324
+ * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
+ * ============================================================================
+ * 
+ * MODULE W50: MASTER OPTIMIZATION HUB LOADER
+ * Quản trị, điều phối và khởi chạy an toàn 50 module tối ưu W01 - W50
+ * Định danh: window.PG_Modules_W50 & window.PG_OptimizationHub
+ */
+
+(function (window) {
+    'use strict';
+
+    if (window.PG_OptimizationHub) {
+        console.warn('[PG_W50] Master Optimization Hub đã được khởi tạo trước đó.');
+        return;
+    }
+
+    // Danh bạ 50 Module tối ưu theo phân hệ chuẩn PG Home
+    const MODULE_REGISTRY = {
+        'W01': { name: 'CCSC Core Engine', group: 'FINANCE', desc: 'Động cơ tính toán CCSC 12 tháng & T8-T9' },
+        'W02': { name: 'Thợ Nòng Cốt Retention Fund', group: 'FINANCE', desc: 'Quỹ thợ nòng cốt Hòa & Hào 20k/công' },
+        'W03': { name: 'Col BG Workshop Profit Guard', group: 'FINANCE', desc: 'Kiểm soát lợi nhuận xưởng Col BG' },
+        'W04': { name: 'Solid Wood & Outsource Separator', group: 'FINANCE', desc: 'Bóc tách gỗ thịt & phụ kiện trừ khỏi khoán' },
+        'W05': { name: 'Revenue Bonus Over 500M Holdback', group: 'FINANCE', desc: 'Giữ thưởng doanh số > 500M đến tất niên' },
+        'W06': { name: 'Daily Attendance Aggregator', group: 'HR', desc: 'Tổng hợp chấm công điểm danh thợ hàng ngày' },
+        'W07': { name: 'Overtime & Nightshift Calculator', group: 'HR', desc: 'Tính toán giờ OT & làm đêm chuẩn xác' },
+        'W08': { name: 'Advance Payment Tracker', group: 'HR', desc: 'Theo dõi tạm ứng lương thợ và quản lý' },
+        'W09': { name: 'Role Permission Hard-Lock', group: 'SECURITY', desc: 'Phân quyền 4 phân hệ Admin/Vật tư/Sale/Dự toán' },
+        'W10': { name: 'Electronic Red Stamp Validator', group: 'SECURITY', desc: 'Duyệt và đóng dấu đỏ điện tử phiếu vật tư' },
+        'W11': { name: 'CNC Cutting Standard Engine', group: 'ESTIMATE', desc: 'Định mức tấm cắt CNC 1220x2440 thực chiến' },
+        'W12': { name: 'Kitchen Base Cabinet Calc (R09)', group: 'ESTIMATE', desc: 'Định mức bếp dưới 1.45 tấm/md' },
+        'W13': { name: 'Kitchen Upper Cabinet Calc (R08)', group: 'ESTIMATE', desc: 'Định mức bếp trên 1.04 tấm/md' },
+        'W14': { name: 'High Kitchen Cabinet Calc (R10)', group: 'ESTIMATE', desc: 'Định mức bếp kịch trần 1.44 tấm/md' },
+        'W15': { name: 'Full Wardrobe Calc (R27/R40/R49)', group: 'ESTIMATE', desc: 'Định mức tủ áo kịch trần 1.05 tấm ván 17mm/m2' },
+        'W16': { name: 'Decorative Cabinet Calc (R05)', group: 'ESTIMATE', desc: 'Định mức tủ trang trí nông 0.50 tấm/m2' },
+        'W17': { name: 'Wall Paneling Standard (R06/R23)', group: 'ESTIMATE', desc: 'Định mức vách ốp phẳng 0.40 tấm/m2' },
+        'W18': { name: 'Curved Bed Engine (R33/R42)', group: 'ESTIMATE', desc: 'Định mức giường ngủ bo cong 3.3-3.5 tấm/cái' },
+        'W19': { name: 'Suspended Furniture (R04/R24/R36)', group: 'ESTIMATE', desc: 'Định mức kệ tivi/bàn treo 0.55-0.65 tấm/md' },
+        'W20': { name: 'Sale 54% Cost Cap Hard-Lock', group: 'ESTIMATE', desc: 'Chốt chặn cost <= 54% trước khi xuất báo giá' },
+        'W21': { name: 'Three-Tier Material Pricing', group: 'ESTIMATE', desc: 'Định giá 3 cấp An Cường - Thái Lan - Plywood A1' },
+        'W22': { name: 'Intersection Deduction Engine', group: 'ESTIMATE', desc: 'Khấu trừ giao cắt & trừ lỗ mở tủ áo/vách' },
+        'W23': { name: 'Stealth Zalo Disk Monitor', group: 'STEALTH', desc: 'Đọc ngầm LevelDB & .rescache không chiếm chuột' },
+        'W24': { name: 'Delta-Cursor Sync Tracker', group: 'STEALTH', desc: 'Lưu vết mtime/size/hash chống trùng ảnh hóa đơn' },
+        'W25': { name: 'SHA-256 Invoice Deduplication', group: 'STEALTH', desc: 'Mã băm hóa đơn và ủy nhiệm chi 64 ký tự' },
+        'W26': { name: '3-Layer Cross-Audit Reconciler', group: 'STEALTH', desc: 'Đối soát 3 lớp: Hóa đơn + Nhóm NCC + UNC' },
+        'W27': { name: 'Real-Time Debt Cap <=60m', group: 'STEALTH', desc: 'Cập nhật công nợ nhà cung cấp tức thời <= 60p' },
+        'W28': { name: 'MKT Safety Worker Policy', group: 'MKT', desc: 'Bảo vệ tài khoản MKT Post 8 nick & Care 28 nick' },
+        'W29': { name: 'MKT Single-Thread Limiter', group: 'MKT', desc: 'Chạy đơn luồng threads_run=1, delay 25-30s' },
+        'W30': { name: 'Zero-Disruption Window Guard', group: 'STEALTH', desc: 'Chặn SetForegroundWindow làm nháy màn hình Bố' },
+        'W31': { name: 'Zero-Trust Audit Log Preserver', group: 'AUDIT', desc: 'Bảo toàn log lịch sử lỗi, cấm hardcode PASS' },
+        'W32': { name: 'No Duplicate File Cleaner', group: 'AUDIT', desc: 'Ngăn chặn tạo file trùng lặp _v2, _copy, _fix' },
+        'W33': { name: 'Clickable Live Link Resolver', group: 'UI', desc: 'Chuẩn hóa link file:/// 1 chạm mở thư mục cha' },
+        'W34': { name: 'Pre-Response Hard-Lock Bridge', group: 'UI', desc: 'Cưỡng chế chạy code kiểm chứng số liệu' },
+        'W35': { name: 'Sub-Agent Fleet Concurrency', group: 'ORCHESTRATION', desc: 'Điều phối song song 15-55 Worker + Giám sát viên' },
+        'W36': { name: 'Supplier Ledger An Cuong', group: 'SUPPLIER', desc: 'Sổ cái công nợ & phiếu đặt vật tư An Cường' },
+        'W37': { name: 'Supplier Ledger Hafele & PK', group: 'SUPPLIER', desc: 'Sổ cái phụ kiện Quốc Tâm & Hafele chính hãng' },
+        'W38': { name: 'Supplier Ledger Stone & Glass', group: 'SUPPLIER', desc: 'Đối soát đá bàn bếp, kính ốp và khung nhôm' },
+        'W39': { name: 'Customer Contract Pipeline', group: 'SALE', desc: 'Tiến độ thu tiền tạm ứng & thanh toán hợp đồng' },
+        'W40': { name: 'Cash Flow Real-Time Safe', group: 'FINANCE', desc: 'Bảo vệ dòng tiền két sắt & thanh khoản lưu động' },
+        'W41': { name: 'Fast UI DOM Virtualization', group: 'UI', desc: 'Render bảng dự toán hàng nghìn dòng mượt mà' },
+        'W42': { name: 'Export Excel & PDF Watermark', group: 'UI', desc: 'Xuất file báo giá đóng dấu thương hiệu Phú Gia' },
+        'W43': { name: 'Offline Storage Local Cache', group: 'STORAGE', desc: 'Đồng bộ IndexedDB & LocalStorage tự động' },
+        'W44': { name: 'Network Connectivity Watchdog', group: 'NETWORK', desc: 'Tự động bắt kết nối và retry an toàn không giật' },
+        'W45': { name: 'Memory Leak & Event Unbinder', group: 'PERFORMANCE', desc: 'Dọn dẹp event listener và giải phóng RAM Web App' },
+        'W46': { name: 'Data Schema Migration Auto', group: 'STORAGE', desc: 'Tự nâng cấp cấu trúc dữ liệu dự án tương thích' },
+        'W47': { name: 'Session Token & Auto-Lock', group: 'SECURITY', desc: 'Khóa màn hình tự động khi vắng mặt bảo vệ số liệu' },
+        'W48': { name: 'Sound & Toast Notification FX', group: 'UI', desc: 'Thông báo trạng thái công việc tinh tế' },
+        'W49': { name: 'Analytics & System Telemetry', group: 'TELEMETRY', desc: 'Đo lường thời gian phản hồi và hiệu năng client' },
+        'W50': { name: 'Master Optimization Hub', group: 'ORCHESTRATION', desc: 'Tổng chỉ huy kết nối và điều phối 57 module' },
+        'W51': { name: 'Luxury 3D WebGL Showroom & AR', group: 'R&D_PHASE2', desc: 'Trình diễn 3D Gaussian Splatting / PBR Material Swapper & AR QR' },
+        'W52': { name: 'CAD/DXF/Bazis BOM Instant Quote', group: 'R&D_PHASE2', desc: 'Bóc tách bản vẽ DXF/XML tự động & Báo giá 3 cấp < 15 giây' },
+        'W53': { name: 'Zalo Hybrid RAG AI Copilot', group: 'R&D_PHASE2', desc: 'Trợ lý AI tra cứu ngữ nghĩa Hybrid RRF (BM25 + Vector 384d)' },
+        'W54': { name: 'e-Invoice XML & 3-Way Match Audit', group: 'R&D_PHASE2', desc: 'Bóc tách Hóa đơn điện tử XML Tổng Cục Thuế & Đối soát 3 chiều' },
+        'W55': { name: 'Workshop AI OEE & Face Attendance', group: 'R&D_PHASE2', desc: 'Chấm công AI Face 512d & Đo hiệu suất OEE 5 máy Tổ hợp Nhà máy' },
+        'W56': { name: 'Real-Time CRDT & HLC Sync Engine', group: 'R&D_PHASE2', desc: 'Đồng bộ đa thiết bị tức thời LWW-Element-Set CRDT + SSE' },
+        'W57': { name: '2D CNC Guillotine Nesting & QR Offcut', group: 'R&D_PHASE2', desc: 'Tối ưu cắt ván 2D MaxRects-BSSF & Định danh QR phôi ván dư' }
+    };
+
+    class OptimizationHub {
+        constructor() {
+            this.version = '2.0.0';
+            this.startTime = Date.now();
+            this.modulesState = {};
+            this.listeners = [];
+            this.isInitialized = false;
+
+            // Khởi tạo trạng thái ban đầu cho toàn bộ 57 module
+            for (let i = 1; i <= 57; i++) {
+                const code = 'W' + String(i).padStart(2, '0');
+                const meta = MODULE_REGISTRY[code] || { name: 'Module ' + code, group: 'CORE', desc: '' };
+                this.modulesState[code] = {
+                    id: code,
+                    name: meta.name,
+                    group: meta.group,
+                    desc: meta.desc,
+                    status: 'PENDING', // PENDING | LOADED | ACTIVE | ERROR
+                    instance: null,
+                    error: null,
+                    initTime: null,
+                    lastCheck: null
+                };
+            }
+
+            // Đánh dấu W50 là ACTIVE ngay khi nạp
+            this.modulesState['W50'].status = 'ACTIVE';
+            this.modulesState['W50'].instance = this;
+            this.modulesState['W50'].initTime = Date.now();
+            this.modulesState['W50'].lastCheck = Date.now();
+        }
+
+        /**
+         * Tìm kiếm instance của module trên window theo quy chuẩn đặt tên
+         * Hỗ trợ: window.PG_Modules_W01, window.PG_W01, window.W01_Module
+         */
+        resolveModuleInstance(code) {
+            if (code === 'W50') return this;
+            if (code === 'W41' || code === 'W42') {
+                return { id: code, type: 'CSS_STYLESHEET', active: true };
+            }
+
+            const specialMap = {
+                'W51': 'PG_W51_Showroom',
+                'W52': 'PG_W52_CadBomQuote',
+                'W53': 'PG_W53_ZaloRagCopilot',
+                'W54': 'PG_W54_EInvoice3WayAudit',
+                'W55': 'PG_W55_WorkshopOeeDashboard',
+                'W56': 'PG_W56_RealtimeCrdtClient',
+                'W57': 'PG_W57_CncNestingQrOffcut'
+            };
+
+            const candidates = [
+                'PG_Modules_' + code,
+                'PG_Module_' + code,
+                specialMap[code],
+                'PG_' + code,
+                code + '_Module',
+                'PG_' + code.toLowerCase()
+            ].filter(Boolean);
+
+            for (const key of candidates) {
+                if (window[key] !== undefined && window[key] !== null) {
+                    return window[key];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Kết nối và kích hoạt an toàn toàn bộ các module W01 -> W49
+         */
+        init() {
+            if (this.isInitialized) {
+                console.log('[PG_W50] Hub đã được khởi chạy, quét cập nhật module mới...');
+                return this.scanAndAttachAll();
+            }
+
+            console.log('[PG_W50] Đang khởi chạy PG Home Master Optimization Hub W50...');
+            const results = this.scanAndAttachAll();
+            this.isInitialized = true;
+            this.emitChange();
+            return results;
+        }
+
+        /**
+         * Quét kết nối và thực thi init an toàn với try...catch
+         */
+        scanAndAttachAll() {
+            const summary = {
+                scanned: 57,
+                newlyActivated: 0,
+                alreadyActive: 0,
+                pending: 0,
+                errors: 0
+            };
+
+            for (let i = 1; i <= 57; i++) {
+                const code = 'W' + String(i).padStart(2, '0');
+                if (code === 'W50') {
+                    summary.alreadyActive++;
+                    continue;
+                }
+
+                const item = this.modulesState[code];
+                item.lastCheck = Date.now();
+
+                const instance = this.resolveModuleInstance(code);
+
+                if (!instance) {
+                    if (item.status !== 'ERROR') {
+                        item.status = 'PENDING';
+                    }
+                    summary.pending++;
+                    continue;
+                }
+
+                item.instance = instance;
+
+                // Nếu module đã ACTIVE thì bỏ qua gọi lại
+                if (item.status === 'ACTIVE') {
+                    summary.alreadyActive++;
+                    continue;
+                }
+
+                try {
+                    // Thử gọi hàm khởi tạo an toàn nếu module cung cấp
+                    if (typeof instance.init === 'function') {
+                        instance.init();
+                    } else if (typeof instance.bootstrap === 'function') {
+                        instance.bootstrap();
+                    } else if (typeof instance.start === 'function') {
+                        instance.start();
+                    }
+
+                    item.status = 'ACTIVE';
+                    item.initTime = Date.now();
+                    item.error = null;
+                    summary.newlyActivated++;
+                } catch (err) {
+                    console.error(`[PG_W50] Lỗi khi kích hoạt module ${code}:`, err);
+                    item.status = 'ERROR';
+                    item.error = err && err.message ? err.message : String(err);
+                    summary.errors++;
+                }
+            }
+
+            return summary;
+        }
+
+        /**
+         * Đăng ký thủ công một module Wxx nếu module được tải bất đồng bộ (async/defer)
+         */
+        registerModule(code, instance, autoInit = true) {
+            const formattedCode = code.toUpperCase();
+            if (!this.modulesState[formattedCode]) {
+                console.warn(`[PG_W50] Mã module không hợp lệ: ${formattedCode}`);
+                return false;
+            }
+
+            const item = this.modulesState[formattedCode];
+            item.instance = instance;
+            item.lastCheck = Date.now();
+
+            if (autoInit && typeof instance.init === 'function' && item.status !== 'ACTIVE') {
+                try {
+                    instance.init();
+                    item.status = 'ACTIVE';
+                    item.initTime = Date.now();
+                    item.error = null;
+                } catch (err) {
+                    item.status = 'ERROR';
+                    item.error = err && err.message ? err.message : String(err);
+                }
+            } else {
+                item.status = 'LOADED';
+            }
+
+            this.emitChange();
+            return true;
+        }
+
+        /**
+         * Thống kê toàn bộ 50 module tối ưu theo yêu cầu đề bài
+         * Trả về bảng tổng kết chi tiết cho Web App và Ban Giám Đốc
+         */
+        getStatus() {
+            let activeCount = 0;
+            let loadedCount = 0;
+            let pendingCount = 0;
+            let errorCount = 0;
+
+            const list = [];
+            const byGroup = {};
+
+            for (let i = 1; i <= 57; i++) {
+                const code = 'W' + String(i).padStart(2, '0');
+                const mod = this.modulesState[code];
+
+                // Kiểm tra trực tiếp xem instance có mới xuất hiện không
+                if (mod.status === 'PENDING') {
+                    const inst = this.resolveModuleInstance(code);
+                    if (inst) {
+                        mod.instance = inst;
+                        mod.status = 'LOADED';
+                    }
+                }
+
+                if (mod.status === 'ACTIVE') activeCount++;
+                else if (mod.status === 'LOADED') loadedCount++;
+                else if (mod.status === 'ERROR') errorCount++;
+                else pendingCount++;
+
+                list.push({
+                    id: mod.id,
+                    name: mod.name,
+                    group: mod.group,
+                    desc: mod.desc,
+                    status: mod.status,
+                    hasInstance: !!mod.instance,
+                    error: mod.error,
+                    initTime: mod.initTime
+                });
+
+                if (!byGroup[mod.group]) {
+                    byGroup[mod.group] = { total: 0, active: 0, pending: 0, error: 0 };
+                }
+                byGroup[mod.group].total++;
+                if (mod.status === 'ACTIVE') byGroup[mod.group].active++;
+                else if (mod.status === 'ERROR') byGroup[mod.group].error++;
+                else byGroup[mod.group].pending++;
+            }
+
+            const total = 57;
+            const healthRate = Math.round(((activeCount + loadedCount) / total) * 100);
+
+            return {
+                company: 'HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG',
+                legalTaxId: '042203002931',
+                hotline: '0986.722.324',
+                address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
+                system: 'PG Home Luxury Enterprise Web App',
+                timestamp: new Date().toISOString(),
+                uptimeSeconds: Math.floor((Date.now() - this.startTime) / 1000),
+                summary: {
+                    totalModules: total,
+                    active: activeCount,
+                    loaded: loadedCount,
+                    pending: pendingCount,
+                    error: errorCount,
+                    healthRate: `${healthRate}%`
+                },
+                byGroup: byGroup,
+                modules: list
+            };
+        }
+
+        /**
+         * Lấy thông tin và đối tượng của 1 module cụ thể
+         */
+        getModule(code) {
+            const formatted = String(code).toUpperCase();
+            return this.modulesState[formatted] || null;
+        }
+
+        /**
+         * Danh sách ngắn gọn toàn bộ 50 module
+         */
+        listModules() {
+            return Object.values(this.modulesState).map(m => ({
+                id: m.id,
+                name: m.name,
+                group: m.group,
+                status: m.status
+            }));
+        }
+
+        /**
+         * Chạy chẩn đoán nhanh toàn bộ hệ thống
+         */
+        runDiagnostics() {
+            const scan = this.scanAndAttachAll();
+            const status = this.getStatus();
+            return {
+                diagnosticsAt: new Date().toISOString(),
+                scanResult: scan,
+                health: status.summary.healthRate,
+                status: status.summary
+            };
+        }
+
+        /**
+         * Đăng ký lắng nghe sự thay đổi trạng thái module
+         */
+        onChange(callback) {
+            if (typeof callback === 'function') {
+                this.listeners.push(callback);
+            }
+        }
+
+        emitChange() {
+            const currentStatus = this.getStatus();
+            for (const fn of this.listeners) {
+                try {
+                    fn(currentStatus);
+                } catch (e) {
+                    console.error('[PG_W50] Lỗi trong onChange callback:', e);
+                }
+            }
+        }
+
+        /**
+         * Tùy chọn render UI Badge hoặc Widget trạng thái nếu được yêu cầu
+         */
+        renderStatusBadge(domSelector) {
+            if (typeof document === 'undefined') return;
+            const container = typeof domSelector === 'string' ? document.querySelector(domSelector) : domSelector;
+            if (!container) return;
+
+            const st = this.getStatus();
+            container.innerHTML = `
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #1e293b; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span style="font-weight: 700; color: #38bdf8; font-size: 13px;">PG HOME OPTIMIZATION HUB (W50)</span>
+                        <span style="background: #10b981; color: #022c22; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px;">${st.summary.healthRate} SẴN SÀNG</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; font-size: 11px;">
+                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
+                            <div style="color: #94a3b8;">Tổng module</div>
+                            <div style="font-weight: 700; font-size: 14px; color: #f8fafc;">${st.summary.totalModules}</div>
+                        </div>
+                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
+                            <div style="color: #4ade80;">Đang chạy</div>
+                            <div style="font-weight: 700; font-size: 14px; color: #4ade80;">${st.summary.active}</div>
+                        </div>
+                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
+                            <div style="color: #fbbf24;">Chờ nạp</div>
+                            <div style="font-weight: 700; font-size: 14px; color: #fbbf24;">${st.summary.pending}</div>
+                        </div>
+                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
+                            <div style="color: #f87171;">Lỗi</div>
+                            <div style="font-weight: 700; font-size: 14px; color: #f87171;">${st.summary.error}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    // Khởi tạo Singleton
+    const hubInstance = new OptimizationHub();
+
+    // Xuất ra global scope theo đúng yêu cầu đề bài
+    window.PG_Modules_W50 = hubInstance;
+    window.PG_OptimizationHub = hubInstance;
+
+    // Tự động kết nối an toàn khi tài liệu sẵn sàng
+    if (typeof document !== 'undefined') {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                hubInstance.init();
+            });
+        } else {
+            // DOM đã sẵn sàng
+            setTimeout(() => {
+                hubInstance.init();
+            }, 0);
+        }
+    }
+
+    console.log('[PG_W50] Master Optimization Hub đã nạp thành công vào window.PG_Modules_W50 & window.PG_OptimizationHub');
+
+})(typeof window !== 'undefined' ? window : globalThis);
+
+
+/* === MODULE: w51_luxury_3d_showroom.js === */
 /**
  * ============================================================================
  * HỆ THỐNG QUẢN TRỊ & DỰ TOÁN BÁO GIÁ PG HOME LUXURY
@@ -36509,10 +36751,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 }));
 
 
-// ============================================================================
-// [MODULE 49/55] w52_cad_bom_instant_quote.js
-// SOURCE SIZE: 101,359 bytes | SHA-256: cb957da4f277236190085b81c7a403cd5187b44da17a48e66ddfffc92e454d11
-// ============================================================================
+/* === MODULE: w52_cad_bom_instant_quote.js === */
 /**
  * =================================================================================================
  * HỆ THỐNG QUẢN TRỊ & SẢN XUẤT NỘI THẤT PHÚ GIA (PG HOME LUXURY)
@@ -38318,10 +38557,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 }));
 
 
-// ============================================================================
-// [MODULE 50/55] w53_zalo_hybrid_rag_copilot.js
-// SOURCE SIZE: 72,273 bytes | SHA-256: f15cbe2764204eef349b6596d5b59f986724be120ef07f9b841a5270b9809f59
-// ============================================================================
+/* === MODULE: w53_zalo_hybrid_rag_copilot.js === */
 /**
  * ============================================================================
  * HỆ THỐNG QUẢN TRỊ & VẬN HÀNH PG HOME LUXURY 2026
@@ -40083,10 +40319,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 });
 
 
-// ============================================================================
-// [MODULE 51/55] w54_einvoice_3way_audit.js
-// SOURCE SIZE: 120,707 bytes | SHA-256: eb479979f344eb5df8e676186b3e1d304e377c749ca3068bcd4a7cfaa62c5776
-// ============================================================================
+/* === MODULE: w54_einvoice_3way_audit.js === */
 /**
  * ====================================================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI THẤT & XÂY DỰNG PHÚ GIA - PG HOME LUXURY
@@ -43005,10 +43238,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 }));
 
 
-// ============================================================================
-// [MODULE 52/55] w55_workshop_oee_dashboard.js
-// SOURCE SIZE: 58,441 bytes | SHA-256: 26be6b0d3ddee03ead30d901dc567ec867b44f3ea2e0a8b669102f3dab81c64e
-// ============================================================================
+/* === MODULE: w55_workshop_oee_dashboard.js === */
 /**
  * MODULE W55: BẢNG ĐIỀU KHIỂN CHẤM CÔNG AI & HIỆU SUẤT OEE MÁY SẢN XUẤT THỜI GIAN THỰC
  * (WORKSHOP AI ATTENDANCE & CNC OEE LIVE DASHBOARD)
@@ -44118,10 +44348,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 });
 
 
-// ============================================================================
-// [MODULE 53/55] w56_realtime_crdt_client.js
-// SOURCE SIZE: 86,787 bytes | SHA-256: 254b633b2f24dd3f38161bc8ceba32e3c67d7c587d67493e4d089e6870d6511f
-// ============================================================================
+/* === MODULE: w56_realtime_crdt_client.js === */
 /**
  * =========================================================================================
  * PG HOME LUXURY - ENTERPRISE REAL-TIME CRDT ARCHITECTURE (GIAI ĐOẠN 2 - R08)
@@ -46171,10 +46398,7 @@ if (GetForegroundWindow() === hZaloWnd) {
 }));
 
 
-// ============================================================================
-// [MODULE 54/55] w57_cnc_nesting_qr_offcut.js
-// SOURCE SIZE: 80,231 bytes | SHA-256: a0b2aed62f80606d6903acfa7ac96b307304bb485e8ee7cca221386b34293930
-// ============================================================================
+/* === MODULE: w57_cnc_nesting_qr_offcut.js === */
 /**
  * ==============================================================================================
  * HỆ THỐNG QUẢN TRỊ & SẢN XUẤT NỘI THẤT PG HOME LUXURY - PHÚ GIA
@@ -48293,465 +48517,4 @@ if (GetForegroundWindow() === hZaloWnd) {
 
   return ModuleExport;
 }));
-
-
-// ============================================================================
-// [MODULE 55/55] w50_master_hub_loader.js
-// SOURCE SIZE: 24,055 bytes | SHA-256: 4a2e9d5eb6f6eb9de38f389053871aac96a5c8d724e51e3181ea74bfa541c898
-// ============================================================================
-/**
- * ============================================================================
- * PG HOME LUXURY - ENTERPRISE OPTIMIZATION ARCHITECTURE
- * HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG
- * Mã số HKD: 042203002931 | Hotline: 0986.722.324
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * ============================================================================
- * 
- * MODULE W50: MASTER OPTIMIZATION HUB LOADER
- * Quản trị, điều phối và khởi chạy an toàn 50 module tối ưu W01 - W50
- * Định danh: window.PG_Modules_W50 & window.PG_OptimizationHub
- */
-
-(function (window) {
-    'use strict';
-
-    if (window.PG_OptimizationHub) {
-        console.warn('[PG_W50] Master Optimization Hub đã được khởi tạo trước đó.');
-        return;
-    }
-
-    // Danh bạ 50 Module tối ưu theo phân hệ chuẩn PG Home
-    const MODULE_REGISTRY = {
-        'W01': { name: 'CCSC Core Engine', group: 'FINANCE', desc: 'Động cơ tính toán CCSC 12 tháng & T8-T9' },
-        'W02': { name: 'Thợ Nòng Cốt Retention Fund', group: 'FINANCE', desc: 'Quỹ thợ nòng cốt Hòa & Hào 20k/công' },
-        'W03': { name: 'Col BG Workshop Profit Guard', group: 'FINANCE', desc: 'Kiểm soát lợi nhuận xưởng Col BG' },
-        'W04': { name: 'Solid Wood & Outsource Separator', group: 'FINANCE', desc: 'Bóc tách gỗ thịt & phụ kiện trừ khỏi khoán' },
-        'W05': { name: 'Revenue Bonus Over 500M Holdback', group: 'FINANCE', desc: 'Giữ thưởng doanh số > 500M đến tất niên' },
-        'W06': { name: 'Daily Attendance Aggregator', group: 'HR', desc: 'Tổng hợp chấm công điểm danh thợ hàng ngày' },
-        'W07': { name: 'Overtime & Nightshift Calculator', group: 'HR', desc: 'Tính toán giờ OT & làm đêm chuẩn xác' },
-        'W08': { name: 'Advance Payment Tracker', group: 'HR', desc: 'Theo dõi tạm ứng lương thợ và quản lý' },
-        'W09': { name: 'Role Permission Hard-Lock', group: 'SECURITY', desc: 'Phân quyền 4 phân hệ Admin/Vật tư/Sale/Dự toán' },
-        'W10': { name: 'Electronic Red Stamp Validator', group: 'SECURITY', desc: 'Duyệt và đóng dấu đỏ điện tử phiếu vật tư' },
-        'W11': { name: 'CNC Cutting Standard Engine', group: 'ESTIMATE', desc: 'Định mức tấm cắt CNC 1220x2440 thực chiến' },
-        'W12': { name: 'Kitchen Base Cabinet Calc (R09)', group: 'ESTIMATE', desc: 'Định mức bếp dưới 1.45 tấm/md' },
-        'W13': { name: 'Kitchen Upper Cabinet Calc (R08)', group: 'ESTIMATE', desc: 'Định mức bếp trên 1.04 tấm/md' },
-        'W14': { name: 'High Kitchen Cabinet Calc (R10)', group: 'ESTIMATE', desc: 'Định mức bếp kịch trần 1.44 tấm/md' },
-        'W15': { name: 'Full Wardrobe Calc (R27/R40/R49)', group: 'ESTIMATE', desc: 'Định mức tủ áo kịch trần 1.05 tấm ván 17mm/m2' },
-        'W16': { name: 'Decorative Cabinet Calc (R05)', group: 'ESTIMATE', desc: 'Định mức tủ trang trí nông 0.50 tấm/m2' },
-        'W17': { name: 'Wall Paneling Standard (R06/R23)', group: 'ESTIMATE', desc: 'Định mức vách ốp phẳng 0.40 tấm/m2' },
-        'W18': { name: 'Curved Bed Engine (R33/R42)', group: 'ESTIMATE', desc: 'Định mức giường ngủ bo cong 3.3-3.5 tấm/cái' },
-        'W19': { name: 'Suspended Furniture (R04/R24/R36)', group: 'ESTIMATE', desc: 'Định mức kệ tivi/bàn treo 0.55-0.65 tấm/md' },
-        'W20': { name: 'Sale 54% Cost Cap Hard-Lock', group: 'ESTIMATE', desc: 'Chốt chặn cost <= 54% trước khi xuất báo giá' },
-        'W21': { name: 'Three-Tier Material Pricing', group: 'ESTIMATE', desc: 'Định giá 3 cấp An Cường - Thái Lan - Plywood A1' },
-        'W22': { name: 'Intersection Deduction Engine', group: 'ESTIMATE', desc: 'Khấu trừ giao cắt & trừ lỗ mở tủ áo/vách' },
-        'W23': { name: 'Stealth Zalo Disk Monitor', group: 'STEALTH', desc: 'Đọc ngầm LevelDB & .rescache không chiếm chuột' },
-        'W24': { name: 'Delta-Cursor Sync Tracker', group: 'STEALTH', desc: 'Lưu vết mtime/size/hash chống trùng ảnh hóa đơn' },
-        'W25': { name: 'SHA-256 Invoice Deduplication', group: 'STEALTH', desc: 'Mã băm hóa đơn và ủy nhiệm chi 64 ký tự' },
-        'W26': { name: '3-Layer Cross-Audit Reconciler', group: 'STEALTH', desc: 'Đối soát 3 lớp: Hóa đơn + Nhóm NCC + UNC' },
-        'W27': { name: 'Real-Time Debt Cap <=60m', group: 'STEALTH', desc: 'Cập nhật công nợ nhà cung cấp tức thời <= 60p' },
-        'W28': { name: 'MKT Safety Worker Policy', group: 'MKT', desc: 'Bảo vệ tài khoản MKT Post 8 nick & Care 28 nick' },
-        'W29': { name: 'MKT Single-Thread Limiter', group: 'MKT', desc: 'Chạy đơn luồng threads_run=1, delay 25-30s' },
-        'W30': { name: 'Zero-Disruption Window Guard', group: 'STEALTH', desc: 'Chặn SetForegroundWindow làm nháy màn hình Bố' },
-        'W31': { name: 'Zero-Trust Audit Log Preserver', group: 'AUDIT', desc: 'Bảo toàn log lịch sử lỗi, cấm hardcode PASS' },
-        'W32': { name: 'No Duplicate File Cleaner', group: 'AUDIT', desc: 'Ngăn chặn tạo file trùng lặp _v2, _copy, _fix' },
-        'W33': { name: 'Clickable Live Link Resolver', group: 'UI', desc: 'Chuẩn hóa link file:/// 1 chạm mở thư mục cha' },
-        'W34': { name: 'Pre-Response Hard-Lock Bridge', group: 'UI', desc: 'Cưỡng chế chạy code kiểm chứng số liệu' },
-        'W35': { name: 'Sub-Agent Fleet Concurrency', group: 'ORCHESTRATION', desc: 'Điều phối song song 15-55 Worker + Giám sát viên' },
-        'W36': { name: 'Supplier Ledger An Cuong', group: 'SUPPLIER', desc: 'Sổ cái công nợ & phiếu đặt vật tư An Cường' },
-        'W37': { name: 'Supplier Ledger Hafele & PK', group: 'SUPPLIER', desc: 'Sổ cái phụ kiện Quốc Tâm & Hafele chính hãng' },
-        'W38': { name: 'Supplier Ledger Stone & Glass', group: 'SUPPLIER', desc: 'Đối soát đá bàn bếp, kính ốp và khung nhôm' },
-        'W39': { name: 'Customer Contract Pipeline', group: 'SALE', desc: 'Tiến độ thu tiền tạm ứng & thanh toán hợp đồng' },
-        'W40': { name: 'Cash Flow Real-Time Safe', group: 'FINANCE', desc: 'Bảo vệ dòng tiền két sắt & thanh khoản lưu động' },
-        'W41': { name: 'Fast UI DOM Virtualization', group: 'UI', desc: 'Render bảng dự toán hàng nghìn dòng mượt mà' },
-        'W42': { name: 'Export Excel & PDF Watermark', group: 'UI', desc: 'Xuất file báo giá đóng dấu thương hiệu Phú Gia' },
-        'W43': { name: 'Offline Storage Local Cache', group: 'STORAGE', desc: 'Đồng bộ IndexedDB & LocalStorage tự động' },
-        'W44': { name: 'Network Connectivity Watchdog', group: 'NETWORK', desc: 'Tự động bắt kết nối và retry an toàn không giật' },
-        'W45': { name: 'Memory Leak & Event Unbinder', group: 'PERFORMANCE', desc: 'Dọn dẹp event listener và giải phóng RAM Web App' },
-        'W46': { name: 'Data Schema Migration Auto', group: 'STORAGE', desc: 'Tự nâng cấp cấu trúc dữ liệu dự án tương thích' },
-        'W47': { name: 'Session Token & Auto-Lock', group: 'SECURITY', desc: 'Khóa màn hình tự động khi vắng mặt bảo vệ số liệu' },
-        'W48': { name: 'Sound & Toast Notification FX', group: 'UI', desc: 'Thông báo trạng thái công việc tinh tế' },
-        'W49': { name: 'Analytics & System Telemetry', group: 'TELEMETRY', desc: 'Đo lường thời gian phản hồi và hiệu năng client' },
-        'W50': { name: 'Master Optimization Hub', group: 'ORCHESTRATION', desc: 'Tổng chỉ huy kết nối và điều phối 57 module' },
-        'W51': { name: 'Luxury 3D WebGL Showroom & AR', group: 'R&D_PHASE2', desc: 'Trình diễn 3D Gaussian Splatting / PBR Material Swapper & AR QR' },
-        'W52': { name: 'CAD/DXF/Bazis BOM Instant Quote', group: 'R&D_PHASE2', desc: 'Bóc tách bản vẽ DXF/XML tự động & Báo giá 3 cấp < 15 giây' },
-        'W53': { name: 'Zalo Hybrid RAG AI Copilot', group: 'R&D_PHASE2', desc: 'Trợ lý AI tra cứu ngữ nghĩa Hybrid RRF (BM25 + Vector 384d)' },
-        'W54': { name: 'e-Invoice XML & 3-Way Match Audit', group: 'R&D_PHASE2', desc: 'Bóc tách Hóa đơn điện tử XML Tổng Cục Thuế & Đối soát 3 chiều' },
-        'W55': { name: 'Workshop AI OEE & Face Attendance', group: 'R&D_PHASE2', desc: 'Chấm công AI Face 512d & Đo hiệu suất OEE 5 máy Tổ hợp Nhà máy' },
-        'W56': { name: 'Real-Time CRDT & HLC Sync Engine', group: 'R&D_PHASE2', desc: 'Đồng bộ đa thiết bị tức thời LWW-Element-Set CRDT + SSE' },
-        'W57': { name: '2D CNC Guillotine Nesting & QR Offcut', group: 'R&D_PHASE2', desc: 'Tối ưu cắt ván 2D MaxRects-BSSF & Định danh QR phôi ván dư' }
-    };
-
-    class OptimizationHub {
-        constructor() {
-            this.version = '2.0.0';
-            this.startTime = Date.now();
-            this.modulesState = {};
-            this.listeners = [];
-            this.isInitialized = false;
-
-            // Khởi tạo trạng thái ban đầu cho toàn bộ 57 module
-            for (let i = 1; i <= 57; i++) {
-                const code = 'W' + String(i).padStart(2, '0');
-                const meta = MODULE_REGISTRY[code] || { name: 'Module ' + code, group: 'CORE', desc: '' };
-                this.modulesState[code] = {
-                    id: code,
-                    name: meta.name,
-                    group: meta.group,
-                    desc: meta.desc,
-                    status: 'PENDING', // PENDING | LOADED | ACTIVE | ERROR
-                    instance: null,
-                    error: null,
-                    initTime: null,
-                    lastCheck: null
-                };
-            }
-
-            // Đánh dấu W50 là ACTIVE ngay khi nạp
-            this.modulesState['W50'].status = 'ACTIVE';
-            this.modulesState['W50'].instance = this;
-            this.modulesState['W50'].initTime = Date.now();
-            this.modulesState['W50'].lastCheck = Date.now();
-        }
-
-        /**
-         * Tìm kiếm instance của module trên window theo quy chuẩn đặt tên
-         * Hỗ trợ: window.PG_Modules_W01, window.PG_W01, window.W01_Module
-         */
-        resolveModuleInstance(code) {
-            if (code === 'W50') return this;
-            if (code === 'W41' || code === 'W42') {
-                return { id: code, type: 'CSS_STYLESHEET', active: true };
-            }
-
-            const specialMap = {
-                'W51': 'PG_W51_Showroom',
-                'W52': 'PG_W52_CadBomQuote',
-                'W53': 'PG_W53_ZaloRagCopilot',
-                'W54': 'PG_W54_EInvoice3WayAudit',
-                'W55': 'PG_W55_WorkshopOeeDashboard',
-                'W56': 'PG_W56_RealtimeCrdtClient',
-                'W57': 'PG_W57_CncNestingQrOffcut'
-            };
-
-            const candidates = [
-                'PG_Modules_' + code,
-                'PG_Module_' + code,
-                specialMap[code],
-                'PG_' + code,
-                code + '_Module',
-                'PG_' + code.toLowerCase()
-            ].filter(Boolean);
-
-            for (const key of candidates) {
-                if (window[key] !== undefined && window[key] !== null) {
-                    return window[key];
-                }
-            }
-            return null;
-        }
-
-        /**
-         * Kết nối và kích hoạt an toàn toàn bộ các module W01 -> W49
-         */
-        init() {
-            if (this.isInitialized) {
-                console.log('[PG_W50] Hub đã được khởi chạy, quét cập nhật module mới...');
-                return this.scanAndAttachAll();
-            }
-
-            console.log('[PG_W50] Đang khởi chạy PG Home Master Optimization Hub W50...');
-            const results = this.scanAndAttachAll();
-            this.isInitialized = true;
-            this.emitChange();
-            return results;
-        }
-
-        /**
-         * Quét kết nối và thực thi init an toàn với try...catch
-         */
-        scanAndAttachAll() {
-            const summary = {
-                scanned: 57,
-                newlyActivated: 0,
-                alreadyActive: 0,
-                pending: 0,
-                errors: 0
-            };
-
-            for (let i = 1; i <= 57; i++) {
-                const code = 'W' + String(i).padStart(2, '0');
-                if (code === 'W50') {
-                    summary.alreadyActive++;
-                    continue;
-                }
-
-                const item = this.modulesState[code];
-                item.lastCheck = Date.now();
-
-                const instance = this.resolveModuleInstance(code);
-
-                if (!instance) {
-                    if (item.status !== 'ERROR') {
-                        item.status = 'PENDING';
-                    }
-                    summary.pending++;
-                    continue;
-                }
-
-                item.instance = instance;
-
-                // Nếu module đã ACTIVE thì bỏ qua gọi lại
-                if (item.status === 'ACTIVE') {
-                    summary.alreadyActive++;
-                    continue;
-                }
-
-                try {
-                    // Thử gọi hàm khởi tạo an toàn nếu module cung cấp
-                    if (typeof instance.init === 'function') {
-                        instance.init();
-                    } else if (typeof instance.bootstrap === 'function') {
-                        instance.bootstrap();
-                    } else if (typeof instance.start === 'function') {
-                        instance.start();
-                    }
-
-                    item.status = 'ACTIVE';
-                    item.initTime = Date.now();
-                    item.error = null;
-                    summary.newlyActivated++;
-                } catch (err) {
-                    console.error(`[PG_W50] Lỗi khi kích hoạt module ${code}:`, err);
-                    item.status = 'ERROR';
-                    item.error = err && err.message ? err.message : String(err);
-                    summary.errors++;
-                }
-            }
-
-            return summary;
-        }
-
-        /**
-         * Đăng ký thủ công một module Wxx nếu module được tải bất đồng bộ (async/defer)
-         */
-        registerModule(code, instance, autoInit = true) {
-            const formattedCode = code.toUpperCase();
-            if (!this.modulesState[formattedCode]) {
-                console.warn(`[PG_W50] Mã module không hợp lệ: ${formattedCode}`);
-                return false;
-            }
-
-            const item = this.modulesState[formattedCode];
-            item.instance = instance;
-            item.lastCheck = Date.now();
-
-            if (autoInit && typeof instance.init === 'function' && item.status !== 'ACTIVE') {
-                try {
-                    instance.init();
-                    item.status = 'ACTIVE';
-                    item.initTime = Date.now();
-                    item.error = null;
-                } catch (err) {
-                    item.status = 'ERROR';
-                    item.error = err && err.message ? err.message : String(err);
-                }
-            } else {
-                item.status = 'LOADED';
-            }
-
-            this.emitChange();
-            return true;
-        }
-
-        /**
-         * Thống kê toàn bộ 50 module tối ưu theo yêu cầu đề bài
-         * Trả về bảng tổng kết chi tiết cho Web App và Ban Giám Đốc
-         */
-        getStatus() {
-            let activeCount = 0;
-            let loadedCount = 0;
-            let pendingCount = 0;
-            let errorCount = 0;
-
-            const list = [];
-            const byGroup = {};
-
-            for (let i = 1; i <= 57; i++) {
-                const code = 'W' + String(i).padStart(2, '0');
-                const mod = this.modulesState[code];
-
-                // Kiểm tra trực tiếp xem instance có mới xuất hiện không
-                if (mod.status === 'PENDING') {
-                    const inst = this.resolveModuleInstance(code);
-                    if (inst) {
-                        mod.instance = inst;
-                        mod.status = 'LOADED';
-                    }
-                }
-
-                if (mod.status === 'ACTIVE') activeCount++;
-                else if (mod.status === 'LOADED') loadedCount++;
-                else if (mod.status === 'ERROR') errorCount++;
-                else pendingCount++;
-
-                list.push({
-                    id: mod.id,
-                    name: mod.name,
-                    group: mod.group,
-                    desc: mod.desc,
-                    status: mod.status,
-                    hasInstance: !!mod.instance,
-                    error: mod.error,
-                    initTime: mod.initTime
-                });
-
-                if (!byGroup[mod.group]) {
-                    byGroup[mod.group] = { total: 0, active: 0, pending: 0, error: 0 };
-                }
-                byGroup[mod.group].total++;
-                if (mod.status === 'ACTIVE') byGroup[mod.group].active++;
-                else if (mod.status === 'ERROR') byGroup[mod.group].error++;
-                else byGroup[mod.group].pending++;
-            }
-
-            const total = 57;
-            const healthRate = Math.round(((activeCount + loadedCount) / total) * 100);
-
-            return {
-                company: 'HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG',
-                legalTaxId: '042203002931',
-                hotline: '0986.722.324',
-                address: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-                system: 'PG Home Luxury Enterprise Web App',
-                timestamp: new Date().toISOString(),
-                uptimeSeconds: Math.floor((Date.now() - this.startTime) / 1000),
-                summary: {
-                    totalModules: total,
-                    active: activeCount,
-                    loaded: loadedCount,
-                    pending: pendingCount,
-                    error: errorCount,
-                    healthRate: `${healthRate}%`
-                },
-                byGroup: byGroup,
-                modules: list
-            };
-        }
-
-        /**
-         * Lấy thông tin và đối tượng của 1 module cụ thể
-         */
-        getModule(code) {
-            const formatted = String(code).toUpperCase();
-            return this.modulesState[formatted] || null;
-        }
-
-        /**
-         * Danh sách ngắn gọn toàn bộ 50 module
-         */
-        listModules() {
-            return Object.values(this.modulesState).map(m => ({
-                id: m.id,
-                name: m.name,
-                group: m.group,
-                status: m.status
-            }));
-        }
-
-        /**
-         * Chạy chẩn đoán nhanh toàn bộ hệ thống
-         */
-        runDiagnostics() {
-            const scan = this.scanAndAttachAll();
-            const status = this.getStatus();
-            return {
-                diagnosticsAt: new Date().toISOString(),
-                scanResult: scan,
-                health: status.summary.healthRate,
-                status: status.summary
-            };
-        }
-
-        /**
-         * Đăng ký lắng nghe sự thay đổi trạng thái module
-         */
-        onChange(callback) {
-            if (typeof callback === 'function') {
-                this.listeners.push(callback);
-            }
-        }
-
-        emitChange() {
-            const currentStatus = this.getStatus();
-            for (const fn of this.listeners) {
-                try {
-                    fn(currentStatus);
-                } catch (e) {
-                    console.error('[PG_W50] Lỗi trong onChange callback:', e);
-                }
-            }
-        }
-
-        /**
-         * Tùy chọn render UI Badge hoặc Widget trạng thái nếu được yêu cầu
-         */
-        renderStatusBadge(domSelector) {
-            if (typeof document === 'undefined') return;
-            const container = typeof domSelector === 'string' ? document.querySelector(domSelector) : domSelector;
-            if (!container) return;
-
-            const st = this.getStatus();
-            container.innerHTML = `
-                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #1e293b; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span style="font-weight: 700; color: #38bdf8; font-size: 13px;">PG HOME OPTIMIZATION HUB (W50)</span>
-                        <span style="background: #10b981; color: #022c22; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px;">${st.summary.healthRate} SẴN SÀNG</span>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; font-size: 11px;">
-                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
-                            <div style="color: #94a3b8;">Tổng module</div>
-                            <div style="font-weight: 700; font-size: 14px; color: #f8fafc;">${st.summary.totalModules}</div>
-                        </div>
-                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
-                            <div style="color: #4ade80;">Đang chạy</div>
-                            <div style="font-weight: 700; font-size: 14px; color: #4ade80;">${st.summary.active}</div>
-                        </div>
-                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
-                            <div style="color: #fbbf24;">Chờ nạp</div>
-                            <div style="font-weight: 700; font-size: 14px; color: #fbbf24;">${st.summary.pending}</div>
-                        </div>
-                        <div style="background: #1e293b; padding: 6px; border-radius: 6px;">
-                            <div style="color: #f87171;">Lỗi</div>
-                            <div style="font-weight: 700; font-size: 14px; color: #f87171;">${st.summary.error}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-    }
-
-    // Khởi tạo Singleton
-    const hubInstance = new OptimizationHub();
-
-    // Xuất ra global scope theo đúng yêu cầu đề bài
-    window.PG_Modules_W50 = hubInstance;
-    window.PG_OptimizationHub = hubInstance;
-
-    // Tự động kết nối an toàn khi tài liệu sẵn sàng
-    if (typeof document !== 'undefined') {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                hubInstance.init();
-            });
-        } else {
-            // DOM đã sẵn sàng
-            setTimeout(() => {
-                hubInstance.init();
-            }, 0);
-        }
-    }
-
-    console.log('[PG_W50] Master Optimization Hub đã nạp thành công vào window.PG_Modules_W50 & window.PG_OptimizationHub');
-
-})(typeof window !== 'undefined' ? window : globalThis);
 

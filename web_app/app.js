@@ -1,3 +1,10 @@
+
+// [SECURITY HARD-LOCK: DEPLOY EDITION ONLY ALLOWS OFFICE & WORKSHOP]
+const IS_LOCAL_DIRECTOR_PC = (typeof window !== 'undefined') && (
+  window.location.hostname === '127.0.0.1' ||
+  window.location.hostname === 'localhost'
+);
+
 /**
  * PG HOME LUXURY - CCSC & ENTERPRISE MANAGEMENT SYSTEM 2026
  * Core Application Engine & State Management
@@ -9,48 +16,7 @@
 
 const DEFAULT_DATA = {
   // 12 Months CCSC System Data (2026)
-  ccscMonths: [
-    { m: 1, name: "Tháng 1", sales: 250000000, debt: 25000000, cash: 225000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 3000000, bpkd: 15000000, qlx: 21000000, thue: 13000000, isActual: false },
-    { m: 2, name: "Tháng 2", sales: 80000000, debt: 8000000, cash: 72000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 1000000, bpkd: 7500000, qlx: 21000000, thue: 13000000, isActual: false },
-    { m: 3, name: "Tháng 3", sales: 220000000, debt: 22000000, cash: 198000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 3000000, bpkd: 14500000, qlx: 21000000, thue: 13000000, isActual: false },
-    { m: 4, name: "Tháng 4", sales: 300000000, debt: 30000000, cash: 270000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 4000000, bpkd: 18000000, qlx: 21000000, thue: 13000000, isActual: false },
-    { m: 5, name: "Tháng 5", sales: 350000000, debt: 35000000, cash: 315000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 4500000, bpkd: 19000000, qlx: 21000000, thue: 13000000, isActual: false },
-    { m: 6, name: "Tháng 6", sales: 289578000, debt: 240000000, cash: 49578000, bld: 12000000, hiep_cb: 3500000, hiep_sale: 1978900, bpkd: 16923076, qlx: 11961539, thue: 13000000, isActual: true },
-    { m: 7, name: "Tháng 7", sales: 450000000, debt: 67500000, cash: 382500000, bld: 19970529, hiep_cb: 6500000, hiep_sale: 5000000, bpkd: 11691538, qlx: 22500000, thue: 13000000, isActual: true },
-    { m: 8, name: "Tháng 8", sales: 242051705, debt: 69803651, cash: 172248054, bld: 12000000, hiep_cb: 6500000, hiep_sale: 3000000, bpkd: 10500000, qlx: 19615385, mkt: 12000000, bhxh: 6600000, thue: 13000000, pk_profit: 2652000, isActual: true },
-    { m: 9, name: "Tháng 9", sales: 287782767, debt: 138066647, cash: 149716120, bld: 12000000, hiep_cb: 6500000, hiep_sale: 7000000, bpkd: 9865385, qlx: 20250000, mkt: 12000000, bhxh: 6600000, thue: 13000000, pk_profit: 9000000, isActual: true },
-    { m: 10, name: "Tháng 10", sales: 480000000, debt: 48000000, cash: 432000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 6000000, bpkd: 18000000, qlx: 21000000, mkt: 20000000, thue: 13000000, isActual: false },
-    { m: 11, name: "Tháng 11", sales: 580000000, debt: 58000000, cash: 522000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 8000000, bpkd: 22000000, qlx: 21000000, mkt: 20000000, thue: 13000000, isActual: false },
-    { m: 12, name: "Tháng 12", sales: 520000000, debt: 52000000, cash: 468000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 7000000, bpkd: 20000000, qlx: 21000000, mkt: 20000000, thue: 13000000, isActual: false }
-  ],
-
-  // Khối lượng sản xuất xưởng thực tế (T8 & T9 thực tế - Chuẩn hóa Bỏ Gỗ Thịt & Bỏ Phụ Kiện)
-  xuongRecords: [
-    // Tháng 8 (Chuẩn 242,051,705 đ - Khóa sổ 100%)
-    { id: 1, month: 8, client: "Cậu Chiến", address: "Hương Khê", saleRep: "Lưu Thị Thu Hương", contractVal: 154000000, solidVal: 16500000, woodVal: 137500000, pkVal: 0, pct: 1.0, actualXuong: 137500000, debt: 0, note: "Đã hoàn thành 100% (Bỏ gỗ thịt 16.5M cửa & bàn ghế tự nhiên)" },
-    { id: 2, month: 8, client: "Thắm Minh", address: "Thạch Hưng", saleRep: "Lưu Thị Thu Hương", contractVal: 87430975, solidVal: 0, woodVal: 78590975, pkVal: 8840000, pct: 1.0, actualXuong: 78590975, debt: 0, note: "Đã hoàn thành 100% (Bỏ PK bán kèm 8.84M lãi gộp 30%)" },
-    { id: 3, month: 8, client: "Chị Hiển", address: "Thạch Linh", saleRep: "Lưu Thị Thu Hương", contractVal: 129803651, solidVal: 0, woodVal: 129803651, pkVal: 0, pct: 0.20, actualXuong: 25960730.2, debt: 69803651, note: "Đợt 1 T8 (20%) ván HMR Thái Lan cốt xanh 388 Lam Giang" },
-    
-    // Tháng 9 (Chuẩn 287,782,767 đ - Khóa sổ 100%)
-    { id: 4, month: 9, client: "Chị Hiển", address: "Thạch Linh", saleRep: "Lưu Thị Thu Hương", contractVal: 129803651, solidVal: 0, woodVal: 129803651, pkVal: 0, pct: 0.80, actualXuong: 103842920.8, debt: 69803651, note: "Lắp ráp hoàn thiện nốt 80% (Tổng VT 2 đợt 51.92M = đúng 40.0%)" },
-    { id: 5, month: 9, client: "Chị Phượng", address: "Nghi Xuân", saleRep: "Tống Trần Hiệp", contractVal: 42462996, solidVal: 0, woodVal: 42462996, pkVal: 0, pct: 0.95, actualXuong: 40339846.2, debt: 6462996, note: "Hoàn thiện 95% (Sofa nỉ & bàn ăn 30M tính mảng đồ rời riêng)" },
-    { id: 6, month: 9, client: "Anh Tuấn", address: "TP. Hà Tĩnh", saleRep: "Đường Việt Dũng", contractVal: 111800000, solidVal: 0, woodVal: 97000000, pkVal: 14800000, pct: 0.60, actualXuong: 58200000, debt: 61800000, note: "Tiến độ T9 60% (Bỏ PK Hafele 14.8M, VT T9: 23.28M = đúng 40.0%)" },
-    { id: 7, month: 9, client: "Anh Hào", address: "Kỳ Anh", saleRep: "Đường Việt Dũng", contractVal: 100600000, solidVal: 0, woodVal: 85400000, pkVal: 15200000, pct: 1.0, actualXuong: 85400000, debt: 0, note: "Hoàn thành 100% (Bỏ PK Eurogold 15.2M, VT đủ 68 tấm ván Thái: 34.16M = đúng 40.0%)" },
-
-    // Tháng 10 (Kỳ sống thực tế - Công trình theo nhóm Zalo)
-    { id: 8, month: 10, client: "Chị Hoa (Biệt Thự Thạch Bàn)", address: "Thạch Bàn, Hà Tĩnh", saleRep: "Nguyễn Viết Nghĩa", contractVal: 145000000, solidVal: 22000000, woodVal: 115000000, pkVal: 30000000, pct: 0.40, actualXuong: 46000000, debt: 58000000, note: "Đã chốt KT: Bỏ Giường sồi 22M & PK Huge/Grandx 29.2M (VT GĐ1 49.4M)" },
-    { id: 9, month: 10, client: "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", address: "Đường 26/03, TP. Hà Tĩnh", saleRep: "Nguyễn Viết Nghĩa", contractVal: 234243218, solidVal: 0, woodVal: 219953218, pkVal: 14290000, pct: 0.95, actualXuong: 208955557, debt: 117121609, sourcePdf: "Bac_Phat_kich_thuoc_chot_final.pdf", note: "Hoàn thiện 95% (Mới thu 50% = 117.12M, còn phải thu 117.12M; Bỏ PK bếp Kadinax + Blum 14.29M)" },
-    { id: 12, month: 10, client: "Nhà Anh Công (Hà Tĩnh)", address: "Hà Tĩnh", saleRep: "Tống Trần Hiệp", contractVal: 65000000, solidVal: 0, woodVal: 52000000, pkVal: 13000000, pct: 0.20, actualXuong: 10400000, debt: 35000000, note: "Vừa đặt ván HMR Thailan & nẹp Lam Giang 11.935M (ĐH DH29767)" }
-  ],
-
-  // Bảng lương thợ sản xuất trực tiếp (T9 thực tế)
-  workers: [
-    { code: "NV01", name: "HÀ VIẾT HOÀ", skill: "Thợ Cả / Kết cấu", base: 13780000, days: 26, daySalary: 12720000, ot: 1093125, allowance: 0, advance: 0, total: 13813125 },
-    { code: "NV02", name: "LÊ VĂN THOAN", skill: "Thợ Chính / Dán cạnh", base: 11700000, days: 26, daySalary: 9225000, ot: 885938, allowance: 0, advance: 0, total: 10110938 },
-    { code: "NV03", name: "LƯƠNG THỂ HÀO", skill: "Thợ Chính / Lắp ráp", base: 11700000, days: 26, daySalary: 8325000, ot: 1096875, allowance: 0, advance: 0, total: 9421875 },
-    { code: "NV04", name: "TRẦN VĂN ANH", skill: "Thợ Lắp đặt / Hoàn thiện", base: 10400000, days: 26, daySalary: 7200000, ot: 600000, allowance: 0, advance: 0, total: 7800000 },
-    { code: "NV05", name: "LÊ TUẤN ANH", skill: "Thợ Phụ / Đóng gói", base: 7800000, days: 26, daySalary: 2850000, ot: 56250, allowance: 0, advance: 0, total: 2906250 }
-  ],
+  ccscMonths: [], // [ISOLATED TO LOCAL PC VAULT - ZERO CCSC DATA ON DEPLOY]
 
   // Danh mục vật tư & Giá Cost công trình
   materials: [
@@ -408,8 +374,7 @@ const DEFAULT_DATA = {
   ],
 
   users: [
-    { id: 1, username: "giamdoc", password: "123", fullName: "Nguyễn Viết Nghĩa", phone: "0986.722.324", role: "ADMIN", dept: "Ban Giám Đốc", createdAt: "2026-08-01", status: "ACTIVE" },
-    { id: 2, username: "thaixuong", password: "123", fullName: "Nguyễn Văn Thái", phone: "0915.223.456", role: "XUONG_VATTU", dept: "Quản lý xưởng sản xuất", createdAt: "2026-08-01", status: "ACTIVE" },
+        { id: 2, username: "thaixuong", password: "123", fullName: "Nguyễn Văn Thái", phone: "0915.223.456", role: "XUONG_VATTU", dept: "Quản lý xưởng sản xuất", createdAt: "2026-08-01", status: "ACTIVE" },
     { id: 3, username: "vuvattu", password: "123", fullName: "Hoàng Công Vũ", phone: "0988.223.344", role: "XUONG_VATTU", dept: "Kỹ thuật bóc tách vật tư / CNC", createdAt: "2026-08-15", status: "ACTIVE" },
     { id: 4, username: "hoatho", password: "123", fullName: "Hà Viết Hòa", phone: "0972.334.556", role: "THO_XUONG", dept: "Thợ Cả / Kết cấu", createdAt: "2026-08-01", status: "ACTIVE" },
     { id: 5, username: "haotho", password: "123", fullName: "Lương Thể Hào", phone: "0983.445.667", role: "THO_XUONG", dept: "Thợ chính lắp ráp", createdAt: "2026-08-01", status: "ACTIVE" },
@@ -455,8 +420,7 @@ const DEFAULT_DATA = {
   expenses: [
     { id: "CP-01", name: "Tiền thuê Showroom & Văn Phòng", recipient: "Chủ nhà mặt bằng Showroom PG Home", budget: "6,000,000 đ/tháng", actual: 6000000, diff: "0 đ (Chuẩn)", note: "Hợp đồng thuê mặt bằng 2026", approver: "Ban Giám Đốc", month: 9 },
     { id: "CP-02", name: "Tiền thuê Xưởng Sản Xuất", recipient: "Chủ đất xưởng sản xuất Phú Gia", budget: "7,000,000 đ/tháng", actual: 7000000, diff: "0 đ (Chuẩn)", note: "Hợp đồng thuê xưởng 2026", approver: "Ban Giám Đốc", month: 9 },
-    { id: "CP-03", name: "Lương Ban Lãnh Đạo (Giám Đốc Nghĩa)", recipient: "Nguyễn Viết Nghĩa", budget: "12,000,000 đ/tháng", actual: 12000000, diff: "0 đ (Chuẩn)", note: "Cố định chuẩn CCSC Col G", approver: "HĐQT / Ban GĐ", month: 9 },
-    { id: "CP-04", name: "Marketing & Ngân Sách Chạy Ads", recipient: "Nhân viên MKT & Quảng cáo Ads", budget: "12,000,000 đ/tháng", actual: 12000000, diff: "0 đ (Chuẩn)", note: "Lương 6M + Ngân sách Ads 6M (Col R)", approver: "Ban Giám Đốc", month: 9 },
+        { id: "CP-04", name: "Marketing & Ngân Sách Chạy Ads", recipient: "Nhân viên MKT & Quảng cáo Ads", budget: "12,000,000 đ/tháng", actual: 12000000, diff: "0 đ (Chuẩn)", note: "Lương 6M + Ngân sách Ads 6M (Col R)", approver: "Ban Giám Đốc", month: 9 },
     { id: "CP-05", name: "Bảo hiểm xã hội 6 nhân sự", recipient: "Cơ quan BHXH TP Hà Tĩnh", budget: "6,600,000 đ/tháng", actual: 6600000, diff: "0 đ (Chuẩn)", note: "Đóng 1.1M/người cho 6 nòng cốt (Col BB)", approver: "Ban Giám Đốc", month: 9 },
     { id: "CP-06", name: "Điện 3 pha sản xuất xưởng", recipient: "Điện lực TP Hà Tĩnh", budget: "1.5% Doanh số xưởng", actual: 4316742, diff: "Theo công tơ thực tế", note: "Tháng 8: 3,630,776 đ | Tháng 9: 4,316,742 đ", approver: "Quản lý xưởng Thái", month: 9 },
     { id: "CP-07", name: "Xăng xe & bảo dưỡng xe tải", recipient: "Cây xăng & Garage xe tải xưởng", budget: "1.5% Doanh số xưởng", actual: 4316742, diff: "Theo hóa đơn định mức", note: "Tháng 8: 3,630,776 đ | Tháng 9: 4,316,742 đ", approver: "Quản lý xưởng Thái", month: 9 },
@@ -824,7 +788,7 @@ const DEFAULT_DATA = {
       debt: "Theo PO-2026-1010 (28,000,000 đ)",
       doc: "Hình ảnh nghiệm thu sofa & bàn ăn",
       cacheCount: 0,
-      note: "Mảng Phụ Kiện Bán Kèm mang lại 11.65M lãi gộp cho BGĐ trong T8 + T9."
+      note: "Mảng Phụ Kiện Bán Kèm & Đồ Rời bàn giao đồng bộ theo tiến độ công trình."
     },
     {
       id: "g_bocdem_hatinh",

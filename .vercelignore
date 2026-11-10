@@ -57,3 +57,12 @@ tools/
 update_ccsc_with_actuals_2026.py
 WCS_UL10_PROTOCOL.md
 __pycache__/
+local_admin_vault/
+web_app/*.xlsx
+web_app/modules/w01_executive_kpi_bar.js
+web_app/modules/w02_ccsc_12months_engine.js
+web_app/modules/w03_core_worker_fund_hoa_hao.js
+web_app/modules/w04_sales_bonus_500m_lock.js
+web_app/modules/w38_management_salary_pool.js
+web_app/modules/w45_safe_pocket_summary_card.js
+
