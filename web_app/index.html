@@ -667,30 +667,30 @@
           </div>
         </div>
 
-        <!-- THANH ĐỒNG BỘ CHẤM CÔNG ZALO THỜI GIAN THỰC (STEALTH 100% PASSIVE DISK READ) -->
-        <div id="zaloRealtimeAttendanceBar" class="card mb-3" style="padding: 12px 16px; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(15,23,42,0.95)); border: 1px solid rgba(16,185,129,0.38); border-radius: 10px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-              <span class="badge live pulse" style="background:rgba(16,185,129,0.22); color:#34D399; border:1px solid rgba(16,185,129,0.5); font-weight:800; padding:4px 10px;">
-                <i class="fa-solid fa-satellite-dish"></i> ZALO REAL-TIME SYNC (15s/lần)
+        <!-- THANH ĐỒNG BỘ CHẤM CÔNG ZALO THỜI GIAN THỰC (STEALTH 100% PASSIVE DISK READ - GỌN 1 DÒNG) -->
+        <div id="zaloRealtimeAttendanceBar" class="card mb-2" style="padding: 6px 12px; background: linear-gradient(135deg, rgba(16,185,129,0.10), rgba(15,23,42,0.92)); border: 1px solid rgba(16,185,129,0.32); border-radius: 8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="badge live pulse" style="background:rgba(16,185,129,0.22); color:#34D399; border:1px solid rgba(16,185,129,0.5); font-weight:800; padding:2px 8px; font-size:0.70rem;">
+                <i class="fa-solid fa-satellite-dish"></i> ZALO REAL-TIME (15s)
               </span>
-              <span style="font-size:0.84rem; color:#E2E8F0; font-weight:700;">
-                Đang rà ngầm 3 nhóm Zalo: <strong style="color:#FBBF24;">Xưởng Sản Xuất PG Home</strong> • <strong style="color:#38BDF8;">Điều Hành Xưởng</strong> • <strong style="color:#34D399;">Chấm Công Văn Phòng</strong>
+              <span style="font-size:0.78rem; color:#E2E8F0; font-weight:600;">
+                Rà ngầm Zalo: <strong style="color:#FBBF24;">Xưởng Sản Xuất</strong> • <strong style="color:#38BDF8;">Điều Hành Xưởng</strong> • <strong style="color:#34D399;">Chấm Công VP</strong>
               </span>
-              <span id="zaloAttLastSyncLabel" style="font-size:0.76rem; color:#94A3B8; font-family:monospace;">
-                (Cập nhật lúc: 10/11/2026 — Stealth 100% Passive Read)
+              <span id="zaloAttLastSyncLabel" style="font-size:0.72rem; color:#94A3B8; font-family:monospace;">
+                (10/11/2026 — Stealth 100%)
               </span>
             </div>
-            <div style="display:flex; gap:8px; align-items:center;">
-              <button type="button" class="btn btn-sm btn-emerald" onclick="window.syncZaloAttendanceRealtime && window.syncZaloAttendanceRealtime(true)" style="font-weight:700; padding:5px 12px;">
-                <i class="fa-solid fa-rotate"></i> Quét Zalo Cập Nhật Công & OT Ngay
+            <div style="display:flex; gap:6px; align-items:center;">
+              <button type="button" class="btn btn-sm btn-emerald" onclick="window.syncZaloAttendanceRealtime && window.syncZaloAttendanceRealtime(true)" style="font-weight:700; padding:3px 10px; font-size:0.74rem;">
+                <i class="fa-solid fa-rotate"></i> Đồng Bộ Zalo Ngay
               </button>
-              <button type="button" class="btn btn-sm btn-outline" onclick="const el=document.getElementById('zaloAttendanceLiveFeedStrip'); if(el) el.style.display=(el.style.display==='none'?'grid':'none');" style="font-size:0.75rem; padding:4px 10px;">
-                <i class="fa-solid fa-list-check"></i> Nhật ký Check-in Zalo (9/9)
+              <button type="button" class="btn btn-sm btn-outline" onclick="const el=document.getElementById('zaloAttendanceLiveFeedStrip'); if(el) el.style.display=(el.style.display==='none'?'grid':'none');" style="font-size:0.72rem; padding:3px 8px;">
+                <i class="fa-solid fa-list-check"></i> Chi tiết Check-in (9/9)
               </button>
             </div>
           </div>
-          <div id="zaloAttendanceLiveFeedStrip" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; margin-top:10px; padding-top:10px; border-top:1px dashed rgba(148,163,184,0.2);">
+          <div id="zaloAttendanceLiveFeedStrip" style="display:none; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:6px; margin-top:8px; padding-top:8px; border-top:1px dashed rgba(148,163,184,0.2);">
             <!-- Tự động điền bởi window.syncZaloAttendanceRealtime() -->
           </div>
         </div>
@@ -2605,8 +2605,8 @@
           </div>
         </div>
 
-        <!-- BẢNG ĐỐI SÁNH VẬT TƯ THỰC ĐẶT (PO ZALO/HÓA ĐƠN) VS ĐỊNH MỨC KHOÁN 40% (DA-19) -->
-        <div class="table-card admin-only-section" style="margin-top: 1.5rem; border: 1px solid rgba(56, 189, 248, 0.35);">
+        <!-- BẢNG ĐỐI SÁNH VẬT TƯ THỰC ĐẶT (PO ZALO/HÓA ĐƠN) VS ĐỊNH MỨC KHOÁN 40% (DA-19 - ẨN TRÊN BẢN NHÂN VIÊN) -->
+        <div class="table-card admin-only-section pg-subsection-hidden" style="display: none !important; margin-top: 1.5rem; border: 1px solid rgba(56, 189, 248, 0.35);">
           <div class="table-header-bar" style="background: rgba(15, 23, 42, 0.9);">
             <div>
               <h3 style="color: #38BDF8;"><i class="fa-solid fa-scale-balanced"></i> Bảng Đối Sánh Vật Tư Thực Đặt (PO Zalo / Hóa Đơn) vs Định Mức Khoán CCSC</h3>

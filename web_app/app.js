@@ -3170,28 +3170,13 @@ window.lookupProjectWoodVal = function(normKey, fallbackQuota40) {
 window.renderMaterialVsQuotaTable = function() {
   const tbody = document.getElementById("bodyDoiSanhVatTuKhoan");
   if (!tbody) return;
+  const parentTable = tbody.closest("table");
+  if (parentTable) parentTable.classList.add("data-table");
 
-  const factoryItems = appState.factoryItems || [];
   const poList = appState.poList || [];
-
   const projectMap = new Map();
-  factoryItems.forEach(item => {
-    const clientName = (item.client || "").trim();
-    if (!clientName) return;
-    const baseKey = window.normalizeProjectMatchKey(clientName);
-    if (!projectMap.has(baseKey)) {
-      projectMap.set(baseKey, {
-        key: baseKey,
-        label: clientName,
-        month: item.month ? `Tháng ${item.month}/2026` : "Năm 2026",
-        woodVal: 0,
-        note: item.spec || item.item || "Hạng mục sản xuất xưởng"
-      });
-    }
-    const entry = projectMap.get(baseKey);
-    entry.woodVal += Number(item.rev || 0);
-  });
 
+  // Chỉ hiển thị các công trình đang có Đơn Đặt Hàng PO thực tế (ẩn các dự án lịch sử T8/T9 đã đóng sổ không có PO)
   poList.forEach(po => {
     if (po.status === "REJECTED") return;
     const projName = (po.project || "").trim();
@@ -3201,7 +3186,7 @@ window.renderMaterialVsQuotaTable = function() {
       projectMap.set(baseKey, {
         key: baseKey,
         label: projName,
-        month: po.date || "Tháng 10/2026",
+        month: po.date || "T10-T11/2026",
         woodVal: window.lookupProjectWoodVal(baseKey, po.quota40),
         note: po.category || "Đơn đặt hàng vật tư Zalo"
       });
@@ -3221,33 +3206,24 @@ window.renderMaterialVsQuotaTable = function() {
     const quota40 = Math.round(p.woodVal * 0.40);
     const diff = quota40 - actualPO;
     const poCodes = matchingPOs.map(po => po.code).join(", ");
-    const latestPoSummary = matchingPOs.length > 0
-      ? `${approvedPOs.length} Đã duyệt / ${pendingPOs.length} Chờ duyệt (${poCodes})`
-      : "Đã quyết toán gộp sổ tổng NCC (T8)";
+    const latestPoSummary = `${approvedPOs.length} Duyệt / ${pendingPOs.length} Chờ (${poCodes})`;
 
-    const poCellHtml = matchingPOs.length > 0
-      ? `<div style="line-height:1.35;">
-           <span style="font-weight:700; color:#10B981;" title="Đã có Dấu Đỏ Giám Đốc">💮 Duyệt: ${fmtCurr(approvedSum)}</span>
-           ${pendingSum > 0 ? `<br><small style="color:#F59E0B; font-weight:600;" title="Đang chờ Giám Đốc duyệt">⏳ Chờ: ${fmtCurr(pendingSum)}</small>` : ""}
-         </div>`
-      : `<span style="color:#94A3B8;">Quyết toán sổ tổng T8</span>`;
+    const poCellHtml = `<span style="font-weight:700; color:#10B981; white-space:nowrap;" title="Đã có Dấu Đỏ Giám Đốc">💮 ${fmtCurr(approvedSum)}</span>${pendingSum > 0 ? ` <span style="color:#F59E0B; font-weight:600; font-size:0.78rem; white-space:nowrap;" title="Đang chờ Giám Đốc duyệt">• ⏳ ${fmtCurr(pendingSum)}</span>` : ""}`;
 
-    const diffCellHtml = matchingPOs.length > 0
-      ? (diff >= 0
-          ? `<span style="color:#10B981; font-weight:700;">+${fmtCurr(diff)} (Trong trần 40%)</span>`
-          : `<span style="color:#F87171; font-weight:700;">-${fmtCurr(Math.abs(diff))} (Vượt trần 40%)</span>`)
-      : `<span style="color:#94A3B8;">Khóa sổ lịch sử T8</span>`;
+    const diffCellHtml = diff >= 0
+      ? `<span style="color:#10B981; font-weight:700; white-space:nowrap;">+${fmtCurr(diff)} (Trong trần 40%)</span>`
+      : `<span style="color:#F87171; font-weight:700; white-space:nowrap;">-${fmtCurr(Math.abs(diff))} (Vượt trần 40%)</span>`;
 
-    const badgeClass = matchingPOs.length > 0 ? (diff >= 0 ? "positive" : "danger") : "warning";
+    const badgeClass = diff >= 0 ? "positive" : "danger";
 
     return `
-      <tr>
-        <td><strong>${p.label}</strong> <small style="color:var(--text-muted);">(${p.month})</small></td>
-        <td style="text-align: right;">${fmtCurr(p.woodVal)}</td>
-        <td style="text-align: right;"><span class="confidential-num">${fmtCurr(quota40)}</span></td>
-        <td style="text-align: right;">${poCellHtml}</td>
-        <td style="text-align: right;">${diffCellHtml}</td>
-        <td><span class="badge ${badgeClass}">${latestPoSummary}</span></td>
+      <tr class="pg-compact-row">
+        <td style="white-space: nowrap;"><strong>${p.label}</strong> <small style="color:var(--text-muted);">(${p.month})</small></td>
+        <td style="text-align: right; white-space: nowrap;">${fmtCurr(p.woodVal)}</td>
+        <td style="text-align: right; white-space: nowrap;"><span class="confidential-num">${fmtCurr(quota40)}</span></td>
+        <td style="text-align: right; white-space: nowrap;">${poCellHtml}</td>
+        <td style="text-align: right; white-space: nowrap;">${diffCellHtml}</td>
+        <td style="white-space: nowrap; max-width: 240px; overflow: hidden; text-overflow: ellipsis;" title="${latestPoSummary.replace(/"/g, '&quot;')}"><span class="badge ${badgeClass}">${latestPoSummary}</span></td>
       </tr>
     `;
   }).join("");
@@ -10184,10 +10160,17 @@ window.approveAllFilteredZaloItems = async function() {
 
     const workstationCard = document.getElementById("vuSmartOrderWorkstation");
     const poTable = document.getElementById("tablePOList");
-    const poListCard = poTable ? poTable.closest(".card") : null;
+    const poListCard = poTable ? poTable.closest(".card, .table-card") : null;
     const statsCenterCard = document.getElementById("vuMultiDimStatsCenter");
-    const quotaBody = document.getElementById("poQuotaComparisonbody");
-    const quotaCard = quotaBody ? quotaBody.closest(".card") : null;
+    const quotaBody = document.getElementById("bodyDoiSanhVatTuKhoan") || document.getElementById("poQuotaComparisonbody");
+    const quotaCard = quotaBody ? quotaBody.closest(".card, .table-card") : null;
+    const zaloInboxCard = document.getElementById("zaloStagingInboxCard");
+
+    // Ẩn vĩnh viễn bảng Đối sánh CCSC 40% trên bản Nhân Viên 2 Phân Hệ (Deploy Edition)
+    if (quotaCard) {
+      quotaCard.style.setProperty("display", "none", "important");
+      quotaCard.classList.add("pg-subsection-hidden");
+    }
 
     if (!poListCard) return;
 
@@ -10225,18 +10208,18 @@ window.approveAllFilteredZaloItems = async function() {
         <button type="button" class="pg-subview-btn" data-po-subview="po_stats" onclick="switchPoTabSubView('po_stats')">
           📊 2. Thống Kê Đa Chiều (Pivot 3 Chiều)
         </button>
-        <button type="button" class="pg-subview-btn" data-po-subview="po_quota40" onclick="switchPoTabSubView('po_quota40')">
-          ⚖️ 3. Đối Sánh Thực Đặt vs Khoán 40%
-        </button>
         <button type="button" class="pg-subview-btn" data-po-subview="po_workstation" onclick="switchPoTabSubView('po_workstation')">
-          ⚡ 4. Bàn Lập Đơn Zalo & 18 Nhóm NCC
+          ⚡ 3. Bàn Lập Đơn Zalo & 18 Nhóm NCC
+        </button>
+        <button type="button" class="pg-subview-btn" data-po-subview="po_zalo_inbox" onclick="switchPoTabSubView('po_zalo_inbox')">
+          📥 4. Hộp Thư Hóa Đơn Zalo
         </button>
         <button type="button" class="pg-subview-btn" data-po-subview="all" onclick="switchPoTabSubView('all')">
           👁️ Hiện Tất Cả
         </button>
       </div>
       <div style="font-size:11px;color:#94a3b8;">
-        Mặc định ưu tiên <strong>Bảng Duyệt Đơn PO</strong> lên đầu trang
+        Mặc định hiển thị gọn <strong>1 bảng Danh Sách PO</strong>
       </div>
     `;
 
@@ -10266,37 +10249,42 @@ window.approveAllFilteredZaloItems = async function() {
         setVis(workstationCard, false);
         setVis(statsCenterCard, false);
         setVis(quotaCard, false);
+        setVis(zaloInboxCard, false);
       } else if (mode === "po_stats") {
         setVis(quickStrip, false);
         setVis(poListCard, false);
         setVis(workstationCard, false);
         setVis(statsCenterCard, true);
         setVis(quotaCard, false);
+        setVis(zaloInboxCard, false);
         if (typeof window.renderVuMultiDimStatsPivot === "function") {
           window.renderVuMultiDimStatsPivot();
         }
-      } else if (mode === "po_quota40") {
-        setVis(quickStrip, false);
-        setVis(poListCard, false);
-        setVis(workstationCard, false);
-        setVis(statsCenterCard, false);
-        setVis(quotaCard, true);
       } else if (mode === "po_workstation") {
         setVis(quickStrip, false);
         setVis(poListCard, true);
         setVis(workstationCard, true);
         setVis(statsCenterCard, false);
         setVis(quotaCard, false);
+        setVis(zaloInboxCard, false);
+      } else if (mode === "po_zalo_inbox") {
+        setVis(quickStrip, false);
+        setVis(poListCard, false);
+        setVis(workstationCard, false);
+        setVis(statsCenterCard, false);
+        setVis(quotaCard, false);
+        setVis(zaloInboxCard, true);
       } else {
         setVis(quickStrip, true);
         setVis(poListCard, true);
         setVis(workstationCard, true);
         setVis(statsCenterCard, true);
-        setVis(quotaCard, true);
+        setVis(quotaCard, false);
+        setVis(zaloInboxCard, true);
       }
     };
 
-    // Mặc định hiển thị phân khu 1: Danh sách PO & Duyệt Dấu Đỏ gọn gàng
+    // Mặc định hiển thị phân khu 1: Danh sách PO & Duyệt Dấu Đỏ gọn gàng (1 bảng duy nhất)
     window.switchPoTabSubView("po_list");
   }
 
