@@ -42,31 +42,10 @@ def ensure_local_vault():
     os.makedirs(LOCAL_VAULT_DIR, exist_ok=True)
     index_html_path = os.path.join(WEB_APP_DIR, "index.html")
     app_js_path = os.path.join(WEB_APP_DIR, "app.js")
-
-    with open(index_html_path, "r", encoding="utf-8") as f:
-        full_html = f.read()
-    with open(app_js_path, "r", encoding="utf-8") as f:
-        full_js = f.read()
-
     director_html_path = os.path.join(LOCAL_VAULT_DIR, "director_ccsc_full.html")
     director_js_path = os.path.join(LOCAL_VAULT_DIR, "director_app_full.js")
 
-    full_html = full_html.replace("Showroom Ngô Đức Kế", "Showroom Trương Quốc Dụng")
-
-    if 'id="tab-ccsc-matrix"' in full_html and 'id="tab-ccsc-t8-t9"' in full_html:
-        local_html = full_html.replace(
-            '<span class="brand-sub">ERP V7.0 ENTERPRISE</span>',
-            '<span class="brand-sub" style="color:#10B981;font-weight:800;">LOCAL PC: CCSC & GIÁM ĐỐC</span>'
-        )
-        local_html = re.sub(
-            r'<script src="app\.js[^"]*"></script>',
-            '<script src="/local-admin-assets/director_app_full.js?v=15.0_LOCAL_CCSC_2026"></script>',
-            local_html
-        )
-        with open(director_html_path, "w", encoding="utf-8") as f:
-            f.write(local_html)
-        print(f"[OK] Saved full Director & CCSC HTML to: {director_html_path} ({len(local_html):,} bytes)")
-    elif os.path.exists(director_html_path):
+    if os.path.exists(director_html_path):
         with open(director_html_path, "r", encoding="utf-8") as f:
             dh = f.read().replace("Showroom Ngô Đức Kế", "Showroom Trương Quốc Dụng")
         dh = dh.replace(
@@ -80,17 +59,25 @@ def ensure_local_vault():
         )
         with open(director_html_path, "w", encoding="utf-8") as f:
             f.write(dh)
-        print(f"[OK] Patched full Director & CCSC HTML at: {director_html_path} ({len(dh):,} bytes)")
+        print(f"[OK] Loaded master Director & CCSC HTML from: {director_html_path} ({len(dh):,} bytes)")
+    else:
+        with open(index_html_path, "r", encoding="utf-8") as f:
+            full_html = f.read().replace("Showroom Ngô Đức Kế", "Showroom Trương Quốc Dụng")
+        with open(director_html_path, "w", encoding="utf-8") as f:
+            f.write(full_html)
 
-    if not os.path.exists(director_js_path) or ("bld: 12000000" in full_js and "ccscMonths:" in full_js):
+    if os.path.exists(director_js_path):
+        with open(director_js_path, "r", encoding="utf-8") as f:
+            source_js = f.read()
+        print(f"[OK] Loaded master Director & CCSC JS from: {director_js_path} ({len(source_js):,} bytes)")
+    else:
+        with open(app_js_path, "r", encoding="utf-8") as f:
+            source_js = f.read()
         with open(director_js_path, "w", encoding="utf-8") as f:
-            f.write(full_js)
-        print(f"[OK] Saved full Director & CCSC JS to: {director_js_path} ({len(full_js):,} bytes)")
+            f.write(source_js)
 
     with open(director_html_path, "r", encoding="utf-8") as f:
         source_html = f.read()
-    with open(director_js_path, "r", encoding="utf-8") as f:
-        source_js = f.read()
 
     return source_html, source_js
 
@@ -134,38 +121,34 @@ def strip_html_section_by_id(html: str, section_id: str, comment_label: str) -> 
     return html[:start_idx] + f'<!-- [STRIPPED FOR DEPLOY: #{section_id} ({comment_label}) ISOLATED TO LOCAL PC 127.0.0.1:8080] -->' + html[pos:]
 
 
-DEPLOY_TWO_DIVISION_NAV_HTML = """      <!-- BỘ CHUYỂN ĐỔI NHANH 2 KHỐI VẬN HÀNH: VĂN PHÒNG <-> XƯỞNG -->
+DEPLOY_TWO_DIVISION_NAV_HTML = """      <!-- BỘ CHUYỂN ĐỔI CÁCH LY TUYỆT ĐỐI 2 KHỐI: I. VĂN PHÒNG <-> II. XƯỞNG SẢN XUẤT -->
       <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 8px 12px 6px; border-bottom: 1px solid rgba(212,175,55,0.18);">
-        <div style="font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; color: #D4AF37; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-          <span><i class="fa-solid fa-layer-group"></i> CHẾ ĐỘ XEM 2 PHÂN HỆ</span>
-          <span style="color:#10B981;font-size:0.62rem;">10/10 NGHIỆP VỤ</span>
+        <div style="font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; color: #D4AF37; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+          <span><i class="fa-solid fa-shield-halved"></i> CÁCH LY 2 KHỐI ĐỘC LẬP</span>
+          <span style="color:#10B981;font-size:0.60rem;">CHỐNG LỘ LỌT</span>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;">
-          <button type="button" class="div-switch-btn active" data-div-mode="all" onclick="window.switchDeployDivision('all')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(212,175,55,0.45); background: rgba(212,175,55,0.16); color: #FDE68A; font-size: 0.68rem; font-weight: 800; cursor: pointer;">
-            Cả 2 Khối
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+          <button type="button" class="div-switch-btn active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.45); background: rgba(168,85,247,0.22); color: #F3E8FF; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏢 I. Khối Văn Phòng
           </button>
-          <button type="button" class="div-switch-btn" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.35); background: rgba(168,85,247,0.08); color: #E9D5FF; font-size: 0.68rem; font-weight: 700; cursor: pointer;">
-            I. Văn Phòng
-          </button>
-          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.68rem; font-weight: 700; cursor: pointer;">
-            II. Xưởng SX
+          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏭 II. Khối Xưởng SX
           </button>
         </div>
       </div>
 
-      <!-- MENU CHUẨN 2 PHẦN DỰA THEO CHỨC NĂNG NHIỆM VỤ & QUY TRÌNH KHÉP KÍN PHÚ GIA -->
+      <!-- MENU CHUẨN 2 PHẦN CÁCH LY ĐỘC LẬP THEO CHỨC NĂNG NHIỆM VỤ PHÚ GIA -->
       <nav class="nav-menu" id="mainNavMenu">
         <!-- =========================================================================
-             PHẦN I: KHỐI VĂN PHÒNG — KINH DOANH, DỰ TOÁN & CÔNG NỢ (HIỆP & DŨNG)
-             Quy trình: Đón khách & Bóc dự toán 3 cấp (Cost <=54%) -> Ký HĐ & tách woodVal
-             -> Bán kèm Phụ kiện/Sofa -> Thu hồi công nợ 3 đợt (50-40-10) -> Chi phí VP
+             PHẦN I: KHỐI VĂN PHÒNG — KINH DOANH, DỰ TOÁN & CÔNG NỢ KHÁCH (HIỆP & DŨNG)
+             Cách ly tuyệt đối với đơn giá kho xưởng, công nợ NCC và bảng lương thợ xưởng
              ========================================================================= -->
-        <div class="nav-section-title" data-role-group="vanphong" data-division="vanphong" style="background: rgba(168,85,247,0.12); border-left: 3px solid #A855F7; padding: 8px 10px; margin: 8px 8px 4px; border-radius: 6px; color: #E9D5FF; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
+        <div class="nav-section-title" data-role-group="vanphong" data-division="vanphong" style="background: rgba(168,85,247,0.14); border-left: 3px solid #A855F7; padding: 8px 10px; margin: 8px 8px 4px; border-radius: 6px; color: #E9D5FF; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span><i class="fa-solid fa-building-user text-purple"></i> PHẦN I: KHỐI VĂN PHÒNG</span>
-            <span style="background:rgba(168,85,247,0.25); color:#F3E8FF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước</span>
+            <span style="background:rgba(168,85,247,0.28); color:#F3E8FF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">6 Bước VP</span>
           </div>
-          <div style="font-size:0.63rem; color:#C084FC; font-weight:500; margin-top:2px;">Dự toán • Hợp đồng • Phụ kiện • Công nợ • Vận hành VP</div>
+          <div style="font-size:0.62rem; color:#C084FC; font-weight:500; margin-top:2px;">Dự toán • Hợp đồng • Phụ kiện • Công nợ khách • Chi phí & Chấm công VP</div>
         </div>
 
         <a href="#du-toan-du-an" class="nav-item active" data-tab="tab-du-toan-du-an" data-role-group="vanphong" data-division="vanphong" title="Bước 1 Văn Phòng: Khởi tạo dự án mới, đo bóc định mức tấm CNC, định giá 3 cấp vật liệu (An Cường / Thái Lan / Plywood) & kiểm soát Cost <= 54%">
@@ -180,45 +163,48 @@ DEPLOY_TWO_DIVISION_NAV_HTML = """      <!-- BỘ CHUYỂN ĐỔI NHANH 2 KHỐI
           <i class="fa-solid fa-couch text-purple"></i>
           <span>3. Phụ Kiện Bếp & Sofa Thương Mại</span>
         </a>
-        <a href="#cong-no-dong-tien" class="nav-item" data-tab="tab-cong-no-dong-tien" data-role-group="vanphong" data-division="vanphong" title="Bước 4 Văn Phòng: Theo dõi thu tiền khách hàng 3 đợt (50% ký HĐ - 40% giao hàng - 10% nghiệm thu) & cảnh báo công nợ quá hạn">
+        <a href="#cong-no-dong-tien" class="nav-item" data-tab="tab-cong-no-dong-tien" data-role-group="vanphong" data-division="vanphong" title="Bước 4 Văn Phòng: Chỉ theo dõi thu tiền khách hàng 3 đợt (50% ký HĐ - 40% giao hàng - 10% nghiệm thu), cách ly hoàn toàn công nợ NCC xưởng">
           <i class="fa-solid fa-hand-holding-dollar text-purple"></i>
-          <span>4. Thu Hồi Công Nợ & Dòng Tiền Khách</span>
+          <span>4. Thu Hồi Công Nợ Khách Hàng</span>
         </a>
         <a href="#chi-phi-van-phong" class="nav-item" data-tab="tab-chi-phi-van-phong" data-role-group="vanphong" data-division="vanphong" title="Bước 5 Văn Phòng: Quản lý chi phí mặt bằng Showroom Trương Quốc Dụng, Marketing/Ads, văn phòng phẩm & hành chính VP">
           <i class="fa-solid fa-store text-purple"></i>
           <span>5. Chi Phí Mặt Bằng & Vận Hành VP</span>
         </a>
+        <a href="#cham-cong-vp" class="nav-item" data-tab="tab-cham-cong-all" data-role-group="vanphong" data-division="vanphong" onclick="window.openDivisionTimesheet('vanphong'); return false;" title="Bước 6 Văn Phòng: Điểm danh & bảng lương riêng Khối Văn Phòng (Hiệp, Dũng, Nga, Linh), ẩn hoàn toàn lương thợ xưởng">
+          <i class="fa-solid fa-user-tie text-purple"></i>
+          <span>6. Chấm Công & Điểm Danh VP</span>
+        </a>
 
         <!-- =========================================================================
-             PHẦN II: KHỐI XƯỞNG SẢN XUẤT — KỸ THUẬT, VẬT TƯ & NHÂN SỰ (VŨ, THÁI & THỢ)
-             Quy trình: Nhận lệnh SX (woodVal) -> Lập PO đặt vật tư (chờ Dấu Đỏ Giám Đốc)
-             -> Đối soát kho & công nợ 3 NCC -> Chấm công HC + OT & Lương -> Định mức CNC
+             PHẦN II: KHỐI XƯỞNG SẢN XUẤT — KỸ THUẬT, VẬT TƯ & ĐỘI THỢ (VŨ, THÁI & THỢ)
+             Cách ly tuyệt đối với báo giá khách hàng, hợp đồng sale và lương văn phòng
              ========================================================================= -->
-        <div class="nav-section-title" data-role-group="xuong" data-division="xuong" style="background: rgba(6,182,212,0.12); border-left: 3px solid #06B6D4; padding: 8px 10px; margin: 12px 8px 4px; border-radius: 6px; color: #A5F3FC; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
+        <div class="nav-section-title" data-role-group="xuong" data-division="xuong" style="display:none; background: rgba(6,182,212,0.14); border-left: 3px solid #06B6D4; padding: 8px 10px; margin: 8px 8px 4px; border-radius: 6px; color: #A5F3FC; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span><i class="fa-solid fa-industry text-cyan"></i> PHẦN II: KHỐI XƯỞNG SẢN XUẤT</span>
-            <span style="background:rgba(6,182,212,0.25); color:#ECFEFF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước</span>
+            <span style="background:rgba(6,182,212,0.28); color:#ECFEFF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước Xưởng</span>
           </div>
-          <div style="font-size:0.63rem; color:#67E8F9; font-weight:500; margin-top:2px;">Tiến độ SX • Duyệt PO • Kho NCC • Chấm công • Định mức CNC</div>
+          <div style="font-size:0.62rem; color:#67E8F9; font-weight:500; margin-top:2px;">Tiến độ SX • Duyệt PO • Kho & Nợ NCC • Lương thợ • Định mức CNC</div>
         </div>
 
-        <a href="#xuong-san-xuat" class="nav-item" data-tab="tab-xuong-san-xuat" data-role-group="xuong" data-division="xuong" title="Bước 1 Xưởng: Nhận lệnh sản xuất từ Văn phòng, theo dõi tiến độ gia công CNC & lắp đặt công trình, kiểm soát trần vật tư 40%">
+        <a href="#xuong-san-xuat" class="nav-item" data-tab="tab-xuong-san-xuat" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 1 Xưởng: Nhận lệnh sản xuất từ Văn phòng, theo dõi tiến độ gia công CNC & lắp đặt công trình, kiểm soát trần vật tư 40%">
           <i class="fa-solid fa-gears text-cyan"></i>
           <span>1. Tiến Độ Sản Xuất & Khối Lượng Xưởng</span>
         </a>
-        <a href="#phe-duyet-vat-tu" class="nav-item" data-tab="tab-phe-duyet-vat-tu" data-role-group="xuong" data-division="xuong" title="Bước 2 Xưởng: Vũ lập Phiếu đề xuất vật tư theo bóc tách kỹ thuật; kiểm tra chốt chặn Dấu Đỏ Điện Tử Giám Đốc trước khi gửi NCC">
+        <a href="#phe-duyet-vat-tu" class="nav-item" data-tab="tab-phe-duyet-vat-tu" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 2 Xưởng: Vũ lập Phiếu đề xuất vật tư theo bóc tách kỹ thuật; kiểm tra chốt chặn Dấu Đỏ Điện Tử Giám Đốc trước khi gửi NCC">
           <i class="fa-solid fa-stamp text-cyan"></i>
           <span>2. Đề Xuất & Duyệt Đặt Hàng Vật Tư (PO)</span>
         </a>
-        <a href="#vat-tu-cost" class="nav-item" data-tab="tab-vat-tu-cost" data-role-group="xuong" data-division="xuong" title="Bước 3 Xưởng: Tra cứu đơn giá ván/phụ kiện, lịch sử nhập hàng & đối soát công nợ 3 lớp với NCC (Lam Giang, Quốc Tâm, ALD, Kính, Đá)">
+        <a href="#vat-tu-cost" class="nav-item" data-tab="tab-vat-tu-cost" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 3 Xưởng: Tra cứu đơn giá ván/phụ kiện, lịch sử nhập hàng & đối soát công nợ 3 lớp với NCC (Lam Giang, Quốc Tâm, ALD, Kính, Đá)">
           <i class="fa-solid fa-boxes-stacked text-cyan"></i>
-          <span>3. Kho Vật Tư, Đơn Giá & Đối Soát NCC</span>
+          <span>3. Kho Vật Tư, Đơn Giá & Công Nợ NCC</span>
         </a>
-        <a href="#cham-cong-all" class="nav-item" data-tab="tab-cham-cong-all" data-role-group="xuong" data-division="xuong" title="Bước 4 Xưởng & Nhân sự: Điểm danh hàng ngày (Công hành chính HC + Giờ tăng ca OT), quản lý tạm ứng & bảng lương đội thợ Xưởng / VP">
-          <i class="fa-solid fa-user-check text-green"></i>
-          <span>4. Chấm Công, Điểm Danh & Bảng Lương</span>
+        <a href="#cham-cong-xuong" class="nav-item" data-tab="tab-cham-cong-all" data-role-group="xuong" data-division="xuong" style="display:none;" onclick="window.openDivisionTimesheet('xuong'); return false;" title="Bước 4 Xưởng: Điểm danh hàng ngày (Công hành chính HC + Giờ tăng ca OT), quản lý tạm ứng & bảng lương riêng Đội Thợ Xưởng">
+          <i class="fa-solid fa-helmet-safety text-cyan"></i>
+          <span>4. Chấm Công & Lương Thợ Xưởng</span>
         </a>
-        <a href="#sop-quy-trinh" class="nav-item" data-tab="tab-sop-quy-trinh" data-role-group="xuong" data-division="xuong" title="Bước 5 Xưởng & Kỹ thuật: Bảng chuẩn 8 định mức tấm cắt CNC thực chiến (khổ 1220x2440) & Quy trình phối hợp Văn Phòng - Xưởng (Master SOP 4.0)">
+        <a href="#sop-quy-trinh" class="nav-item" data-tab="tab-sop-quy-trinh" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 5 Xưởng & Kỹ thuật: Bảng chuẩn 8 định mức tấm cắt CNC thực chiến (khổ 1220x2440) & Quy trình phối hợp Văn Phòng - Xưởng (Master SOP 4.0)">
           <i class="fa-solid fa-ruler-combined text-gold"></i>
           <span>5. Quy Chuẩn Kỹ Thuật & Định Mức CNC</span>
         </a>
@@ -292,17 +278,14 @@ def build_deploy_html(source_html):
         '<span class="user-display-role" id="topUserRoleName">2 Phân Hệ: Văn Phòng + Xưởng</span>'
     )
 
-    # Thay nút "Bảo Mật Lợi Nhuận: BẬT" trên Topbar của bản Deploy bằng Thanh Chuyển Nhanh 2 Phần (VP / Xưởng)
-    topbar_2part_pills = """<!-- TOPBAR 2-DIVISION QUICK SWITCHER (PHẦN I: VĂN PHÒNG | PHẦN II: XƯỞNG) -->
-          <div class="topbar-division-pills" style="display:inline-flex; align-items:center; gap:4px; background:rgba(15,23,42,0.85); border:1px solid rgba(212,175,55,0.3); padding:3px; border-radius:8px;">
-            <button type="button" class="top-div-pill active" data-div-mode="all" onclick="window.switchDeployDivision('all')" style="padding:4px 9px; border-radius:6px; border:none; background:rgba(212,175,55,0.22); color:#FDE68A; font-size:0.72rem; font-weight:800; cursor:pointer;" title="Hiển thị đầy đủ cả 2 phần: Văn Phòng (5 mục) & Xưởng Sản Xuất (5 mục)">
-              <i class="fa-solid fa-layer-group"></i> Cả 2 Phần (10)
+    # Thay nút "Bảo Mật Lợi Nhuận: BẬT" trên Topbar của bản Deploy bằng Thanh Chuyển Đổi Cách Ly 2 Phần (I. Văn Phòng | II. Xưởng SX)
+    topbar_2part_pills = """<!-- TOPBAR 2-DIVISION STRICT SWITCHER (PHẦN I: VĂN PHÒNG | PHẦN II: XƯỞNG SX) -->
+          <div class="topbar-division-pills" style="display:inline-flex; align-items:center; gap:4px; background:rgba(15,23,42,0.88); border:1px solid rgba(212,175,55,0.32); padding:3px; border-radius:8px;">
+            <button type="button" class="top-div-pill active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding:4px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.22); background:rgba(168,85,247,0.28); color:#F3E8FF; font-size:0.72rem; font-weight:800; cursor:pointer;" title="Chế độ Khối Văn Phòng & Kinh Doanh (Dự toán, Hợp đồng, Phụ kiện/Sofa, Công nợ khách, Chi phí & Chấm công VP)">
+              <i class="fa-solid fa-building-user"></i> I. Khối Văn Phòng (6)
             </button>
-            <button type="button" class="top-div-pill" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding:4px 9px; border-radius:6px; border:none; background:transparent; color:#E9D5FF; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chuyển sang Phần I: Khối Văn Phòng & Kinh Doanh (Dự toán, Hợp đồng, Phụ kiện/Sofa, Công nợ khách, Chi phí VP)">
-              <i class="fa-solid fa-building-user"></i> I. Văn Phòng (5)
-            </button>
-            <button type="button" class="top-div-pill" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding:4px 9px; border-radius:6px; border:none; background:transparent; color:#A5F3FC; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chuyển sang Phần II: Khối Xưởng Sản Xuất (Tiến độ SX, Duyệt PO vật tư, Kho & NCC, Chấm công, Định mức CNC)">
-              <i class="fa-solid fa-industry"></i> II. Xưởng SX (5)
+            <button type="button" class="top-div-pill" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding:4px 10px; border-radius:6px; border:none; background:transparent; color:#A5F3FC; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chế độ Khối Xưởng Sản Xuất (Tiến độ SX, Duyệt PO vật tư, Kho & Công nợ NCC, Lương thợ xưởng, Định mức CNC)">
+              <i class="fa-solid fa-industry"></i> II. Khối Xưởng SX (5)
             </button>
           </div>"""
     html = re.sub(
@@ -344,10 +327,16 @@ def build_deploy_html(source_html):
         flags=re.DOTALL
     )
 
-    # 4. Xóa "#fundMonitorWidget" (Thặng Dư Cấn Trừ Ròng Bỏ Túi) trong #tab-cham-cong-all
+    # 4. Xóa "#fundMonitorWidget" (Thặng Dư Cấn Trừ Ròng Bỏ Túi) và "#bonusPassbookCard" (Quỹ Giữ Chân Nội Bộ) trong #tab-cham-cong-all
     html = re.sub(
         r'<!-- (?:WIDGET|ĐỒNG HỒ) GIÁM SÁT QUỸ KHOÁN THỢ 15% REAL-TIME.*?<div class="[^"]*" id="fundMonitorWidget">.*?(?=<!-- TOOLBAR BỘ LỌC THÁNG & BỘ PHẬN -->|<!-- BẢNG LƯƠNG TỔNG HỢP)',
         '<!-- [STRIPPED FOR DEPLOY: #fundMonitorWidget ISOLATED TO LOCAL PC] -->\n        ',
+        html,
+        flags=re.DOTALL
+    )
+    html = re.sub(
+        r'<!-- SỔ TÍCH LŨY THƯỞNG TẾT & QUỸ TRÁCH NHIỆM CUỐI NĂM \(RULE C1 & C2\) -->.*?<div class="card" id="bonusPassbookCard".*?(?=<!-- CHỐT CHẶN 4: MA TRẬN CHẤM CÔNG)',
+        '<!-- [STRIPPED FOR DEPLOY: #bonusPassbookCard ISOLATED TO LOCAL PC] -->\n        ',
         html,
         flags=re.DOTALL
     )
@@ -377,12 +366,12 @@ def build_deploy_html(source_html):
         html
     )
 
-    # 8. Thay nút Đăng nhập nhanh Giám Đốc ở Modal Login bằng nút Mở Cả 2 Phân Hệ (Văn Phòng + Xưởng)
+    # 8. Thay nút Đăng nhập nhanh Giám Đốc ở Modal Login bằng nút Mở Khối Văn Phòng (cách ly với Xưởng)
     html = re.sub(
         r'<button type="button" class="quick-role-btn admin" onclick="quickFillLogin\(\'giamdoc\', \'123\'\)">.*?</button>',
-        '<button type="button" class="quick-role-btn admin" onclick="window.switchDeployDivision(\'all\'); document.getElementById(\'authScreen\')?.classList.remove(\'show\');">'
-        '<i class="fa-solid fa-layer-group"></i>'
-        '<div><strong>Mở Cả 2 Phần (VP + Xưởng)</strong><span>Xem trọn bộ 5 mục Văn Phòng & 5 mục Xưởng SX</span></div>'
+        '<button type="button" class="quick-role-btn admin" onclick="window.switchDeployDivision(\'vanphong\'); document.getElementById(\'authScreen\')?.classList.remove(\'show\');">'
+        '<i class="fa-solid fa-building-user"></i>'
+        '<div><strong>I. Mở Khối Văn Phòng (6 Bước)</strong><span>Dự toán • Hợp đồng • Phụ kiện • Công nợ khách • Chấm công VP</span></div>'
         '</button>',
         html,
         flags=re.DOTALL
@@ -501,7 +490,7 @@ def build_deploy_js(source_js):
     if old_init_user in js:
         js = js.replace(old_init_user, new_init_user)
 
-    # 7. Sửa khối applyUserRole(user) trên bản Deploy để hỗ trợ 2 Phần (Phần I: Văn Phòng & Phần II: Xưởng) rõ ràng, không ẩn mất menu
+    # 7. Sửa khối applyUserRole(user) trên bản Deploy để cách ly rõ ràng Phần I: Văn Phòng và Phần II: Xưởng Sản Xuất
     old_role_loop = """  const roleGroups = document.querySelectorAll("[data-role-group]");
   roleGroups.forEach(el => {
     const grp = el.getAttribute("data-role-group");
@@ -525,23 +514,24 @@ def build_deploy_js(source_js):
     }
   });"""
 
-    new_role_loop = """  // Bản Deploy Chuẩn 2 Phần (Phần I: Văn Phòng | Phần II: Xưởng Sản Xuất):
-  // Luôn giữ hiển thị rõ ràng menu 2 phần trừ khi người dùng chủ động bấm lọc riêng 1 phần
-  const savedDivMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "all";
+    new_role_loop = """  // Bản Deploy Chuẩn Cách Ly 2 Phần (Phần I: Văn Phòng | Phần II: Xưởng Sản Xuất):
+  // Luôn tách bạch 2 khối độc lập để tránh lộ lọt thông tin giữa Văn Phòng và Xưởng
+  let savedDivMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "vanphong";
+  if (user.role === "XUONG_VATTU") savedDivMode = "xuong";
+  else if (user.role === "VANPHONG_SALE" || user.role === "DU_TOAN_SALE") savedDivMode = "vanphong";
+  else if (savedDivMode !== "vanphong" && savedDivMode !== "xuong") savedDivMode = "vanphong";
+
   const roleGroups = document.querySelectorAll("[data-role-group]");
   roleGroups.forEach(el => {
     const grp = el.getAttribute("data-role-group");
     if (grp === "admin") {
       el.classList.add("role-hidden");
+      el.style.display = "none";
       return;
     }
-    if (savedDivMode === "vanphong") {
-      el.classList.toggle("role-hidden", grp !== "vanphong");
-    } else if (savedDivMode === "xuong") {
-      el.classList.toggle("role-hidden", grp !== "xuong");
-    } else {
-      el.classList.remove("role-hidden");
-    }
+    const isTarget = (grp === savedDivMode);
+    el.classList.toggle("role-hidden", !isTarget);
+    el.style.display = isTarget ? "" : "none";
   });"""
 
     if old_role_loop in js:
@@ -553,27 +543,41 @@ def build_deploy_js(source_js):
         'switchTabTo("tab-du-toan-du-an");'
     )
 
-    # 8. Bổ sung hàm window.switchDeployDivision(mode) để chuyển đổi mượt mà giữa:
-    #    - 'all': Hiển thị cả 2 Phần (Phần I: Văn Phòng 5 mục + Phần II: Xưởng 5 mục)
-    #    - 'vanphong': Tập trung Phần I: Khối Văn Phòng & Kinh Doanh (5 mục) + lọc Chấm công VP
-    #    - 'xuong': Tập trung Phần II: Khối Xưởng Sản Xuất & Kỹ Thuật (5 mục) + lọc Chấm công Xưởng
+    # 8. Bổ sung hàm window.openDivisionTimesheet(dept) và window.switchDeployDivision(mode)
+    #    để tách bạch 100% giữa:
+    #    - 'vanphong': Tập trung Phần I: Khối Văn Phòng & Kinh Doanh (6 mục) + chỉ hiện bảng Chấm công VP
+    #    - 'xuong': Tập trung Phần II: Khối Xưởng Sản Xuất & Kỹ Thuật (5 mục) + chỉ hiện bảng Chấm công & Lương Thợ Xưởng
     division_switcher_js = """
 // ==========================================================================
-// BỘ ĐIỀU HƯỚNG 2 PHẦN CHUẨN QUY TRÌNH TRÊN BẢN DEPLOY (I. VĂN PHÒNG | II. XƯỞNG)
+// BỘ ĐIỀU HƯỚNG & CÁCH LY TUYỆT ĐỐI 2 PHẦN TRÊN BẢN DEPLOY (I. VĂN PHÒNG | II. XƯỞNG)
 // ==========================================================================
+window.openDivisionTimesheet = function(dept) {
+  const targetDept = (dept === "xuong") ? "xuong" : "vanphong";
+  if (typeof switchTabTo === "function") {
+    switchTabTo("tab-cham-cong-all");
+  }
+  if (typeof setTimesheetDeptFilter === "function") {
+    setTimesheetDeptFilter(targetDept);
+  }
+  // Khóa bộ nút lọc trên đầu trang Chấm công để Văn Phòng không bấm xem trộm Xưởng và ngược lại
+  const btnAll = document.getElementById("btnFilterDeptAll");
+  const btnXuong = document.getElementById("btnFilterDeptXuong");
+  const btnVP = document.getElementById("btnFilterDeptVP");
+  if (btnAll) btnAll.style.display = "none";
+  if (btnXuong) btnXuong.style.display = (targetDept === "xuong") ? "inline-flex" : "none";
+  if (btnVP) btnVP.style.display = (targetDept === "vanphong") ? "inline-flex" : "none";
+};
+
 window.switchDeployDivision = function(mode) {
-  const validMode = (mode === "vanphong" || mode === "xuong") ? mode : "all";
+  const validMode = (mode === "xuong") ? "xuong" : "vanphong";
   try {
     sessionStorage.setItem("PG_DEPLOY_DIVISION_MODE", validMode);
   } catch (e) {}
 
-  // 1. Ẩn/hiện các mục trên Sidebar theo Phần I (vanphong) hoặc Phần II (xuong) hoặc Cả 2 (all)
+  // 1. Ẩn/hiện nghiêm ngặt các mục trên Sidebar theo Phần I (vanphong) hoặc Phần II (xuong)
   document.querySelectorAll("[data-division]").forEach(el => {
     const div = el.getAttribute("data-division");
-    if (validMode === "all") {
-      el.classList.remove("role-hidden");
-      el.style.display = "";
-    } else if (div === validMode) {
+    if (div === validMode) {
       el.classList.remove("role-hidden");
       el.style.display = "";
     } else {
@@ -591,7 +595,7 @@ window.switchDeployDivision = function(mode) {
       if (isAct) {
         btn.style.background = validMode === "vanphong"
           ? "rgba(168,85,247,0.28)"
-          : (validMode === "xuong" ? "rgba(6,182,212,0.28)" : "rgba(212,175,55,0.25)");
+          : "rgba(6,182,212,0.28)";
         btn.style.border = "1px solid rgba(255,255,255,0.22)";
       } else {
         btn.style.background = "transparent";
@@ -611,39 +615,42 @@ window.switchDeployDivision = function(mode) {
 
   if (validMode === "vanphong") {
     if (sideName) sideName.textContent = "PHẦN I: KHỐI VĂN PHÒNG";
-    if (sideRole) sideRole.textContent = "Hiệp & Dũng (Dự Toán • Hợp Đồng • Công Nợ)";
+    if (sideRole) sideRole.textContent = "Hiệp & Dũng (Dự Toán • Hợp Đồng • Công Nợ Khách)";
     if (topName) topName.textContent = "Khối Văn Phòng (Hiệp & Dũng)";
-    if (topRole) topRole.textContent = "5 Nghiệp Vụ Kinh Doanh & Dự Toán";
+    if (topRole) topRole.textContent = "6 Nghiệp Vụ Kinh Doanh, Dự Toán & VP";
     if (typeof setTimesheetDeptFilter === "function") setTimesheetDeptFilter("vanphong");
+    const btnAll = document.getElementById("btnFilterDeptAll");
+    const btnXuong = document.getElementById("btnFilterDeptXuong");
+    const btnVP = document.getElementById("btnFilterDeptVP");
+    if (btnAll) btnAll.style.display = "none";
+    if (btnXuong) btnXuong.style.display = "none";
+    if (btnVP) btnVP.style.display = "inline-flex";
+
     const activeTab = document.querySelector(".tab-pane.active");
-    const vpTabs = ["tab-du-toan-du-an", "tab-van-phong-sale", "tab-phu-kien-sofa", "tab-cong-no-dong-tien", "tab-chi-phi-van-phong"];
+    const vpTabs = ["tab-du-toan-du-an", "tab-van-phong-sale", "tab-phu-kien-sofa", "tab-cong-no-dong-tien", "tab-chi-phi-van-phong", "tab-cham-cong-all"];
     if (!activeTab || !vpTabs.includes(activeTab.id)) {
       if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
     }
-    if (typeof showToast === "function") showToast("🏢 Đã chọn PHẦN I: KHỐI VĂN PHÒNG (Dự toán • Hợp đồng • Phụ kiện • Công nợ • Chi phí VP)");
-  } else if (validMode === "xuong") {
+    if (typeof showToast === "function") showToast("🏢 Đang ở PHẦN I: KHỐI VĂN PHÒNG (Cách ly độc lập với Kho & Lương Xưởng)");
+  } else {
     if (sideName) sideName.textContent = "PHẦN II: KHỐI XƯỞNG SX";
-    if (sideRole) sideRole.textContent = "Vũ, Thái & Đội Thợ (SX • Vật Tư • Chấm Công)";
+    if (sideRole) sideRole.textContent = "Vũ, Thái & Đội Thợ (SX • Vật Tư • Lương Thợ)";
     if (topName) topName.textContent = "Khối Xưởng Sản Xuất (Vũ & Thái)";
-    if (topRole) topRole.textContent = "5 Nghiệp Vụ Kỹ Thuật, Vật Tư & Chấm Công";
+    if (topRole) topRole.textContent = "5 Nghiệp Vụ Kỹ Thuật, Vật Tư & Lương Xưởng";
     if (typeof setTimesheetDeptFilter === "function") setTimesheetDeptFilter("xuong");
+    const btnAll = document.getElementById("btnFilterDeptAll");
+    const btnXuong = document.getElementById("btnFilterDeptXuong");
+    const btnVP = document.getElementById("btnFilterDeptVP");
+    if (btnAll) btnAll.style.display = "none";
+    if (btnXuong) btnXuong.style.display = "inline-flex";
+    if (btnVP) btnVP.style.display = "none";
+
     const activeTab = document.querySelector(".tab-pane.active");
     const xuongTabs = ["tab-xuong-san-xuat", "tab-phe-duyet-vat-tu", "tab-vat-tu-cost", "tab-cham-cong-all", "tab-sop-quy-trinh"];
     if (!activeTab || !xuongTabs.includes(activeTab.id)) {
       if (typeof switchTabTo === "function") switchTabTo("tab-xuong-san-xuat");
     }
-    if (typeof showToast === "function") showToast("🏭 Đã chọn PHẦN II: KHỐI XƯỞNG SẢN XUẤT (Tiến độ • Duyệt PO • Kho NCC • Chấm công • Định mức CNC)");
-  } else {
-    if (sideName) sideName.textContent = "Điều Hành Văn Phòng & Xưởng";
-    if (sideRole) sideRole.textContent = "Phần I: Văn Phòng (5) • Phần II: Xưởng (5)";
-    if (topName) topName.textContent = "Văn Phòng & Xưởng SX";
-    if (topRole) topRole.textContent = "Hiển Thị Đầy Đủ 2 Phân Hệ (10 Mục)";
-    if (typeof setTimesheetDeptFilter === "function") setTimesheetDeptFilter("all");
-    const activeTab = document.querySelector(".tab-pane.active");
-    if (!activeTab) {
-      if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
-    }
-    if (typeof showToast === "function") showToast("📋 Đang hiển thị đầy đủ CẢ 2 PHẦN: I. Khối Văn Phòng (5 mục) & II. Khối Xưởng Sản Xuất (5 mục)");
+    if (typeof showToast === "function") showToast("🏭 Đang ở PHẦN II: KHỐI XƯỞNG SẢN XUẤT (Cách ly độc lập với Hợp Đồng & Lương VP)");
   }
 };
 """

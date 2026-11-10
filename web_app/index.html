@@ -83,38 +83,34 @@
 
       <!-- Navigation Links (Phân 3 nhóm quyền rõ ràng: Giám Đốc, Vũ Vật Tư, Hiệp Văn Phòng) -->
             <!-- Navigation Links (5 Phân Hệ Tinh Gọn thực chiến & chuyên nghiệp) -->
-            <!-- BỘ CHUYỂN ĐỔI NHANH 2 KHỐI VẬN HÀNH: VĂN PHÒNG <-> XƯỞNG -->
+            <!-- BỘ CHUYỂN ĐỔI CÁCH LY TUYỆT ĐỐI 2 KHỐI: I. VĂN PHÒNG <-> II. XƯỞNG SẢN XUẤT -->
       <div class="deploy-division-switcher" id="deployDivisionSwitcher" style="padding: 8px 12px 6px; border-bottom: 1px solid rgba(212,175,55,0.18);">
-        <div style="font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; color: #D4AF37; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-          <span><i class="fa-solid fa-layer-group"></i> CHẾ ĐỘ XEM 2 PHÂN HỆ</span>
-          <span style="color:#10B981;font-size:0.62rem;">10/10 NGHIỆP VỤ</span>
+        <div style="font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; color: #D4AF37; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+          <span><i class="fa-solid fa-shield-halved"></i> CÁCH LY 2 KHỐI ĐỘC LẬP</span>
+          <span style="color:#10B981;font-size:0.60rem;">CHỐNG LỘ LỌT</span>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;">
-          <button type="button" class="div-switch-btn active" data-div-mode="all" onclick="window.switchDeployDivision('all')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(212,175,55,0.45); background: rgba(212,175,55,0.16); color: #FDE68A; font-size: 0.68rem; font-weight: 800; cursor: pointer;">
-            Cả 2 Khối
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+          <button type="button" class="div-switch-btn active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.45); background: rgba(168,85,247,0.22); color: #F3E8FF; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏢 I. Khối Văn Phòng
           </button>
-          <button type="button" class="div-switch-btn" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(168,85,247,0.35); background: rgba(168,85,247,0.08); color: #E9D5FF; font-size: 0.68rem; font-weight: 700; cursor: pointer;">
-            I. Văn Phòng
-          </button>
-          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.68rem; font-weight: 700; cursor: pointer;">
-            II. Xưởng SX
+          <button type="button" class="div-switch-btn" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding: 7px 6px; border-radius: 6px; border: 1px solid rgba(6,182,212,0.35); background: rgba(6,182,212,0.08); color: #A5F3FC; font-size: 0.70rem; font-weight: 800; cursor: pointer;">
+            🏭 II. Khối Xưởng SX
           </button>
         </div>
       </div>
 
-      <!-- MENU CHUẨN 2 PHẦN DỰA THEO CHỨC NĂNG NHIỆM VỤ & QUY TRÌNH KHÉP KÍN PHÚ GIA -->
+      <!-- MENU CHUẨN 2 PHẦN CÁCH LY ĐỘC LẬP THEO CHỨC NĂNG NHIỆM VỤ PHÚ GIA -->
       <nav class="nav-menu" id="mainNavMenu">
         <!-- =========================================================================
-             PHẦN I: KHỐI VĂN PHÒNG — KINH DOANH, DỰ TOÁN & CÔNG NỢ (HIỆP & DŨNG)
-             Quy trình: Đón khách & Bóc dự toán 3 cấp (Cost <=54%) -> Ký HĐ & tách woodVal
-             -> Bán kèm Phụ kiện/Sofa -> Thu hồi công nợ 3 đợt (50-40-10) -> Chi phí VP
+             PHẦN I: KHỐI VĂN PHÒNG — KINH DOANH, DỰ TOÁN & CÔNG NỢ KHÁCH (HIỆP & DŨNG)
+             Cách ly tuyệt đối với đơn giá kho xưởng, công nợ NCC và bảng lương thợ xưởng
              ========================================================================= -->
-        <div class="nav-section-title" data-role-group="vanphong" data-division="vanphong" style="background: rgba(168,85,247,0.12); border-left: 3px solid #A855F7; padding: 8px 10px; margin: 8px 8px 4px; border-radius: 6px; color: #E9D5FF; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
+        <div class="nav-section-title" data-role-group="vanphong" data-division="vanphong" style="background: rgba(168,85,247,0.14); border-left: 3px solid #A855F7; padding: 8px 10px; margin: 8px 8px 4px; border-radius: 6px; color: #E9D5FF; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span><i class="fa-solid fa-building-user text-purple"></i> PHẦN I: KHỐI VĂN PHÒNG</span>
-            <span style="background:rgba(168,85,247,0.25); color:#F3E8FF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước</span>
+            <span style="background:rgba(168,85,247,0.28); color:#F3E8FF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">6 Bước VP</span>
           </div>
-          <div style="font-size:0.63rem; color:#C084FC; font-weight:500; margin-top:2px;">Dự toán • Hợp đồng • Phụ kiện • Công nợ • Vận hành VP</div>
+          <div style="font-size:0.62rem; color:#C084FC; font-weight:500; margin-top:2px;">Dự toán • Hợp đồng • Phụ kiện • Công nợ khách • Chi phí & Chấm công VP</div>
         </div>
 
         <a href="#du-toan-du-an" class="nav-item active" data-tab="tab-du-toan-du-an" data-role-group="vanphong" data-division="vanphong" title="Bước 1 Văn Phòng: Khởi tạo dự án mới, đo bóc định mức tấm CNC, định giá 3 cấp vật liệu (An Cường / Thái Lan / Plywood) & kiểm soát Cost <= 54%">
@@ -129,45 +125,48 @@
           <i class="fa-solid fa-couch text-purple"></i>
           <span>3. Phụ Kiện Bếp & Sofa Thương Mại</span>
         </a>
-        <a href="#cong-no-dong-tien" class="nav-item" data-tab="tab-cong-no-dong-tien" data-role-group="vanphong" data-division="vanphong" title="Bước 4 Văn Phòng: Theo dõi thu tiền khách hàng 3 đợt (50% ký HĐ - 40% giao hàng - 10% nghiệm thu) & cảnh báo công nợ quá hạn">
+        <a href="#cong-no-dong-tien" class="nav-item" data-tab="tab-cong-no-dong-tien" data-role-group="vanphong" data-division="vanphong" title="Bước 4 Văn Phòng: Chỉ theo dõi thu tiền khách hàng 3 đợt (50% ký HĐ - 40% giao hàng - 10% nghiệm thu), cách ly hoàn toàn công nợ NCC xưởng">
           <i class="fa-solid fa-hand-holding-dollar text-purple"></i>
-          <span>4. Thu Hồi Công Nợ & Dòng Tiền Khách</span>
+          <span>4. Thu Hồi Công Nợ Khách Hàng</span>
         </a>
         <a href="#chi-phi-van-phong" class="nav-item" data-tab="tab-chi-phi-van-phong" data-role-group="vanphong" data-division="vanphong" title="Bước 5 Văn Phòng: Quản lý chi phí mặt bằng Showroom Trương Quốc Dụng, Marketing/Ads, văn phòng phẩm & hành chính VP">
           <i class="fa-solid fa-store text-purple"></i>
           <span>5. Chi Phí Mặt Bằng & Vận Hành VP</span>
         </a>
+        <a href="#cham-cong-vp" class="nav-item" data-tab="tab-cham-cong-all" data-role-group="vanphong" data-division="vanphong" onclick="window.openDivisionTimesheet('vanphong'); return false;" title="Bước 6 Văn Phòng: Điểm danh & bảng lương riêng Khối Văn Phòng (Hiệp, Dũng, Nga, Linh), ẩn hoàn toàn lương thợ xưởng">
+          <i class="fa-solid fa-user-tie text-purple"></i>
+          <span>6. Chấm Công & Điểm Danh VP</span>
+        </a>
 
         <!-- =========================================================================
-             PHẦN II: KHỐI XƯỞNG SẢN XUẤT — KỸ THUẬT, VẬT TƯ & NHÂN SỰ (VŨ, THÁI & THỢ)
-             Quy trình: Nhận lệnh SX (woodVal) -> Lập PO đặt vật tư (chờ Dấu Đỏ Giám Đốc)
-             -> Đối soát kho & công nợ 3 NCC -> Chấm công HC + OT & Lương -> Định mức CNC
+             PHẦN II: KHỐI XƯỞNG SẢN XUẤT — KỸ THUẬT, VẬT TƯ & ĐỘI THỢ (VŨ, THÁI & THỢ)
+             Cách ly tuyệt đối với báo giá khách hàng, hợp đồng sale và lương văn phòng
              ========================================================================= -->
-        <div class="nav-section-title" data-role-group="xuong" data-division="xuong" style="background: rgba(6,182,212,0.12); border-left: 3px solid #06B6D4; padding: 8px 10px; margin: 12px 8px 4px; border-radius: 6px; color: #A5F3FC; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
+        <div class="nav-section-title" data-role-group="xuong" data-division="xuong" style="display:none; background: rgba(6,182,212,0.14); border-left: 3px solid #06B6D4; padding: 8px 10px; margin: 8px 8px 4px; border-radius: 6px; color: #A5F3FC; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.03em;">
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <span><i class="fa-solid fa-industry text-cyan"></i> PHẦN II: KHỐI XƯỞNG SẢN XUẤT</span>
-            <span style="background:rgba(6,182,212,0.25); color:#ECFEFF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước</span>
+            <span style="background:rgba(6,182,212,0.28); color:#ECFEFF; padding:1px 6px; border-radius:99px; font-size:0.62rem;">5 Bước Xưởng</span>
           </div>
-          <div style="font-size:0.63rem; color:#67E8F9; font-weight:500; margin-top:2px;">Tiến độ SX • Duyệt PO • Kho NCC • Chấm công • Định mức CNC</div>
+          <div style="font-size:0.62rem; color:#67E8F9; font-weight:500; margin-top:2px;">Tiến độ SX • Duyệt PO • Kho & Nợ NCC • Lương thợ • Định mức CNC</div>
         </div>
 
-        <a href="#xuong-san-xuat" class="nav-item" data-tab="tab-xuong-san-xuat" data-role-group="xuong" data-division="xuong" title="Bước 1 Xưởng: Nhận lệnh sản xuất từ Văn phòng, theo dõi tiến độ gia công CNC & lắp đặt công trình, kiểm soát trần vật tư 40%">
+        <a href="#xuong-san-xuat" class="nav-item" data-tab="tab-xuong-san-xuat" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 1 Xưởng: Nhận lệnh sản xuất từ Văn phòng, theo dõi tiến độ gia công CNC & lắp đặt công trình, kiểm soát trần vật tư 40%">
           <i class="fa-solid fa-gears text-cyan"></i>
           <span>1. Tiến Độ Sản Xuất & Khối Lượng Xưởng</span>
         </a>
-        <a href="#phe-duyet-vat-tu" class="nav-item" data-tab="tab-phe-duyet-vat-tu" data-role-group="xuong" data-division="xuong" title="Bước 2 Xưởng: Vũ lập Phiếu đề xuất vật tư theo bóc tách kỹ thuật; kiểm tra chốt chặn Dấu Đỏ Điện Tử Giám Đốc trước khi gửi NCC">
+        <a href="#phe-duyet-vat-tu" class="nav-item" data-tab="tab-phe-duyet-vat-tu" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 2 Xưởng: Vũ lập Phiếu đề xuất vật tư theo bóc tách kỹ thuật; kiểm tra chốt chặn Dấu Đỏ Điện Tử Giám Đốc trước khi gửi NCC">
           <i class="fa-solid fa-stamp text-cyan"></i>
           <span>2. Đề Xuất & Duyệt Đặt Hàng Vật Tư (PO)</span>
         </a>
-        <a href="#vat-tu-cost" class="nav-item" data-tab="tab-vat-tu-cost" data-role-group="xuong" data-division="xuong" title="Bước 3 Xưởng: Tra cứu đơn giá ván/phụ kiện, lịch sử nhập hàng & đối soát công nợ 3 lớp với NCC (Lam Giang, Quốc Tâm, ALD, Kính, Đá)">
+        <a href="#vat-tu-cost" class="nav-item" data-tab="tab-vat-tu-cost" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 3 Xưởng: Tra cứu đơn giá ván/phụ kiện, lịch sử nhập hàng & đối soát công nợ 3 lớp với NCC (Lam Giang, Quốc Tâm, ALD, Kính, Đá)">
           <i class="fa-solid fa-boxes-stacked text-cyan"></i>
-          <span>3. Kho Vật Tư, Đơn Giá & Đối Soát NCC</span>
+          <span>3. Kho Vật Tư, Đơn Giá & Công Nợ NCC</span>
         </a>
-        <a href="#cham-cong-all" class="nav-item" data-tab="tab-cham-cong-all" data-role-group="xuong" data-division="xuong" title="Bước 4 Xưởng & Nhân sự: Điểm danh hàng ngày (Công hành chính HC + Giờ tăng ca OT), quản lý tạm ứng & bảng lương đội thợ Xưởng / VP">
-          <i class="fa-solid fa-user-check text-green"></i>
-          <span>4. Chấm Công, Điểm Danh & Bảng Lương</span>
+        <a href="#cham-cong-xuong" class="nav-item" data-tab="tab-cham-cong-all" data-role-group="xuong" data-division="xuong" style="display:none;" onclick="window.openDivisionTimesheet('xuong'); return false;" title="Bước 4 Xưởng: Điểm danh hàng ngày (Công hành chính HC + Giờ tăng ca OT), quản lý tạm ứng & bảng lương riêng Đội Thợ Xưởng">
+          <i class="fa-solid fa-helmet-safety text-cyan"></i>
+          <span>4. Chấm Công & Lương Thợ Xưởng</span>
         </a>
-        <a href="#sop-quy-trinh" class="nav-item" data-tab="tab-sop-quy-trinh" data-role-group="xuong" data-division="xuong" title="Bước 5 Xưởng & Kỹ thuật: Bảng chuẩn 8 định mức tấm cắt CNC thực chiến (khổ 1220x2440) & Quy trình phối hợp Văn Phòng - Xưởng (Master SOP 4.0)">
+        <a href="#sop-quy-trinh" class="nav-item" data-tab="tab-sop-quy-trinh" data-role-group="xuong" data-division="xuong" style="display:none;" title="Bước 5 Xưởng & Kỹ thuật: Bảng chuẩn 8 định mức tấm cắt CNC thực chiến (khổ 1220x2440) & Quy trình phối hợp Văn Phòng - Xưởng (Master SOP 4.0)">
           <i class="fa-solid fa-ruler-combined text-gold"></i>
           <span>5. Quy Chuẩn Kỹ Thuật & Định Mức CNC</span>
         </a>
@@ -175,14 +174,6 @@
 
       <!-- Sidebar Footer -->
       <div class="sidebar-footer">
-        <div class="kpi-mini-card">
-          <div class="kpi-mini-label">Mục tiêu Doanh số 2026</div>
-          <div class="kpi-mini-val">4.50 Tỷ VNĐ</div>
-          <div class="kpi-progress">
-            <div class="kpi-bar" style="width: 48.6%;"></div>
-          </div>
-          <span class="kpi-mini-sub">Đạt 48.6% (T1 - T9)</span>
-        </div>
         <button type="button" class="pwa-install-btn" id="btnInstallPWA">
           <i class="fa-solid fa-mobile-screen-button"></i> <span>Cài Đặt App Di Động</span>
         </button>
@@ -225,16 +216,13 @@
             <span class="zalo-pending-pill" id="zaloPendingBadge" style="display:inline-flex; align-items:center; justify-content:center; background:#F59E0B; color:#000; font-size:0.68rem; font-weight:800; padding:1px 6px; border-radius:999px; margin-left:4px;">3</span>
           </div>
 
-          <!-- TOPBAR 2-DIVISION QUICK SWITCHER (PHẦN I: VĂN PHÒNG | PHẦN II: XƯỞNG) -->
-          <div class="topbar-division-pills" style="display:inline-flex; align-items:center; gap:4px; background:rgba(15,23,42,0.85); border:1px solid rgba(212,175,55,0.3); padding:3px; border-radius:8px;">
-            <button type="button" class="top-div-pill active" data-div-mode="all" onclick="window.switchDeployDivision('all')" style="padding:4px 9px; border-radius:6px; border:none; background:rgba(212,175,55,0.22); color:#FDE68A; font-size:0.72rem; font-weight:800; cursor:pointer;" title="Hiển thị đầy đủ cả 2 phần: Văn Phòng (5 mục) & Xưởng Sản Xuất (5 mục)">
-              <i class="fa-solid fa-layer-group"></i> Cả 2 Phần (10)
+          <!-- TOPBAR 2-DIVISION STRICT SWITCHER (PHẦN I: VĂN PHÒNG | PHẦN II: XƯỞNG SX) -->
+          <div class="topbar-division-pills" style="display:inline-flex; align-items:center; gap:4px; background:rgba(15,23,42,0.88); border:1px solid rgba(212,175,55,0.32); padding:3px; border-radius:8px;">
+            <button type="button" class="top-div-pill active" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding:4px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.22); background:rgba(168,85,247,0.28); color:#F3E8FF; font-size:0.72rem; font-weight:800; cursor:pointer;" title="Chế độ Khối Văn Phòng & Kinh Doanh (Dự toán, Hợp đồng, Phụ kiện/Sofa, Công nợ khách, Chi phí & Chấm công VP)">
+              <i class="fa-solid fa-building-user"></i> I. Khối Văn Phòng (6)
             </button>
-            <button type="button" class="top-div-pill" data-div-mode="vanphong" onclick="window.switchDeployDivision('vanphong')" style="padding:4px 9px; border-radius:6px; border:none; background:transparent; color:#E9D5FF; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chuyển sang Phần I: Khối Văn Phòng & Kinh Doanh (Dự toán, Hợp đồng, Phụ kiện/Sofa, Công nợ khách, Chi phí VP)">
-              <i class="fa-solid fa-building-user"></i> I. Văn Phòng (5)
-            </button>
-            <button type="button" class="top-div-pill" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding:4px 9px; border-radius:6px; border:none; background:transparent; color:#A5F3FC; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chuyển sang Phần II: Khối Xưởng Sản Xuất (Tiến độ SX, Duyệt PO vật tư, Kho & NCC, Chấm công, Định mức CNC)">
-              <i class="fa-solid fa-industry"></i> II. Xưởng SX (5)
+            <button type="button" class="top-div-pill" data-div-mode="xuong" onclick="window.switchDeployDivision('xuong')" style="padding:4px 10px; border-radius:6px; border:none; background:transparent; color:#A5F3FC; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Chế độ Khối Xưởng Sản Xuất (Tiến độ SX, Duyệt PO vật tư, Kho & Công nợ NCC, Lương thợ xưởng, Định mức CNC)">
+              <i class="fa-solid fa-industry"></i> II. Khối Xưởng SX (5)
             </button>
           </div>
 
@@ -2207,6 +2195,300 @@
             </table>
           </div>
         </div>
+
+        <!-- CARD ĐỐI SOÁT CÔNG NỢ TỔNG KHO VÁN LAM GIANG (10 THÁNG NĂM 2026) - ĐÃ TÁCH VỀ KHỐI XƯỞNG & KHO VẬT TƯ -->
+        <div class="card table-card" id="cardSupplierDebtLamGiang" style="border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-top: 24px; margin-bottom: 24px;">
+          <div class="card-header" style="background: linear-gradient(135deg, rgba(26,43,76,0.9), rgba(15,23,42,0.9)); padding: 16px 20px;">
+            <div>
+              <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                <h3 style="margin:0; color:#fff;"><i class="fa-solid fa-file-invoice-dollar text-gold"></i> Sổ Đối Soát Công Nợ Tổng Kho Ván Lam Giang (T1 - T10/2026)</h3>
+                <span class="badge success" style="font-size:0.75rem;"><i class="fa-solid fa-circle-check"></i> Đã Chốt Sổ 31/10</span>
+              </div>
+              <p class="card-subtitle" style="margin-top:4px; color:#cbd5e1;">Căn cứ theo File đối soát chính thức <code>PHÚ GIA T1-T10-2026.xlsx</code> (94 đơn mua hàng, 1.894,8 tấm ván & cuộn nẹp, 510 dòng hạch toán)</p>
+            </div>
+            <div class="btn-group">
+              <a href="BANG_TONG_HOP_CONG_NO_LAM_GIANG_10_THANG_2026.xlsx" download class="btn btn-gold btn-sm">
+                <i class="fa-solid fa-file-excel"></i> Tải File Excel Đối Soát (.xlsx)
+              </a>
+            </div>
+          </div>
+
+          <!-- 4 KPI Banners for Lam Giang -->
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; padding:16px 20px; background:rgba(0,0,0,0.1);">
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 16px;">
+              <div style="font-size:0.8rem; color:#94a3b8; font-weight:600;">SỐ DƯ NỢ ĐẦU KỲ (01/01/2026)</div>
+              <div style="font-size:1.3rem; font-weight:800; color:#cbd5e1; margin-top:4px;">180.768.850 đ</div>
+              <div style="font-size:0.75rem; color:#64748b; margin-top:2px;">Số dư nợ lũy kế đầu năm 2026</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 16px;">
+              <div style="font-size:0.8rem; color:#94a3b8; font-weight:600;">TỔNG PHÁT SINH MUA (10 THÁNG)</div>
+              <div style="font-size:1.3rem; font-weight:800; color:#38bdf8; margin-top:4px;">831.021.900 đ</div>
+              <div style="font-size:0.75rem; color:#0284c7; margin-top:2px;">94 đơn mua ván, nẹp, plywood, PM</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 16px;">
+              <div style="font-size:0.8rem; color:#94a3b8; font-weight:600;">TỔNG THANH TOÁN (10 THÁNG)</div>
+              <div style="font-size:1.3rem; font-weight:800; color:#34d399; margin-top:4px;">847.460.500 đ</div>
+              <div style="font-size:0.75rem; color:#059669; margin-top:2px;">Thanh toán vượt phát sinh mua +16.4M</div>
+            </div>
+            <div style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.3); border-radius:8px; padding:12px 16px;">
+              <div style="font-size:0.8rem; color:#d4af37; font-weight:700;">DƯ NỢ CHỐT HIỆN TẠI (31/10/2026)</div>
+              <div style="font-size:1.35rem; font-weight:800; color:#f59e0b; margin-top:4px;">164.330.250 đ</div>
+              <div style="font-size:0.75rem; color:#10b981; margin-top:2px; font-weight:600;"><i class="fa-solid fa-shield-halved"></i> Trong hạn mức an toàn (&le; 180M)</div>
+            </div>
+          </div>
+
+          <!-- Monthly Table -->
+          <div class="table-responsive" style="padding:0 20px 16px 20px;">
+            <table class="table" style="margin-top:10px;">
+              <thead>
+                <tr>
+                  <th style="text-align:center;">Kỳ Tháng</th>
+                  <th style="text-align:center;">Số Đơn Hàng</th>
+                  <th style="text-align:right;">SL Tấm/Cuộn</th>
+                  <th style="text-align:right;">Mua Hàng (Nợ)</th>
+                  <th style="text-align:right;">Thanh Toán (Có)</th>
+                  <th style="text-align:right;">Chênh Lệch</th>
+                  <th style="text-align:right;">Dư Nợ Cuối Tháng</th>
+                  <th style="text-align:center;">Trạng Thái Hạn Mức</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 1</td>
+                  <td style="text-align:center;">21</td>
+                  <td style="text-align:right;">654.0</td>
+                  <td style="text-align:right; font-weight:600;">253.357.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">230.000.000 đ</td>
+                  <td style="text-align:right; color:#f87171;">+23.357.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">204.125.850 đ</td>
+                  <td style="text-align:center;"><span class="badge warning">Cao điểm Tết</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 2</td>
+                  <td style="text-align:center;">3</td>
+                  <td style="text-align:right;">9.0</td>
+                  <td style="text-align:right; font-weight:600;">2.573.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">81.788.000 đ</td>
+                  <td style="text-align:right; color:#34d399;">-79.215.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">124.910.850 đ</td>
+                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 3</td>
+                  <td style="text-align:center;">4</td>
+                  <td style="text-align:right;">61.8</td>
+                  <td style="text-align:right; font-weight:600;">27.805.400 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">16.054.000 đ</td>
+                  <td style="text-align:right; color:#f87171;">+11.751.400 đ</td>
+                  <td style="text-align:right; font-weight:700;">136.662.250 đ</td>
+                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 4</td>
+                  <td style="text-align:center;">11</td>
+                  <td style="text-align:right;">271.0</td>
+                  <td style="text-align:right; font-weight:600;">124.873.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">82.720.000 đ</td>
+                  <td style="text-align:right; color:#f87171;">+42.153.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">178.815.250 đ</td>
+                  <td style="text-align:center;"><span class="badge warning">Sát ngưỡng</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 5</td>
+                  <td style="text-align:center;">9</td>
+                  <td style="text-align:right;">47.0</td>
+                  <td style="text-align:right; font-weight:600;">16.516.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">40.000.000 đ</td>
+                  <td style="text-align:right; color:#34d399;">-23.484.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">155.331.250 đ</td>
+                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 6</td>
+                  <td style="text-align:center;">4</td>
+                  <td style="text-align:right;">35.0</td>
+                  <td style="text-align:right; font-weight:600;">10.425.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">50.000.000 đ</td>
+                  <td style="text-align:right; color:#34d399;">-39.575.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">115.756.250 đ</td>
+                  <td style="text-align:center;"><span class="badge success">Rất tốt</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 7</td>
+                  <td style="text-align:center;">16</td>
+                  <td style="text-align:right;">316.0</td>
+                  <td style="text-align:right; font-weight:600;">188.795.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">115.598.000 đ</td>
+                  <td style="text-align:right; color:#f87171;">+73.197.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">188.953.250 đ</td>
+                  <td style="text-align:center;"><span class="badge warning">Sát ngưỡng</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 8</td>
+                  <td style="text-align:center;">8</td>
+                  <td style="text-align:right;">86.0</td>
+                  <td style="text-align:right; font-weight:600;">47.319.500 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">76.341.500 đ</td>
+                  <td style="text-align:right; color:#34d399;">-29.022.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">159.931.250 đ</td>
+                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; font-weight:700;">Tháng 9</td>
+                  <td style="text-align:center;">7</td>
+                  <td style="text-align:right;">71.0</td>
+                  <td style="text-align:right; font-weight:600;">26.204.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:600;">25.708.000 đ</td>
+                  <td style="text-align:right; color:#f87171;">+496.000 đ</td>
+                  <td style="text-align:right; font-weight:700;">160.427.250 đ</td>
+                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
+                </tr>
+                <tr style="background:rgba(212,175,55,0.06); font-weight:600;">
+                  <td style="text-align:center; font-weight:800; color:var(--text-gold);">Tháng 10</td>
+                  <td style="text-align:center; font-weight:700;">17</td>
+                  <td style="text-align:right; font-weight:700;">344.0</td>
+                  <td style="text-align:right; color:#38bdf8; font-weight:700;">133.154.000 đ</td>
+                  <td style="text-align:right; color:#34d399; font-weight:700;">129.251.000 đ</td>
+                  <td style="text-align:right; color:#f87171;">+3.903.000 đ</td>
+                  <td style="text-align:right; font-weight:800; color:#f59e0b;">164.330.250 đ</td>
+                  <td style="text-align:center;"><span class="badge success">Chuẩn khớp 100%</span></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr style="background:rgba(0,0,0,0.25); font-weight:800; border-top:2px solid var(--border-gold);">
+                  <td style="text-align:center; color:var(--text-gold);">TỔNG CỘNG 10 THÁNG</td>
+                  <td style="text-align:center;">94 Đơn</td>
+                  <td style="text-align:right;">1.894,8</td>
+                  <td style="text-align:right; color:#38bdf8;">831.021.900 đ</td>
+                  <td style="text-align:right; color:#34d399;">847.460.500 đ</td>
+                  <td style="text-align:right; color:#34d399;">-16.438.600 đ</td>
+                  <td style="text-align:right; color:#f59e0b; font-size:1.05rem;">164.330.250 đ</td>
+                  <td style="text-align:center;"><span class="status-pill green">Khớp Dòng 509 Sổ Nợ</span></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- CÔNG NỢ NHÀ CUNG CẤP VẬT TƯ (TỔNG HỢP 13 NHÓM ZALO & PO 2026) - ĐÃ TÁCH VỀ KHỐI XƯỞNG & KHO VẬT TƯ -->
+        <div class="card table-card" id="cardSupplierDebt13Zalo" style="margin-top: 24px;">
+          <div class="card-header">
+            <div>
+              <h3><i class="fa-solid fa-truck-ramp-box text-rose"></i> Bảng Đối Soát Công Nợ Nhà Cung Cấp Vật Tư (13 Nhóm Zalo)</h3>
+              <p class="card-subtitle">Theo dõi công nợ vật tư gối đầu, hạn thanh toán và chứng từ đối soát Zalo 2026</p>
+            </div>
+            <div class="header-badges">
+              <span class="badge warning"><i class="fa-solid fa-file-invoice"></i> Tổng 8 NCC Chiến Lược</span>
+              <span class="badge danger" style="font-weight:700;">Dư Nợ: 248.36M</span>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="tableCongNoNcc">
+              <thead>
+                <tr>
+                  <th>Nhà cung cấp</th>
+                  <th>Đại diện / Liên hệ</th>
+                  <th>Danh mục vật tư chính</th>
+                  <th style="text-align:right;">Dư nợ hiện tại (VNĐ)</th>
+                  <th>Hạn thanh toán</th>
+                  <th>Nhóm Zalo phụ trách</th>
+                  <th>Trạng thái</th>
+                  <th>Ghi chú & Chứng từ</th>
+                </tr>
+              </thead>
+              <tbody id="bodyCongNoNcc">
+                <tr>
+                  <td><strong>Gỗ NT Cầu Vượt (Hà Tĩnh)</strong></td>
+                  <td>Thịnh Gỗ NT (0979137123)</td>
+                  <td>Ván Plywood E0, MDF cốt xanh, Picomat</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">82.065.300 đ</td>
+                  <td><span class="badge warning">31/10/2026</span></td>
+                  <td><span class="tag tag-gold">Đặt hàng Phú Gia - NT</span></td>
+                  <td><span class="status-pill gold">Cần đối soát</span></td>
+                  <td><small>Đơn trả SON00337 trừ 750k | Đối soát DON00216-274</small></td>
+                </tr>
+                <tr>
+                  <td><strong>Kính Việt Nhật - VSG</strong></td>
+                  <td>Thoan VSG / Kính Việt Nhật</td>
+                  <td>Kính hộp hoa đồng, kính cường lực 10mm, gương dán</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">27.500.000 đ</td>
+                  <td><span class="badge warning">05/11/2026</span></td>
+                  <td><span class="tag tag-gold">KÍNH VIỆT NHẬT - PHÚ GIA LUXURY</span></td>
+                  <td><span class="status-pill gold">Chờ giao hàng</span></td>
+                  <td><small>Đơn kính Chị Hoa & vách tắm kính</small></td>
+                </tr>
+                <tr>
+                  <td><strong>Gỗ Melamine Cường Thịnh</strong></td>
+                  <td>Nga Melamine Cường Thịnh</td>
+                  <td>Ván Melamine cốt MDF chống ẩm 17mm</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">42.300.000 đ</td>
+                  <td><span class="badge warning">10/11/2026</span></td>
+                  <td><span class="tag tag-gold">Chốt màu, đặt hàng Cường Thịnh</span></td>
+                  <td><span class="status-pill green">Đúng hạn</span></td>
+                  <td><small>Gối đầu theo từng lô ván xuất xưởng</small></td>
+                </tr>
+                <tr>
+                  <td><strong>Tổng Kho Lam Giang</strong></td>
+                  <td>Ms Hoa Lam Giang (TP Hà Tĩnh)</td>
+                  <td>Phụ kiện ray âm DTC, bản lề SUS304, nẹp dán</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">35.400.000 đ</td>
+                  <td><span class="badge warning">08/11/2026</span></td>
+                  <td><span class="tag tag-gold">LamGiang - NT Phú Gia (TP HT)</span></td>
+                  <td><span class="status-pill green">Đúng hạn</span></td>
+                  <td><small>Gối đầu 15 ngày (Quyết toán 15 & 30 hàng tháng)</small></td>
+                </tr>
+                <tr>
+                  <td><strong>Hoàng Hà Ceramic PVC</strong></td>
+                  <td>Hoàng Hà Ceramic Hưng Yên</td>
+                  <td>Đá nung kết Calacatta, PVC than tre</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">18.600.000 đ</td>
+                  <td><span class="badge warning">03/11/2026</span></td>
+                  <td><span class="tag tag-gold">Đặt hàng Ceramic Hoàng Hà HY</span></td>
+                  <td><span class="status-pill gold">Chờ nghiệm thu</span></td>
+                  <td><small>Cọc 50%, thanh toán dứt điểm khi giao hàng</small></td>
+                </tr>
+                <tr>
+                  <td><strong>Gỗ Đức Anh (Gỗ sồi thịt)</strong></td>
+                  <td>Vợ Sồi Đức Anh</td>
+                  <td>Gỗ sồi Mỹ tự nhiên sấy chuẩn đóng sofa</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">21.500.000 đ</td>
+                  <td><span class="badge warning">15/11/2026</span></td>
+                  <td><span class="tag tag-gold">Đặt hàng gỗ thịt nhà Đức Anh</span></td>
+                  <td><span class="status-pill green">Đúng hạn</span></td>
+                  <td><small>Đã giao xưởng gia công khung sofa</small></td>
+                </tr>
+                <tr>
+                  <td><strong>Ván Acrylic ALD</strong></td>
+                  <td>Kỹ thuật ALD Miền Trung</td>
+                  <td>Cánh Acrylic bóng gương noline chống trầy</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">14.200.000 đ</td>
+                  <td><span class="badge warning">12/11/2026</span></td>
+                  <td><span class="tag tag-gold">Đặt hàng Acrylic ALD</span></td>
+                  <td><span class="status-pill green">Đúng hạn</span></td>
+                  <td><small>Theo PO-2026-1008 đã duyệt</small></td>
+                </tr>
+                <tr>
+                  <td><strong>Gương Bỉ Hà Tĩnh</strong></td>
+                  <td>Nguyễn Thị Thuý</td>
+                  <td>Gương tráng bạc 8 lớp, led cảm ứng</td>
+                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">6.800.000 đ</td>
+                  <td><span class="badge warning">06/11/2026</span></td>
+                  <td><span class="tag tag-gold">Đặt hàng Kính, Gương Phú Gia</span></td>
+                  <td><span class="status-pill gold">Gia công</span></td>
+                  <td><small>Theo PO-2026-1010 phòng tắm Master</small></td>
+                </tr>
+              </tbody>
+              <tfoot id="footCongNoNcc">
+                <tr>
+                  <th colspan="3">TỔNG DƯ NỢ CÔNG NỢ NHÀ CUNG CẤP (8 Đơn vị)</th>
+                  <th style="text-align:right; font-weight:800; color:#F87171; font-size:1.1rem;">248.365.300 đ</th>
+                  <th colspan="4">Bao gồm 82,065,300 đ Gỗ NT Cầu Vượt & 7 NCC chiến lược</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
       </section>
 
       <!-- TAB PHÊ DUYỆT VẬT TƯ: VŨ ĐỀ XUẤT - GIÁM ĐỐC PHÊ DUYỆT & ĐÓNG DẤU ĐỎ -->
@@ -3040,215 +3322,6 @@
           </div>
         </div>
 
-        <!-- CARD ĐỐI SOÁT CÔNG NỢ TỔNG KHO VÁN LAM GIANG (10 THÁNG NĂM 2026) -->
-        <div class="card table-card" style="border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-bottom: 24px;">
-          <div class="card-header" style="background: linear-gradient(135deg, rgba(26,43,76,0.9), rgba(15,23,42,0.9)); padding: 16px 20px;">
-            <div>
-              <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                <h3 style="margin:0; color:#fff;"><i class="fa-solid fa-file-invoice-dollar text-gold"></i> Sổ Đối Soát Công Nợ Tổng Kho Ván Lam Giang (T1 - T10/2026)</h3>
-                <span class="badge success" style="font-size:0.75rem;"><i class="fa-solid fa-circle-check"></i> Đã Chốt Sổ 31/10</span>
-                <span class="badge info" style="font-size:0.75rem;"><i class="fa-solid fa-radar"></i> Zalo Stealth Monitor Active</span>
-              </div>
-              <p class="card-subtitle" style="margin-top:4px; color:#cbd5e1;">Căn cứ theo File đối soát chính thức <code>PHÚ GIA T1-T10-2026.xlsx</code> (94 đơn mua hàng, 1.894,8 tấm ván & cuộn nẹp, 510 dòng hạch toán)</p>
-            </div>
-            <div class="btn-group">
-              <a href="BANG_TONG_HOP_CONG_NO_LAM_GIANG_10_THANG_2026.xlsx" download class="btn btn-gold btn-sm">
-                <i class="fa-solid fa-file-excel"></i> Tải File Excel Đối Soát (.xlsx)
-              </a>
-            </div>
-          </div>
-
-          <!-- 4 KPI Banners for Lam Giang -->
-          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; padding:16px 20px; background:rgba(0,0,0,0.1);">
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 16px;">
-              <div style="font-size:0.8rem; color:#94a3b8; font-weight:600;">SỐ DƯ NỢ ĐẦU KỲ (01/01/2026)</div>
-              <div style="font-size:1.3rem; font-weight:800; color:#cbd5e1; margin-top:4px;">180.768.850 đ</div>
-              <div style="font-size:0.75rem; color:#64748b; margin-top:2px;">Số dư nợ lũy kế đầu năm 2026</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 16px;">
-              <div style="font-size:0.8rem; color:#94a3b8; font-weight:600;">TỔNG PHÁT SINH MUA (10 THÁNG)</div>
-              <div style="font-size:1.3rem; font-weight:800; color:#38bdf8; margin-top:4px;">831.021.900 đ</div>
-              <div style="font-size:0.75rem; color:#0284c7; margin-top:2px;">94 đơn mua ván, nẹp, plywood, PM</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 16px;">
-              <div style="font-size:0.8rem; color:#94a3b8; font-weight:600;">TỔNG THANH TOÁN (10 THÁNG)</div>
-              <div style="font-size:1.3rem; font-weight:800; color:#34d399; margin-top:4px;">847.460.500 đ</div>
-              <div style="font-size:0.75rem; color:#059669; margin-top:2px;">Thanh toán vượt phát sinh mua +16.4M</div>
-            </div>
-            <div style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.3); border-radius:8px; padding:12px 16px;">
-              <div style="font-size:0.8rem; color:#d4af37; font-weight:700;">DƯ NỢ CHỐT HIỆN TẠI (31/10/2026)</div>
-              <div style="font-size:1.35rem; font-weight:800; color:#f59e0b; margin-top:4px;">164.330.250 đ</div>
-              <div style="font-size:0.75rem; color:#10b981; margin-top:2px; font-weight:600;"><i class="fa-solid fa-shield-halved"></i> Trong hạn mức an toàn (&le; 180M)</div>
-            </div>
-          </div>
-
-          <!-- Monthly Table -->
-          <div class="table-responsive" style="padding:0 20px 16px 20px;">
-            <table class="table" style="margin-top:10px;">
-              <thead>
-                <tr>
-                  <th style="text-align:center;">Kỳ Tháng</th>
-                  <th style="text-align:center;">Số Đơn Hàng</th>
-                  <th style="text-align:right;">SL Tấm/Cuộn</th>
-                  <th style="text-align:right;">Mua Hàng (Nợ)</th>
-                  <th style="text-align:right;">Thanh Toán (Có)</th>
-                  <th style="text-align:right;">Chênh Lệch</th>
-                  <th style="text-align:right;">Dư Nợ Cuối Tháng</th>
-                  <th style="text-align:center;">Trạng Thái Hạn Mức</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 1</td>
-                  <td style="text-align:center;">21</td>
-                  <td style="text-align:right;">654.0</td>
-                  <td style="text-align:right; font-weight:600;">253.357.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">230.000.000 đ</td>
-                  <td style="text-align:right; color:#f87171;">+23.357.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">204.125.850 đ</td>
-                  <td style="text-align:center;"><span class="badge warning">Cao điểm Tết</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 2</td>
-                  <td style="text-align:center;">3</td>
-                  <td style="text-align:right;">9.0</td>
-                  <td style="text-align:right; font-weight:600;">2.573.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">81.788.000 đ</td>
-                  <td style="text-align:right; color:#34d399;">-79.215.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">124.910.850 đ</td>
-                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 3</td>
-                  <td style="text-align:center;">4</td>
-                  <td style="text-align:right;">61.8</td>
-                  <td style="text-align:right; font-weight:600;">27.805.400 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">16.054.000 đ</td>
-                  <td style="text-align:right; color:#f87171;">+11.751.400 đ</td>
-                  <td style="text-align:right; font-weight:700;">136.662.250 đ</td>
-                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 4</td>
-                  <td style="text-align:center;">11</td>
-                  <td style="text-align:right;">271.0</td>
-                  <td style="text-align:right; font-weight:600;">124.873.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">82.720.000 đ</td>
-                  <td style="text-align:right; color:#f87171;">+42.153.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">178.815.250 đ</td>
-                  <td style="text-align:center;"><span class="badge warning">Sát ngưỡng</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 5</td>
-                  <td style="text-align:center;">9</td>
-                  <td style="text-align:right;">47.0</td>
-                  <td style="text-align:right; font-weight:600;">16.516.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">40.000.000 đ</td>
-                  <td style="text-align:right; color:#34d399;">-23.484.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">155.331.250 đ</td>
-                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 6</td>
-                  <td style="text-align:center;">4</td>
-                  <td style="text-align:right;">35.0</td>
-                  <td style="text-align:right; font-weight:600;">10.425.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">50.000.000 đ</td>
-                  <td style="text-align:right; color:#34d399;">-39.575.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">115.756.250 đ</td>
-                  <td style="text-align:center;"><span class="badge success">Rất tốt</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 7</td>
-                  <td style="text-align:center;">16</td>
-                  <td style="text-align:right;">316.0</td>
-                  <td style="text-align:right; font-weight:600;">188.795.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">115.598.000 đ</td>
-                  <td style="text-align:right; color:#f87171;">+73.197.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">188.953.250 đ</td>
-                  <td style="text-align:center;"><span class="badge warning">Sát ngưỡng</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 8</td>
-                  <td style="text-align:center;">8</td>
-                  <td style="text-align:right;">86.0</td>
-                  <td style="text-align:right; font-weight:600;">47.319.500 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">76.341.500 đ</td>
-                  <td style="text-align:right; color:#34d399;">-29.022.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">159.931.250 đ</td>
-                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
-                </tr>
-                <tr>
-                  <td style="text-align:center; font-weight:700;">Tháng 9</td>
-                  <td style="text-align:center;">7</td>
-                  <td style="text-align:right;">71.0</td>
-                  <td style="text-align:right; font-weight:600;">26.204.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:600;">25.708.000 đ</td>
-                  <td style="text-align:right; color:#f87171;">+496.000 đ</td>
-                  <td style="text-align:right; font-weight:700;">160.427.250 đ</td>
-                  <td style="text-align:center;"><span class="badge success">An toàn</span></td>
-                </tr>
-                <tr style="background:rgba(212,175,55,0.06); font-weight:600;">
-                  <td style="text-align:center; font-weight:800; color:var(--text-gold);">Tháng 10</td>
-                  <td style="text-align:center; font-weight:700;">17</td>
-                  <td style="text-align:right; font-weight:700;">344.0</td>
-                  <td style="text-align:right; color:#38bdf8; font-weight:700;">133.154.000 đ</td>
-                  <td style="text-align:right; color:#34d399; font-weight:700;">129.251.000 đ</td>
-                  <td style="text-align:right; color:#f87171;">+3.903.000 đ</td>
-                  <td style="text-align:right; font-weight:800; color:#f59e0b;">164.330.250 đ</td>
-                  <td style="text-align:center;"><span class="badge success">Chuẩn khớp 100%</span></td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr style="background:rgba(0,0,0,0.25); font-weight:800; border-top:2px solid var(--border-gold);">
-                  <td style="text-align:center; color:var(--text-gold);">TỔNG CỘNG 10 THÁNG</td>
-                  <td style="text-align:center;">94 Đơn</td>
-                  <td style="text-align:right;">1.894,8</td>
-                  <td style="text-align:right; color:#38bdf8;">831.021.900 đ</td>
-                  <td style="text-align:right; color:#34d399;">847.460.500 đ</td>
-                  <td style="text-align:right; color:#34d399;">-16.438.600 đ</td>
-                  <td style="text-align:right; color:#f59e0b; font-size:1.05rem;">164.330.250 đ</td>
-                  <td style="text-align:center;"><span class="status-pill green">Khớp Dòng 509 Sổ Nợ</span></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-
-          <!-- Material Breakdown Sub-card -->
-          <div style="margin: 0 20px 20px 20px; padding: 14px 18px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px;">
-            <div style="font-size:0.85rem; font-weight:700; color:#e2e8f0; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
-              <i class="fa-solid fa-layer-group text-gold"></i> Cơ Cấu Chủng Loại Vật Tư Đã Nhập Từ Lam Giang (10 Tháng Năm 2026)
-            </div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">
-              <div style="padding:10px; background:rgba(0,0,0,0.15); border-radius:6px; border-left:3px solid #38bdf8;">
-                <div style="font-size:0.75rem; color:#94a3b8;">Ván MDF HMR Cốt Xanh (75.8%)</div>
-                <div style="font-size:1rem; font-weight:700; color:#f8fafc; margin-top:2px;">629.720.500 đ</div>
-                <div style="font-size:0.7rem; color:#64748b;">1.490 tấm cốt ván chính</div>
-              </div>
-              <div style="padding:10px; background:rgba(0,0,0,0.15); border-radius:6px; border-left:3px solid #fbbf24;">
-                <div style="font-size:0.75rem; color:#94a3b8;">Chỉ Nẹp PVC Đồng Màu (5.4%)</div>
-                <div style="font-size:1rem; font-weight:700; color:#f8fafc; margin-top:2px;">44.978.400 đ</div>
-                <div style="font-size:0.7rem; color:#64748b;">278.8 cuộn nẹp 21 & 44mm</div>
-              </div>
-              <div style="padding:10px; background:rgba(0,0,0,0.15); border-radius:6px; border-left:3px solid #a855f7;">
-                <div style="font-size:0.75rem; color:#94a3b8;">Ván Plywood Chịu Lực (6.0%)</div>
-                <div style="font-size:1rem; font-weight:700; color:#f8fafc; margin-top:2px;">50.235.000 đ</div>
-                <div style="font-size:0.7rem; color:#64748b;">56 tấm hậu & khoang chậu</div>
-              </div>
-              <div style="padding:10px; background:rgba(0,0,0,0.15); border-radius:6px; border-left:3px solid #34d399;">
-                <div style="font-size:0.75rem; color:#94a3b8;">Gỗ Nhựa PM Chịu Nước (4.0%)</div>
-                <div style="font-size:1rem; font-weight:700; color:#f8fafc; margin-top:2px;">33.320.000 đ</div>
-                <div style="font-size:0.7rem; color:#64748b;">27 tấm tủ lavabo & chậu rửa</div>
-              </div>
-              <div style="padding:10px; background:rgba(0,0,0,0.15); border-radius:6px; border-left:3px solid #f43f5e;">
-                <div style="font-size:0.75rem; color:#94a3b8;">Ván & Vật Tư Khác (8.8%)</div>
-                <div style="font-size:1rem; font-weight:700; color:#f8fafc; margin-top:2px;">72.768.000 đ</div>
-                <div style="font-size:0.7rem; color:#64748b;">152 tấm/mục chuyên dụng</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="card table-card">
           <div class="card-header">
             <div>
@@ -3424,126 +3497,6 @@
                   <th style="color:var(--emerald-main); font-weight:800;">630.600.000 đ</th>
                   <th style="color:#FBBF24; font-weight:800;">426.066.647 đ</th>
                   <th colspan="3">Thu tiền trước lắp đặt >= 85%</th>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </div>
-      
-        <!-- CÔNG NỢ NHÀ CUNG CẤP VẬT TƯ (TỔNG HỢP 13 NHÓM ZALO & PO 2026) -->
-        <div class="card table-card" style="margin-top: 25px;">
-          <div class="card-header">
-            <div>
-              <h3><i class="fa-solid fa-truck-ramp-box text-rose"></i> Bảng Đối Soát Công Nợ Nhà Cung Cấp Vật Tư (13 Nhóm Zalo)</h3>
-              <p class="card-subtitle">Theo dõi công nợ vật tư gối đầu, hạn thanh toán và chứng từ đối soát Zalo 2026</p>
-            </div>
-            <div class="header-badges">
-              <span class="badge warning"><i class="fa-solid fa-file-invoice"></i> Tổng 8 NCC Chiến Lược</span>
-              <span class="badge danger" style="font-weight:700;">Dư Nợ: 248.36M</span>
-            </div>
-          </div>
-
-          <div class="table-responsive">
-            <table class="data-table" id="tableCongNoNcc">
-              <thead>
-                <tr>
-                  <th>Nhà cung cấp</th>
-                  <th>Đại diện / Liên hệ</th>
-                  <th>Danh mục vật tư chính</th>
-                  <th style="text-align:right;">Dư nợ hiện tại (VNĐ)</th>
-                  <th>Hạn thanh toán</th>
-                  <th>Nhóm Zalo phụ trách</th>
-                  <th>Trạng thái</th>
-                  <th>Ghi chú & Chứng từ</th>
-                </tr>
-              </thead>
-              <tbody id="bodyCongNoNcc">
-                <tr>
-                  <td><strong>Gỗ NT Cầu Vượt (Hà Tĩnh)</strong></td>
-                  <td>Thịnh Gỗ NT (0979137123)</td>
-                  <td>Ván Plywood E0, MDF cốt xanh, Picomat</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">82.065.300 đ</td>
-                  <td><span class="badge warning">31/10/2026</span></td>
-                  <td><span class="tag tag-gold">Đặt hàng Phú Gia - NT</span></td>
-                  <td><span class="status-pill gold">Cần đối soát</span></td>
-                  <td><small>Đơn trả SON00337 trừ 750k | Đối soát DON00216-274</small></td>
-                </tr>
-                <tr>
-                  <td><strong>Kính Việt Nhật - VSG</strong></td>
-                  <td>Thoan VSG / Kính Việt Nhật</td>
-                  <td>Kính hộp hoa đồng, kính cường lực 10mm, gương dán</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">27.500.000 đ</td>
-                  <td><span class="badge warning">05/11/2026</span></td>
-                  <td><span class="tag tag-gold">KÍNH VIỆT NHẬT - PHÚ GIA LUXURY</span></td>
-                  <td><span class="status-pill gold">Chờ giao hàng</span></td>
-                  <td><small>Đơn kính Chị Hoa & vách tắm kính</small></td>
-                </tr>
-                <tr>
-                  <td><strong>Gỗ Melamine Cường Thịnh</strong></td>
-                  <td>Nga Melamine Cường Thịnh</td>
-                  <td>Ván Melamine cốt MDF chống ẩm 17mm</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">42.300.000 đ</td>
-                  <td><span class="badge warning">10/11/2026</span></td>
-                  <td><span class="tag tag-gold">Chốt màu, đặt hàng Cường Thịnh</span></td>
-                  <td><span class="status-pill green">Đúng hạn</span></td>
-                  <td><small>Gối đầu theo từng lô ván xuất xưởng</small></td>
-                </tr>
-                <tr>
-                  <td><strong>Tổng Kho Lam Giang</strong></td>
-                  <td>Ms Hoa Lam Giang (TP Hà Tĩnh)</td>
-                  <td>Phụ kiện ray âm DTC, bản lề SUS304, nẹp dán</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">35.400.000 đ</td>
-                  <td><span class="badge warning">08/11/2026</span></td>
-                  <td><span class="tag tag-gold">LamGiang - NT Phú Gia (TP HT)</span></td>
-                  <td><span class="status-pill green">Đúng hạn</span></td>
-                  <td><small>Gối đầu 15 ngày (Quyết toán 15 & 30 hàng tháng)</small></td>
-                </tr>
-                <tr>
-                  <td><strong>Hoàng Hà Ceramic PVC</strong></td>
-                  <td>Hoàng Hà Ceramic Hưng Yên</td>
-                  <td>Đá nung kết Calacatta, PVC than tre</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">18.600.000 đ</td>
-                  <td><span class="badge warning">03/11/2026</span></td>
-                  <td><span class="tag tag-gold">Đặt hàng Ceramic Hoàng Hà HY</span></td>
-                  <td><span class="status-pill gold">Chờ nghiệm thu</span></td>
-                  <td><small>Cọc 50%, thanh toán dứt điểm khi giao hàng</small></td>
-                </tr>
-                <tr>
-                  <td><strong>Gỗ Đức Anh (Gỗ sồi thịt)</strong></td>
-                  <td>Vợ Sồi Đức Anh</td>
-                  <td>Gỗ sồi Mỹ tự nhiên sấy chuẩn đóng sofa</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">21.500.000 đ</td>
-                  <td><span class="badge warning">15/11/2026</span></td>
-                  <td><span class="tag tag-gold">Đặt hàng gỗ thịt nhà Đức Anh</span></td>
-                  <td><span class="status-pill green">Đúng hạn</span></td>
-                  <td><small>Đã giao xưởng gia công khung sofa</small></td>
-                </tr>
-                <tr>
-                  <td><strong>Ván Acrylic ALD</strong></td>
-                  <td>Kỹ thuật ALD Miền Trung</td>
-                  <td>Cánh Acrylic bóng gương noline chống trầy</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">14.200.000 đ</td>
-                  <td><span class="badge warning">12/11/2026</span></td>
-                  <td><span class="tag tag-gold">Đặt hàng Acrylic ALD</span></td>
-                  <td><span class="status-pill green">Đúng hạn</span></td>
-                  <td><small>Theo PO-2026-1008 đã duyệt</small></td>
-                </tr>
-                <tr>
-                  <td><strong>Gương Bỉ Hà Tĩnh</strong></td>
-                  <td>Nguyễn Thị Thuý</td>
-                  <td>Gương tráng bạc 8 lớp, led cảm ứng</td>
-                  <td style="text-align:right; font-weight:800; font-size:1rem; color: #F87171;">6.800.000 đ</td>
-                  <td><span class="badge warning">06/11/2026</span></td>
-                  <td><span class="tag tag-gold">Đặt hàng Kính, Gương Phú Gia</span></td>
-                  <td><span class="status-pill gold">Gia công</span></td>
-                  <td><small>Theo PO-2026-1010 phòng tắm Master</small></td>
-                </tr>
-              </tbody>
-              <tfoot id="footCongNoNcc">
-                <tr>
-                  <th colspan="3">TỔNG DƯ NỢ CÔNG NỢ NHÀ CUNG CẤP (8 Đơn vị)</th>
-                  <th style="text-align:right; font-weight:800; color:#F87171; font-size:1.1rem;">248.365.300 đ</th>
-                  <th colspan="4">Bao gồm 82,065,300 đ Gỗ NT Cầu Vượt & 7 NCC chiến lược</th>
                 </tr>
               </tfoot>
             </table>

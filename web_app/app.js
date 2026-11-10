@@ -4330,23 +4330,24 @@ function applyUserRole(user) {
   // Nhóm 2: Xuong (Admin + Vũ)
   // Nhóm 3: Vanphong (Admin + Hiệp)
   // Nhóm 4: DuToanSale (Admin + Hiệp + Dũng)
-  // Bản Deploy Chuẩn 2 Phần (Phần I: Văn Phòng | Phần II: Xưởng Sản Xuất):
-  // Luôn giữ hiển thị rõ ràng menu 2 phần trừ khi người dùng chủ động bấm lọc riêng 1 phần
-  const savedDivMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "all";
+  // Bản Deploy Chuẩn Cách Ly 2 Phần (Phần I: Văn Phòng | Phần II: Xưởng Sản Xuất):
+  // Luôn tách bạch 2 khối độc lập để tránh lộ lọt thông tin giữa Văn Phòng và Xưởng
+  let savedDivMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "vanphong";
+  if (user.role === "XUONG_VATTU") savedDivMode = "xuong";
+  else if (user.role === "VANPHONG_SALE" || user.role === "DU_TOAN_SALE") savedDivMode = "vanphong";
+  else if (savedDivMode !== "vanphong" && savedDivMode !== "xuong") savedDivMode = "vanphong";
+
   const roleGroups = document.querySelectorAll("[data-role-group]");
   roleGroups.forEach(el => {
     const grp = el.getAttribute("data-role-group");
     if (grp === "admin") {
       el.classList.add("role-hidden");
+      el.style.display = "none";
       return;
     }
-    if (savedDivMode === "vanphong") {
-      el.classList.toggle("role-hidden", grp !== "vanphong");
-    } else if (savedDivMode === "xuong") {
-      el.classList.toggle("role-hidden", grp !== "xuong");
-    } else {
-      el.classList.remove("role-hidden");
-    }
+    const isTarget = (grp === savedDivMode);
+    el.classList.toggle("role-hidden", !isTarget);
+    el.style.display = isTarget ? "" : "none";
   });
 
   // Tự động điều hướng đến tab phù hợp khi đăng nhập & khóa cứng Privacy Shield với tài khoản không phải ADMIN (DA-40)
@@ -4832,19 +4833,31 @@ function setTimesheetDeptFilter(dept) {
   const cardXuong = document.getElementById("cardTimesheetXuong");
   const cardVP = document.getElementById("cardTimesheetVP");
   const cardSalary = document.getElementById("cardWorkerSalaryCalculation");
+  const cardBonus = document.getElementById("bonusPassbookCard");
+  const cardW05 = document.getElementById("pg-w05-attendance-container");
+  const fundMonitor = document.getElementById("fundMonitorWidget");
 
   if (dept === "all") {
     if (cardXuong) cardXuong.style.display = "block";
     if (cardVP) cardVP.style.display = "block";
     if (cardSalary) cardSalary.style.display = "block";
+    if (cardBonus) cardBonus.style.display = "block";
+    if (cardW05) cardW05.style.display = "block";
+    if (fundMonitor) fundMonitor.style.display = "";
   } else if (dept === "xuong") {
     if (cardXuong) cardXuong.style.display = "block";
     if (cardVP) cardVP.style.display = "none";
     if (cardSalary) cardSalary.style.display = "block";
+    if (cardBonus) cardBonus.style.display = "block";
+    if (cardW05) cardW05.style.display = "block";
+    if (fundMonitor) fundMonitor.style.display = "";
   } else if (dept === "vanphong") {
     if (cardXuong) cardXuong.style.display = "none";
     if (cardVP) cardVP.style.display = "block";
     if (cardSalary) cardSalary.style.display = "none";
+    if (cardBonus) cardBonus.style.display = "none";
+    if (cardW05) cardW05.style.display = "none";
+    if (fundMonitor) fundMonitor.style.display = "none";
   }
 
   renderTimesheetUI();
@@ -5127,24 +5140,34 @@ function renderVPTimesheetTable(days, vpStaff) {
 function updateTimesheetStats(tsData) {
   const xuongCount = (tsData.xuong || []).length;
   const vpCount = (tsData.vp || []).length;
-  const totalStaff = xuongCount + vpCount;
+  const isVPOnly = currentTimesheetDeptFilter === "vanphong";
+  const isXuongOnly = currentTimesheetDeptFilter === "xuong";
+  const totalStaff = isVPOnly ? vpCount : (isXuongOnly ? xuongCount : (xuongCount + vpCount));
 
   const elTotalStaff = document.getElementById("statTotalStaff");
   if (elTotalStaff) elTotalStaff.textContent = `${totalStaff} Người`;
   const elStaffSub = document.getElementById("statStaffSub");
-  if (elStaffSub) elStaffSub.textContent = `${xuongCount} Thợ Xưởng + ${vpCount} Văn Phòng`;
+  if (elStaffSub) {
+    elStaffSub.textContent = isVPOnly
+      ? `${vpCount} Nhân sự Văn Phòng`
+      : (isXuongOnly ? `${xuongCount} Thợ Sản Xuất Xưởng` : `${xuongCount} Thợ Xưởng + ${vpCount} Văn Phòng`);
+  }
 
-  // Calculate workdays & OT
+  // Calculate workdays & OT isolated by active department filter
   const totalHCXuong = (tsData.xuong || []).reduce((sum, w) => sum + (parseFloat(w.hc_tot) || 0), 0);
   const totalHCVP = (tsData.vp || []).reduce((sum, v) => sum + (parseFloat(v.totalHC) || 0), 0);
-  const totalHC = totalHCXuong + totalHCVP;
-  const totalOT = (tsData.xuong || []).reduce((sum, w) => sum + (parseFloat(w.ot_tot) || 0), 0);
+  const totalHC = isVPOnly ? totalHCVP : (isXuongOnly ? totalHCXuong : (totalHCXuong + totalHCVP));
+  const totalOT = isVPOnly ? 0 : (tsData.xuong || []).reduce((sum, w) => sum + (parseFloat(w.ot_tot) || 0), 0);
 
   const elWorkDays = document.getElementById("statTotalWorkDays");
   if (elWorkDays) elWorkDays.textContent = `${totalHC} Công`;
 
   const elWorkDaysSub = document.getElementById("statWorkDaysSub");
-  if (elWorkDaysSub) elWorkDaysSub.textContent = `Xưởng: ${totalHCXuong} | VP: ${totalHCVP}`;
+  if (elWorkDaysSub) {
+    elWorkDaysSub.textContent = isVPOnly
+      ? `Khối Văn Phòng: ${totalHCVP} công`
+      : (isXuongOnly ? `Khối Xưởng SX: ${totalHCXuong} công` : `Xưởng: ${totalHCXuong} | VP: ${totalHCVP}`);
+  }
 
   const elOT = document.getElementById("statTotalOTHours");
   if (elOT) elOT.textContent = `${totalOT} Giờ`;
@@ -5152,14 +5175,18 @@ function updateTimesheetStats(tsData) {
   // Calculate today present (day 27 or default)
   const targetDayIdx = Math.min(26, tsData.days.length - 1);
   let presentToday = 0;
-  (tsData.xuong || []).forEach(w => {
-    const v = w.hc ? w.hc[targetDayIdx] : "";
-    if (v === 1 || v === "1" || v === 0.5 || v === "0.5") presentToday++;
-  });
-  (tsData.vp || []).forEach(v => {
-    const val = v.days ? v.days[targetDayIdx] : "";
-    if (val === 1 || val === "1" || val === 0.5 || val === "0.5") presentToday++;
-  });
+  if (!isVPOnly) {
+    (tsData.xuong || []).forEach(w => {
+      const v = w.hc ? w.hc[targetDayIdx] : "";
+      if (v === 1 || v === "1" || v === 0.5 || v === "0.5") presentToday++;
+    });
+  }
+  if (!isXuongOnly) {
+    (tsData.vp || []).forEach(v => {
+      const val = v.days ? v.days[targetDayIdx] : "";
+      if (val === 1 || val === "1" || val === 0.5 || val === "0.5") presentToday++;
+    });
+  }
 
   const elPresentToday = document.getElementById("statTodayPresent");
   if (elPresentToday) elPresentToday.textContent = `${presentToday} / ${totalStaff}`;
@@ -7498,42 +7525,58 @@ function loadSavedCustomProjects() {
       appState.customProjects = [];
     }
   } else {
-    // Dự án mẫu mặc định
+    // Hồ sơ dự án thực tế đã đối soát chuẩn PG Home
     appState.customProjects = [
       {
-        code: "DA-2026-101",
+        code: "CT-2026-1106",
+        client: "Nhà Anh Nam (06/11/2026)",
+        phone: "0986.722.324",
+        address: "P. Thành Sen, TP. Hà Tĩnh",
+        rep: "Nguyễn Trọng Nghĩa (BGĐ)",
+        projType: "Biệt Thự / Nhà Phố",
+        status: "Đã chuyển xưởng SX",
+        total: 665280785,
+        wood: 540280785,
+        pk: 125000000,
+        techNote: "56 hạng mục chuẩn Mục 24: Bếp dưới 3.77md (1.45 tấm/md), Tủ áo R27 12.21m² (trừ lỗ mở R29 1.61m²), Cánh Acrylic Noline & Cánh kính Anode.",
+        attachments: [
+          { name: "Bao_Gia_Nha_Anh_Nam_06_11_2026.xlsx", size: "112 KB", type: "EXCEL" }
+        ],
+        createdAt: "06/11/2026"
+      },
+      {
+        code: "CT-2026-0817",
         client: "Bác Sĩ Duẫn",
-        phone: "0988 123 456",
-        address: "Đường Hải Thượng Lãn Ông, TP Hà Tĩnh",
+        phone: "0986.722.324",
+        address: "Đường Hải Thượng Lãn Ông, TP. Hà Tĩnh",
         rep: "Tống Trần Hiệp",
         projType: "Biệt Thự",
         status: "Đã chốt ký HĐ",
         total: 345412030,
         wood: 289412030,
         pk: 56000000,
-        techNote: "Căn hộ 3 tầng: Ván MDF chống ẩm Thái Lan cốt xanh; Cánh kính xám khói; Thùng bếp nhựa Picomat; Phụ kiện Huge.",
+        techNote: "Căn hộ 3 tầng: Ván MDF chống ẩm Thái Lan cốt xanh; Cánh kính xám khói; Thùng bếp nhựa WPB An Cường; Phụ kiện Hafele/Huge.",
         attachments: [
-          { name: "BS Duẫn tp. hà tĩnh gỗ công nghiệp.xlsx", size: "75 KB", type: "EXCEL" },
-          { name: "Phoi_Canh_3D_Phong_Khach.jpg", size: "1.2 MB", type: "IMAGE" }
+          { name: "BS Duẫn tp. hà tĩnh gỗ công nghiệp.xlsx", size: "75 KB", type: "EXCEL" }
         ],
         createdAt: "17/08/2026"
       },
       {
-        code: "DA-2026-102",
-        client: "Anh Tuấn - Shophouse Vinhomes",
+        code: "CT-2026-0326",
+        client: "Nhà Bác Phát (26/03/2026)",
         phone: "0986.722.324",
-        address: "KĐT Vinhomes New Center, TP Hà Tĩnh",
-        rep: "Đường Việt Dũng",
+        address: "P. Thành Sen, TP. Hà Tĩnh",
+        rep: "Tống Trần Hiệp",
         projType: "Nhà Phố",
-        status: "Đã chuyển xưởng SX",
-        total: 111800000,
-        wood: 97000000,
-        pk: 14800000,
-        techNote: "Ván Melamine Cường Thịnh MS 388 + Cánh Acrylic No-line ALD; Thiết bị bếp Hafele.",
+        status: "Đã nghiệm thu bàn giao",
+        total: 144840000,
+        wood: 124840000,
+        pk: 20000000,
+        techNote: "Full nội thất phòng khách + bếp + 2 phòng ngủ MDF lõi xanh chống ẩm.",
         attachments: [
-          { name: "Du_Toan_Chi_Tiet_Anh_Tuan.xlsx", size: "48 KB", type: "EXCEL" }
+          { name: "Bao_Gia_Bac_Phat_26_03_2026.xlsx", size: "64 KB", type: "EXCEL" }
         ],
-        createdAt: "12/09/2026"
+        createdAt: "26/03/2026"
       }
     ];
   }
@@ -9585,52 +9628,21 @@ window.approveAllFilteredZaloItems = async function() {
     });
   }
 
-  // 4. Tự động thu gọn mọi khối .alert-banner dài dòng thành 1 dòng có nút "Chi tiết quy chuẩn ▾"
+  // 4. Loại bỏ hoàn toàn các khối .alert-banner trang trí không cần thiết theo lệnh Giám Đốc
   function compactAllAlertBanners() {
-    const banners = document.querySelectorAll(".alert-banner");
+    const banners = document.querySelectorAll(".alert-banner, .zalo-v4-telemetry-strip");
     banners.forEach(banner => {
-      if (banner.classList.contains("pg-compact-banner")) return;
-      banner.classList.add("pg-compact-banner");
-
-      const h4 = banner.querySelector(".alert-content h4");
-      const p = banner.querySelector(".alert-content p");
-      if (h4 && p && !h4.querySelector(".pg-banner-toggle-pill")) {
-        const pill = document.createElement("span");
-        pill.className = "pg-banner-toggle-pill";
-        pill.textContent = "Chi tiết quy chuẩn ▾";
-        h4.appendChild(pill);
-
-        banner.addEventListener("click", function(e) {
-          if (e.target.tagName === "BUTTON" || e.target.tagName === "A") return;
-          const expanded = banner.classList.toggle("expanded");
-          pill.textContent = expanded ? "Thu gọn ▴" : "Chi tiết quy chuẩn ▾";
-        });
-      }
+      if (banner.id === "timesheetLockBanner") return;
+      banner.style.display = "none";
     });
   }
 
-  // 5. Thu gọn Lookbook Vật Liệu trên Dashboard (#atelierMaterialShowcase) thành 1 dòng mặc định
+  // 5. Ẩn hẳn Lookbook Vật Liệu trang trí trên Dashboard (#atelierMaterialShowcase) để vào thẳng KPI & Biểu đồ
   function streamlineDashboardShowcase() {
     const showcase = document.getElementById("atelierMaterialShowcase");
-    if (!showcase || document.getElementById("pgShowcaseToggleBar")) return;
-
-    const toggleBar = document.createElement("div");
-    toggleBar.id = "pgShowcaseToggleBar";
-    toggleBar.style.cssText = "display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,0.75);border:1px solid rgba(212,175,55,0.3);border-radius:9px;padding:6px 12px;margin-bottom:10px;cursor:pointer;";
-    toggleBar.innerHTML = `
-      <span style="font-size:11.5px;font-weight:700;color:#fde68a;">🎨 Thư Viện Vật Liệu & Phụ Kiện Chuẩn PG Home (An Cường EV, Acrylic Noline, Cánh Kính, Blum/Hafele, Đá Vicostone)</span>
-      <span id="pgShowcaseTogglePill" class="pg-banner-toggle-pill">Mở xem 5 mẫu ▾</span>
-    `;
-
-    showcase.style.display = "none";
-    showcase.parentNode.insertBefore(toggleBar, showcase);
-
-    toggleBar.addEventListener("click", function() {
-      const isHidden = showcase.style.display === "none";
-      showcase.style.display = isHidden ? "" : "none";
-      const pill = document.getElementById("pgShowcaseTogglePill");
-      if (pill) pill.textContent = isHidden ? "Thu gọn mẫu ▴" : "Mở xem 5 mẫu ▾";
-    });
+    if (showcase) showcase.style.display = "none";
+    const toggleBar = document.getElementById("pgShowcaseToggleBar");
+    if (toggleBar) toggleBar.style.display = "none";
   }
 
   // 6. Tối ưu hóa Phân hệ Đặt Hàng PO (#tab-po-approval / #tab-phe-duyet-vat-tu)
@@ -9904,76 +9916,10 @@ window.approveAllFilteredZaloItems = async function() {
     });
   }
 
-  // 9. Tinh gọn 4 Công cụ Thông minh bên trong #createPOModal (Chỉ mở 1 công cụ đang chọn)
+  // 9. Sử dụng trực tiếp thanh 4 nút công cụ gốc (#tabBtnVuBoard..#tabBtnVuZalo) trong #createPOModal, không chèn thêm thanh trùng lặp
   function optimizeCreatePoModalTools() {
-    const toolsBox = document.getElementById("vuSmartModalToolsBox");
-    if (!toolsBox || document.getElementById("pgModalToolTabsBar")) return;
-
-    const panelWood = document.getElementById("vuToolWoodComboPanel");
-    const panelCut = document.getElementById("vuToolCustomCutPanel");
-    const panelHw = document.getElementById("vuToolHardwareComboPanel");
-    const panelZalo = document.getElementById("vuToolZaloPastePanel");
-    const panels = {
-      wood: panelWood,
-      cut: panelCut,
-      hw: panelHw,
-      zalo: panelZalo
-    };
-
-    const tabBar = document.createElement("div");
-    tabBar.id = "pgModalToolTabsBar";
-    tabBar.className = "pg-modal-tool-tabs";
-    tabBar.innerHTML = `
-      <span style="font-size:11px;font-weight:800;color:#fbbf24;margin-right:4px;">🛠️ Công cụ tính nhanh:</span>
-      <button type="button" class="pg-modal-tool-tab active" data-tool-key="wood" onclick="switchPoModalToolTab('wood')">
-        🪵 1. Bộ Ván+Hậu+Chỉ & CNC
-      </button>
-      <button type="button" class="pg-modal-tool-tab" data-tool-key="cut" onclick="switchPoModalToolTab('cut')">
-        📐 2. Cánh/Kính/Đá (mm)
-      </button>
-      <button type="button" class="pg-modal-tool-tab" data-tool-key="hw" onclick="switchPoModalToolTab('hw')">
-        🔩 3. Combo Ngũ Kim Quốc Tâm
-      </button>
-      <button type="button" class="pg-modal-tool-tab" data-tool-key="zalo" onclick="switchPoModalToolTab('zalo')">
-        💬 4. Dán Tin Zalo
-      </button>
-      <button type="button" class="pg-modal-tool-tab" data-tool-key="none" onclick="switchPoModalToolTab('none')" style="margin-left:auto;">
-        🔼 Thu gọn công cụ
-      </button>
-    `;
-
-    toolsBox.insertBefore(tabBar, toolsBox.firstChild);
-
-    window.switchPoModalToolTab = function(key) {
-      tabBar.querySelectorAll(".pg-modal-tool-tab").forEach(b => {
-        b.classList.toggle("active", b.getAttribute("data-tool-key") === key);
-      });
-      Object.entries(panels).forEach(([k, el]) => {
-        if (!el) return;
-        el.style.display = k === key ? "block" : "none";
-      });
-    };
-
-    // Mặc định hiển thị gọn công cụ 1 (hoặc tự động nhảy theo kịch bản Vũ bấm)
-    window.switchPoModalToolTab("wood");
-
-    // Bọc hàm openVuSmartOrderScenario để tự động bật đúng tab công cụ tương ứng
-    const origOpenScenario = window.openVuSmartOrderScenario;
-    if (typeof origOpenScenario === "function" && !origOpenScenario._pgWrappedV10) {
-      const wrapped = function(scenarioType) {
-        const res = origOpenScenario.apply(this, arguments);
-        if (typeof window.switchPoModalToolTab === "function") {
-          if (scenarioType === "WOOD_COMBO") window.switchPoModalToolTab("wood");
-          else if (scenarioType === "CUSTOM_CUT" || scenarioType === "GLASS_STONE") window.switchPoModalToolTab("cut");
-          else if (scenarioType === "HARDWARE_COMBO") window.switchPoModalToolTab("hw");
-          else if (scenarioType === "ZALO_PASTE") window.switchPoModalToolTab("zalo");
-          else if (scenarioType === "COMMERCIAL_WOOD") window.switchPoModalToolTab("none");
-        }
-        return res;
-      };
-      wrapped._pgWrappedV10 = true;
-      window.openVuSmartOrderScenario = wrapped;
-    }
+    const dupBar = document.getElementById("pgModalToolTabsBar");
+    if (dupBar) dupBar.remove();
   }
 
   function runAllUiStreamliners() {

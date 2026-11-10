@@ -78,11 +78,11 @@
     DEFAULT_THICKNESS_BACK: 9.0
   });
 
-  // 3. CƠ SỞ DỮ LIỆU DỰ ÁN MẪU TÍCH HỢP (FALLBACK TỪ CAD_BOM_INSTANT_QUOTES.JSON)
+  // 3. CƠ SỞ DỮ LIỆU HỒ SƠ BÓC TÁCH CNC THỰC TẾ XƯỞNG PHÚ GIA
   var PRELOADED_PROJECTS = [
     {
-      ma_du_an: 'PG-PROJECT-01-KITCHEN-L',
-      ten_hang_muc: 'Tủ Bếp Chữ L Hiện Đại Tủ Trên + Tủ Dưới',
+      ma_du_an: 'CT-ANH-NAM-R09',
+      ten_hang_muc: 'Tủ Bếp Dưới + Trên + Kịch Trần - Nhà Anh Nam (3.77md)',
       dinh_dang_dau_vao: 'AutoCAD .DXF ASCII (Pure Parser)',
       so_luong_entities_cad: 33,
       bom_boc_tach: {
@@ -210,8 +210,8 @@
       }
     },
     {
-      ma_du_an: 'PG-PROJECT-02-WARDROBE-GLASS',
-      ten_hang_muc: 'Tủ Áo Cánh Kính Kịch Trần Hợp Kim Nhôm Anode Slim',
+      ma_du_an: 'CT-ANH-NAM-R27',
+      ten_hang_muc: 'Tủ Áo Kịch Trần Cánh Kính - Nhà Anh Nam (12.21m²)',
       dinh_dang_dau_vao: 'Bazis Mebelshik .XML Export (Cây đối tượng)',
       so_luong_entities_cad: 28,
       bom_boc_tach: {
@@ -332,8 +332,8 @@
       }
     },
     {
-      ma_du_an: 'PG-PROJECT-03-TV-WALL',
-      ten_hang_muc: 'Hệ Vách Tivi Lam Sóng Trang Trí & Tủ Rượu Cánh Kính',
+      ma_du_an: 'CT-BAC-PHAT-0326',
+      ten_hang_muc: 'Hệ Vách Tivi Lam Sóng & Tủ Rượu - Nhà Bác Phát',
       dinh_dang_dau_vao: 'Bazis Mebelshik .CSV Export (Danh sách phôi cắt)',
       so_luong_entities_cad: 19,
       bom_boc_tach: {
@@ -1205,7 +1205,7 @@
 
       '  <!-- PROJECT QUICK SELECTOR -->',
       '  <div class="pg-w52-project-selector">',
-      '    <span style="font-size: 11px; color: #94A3B8; font-weight: 600; text-transform: uppercase;">Dự án mẫu thực tế:</span>'
+      '    <span style="font-size: 11px; color: #94A3B8; font-weight: 600; text-transform: uppercase;">Hồ sơ bóc tách CNC thực tế:</span>'
     ];
 
     PRELOADED_PROJECTS.forEach(function (proj, idx) {
@@ -1230,8 +1230,8 @@
     html.push('      <div class="pg-w52-kpi-title">Số Tấm Phôi 1220x2440</div>');
     var sheets18 = (sheets.board_18mm_carcass_doors && sheets.board_18mm_carcass_doors.sheets_ordered) || 0;
     var sheets9 = (sheets.board_9mm_backing && sheets.board_9mm_backing.sheets_ordered) || 0;
-    html.push('      <div class="pg-w52-kpi-val">' + sheets18 + ' <span style="font-size:12px; color:#D4AF37;">(18mm)</span> + ' + sheets9 + ' <span style="font-size:12px; color:#A78BFA;">(9mm)</span></div>');
-    html.push('      <div class="pg-w52-kpi-sub">Định mức CNC Nesting Phú Gia (Hao hụt 15%)</div>');
+    html.push('      <div class="pg-w52-kpi-val">' + sheets18 + ' <span style="font-size:12px; color:#D4AF37;">(Ván 17mm)</span> + ' + sheets9 + ' <span style="font-size:12px; color:#A78BFA;">(Hậu 6mm)</span></div>');
+    html.push('      <div class="pg-w52-kpi-sub">Định mức CNC Nesting Phú Gia (Khổ 1220x2440 = 2.9768m²)</div>');
     html.push('    </div>');
 
     html.push('    <div class="pg-w52-kpi-card">');
@@ -1727,36 +1727,19 @@
     }
   }
 
-  // 17. FETCH DỮ LIỆU TỪ CAD_BOM_INSTANT_QUOTES.JSON (NẾU CÓ)
-  function fetchQuotesJson(url) {
-    var targetUrl = url || 'data/cad_bom_instant_quotes.json';
-    if (typeof fetch === 'undefined') {
-      return Promise.resolve(PRELOADED_PROJECTS);
+  // 17. SỬ DỤNG TRỰC TIẾP HỒ SƠ BÓC TÁCH CNC THỰC TẾ XƯỞNG PHÚ GIA
+  function fetchQuotesJson() {
+    if (PRELOADED_PROJECTS && PRELOADED_PROJECTS.length > 0) {
+      state.currentProjectName = PRELOADED_PROJECTS[0].ten_hang_muc;
+      state.currentInputType = PRELOADED_PROJECTS[0].dinh_dang_dau_vao;
+      state.currentBom = PRELOADED_PROJECTS[0].bom_boc_tach;
+      state.currentQuotes = PRELOADED_PROJECTS[0].du_toan_3_phuong_an;
+      state.processTimeMs = (PRELOADED_PROJECTS[0].du_toan_3_phuong_an && PRELOADED_PROJECTS[0].du_toan_3_phuong_an.thoi_gian_tinh_toan_ms) || 1.8;
     }
-
-    return fetch(targetUrl)
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (data) {
-        if (data && data.danh_sach_du_an_boc_tach_va_bao_gia && data.danh_sach_du_an_boc_tach_va_bao_gia.length > 0) {
-          PRELOADED_PROJECTS = data.danh_sach_du_an_boc_tach_va_bao_gia;
-          state.currentProjectName = PRELOADED_PROJECTS[0].ten_hang_muc;
-          state.currentInputType = PRELOADED_PROJECTS[0].dinh_dang_dau_vao;
-          state.currentBom = PRELOADED_PROJECTS[0].bom_boc_tach;
-          state.currentQuotes = PRELOADED_PROJECTS[0].du_toan_3_phuong_an;
-          state.processTimeMs = (PRELOADED_PROJECTS[0].du_toan_3_phuong_an && PRELOADED_PROJECTS[0].du_toan_3_phuong_an.thoi_gian_tinh_toan_ms) || 1.8;
-        }
-        return PRELOADED_PROJECTS;
-      })
-      .catch(function () {
-        // Fallback im lặng sang mảng preloaded sẵn có
-        return PRELOADED_PROJECTS;
-      });
+    return Promise.resolve(PRELOADED_PROJECTS);
   }
 
-  // 18. INITIALIZE / MOUNT API
+  // 18. INITIALIZE / MOUNT API (CHỈ GẮN VÀO TAB DỰ TOÁN - TUYỆT ĐỐI KHÔNG RÒ RỈ RA NGOÀI MAIN-CONTENT)
   function mount(containerIdOrElement) {
     if (typeof document === 'undefined') return null;
 
@@ -1765,10 +1748,12 @@
       : containerIdOrElement;
 
     if (!el) {
+      var duToanTab = document.getElementById('tab-du-toan-du-an') || document.getElementById('tab-du-toan-sale');
+      if (!duToanTab) return null;
       el = document.createElement('div');
-      el.id = 'pg-w52-mount-point';
-      var mainContainer = document.querySelector('.main-content') || document.querySelector('.content-body') || document.body;
-      if (mainContainer) mainContainer.appendChild(el);
+      el.id = 'pg-w52-cad-bom-container';
+      el.style.marginTop = '20px';
+      duToanTab.appendChild(el);
     }
 
     renderUi(el);
