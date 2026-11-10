@@ -2,7 +2,7 @@
   "groups": {
     "g6116598459303638566": {
       "file_count": 259,
-      "indexed_count": 271,
+      "indexed_count": 276,
       "name": "Tổng Kho Ván Lam Giang",
       "category": "SUPPLIER_BOARD",
       "debt_actual": 147492250,
@@ -56,7 +56,7 @@
     },
     "g495486322416346660": {
       "file_count": 64,
-      "indexed_count": 65,
+      "indexed_count": 78,
       "name": "Phụ Kiện Quốc Tâm",
       "category": "SUPPLIER_FITTING",
       "debt_actual": 26170000,
@@ -112,6 +112,7 @@
         "filename": "1793583284195_7617747951538527859_g1...",
         "kind": "WORKSHOP_PHOTO_OR_LANDSCAPE",
         "resolution": "1411x668",
+        "size_kb": 274.8,
         "sha256": "6d127a79eeff",
         "mtime": "2026-11-03 21:23:25",
         "description": "Ảnh hiện trường xưởng / Lắp đặt công trình",
@@ -165,7 +166,7 @@
       "name": "Đặt hàng Phú Gia - NT (Gỗ NT Cầu Vượt)",
       "short_name": "Gỗ NT Cầu Vượt",
       "category": "SUPPLIER_BOARD",
-      "indexed_count": 81,
+      "indexed_count": 95,
       "cached_files": 58,
       "latest_attachment": {
         "filename": "1794017460773_9151780304348905157_g8...",
@@ -222,9 +223,10 @@
       "latest_attachment": {
         "filename": "1793798327211_2845688247116683961_g6...",
         "kind": "BANK_TRANSFER_VOUCHER",
-        "resolution": "153x300",
-        "sha256": "495d97bdbc79",
-        "mtime": "2026-11-04 21:06:52",
+        "resolution": "522x1024",
+        "size_kb": 51.6,
+        "sha256": "fc81eeb318ee",
+        "mtime": "2026-11-04 21:06:51",
         "description": "Ủy nhiệm chi / Chuyển khoản ngân hàng",
         "sender_name": "Vũ",
         "sender_uid": "2845688247116683961"
@@ -268,6 +270,7 @@
         "filename": "1788407840327_1693710913334646341_g4...",
         "kind": "INVOICE_OR_DELIVERY_NOTE",
         "resolution": "1370x1759",
+        "size_kb": 781.9,
         "sha256": "445fcc95ee2d",
         "mtime": "2026-09-03 10:59:33",
         "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
@@ -299,6 +302,7 @@
         "filename": "1793236632827_1266851172782015824_g7...",
         "kind": "WORKSHOP_PHOTO_OR_LANDSCAPE",
         "resolution": "1023x565",
+        "size_kb": 144.2,
         "sha256": "bbce4d735d2d",
         "mtime": "2026-10-30 10:12:10",
         "description": "Ảnh hiện trường xưởng / Lắp đặt công trình",
@@ -460,80 +464,82 @@
       "name": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
       "short_name": "Xưởng & CT Trọng Điểm",
       "category": "WORKSHOP_AND_SITE",
-      "indexed_count": 1465,
-      "cached_files": 862,
+      "indexed_count": 1515,
+      "cached_files": 884,
       "latest_attachment": {
-        "filename": "1794022419526_2304805760907141944_g3...",
-        "kind": "WORKSHOP_PHOTO_OR_LANDSCAPE",
-        "resolution": "299x188",
-        "sha256": "b8ccbbf5538a",
-        "mtime": "2026-11-07 10:33:48",
-        "description": "Ảnh hiện trường xưởng / Lắp đặt công trình",
-        "sender_name": "Nghĩa Guru",
-        "sender_uid": "2304805760907141944"
+        "filename": "1794201319615_2845688247116683961_g3...",
+        "kind": "BANK_TRANSFER_VOUCHER",
+        "resolution": "652x1160",
+        "size_kb": 334.9,
+        "sha256": "067548822354",
+        "mtime": "2026-11-09 12:36:17",
+        "description": "Ủy nhiệm chi / Chuyển khoản ngân hàng",
+        "sender_name": "Vũ",
+        "sender_uid": "2845688247116683961"
       },
       "latest_senders_named": [
-        "Nghĩa Guru",
-        "Thái Pg Home 2026",
         "Vũ",
+        "Phú Gia Hiệp G",
         "Dũng PG Home",
-        "Phú Gia Hiệp G"
+        "Thái Pg Home 2026",
+        "Nghĩa Guru"
       ],
       "latest_senders_detail": [
+        {
+          "uid": "2845688247116683961",
+          "name": "Vũ",
+          "last_active": "2026-11-08 07:51:15",
+          "latest_file": "1794099075391_2845688247116683961_g3755853110317591515_t"
+        },
+        {
+          "uid": "7617747951538527859",
+          "name": "Phú Gia Hiệp G",
+          "last_active": "2026-11-08 07:00:19",
+          "latest_file": "1794096019886_7617747951538527859_g3755853110317591515_t"
+        },
+        {
+          "uid": "2589261669335747882",
+          "name": "Dũng PG Home",
+          "last_active": "2026-11-08 14:22:51",
+          "latest_file": "1794122571617_2589261669335747882_g3755853110317591515_n"
+        },
+        {
+          "uid": "1266851172782015824",
+          "name": "Thái Pg Home 2026",
+          "last_active": "2026-11-09 07:28:43",
+          "latest_file": "1794184123431_1266851172782015824_g3755853110317591515_n"
+        },
         {
           "uid": "2304805760907141944",
           "name": "Nghĩa Guru",
           "last_active": "2026-11-07 10:33:39",
           "latest_file": "1794022419526_2304805760907141944_g3755853110317591515_t"
-        },
-        {
-          "uid": "1266851172782015824",
-          "name": "Thái Pg Home 2026",
-          "last_active": "2026-11-07 07:21:38",
-          "latest_file": "1794010898200_1266851172782015824_g3755853110317591515_t"
-        },
-        {
-          "uid": "2845688247116683961",
-          "name": "Vũ",
-          "last_active": "2026-11-07 07:49:46",
-          "latest_file": "1794012586818_2845688247116683961_g3755853110317591515_t"
-        },
-        {
-          "uid": "2589261669335747882",
-          "name": "Dũng PG Home",
-          "last_active": "2026-11-07 07:24:03",
-          "latest_file": "1794011043757_2589261669335747882_g3755853110317591515_t"
-        },
-        {
-          "uid": "7617747951538527859",
-          "name": "Phú Gia Hiệp G",
-          "last_active": "2026-11-06 14:30:32",
-          "latest_file": "1793950232776_7617747951538527859_g3755853110317591515_n"
         }
       ],
-      "latest_sender": "Nghĩa Guru",
+      "latest_sender": "Vũ",
       "status": "ACTIVE_DELTA_V6"
     },
     "g795402381131416269": {
       "name": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
       "short_name": "Ghim Ưu Tiên #1",
       "category": "PINNED_VIP_GROUP",
-      "indexed_count": 1273,
-      "cached_files": 357,
+      "indexed_count": 1295,
+      "cached_files": 369,
       "latest_attachment": {
-        "filename": "1794058276729_2926353819792553048_g7...",
-        "kind": "WORKSHOP_PHOTO_OR_LANDSCAPE",
-        "resolution": "1280x939",
-        "sha256": "05271018fcfd",
-        "mtime": "2026-11-08 02:10:11",
-        "description": "Ảnh hiện trường xưởng / Lắp đặt công trình",
+        "filename": "1794284084020_2926353819792553048_g7...",
+        "kind": "INVOICE_OR_DELIVERY_NOTE",
+        "resolution": "731x884",
+        "size_kb": 202.8,
+        "sha256": "a007508c0d2c",
+        "mtime": "2026-11-10 11:15:01",
+        "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
         "sender_name": "Nguyễn Minh",
         "sender_uid": "2926353819792553048"
       },
       "latest_senders_named": [
         "Nguyễn Minh",
-        "Nguyễn Thu Hà",
         "Sonminhtu",
+        "Nguyễn Thu Hà",
         "Điền",
         "Rub - Nội Thất Và Xây Dựng"
       ],
@@ -541,20 +547,20 @@
         {
           "uid": "2926353819792553048",
           "name": "Nguyễn Minh",
-          "last_active": "2026-11-07 20:31:16",
-          "latest_file": "1794058276729_2926353819792553048_g795402381131416269_n"
+          "last_active": "2026-11-10 11:14:44",
+          "latest_file": "1794284084020_2926353819792553048_g795402381131416269_t"
+        },
+        {
+          "uid": "8637268198362425881",
+          "name": "Sonminhtu",
+          "last_active": "2026-11-10 08:18:30",
+          "latest_file": "1794273510223_8637268198362425881_g795402381131416269_t"
         },
         {
           "uid": "5818820097402048516",
           "name": "Nguyễn Thu Hà",
           "last_active": "2026-11-06 20:53:58",
           "latest_file": "1793973238449_5818820097402048516_g795402381131416269_n"
-        },
-        {
-          "uid": "8637268198362425881",
-          "name": "Sonminhtu",
-          "last_active": "2026-11-06 11:50:13",
-          "latest_file": "1793940613022_8637268198362425881_g795402381131416269_t"
         },
         {
           "uid": "4580566312795680341",
@@ -581,8 +587,9 @@
       "latest_attachment": {
         "filename": "1793890945172_3799628397263949438_g1...",
         "kind": "INVOICE_OR_DELIVERY_NOTE",
-        "resolution": "225x301",
-        "sha256": "4614f3102911",
+        "resolution": "768x1025",
+        "size_kb": 252.7,
+        "sha256": "eb740493fd00",
         "mtime": "2026-11-06 00:37:28",
         "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
         "sender_name": "Hà Huy Trọng",
@@ -634,13 +641,14 @@
       "name": "Nhóm Đặt Hàng Vật Tư & UNC (Vũ - Chị Hương)",
       "short_name": "Đặt Hàng & UNC Hương",
       "category": "SUPPLIER_ORDER_UNC",
-      "indexed_count": 123,
+      "indexed_count": 130,
       "cached_files": 50,
       "latest_attachment": {
         "filename": "1793864320430_2845688247116683961_g2...",
         "kind": "INVOICE_OR_DELIVERY_NOTE",
-        "resolution": "209x301",
-        "sha256": "20c88e136307",
+        "resolution": "476x683",
+        "size_kb": 43.4,
+        "sha256": "d359b9702212",
         "mtime": "2026-11-06 12:15:04",
         "description": "Hóa đơn / Phiếu bán lẻ / Phiếu xuất kho",
         "sender_name": "Vũ",
@@ -682,13 +690,13 @@
       "status": "ACTIVE_DELTA_V6"
     }
   },
-  "last_scan": "2026-11-08 11:01:19",
+  "last_scan": "2026-11-10 11:28:12",
   "engine": "Stealth_v6.0_Delta_Ultra",
-  "scan_latency_ms": 43.7,
+  "scan_latency_ms": 1149.0,
   "zalo_foreground_passive_read": false,
   "total_groups_monitored": 16,
-  "total_media_indexed": 4923,
-  "trigger_source": "AUTO_DAEMON",
+  "total_media_indexed": 5034,
+  "trigger_source": "CLI_ONCE",
   "latest_senders_named": {
     "g6116598459303638566": [
       "Vũ",
@@ -739,16 +747,16 @@
       "Phú Gia Hiệp G"
     ],
     "g3755853110317591515": [
-      "Nghĩa Guru",
-      "Thái Pg Home 2026",
       "Vũ",
+      "Phú Gia Hiệp G",
       "Dũng PG Home",
-      "Phú Gia Hiệp G"
+      "Thái Pg Home 2026",
+      "Nghĩa Guru"
     ],
     "g795402381131416269": [
       "Nguyễn Minh",
-      "Nguyễn Thu Hà",
       "Sonminhtu",
+      "Nguyễn Thu Hà",
       "Điền",
       "Rub - Nội Thất Và Xây Dựng"
     ],
@@ -772,6 +780,16 @@
   },
   "filenoise_dir": "C:\\Users\\Admin\\AppData\\Roaming\\ZaloData\\media\\2304805760907141944\\ZaloDownloads\\fileNoise",
   "filenoise_recent_stream": [
+    {
+      "filename": "8dab9e8cbad268a013253fe199b89ccb",
+      "size_kb": 57.5,
+      "mtime": "2026-11-09 17:37:10"
+    },
+    {
+      "filename": "0b6f9fd42f3a7c3bce8991850df1690f",
+      "size_kb": 182.6,
+      "mtime": "2026-11-09 11:00:51"
+    },
     {
       "filename": "fa552d1e7b482a374cab2d4d5e450f81",
       "size_kb": 16.4,
@@ -811,16 +829,6 @@
       "filename": "ba632e9037b5fc32252c6c59ae35f10a",
       "size_kb": 38.1,
       "mtime": "2026-11-05 08:43:15"
-    },
-    {
-      "filename": "c89ea769edad8ebbb0f23b2bebd25e2a",
-      "size_kb": 111.7,
-      "mtime": "2026-11-05 08:38:18"
-    },
-    {
-      "filename": "107556a35809e2438bd163fb8ac81aae",
-      "size_kb": 87517.8,
-      "mtime": "2026-11-05 07:24:13"
     }
   ],
   "storage_performance_v6": {

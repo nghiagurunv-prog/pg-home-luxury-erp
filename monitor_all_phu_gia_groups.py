@@ -613,6 +613,34 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
 
     # Đảm bảo 6 chứng từ gốc T11 luôn có mặt trong Staging Inbox kèm SHA-256 thật
     added_gt = seed_ground_truth_inbox(inbox_items)
+
+    # Khử trùng lặp ảnh thu nhỏ (_t) khi đã có ảnh gốc độ phân giải cao (_n) cùng mã tin nhắn
+    non_thumb_prefixes = set()
+    for it in inbox_items:
+        sf = it.get("source_file", "")
+        if sf and not sf.endswith("_t") and "_" in sf:
+            non_thumb_prefixes.add(sf.rsplit("_", 1)[0])
+    cleaned_inbox = []
+    seen_sha_clean = set()
+    for it in inbox_items:
+        sf = it.get("source_file", "")
+        sha_f = it.get("sha256_full") or it.get("sha256")
+        if sf.endswith("_t"):
+            prefix = sf[:-2]
+            if prefix in non_thumb_prefixes:
+                continue
+            # Nếu trong đĩa có bản _n thì bỏ bản _t mờ
+            gid_it = it.get("group_id", "")
+            if gid_it and os.path.exists(os.path.join(MEDIA_BASE, gid_it, "Cache", prefix + "_n")):
+                continue
+        if sha_f and sha_f in seen_sha_clean:
+            continue
+        if sha_f:
+            seen_sha_clean.add(sha_f)
+        cleaned_inbox.append(it)
+    if len(cleaned_inbox) != len(inbox_items):
+        added_gt += 1
+    inbox_items = cleaned_inbox
     existing_hashes = {item.get("sha256_full") for item in inbox_items if item.get("sha256_full")}
 
     now_dt = datetime.datetime.now()
@@ -651,8 +679,26 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
             new_keys = [k for k in cache_items if k not in seen_keys]
             new_files_count = 0 if is_first_baseline else len(new_keys)
 
-            # Nếu là lần khởi tạo con trỏ đầu tiên, lấy 1 file mới nhất của mỗi nhóm để đưa vào Staging Inbox
-            keys_to_inspect = new_keys if not is_first_baseline else (cache_items[-1:] if cache_items else [])
+            # Lọc bỏ file thumbnail (_t) nếu đã có bản gốc (_n) cùng tin nhắn để chỉ lấy ảnh nét
+            cache_set = set(cache_items)
+            def is_valid_fullres(fn_key):
+                if fn_key == ".rescache":
+                    return False
+                if fn_key.endswith("_t") and (fn_key[:-2] + "_n") in cache_set:
+                    return False
+                return True
+
+            # Đảm bảo mỗi nhóm luôn có ít nhất 2 chứng từ/ảnh nét mới nhất trong Staging Inbox để Giám Đốc rà soát
+            group_existing_cnt = sum(1 for it in inbox_items if it.get("group_id") == gid)
+            fullres_sorted = [k for k in cache_items if is_valid_fullres(k)]
+            fullres_sorted.sort(key=lambda fn: os.path.getmtime(os.path.join(cache_dir, fn)) if os.path.exists(os.path.join(cache_dir, fn)) else 0)
+
+            if not is_first_baseline and new_keys:
+                keys_to_inspect = [k for k in new_keys if is_valid_fullres(k)]
+            elif group_existing_cnt < 2 and fullres_sorted:
+                keys_to_inspect = fullres_sorted[-2:]
+            else:
+                keys_to_inspect = []
 
             # Trích xuất danh sách tên người gửi gần nhất từ Storage.db (tái sử dụng bộ đệm nếu không có tệp mới)
             prev_group_state = state.get("groups", {}).get(gid, {})
@@ -724,36 +770,33 @@ def execute_scan(trigger_source="AUTO_DAEMON"):
                     except Exception:
                         pass
 
-            # Nếu không có keys_to_inspect, tái sử dụng thông tin latest_attachment đã lưu trong state để tránh băm lại SHA-256 & mở PIL mỗi chu kỳ
+            # Nếu không có keys_to_inspect, tái sử dụng thông tin latest_attachment đã lưu trong state (nếu không phải ảnh mờ _t)
             if newest_intel is None:
                 prev_att = state.get("groups", {}).get(gid, {}).get("latest_attachment")
-                if prev_att and isinstance(prev_att, dict) and prev_att.get("sha256"):
+                if prev_att and isinstance(prev_att, dict) and prev_att.get("sha256") and not str(prev_att.get("filename", "")).endswith("_t"):
                     newest_intel = prev_att
 
-            # Chỉ khi chưa có bộ đệm latest_attachment mới quét lại file có mtime mới nhất trên đĩa
-            if newest_intel is None and cache_items:
-                valid_items = [f for f in cache_items if f != ".rescache"]
-                if valid_items:
-                    valid_items.sort(key=lambda fn: os.path.getmtime(os.path.join(cache_dir, fn)) if os.path.exists(os.path.join(cache_dir, fn)) else 0)
-                    newest_fn = valid_items[-1]
-                    newest_fp = os.path.join(cache_dir, newest_fn)
-                    if os.path.exists(newest_fp):
-                        kind, w, h, desc = classify_media(newest_fp)
-                        sha = compute_sha256(newest_fp)
-                        mtime_str = datetime.datetime.fromtimestamp(os.path.getmtime(newest_fp)).strftime("%Y-%m-%d %H:%M:%S")
-                        m_fn = re.match(r"^(\d+)_(\d+)_" + re.escape(gid) + r"_", newest_fn)
-                        sender_uid = m_fn.group(2) if m_fn else None
-                        sender_name = get_sender_name(sender_uid) if sender_uid else (senders_named[0] if senders_named else "Không rõ")
-                        newest_intel = {
-                            "filename": newest_fn[:36] + ("..." if len(newest_fn) > 36 else ""),
-                            "kind": kind,
-                            "resolution": f"{w}x{h}",
-                            "sha256": sha[:12] if sha else "N/A",
-                            "mtime": mtime_str,
-                            "description": desc,
-                            "sender_name": sender_name,
-                            "sender_uid": sender_uid
-                        }
+            # Chỉ khi chưa có bộ đệm latest_attachment mới quét lại file nét (_n) có mtime mới nhất trên đĩa
+            if newest_intel is None and fullres_sorted:
+                newest_fn = fullres_sorted[-1]
+                newest_fp = os.path.join(cache_dir, newest_fn)
+                if os.path.exists(newest_fp):
+                    kind, w, h, desc = classify_media(newest_fp)
+                    sha = compute_sha256(newest_fp)
+                    mtime_str = datetime.datetime.fromtimestamp(os.path.getmtime(newest_fp)).strftime("%Y-%m-%d %H:%M:%S")
+                    m_fn = re.match(r"^(\d+)_(\d+)_" + re.escape(gid) + r"_", newest_fn)
+                    sender_uid = m_fn.group(2) if m_fn else None
+                    sender_name = get_sender_name(sender_uid) if sender_uid else (senders_named[0] if senders_named else "Không rõ")
+                    newest_intel = {
+                        "filename": newest_fn[:36] + ("..." if len(newest_fn) > 36 else ""),
+                        "kind": kind,
+                        "resolution": f"{w}x{h}",
+                        "sha256": sha[:12] if sha else "N/A",
+                        "mtime": mtime_str,
+                        "description": desc,
+                        "sender_name": sender_name,
+                        "sender_uid": sender_uid
+                    }
 
             # Cập nhật con trỏ seen_keys cho nhóm
             cursor.setdefault("groups", {})[gid] = {

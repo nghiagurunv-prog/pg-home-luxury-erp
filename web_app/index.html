@@ -2273,43 +2273,49 @@
               <small class="tele-sub" id="zaloTeleLastScan">Cập nhật: Vừa xong</small>
             </div>
             <div class="zalo-telemetry-item">
-              <span class="tele-label"><i class="fa-solid fa-gauge-high text-cyan"></i> Tốc Độ Quét Ngầm 11 Nhóm</span>
-              <strong class="tele-val" id="zaloTeleDuration" style="color: #38BDF8;">123.9 ms / chu kỳ</strong>
+              <span class="tele-label"><i class="fa-solid fa-gauge-high text-cyan"></i> Tốc Độ Quét Ngầm 16 Nhóm</span>
+              <strong class="tele-val" id="zaloTeleDuration" style="color: #38BDF8;">105 ms / 16 nhóm</strong>
               <small class="tele-sub">CPU: 0.0% • Chuột &amp; Cửa sổ: An toàn 100%</small>
             </div>
             <div class="zalo-telemetry-item">
               <span class="tele-label"><i class="fa-solid fa-photo-film text-gold"></i> Tổng Media &amp; Cache Đã Quét</span>
-              <strong class="tele-val" id="zaloTeleMediaCount" style="color: #FBBF24;">588 tệp (353 ảnh cache)</strong>
-              <small class="tele-sub" id="zaloTeleCursorInfo">Delta-Cursor: Không bỏ sót chùm ảnh</small>
+              <strong class="tele-val" id="zaloTeleMediaCount" style="color: #FBBF24;">5.034 tệp (16 nhóm Zalo)</strong>
+              <small class="tele-sub" id="zaloTeleCursorInfo">Delta-Cursor v6.0 • Khử trùng ảnh mờ (_t)</small>
             </div>
             <div class="zalo-telemetry-item">
               <span class="tele-label"><i class="fa-solid fa-clipboard-check" style="color:#F97316;"></i> Hộp Thư Chứng Từ Staging</span>
-              <strong class="tele-val" id="zaloTelePendingCount" style="color: #FB923C;">3 chờ duyệt / 14 chứng từ</strong>
+              <strong class="tele-val" id="zaloTelePendingCount" style="color: #FB923C;">72 chờ duyệt / 79 chứng từ</strong>
               <small class="tele-sub">Đã gắn mã băm chống trùng SHA-256</small>
             </div>
           </div>
 
-          <!-- BỘ LỌC NHANH LOẠI CHỨNG TỪ ZALO -->
+          <!-- BỘ LỌC NHANH LOẠI CHỨNG TỪ & NHÓM ZALO -->
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 18px; flex-wrap: wrap; gap: 10px; background: rgba(15, 23, 42, 0.65); border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
             <div class="btn-group" id="zaloInboxFilterGroup" style="display: flex; gap: 6px; flex-wrap: wrap;">
               <button type="button" class="btn btn-sm zalo-filter-btn active" data-filter="ALL" onclick="window.filterZaloStagingInbox('ALL', this)">
-                Tất cả (<span id="zaloCntAll">14</span>)
+                Tất cả (<span id="zaloCntAll">79</span>)
               </button>
               <button type="button" class="btn btn-sm zalo-filter-btn" data-filter="PENDING" onclick="window.filterZaloStagingInbox('PENDING', this)">
-                ⏳ Chờ Giám Đốc Duyệt (<span id="zaloCntPending">3</span>)
+                ⏳ Chờ Giám Đốc Duyệt (<span id="zaloCntPending">72</span>)
               </button>
               <button type="button" class="btn btn-sm zalo-filter-btn" data-filter="PAYMENT_UNC" onclick="window.filterZaloStagingInbox('PAYMENT_UNC', this)">
-                🏦 Ủy Nhiệm Chi (<span id="zaloCntUnc">3</span>)
+                🏦 Ủy Nhiệm Chi (<span id="zaloCntUnc">16</span>)
               </button>
               <button type="button" class="btn btn-sm zalo-filter-btn" data-filter="INVOICE_PO" onclick="window.filterZaloStagingInbox('INVOICE_PO', this)">
-                🧾 Hóa Đơn &amp; Sổ Nợ (<span id="zaloCntPo">6</span>)
+                🧾 Hóa Đơn &amp; Sổ Nợ (<span id="zaloCntPo">28</span>)
               </button>
               <button type="button" class="btn btn-sm zalo-filter-btn" data-filter="WORKSHOP_MEDIA" onclick="window.filterZaloStagingInbox('WORKSHOP_MEDIA', this)">
-                🏭 Ảnh Xưởng &amp; Bản Vẽ (<span id="zaloCntMedia">5</span>)
+                🏭 Ảnh Xưởng &amp; Bản Vẽ (<span id="zaloCntMedia">35</span>)
               </button>
             </div>
-            <div style="font-size: 0.78rem; color: #94A3B8;">
-              <i class="fa-solid fa-fingerprint text-gold"></i> Mỗi ảnh/phiếu đều được đối chiếu chữ ký số <strong>SHA-256</strong> để chặn ghi trùng công nợ 100%
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <select id="zaloGroupSelectFilter" onchange="window.renderZaloStagingInbox()" style="background: rgba(2, 6, 23, 0.85); color: #F8FAFC; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; font-weight: 700;">
+                <option value="ALL">📂 Tất cả 16 Nhóm Zalo (NCC &amp; Xưởng)</option>
+              </select>
+              <input type="text" id="zaloSearchInput" oninput="window.renderZaloStagingInbox()" placeholder="🔍 Tìm NCC, người gửi (Vũ, Tâm...), SHA..." style="background: rgba(2, 6, 23, 0.85); color: #F8FAFC; border: 1px solid rgba(148, 163, 184, 0.35); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; min-width: 215px;">
+              <button type="button" class="btn btn-sm btn-outline" onclick="window.approveAllFilteredZaloItems()" style="border-color: rgba(16, 185, 129, 0.5); color: #34D399; font-weight: 700;" title="Duyệt toàn bộ chứng từ đang hiển thị trong bộ lọc">
+                <i class="fa-solid fa-check-double"></i> Duyệt Nhanh Đang Lọc
+              </button>
             </div>
           </div>
 
