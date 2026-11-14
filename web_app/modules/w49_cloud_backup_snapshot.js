@@ -27,15 +27,30 @@
     engine_version: 'W49-Snapshot-V2.6'
   };
 
-  // Helper tính toán checksum đơn giản chống can thiệp file
+  // Helper tính toán checksum SHA-256 chuẩn FIPS 180-4 chống can thiệp file
   function calculateChecksum(str) {
+    if (typeof window !== 'undefined' && typeof window.pgSha256HexSync === 'function') {
+      return 'SHA256_' + window.pgSha256HexSync(String(str || ''));
+    }
     let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
+    const s = String(str || '');
+    for (let i = 0; i < s.length; i++) {
+      const char = s.charCodeAt(i);
       hash = ((hash << 5) - hash) + char;
-      hash |= 0; // Convert to 32bit integer
+      hash |= 0;
     }
     return 'PG_' + Math.abs(hash).toString(16).toUpperCase();
+  }
+
+  function assertDirectorBackupAuth() {
+    try {
+      const raw = localStorage.getItem('PG_HOME_CURRENT_USER') || localStorage.getItem('PG_HOME_ACTIVE_SESSION_V5');
+      if (raw) {
+        const u = JSON.parse(raw);
+        if (u && u.role === 'ADMIN') return u;
+      }
+    } catch (_) {}
+    throw new Error('Chỉ Giám Đốc (ADMIN) mới có quyền nạp hoặc khôi phục Snapshot toàn hệ thống.');
   }
 
   // Format thời gian hiển thị thân thiện
@@ -234,6 +249,7 @@
      */
     async uploadSnapshotToCloud(snapshotData = null) {
       try {
+        const adminUser = assertDirectorBackupAuth();
         showToast('Đang nạp bản Snapshot lên Cloud Server...', 'info');
         let payloadState;
 
@@ -243,12 +259,16 @@
           payloadState = await resolveCurrentState();
         }
 
+        const pinToken = sessionStorage.getItem('PG_DIRECTOR_PIN_TOKEN') || '';
         const resp = await fetch('/api/save-state', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'X-Actor': 'Director_NguyenVietNghia',
-            'X-Role': 'ADMIN'
+            'X-Role': 'ADMIN',
+            'X-PG-Role': 'ADMIN',
+            'X-PG-Token': adminUser._serverToken || adminUser._sig || '',
+            'X-Director-PIN': pinToken
           },
           body: JSON.stringify({
             state: payloadState,
@@ -298,12 +318,19 @@
         reader.onload = async (e) => {
           try {
             const content = e.target.result;
+            assertDirectorBackupAuth();
             const parsed = JSON.parse(content);
 
-            // Kiểm tra tính hợp lệ cơ bản
+            // Kiểm tra tính hợp lệ cơ bản & đối chiếu Checksum SHA-256 chống giả mạo file
             const restoredState = parsed.payload ? parsed.payload : parsed;
             if (!restoredState || typeof restoredState !== 'object') {
               throw new Error('Cấu trúc file sao lưu không hợp lệ.');
+            }
+            if (parsed.payload && parsed.data_checksum) {
+              const expectedChecksum = calculateChecksum(JSON.stringify(parsed.payload));
+              if (parsed.data_checksum !== expectedChecksum && String(parsed.data_checksum).startsWith('SHA256_')) {
+                throw new Error('CẢNH BÁO AN NINH: Checksum SHA-256 của file Snapshot không khớp! File đã bị chỉnh sửa bên ngoài.');
+              }
             }
 
             // Đồng bộ vào window state

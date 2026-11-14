@@ -117,7 +117,7 @@
             specification: "Cánh huỳnh bo cong R3..R45 sơn PU màu chỉ định"
           },
           {
-            project: "Vinhomes Anh Minh",
+            project: "Nhà Anh Công",
             metric: "18.2 m2",
             unit_price: 1250000,
             total_amount: 22750000,
@@ -309,7 +309,7 @@
    * 
    * Quy tắc kỷ luật thép PG Home:
    * 1. woodVal = totalVal - (accVal + stoneVal + glassVal + acrylicVal + solidWoodVal + paintVal)
-   * 2. Chỉ có woodVal (phần xưởng mộc MDF/MFC gia công CNC) mới được áp dụng:
+   * 2. Chỉ có woodVal (phần Nhà máy sản xuất MDF/MFC gia công CNC) mới được áp dụng:
    *    - Định mức vật tư khoán: 40% của woodVal
    *    - Quỹ lương thợ khoán: 15% của woodVal
    * 3. Nghiêm cấm tuyệt đối lấy 40% & 15% áp lên phụ kiện inox, đá bếp, kính ốp, cánh acrylic gia công ngoài!
@@ -682,7 +682,7 @@
               </div>
               <div style="font-size: 24px; font-weight: 800; color: #0f172a;">${Utils.formatVND(debts.canh_huynh_ald)}</div>
               <div style="font-size: 12px; color: #64748b; margin-top: 4px;">
-                Nhà Chị Hoa (12.21M) + Vinhomes Anh Minh (22.75M)
+                Nhà Chị Hoa (12.21M) + Nhà Anh Công (22.75M)
               </div>
               <div style="margin-top: 10px; font-size: 11.5px; color: #475569;">
                 Thanh toán theo tiến độ hoàn thiện & lắp đặt nghiệm thu xưởng.

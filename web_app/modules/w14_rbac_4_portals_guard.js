@@ -237,19 +237,29 @@
     securityAlert: []
   };
 
+  function isLocalDirectorHost() {
+    if (typeof window === 'undefined' || !window.location) return false;
+    const h = window.location.hostname || '';
+    const proto = window.location.protocol || '';
+    return proto === 'file:' || h === '127.0.0.1' || h === 'localhost' || h === '::1';
+  }
+
   // --- HÀM HỖ TRỢ LƯU TRỮ VÀ LOCALSTORAGE ---
   function _loadUsersFromStorage() {
     try {
+      const localOnly = isLocalDirectorHost();
+      const baseUsers = localOnly ? INITIAL_USERS : INITIAL_USERS.filter(u => u.role !== ROLES.ADMIN);
       const dataStr = localStorage.getItem(STORAGE_KEY_USERS);
       if (dataStr) {
-        _users = JSON.parse(dataStr);
+        const parsed = JSON.parse(dataStr);
+        _users = Array.isArray(parsed) ? (localOnly ? parsed : parsed.filter(u => u && u.role !== ROLES.ADMIN)) : JSON.parse(JSON.stringify(baseUsers));
       } else {
-        _users = JSON.parse(JSON.stringify(INITIAL_USERS));
+        _users = JSON.parse(JSON.stringify(baseUsers));
         _saveUsersToStorage();
       }
     } catch (e) {
       console.warn('[W14 RBAC] Không thể đọc localStorage, sử dụng memory:', e);
-      _users = JSON.parse(JSON.stringify(INITIAL_USERS));
+      _users = JSON.parse(JSON.stringify(isLocalDirectorHost() ? INITIAL_USERS : INITIAL_USERS.filter(u => u.role !== ROLES.ADMIN)));
     }
   }
 
@@ -266,10 +276,13 @@
     return _users;
   }
 
-  // --- HÀM TÍNH CHỮ KÝ KIỂM TRA TOÀN VẸN SESSION CHỐNG GIẢ MẠO DEVTOOLS ---
+  // --- HÀM TÍNH CHỮ KÝ KIỂM TRA TOÀN VẸN SESSION CHỐNG GIẢ MẠO DEVTOOLS (SHA-256) ---
   function computeSessionSig(u) {
     if (!u) return '';
-    const raw = (u.id || '') + '|' + (u.username || '') + '|' + (u.role || '') + '|PG_RBAC_V5_SALT';
+    const raw = (u.id || '') + '|' + (u.username || '') + '|' + (u.role || '') + '|' + (u.status || '') + '|PG_RBAC_V34_SHA256';
+    if (typeof window !== 'undefined' && typeof window.pgSha256HexSync === 'function') {
+      return 'SIG_SHA256_' + window.pgSha256HexSync(raw).substring(0, 32);
+    }
     let h = 0;
     for (let i = 0; i < raw.length; i++) {
       h = Math.imul(31, h) + raw.charCodeAt(i) | 0;
@@ -281,11 +294,12 @@
     try {
       const u = user || _currentUser;
       if (u) {
+        const safeRole = (!isLocalDirectorHost() && u.role === ROLES.ADMIN) ? ROLES.VANPHONG_SALE : u.role;
         const sessObj = {
           id: u.id,
           username: u.username,
           fullName: u.fullName,
-          role: u.role,
+          role: safeRole,
           status: u.status
         };
         sessObj._sig = computeSessionSig(sessObj);
@@ -307,14 +321,24 @@
       const userList = loadUsers();
       const origUser = userList.find(u => (parsed.id && u.id === parsed.id) || (parsed.username && u.username === parsed.username));
 
+      // Chặn leo thang quyền ADMIN trên cổng Cloud nhân viên
+      if (!isLocalDirectorHost() && parsed.role === ROLES.ADMIN) {
+        console.warn('[W14 RBAC] Cổng Cloud chỉ dành cho nhân viên — chặn quyền ADMIN.');
+        localStorage.removeItem(STORAGE_KEY_SESSION);
+        return null;
+      }
+
       // Kiểm tra chữ ký chống giả mạo session qua DevTools
-      if (parsed._sig && parsed._sig !== computeSessionSig(parsed)) {
+      if (!parsed._sig || parsed._sig !== computeSessionSig(parsed)) {
         console.warn('[W14 RBAC HARD-LOCK] CẢNH BÁO: Phát hiện session bị chỉnh sửa trái phép qua DevTools! Đang tự động khôi phục role gốc...');
         if (origUser) {
           parsed.role = origUser.role;
           parsed.status = origUser.status;
           parsed._sig = computeSessionSig(parsed);
           localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(parsed));
+        } else {
+          localStorage.removeItem(STORAGE_KEY_SESSION);
+          return null;
         }
       }
       return parsed;
@@ -328,15 +352,17 @@
     try {
       const sessionUser = getCurrentSession();
       if (sessionUser) {
-        // Cập nhật lại từ danh sách mới nhất để đảm bảo status/role đồng bộ
         const found = _users.find(u => u.id === sessionUser.id || u.username === sessionUser.username);
         _currentUser = found || null;
       } else {
-        // Mặc định đăng nhập Giám Đốc ADMIN để sẵn sàng điều hành
-        _currentUser = _users.find(u => u.role === ROLES.ADMIN) || null;
+        _currentUser = isLocalDirectorHost()
+          ? (_users.find(u => u.role === ROLES.ADMIN) || null)
+          : (_users.find(u => u.role === ROLES.VANPHONG_SALE) || _users[0] || null);
       }
     } catch (e) {
-      _currentUser = _users.find(u => u.role === ROLES.ADMIN) || null;
+      _currentUser = isLocalDirectorHost()
+        ? (_users.find(u => u.role === ROLES.ADMIN) || null)
+        : (_users[0] || null);
     }
   }
 

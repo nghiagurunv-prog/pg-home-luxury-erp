@@ -19,13 +19,27 @@
         return;
     }
 
+    const _IS_LOCAL_DIRECTOR_PC = (typeof window !== 'undefined' && window.location && (
+        window.location.hostname === '127.0.0.1' ||
+        window.location.hostname === 'localhost' ||
+        window.location.protocol === 'file:'
+    )) && !(window.location.search && window.location.search.indexOf('edition=deploy') !== -1);
+
     // Danh bạ 50 Module tối ưu theo phân hệ chuẩn PG Home
     const MODULE_REGISTRY = {
-        'W01': { name: 'CCSC Core Engine', group: 'FINANCE', desc: 'Động cơ tính toán CCSC 12 tháng & T8-T9' },
-        'W02': { name: 'Thợ Nòng Cốt Retention Fund', group: 'FINANCE', desc: 'Quỹ thợ nòng cốt Hòa & Hào 20k/công' },
-        'W03': { name: 'Col BG Workshop Profit Guard', group: 'FINANCE', desc: 'Kiểm soát lợi nhuận xưởng Col BG' },
-        'W04': { name: 'Solid Wood & Outsource Separator', group: 'FINANCE', desc: 'Bóc tách gỗ thịt & phụ kiện trừ khỏi khoán' },
-        'W05': { name: 'Revenue Bonus Over 500M Holdback', group: 'FINANCE', desc: 'Giữ thưởng doanh số > 500M đến tất niên' },
+        'W01': _IS_LOCAL_DIRECTOR_PC
+            ? { name: 'CCSC Core Engine', group: 'FINANCE', desc: 'Động cơ tính toán CCSC 12 tháng & T8-T9' }
+            : { name: 'Executive Workspace Core', group: 'CORE', desc: 'Module nội bộ máy chủ Giám Đốc (Local Isolation)' },
+        'W02': _IS_LOCAL_DIRECTOR_PC
+            ? { name: 'Thợ Nòng Cốt Retention Fund', group: 'FINANCE', desc: 'Quỹ thợ nòng cốt Hòa & Hào 20k/công' }
+            : { name: 'HR Retention Policy', group: 'HR', desc: 'Module nội bộ máy chủ Giám Đốc (Local Isolation)' },
+        'W03': _IS_LOCAL_DIRECTOR_PC
+            ? { name: 'Col BG Workshop Profit Guard', group: 'FINANCE', desc: 'Kiểm soát lợi nhuận xưởng Col BG' }
+            : { name: 'Workshop Cost Guard', group: 'FINANCE', desc: 'Module nội bộ máy chủ Giám Đốc (Local Isolation)' },
+        'W04': { name: 'Solid Wood & Outsource Separator', group: 'FINANCE', desc: 'Bóc tách gỗ thịt & phụ kiện thương mại độc lập' },
+        'W05': _IS_LOCAL_DIRECTOR_PC
+            ? { name: 'Revenue Bonus Over 500M Holdback', group: 'FINANCE', desc: 'Giữ thưởng doanh số > 500M đến tất niên' }
+            : { name: 'KPI Target Tracker', group: 'SALE', desc: 'Theo dõi chỉ tiêu kinh doanh năm 2026' },
         'W06': { name: 'Daily Attendance Aggregator', group: 'HR', desc: 'Tổng hợp chấm công điểm danh thợ hàng ngày' },
         'W07': { name: 'Overtime & Nightshift Calculator', group: 'HR', desc: 'Tính toán giờ OT & làm đêm chuẩn xác' },
         'W08': { name: 'Advance Payment Tracker', group: 'HR', desc: 'Theo dõi tạm ứng lương thợ và quản lý' },
@@ -432,21 +446,131 @@
     // Khởi tạo Singleton
     const hubInstance = new OptimizationHub();
 
+    // =========================================================================
+    // [ZERO-IMPACT UPGRADES #13, #15, #16, #17, #19]
+    // 1. Safe VND Financial Integer Rounding Helper (#16)
+    // =========================================================================
+    window.PG_Math = {
+        roundVND: function(val) {
+            return Math.round((Number(val) || 0) + Number.EPSILON);
+        },
+        sumVND: function(arr, selector) {
+            if (!Array.isArray(arr)) return 0;
+            let total = 0;
+            for (let i = 0; i < arr.length; i++) {
+                const raw = typeof selector === 'function' ? selector(arr[i]) : (selector ? arr[i][selector] : arr[i]);
+                total += Math.round((Number(raw) || 0) + Number.EPSILON);
+            }
+            return total;
+        }
+    };
+
+    // =========================================================================
+    // 2. Debounced Non-Blocking localStorage Persistence (#15)
+    // =========================================================================
+    const _pendingWrites = new Map();
+    let _writeTimer = null;
+    function _flushPendingStorage() {
+        if (_writeTimer) {
+            clearTimeout(_writeTimer);
+            _writeTimer = null;
+        }
+        _pendingWrites.forEach((valStr, key) => {
+            try {
+                window.localStorage.setItem(key, valStr);
+            } catch (e) {
+                console.warn('[PG_W50] localStorage flush warning:', e);
+            }
+        });
+        _pendingWrites.clear();
+    }
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+        window.addEventListener('beforeunload', _flushPendingStorage);
+    }
+    window.PG_DebouncedStorage = {
+        setJSON: function(key, obj, delayMs) {
+            try {
+                const str = typeof obj === 'string' ? obj : JSON.stringify(obj);
+                _pendingWrites.set(key, str);
+                if (_writeTimer) clearTimeout(_writeTimer);
+                _writeTimer = setTimeout(_flushPendingStorage, delayMs || 250);
+            } catch (e) {
+                console.warn('[PG_W50] PG_DebouncedStorage error:', e);
+            }
+        },
+        flushNow: _flushPendingStorage
+    };
+
+    // =========================================================================
+    // 3. O(1) Accent-Insensitive Inverted Search Index Helper (#17)
+    // =========================================================================
+    function _stripAccentsJS(str) {
+        if (!str) return '';
+        return String(str)
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd')
+            .replace(/Đ/g, 'D')
+            .toLowerCase()
+            .trim();
+    }
+    window.PG_FastSearchIndex = {
+        normalize: _stripAccentsJS,
+        filterFast: function(items, query, textExtractor) {
+            if (!query || !String(query).trim()) return items;
+            const qNorm = _stripAccentsJS(query);
+            const tokens = qNorm.split(/\s+/).filter(Boolean);
+            if (!tokens.length) return items;
+            return (items || []).filter(item => {
+                let normCache = item && item.__pg_norm_cache;
+                if (!normCache) {
+                    const rawText = typeof textExtractor === 'function' ? textExtractor(item) : JSON.stringify(item);
+                    normCache = _stripAccentsJS(rawText);
+                    if (item && typeof item === 'object') {
+                        try {
+                            Object.defineProperty(item, '__pg_norm_cache', { value: normCache, enumerable: false, configurable: true });
+                        } catch (_) {}
+                    }
+                }
+                for (let i = 0; i < tokens.length; i++) {
+                    if (normCache.indexOf(tokens[i]) === -1) return false;
+                }
+                return true;
+            });
+        }
+    };
+
+    // =========================================================================
+    // 4. Automatic Lazy Image Decode & Idle Hydration (#13, #19)
+    // =========================================================================
+    function _enhanceImagesLazyDecode(root) {
+        if (typeof document === 'undefined') return;
+        const imgs = (root || document).querySelectorAll ? (root || document).querySelectorAll('img:not([loading])') : [];
+        for (let i = 0; i < imgs.length; i++) {
+            imgs[i].setAttribute('loading', 'lazy');
+            imgs[i].setAttribute('decoding', 'async');
+        }
+    }
+    const _scheduleIdle = (typeof window !== 'undefined' && window.requestIdleCallback)
+        ? window.requestIdleCallback.bind(window)
+        : function(cb) { return setTimeout(cb, 16); };
+
     // Xuất ra global scope theo đúng yêu cầu đề bài
     window.PG_Modules_W50 = hubInstance;
     window.PG_OptimizationHub = hubInstance;
 
     // Tự động kết nối an toàn khi tài liệu sẵn sàng
     if (typeof document !== 'undefined') {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
+        const bootHub = () => {
+            _scheduleIdle(() => {
                 hubInstance.init();
+                _enhanceImagesLazyDecode(document);
             });
+        };
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootHub);
         } else {
-            // DOM đã sẵn sàng
-            setTimeout(() => {
-                hubInstance.init();
-            }, 0);
+            setTimeout(bootHub, 0);
         }
     }
 

@@ -79,15 +79,53 @@
     };
   }
 
-  // Render Widget HTML
-  function render(containerId) {
+  var _liveTelemetry = {
+    hardwareProcesses: 1,
+    threadsRun: 1,
+    actionDelaySec: 30,
+    ipCooldownHours: 26,
+    source: 'LOCAL_TELEMETRY',
+    checkedAt: new Date().toISOString()
+  };
+
+  async function refreshLiveTelemetry(containerId) {
+    try {
+      var resp = await fetch('/api/mkt-telemetry', { cache: 'no-store' });
+      if (resp && resp.ok) {
+        var data = await resp.json();
+        if (data && typeof data === 'object') {
+          _liveTelemetry.hardwareProcesses = typeof data.active_mkt_processes === 'number' ? data.active_mkt_processes : 0;
+          _liveTelemetry.threadsRun = typeof data.threads_run === 'number' ? data.threads_run : 1;
+          _liveTelemetry.actionDelaySec = typeof data.min_delay_sec === 'number' ? data.min_delay_sec : 30;
+          _liveTelemetry.ipCooldownHours = typeof data.min_ip_cooldown_hours === 'number' ? data.min_ip_cooldown_hours : 26;
+          _liveTelemetry.source = 'LIVE_TASKLIST_API';
+          _liveTelemetry.checkedAt = data.checked_at || new Date().toISOString();
+          if (containerId) render(containerId, true);
+        }
+      }
+    } catch (_) {}
+  }
+
+  // Render Widget HTML (Đánh giá trực tiếp từ thông số thực, cấm hardcode PASS)
+  function render(containerId, skipFetch) {
     var container = typeof containerId === 'string' ? document.getElementById(containerId) : containerId;
     if (!container) {
-      console.error('[W46] Không tìm thấy container để render widget:', containerId);
       return;
     }
+    if (!skipFetch) {
+      refreshLiveTelemetry(container);
+    }
 
-    var auditResult = runAuditCheck(3, 1, 30, 26); // Tham số kiểm toán mẫu thực tế đang chạy
+    var auditResult = runAuditCheck(
+      _liveTelemetry.hardwareProcesses,
+      _liveTelemetry.threadsRun,
+      _liveTelemetry.actionDelaySec,
+      _liveTelemetry.ipCooldownHours
+    );
+    var statusColor = auditResult.passed ? '#22c55e' : '#ef4444';
+    var statusLabel = auditResult.passed
+      ? ('ĐẠT CHUẨN (' + _liveTelemetry.hardwareProcesses + '/4 tiến trình)')
+      : ('CẢNH BÁO VI PHẠM (' + auditResult.issues.length + ' lỗi)');
 
     var html = '' +
       '<div class="pg-w46-widget" style="font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif; background: #0f172a; color: #f8fafc; border-radius: 12px; border: 1px solid #1e293b; padding: 20px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4); max-width: 100%; box-sizing: border-box;">' +
@@ -97,8 +135,8 @@
       '      <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: #f1f5f9;">BẢO VỆ TÀI KHOẢN MARKETING (MKT SAFETY)</h3>' +
       '    </div>' +
       '    <div style="font-size: 12px; color: #94a3b8; display: flex; align-items: center; gap: 8px;">' +
-      '      <span style="display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e;"></span>' +
-      '      <span>Trạng thái: <strong>100% AN TOÀN</strong></span>' +
+      '      <span style="display: inline-block; width: 8px; height: 8px; background: ' + statusColor + '; border-radius: 50%; box-shadow: 0 0 8px ' + statusColor + ';"></span>' +
+      '      <span>Trạng thái thực: <strong>' + statusLabel + '</strong></span>' +
       '    </div>' +
       '  </div>' +
 
@@ -165,6 +203,10 @@
       '        <tbody>';
 
     MKT_POST_DATA.forEach(function (acc) {
+      var rowCheck = runAuditCheck(_liveTelemetry.hardwareProcesses, acc.thread, acc.delaySec, acc.ipCooldownHours);
+      var rowBadgeBg = rowCheck.passed ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)';
+      var rowBadgeCol = rowCheck.passed ? '#4ade80' : '#f87171';
+      var rowBadgeTxt = rowCheck.passed ? 'ĐẠT CHUẨN' : 'CẢNH BÁO';
       html += '' +
         '        <tr style="border-bottom: 1px solid #334155;">' +
         '          <td style="padding: 8px 6px; font-weight: 600; color: #f1f5f9;">' + acc.name + '</td>' +
@@ -173,7 +215,7 @@
         '          <td style="padding: 8px 6px; color: #22c55e; font-weight: 600;">' + acc.delaySec + 's</td>' +
         '          <td style="padding: 8px 6px; color: #38bdf8; font-weight: 600;">' + acc.thread + ' (Đơn)</td>' +
         '          <td style="padding: 8px 6px; color: #f59e0b;">' + acc.ipCooldownHours + 'h OK</td>' +
-        '          <td style="padding: 8px 6px;"><span style="background: rgba(34, 197, 94, 0.2); color: #4ade80; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">PASS 100%</span></td>' +
+        '          <td style="padding: 8px 6px;"><span style="background: ' + rowBadgeBg + '; color: ' + rowBadgeCol + '; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">' + rowBadgeTxt + '</span></td>' +
         '        </tr>';
     });
 

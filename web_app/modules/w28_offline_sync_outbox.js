@@ -113,7 +113,8 @@
     return item.id;
   }
 
-  async function getAllPending() {
+  async function getAllPending(includeDeadLetters = false) {
+    const filterFn = (x) => includeDeadLetters || (x && x.status !== 'failed' && (x.retryCount || 0) < MAX_RETRIES);
     const db = await openIndexedDB();
     if (db) {
       return new Promise((resolve) => {
@@ -121,16 +122,16 @@
         const store = tx.objectStore(STORE_NAME);
         const req = store.getAll();
         req.onsuccess = () => {
-          const res = req.result || [];
+          const res = (req.result || []).filter(filterFn);
           res.sort((a, b) => a.timestamp - b.timestamp);
           resolve(res);
         };
         req.onerror = () => {
-          resolve(getLocalStorageOutbox());
+          resolve(getLocalStorageOutbox().filter(filterFn));
         };
       });
     } else {
-      return getLocalStorageOutbox().sort((a, b) => a.timestamp - b.timestamp);
+      return getLocalStorageOutbox().filter(filterFn).sort((a, b) => a.timestamp - b.timestamp);
     }
   }
 
@@ -217,10 +218,25 @@
     for (const item of items) {
       try {
         const payloadData = typeof item.payload === 'string' ? item.payload : JSON.stringify(item.payload);
-        
+        let authRole = 'VANPHONG_SALE';
+        let authToken = '';
+        try {
+          const rawU = localStorage.getItem('PG_HOME_CURRENT_USER') || localStorage.getItem('PG_HOME_ACTIVE_SESSION_V5');
+          if (rawU) {
+            const u = JSON.parse(rawU);
+            if (u && u.role) authRole = u.role;
+            if (u && (u._serverToken || u._sig)) authToken = u._serverToken || u._sig;
+          }
+        } catch (_) {}
+        const reqHeaders = Object.assign({
+          'Content-Type': 'application/json',
+          'X-PG-Role': authRole,
+          'X-PG-Token': authToken
+        }, item.headers || {});
+
         const response = await fetch(item.endpoint, {
           method: item.method || 'POST',
-          headers: item.headers || { 'Content-Type': 'application/json' },
+          headers: reqHeaders,
           body: payloadData,
           cache: 'no-store'
         });
@@ -309,6 +325,85 @@
     }
   }
 
+  /**
+   * CẢI TIẾN #10: ĐỒNG BỘ VI PHÂN TỪNG TRƯỜNG (DELTA PATCH)
+   * Tránh ghi đè chéo dữ liệu giữa Vũ (Kỹ thuật/Vật tư), Hiệp (Sale/Dự toán) và Giám Đốc.
+   */
+  async function saveFieldDeltaPatch(entityType, entityId, field, value) {
+    let currentUser = 'VANPHONG_SALE';
+    try {
+      const rawU = localStorage.getItem('PG_HOME_CURRENT_USER') || localStorage.getItem('PG_HOME_ACTIVE_SESSION_V5');
+      if (rawU) {
+        const u = JSON.parse(rawU);
+        if (u && (u.username || u.name)) currentUser = u.username || u.name;
+      }
+    } catch (_) {}
+
+    const patchPayload = {
+      action: 'field_delta_patch',
+      entityType: entityType || 'general',
+      entityId: entityId || 'root',
+      field: field,
+      value: value,
+      updatedBy: currentUser,
+      clientTimestamp: Date.now()
+    };
+
+    console.log(`[W28 Delta Sync] Enqueue Delta Patch: ${entityType}[${entityId}].${field} by ${currentUser}`);
+    return await enqueue(patchPayload, {
+      endpoint: DEFAULT_SAVE_ENDPOINT,
+      description: `Delta Patch: ${entityType}[${entityId}].${field}`
+    });
+  }
+
+  /**
+   * CẢI TIẾN #15: TỰ ĐỘNG LƯU NHÁP DỰ TOÁN (AUTO-SAVE QUOTE DRAFT)
+   * Lưu nháp dự toán mỗi 3 giây vào LocalStorage và khôi phục khi F5/mất điện.
+   */
+  const DRAFT_STORAGE_KEY = 'PG_QUOTE_DRAFT_AUTO_SAVE_V1';
+  let autoSaveTimer = null;
+
+  function autoSaveQuoteDraft(draftData) {
+    if (!draftData) return false;
+    try {
+      const draftRecord = {
+        data: draftData,
+        savedAt: Date.now(),
+        savedAtIso: new Date().toISOString(),
+        version: '1.0'
+      };
+      localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draftRecord));
+      notifyEvent('pghome:quote-draft-autosaved', { timestamp: draftRecord.savedAt });
+      return true;
+    } catch (e) {
+      console.warn('[W28 AutoSave] Không thể lưu nháp dự toán:', e);
+      return false;
+    }
+  }
+
+  function recoverQuoteDraft() {
+    try {
+      const raw = localStorage.getItem(DRAFT_STORAGE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed || !parsed.data) return null;
+      console.log(`[W28 AutoSave] Khôi phục thành công bản nháp dự toán từ lúc ${parsed.savedAtIso}`);
+      return parsed.data;
+    } catch (e) {
+      console.warn('[W28 AutoSave] Lỗi khôi phục bản nháp dự toán:', e);
+      return null;
+    }
+  }
+
+  function clearQuoteDraft() {
+    try {
+      localStorage.removeItem(DRAFT_STORAGE_KEY);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   // 5. THEO DÕI SỰ KIỆN MẠNG & UI BADGE
   function notifyEvent(eventName, detail) {
     try {
@@ -371,7 +466,7 @@
 
   // 6. XUẤT MODULE TOÀN CỤC
   const W28Module = {
-    version: '1.0.0',
+    version: '1.1.0',
     name: 'PGHome_Offline_Sync_Outbox',
     enqueue,
     getAllPending,
@@ -379,12 +474,17 @@
     clearAll,
     syncNow,
     saveStateWithOfflineFallback,
+    saveFieldDeltaPatch,
+    autoSaveQuoteDraft,
+    recoverQuoteDraft,
+    clearQuoteDraft,
     isOnline: () => navigator.onLine,
     isSyncing: () => isSyncing,
     getPendingCount: async () => (await getAllPending()).length
   };
 
   window.PG_Modules_W28 = W28Module;
+  window.PG_W28 = W28Module;
   window.PG_OfflineSyncOutbox = W28Module;
 
 })(window);

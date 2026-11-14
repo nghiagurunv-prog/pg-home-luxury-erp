@@ -754,33 +754,68 @@
     const item = state.items.find(x => x.id === itemId);
     if (!item) return false;
 
+    const isLocalHost = (typeof window !== 'undefined' && window.location && (
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname === 'localhost' ||
+      window.location.protocol === 'file:'
+    ));
+    const currentRole = String((window.appState && window.appState.currentRole) || localStorage.getItem('PG_CURRENT_ROLE') || '');
+    if (!isLocalHost || currentRole !== 'ADMIN') {
+      showToast('Chỉ Giám Đốc (trên cổng nội bộ Local) mới có thẩm quyền phê duyệt / từ chối chứng từ Zalo!', 'warning');
+      return false;
+    }
+
+    let directorPin = sessionStorage.getItem('PG_VERIFIED_DIRECTOR_PIN') || '';
+    const checkPinFn = typeof window.verifyDirectorPinInput === 'function'
+      ? window.verifyDirectorPinInput
+      : function () { return false; };
+
+    if (!checkPinFn(directorPin)) {
+      const entered = window.prompt('🔐 Xác thực Mã PIN Giám Đốc để phê duyệt / từ chối chứng từ Zalo:');
+      if (!entered || !checkPinFn(entered.trim())) {
+        showToast('Mã PIN Giám Đốc không hợp lệ. Đã hủy thao tác!', 'warning');
+        return false;
+      }
+      directorPin = entered.trim();
+      try { sessionStorage.setItem('PG_VERIFIED_DIRECTOR_PIN', directorPin); } catch (e) {}
+    }
+
+    const reviewStatus = action === 'APPROVE' ? 'APPROVED' : 'REJECTED';
     const payload = {
       id: item.id,
       action: action, // 'APPROVE' | 'REJECT'
+      review_status: reviewStatus,
       amount: updatePayload.amount !== undefined ? updatePayload.amount : item.amount,
       project_hint: updatePayload.project_hint || item.project_hint || '',
       category: updatePayload.category || item.category,
       note: updatePayload.note || (action === 'APPROVE' ? 'Giám Đốc phê duyệt đóng dấu đỏ' : 'Giám Đốc từ chối chứng từ'),
-      reviewer: 'GIÁM ĐỐC',
+      reviewer: 'Giám Đốc Nguyễn Viết Nghĩa',
       timestamp: new Date().toISOString()
     };
 
-    let serverConfirmed = false;
     try {
+      const token = sessionStorage.getItem('PG_AUTH_TOKEN') || localStorage.getItem('PG_AUTH_TOKEN') || '';
       const res = await fetch(CONFIG.API_APPROVE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-PG-Role': 'ADMIN',
+          'X-Role': 'ADMIN',
+          'X-Director-PIN': directorPin,
+          'X-PG-Token': token
+        },
         body: JSON.stringify(payload)
       });
-      if (res.ok) {
-        serverConfirmed = true;
+      if (res.status === 403 || res.status === 401) {
+        showToast('Máy chủ từ chối quyền phê duyệt chứng từ (403).', 'warning');
+        return false;
       }
     } catch (netErr) {
-      // Backend offline/mock mode: Vẫn ghi nhận quyết định cục bộ để không nghẽn luồng làm việc
+      // Cổng Local offline file:/// mode: đã xác thực PIN Giám Đốc thành công ở trên
     }
 
     // Cập nhật state nội bộ
-    item.review_status = action === 'APPROVE' ? 'APPROVED' : 'REJECTED';
+    item.review_status = reviewStatus;
     item.amount = payload.amount;
     item.project_hint = payload.project_hint;
     item.category = payload.category;

@@ -24,7 +24,9 @@
   } else if (typeof module === 'object' && module.exports) {
     module.exports = factory();
   } else {
-    root.PG_Modules_W09 = factory();
+    const mod = factory();
+    root.PG_Modules_W09 = mod;
+    root.PG_W09 = mod;
   }
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
@@ -193,7 +195,89 @@
       cncBoards17mm: Number(cncBoards17mm.toFixed(2)),
       cncBackBoards6mm: Number(cncBackBoards6mm.toFixed(2)),
       boardCalculationDetails: boardCalculationDetails,
-      specificationNote: specNotes
+      specificationNote: specNotes,
+      specExplanation: calcNetVolumeWithDeduction(grossQty, deductions, unit).specNote
+    };
+  }
+
+  /**
+   * CẢI TIẾN #9: HÀM KHẤU TRỪ GIAO CẮT & LỖ MỞ TỰ ĐỘNG
+   * Tự động sinh chuỗi thuyết minh chuẩn vào cột Quy cách
+   * @param {number} baseArea - Khối lượng phủ bì ban đầu (m2 hoặc md)
+   * @param {Array} deductions - Danh sách các phần giao cắt/lỗ mở cần khấu trừ
+   * @param {string} unit - Đơn vị tính (m2, md, etc., mặc định 'm²')
+   * @returns {Object} { grossArea, totalDeduction, netArea, unit, specNote, deductions }
+   */
+  function calcNetVolumeWithDeduction(baseArea, deductions, unit) {
+    const u = unit || 'm²';
+    const gross = Math.max(0, parseFloat(baseArea) || 0);
+    const dedList = Array.isArray(deductions) ? deductions : (deductions ? [deductions] : []);
+
+    let totalDed = 0;
+    const descParts = [];
+    const normalizedDeductions = [];
+
+    dedList.forEach((d, idx) => {
+      let areaVal = 0;
+      let label = '';
+      let code = '';
+
+      if (typeof d === 'number') {
+        areaVal = d;
+        label = `khoản trừ #${idx + 1}`;
+      } else if (typeof d === 'object' && d !== null) {
+        areaVal = parseFloat(d.area || d.qty || d.volume || 0);
+        code = d.code || d.refCode || d.id || '';
+        let name = d.name || d.refName || d.reason || '';
+
+        // Xử lý làm sạch tên/mã
+        if (code && name) {
+          if (name.includes(code)) {
+            label = name;
+          } else {
+            label = `${name} ${code}`;
+          }
+        } else if (code) {
+          label = code;
+        } else if (name) {
+          label = name;
+        } else {
+          label = `phần giao cắt #${idx + 1}`;
+        }
+      }
+
+      areaVal = Math.max(0, areaVal);
+      totalDed += areaVal;
+      normalizedDeductions.push({
+        index: idx + 1,
+        code: code,
+        label: label,
+        area: areaVal
+      });
+
+      if (label && areaVal > 0) {
+        descParts.push(`${label} (${areaVal.toFixed(2)} ${u})`);
+      }
+    });
+
+    const net = Math.max(0, gross - totalDed);
+
+    // Chuỗi thuyết minh chuẩn vào cột Quy cách theo chỉ thị Giám Đốc:
+    // VD: "Khối lượng thực tế đã khấu trừ phần giao cắt tủ trang trí R05 (8.51 m²) / cửa giấu khuôn R29 (1.61 m²)"
+    let specNote = '';
+    if (descParts.length > 0) {
+      specNote = `Khối lượng thực tế đã khấu trừ phần giao cắt ${descParts.join(' / ')}`;
+    } else {
+      specNote = `Khối lượng thực tính chuẩn phủ bì: ${gross.toFixed(2)} ${u}`;
+    }
+
+    return {
+      grossArea: Number(gross.toFixed(2)),
+      totalDeduction: Number(totalDed.toFixed(2)),
+      netArea: Number(net.toFixed(2)),
+      unit: u,
+      specNote: specNote,
+      deductions: normalizedDeductions
     };
   }
 
@@ -750,6 +834,7 @@
     standards: CNC_DEPTH_STANDARDS,
     caseStudies: CASE_STUDIES,
     calculateDeduction: calculateDeduction,
+    calcNetVolumeWithDeduction: calcNetVolumeWithDeduction,
     generateSpecificationNote: generateSpecificationNote,
     renderHTML: renderHTML,
     runTests: runTests

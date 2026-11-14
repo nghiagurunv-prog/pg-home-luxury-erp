@@ -42,8 +42,8 @@
       phu_cap_thuc_chi: 0,
       tam_ung: 1590000,
       thuc_linh_tien_mat: 63883750,
-      quy_khoan_15: 72000000,
-      doi_du_quy_tho: 6526250
+      quy_khoan_15: 0,
+      doi_du_quy_tho: 0
     },
     workers_t10: [
       {
@@ -60,7 +60,7 @@
         luong_ot: 6558750,
         tong_luong: 21398750,
         thuc_linh: 19808750,
-        quy_nong_cot: 560000, // 28 công * 20.000 đ (giữ đến cuối năm)
+        quy_nong_cot: 560000, // Quỹ nội bộ xưởng
         is_core: true
       },
       {
@@ -77,7 +77,7 @@
         luong_ot: 5231250,
         tong_luong: 18731250,
         thuc_linh: 18731250,
-        quy_nong_cot: 600000, // 30 công * 20.000 đ (giữ đến cuối năm)
+        quy_nong_cot: 600000, // Quỹ nội bộ xưởng
         is_core: true
       },
       {
@@ -143,7 +143,7 @@
           { name: "Trần Văn Anh", cong_hc: 25.0, gio_ot: 38.0, don_gia_hc: 400000, don_gia_ot: 75000, tam_ung: 0, luong_hc: 10000000, luong_ot: 2850000, thuc_linh: 12850000, quy_nong_cot: 0 },
           { name: "Tuấn Anh", cong_hc: 22.0, gio_ot: 25.0, don_gia_hc: 300000, don_gia_ot: 56250, tam_ung: 0, luong_hc: 6600000, luong_ot: 1406250, thuc_linh: 8006250, quy_nong_cot: 0 }
         ],
-        totals: { cong_hc: 102.0, gio_ot: 150.0, thuc_linh: 53781875, quy_khoan: 65000000 }
+        totals: { cong_hc: 102.0, gio_ot: 150.0, thuc_linh: 53781875, quy_khoan: 0 }
       },
       T09: {
         title: "Tháng 09/2026",
@@ -154,7 +154,7 @@
           { name: "Trần Văn Anh", cong_hc: 24.0, gio_ot: 40.0, don_gia_hc: 400000, don_gia_ot: 75000, tam_ung: 0, luong_hc: 9600000, luong_ot: 3000000, thuc_linh: 12600000, quy_nong_cot: 0 },
           { name: "Tuấn Anh", cong_hc: 20.0, gio_ot: 22.0, don_gia_hc: 300000, don_gia_ot: 56250, tam_ung: 0, luong_hc: 6000000, luong_ot: 1237500, thuc_linh: 7237500, quy_nong_cot: 0 }
         ],
-        totals: { cong_hc: 99.0, gio_ot: 160.0, thuc_linh: 54686250, quy_khoan: 68000000 }
+        totals: { cong_hc: 99.0, gio_ot: 160.0, thuc_linh: 54686250, quy_khoan: 0 }
       },
       T11: {
         title: "Tháng 11/2026 (Lũy kế 01/11 - 10/11/2026)",
@@ -166,7 +166,7 @@
           { name: "Lê Văn Thoan", cong_hc: 8.0, gio_ot: 12.0, don_gia_hc: 450000, don_gia_ot: 84375, tam_ung: 0, luong_hc: 3600000, luong_ot: 1012500, thuc_linh: 4612500, quy_nong_cot: 0 },
           { name: "Tuấn Anh", cong_hc: 7.5, gio_ot: 8.0, don_gia_hc: 300000, don_gia_ot: 56250, tam_ung: 0, luong_hc: 2250000, luong_ot: 450000, thuc_linh: 2700000, quy_nong_cot: 0 }
         ],
-        totals: { cong_hc: 43.5, gio_ot: 85.0, thuc_linh: 25818750, quy_khoan: 28500000 }
+        totals: { cong_hc: 43.5, gio_ot: 85.0, thuc_linh: 25818750, quy_khoan: 0 }
       }
     }
   };
@@ -698,6 +698,11 @@
     }
 
     // Khối KPI Tổng hợp Tháng 10
+    const isLocalDirector = (typeof window !== 'undefined' && window.location && (
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname === 'localhost' ||
+      window.location.protocol === 'file:'
+    )) && !(window.location.search && window.location.search.indexOf('edition=deploy') !== -1);
     const totals = RAW_PAYROLL_DATA.summary_t10;
     contentHtml += `
       <div class="pg-w05-kpi-grid">
@@ -716,6 +721,7 @@
           <div class="pg-w05-kpi-val success">${formatVND(totals.thuc_linh_tien_mat)}</div>
           <div class="pg-w05-kpi-sub">Đã trừ tạm ứng: ${formatVND(totals.tam_ung)}</div>
         </div>
+        ${isLocalDirector && totals.quy_khoan_15 > 0 ? `
         <div class="pg-w05-kpi-card">
           <div class="pg-w05-kpi-label">QUỸ KHOÁN XƯỞNG 15%</div>
           <div class="pg-w05-kpi-val">${formatVND(totals.quy_khoan_15)}</div>
@@ -725,7 +731,7 @@
           <div class="pg-w05-kpi-label">QUỸ NÒNG CỐT GIỮ LẠI (HÒA & HÀO)</div>
           <div class="pg-w05-kpi-val warning">1.160.000 đ</div>
           <div class="pg-w05-kpi-sub">Trích 20k/công giữ đến cuối năm</div>
-        </div>
+        </div>` : ''}
       </div>
     `;
 
@@ -984,7 +990,7 @@
               <td colspan="2">--</td>
               <td style="color: #38bdf8;">${data.totals.cong_hc.toFixed(1)}</td>
               <td style="color: #fbbf24;">${data.totals.gio_ot.toFixed(1)}h</td>
-              <td colspan="4">Quỹ Khoán 15%: ${formatVND(data.totals.quy_khoan)}</td>
+              <td colspan="4">${(typeof window !== 'undefined' && window.__PG_IS_LOCAL_DIRECTOR_PC__ && data.totals.quy_khoan > 0) ? ('Quỹ Khoán 15%: ' + formatVND(data.totals.quy_khoan)) : '--'}</td>
               <td style="color: #34d399;">${formatVND(data.totals.thuc_linh)}</td>
             </tr>
           </tfoot>

@@ -16,6 +16,11 @@ Kèm module: QR Offcut Remnant Inventory (Thu hồi và tái sử dụng phôi d
 import os
 import sys
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 import math
 import copy
 import random

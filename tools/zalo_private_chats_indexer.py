@@ -2,6 +2,11 @@
 import os
 import sys
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 import sqlite3
 import datetime
 import ctypes
@@ -158,8 +163,8 @@ def main():
     for k, v in cur.fetchall():
         try:
             user_cache[k[2:]] = json.loads(v)
-        except:
-            pass
+        except (ValueError, TypeError):
+            continue
     conn.close()
     print(f"Loaded {len(user_cache)} contact profiles from Storage.db [info-cache]")
 
@@ -217,7 +222,7 @@ def main():
                 try:
                     sz = os.path.getsize(fp)
                     total_sz += sz
-                except:
+                except OSError:
                     sz = 0
 
                 # Subfolder count
@@ -229,15 +234,15 @@ def main():
                 if len(parts) >= 3 and parts[0].isdigit() and len(parts[0]) >= 12:
                     try:
                         file_ms = int(parts[0])
-                    except:
-                        pass
+                    except ValueError:
+                        file_ms = 0
                 
                 if file_ms == 0:
                     try:
                         mtime = os.path.getmtime(fp)
                         file_ms = int(mtime * 1000)
-                    except:
-                        pass
+                    except OSError:
+                        file_ms = 0
 
                 if file_ms > latest_ms:
                     latest_ms = file_ms
@@ -261,8 +266,8 @@ def main():
                 # Timestamps around 2026 are valid
                 dt = datetime.datetime.fromtimestamp(latest_ms / 1000.0)
                 latest_iso = dt.strftime("%Y-%m-%d %H:%M:%S")
-            except:
-                pass
+            except (ValueError, OSError, OverflowError):
+                latest_iso = None
 
         total_mb = round(total_sz / (1024 * 1024), 2)
 

@@ -502,3 +502,396 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   12. LUXURY ATELIER PRECISION EXTENSIONS (CẢI TIẾN #12, #21, #22, #24, #25, #26)
+   ========================================================================== */
+
+/* Cải tiến #12: Cố định tiêu đề bảng & cột đầu tiên khi cuộn ngang/dọc */
+.data-table thead th,
+.table-responsive .data-table thead th {
+  position: sticky !important;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-table-header, rgba(16, 19, 23, 0.95)) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.data-table td.sticky-col,
+.data-table th.sticky-col,
+.table-responsive .data-table td:first-child.sticky-first,
+.table-responsive .data-table th:first-child.sticky-first {
+  position: sticky !important;
+  left: 0;
+  z-index: 5;
+  background: var(--obsidian-900, #101317) !important;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.45);
+}
+
+.data-table thead th:first-child.sticky-first,
+.data-table thead th.sticky-col {
+  z-index: 15 !important;
+}
+
+/* Cải tiến #21: Hệ thống phân cấp 3 tầng chiều sâu Dark-Gold Atelier */
+.pg-atelier-card {
+  background: rgba(18, 14, 12, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform var(--transition-normal, 0.25s), border-color var(--transition-normal, 0.25s), box-shadow var(--transition-normal, 0.25s);
+  position: relative;
+  overflow: hidden;
+}
+
+.pg-atelier-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.pg-atelier-card-tier1 {
+  background: rgba(16, 19, 23, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pg-atelier-card-tier2 {
+  background: rgba(21, 25, 31, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.pg-atelier-card-tier3 {
+  background: linear-gradient(145deg, rgba(27, 33, 41, 0.95), rgba(16, 19, 23, 0.98));
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 28px rgba(212, 175, 55, 0.25);
+}
+
+/* Cải tiến #22: Hệ thống số liệu Tabular Nums chống nhảy cột */
+.pg-mono-num {
+  font-family: var(--font-mono, 'JetBrains Mono', 'Fira Code', monospace) !important;
+  font-feature-settings: "tnum" 1, "zero" 1, "cv01" 1 !important;
+  font-variant-numeric: tabular-nums lining-nums !important;
+  letter-spacing: -0.02em;
+  display: inline-block;
+}
+
+/* Cải tiến #24: Thanh tiến độ 3 giai đoạn */
+.pg-stage-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.pg-stage-progress .stage-step {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--transition-normal, 0.25s);
+}
+
+.pg-stage-progress .stage-step.active {
+  background: var(--gold-primary, #D4AF37);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+}
+
+.pg-stage-progress .stage-step.completed {
+  background: var(--fin-positive, #10B981);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+/* Huy hiệu trạng thái phát sáng dịu */
+.pg-badge-glow-success {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #34D399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--radius-sm, 8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pg-badge-glow-warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #FBBF24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--radius-sm, 8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pg-badge-glow-danger {
+  background: rgba(244, 63, 94, 0.15) !important;
+  color: #FB7185 !important;
+  border: 1px solid rgba(244, 63, 94, 0.4) !important;
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.25);
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--radius-sm, 8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Cải tiến #25: Hiệu ứng đóng dấu đỏ điện tử & hiệu ứng Skeleton Shimmer */
+.pg-red-stamp-seal {
+  display: inline-block;
+  border: 2px dashed #DC2626;
+  background: rgba(220, 38, 38, 0.08);
+  color: #DC2626;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transform: rotate(-3deg);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+  user-select: none;
+}
+
+.pg-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.05) 0%,
+    rgba(212, 175, 55, 0.22) 50%,
+    rgba(212, 175, 55, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: pgGoldShimmerAnim 2s infinite ease-in-out;
+  border-radius: var(--radius-xs, 4px);
+}
+
+@keyframes pgGoldShimmerAnim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Cải tiến #26: Mobile Bottom Quick Bar (Chỉ hiển thị khi màn hình <= 768px) */
+.pg-mobile-bottom-bar {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .pg-mobile-bottom-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 60px !important;
+    background: rgba(16, 19, 23, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-top: 1px solid rgba(212, 175, 55, 0.3) !important;
+    z-index: 9999 !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    padding: 0 8px !important;
+    padding-bottom: env(safe-area-inset-bottom, 0) !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .pg-mobile-bottom-bar .bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted, #A89E90);
+    font-size: 0.68rem;
+    font-weight: 600;
+    gap: 3px;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 8px;
+    transition: color 0.15s, transform 0.15s;
+    cursor: pointer;
+  }
+
+  .pg-mobile-bottom-bar .bar-item svg,
+  .pg-mobile-bottom-bar .bar-item i {
+    font-size: 1.15rem;
+  }
+
+  .pg-mobile-bottom-bar .bar-item.active,
+  .pg-mobile-bottom-bar .bar-item:hover {
+    color: var(--gold-primary, #D4AF37);
+    transform: translateY(-1px);
+  }
+}
+
+/* === V37 ULTRA-COMPACT FULL-VIEW SIDEBAR MENU (5 SECTIONS + 16 ITEMS 100% VISIBLE ON 1 SCREEN) === */
+.sidebar {
+  height: 100vh !important;
+  max-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+.sidebar .brand-logo {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 44px !important;
+  padding: 8px 12px !important;
+  gap: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  border-radius: 0 !important;
+}
+.sidebar .brand-logo .logo-icon {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  font-size: 0.95rem !important;
+  border-radius: 8px !important;
+}
+.sidebar .brand-logo .logo-text h2 {
+  font-size: 0.92rem !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+.sidebar .brand-logo .logo-text .sub {
+  font-size: 0.60rem !important;
+  letter-spacing: 1.2px !important;
+  display: block !important;
+  white-space: nowrap !important;
+}
+.sidebar .role-badge-box {
+  margin: 4px 10px 3px !important;
+  padding: 5px 10px !important;
+  border-radius: 7px !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+}
+.sidebar .role-badge-box .role-icon {
+  width: 26px !important;
+  height: 26px !important;
+  font-size: 0.80rem !important;
+}
+.sidebar .role-badge-box .role-info .user-name {
+  font-size: 0.74rem !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+}
+.sidebar .role-badge-box .role-info .user-perm {
+  font-size: 0.62rem !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+}
+.sidebar #deployDivisionSwitcher {
+  padding: 3px 10px !important;
+  gap: 4px !important;
+  flex-shrink: 0 !important;
+}
+.sidebar #deployDivisionSwitcher > div:first-child {
+  font-size: 0.56rem !important;
+  margin-bottom: 2px !important;
+}
+.sidebar #deployDivisionSwitcher .div-switch-btn,
+.sidebar #deployDivisionSwitcher button {
+  padding: 3px 5px !important;
+  font-size: 0.66rem !important;
+  white-space: nowrap !important;
+}
+.sidebar .pg-sidebar-search-wrap {
+  padding: 2px 10px 3px !important;
+  flex-shrink: 0 !important;
+}
+.sidebar .pg-sidebar-search-input {
+  padding: 4px 8px !important;
+  font-size: 0.72rem !important;
+  height: 24px !important;
+}
+.sidebar .nav-menu,
+#mainNavMenu {
+  flex: 1 1 auto !important;
+  padding: 2px 8px 4px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(212, 168, 83, 0.35) transparent !important;
+}
+.sidebar .nav-menu::-webkit-scrollbar,
+#mainNavMenu::-webkit-scrollbar {
+  width: 4px !important;
+}
+.sidebar .nav-menu::-webkit-scrollbar-thumb,
+#mainNavMenu::-webkit-scrollbar-thumb {
+  background: rgba(212, 168, 83, 0.35) !important;
+  border-radius: 4px !important;
+}
+.sidebar .nav-section-title,
+#mainNavMenu .nav-section-title {
+  padding: 4px 8px 1px !important;
+  margin-top: 1px !important;
+  font-size: 0.60rem !important;
+  letter-spacing: 0.7px !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+}
+.sidebar .nav-section-title:first-child,
+#mainNavMenu .nav-section-title:first-child {
+  padding-top: 2px !important;
+  margin-top: 0 !important;
+}
+.sidebar .nav-item,
+#mainNavMenu .nav-item {
+  padding: 4px 8px !important;
+  min-height: 25px !important;
+  margin-bottom: 1px !important;
+  font-size: 0.76rem !important;
+  line-height: 1.15 !important;
+  gap: 7px !important;
+  border-radius: 6px !important;
+  white-space: nowrap !important;
+}
+.sidebar .nav-item span:not(.nav-badge),
+#mainNavMenu .nav-item span:not(.nav-badge) {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sidebar .nav-item i,
+#mainNavMenu .nav-item i {
+  width: 15px !important;
+  font-size: 0.78rem !important;
+  flex-shrink: 0 !important;
+}
+.sidebar .nav-badge,
+#mainNavMenu .nav-badge {
+  padding: 1px 5px !important;
+  font-size: 0.60rem !important;
+  flex-shrink: 0 !important;
+}
+.sidebar .sidebar-footer {
+  padding: 4px 10px 6px !important;
+  gap: 4px !important;
+  flex-shrink: 0 !important;
+}
+.sidebar .sidebar-footer .pwa-install-btn,
+.sidebar .sidebar-footer .btn-reset {
+  padding: 4px 8px !important;
+  font-size: 0.70rem !important;
+  margin-bottom: 0 !important;
+  min-height: 24px !important;
+}
+.sidebar .sidebar-footer .copyright {
+  font-size: 0.58rem !important;
+  line-height: 1.15 !important;
+}
+/* === END V37 ULTRA-COMPACT FULL-VIEW SIDEBAR MENU === */

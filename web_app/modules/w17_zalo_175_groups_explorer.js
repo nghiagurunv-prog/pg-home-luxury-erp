@@ -75,7 +75,7 @@
       bgColor: 'rgba(6, 182, 212, 0.12)',
       borderColor: 'rgba(6, 182, 212, 0.35)',
       badgeClass: 'pg-badge-workshop',
-      description: 'Tổ thợ xưởng mộc, lắp đặt công trình, thợ nòng cốt Hòa, Hào, Thoan, Lực, Dũng...'
+      description: 'Tổ thợ Nhà máy Sản xuất Nội thất Phú Gia, lắp đặt công trình, thợ nòng cốt Hòa, Hào, Thoan, Lực, Dũng...'
     },
     OTHER: {
       key: 'OTHER',

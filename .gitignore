@@ -30,8 +30,10 @@ tmp/
 *.avi
 *.mov
 *.db
+*.db-*
 *.sqlite
 *.sqlite3
+*.jsonl
 *.log
 
 # Keep essential web_app assets (except sensitive CCSC xlsx files)
@@ -45,6 +47,10 @@ local_admin_vault/
 web_app/*.xlsx
 _archive_rules_backup/
 _archive_scripts/
+data/app_state.json
+data/app_state_live.json
+data/ccsc_*
+.sop_cloud_gate_cache.json
 
 # Ignore bulky raw Zalo pulled batches & backup snapshots inside data/
 data/backups/

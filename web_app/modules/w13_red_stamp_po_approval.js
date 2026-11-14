@@ -1,1002 +1,703 @@
 /**
- * ==============================================================================
- * HỆ THỐNG QUẢN TRỊ NỘI THẤT & XÂY DỰNG PHÚ GIA (PG HOME LUXURY)
- * MODULE W13: CƠ CHẾ PHÊ DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ BAN GIÁM ĐỐC (ADMIN)
- * CHO PHIẾU ĐỀ XUẤT ĐẶT HÀNG VẬT TƯ XƯỞNG (XUONG_VATTU - VŨ)
- * ==============================================================================
- * KỶ LUẬT SẮT THEO GEMINI.md (MỤC 2):
- * - Phân hệ Xưởng/Vật tư (Vũ): Chỉ được lập phiếu đề xuất vật tư theo bóc tách kỹ thuật.
- * - Quy tắc sống còn: Vũ CHỈ ĐƯỢC PHÉP gửi đơn cho NCC (An Cường, Hafele, Lam Giang,
- *   Quốc Tâm...) KHI VÀ CHỈ KHI phiếu đã được GIÁM ĐỐC DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ.
- * - CHƯA CÓ DẤU DUYỆT ĐỎ THÌ TUYỆT ĐỐI CẤM NHẬP HÀNG & KHÓA CỨNG MỌI THAO TÁC XUẤT/GỬI.
- * ==============================================================================
+ * Module W13: Red Stamp PO Approval Engine (Dấu Đỏ Điện Tử Duyệt Đơn Vật Tư & Khóa Trần Lũy Kế 40%)
+ * PG HOME LUXURY - CÔNG TY CP PHÚ GIA VIỆT NAM
+ * 
+ * PHÂN HỆ: KỸ THUẬT & VẬT TƯ XƯỞNG (VŨ) <-> GIÁM ĐỐC (ADMIN NGUYỄN VIẾT NGHĨA)
+ * 
+ * NGUYÊN TẮC LUẬT SẮT:
+ * 1. Kỹ thuật Vũ chỉ được xuất đơn gửi Nhà cung cấp (An Cường, Hafele, Lam Giang, Quốc Tâm...)
+ *    khi phiếu đề xuất (PO) đã có CON DẤU ĐỎ ĐIỆN TỬ CỦA GIÁM ĐỐC PHÊ DUYỆT.
+ * 2. CẢI TIẾN #4 & #28: Kiểm tra lũy kế trần vật tư 40% woodVal theo từng công trình (checkCumulativePoCap40).
+ *    Nếu tổng PO lũy kế vượt quá 40% woodVal, tự động gắn cờ đỏ (flagRed) và bắt buộc Giám Đốc
+ *    ký phê duyệt đặc biệt (Special Director Approval).
+ * 3. Dấu đỏ vector sang trọng, mã băm 16 ký tự chống giả mạo, khung xác thực bảo mật điện tử.
+ * 
+ * THÔNG TIN PHÁP LÝ & LIÊN HỆ CHUẨN:
+ * - Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY)
+ * - MST / ĐKKD: 042203002931
+ * - Xưởng sản xuất: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
+ * - Văn phòng: 35 Đồng Quế, P. Thành Sen, TP. Hà Tĩnh
+ * - Hotline duy nhất: 0986.722.324 | Giám Đốc: Nguyễn Viết Nghĩa
  */
 
 (function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory();
-  } else {
-    root.PG_Modules_W13 = factory();
-  }
-})(typeof self !== 'undefined' ? self : this, function () {
-  'use strict';
-
-  // 1. CHUẨN THƯƠNG HIỆU & PHÁP LÝ CHÍNH THỨC PHÚ GIA (BẤT KHẢ XÂM PHẠM)
-  const BRAND_LEGAL = Object.freeze({
-    entityName: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
-    bizLicenseNumber: '042203002931',
-    regDate: '13/01/2025',
-    legalRep: 'Nguyễn Trọng Nghĩa',
-    directorName: 'Nguyễn Viết Nghĩa',
-    taxCode: '042203002931',
-    addressDKKD: 'Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh',
-    officeAndFactory: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
-    hotline: '0986.722.324',
-    brandBadge: 'PG HOME LUXURY'
-  });
-
-  // 2. DANH MỤC TRẠNG THÁI VÀ MÃ LỖI
-  const APPROVAL_STATUS = Object.freeze({
-    DRAFT: 'DRAFT',                       // Vũ mới lập nháp
-    PENDING_APPROVAL: 'PENDING_APPROVAL', // Đã gửi Giám Đốc, chờ duyệt
-    ADMIN_APPROVED: 'ADMIN_APPROVED',     // Giám Đốc ĐÃ DUYỆT & ĐÓNG DẤU ĐỎ
-    REJECTED: 'REJECTED'                  // Giám Đốc từ chối (yêu cầu sửa bóc tách)
-  });
-
-  const STORAGE_KEY = 'PG_HOME_PO_LIST_W13';
-
-  // Helper tính mã băm giả lập SHA-256 nội bộ nhanh trên chuỗi
-  function generateVerificationHash(poId, approver, timestamp, totalAmount) {
-    const raw = `${poId}|${approver}|${timestamp}|${totalAmount}|${BRAND_LEGAL.taxCode}`;
-    let hash = 0;
-    for (let i = 0; i < raw.length; i++) {
-      const char = raw.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash;
+    if (typeof define === 'function' && define.amd) {
+        define([], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    } else {
+        var mod = factory();
+        root.PG_Modules_W13 = mod;
+        root.PG_W13 = mod;
     }
-    const hex = Math.abs(hash).toString(16).toUpperCase().padStart(8, '0');
-    const randomHex = Math.random().toString(16).substring(2, 10).toUpperCase();
-    return `PG-STAMP-${hex}-${randomHex}`;
-  }
+}(typeof self !== 'undefined' ? self : this, function () {
+    'use strict';
 
-  // 3. TẠO CON DẤU ĐỎ ĐIỆN TỬ SVG CHUẨN ĐỒ HỌA
-  function generateRedStampSVG(po) {
-    const stampDate = po.approvedAt ? new Date(po.approvedAt) : new Date();
-    const dateStr = `NGÀY ${String(stampDate.getDate()).padStart(2, '0')}/${String(stampDate.getMonth() + 1).padStart(2, '0')}/${stampDate.getFullYear()}`;
-    const timeStr = `${String(stampDate.getHours()).padStart(2, '0')}:${String(stampDate.getMinutes()).padStart(2, '0')}`;
-    const approver = po.approvedBy || BRAND_LEGAL.directorName;
-    const certHash = po.approvalHash || 'PG-VERIFIED';
+    var STORAGE_KEY_POS = 'pg_po_proposals_v2';
+    var STORAGE_KEY_PROJECT_CAPS = 'pg_project_wood_caps_v1';
 
-    return `
-      <div class="pg-red-stamp-wrapper" style="position: relative; display: inline-block; transform: rotate(-8deg); user-select: none;">
-        <svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 4px rgba(211, 47, 47, 0.3));">
-          <!-- Vành tròn ngoài đôi nét đỏ -->
-          <circle cx="110" cy="110" r="102" fill="none" stroke="#D32F2F" stroke-width="4.5" stroke-dasharray="1000" />
-          <circle cx="110" cy="110" r="95" fill="none" stroke="#D32F2F" stroke-width="1.8" />
-
-          <!-- Đường dẫn chữ cong tròn vòng ngoài -->
-          <path id="circlePathW13" d="M 22,110 A 88,88 0 1,1 198,110 A 88,88 0 1,1 22,110" fill="none" />
-          
-          <text fill="#D32F2F" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="900" letter-spacing="1.5">
-            <textPath href="#circlePathW13" startOffset="50%" text-anchor="middle">
-              HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG
-            </textPath>
-          </text>
-
-          <text fill="#D32F2F" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="800" letter-spacing="1">
-            <textPath href="#circlePathW13" startOffset="0%" text-anchor="middle">
-              ★ MST: 042203002931 ★
-            </textPath>
-          </text>
-
-          <!-- Vùng tâm con dấu: Ngôi sao & ĐÃ DUYỆT -->
-          <g transform="translate(110, 110)">
-            <!-- Ngôi sao đỏ ở giữa -->
-            <polygon points="0,-32 9,-12 30,-12 13,1 19,22 0,9 -19,22 -13,1 -30,-12 -9,-12" fill="rgba(211,47,47,0.15)" stroke="#D32F2F" stroke-width="1.2" />
-            
-            <!-- Chữ ĐÃ PHÊ DUYỆT nổi bật -->
-            <rect x="-70" y="-12" width="140" height="24" fill="#D32F2F" rx="3" />
-            <text x="0" y="4" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="900" letter-spacing="1.8">
-              ĐÃ PHÊ DUYỆT
-            </text>
-
-            <!-- Chức danh & Người ký -->
-            <text x="0" y="27" text-anchor="middle" fill="#B71C1C" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="800">
-              GIÁM ĐỐC
-            </text>
-            <text x="0" y="40" text-anchor="middle" fill="#D32F2F" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="900">
-              ${approver.toUpperCase()}
-            </text>
-
-            <!-- Ngày giờ & Mã Hash kiểm định -->
-            <text x="0" y="54" text-anchor="middle" fill="#C62828" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" font-weight="700">
-              ${dateStr} • ${timeStr}
-            </text>
-            <text x="0" y="65" text-anchor="middle" fill="#E53935" font-family="'Consolas', monospace" font-size="6.5" font-weight="600">
-              [${certHash}]
-            </text>
-          </g>
-        </svg>
-      </div>
-    `;
-  }
-
-  // 4. QUẢN LÝ DỮ LIỆU LOCALSTORAGE
-  function loadPOList() {
-    try {
-      const data = localStorage.getItem(STORAGE_KEY);
-      if (!data) {
-        return getInitialMockPOs();
-      }
-      return JSON.parse(data);
-    } catch (e) {
-      console.warn('[W13] Lỗi đọc dữ liệu localStorage, dùng dữ liệu mặc định:', e);
-      return getInitialMockPOs();
-    }
-  }
-
-  function savePOList(list) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-    } catch (e) {
-      console.error('[W13] Không thể lưu danh sách PO vào localStorage:', e);
-    }
-  }
-
-  function getInitialMockPOs() {
-    return [
-      {
-        id: 'PO-2026-001',
-        projectCode: 'DA-NAM-2026',
-        projectName: 'Biệt Thự Anh Nam - Hà Tĩnh',
-        supplier: 'An Cường',
-        creator: 'Vũ - XUONG_VATTU',
-        createdAt: '2026-11-06T08:30:00Z',
-        status: APPROVAL_STATUS.ADMIN_APPROVED,
-        items: [
-          { name: 'Gỗ MDF Lõi Xanh Chống Ẩm An Cường 17mm (MS 388EV)', unit: 'Tấm', qty: 28, unitPrice: 420000, total: 11760000 },
-          { name: 'Tấm Hậu MDF Chống Ẩm 6mm (MS 388EV)', unit: 'Tấm', qty: 10, unitPrice: 220000, total: 2200000 },
-          { name: 'Chỉ Nẹp Đồng Màu An Cường 21x1mm', unit: 'Cuộn (100m)', qty: 3, unitPrice: 350000, total: 1050000 }
-        ],
-        totalAmount: 15010000,
-        notes: 'Bóc tách tủ áo + tủ bếp theo định mức 1.45 tấm/md tủ bếp và 1.05 tấm/m2 tủ áo',
-        approvedBy: 'Nguyễn Viết Nghĩa',
-        approvedAt: '2026-11-06T10:15:00Z',
-        approvalHash: 'PG-STAMP-7B4F9A-AC2026',
-        adminComment: 'Bóc tách chuẩn theo định mức Mục 24. Đồng ý cho đặt hàng.'
-      },
-      {
-        id: 'PO-2026-002',
-        projectCode: 'DA-LAN-2026',
-        projectName: 'Chị Lan - Liền kề D’Metropole Hà Tĩnh',
-        supplier: 'Hafele',
-        creator: 'Vũ - XUONG_VATTU',
-        createdAt: '2026-11-07T14:00:00Z',
-        status: APPROVAL_STATUS.PENDING_APPROVAL,
-        items: [
-          { name: 'Bản Lề Giảm Chấn Hafele Inox 304', unit: 'Bộ', qty: 64, unitPrice: 45000, total: 2880000 },
-          { name: 'Ray Trượt Bi 3 Tầng Hafele 450mm', unit: 'Bộ', qty: 12, unitPrice: 110000, total: 1320000 },
-          { name: 'Tay Nâng Đôi Blum/Hafele HF25', unit: 'Bộ', qty: 1, unitPrice: 2850000, total: 2850000 }
-        ],
-        totalAmount: 7050000,
-        notes: 'Phụ kiện cao cấp lắp ráp xưởng Phú Gia',
-        approvedBy: null,
-        approvedAt: null,
-        approvalHash: null,
-        adminComment: null
-      },
-      {
-        id: 'PO-2026-003',
-        projectCode: 'DA-HOANG-2026',
-        projectName: 'Nhà Phố Anh Hoàng - Thạch Hà',
-        supplier: 'Quốc Tâm',
-        creator: 'Vũ - XUONG_VATTU',
-        createdAt: '2026-11-07T16:20:00Z',
-        status: APPROVAL_STATUS.DRAFT,
-        items: [
-          { name: 'Ốc Cam Liên Kết + Chốt Đợt Xưởng', unit: 'Hộp', qty: 5, unitPrice: 180000, total: 900000 },
-          { name: 'Ke Góc Chữ L Thép Mạ Kẽm', unit: 'Túi (100c)', qty: 4, unitPrice: 120000, total: 480000 }
-        ],
-        totalAmount: 1380000,
-        notes: 'Vật tư phụ ngũ kim xưởng',
-        approvedBy: null,
-        approvedAt: null,
-        approvalHash: null,
-        adminComment: null
-      }
-    ];
-  }
-
-  // 5. CÁC API NGHIỆP VỤ CỐT LÕI (CORE BUSINESS LOGIC)
-
-  /**
-   * Tạo mới Phiếu đề xuất vật tư xưởng (bởi Vũ)
-   */
-  function createPurchaseOrder(poData) {
-    if (!poData || !poData.projectName || !poData.supplier) {
-      throw new Error('Dữ liệu phiếu đề xuất không hợp lệ! Bắt buộc có Tên Dự Án và Nhà Cung Cấp.');
-    }
-
-    const list = loadPOList();
-    const newId = `PO-${new Date().getFullYear()}-${String(list.length + 1).padStart(3, '0')}`;
-    
-    let total = 0;
-    const items = (poData.items || []).map(it => {
-      const lineTotal = (it.qty || 0) * (it.unitPrice || 0);
-      total += lineTotal;
-      return {
-        name: it.name || 'Vật tư',
-        unit: it.unit || 'Cái',
-        qty: Number(it.qty) || 0,
-        unitPrice: Number(it.unitPrice) || 0,
-        total: lineTotal
-      };
-    });
-
-    const newPO = {
-      id: newId,
-      projectCode: poData.projectCode || `DA-PG-${Date.now().toString().slice(-4)}`,
-      projectName: poData.projectName,
-      supplier: poData.supplier,
-      creator: 'Vũ - XUONG_VATTU',
-      createdAt: new Date().toISOString(),
-      status: APPROVAL_STATUS.DRAFT,
-      items: items,
-      totalAmount: total,
-      notes: poData.notes || '',
-      approvedBy: null,
-      approvedAt: null,
-      approvalHash: null,
-      adminComment: null
+    var BRAND_LEGAL = {
+        company: 'CÔNG TY CP PHÚ GIA VIỆT NAM',
+        subBrand: 'PG HOME LUXURY',
+        businessName: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
+        taxCode: '042203002931',
+        hotline: '0986.722.324',
+        workshopAddress: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
+        officeAddress: '35 Đồng Quế, P. Thành Sen, TP. Hà Tĩnh',
+        director: 'Nguyễn Viết Nghĩa',
+        workshopLead: 'Vũ'
     };
 
-    list.unshift(newPO);
-    savePOList(list);
-    return newPO;
-  }
-
-  /**
-   * Vũ gửi phiếu đề xuất lên Ban Giám Đốc chờ duyệt
-   */
-  function submitForApproval(poId) {
-    const list = loadPOList();
-    const po = list.find(p => p.id === poId);
-    if (!po) throw new Error(`Không tìm thấy mã phiếu ${poId}`);
-
-    if (po.status === APPROVAL_STATUS.ADMIN_APPROVED) {
-      throw new Error(`Phiếu ${poId} đã được Giám Đốc duyệt rồi!`);
-    }
-
-    po.status = APPROVAL_STATUS.PENDING_APPROVAL;
-    savePOList(list);
-    return { success: true, message: `Đã chuyển phiếu ${poId} sang trạng thái Chờ Giám Đốc Phê Duyệt!`, po };
-  }
-
-  /**
-   * GIÁM ĐỐC (ADMIN) PHÊ DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ
-   * Thẩm quyền tối cao: Chỉ tài khoản ADMIN / Giám Đốc mới được gọi hàm này
-   */
-  function adminApproveOrder(poId, approverName = BRAND_LEGAL.directorName, comment = 'Đã kiểm tra bóc tách. Duyệt đặt hàng.') {
-    const list = loadPOList();
-    const po = list.find(p => p.id === poId);
-    if (!po) throw new Error(`Không tìm thấy mã phiếu ${poId}`);
-
-    const now = new Date().toISOString();
-    const hash = generateVerificationHash(po.id, approverName, now, po.totalAmount);
-
-    po.status = APPROVAL_STATUS.ADMIN_APPROVED;
-    po.approvedBy = approverName || BRAND_LEGAL.directorName;
-    po.approvedAt = now;
-    po.approvalHash = hash;
-    po.adminComment = comment;
-
-    savePOList(list);
-    return {
-      success: true,
-      message: `Giám Đốc đã phê duyệt và đóng Dấu Đỏ Điện Tử cho phiếu ${poId}!`,
-      po: po
-    };
-  }
-
-  /**
-   * GIÁM ĐỐC TỪ CHỐI DUYỆT (Yêu cầu Vũ bóc tách lại)
-   */
-  function adminRejectOrder(poId, reason) {
-    const list = loadPOList();
-    const po = list.find(p => p.id === poId);
-    if (!po) throw new Error(`Không tìm thấy mã phiếu ${poId}`);
-
-    po.status = APPROVAL_STATUS.REJECTED;
-    po.approvedBy = null;
-    po.approvedAt = null;
-    po.approvalHash = null;
-    po.adminComment = `TỪ CHỐI: ${reason || 'Bóc tách sai định mức kỹ thuật hoặc giá cost vượt quy định.'}`;
-
-    savePOList(list);
-    return {
-      success: true,
-      message: `Đã từ chối phiếu ${poId}. Trả lại cho Vũ xử lý.`,
-      po: po
-    };
-  }
-
-  /**
-   * KHÓA CỨNG: KIỂM TRA ĐIỀU KIỆN XUẤT ĐƠN / GỬI ĐƠN CHO NHÀ CUNG CẤP
-   * @returns {boolean}
-   */
-  function canExportOrSendToSupplier(po) {
-    if (!po) return false;
-    // BẮT BUỘC TRẠNG THÁI PHẢI LÀ ADMIN_APPROVED VÀ CÓ HASH XÁC THỰC
-    return po.status === APPROVAL_STATUS.ADMIN_APPROVED && Boolean(po.approvalHash);
-  }
-
-  /**
-   * HÀM XUẤT / GỬI ĐƠN HÀNG CHO NCC
-   * Nếu chưa có dấu đỏ: Ném ngoại lệ cưỡng chế chặn đứng ngay lập tức!
-   */
-  function exportOrSendOrderToSupplier(poId) {
-    const list = loadPOList();
-    const po = list.find(p => p.id === poId);
-    if (!po) {
-      throw new Error(`[LỖI] Không tìm thấy phiếu đề xuất ${poId}`);
-    }
-
-    // CHỐT CHẶN BẢO VỆ BẤT KHẢ XÂM PHẠM:
-    if (!canExportOrSendToSupplier(po)) {
-      const errMsg = `[KỶ LUẬT THÉP BỊ VI PHẠM] Phiếu ${po.id} CHƯA ĐƯỢC GIÁM ĐỐC DUYỆT & ĐÓNG DẤU ĐỎ ĐIỆN TỬ!\n` +
-                     `Trạng thái hiện tại: [${po.status}].\n` +
-                     `Quy tắc sống còn: Kỹ thuật vật tư Vũ tuyệt đối CẤM gửi đơn cho nhà cung cấp (${po.supplier}) khi chưa có dấu duyệt đỏ!`;
-      console.error(errMsg);
-      alert(errMsg);
-      throw new Error(errMsg);
-    }
-
-    // Nếu đã có dấu đỏ: Cho phép xuất đơn thành công kèm mã xác nhận pháp lý
-    const exportResult = {
-      success: true,
-      poId: po.id,
-      supplier: po.supplier,
-      totalAmount: po.totalAmount,
-      approvedBy: po.approvedBy,
-      approvedAt: po.approvedAt,
-      verificationHash: po.approvalHash,
-      companyLegal: BRAND_LEGAL.entityName,
-      mst: BRAND_LEGAL.taxCode,
-      hotline: BRAND_LEGAL.hotline,
-      dispatchedAt: new Date().toISOString(),
-      message: `Đơn đặt hàng ${po.id} đã được gửi thành công đến NCC ${po.supplier} kèm Dấu Đỏ Điện Tử của Giám Đốc!`
+    var PO_STATUS = {
+        DRAFT: 'DRAFT',
+        PENDING: 'PENDING',
+        FLAGGED_OVERCAP: 'FLAGGED_OVERCAP',
+        APPROVED: 'APPROVED',
+        REJECTED: 'REJECTED'
     };
 
-    return exportResult;
-  }
-
-  // 6. RENDER GIAO DIỆN NGƯỜI DÙNG (UI COMPONENTS & CSS INJECTION)
-  function injectStylesOnce() {
-    if (document.getElementById('pg-w13-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'pg-w13-styles';
-    style.innerHTML = `
-      .pg-w13-container {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        color: #1e293b;
-        background: #f8fafc;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        max-width: 1280px;
-        margin: 20px auto;
-      }
-      .pg-w13-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid #e2e8f0;
-        padding-bottom: 16px;
-        margin-bottom: 24px;
-      }
-      .pg-w13-title {
-        font-size: 20px;
-        font-weight: 800;
-        color: #0f172a;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .pg-w13-legal-badge {
-        background: #fee2e2;
-        color: #991b1b;
-        font-size: 11px;
-        font-weight: 700;
-        padding: 4px 10px;
-        border-radius: 20px;
-        border: 1px solid #f87171;
-      }
-      .pg-w13-role-switch {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        background: #ffffff;
-        padding: 6px 14px;
-        border-radius: 8px;
-        border: 1px solid #cbd5e1;
-      }
-      .pg-w13-role-label {
-        font-size: 13px;
-        font-weight: 600;
-      }
-      .pg-w13-role-select {
-        font-size: 13px;
-        font-weight: 700;
-        padding: 4px 8px;
-        border-radius: 6px;
-        border: 1px solid #94a3b8;
-        background: #f1f5f9;
-        cursor: pointer;
-      }
-      .pg-w13-table {
-        width: 100%;
-        border-collapse: collapse;
-        background: #ffffff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      }
-      .pg-w13-table th {
-        background: #0f172a;
-        color: #ffffff;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        padding: 12px 14px;
-        text-align: left;
-        letter-spacing: 0.5px;
-      }
-      .pg-w13-table td {
-        padding: 14px;
-        border-bottom: 1px solid #f1f5f9;
-        font-size: 13px;
-        vertical-align: middle;
-      }
-      .pg-w13-table tr:hover {
-        background: #f8fafc;
-      }
-      .pg-badge-status {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 12px;
-        font-size: 11px;
-        font-weight: 800;
-        text-align: center;
-      }
-      .pg-badge-draft { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
-      .pg-badge-pending { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
-      .pg-badge-approved { background: #fee2e2; color: #b91c1c; border: 1px solid #f87171; }
-      .pg-badge-rejected { background: #f3f4f6; color: #6b7280; border: 1px solid #d1d5db; text-decoration: line-through; }
-      
-      .pg-btn {
-        padding: 7px 14px;
-        font-size: 12px;
-        font-weight: 700;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .pg-btn-admin-stamp {
-        background: #dc2626;
-        color: #ffffff;
-        box-shadow: 0 2px 6px rgba(220,38,38,0.3);
-      }
-      .pg-btn-admin-stamp:hover {
-        background: #b91c1c;
-      }
-      .pg-btn-send-ncc {
-        background: #0284c7;
-        color: #ffffff;
-      }
-      .pg-btn-send-ncc:hover {
-        background: #0369a1;
-      }
-      .pg-btn-locked {
-        background: #e2e8f0 !important;
-        color: #94a3b8 !important;
-        cursor: not-allowed !important;
-        box-shadow: none !important;
-        border: 1px dashed #cbd5e1 !important;
-      }
-      .pg-btn-submit {
-        background: #059669;
-        color: #ffffff;
-      }
-      .pg-btn-submit:hover {
-        background: #047857;
-      }
-      .pg-modal-backdrop {
-        position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        background: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(4px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-      }
-      .pg-modal-content {
-        background: #ffffff;
-        border-radius: 14px;
-        width: 850px;
-        max-width: 95%;
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 30px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-        position: relative;
-      }
-      .pg-modal-close {
-        position: absolute;
-        top: 16px;
-        right: 18px;
-        background: none;
-        border: none;
-        font-size: 22px;
-        font-weight: bold;
-        color: #64748b;
-        cursor: pointer;
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  /**
-   * Khởi tạo giao diện ứng dụng quản lý PO và đóng dấu đỏ vào container
-   */
-  function initUI(containerId, currentRole = 'ADMIN') {
-    injectStylesOnce();
-    const container = typeof containerId === 'string' ? document.getElementById(containerId) : containerId;
-    if (!container) {
-      console.warn(`[W13] Không tìm thấy phần tử HTML container: ${containerId}`);
-      return;
+    // Tạo mã băm 16 ký tự chống giả mạo cho con dấu đỏ
+    function generateVerificationHash(poCode, approvedBy, timestamp) {
+        var raw = (poCode || '') + '|' + (approvedBy || '') + '|' + (timestamp || '') + '|' + BRAND_LEGAL.taxCode + '|' + BRAND_LEGAL.hotline;
+        var h1 = 0x811c9dc5;
+        var h2 = 0x9e3779b9;
+        for (var i = 0; i < raw.length; i++) {
+            var c = raw.charCodeAt(i);
+            h1 = Math.imul(h1 ^ c, 0x01000193);
+            h2 = Math.imul(h2 ^ (c * (i + 1)), 0x5bd1e995);
+        }
+        var s1 = ('00000000' + (h1 >>> 0).toString(16).toUpperCase()).slice(-8);
+        var s2 = ('00000000' + (h2 >>> 0).toString(16).toUpperCase()).slice(-8);
+        return (s1.slice(0, 4) + '-' + s1.slice(4) + '-' + s2.slice(0, 4) + '-' + s2.slice(4)).toUpperCase();
     }
 
-    let roleState = currentRole; // 'ADMIN' hoặc 'XUONG_VATTU'
+    function formatVND(val) {
+        var n = Number(val) || 0;
+        return n.toLocaleString('vi-VN') + ' đ';
+    }
 
-    function render() {
-      const list = loadPOList();
+    function getStorage() {
+        try {
+            if (typeof window !== 'undefined' && window.localStorage) {
+                return window.localStorage;
+            }
+        } catch (e) {
+            // fallback
+        }
+        return null;
+    }
 
-      container.innerHTML = `
-        <div class="pg-w13-container">
-          <div class="pg-w13-header">
-            <div>
-              <h2 class="pg-w13-title">
-                🏢 PHÂN HỆ QUẢN LÝ & DUYỆT ĐƠN ĐẶT HÀNG VẬT TƯ XƯỞNG
-              </h2>
-              <div style="font-size: 12px; color: #64748b; margin-top: 4px;">
-                ${BRAND_LEGAL.entityName} • Hotline: <b>${BRAND_LEGAL.hotline}</b> • Nhà máy: <b>${BRAND_LEGAL.officeAndFactory}</b>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 14px;">
-              <span class="pg-w13-legal-badge">🔒 KHÓA CỨNG: CẤM GỬI NCC NẾU CHƯA CÓ DẤU ĐỎ</span>
-              <div class="pg-w13-role-switch">
-                <span class="pg-w13-role-label">Phân Hệ:</span>
-                <select class="pg-w13-role-select" id="pgW13RoleSelect">
-                  <option value="ADMIN" ${roleState === 'ADMIN' ? 'selected' : ''}>⭐ Giám Đốc (ADMIN) - Quyền Đóng Dấu Đỏ</option>
-                  <option value="XUONG_VATTU" ${roleState === 'XUONG_VATTU' ? 'selected' : ''}>🔨 Vũ (XUONG_VATTU) - Kỹ Thuật Vật Tư</option>
-                </select>
-              </div>
-            </div>
-          </div>
+    function loadPOList() {
+        var storage = getStorage();
+        if (!storage) return [];
+        try {
+            var raw = storage.getItem(STORAGE_KEY_POS);
+            if (!raw) return [];
+            return JSON.parse(raw) || [];
+        } catch (e) {
+            console.error('[W13] Error loading POs:', e);
+            return [];
+        }
+    }
 
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <div style="font-size: 14px; font-weight: 700; color: #334155;">
-              Danh Sách Đề Xuất Đặt Hàng Vật Tư Gần Đây (${list.length} phiếu):
-            </div>
-            ${roleState === 'XUONG_VATTU' ? `
-              <button class="pg-btn pg-btn-submit" id="pgBtnCreatePOModal">
-                ➕ Vũ Lập Phiếu Đề Xuất Mới
-              </button>
-            ` : ''}
-          </div>
+    function savePOList(list) {
+        var storage = getStorage();
+        if (!storage) return false;
+        try {
+            storage.setItem(STORAGE_KEY_POS, JSON.stringify(list || []));
+            return true;
+        } catch (e) {
+            console.error('[W13] Error saving POs:', e);
+            return false;
+        }
+    }
 
-          <table class="pg-w13-table">
-            <thead>
-              <tr>
-                <th style="width: 110px;">Mã Phiếu</th>
-                <th>Dự Án / Công Trình</th>
-                <th>Nhà Cung Cấp</th>
-                <th>Người Lập</th>
-                <th style="text-align: right;">Tổng Tiền</th>
-                <th style="text-align: center;">Trạng Thái & Dấu Đỏ</th>
-                <th style="text-align: center; width: 220px;">Thao Tác Thực Thi</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${list.map(po => {
-                const isApproved = po.status === APPROVAL_STATUS.ADMIN_APPROVED;
-                const isPending = po.status === APPROVAL_STATUS.PENDING_APPROVAL;
-                const isDraft = po.status === APPROVAL_STATUS.DRAFT;
-                const isRejected = po.status === APPROVAL_STATUS.REJECTED;
+    function loadProjectCaps() {
+        var storage = getStorage();
+        if (!storage) return {};
+        try {
+            var raw = storage.getItem(STORAGE_KEY_PROJECT_CAPS);
+            return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+            return {};
+        }
+    }
 
-                let statusBadge = '';
-                if (isApproved) {
-                  statusBadge = `<span class="pg-badge-status pg-badge-approved">🔴 ĐÃ ĐÓNG DẤU ĐỎ (${po.approvalHash ? po.approvalHash.slice(0, 16) + '...' : 'APPROVED'})</span>`;
-                } else if (isPending) {
-                  statusBadge = `<span class="pg-badge-status pg-badge-pending">⏳ CHỜ GIÁM ĐỐC DUYỆT</span>`;
-                } else if (isRejected) {
-                  statusBadge = `<span class="pg-badge-status pg-badge-rejected">❌ TỪ CHỐI</span>`;
-                } else {
-                  statusBadge = `<span class="pg-badge-status pg-badge-draft">📝 NHÁP (VŨ)</span>`;
-                }
+    function saveProjectWoodVal(projectId, woodVal, projectName) {
+        if (!projectId) return false;
+        var storage = getStorage();
+        if (!storage) return false;
+        try {
+            var caps = loadProjectCaps();
+            caps[projectId] = {
+                projectId: projectId,
+                projectName: projectName || ('Dự án ' + projectId),
+                woodVal: Number(woodVal) || 0,
+                cap40: Math.round((Number(woodVal) || 0) * 0.40),
+                updatedAt: new Date().toISOString()
+            };
+            storage.setItem(STORAGE_KEY_PROJECT_CAPS, JSON.stringify(caps));
+            return true;
+        } catch (e) {
+            console.error('[W13] Error saving project woodVal cap:', e);
+            return false;
+        }
+    }
 
-                return `
-                  <tr>
-                    <td style="font-weight: 700; color: #0284c7;">${po.id}</td>
-                    <td>
-                      <div style="font-weight: 700; color: #0f172a;">${po.projectName}</div>
-                      <div style="font-size: 11px; color: #64748b;">Mã DA: ${po.projectCode}</div>
-                    </td>
-                    <td><span style="font-weight: 700; color: #4338ca;">${po.supplier}</span></td>
-                    <td>${po.creator}</td>
-                    <td style="text-align: right; font-weight: 800; color: #047857;">
-                      ${(po.totalAmount || 0).toLocaleString('vi-VN')} đ
-                    </td>
-                    <td style="text-align: center;">
-                      ${statusBadge}
-                      ${po.approvedAt ? `<div style="font-size: 10px; color: #dc2626; margin-top: 2px;">Bởi: ${po.approvedBy}</div>` : ''}
-                    </td>
-                    <td style="text-align: center;">
-                      <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
-                        <!-- Xem chi tiết -->
-                        <button class="pg-btn" style="background: #e2e8f0; color: #334155;" onclick="window.PG_Modules_W13.openDetailModal('${po.id}')">
-                          🔍 Xem
-                        </button>
+    /**
+     * CẢI TIẾN #4: Kiểm tra lũy kế trần vật tư 40% woodVal theo từng công trình
+     * @param {string} projectId Mã công trình
+     * @param {number} newPoAmount Số tiền PO dự kiến tạo/duyệt
+     * @param {number} [woodValParam] Giá trị phần gỗ công nghiệp (nếu có để cập nhật)
+     * @returns {Object} Kết quả kiểm toán trần 40%
+     */
+    function checkCumulativePoCap40(projectId, newPoAmount, woodValParam) {
+        var pId = (projectId || 'DEFAULT').trim();
+        var poAmount = Number(newPoAmount) || 0;
 
-                        <!-- Quyền của ADMIN (Giám Đốc) -->
-                        ${roleState === 'ADMIN' && !isApproved ? `
-                          <button class="pg-btn pg-btn-admin-stamp" onclick="window.PG_Modules_W13.triggerAdminApprove('${po.id}')">
-                            🔴 Ký & Đóng Dấu Đỏ
-                          </button>
-                        ` : ''}
+        var caps = loadProjectCaps();
+        var capInfo = caps[pId] || null;
 
-                        <!-- Quyền của Vũ (XUONG_VATTU) -->
-                        ${roleState === 'XUONG_VATTU' && isDraft ? `
-                          <button class="pg-btn pg-btn-submit" onclick="window.PG_Modules_W13.triggerSubmitApproval('${po.id}')">
-                            📤 Trình Giám Đốc
-                          </button>
-                        ` : ''}
+        var woodVal = Number(woodValParam) || (capInfo ? capInfo.woodVal : 0);
+        if (woodVal <= 0 && window.PG_W31 && typeof window.PG_W31.loadProjectWoodCap === 'function') {
+            var storedWood = window.PG_W31.loadProjectWoodCap(pId);
+            if (storedWood && storedWood.woodVal) {
+                woodVal = storedWood.woodVal;
+            }
+        }
 
-                        <!-- NÚT GỬI ĐƠN CHO NCC - KHÓA CỨNG NẾU CHƯA CÓ DẤU ĐỎ -->
-                        ${isApproved ? `
-                          <button class="pg-btn pg-btn-send-ncc" onclick="window.PG_Modules_W13.triggerSendToSupplier('${po.id}')" title="Đã có dấu đỏ, được phép gửi đơn">
-                            🚀 Gửi NCC
-                          </button>
-                        ` : `
-                          <button class="pg-btn pg-btn-locked" disabled title="KHÓA CỨNG: Chưa có dấu đỏ Giám Đốc, cấm gửi đơn cho NCC!">
-                            🔒 Khóa Gửi NCC
-                          </button>
-                        `}
-                      </div>
-                    </td>
-                  </tr>
-                `;
-              }).join('')}
-            </tbody>
-          </table>
-        </div>
-      `;
+        var cap40 = Math.round(woodVal * 0.40);
+        var allPOs = loadPOList();
 
-      // Event listener chuyển đổi vai trò
-      const roleSelect = document.getElementById('pgW13RoleSelect');
-      if (roleSelect) {
-        roleSelect.addEventListener('change', (e) => {
-          roleState = e.target.value;
-          render();
+        var existingProjectPOs = allPOs.filter(function (po) {
+            return po.projectId === pId && po.status !== PO_STATUS.REJECTED;
         });
-      }
 
-      // Event listener tạo phiếu mới
-      const btnCreate = document.getElementById('pgBtnCreatePOModal');
-      if (btnCreate) {
-        btnCreate.addEventListener('click', () => {
-          openCreateModal();
+        var existingPoTotal = existingProjectPOs.reduce(function (sum, po) {
+            return sum + (Number(po.totalAmount) || 0);
+        }, 0);
+
+        var newCumulativeTotal = existingPoTotal + poAmount;
+        var remainingCap = cap40 > 0 ? (cap40 - existingPoTotal) : 0;
+        var isExceeded = (cap40 > 0) && (newCumulativeTotal > cap40);
+        var excessAmount = isExceeded ? (newCumulativeTotal - cap40) : 0;
+        var usageRatio = cap40 > 0 ? ((newCumulativeTotal / cap40) * 100) : (newCumulativeTotal > 0 ? 999 : 0);
+
+        return {
+            projectId: pId,
+            woodVal: woodVal,
+            cap40: cap40,
+            existingPoTotal: existingPoTotal,
+            newPoAmount: poAmount,
+            newCumulativeTotal: newCumulativeTotal,
+            remainingCap: remainingCap,
+            isExceeded: isExceeded,
+            excessAmount: excessAmount,
+            usageRatio: Math.round(usageRatio * 10) / 10,
+            flagRed: isExceeded,
+            requiresSpecialDirectorApproval: isExceeded,
+            statusLabel: isExceeded ? 'VƯỢT TRẦN 40% VẬT TƯ' : (usageRatio >= 85 ? 'CẬNH NGƯỠNG TRẦN 40%' : 'AN TOÀN TRẦN 40%'),
+            statusClass: isExceeded ? 'danger' : (usageRatio >= 85 ? 'warning' : 'success')
+        };
+    }
+
+    /**
+     * Render thanh tiến độ lũy kế [Tổng PO lũy kế / Trần 40% woodVal]
+     */
+    function renderCapProgressBarHtml(checkResult) {
+        if (!checkResult) return '';
+        var ratio = Math.min(Math.max(checkResult.usageRatio, 0), 100);
+        var barColor = checkResult.isExceeded ? '#dc2626' : (ratio >= 85 ? '#f59e0b' : '#10b981');
+        var badgeBg = checkResult.isExceeded ? '#fee2e2' : (ratio >= 85 ? '#fef3c7' : '#d1fae5');
+        var badgeText = checkResult.isExceeded ? '#b91c1c' : (ratio >= 85 ? '#b45309' : '#047857');
+
+        var woodNotice = checkResult.woodVal > 0 
+            ? 'Cơ sở: 40% trên woodVal (' + formatVND(checkResult.woodVal) + ') | Phụ kiện, đá, kính, Sofa, gỗ thịt: 0% khoán'
+            : '⚠️ Chưa cấu hình giá trị woodVal của hợp đồng (Mặc định kiểm tra dựa trên PO lũy kế)';
+
+        return '' +
+            '<div class="pg-cap-audit-card" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:14px; font-family:system-ui,-apple-system,sans-serif;">' +
+                '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">' +
+                    '<div style="font-weight:700; color:#1e293b; font-size:13px; display:flex; align-items:center; gap:6px;">' +
+                        '<span style="font-size:16px;">🛡️</span> BẢO VỆ DÒNG TIỀN: LŨY KẾ TRẦN 40% VẬT TƯ XƯỞNG' +
+                    '</div>' +
+                    '<span style="background:' + badgeBg + '; color:' + badgeText + '; font-size:11px; font-weight:800; padding:3px 10px; border-radius:999px; letter-spacing:0.5px;">' +
+                        checkResult.statusLabel + ' (' + checkResult.usageRatio + '%)' +
+                    '</span>' +
+                '</div>' +
+                '<div style="background:#e2e8f0; border-radius:999px; height:12px; overflow:hidden; position:relative; margin-bottom:8px;">' +
+                    '<div style="width:' + ratio + '%; background:' + barColor + '; height:100%; transition:width 0.4s ease; border-radius:999px;"></div>' +
+                '</div>' +
+                '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:8px; font-size:12px; color:#475569; margin-bottom:8px;">' +
+                    '<div><strong>Đã tạo trước đó:</strong> ' + formatVND(checkResult.existingPoTotal) + '</div>' +
+                    '<div><strong>PO hiện tại:</strong> ' + formatVND(checkResult.newPoAmount) + '</div>' +
+                    '<div><strong>Tổng lũy kế:</strong> <span style="color:' + barColor + '; font-weight:700;">' + formatVND(checkResult.newCumulativeTotal) + '</span></div>' +
+                    '<div><strong>Trần 40% WoodVal:</strong> ' + (checkResult.cap40 > 0 ? formatVND(checkResult.cap40) : 'Chưa định mức') + '</div>' +
+                '</div>' +
+                (checkResult.isExceeded ? '' +
+                    '<div style="background:#fef2f2; border:1px solid #fecaca; border-radius:6px; padding:8px 10px; font-size:12px; color:#991b1b; display:flex; gap:6px; align-items:center;">' +
+                        '<span style="font-size:16px;">🚨</span>' +
+                        '<div>' +
+                            '<strong>CẢNH BÁO VƯỢT TRẦN KHOÁN:</strong> PO này làm vượt trần 40% thêm <strong>' + formatVND(checkResult.excessAmount) + '</strong>. ' +
+                            'Hệ thống tự động gắn <strong>CỜ ĐỎ</strong> yêu cầu đích thân Giám Đốc ký duyệt đặc biệt trước khi gửi NCC!' +
+                        '</div>' +
+                    '</div>' : '') +
+                '<div style="font-size:11px; color:#64748b; margin-top:6px; font-style:italic;">' +
+                    woodNotice +
+                '</div>' +
+            '</div>';
+    }
+
+    /**
+     * CẢI TIẾN #28: Con Dấu Đỏ Điện Tử Vector Sang Trọng của Ban Giám Đốc
+     * CÔNG TY CP PHÚ GIA VIỆT NAM - GIÁM ĐỐC ĐÃ DUYỆT (MST: 042203002931)
+     * Kèm mã băm 16 ký tự và khung mã xác thực điện tử chống làm giả
+     * @param {string} poCode Mã PO đề xuất
+     * @param {string} approvedBy Tên người duyệt (Mặc định: Giám Đốc Nguyễn Viết Nghĩa)
+     * @param {string|number|Date} timestamp Thời điểm duyệt
+     * @param {Object} [options] Tùy chọn mở rộng
+     */
+    function renderLuxuryRedStamp(poCode, approvedBy, timestamp, options) {
+        var code = (poCode || 'PO-DEFAULT').toUpperCase();
+        var approver = approvedBy || BRAND_LEGAL.director;
+        var dateObj = timestamp ? new Date(timestamp) : new Date();
+        var dateStr = ('0' + dateObj.getDate()).slice(-2) + '/' + 
+                      ('0' + (dateObj.getMonth() + 1)).slice(-2) + '/' + 
+                      dateObj.getFullYear();
+        var timeStr = ('0' + dateObj.getHours()).slice(-2) + ':' + 
+                      ('0' + dateObj.getMinutes()).slice(-2);
+        var fullTimestampStr = dateStr + ' ' + timeStr;
+
+        var hash = (options && options.hash) || generateVerificationHash(code, approver, fullTimestampStr);
+        var isSpecialApproval = options && options.isSpecialApproval;
+
+        var svgStamp = '' +
+            '<svg class="pg-luxury-red-stamp-svg" viewBox="0 0 280 280" width="220" height="220" style="filter: drop-shadow(0 4px 10px rgba(185,28,28,0.25)); transform: rotate(-5deg); transition: transform 0.2s ease;">' +
+                '<defs>' +
+                    '<path id="stampUpperCurve" d="M 30,140 A 110,110 0 1,1 250,140" fill="none"/>' +
+                    '<path id="stampLowerCurve" d="M 250,140 A 110,110 0 1,1 30,140" fill="none"/>' +
+                    '<radialGradient id="stampGlow" cx="50%" cy="50%" r="50%">' +
+                        '<stop offset="85%" stop-color="#dc2626" stop-opacity="0.08"/>' +
+                        '<stop offset="100%" stop-color="#b91c1c" stop-opacity="0.18"/>' +
+                    '</radialGradient>' +
+                '</defs>' +
+                '<!-- Vòng nền nhẹ -->' +
+                '<circle cx="140" cy="140" r="130" fill="url(#stampGlow)"/>' +
+                '<!-- Vành tròn đôi ngoài -->' +
+                '<circle cx="140" cy="140" r="130" fill="none" stroke="#b91c1c" stroke-width="4.5" stroke-dasharray="8 4"/>' +
+                '<circle cx="140" cy="140" r="120" fill="none" stroke="#b91c1c" stroke-width="2.5"/>' +
+                '<!-- Vành tròn trong -->' +
+                '<circle cx="140" cy="140" r="82" fill="none" stroke="#b91c1c" stroke-width="2"/>' +
+                '<circle cx="140" cy="140" r="77" fill="none" stroke="#b91c1c" stroke-width="1" stroke-dasharray="3 3"/>' +
+                '<!-- Chữ vành trên: CÔNG TY CP PHÚ GIA VIỆT NAM -->' +
+                '<text fill="#b91c1c" font-size="11.5" font-weight="900" font-family="Arial, Helvetica, sans-serif" letter-spacing="1.5">' +
+                    '<textPath href="#stampUpperCurve" startOffset="50%" text-anchor="middle">' +
+                        '★ CÔNG TY CP PHÚ GIA VIỆT NAM ★' +
+                    '</textPath>' +
+                '</text>' +
+                '<!-- Chữ vành dưới: MST & TP. HÀ TĨNH -->' +
+                '<text fill="#b91c1c" font-size="10" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="1">' +
+                    '<textPath href="#stampLowerCurve" startOffset="50%" text-anchor="middle">' +
+                        'MST: 042203002931 • TP. HÀ TĨNH' +
+                    '</textPath>' +
+                '</text>' +
+                '<!-- Khu vực trung tâm: DẤU DUYỆT GIÁM ĐỐC -->' +
+                '<g transform="translate(140, 140)">' +
+                    '<!-- Ngôi sao hoặc vương miện trên -->' +
+                    '<path d="M 0,-56 L 3,-46 L 14,-46 L 5,-39 L 8,-28 L 0,-34 L -8,-28 L -5,-39 L -14,-46 L -3,-46 Z" fill="#b91c1c"/>' +
+                    '<text x="0" y="-14" fill="#b91c1c" font-size="14.5" font-weight="900" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" letter-spacing="0.5">' +
+                        (isSpecialApproval ? 'PHÊ DUYỆT ĐẶC BIỆT' : 'GIÁM ĐỐC ĐÃ DUYỆT') +
+                    '</text>' +
+                    '<rect x="-65" y="-6" width="130" height="2" fill="#b91c1c"/>' +
+                    '<text x="0" y="12" fill="#991b1b" font-size="11" font-weight="800" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">' +
+                        approver.toUpperCase() +
+                    '</text>' +
+                    '<text x="0" y="27" fill="#b91c1c" font-size="9.5" font-weight="700" font-family="Courier, monospace" text-anchor="middle">' +
+                        code +
+                    '</text>' +
+                    '<text x="0" y="42" fill="#b91c1c" font-size="9" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">' +
+                        fullTimestampStr +
+                    '</text>' +
+                    '<!-- Mã xác thực băm 8 ký tự trung tâm -->' +
+                    '<text x="0" y="58" fill="#7f1d1d" font-size="7.5" font-weight="bold" font-family="Courier, monospace" text-anchor="middle">' +
+                        'HASH: ' + hash.slice(0, 11) +
+                    '</text>' +
+                '</g>' +
+            '</svg>';
+
+        var certificateWrapper = '' +
+            '<div class="pg-luxury-stamp-certificate" style="display:inline-flex; flex-direction:column; align-items:center; background:#ffffff; border:2px solid #b91c1c; border-radius:14px; padding:18px; box-shadow:0 10px 25px -5px rgba(185,28,28,0.2), 0 8px 10px -6px rgba(0,0,0,0.05); max-width:320px; font-family:system-ui,-apple-system,sans-serif; text-align:center; position:relative; overflow:hidden;">' +
+                '<div style="position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(90deg, #b91c1c, #dc2626, #f87171, #b91c1c);"></div>' +
+                '<div style="font-size:11px; font-weight:800; color:#b91c1c; letter-spacing:1px; margin-bottom:4px; text-transform:uppercase;">' +
+                    BRAND_LEGAL.company +
+                '</div>' +
+                '<div style="font-size:10px; color:#64748b; margin-bottom:8px;">' +
+                    'CHỨNG THỰC PHÊ DUYỆT ĐƠN ĐẶT HÀNG VẬT TƯ' +
+                '</div>' +
+                '<div style="margin:6px 0;">' +
+                    svgStamp +
+                '</div>' +
+                '<div style="width:100%; border-top:1px dashed #fca5a5; padding-top:10px; margin-top:6px; font-size:11px; text-align:left; color:#334155; line-height:1.5;">' +
+                    '<div><strong>Mã PO:</strong> <span style="font-family:monospace; font-weight:bold; color:#b91c1c;">' + code + '</span></div>' +
+                    '<div><strong>Người ký duyệt:</strong> ' + approver + ' (Giám Đốc)</div>' +
+                    '<div><strong>Thời gian ký:</strong> ' + fullTimestampStr + '</div>' +
+                    '<div><strong>Mã băm xác thực:</strong> <span style="font-family:monospace; font-size:10px; background:#fee2e2; color:#991b1b; padding:1px 5px; border-radius:4px;">' + hash + '</span></div>' +
+                    '<div style="margin-top:8px; font-size:10px; color:#15803d; font-weight:700; background:#dcfce7; padding:4px 8px; border-radius:6px; display:flex; align-items:center; gap:4px;">' +
+                        '<span>✓</span> ĐỦ ĐIỀU KIỆN XUẤT ĐƠN GỬI NHÀ CUNG CẤP' +
+                    '</div>' +
+                    '<div style="margin-top:4px; font-size:9.5px; color:#64748b; text-align:center;">' +
+                        'Xưởng: ' + BRAND_LEGAL.workshopAddress + '<br>Hotline: ' + BRAND_LEGAL.hotline +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+
+        return certificateWrapper;
+    }
+
+    /**
+     * Tương thích ngược 100%: generateRedStampSVG
+     */
+    function generateRedStampSVG(po) {
+        if (!po) return '';
+        var poCode = po.poCode || po.id || 'PO-PROPOSAL';
+        var approver = po.approvedBy || BRAND_LEGAL.director;
+        var timestamp = po.approvedAt || po.createdAt || new Date();
+        return renderLuxuryRedStamp(poCode, approver, timestamp, {
+            isSpecialApproval: po.isSpecialApproval || po.flagRed
         });
-      }
     }
 
-    render();
-
-    // Lưu lại hàm re-render nội bộ
-    window.PG_Modules_W13._internalReRender = render;
-  }
-
-  /**
-   * Modal xem chi tiết phiếu và hiển thị con dấu đỏ thực tế
-   */
-  function openDetailModal(poId) {
-    injectStylesOnce();
-    const list = loadPOList();
-    const po = list.find(p => p.id === poId);
-    if (!po) return alert('Không tìm thấy phiếu đề xuất!');
-
-    const isApproved = po.status === APPROVAL_STATUS.ADMIN_APPROVED;
-
-    const modalBackdrop = document.createElement('div');
-    modalBackdrop.className = 'pg-modal-backdrop';
-    modalBackdrop.id = 'pg-w13-detail-modal';
-
-    modalBackdrop.innerHTML = `
-      <div class="pg-modal-content">
-        <button class="pg-modal-close" onclick="document.getElementById('pg-w13-detail-modal').remove()">×</button>
-        
-        <div style="border-bottom: 2px solid #dc2626; padding-bottom: 12px; margin-bottom: 20px;">
-          <div style="font-size: 11px; font-weight: 800; color: #dc2626; letter-spacing: 1px;">
-            ${BRAND_LEGAL.entityName.toUpperCase()}
-          </div>
-          <h2 style="margin: 4px 0 0 0; font-size: 20px; color: #0f172a;">
-            PHIẾU ĐỀ XUẤT ĐẶT HÀNG VẬT TƯ SẢN XUẤT (${po.id})
-          </h2>
-          <div style="font-size: 12px; color: #64748b; margin-top: 4px;">
-            Dự Án: <b>${po.projectName}</b> (${po.projectCode}) • Nhà Cung Cấp: <b style="color: #4338ca;">${po.supplier}</b>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 20px;">
-          <div style="font-size: 13px; font-weight: 700; margin-bottom: 8px;">Chi Tiết Vật Tư Yêu Cầu Đặt Hàng:</div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: #f8fafc; border: 1px solid #e2e8f0;">
-            <thead>
-              <tr style="background: #e2e8f0; color: #334155; text-align: left;">
-                <th style="padding: 8px 12px;">STT</th>
-                <th style="padding: 8px 12px;">Tên Quy Cách Vật Tư</th>
-                <th style="padding: 8px 12px;">ĐVT</th>
-                <th style="padding: 8px 12px; text-align: right;">Số Lượng</th>
-                <th style="padding: 8px 12px; text-align: right;">Đơn Giá Dự Kiến</th>
-                <th style="padding: 8px 12px; text-align: right;">Thành Tiền</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(po.items || []).map((it, idx) => `
-                <tr style="border-bottom: 1px solid #e2e8f0;">
-                  <td style="padding: 8px 12px;">${idx + 1}</td>
-                  <td style="padding: 8px 12px; font-weight: 600;">${it.name}</td>
-                  <td style="padding: 8px 12px;">${it.unit}</td>
-                  <td style="padding: 8px 12px; text-align: right; font-weight: 700;">${it.qty}</td>
-                  <td style="padding: 8px 12px; text-align: right;">${Number(it.unitPrice).toLocaleString('vi-VN')} đ</td>
-                  <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #047857;">${Number(it.total).toLocaleString('vi-VN')} đ</td>
-                </tr>
-              `).join('')}
-              <tr style="background: #f1f5f9; font-weight: 800; font-size: 13px;">
-                <td colspan="5" style="padding: 10px 12px; text-align: right;">TỔNG CỘNG TIỀN VẬT TƯ:</td>
-                <td style="padding: 10px 12px; text-align: right; color: #b91c1c;">${Number(po.totalAmount).toLocaleString('vi-VN')} đ</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 8px; padding: 12px; font-size: 12px; margin-bottom: 20px;">
-          <b>Ghi chú bóc tách của Vũ:</b> ${po.notes || 'Không có ghi chú thêm.'}
-        </div>
-
-        <!-- KHU VỰC DẤU ĐỎ ĐIỆN TỬ BAN GIÁM ĐỐC -->
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
-          <div style="font-size: 12px; color: #64748b;">
-            <div>Người lập phiếu: <b>${po.creator}</b></div>
-            <div>Thời gian lập: ${new Date(po.createdAt).toLocaleString('vi-VN')}</div>
-            <div style="margin-top: 8px; font-style: italic; color: #b91c1c;">
-              ${!isApproved ? '⚠️ CẢNH BÁO: Phiếu chưa có dấu đỏ. Tuyệt đối không gửi cho NCC!' : '✅ Phiếu đã được bảo chứng pháp lý điện tử.'}
-            </div>
-          </div>
-
-          <div style="text-align: center;">
-            <div style="font-size: 12px; font-weight: 800; color: #0f172a; margin-bottom: 6px; text-transform: uppercase;">
-              BAN GIÁM ĐỐC PHÊ DUYỆT
-            </div>
-            ${isApproved ? generateRedStampSVG(po) : `
-              <div style="width: 200px; height: 140px; border: 2px dashed #cbd5e1; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 12px; font-weight: bold; background: #f8fafc;">
-                [CHƯA ĐÓNG DẤU ĐỎ]
-              </div>
-            `}
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #e2e8f0;">
-          ${!isApproved ? `
-            <button class="pg-btn pg-btn-admin-stamp" onclick="window.PG_Modules_W13.triggerAdminApprove('${po.id}', true)">
-              🔴 Giám Đốc Phê Duyệt & Đóng Dấu Đỏ Ngay
-            </button>
-          ` : `
-            <button class="pg-btn pg-btn-send-ncc" onclick="window.PG_Modules_W13.triggerSendToSupplier('${po.id}')">
-              🚀 Xuất File & Gửi NCC ${po.supplier}
-            </button>
-          `}
-          <button class="pg-btn" style="background: #94a3b8; color: #fff;" onclick="document.getElementById('pg-w13-detail-modal').remove()">
-            Đóng
-          </button>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(modalBackdrop);
-  }
-
-  /**
-   * Modal tạo phiếu đề xuất mới cho Vũ
-   */
-  function openCreateModal() {
-    injectStylesOnce();
-    const modalBackdrop = document.createElement('div');
-    modalBackdrop.className = 'pg-modal-backdrop';
-    modalBackdrop.id = 'pg-w13-create-modal';
-
-    modalBackdrop.innerHTML = `
-      <div class="pg-modal-content" style="width: 650px;">
-        <button class="pg-modal-close" onclick="document.getElementById('pg-w13-create-modal').remove()">×</button>
-        
-        <h3 style="margin: 0 0 16px 0; font-size: 18px; color: #0f172a;">
-          🔨 Vũ Lập Phiếu Đề Xuất Đặt Hàng Vật Tư Mới
-        </h3>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
-          <div>
-            <label style="font-size: 12px; font-weight: bold;">Tên Công Trình / Khách Hàng:</label>
-            <input type="text" id="w13NewProject" placeholder="Ví dụ: Căn Hộ Anh Hải - Vinhome" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;" />
-          </div>
-          <div>
-            <label style="font-size: 12px; font-weight: bold;">Nhà Cung Cấp:</label>
-            <select id="w13NewSupplier" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
-              <option value="An Cường">An Cường (Gỗ công nghiệp MDF/MFC/Acrylic)</option>
-              <option value="Hafele">Hafele (Phụ kiện ngũ kim cao cấp)</option>
-              <option value="Lam Giang">Lam Giang (Ván gỗ công nghiệp & gia công dán cạnh)</option>
-              <option value="Quốc Tâm">Quốc Tâm (Phụ kiện phụ trợ xưởng)</option>
-            </select>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 12px;">
-          <label style="font-size: 12px; font-weight: bold;">Tên Vật Tư & Quy Cách (Dòng 1):</label>
-          <input type="text" id="w13ItemName" placeholder="Ví dụ: Ván MDF Chống Ẩm 17mm Phủ Melamine" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; margin-bottom: 6px;" />
-          
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-            <div>
-              <label style="font-size: 11px;">ĐVT:</label>
-              <input type="text" id="w13ItemUnit" value="Tấm" style="width: 100%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;" />
-            </div>
-            <div>
-              <label style="font-size: 11px;">Số Lượng (Định mức Mục 24):</label>
-              <input type="number" id="w13ItemQty" value="10" style="width: 100%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;" />
-            </div>
-            <div>
-              <label style="font-size: 11px;">Đơn Giá (VNĐ):</label>
-              <input type="number" id="w13ItemPrice" value="420000" style="width: 100%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;" />
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label style="font-size: 12px; font-weight: bold;">Ghi Chú Kỹ Thuật:</label>
-          <textarea id="w13NewNotes" rows="2" placeholder="Ghi rõ diện tích và định mức bóc tách..." style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;"></textarea>
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; gap: 10px;">
-          <button class="pg-btn pg-btn-submit" id="w13BtnSavePO">
-            💾 Tạo Phiếu Đề Xuất
-          </button>
-          <button class="pg-btn" style="background: #94a3b8; color: #fff;" onclick="document.getElementById('pg-w13-create-modal').remove()">
-            Hủy
-          </button>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(modalBackdrop);
-
-    document.getElementById('w13BtnSavePO').addEventListener('click', () => {
-      const proj = document.getElementById('w13NewProject').value.trim();
-      const supp = document.getElementById('w13NewSupplier').value;
-      const itName = document.getElementById('w13ItemName').value.trim() || 'Vật tư gỗ';
-      const itUnit = document.getElementById('w13ItemUnit').value.trim() || 'Tấm';
-      const itQty = parseFloat(document.getElementById('w13ItemQty').value) || 1;
-      const itPrice = parseFloat(document.getElementById('w13ItemPrice').value) || 0;
-      const notes = document.getElementById('w13NewNotes').value.trim();
-
-      if (!proj) return alert('Vui lòng nhập Tên Công Trình!');
-
-      createPurchaseOrder({
-        projectName: proj,
-        supplier: supp,
-        notes: notes,
-        items: [
-          { name: itName, unit: itUnit, qty: itQty, unitPrice: itPrice }
-        ]
-      });
-
-      document.getElementById('pg-w13-create-modal').remove();
-      if (window.PG_Modules_W13._internalReRender) {
-        window.PG_Modules_W13._internalReRender();
-      }
-      alert('Đã tạo thành công Phiếu Đề Xuất Đặt Hàng Vật Tư!');
-    });
-  }
-
-  // 7. CÁC HÀM TRIGGER TƯƠNG TÁC
-  function triggerAdminApprove(poId, closeDetailModalAfter = false) {
-    const comment = prompt('Nhập ý kiến phê duyệt của Giám Đốc:', 'Đã kiểm tra bóc tách kỹ thuật. Đạt định mức. Duyệt đóng dấu đỏ.');
-    if (comment === null) return;
-
-    try {
-      const res = adminApproveOrder(poId, BRAND_LEGAL.directorName, comment);
-      alert(`[THÀNH CÔNG] ${res.message}\nMã Dấu Đỏ: ${res.po.approvalHash}`);
-      if (closeDetailModalAfter) {
-        const detailModal = document.getElementById('pg-w13-detail-modal');
-        if (detailModal) detailModal.remove();
-      }
-      if (window.PG_Modules_W13._internalReRender) {
-        window.PG_Modules_W13._internalReRender();
-      }
-    } catch (err) {
-      alert(`Lỗi phê duyệt: ${err.message}`);
+    /**
+     * Kiểm tra xem PO đã đủ điều kiện để Kỹ thuật Vũ xuất gửi Nhà cung cấp chưa
+     * Quy tắc luật sắt: BẮT BUỘC PHẢI APPROVED và có DẤU ĐỎ ĐIỆN TỬ
+     */
+    function canExportToSupplier(po) {
+        if (!po) return false;
+        var isApproved = (po.status === PO_STATUS.APPROVED);
+        var hasStamp = Boolean(po.stampHash && po.approvedBy);
+        return isApproved && hasStamp;
     }
-  }
 
-  function triggerSubmitApproval(poId) {
-    if (!confirm(`Xác nhận gửi phiếu ${poId} lên Giám Đốc phê duyệt?`)) return;
-    try {
-      submitForApproval(poId);
-      if (window.PG_Modules_W13._internalReRender) {
-        window.PG_Modules_W13._internalReRender();
-      }
-      alert('Đã gửi phiếu lên Ban Giám Đốc.');
-    } catch (e) {
-      alert(e.message);
+    /**
+     * Duyệt đơn PO (Dành riêng cho Giám Đốc)
+     * Tự động kiểm tra trần 40% lũy kế, tạo con dấu đỏ và mã băm chống giả mạo
+     */
+    function approvePO(poId, approverName, woodValOverride) {
+        var pos = loadPOList();
+        var poIndex = pos.findIndex(function (p) { return p.id === poId || p.poCode === poId; });
+        if (poIndex === -1) {
+            return { success: false, message: 'Không tìm thấy phiếu đề xuất ' + poId };
+        }
+
+        var po = pos[poIndex];
+        var approver = approverName || BRAND_LEGAL.director;
+        var now = new Date().toISOString();
+
+        // Kiểm tra trần lũy kế 40%
+        var capAudit = checkCumulativePoCap40(po.projectId, po.totalAmount, woodValOverride);
+
+        // Sinh mã băm bảo mật 16 ký tự
+        var hash = generateVerificationHash(po.poCode || po.id, approver, now);
+
+        po.status = PO_STATUS.APPROVED;
+        po.approvedBy = approver;
+        po.approvedAt = now;
+        po.stampHash = hash;
+        po.isSpecialApproval = capAudit.isExceeded;
+        po.capAuditAtApproval = capAudit;
+        po.canSendToSupplier = true;
+
+        savePOList(pos);
+
+        return {
+            success: true,
+            po: po,
+            capAudit: capAudit,
+            hash: hash,
+            message: 'Đã đóng dấu đỏ duyệt đơn ' + (po.poCode || po.id) + ' thành công!' + 
+                     (capAudit.isExceeded ? ' (Giám Đốc đã duyệt phê chuẩn vượt trần 40%)' : '')
+        };
     }
-  }
 
-  function triggerSendToSupplier(poId) {
-    try {
-      const res = exportOrSendOrderToSupplier(poId);
-      alert(`🎉 [GỬI THÀNH CÔNG CHO NCC ${res.supplier}]\n` +
-            `Đơn hàng: ${res.poId}\n` +
-            `Tổng tiền: ${res.totalAmount.toLocaleString('vi-VN')} đ\n` +
-            `Dấu Đỏ Điện Tử Bảo Chứng: ${res.verificationHash}\n` +
-            `Người duyệt: ${res.approvedBy}\n` +
-            `Đơn vị: ${res.companyLegal}`);
-      if (window.PG_Modules_W13._internalReRender) {
-        window.PG_Modules_W13._internalReRender();
-      }
-    } catch (err) {
-      // Hàm exportOrSendOrderToSupplier đã xử lý cảnh báo alert
+    /**
+     * Từ chối duyệt PO (Giám Đốc trả lại cho Vũ sửa)
+     */
+    function rejectPO(poId, rejectReason, rejectedBy) {
+        var pos = loadPOList();
+        var poIndex = pos.findIndex(function (p) { return p.id === poId || p.poCode === poId; });
+        if (poIndex === -1) {
+            return { success: false, message: 'Không tìm thấy phiếu đề xuất ' + poId };
+        }
+
+        var po = pos[poIndex];
+        po.status = PO_STATUS.REJECTED;
+        po.rejectedBy = rejectedBy || BRAND_LEGAL.director;
+        po.rejectedAt = new Date().toISOString();
+        po.rejectReason = rejectReason || 'Không được phê duyệt';
+        po.canSendToSupplier = false;
+        delete po.stampHash;
+
+        savePOList(pos);
+
+        return {
+            success: true,
+            po: po,
+            message: 'Đã từ chối duyệt đơn ' + (po.poCode || po.id)
+        };
     }
-  }
 
-  // 8. PUBLIC EXPORT
-  return {
-    version: '1.0.0',
-    moduleName: 'W13_RedStampPOApproval',
-    legalInfo: BRAND_LEGAL,
-    statusEnum: APPROVAL_STATUS,
+    /**
+     * Tạo mới Phiếu Đề Xuất Vật Tư (Kỹ thuật Vũ tạo)
+     */
+    function createPOProposal(poData) {
+        if (!poData) return { success: false, message: 'Dữ liệu PO không hợp lệ' };
 
-    // Core Business Logic
-    loadPOList: loadPOList,
-    savePOList: savePOList,
-    createPurchaseOrder: createPurchaseOrder,
-    submitForApproval: submitForApproval,
-    adminApproveOrder: adminApproveOrder,
-    adminRejectOrder: adminRejectOrder,
-    canExportOrSendToSupplier: canExportOrSendToSupplier,
-    exportOrSendOrderToSupplier: exportOrSendOrderToSupplier,
+        var pos = loadPOList();
+        var timestamp = new Date();
+        var code = poData.poCode || ('PO-' + timestamp.getFullYear() + ('0' + (timestamp.getMonth() + 1)).slice(-2) + '-' + ('000' + (pos.length + 1)).slice(-4));
 
-    // UI & Graphics
-    generateRedStampSVG: generateRedStampSVG,
-    initUI: initUI,
-    openDetailModal: openDetailModal,
-    openCreateModal: openCreateModal,
-    triggerAdminApprove: triggerAdminApprove,
-    triggerSubmitApproval: triggerSubmitApproval,
-    triggerSendToSupplier: triggerSendToSupplier,
-    _internalReRender: null
-  };
-});
+        var totalAmount = Number(poData.totalAmount) || 0;
+        if (!totalAmount && Array.isArray(poData.items)) {
+            totalAmount = poData.items.reduce(function (sum, item) {
+                return sum + ((Number(item.quantity) || 0) * (Number(item.unitPrice) || 0));
+            }, 0);
+        }
+
+        var capAudit = checkCumulativePoCap40(poData.projectId, totalAmount, poData.woodVal);
+
+        var newPo = {
+            id: 'po_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            poCode: code,
+            projectId: poData.projectId || 'PRJ-CHUNG',
+            projectName: poData.projectName || 'Công trình chưa đặt tên',
+            supplierName: poData.supplierName || 'An Cường / Hafele',
+            creator: poData.creator || BRAND_LEGAL.workshopLead,
+            items: poData.items || [],
+            totalAmount: totalAmount,
+            woodVal: capAudit.woodVal,
+            notes: poData.notes || '',
+            createdAt: timestamp.toISOString(),
+            status: capAudit.isExceeded ? PO_STATUS.FLAGGED_OVERCAP : PO_STATUS.PENDING,
+            flagRed: capAudit.flagRed,
+            initialCapAudit: capAudit,
+            canSendToSupplier: false
+        };
+
+        pos.unshift(newPo);
+        savePOList(pos);
+
+        return {
+            success: true,
+            po: newPo,
+            capAudit: capAudit,
+            message: 'Đã tạo phiếu đề xuất ' + code + '. ' + 
+                     (capAudit.isExceeded ? '⚠️ CẢNH BÁO: Đơn bị gắn CỜ ĐỎ do vượt trần 40% vật tư, cần Giám Đốc duyệt đặc biệt!' : 'Chờ Giám Đốc đóng dấu đỏ phê duyệt.')
+        };
+    }
+
+    /**
+     * Render bảng quản lý PO và Dấu Đỏ trong giao diện Web App
+     */
+    function renderPOManagementTable(containerId, options) {
+        var el = typeof containerId === 'string' ? document.getElementById(containerId) : containerId;
+        if (!el) return;
+
+        var pos = loadPOList();
+        var isDirector = (options && options.isDirector !== undefined) ? options.isDirector : true;
+
+        if (pos.length === 0) {
+            el.innerHTML = '' +
+                '<div style="text-align:center; padding:30px; color:#64748b; background:#f8fafc; border-radius:10px; border:1px dashed #cbd5e1;">' +
+                    '<div style="font-size:24px; margin-bottom:8px;">📋</div>' +
+                    '<div style="font-weight:600;">Chưa có phiếu đề xuất đặt hàng vật tư nào</div>' +
+                    '<div style="font-size:12px; margin-top:4px;">Kỹ thuật Vũ lập phiếu từ bóc tách công trình. Giám Đốc sẽ duyệt và đóng dấu đỏ tại đây.</div>' +
+                '</div>';
+            return;
+        }
+
+        var rowsHtml = pos.map(function (po) {
+            var badgeColor = '#64748b';
+            var badgeBg = '#f1f5f9';
+            var statusText = 'Chờ duyệt';
+
+            if (po.status === PO_STATUS.APPROVED) {
+                badgeColor = '#15803d'; badgeBg = '#dcfce7'; statusText = 'GIÁM ĐỐC ĐÃ DUYỆT';
+            } else if (po.status === PO_STATUS.FLAGGED_OVERCAP) {
+                badgeColor = '#b91c1c'; badgeBg = '#fee2e2'; statusText = '🚩 CỜ ĐỎ - VƯỢT TRẦN 40%';
+            } else if (po.status === PO_STATUS.REJECTED) {
+                badgeColor = '#b91c1c'; badgeBg = '#fef2f2'; statusText = 'TỪ CHỐI DUYỆT';
+            }
+
+            var exportBtn = '';
+            if (canExportToSupplier(po)) {
+                exportBtn = '<button class="pg-btn-export" onclick="window.PG_W13.exportPoDocument(\'' + po.id + '\')" style="background:#15803d; color:#fff; border:none; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:700; cursor:pointer;">📤 Xuất Đơn NCC</button>';
+            } else {
+                exportBtn = '<span style="font-size:11px; color:#94a3b8; font-style:italic;" title="Cần có dấu đỏ của Giám Đốc mới được gửi NCC">🔒 Chưa thể xuất</span>';
+            }
+
+            var actionBtns = '';
+            if (isDirector && po.status !== PO_STATUS.APPROVED) {
+                actionBtns = '' +
+                    '<button onclick="window.PG_W13.promptApprove(\'' + po.id + '\')" style="background:#b91c1c; color:#fff; border:none; padding:4px 8px; border-radius:6px; font-size:11px; font-weight:700; cursor:pointer; margin-right:4px;">' +
+                        '🔴 Đóng Dấu Đỏ' +
+                    '</button>' +
+                    '<button onclick="window.PG_W13.promptReject(\'' + po.id + '\')" style="background:#64748b; color:#fff; border:none; padding:4px 8px; border-radius:6px; font-size:11px; cursor:pointer;">' +
+                        'Từ chối' +
+                    '</button>';
+            } else if (po.status === PO_STATUS.APPROVED) {
+                actionBtns = '' +
+                    '<button onclick="window.PG_W13.viewStampCertificate(\'' + po.id + '\')" style="background:#fee2e2; color:#b91c1c; border:1px solid #f87171; padding:4px 8px; border-radius:6px; font-size:11px; font-weight:700; cursor:pointer;">' +
+                        '🔍 Xem Dấu Đỏ' +
+                    '</button>';
+            }
+
+            return '' +
+                '<tr style="border-bottom:1px solid #f1f5f9; font-size:12px;">' +
+                    '<td style="padding:10px 8px; font-family:monospace; font-weight:bold; color:#1e293b;">' + (po.poCode || po.id) + '</td>' +
+                    '<td style="padding:10px 8px;"><strong>' + (po.projectName || 'Công trình') + '</strong><br><span style="font-size:11px; color:#64748b;">' + (po.supplierName || 'NCC') + '</span></td>' +
+                    '<td style="padding:10px 8px; text-align:right; font-weight:700; color:#0f172a;">' + formatVND(po.totalAmount) + '</td>' +
+                    '<td style="padding:10px 8px; text-align:center;">' +
+                        '<span style="background:' + badgeBg + '; color:' + badgeColor + '; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:700;">' +
+                            statusText +
+                        '</span>' +
+                    '</td>' +
+                    '<td style="padding:10px 8px; text-align:center;">' + exportBtn + '</td>' +
+                    '<td style="padding:10px 8px; text-align:right;">' + actionBtns + '</td>' +
+                '</tr>';
+        }).join('');
+
+        el.innerHTML = '' +
+            '<div class="pg-table-responsive" style="overflow-x:auto;">' +
+                '<table style="width:100%; border-collapse:collapse; background:#ffffff; border-radius:10px; overflow:hidden; border:1px solid #e2e8f0;">' +
+                    '<thead>' +
+                        '<tr style="background:#f8fafc; border-bottom:2px solid #e2e8f0; font-size:12px; color:#475569; text-align:left;">' +
+                            '<th style="padding:10px 8px;">Mã PO</th>' +
+                            '<th style="padding:10px 8px;">Công trình / NCC</th>' +
+                            '<th style="padding:10px 8px; text-align:right;">Tổng tiền</th>' +
+                            '<th style="padding:10px 8px; text-align:center;">Trạng thái phê duyệt</th>' +
+                            '<th style="padding:10px 8px; text-align:center;">Xuất đơn NCC</th>' +
+                            '<th style="padding:10px 8px; text-align:right;">Hành động</th>' +
+                        '</tr>' +
+                    '</thead>' +
+                    '<tbody>' +
+                        rowsHtml +
+                    '</tbody>' +
+                '</table>' +
+            '</div>';
+    }
+
+    function viewStampCertificate(poId) {
+        var pos = loadPOList();
+        var po = pos.find(function (p) { return p.id === poId || p.poCode === poId; });
+        if (!po) return alert('Không tìm thấy PO!');
+
+        var modalEl = document.getElementById('pg-w13-modal');
+        if (!modalEl) {
+            modalEl = document.createElement('div');
+            modalEl.id = 'pg-w13-modal';
+            document.body.appendChild(modalEl);
+        }
+
+        var stampHtml = renderLuxuryRedStamp(po.poCode || po.id, po.approvedBy, po.approvedAt, {
+            hash: po.stampHash,
+            isSpecialApproval: po.isSpecialApproval
+        });
+
+        modalEl.innerHTML = '' +
+            '<div style="position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(15,23,42,0.65); display:flex; align-items:center; justify-content:center; z-index:9999; padding:20px;">' +
+                '<div style="background:#fff; border-radius:16px; padding:24px; max-width:480px; width:100%; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); text-align:center;">' +
+                    stampHtml +
+                    '<div style="margin-top:18px;">' +
+                        '<button onclick="document.getElementById(\'pg-w13-modal\').innerHTML=\'\'" style="background:#0f172a; color:#fff; border:none; padding:8px 20px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">Đóng</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+    }
+
+    function promptApprove(poId) {
+        var pos = loadPOList();
+        var po = pos.find(function (p) { return p.id === poId || p.poCode === poId; });
+        if (!po) return alert('Không tìm thấy PO!');
+
+        var capAudit = checkCumulativePoCap40(po.projectId, po.totalAmount, po.woodVal);
+        var confirmMsg = 'Giám Đốc xác nhận ĐÓNG DẤU ĐỎ DUYỆT cho đơn ' + (po.poCode || po.id) + ' (' + formatVND(po.totalAmount) + ')?';
+
+        if (capAudit.isExceeded) {
+            confirmMsg = '🚨 CẢNH BÁO ĐẶC BIỆT:\nĐơn này làm tổng PO lũy kế vượt trần 40% vật tư thêm ' + formatVND(capAudit.excessAmount) + '.\n\nGiám Đốc có đồng ý KÝ PHÊ DUYỆT ĐẶC BIỆT để xưởng tiếp tục đặt hàng?';
+        }
+
+        if (confirm(confirmMsg)) {
+            var res = approvePO(poId, BRAND_LEGAL.director, po.woodVal);
+            alert(res.message);
+            if (typeof window.PG_W13_ON_UPDATE === 'function') {
+                window.PG_W13_ON_UPDATE();
+            }
+        }
+    }
+
+    function promptReject(poId) {
+        var reason = prompt('Nhập lý do từ chối duyệt đơn vật tư này:');
+        if (reason !== null) {
+            var res = rejectPO(poId, reason, BRAND_LEGAL.director);
+            alert(res.message);
+            if (typeof window.PG_W13_ON_UPDATE === 'function') {
+                window.PG_W13_ON_UPDATE();
+            }
+        }
+    }
+
+    function exportPoDocument(poId) {
+        var pos = loadPOList();
+        var po = pos.find(function (p) { return p.id === poId || p.poCode === poId; });
+        if (!po) return alert('Không tìm thấy đơn!');
+        if (!canExportToSupplier(po)) {
+            return alert('CHẶN XUẤT ĐƠN: Đơn hàng này chưa có Con Dấu Đỏ của Giám Đốc!');
+        }
+        alert('ĐƠN ĐỦ ĐIỀU KIỆN GỬI NHÀ CUNG CẤP!\nĐã xác thực chữ ký điện tử Giám Đốc: ' + po.approvedBy + '\nMã băm bảo mật: ' + po.stampHash);
+    }
+
+    function init() {
+        // Tự động khởi tạo và kiểm tra nếu có storage
+        var pos = loadPOList();
+        return {
+            brand: BRAND_LEGAL,
+            poCount: pos.length,
+            version: '2.8.0-luxury-cap40'
+        };
+    }
+
+    // Public API
+    return {
+        // Constants & Brand
+        BRAND_LEGAL: BRAND_LEGAL,
+        PO_STATUS: PO_STATUS,
+
+        // Core Functions
+        init: init,
+        loadPOList: loadPOList,
+        savePOList: savePOList,
+        saveProjectWoodVal: saveProjectWoodVal,
+        loadProjectCaps: loadProjectCaps,
+        createPOProposal: createPOProposal,
+        approvePO: approvePO,
+        rejectPO: rejectPO,
+        canExportToSupplier: canExportToSupplier,
+
+        // Cải tiến #4: Kiểm tra lũy kế trần 40%
+        checkCumulativePoCap40: checkCumulativePoCap40,
+        renderCapProgressBarHtml: renderCapProgressBarHtml,
+
+        // Cải tiến #28: Dấu đỏ điện tử vector sang trọng
+        renderLuxuryRedStamp: renderLuxuryRedStamp,
+        generateRedStampSVG: generateRedStampSVG,
+        generateVerificationHash: generateVerificationHash,
+
+        // UI Helpers
+        renderPOManagementTable: renderPOManagementTable,
+        viewStampCertificate: viewStampCertificate,
+        promptApprove: promptApprove,
+        promptReject: promptReject,
+        exportPoDocument: exportPoDocument,
+        formatVND: formatVND
+    };
+}));

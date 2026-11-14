@@ -14,6 +14,11 @@ import sys
 import os
 import time
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 import sqlite3
 import re
 from datetime import datetime

@@ -11,6 +11,11 @@ import sys
 import io
 import re
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 from datetime import datetime
 import openpyxl
 import xlrd

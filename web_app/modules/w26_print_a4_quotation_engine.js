@@ -2,13 +2,15 @@
  * ===============================================================================================
  * HỆ THỐNG QUẢN TRỊ NỘI BỘ PG HOME LUXURY - MODULE W26
  * TÊN MODULE: W26 Print A4 Quotation & Material Order Engine (Chuẩn In A4 Đẳng Cấp Luxury)
- * BẢN QUYỀN: HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG
+ * BẢN QUYỀN: CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY
  * ===============================================================================================
  * THÔNG TIN PHÁP LÝ & HỆ THỐNG QUY CHUẨN:
+ * - Thương hiệu: CÔNG TY CP PHÚ GIA VIỆT NAM / PG HOME LUXURY
  * - Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
  * - Mã số ĐKKD/MST: 042203002931 (Đăng ký lần đầu: 13/01/2025 - Đại diện: Nguyễn Trọng Nghĩa)
  * - Địa chỉ ĐKKD: Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh
- * - Tổ hợp VP & Nhà máy: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
+ * - Xưởng sản xuất Nội thất Phú Gia: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
+ * - Văn phòng: 35 Đồng Quế, P. Thành Sen, TP. Hà Tĩnh
  * - Hotline chuẩn: 0986.722.324
  * - Giám Đốc Điều Hành: Nguyễn Viết Nghĩa
  * ===============================================================================================
@@ -20,7 +22,9 @@
   } else if (typeof module === 'object' && module.exports) {
     module.exports = factory();
   } else {
-    root.PG_Modules_W26 = factory();
+    const mod = factory();
+    root.PG_Modules_W26 = mod;
+    root.PG_W26 = mod;
   }
 })(typeof window !== 'undefined' ? window : this, function () {
   'use strict';
@@ -28,11 +32,14 @@
   // 1. THÔNG TIN PHÁP LÝ BẤT BIẾN THEO HIẾN PHÁP PHÚ GIA
   const PHU_GIA_LEGAL = Object.freeze({
     BRAND_NAME: 'PG HOME LUXURY',
-    COMPANY_FULL_NAME: 'HỘ KINH DOANH PHÚ GIA - NỘI THẤT & XÂY DỰNG',
+    COMPANY_FULL_NAME: 'CÔNG TY CP PHÚ GIA VIỆT NAM',
+    LEGAL_ENTITY: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
     TAX_CODE: '042203002931',
     REG_DATE: '13/01/2025',
     LEGAL_REP: 'Nguyễn Trọng Nghĩa',
     DIRECTOR: 'Nguyễn Viết Nghĩa',
+    FACTORY_ADDRESS: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
+    OFFICE_ADDRESS: '35 Đồng Quế, P. Thành Sen, TP. Hà Tĩnh',
     FACTORY_OFFICE_ADDRESS: 'Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh',
     REGISTERED_ADDRESS: 'Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh',
     HOTLINE: '0986.722.324',
@@ -109,12 +116,68 @@
     return capitalized;
   }
 
-  // 4. BỘ TẠO CON DẤU ĐỎ ĐIỆN TỬ PHÚ GIA (SVG VECTOR CHUẨN XÁC)
+  // 3b. HÀM TẠO HEADER & FOOTER VIP A4 ĐẲNG CẤP LUXURY
+  function buildVipA4HeaderFooter(data = {}, options = {}) {
+    const docCode = data.code || 'BG-VIP-' + (new Date().toISOString().slice(0, 10).replace(/-/g, ''));
+    const docDate = data.date || new Date().toLocaleDateString('vi-VN');
+    const docType = options.type || 'quotation'; // 'quotation' | 'order'
+
+    const headerHTML = `
+      <div class="brand-header vip-a4-header">
+        <div class="brand-logo-area">
+          <div class="brand-super-title">${PHU_GIA_LEGAL.COMPANY_FULL_NAME}</div>
+          <div class="brand-sub-title">${PHU_GIA_LEGAL.BRAND_NAME} — KIẾN TRÚC &amp; NỘI THẤT CAO CẤP</div>
+          <div class="legal-meta-list">
+            <div><strong>Xưởng sản xuất Nội thất Phú Gia:</strong> ${PHU_GIA_LEGAL.FACTORY_ADDRESS}</div>
+            <div><strong>Văn phòng:</strong> ${PHU_GIA_LEGAL.OFFICE_ADDRESS}</div>
+            <div><strong>Trụ sở ĐKKD:</strong> ${PHU_GIA_LEGAL.REGISTERED_ADDRESS}</div>
+            <div><strong>Mã Số Thuế:</strong> ${PHU_GIA_LEGAL.TAX_CODE} &nbsp;|&nbsp; <strong>Hotline:</strong> ${PHU_GIA_LEGAL.HOTLINE}</div>
+          </div>
+        </div>
+        <div class="brand-badge-area">
+          <div class="badge-code-box">
+            <div class="badge-code-label">${docType === 'order' ? 'MÃ PHIẾU PO' : 'MÃ BÁO GIÁ'}</div>
+            <div class="badge-code-value">${escapeHTML(docCode)}</div>
+          </div>
+          <div class="badge-date-text">Ngày lập: ${escapeHTML(docDate)}</div>
+        </div>
+      </div>
+    `;
+
+    const termsHTML = `
+      <div class="terms-box vip-a4-terms">
+        <h4>Điều Khoản Thanh Toán &amp; Cam Kết Chất Lượng Chuẩn PG Home Luxury:</h4>
+        <ol>
+          <li><strong>Tiến độ thanh toán 3 đợt (50% - 40% - 10%):</strong> Đợt 1 tạm ứng <strong>50%</strong> ngay khi ký hợp đồng để phát lệnh bóc tách CNC &amp; tập kết vật tư tại xưởng; Đợt 2 thanh toán <strong>40%</strong> khi hoàn thiện sản xuất và tập kết toàn bộ sản phẩm đến công trình chuẩn bị lắp đặt; Đợt 3 quyết toán <strong>10% còn lại</strong> trong vòng 03 - 05 ngày sau khi hai bên ký biên bản nghiệm thu bàn giao.</li>
+          <li><strong>Vật liệu &amp; Cam kết bảo hành 5 năm:</strong> 100% ván gỗ công nghiệp cao cấp đúng chủng loại niêm yết theo hợp đồng (An Cường / MDF Lõi Xanh Thái Lan tiêu chuẩn E1/CARB-P2). Cam kết bảo hành kỹ thuật kết cấu và chống cong vênh <strong>05 năm (60 tháng)</strong>, bảo trì trọn đời sản phẩm.</li>
+          <li><strong>Tài khoản thanh toán chính thức:</strong> Ngân hàng TMCP Ngoại Thương Việt Nam (Vietcombank) - Đại diện: <strong>Nguyễn Viết Nghĩa</strong> (Hotline/Zalo: <strong>0986.722.324</strong>).</li>
+        </ol>
+      </div>
+    `;
+
+    const footerHTML = `
+      <div class="page-footer vip-a4-footer">
+        <div>Bản quyền © 2025-2026 ${PHU_GIA_LEGAL.COMPANY_FULL_NAME} - MST: ${PHU_GIA_LEGAL.TAX_CODE}</div>
+        <div>Hotline: ${PHU_GIA_LEGAL.HOTLINE} | Xưởng sản xuất Nội thất Phú Gia: ${PHU_GIA_LEGAL.FACTORY_ADDRESS} | Văn phòng: ${PHU_GIA_LEGAL.OFFICE_ADDRESS}</div>
+      </div>
+    `;
+
+    return {
+      headerHTML,
+      termsHTML,
+      footerHTML,
+      buildFullPage: function(contentHTML) {
+        return `<div class="a4-container">${headerHTML}${contentHTML}${termsHTML}${footerHTML}</div>`;
+      }
+    };
+  }
+
+  // 4. BỘ TẠO CON DẤU ĐỎ ĐIỆN TỬ PHÚ GIA (SVG VECTOR CHUẨN XÁC - ESCAPED CHỐNG XSS)
   function generateRedStampSVG(options = {}) {
-    const isApproved = options.isApproved !== false;
-    const dateStr = options.dateStr || new Date().toLocaleDateString('vi-VN');
-    const approverName = options.approverName || PHU_GIA_LEGAL.DIRECTOR;
-    const sealTitle = options.title || 'ĐÃ PHÊ DUYỆT';
+    const isApproved = options.isApproved === true;
+    const dateStr = escapeHTML(options.dateStr || new Date().toLocaleDateString('vi-VN'));
+    const approverName = escapeHTML(options.approverName || PHU_GIA_LEGAL.DIRECTOR);
+    const sealTitle = escapeHTML(options.title || 'ĐÃ PHÊ DUYỆT');
 
     if (!isApproved) {
       return `
@@ -700,15 +763,20 @@
       projectName: 'Công Trình Nội Thất Cao Cấp',
       designerName: 'Tống Trần Hiệp',
       consultantPhone: PHU_GIA_LEGAL.HOTLINE,
-      status: 'APPROVED',
-      isApproved: true,
+      status: 'DRAFT',
+      isApproved: false,
       items: [],
       discountAmount: 0,
       vatPercent: 0,
       notes: ''
     }, quotationData);
 
-    const isApproved = (data.status === 'APPROVED' || data.isApproved === true);
+    // Chốt chặn Kỷ Luật Thép Mục 4.2: Cost <= 54.0% trước khi cho phép in Báo Giá
+    const liveCostPct = (typeof window !== 'undefined' && typeof window.getCurrentEstimatorCostRatioPct === 'function')
+      ? Number(window.getCurrentEstimatorCostRatioPct() || 0)
+      : Number(data.costRatioPct || 0);
+    const overCostLimit = liveCostPct > 54.0;
+    const isApproved = !overCostLimit && (data.status === 'APPROVED' && data.isApproved === true);
 
     // Tính toán số tiền
     let subTotal = 0;
@@ -777,8 +845,8 @@
           <div class="brand-super-title">${PHU_GIA_LEGAL.COMPANY_FULL_NAME}</div>
           <div class="brand-sub-title">${PHU_GIA_LEGAL.BRAND_NAME} — KIẾN TRÚC &amp; NỘI THẤT CAO CẤP</div>
           <div class="legal-meta-list">
-            <div><strong>Tổ hợp VP &amp; Nhà máy:</strong> ${PHU_GIA_LEGAL.FACTORY_OFFICE_ADDRESS}</div>
-            <div><strong>Trụ sở ĐKKD:</strong> ${PHU_GIA_LEGAL.REGISTERED_ADDRESS}</div>
+            <div><strong>Xưởng sản xuất Nội thất Phú Gia:</strong> ${PHU_GIA_LEGAL.FACTORY_ADDRESS}</div>
+            <div><strong>Văn phòng:</strong> ${PHU_GIA_LEGAL.OFFICE_ADDRESS}</div>
             <div><strong>Mã Số Thuế:</strong> ${PHU_GIA_LEGAL.TAX_CODE} &nbsp;|&nbsp; <strong>Hotline:</strong> ${PHU_GIA_LEGAL.HOTLINE}</div>
           </div>
         </div>
@@ -869,11 +937,11 @@
 
       <!-- ĐIỀU KHOẢN THANH TOÁN & QUY CHUẨN DÒNG TIỀN PG HOME -->
       <div class="terms-box">
-        <h4>Điều Khoản Thanh Toán &amp; Cam Kết Chất Lượng Chuẩn PG Home:</h4>
+        <h4>Điều Khoản Thanh Toán &amp; Cam Kết Chất Lượng Chuẩn PG Home Luxury:</h4>
         <ol>
-          <li><strong>Tiến độ thanh toán 3 mốc:</strong> Đợt 1 tạm ứng <strong>40% - 50%</strong> ngay khi ký HĐ để phát lệnh sản xuất tại xưởng; Đợt 2 thanh toán <strong>30% - 40%</strong> khi hàng tập kết đến công trình; Đợt 3 quyết toán <strong>10% - 20% còn lại</strong> trong 03 - 05 ngày sau nghiệm thu bàn giao.</li>
-          <li><strong>Vật liệu &amp; Bảo hành:</strong> 100% ván gỗ công nghiệp đúng mã niêm yết theo hợp đồng (An Cường / MDF Lõi Xanh Thái Lan tiêu chuẩn E1/CARB-P2). Bảo hành kỹ thuật kết cấu <strong>24 tháng</strong>, bảo trì trọn đời sản phẩm.</li>
-          <li><strong>Tài khoản thanh toán chính thức:</strong> Ngân hàng TMCP Ngoại Thương Việt Nam (Vietcombank) / Ngân hàng TMCP Công Thương Việt Nam (VietinBank) - Đại diện: <strong>Nguyễn Viết Nghĩa</strong>.</li>
+          <li><strong>Tiến độ thanh toán 3 đợt (50% - 40% - 10%):</strong> Đợt 1 tạm ứng <strong>50%</strong> ngay khi ký HĐ để phát lệnh bóc tách CNC &amp; tập kết vật tư xưởng; Đợt 2 thanh toán <strong>40%</strong> khi hoàn thiện sản xuất và tập kết toàn bộ sản phẩm đến công trình chuẩn bị lắp đặt; Đợt 3 quyết toán <strong>10% còn lại</strong> trong 03 - 05 ngày sau nghiệm thu bàn giao.</li>
+          <li><strong>Vật liệu &amp; Cam kết bảo hành 5 năm:</strong> 100% ván gỗ công nghiệp cao cấp đúng chủng loại niêm yết theo hợp đồng (An Cường / MDF Lõi Xanh Thái Lan tiêu chuẩn E1/CARB-P2). Cam kết bảo hành kỹ thuật kết cấu và chống cong vênh <strong>05 năm (60 tháng)</strong>, bảo trì trọn đời sản phẩm.</li>
+          <li><strong>Tài khoản thanh toán chính thức:</strong> Ngân hàng TMCP Ngoại Thương Việt Nam (Vietcombank) - Đại diện: <strong>Nguyễn Viết Nghĩa</strong> (Hotline/Zalo: <strong>0986.722.324</strong>).</li>
         </ol>
       </div>
     </div>
@@ -907,7 +975,7 @@
 
       <div class="page-footer">
         <div>Bản quyền © 2025-2026 ${PHU_GIA_LEGAL.COMPANY_FULL_NAME} - MST: ${PHU_GIA_LEGAL.TAX_CODE}</div>
-        <div>Hotline: ${PHU_GIA_LEGAL.HOTLINE} - Địa chỉ: ${PHU_GIA_LEGAL.FACTORY_OFFICE_ADDRESS}</div>
+        <div>Hotline: ${PHU_GIA_LEGAL.HOTLINE} | Xưởng sản xuất Nội thất Phú Gia: ${PHU_GIA_LEGAL.FACTORY_ADDRESS} | Văn phòng: ${PHU_GIA_LEGAL.OFFICE_ADDRESS}</div>
       </div>
     </div>
   </div>
@@ -999,10 +1067,10 @@
       <div class="brand-header">
         <div class="brand-logo-area">
           <div class="brand-super-title">${PHU_GIA_LEGAL.COMPANY_FULL_NAME}</div>
-          <div class="brand-sub-title">TỔ HỢP VĂN PHÒNG &amp; NHÀ MÁY SẢN XUẤT NỘI THẤT PHÚ GIA</div>
+          <div class="brand-sub-title">XƯỞNG SẢN XUẤT NỘI THẤT PHÚ GIA — PG HOME LUXURY</div>
           <div class="legal-meta-list">
-            <div><strong>Nhà máy &amp; Giao nhận:</strong> ${PHU_GIA_LEGAL.FACTORY_OFFICE_ADDRESS}</div>
-            <div><strong>Trụ sở ĐKKD:</strong> ${PHU_GIA_LEGAL.REGISTERED_ADDRESS}</div>
+            <div><strong>Xưởng sản xuất:</strong> ${PHU_GIA_LEGAL.FACTORY_ADDRESS}</div>
+            <div><strong>Văn phòng:</strong> ${PHU_GIA_LEGAL.OFFICE_ADDRESS}</div>
             <div><strong>Mã Số Thuế:</strong> ${PHU_GIA_LEGAL.TAX_CODE} &nbsp;|&nbsp; <strong>Hotline:</strong> ${PHU_GIA_LEGAL.HOTLINE}</div>
           </div>
         </div>
@@ -1039,7 +1107,7 @@
           </div>
           <div class="meta-row">
             <span class="meta-label">Địa điểm giao hàng:</span>
-            <span class="meta-value">${PHU_GIA_LEGAL.FACTORY_OFFICE_ADDRESS}</span>
+            <span class="meta-value">${PHU_GIA_LEGAL.FACTORY_ADDRESS}</span>
           </div>
           <div class="meta-row">
             <span class="meta-label">Người đề xuất:</span>
@@ -1127,7 +1195,7 @@
 
       <div class="page-footer">
         <div>Bản quyền © 2025-2026 ${PHU_GIA_LEGAL.COMPANY_FULL_NAME} - MST: ${PHU_GIA_LEGAL.TAX_CODE}</div>
-        <div>Xưởng sản xuất: ${PHU_GIA_LEGAL.FACTORY_OFFICE_ADDRESS} - Hotline: ${PHU_GIA_LEGAL.HOTLINE}</div>
+        <div>Hotline: ${PHU_GIA_LEGAL.HOTLINE} | Xưởng sản xuất: ${PHU_GIA_LEGAL.FACTORY_ADDRESS} | Văn phòng: ${PHU_GIA_LEGAL.OFFICE_ADDRESS}</div>
       </div>
     </div>
   </div>
@@ -1193,6 +1261,7 @@
     formatCurrency: formatCurrency,
     numberToWords: numberToWords,
     generateRedStampSVG: generateRedStampSVG,
+    buildVipA4HeaderFooter: buildVipA4HeaderFooter,
     renderQuotationHTML: renderQuotationHTML,
     renderMaterialOrderHTML: renderMaterialOrderHTML,
     printQuotation: function (data, options) {
@@ -1205,6 +1274,11 @@
     },
     openPrintPreview: openPrintPreview
   };
+
+  if (typeof window !== 'undefined') {
+    window.PG_Modules_W26 = PG_Modules_W26;
+    window.PG_W26 = PG_Modules_W26;
+  }
 
   return PG_Modules_W26;
 });

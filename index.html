@@ -2,14 +2,17 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG HOME LUXURY — Hệ Thống Điều Hành Văn Phòng &amp; Nhà Máy Sản Xuất 2026</title>
   <meta http-equiv="refresh" content="0; url=./web_app/index.html">
-  <title>PG HOME LUXURY — Phân Hệ Văn Phòng & Xưởng Sản Xuất</title>
   <script>
-    window.location.replace("./web_app/index.html" + window.location.search + window.location.hash);
+    (function () {
+      var target = "./web_app/" + (window.location.search || "") + (window.location.hash || "");
+      window.location.replace(target);
+    })();
   </script>
 </head>
-<body style="background:#0f172a;color:#f8fafc;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
-  <div>Đang chuyển hướng tới <a href="./web_app/index.html" style="color:#d4af37;">Hệ Thống Quản Trị PG HOME LUXURY</a>...</div>
+<body style="background:#0B0F19;color:#D4AF37;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
+  <div>Đang chuyển hướng vào Hệ Thống Điều Hành PG Home Luxury... <a href="./web_app/" style="color:#F3E5AB;">Bấm vào đây nếu trình duyệt không tự chuyển</a></div>
 </body>
 </html>
-

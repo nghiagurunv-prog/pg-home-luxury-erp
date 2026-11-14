@@ -22,7 +22,9 @@
   } else if (typeof module === 'object' && module.exports) {
     module.exports = factory();
   } else {
-    root.PG_Modules_W08 = factory();
+    var mod = factory();
+    root.PG_Modules_W08 = mod;
+    root.PG_W08 = mod;
   }
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
@@ -125,6 +127,225 @@
       estimatedNetProfitPercent: estimatedNetProfitPercent,
       isSafeForDirector: isSafeProfit,
       message: message
+    };
+  }
+
+  /**
+   * 1.1 CHỐT CHẶN TỶ LỆ COST <= 54% TRƯỚC KHI IN / XUẤT BÁO GIÁ A4 (Cải tiến #2)
+   * Khóa cứng điều kiện xuất bản báo giá gửi khách hàng nhằm bảo vệ biên lợi nhuận ròng 18% - 20% của Giám Đốc.
+   * 
+   * @param {number|Object} totalCost - Tổng chi phí (Vật tư + Công thợ) hoặc object { totalCost, totalCostVatTu, totalCostCongTho, totalRevenue }
+   * @param {number} [totalRev] - Tổng doanh thu báo giá cho khách hàng
+   * @returns {Object} Kết quả kiểm duyệt chốt chặn 54%
+   */
+  function validateCostCeiling54(totalCost, totalRev) {
+    var cost = 0;
+    var rev = 0;
+    if (typeof totalCost === 'object' && totalCost !== null) {
+      if (typeof totalCost.totalCost !== 'undefined') {
+        cost = Number(totalCost.totalCost) || 0;
+      } else {
+        cost = (Number(totalCost.totalCostVatTu) || 0) + (Number(totalCost.totalCostCongTho) || 0);
+      }
+      rev = Number(totalCost.totalRevenue || totalCost.revenue) || 0;
+    } else {
+      cost = Number(totalCost) || 0;
+      rev = Number(totalRev) || 0;
+    }
+
+    if (rev <= 0) {
+      return {
+        isValid: false,
+        statusCode: 'INVALID_REVENUE',
+        costRatio: 0,
+        costPercent: 0,
+        totalCost: cost,
+        totalRevenue: rev,
+        estimatedNetProfitRatio: 0,
+        estimatedNetProfitPercent: 0,
+        isSafeForDirector: false,
+        canPrintA4: false,
+        message: 'LỖI KHÓA XUẤT BẢN: Tổng doanh thu báo giá phải lớn hơn 0 đ trước khi in/xuất báo giá A4.'
+      };
+    }
+
+    var costRatio = cost / rev;
+    var costPercent = Number((costRatio * 100).toFixed(2));
+    var estimatedNetProfitRatio = 1 - costRatio - CONSTANTS.ESTIMATED_OPEX_RATIO;
+    var estimatedNetProfitPercent = Number((estimatedNetProfitRatio * 100).toFixed(2));
+    var isValid = costRatio <= CONSTANTS.COST_CEILING_MAX_PERCENT;
+    var isSafeProfit = estimatedNetProfitRatio >= CONSTANTS.NET_PROFIT_TARGET_MIN;
+
+    var status = isValid ? 'PASS' : 'BLOCKED_COST_OVER_54';
+    var message = '';
+
+    if (isValid) {
+      message = 'ĐẠT CHUẨN CHỐT CHẶN COST (' + costPercent + '% <= 54.00%). ' +
+                'Dự kiến lợi nhuận ròng đạt ' + estimatedNetProfitPercent + '% ' +
+                '(Bảo vệ an toàn mục tiêu 18% - 20% bỏ túi Giám Đốc). ĐỦ ĐIỀU KIỆN IN/XUẤT BÁO GIÁ A4.';
+    } else {
+      var excessPercent = Number(((costRatio - CONSTANTS.COST_CEILING_MAX_PERCENT) * 100).toFixed(2));
+      var excessCost = Math.round(cost - (rev * CONSTANTS.COST_CEILING_MAX_PERCENT));
+      message = 'CẢNH BÁO BÁO ĐỘNG ĐỎ: Tỷ lệ Cost (' + costPercent + '%) VƯỢT QUÁ CHỐT CHẶN 54.00% ' +
+                '(Vượt ' + excessPercent + '%, tương đương đội chi phí ' + excessCost.toLocaleString('vi-VN') + ' đ). ' +
+                'Biên lợi nhuận ròng ước tính chỉ còn ' + estimatedNetProfitPercent + '%, không bảo vệ được túi tiền Giám Đốc. ' +
+                'KHÓA CỨNG: Tuyệt đối không xuất báo giá A4 cho đến khi điều chỉnh về <= 54%!';
+    }
+
+    return {
+      isValid: isValid,
+      canPrintA4: isValid,
+      status: status,
+      costRatio: Number(costRatio.toFixed(4)),
+      costPercent: costPercent,
+      maxAllowedCostRatio: CONSTANTS.COST_CEILING_MAX_PERCENT,
+      maxAllowedCostPercent: 54.0,
+      totalCost: cost,
+      totalRevenue: rev,
+      excessCost: cost > rev * CONSTANTS.COST_CEILING_MAX_PERCENT ? Math.round(cost - (rev * CONSTANTS.COST_CEILING_MAX_PERCENT)) : 0,
+      estimatedNetProfitRatio: Number(estimatedNetProfitRatio.toFixed(4)),
+      estimatedNetProfitPercent: estimatedNetProfitPercent,
+      isSafeForDirector: isSafeProfit,
+      message: message
+    };
+  }
+
+  /**
+   * 1.2 GỢI Ý TỐI ƯU HÓA HẠNG MỤC VƯỢT TRẦN COST (Cải tiến #2)
+   * Tự động quét danh sách hạng mục, chỉ ra các hạng mục có tỷ lệ Cost cao hoặc làm đội ngân sách,
+   * đồng thời gợi ý chuyển đổi vật liệu khu vực khô sang MDF Thái Lan đúng chuẩn chênh phôi ván 380k/tấm (12%-14%),
+   * và giữ nguyên 100% Nhựa WPB An Cường (2.550.000 đ/tấm) & Cánh Acrylic.
+   * 
+   * @param {Array<Object>} items - Danh sách các hạng mục báo giá
+   * @param {number} [totalCost] - Tổng chi phí hiện tại (hoặc tự tính từ items)
+   * @param {number} [totalRev] - Tổng doanh thu hiện tại (hoặc tự tính từ items)
+   * @returns {Object} Chi tiết phân tích và danh sách gợi ý tối ưu
+   */
+  function getOptimizationSuggestions(items, totalCost, totalRev) {
+    var itemList = Array.isArray(items) ? items : [];
+    
+    var calcCost = 0;
+    var calcRev = 0;
+    
+    itemList.forEach(function (it) {
+      var itCost = Number(it.cost || it.totalCost || (Number(it.costVatTu || 0) + Number(it.costCongTho || 0)) || 0);
+      var itRev = Number(it.revenue || it.totalRevenue || it.thanhTien || it.price || 0);
+      calcCost += itCost;
+      calcRev += itRev;
+    });
+
+    var cost = Number(totalCost) > 0 ? Number(totalCost) : calcCost;
+    var rev = Number(totalRev) > 0 ? Number(totalRev) : calcRev;
+    var currentRatio = rev > 0 ? cost / rev : 0;
+    var currentPercent = Number((currentRatio * 100).toFixed(2));
+    var isOverCeiling = currentRatio > CONSTANTS.COST_CEILING_MAX_PERCENT;
+    var excessCost = isOverCeiling ? Math.round(cost - (rev * CONSTANTS.COST_CEILING_MAX_PERCENT)) : 0;
+
+    var highCostItems = [];
+    var suggestions = [];
+    var totalPotentialSavings = 0;
+
+    itemList.forEach(function (it, idx) {
+      var itCode = it.code || it.itemCode || it.norm_id || ('R' + (it.row || (idx + 1)));
+      var itName = it.name || it.tenHangMuc || 'Hạng mục #' + (idx + 1);
+      var itCost = Number(it.cost || it.totalCost || (Number(it.costVatTu || 0) + Number(it.costCongTho || 0)) || 0);
+      var itRev = Number(it.revenue || it.totalRevenue || it.thanhTien || (Number(it.qty || 1) * Number(it.price || it.donGia || 0)) || 0);
+      var itBoards = Number(it.boards || it.boardCount || it.mdf17 || it.totalSheets || 0);
+      var itRatio = itRev > 0 ? itCost / itRev : 0;
+      var itPercent = Number((itRatio * 100).toFixed(2));
+
+      var nameLower = itName.toLowerCase();
+      var isDryArea = !it.isWet && !it.isWPB && !it.isPvc && !(nameLower.indexOf('bếp dưới') >= 0 || nameLower.indexOf('lavabo') >= 0 || nameLower.indexOf('giặt') >= 0);
+      var hasWPB = !!(it.isWPB || it.isPvc || nameLower.indexOf('nhựa') >= 0 || nameLower.indexOf('wpb') >= 0 || nameLower.indexOf('pitech') >= 0);
+      var hasAcrylic = !!(it.hasAcrylic || nameLower.indexOf('acrylic') >= 0);
+
+      var itemAudit = {
+        code: itCode,
+        name: itName,
+        cost: itCost,
+        revenue: itRev,
+        costPercent: itPercent,
+        isOverRatio: itRatio > CONSTANTS.COST_CEILING_MAX_PERCENT,
+        isDryArea: isDryArea,
+        hasWPB: hasWPB,
+        hasAcrylic: hasAcrylic,
+        boardCount: itBoards
+      };
+
+      if (itRatio > CONSTANTS.COST_CEILING_MAX_PERCENT || (itCost > 0 && itRev === 0)) {
+        highCostItems.push(itemAudit);
+      }
+
+      // Gợi ý tối ưu vật liệu: Nếu là khu vực khô đang dùng An Cường
+      if (isDryArea && !hasWPB) {
+        var estimatedBoard = itBoards > 0 ? itBoards : Math.max(1, Math.round(itCost / 1000000));
+        var rawBoardSaving = Math.round(estimatedBoard * CONSTANTS.DIFF_RAW_BOARD_AC_TL);
+        var standardReduction = Math.round(itRev * 0.13);
+        var netSaving = Math.min(rawBoardSaving, standardReduction > 0 ? standardReduction : rawBoardSaving);
+
+        if (netSaving > 0) {
+          totalPotentialSavings += netSaving;
+          suggestions.push({
+            type: 'SWITCH_TO_MDF_THAI_LAN',
+            code: itCode,
+            name: itName,
+            currentCost: itCost,
+            currentRevenue: itRev,
+            boardCount: estimatedBoard,
+            estimatedSavings: netSaving,
+            recommendation: 'Chuyển thùng/thành phần gỗ khu vực khô (' + itName + ') từ MDF An Cường sang MDF lõi xanh Thái Lan. ' +
+                            'Mức giảm chuẩn 12% - 14% (chênh phôi ván 380.000 đ/tấm × ' + estimatedBoard + ' tấm ≈ ' +
+                            netSaving.toLocaleString('vi-VN') + ' đ tiết kiệm chi phí gốc). ' +
+                            'Vẫn đảm bảo thẩm mỹ Melamine và độ bền chống ẩm.'
+          });
+        }
+      } else if (hasWPB || hasAcrylic) {
+        suggestions.push({
+          type: 'LOCK_FIXED_COMPONENTS',
+          code: itCode,
+          name: itName,
+          recommendation: 'GIỮ NGUYÊN 100% ĐƠN GIÁ: Hạng mục "' + itName + '" chứa Nhựa đặc WPB An Cường (' +
+                          CONSTANTS.PRICE_WPB_BOARD_AN_CUONG.toLocaleString('vi-VN') + ' đ/tấm) hoặc Cánh Acrylic Noline. ' +
+                          'Nghiêm cấm giảm giá bừa bãi theo tỷ lệ MDF để tránh âm vốn vật tư!'
+        });
+      }
+    });
+
+    if (isOverCeiling) {
+      var minSuggestedRevenue = Math.ceil(cost / CONSTANTS.COST_CEILING_MAX_PERCENT);
+      var requiredRevIncrease = minSuggestedRevenue - rev;
+      suggestions.unshift({
+        type: 'ADJUST_QUOTE_REVENUE',
+        code: 'ALL',
+        name: 'Toàn bộ công trình',
+        recommendation: 'ĐIỀU CHỈNH ĐƠN GIÁ BÁN: Để đưa Cost về chuẩn an toàn <= 54.00% mà không giảm chất lượng, ' +
+                        'cần nâng tổng doanh thu báo giá từ ' + rev.toLocaleString('vi-VN') + ' đ lên tối thiểu ' +
+                        minSuggestedRevenue.toLocaleString('vi-VN') + ' đ (tăng ' + requiredRevIncrease.toLocaleString('vi-VN') + ' đ, ~' +
+                        Number(((requiredRevIncrease / rev) * 100).toFixed(1)) + '%).'
+      });
+    }
+
+    var projectedCost = Math.max(0, cost - totalPotentialSavings);
+    var projectedRatio = rev > 0 ? projectedCost / rev : 0;
+    var projectedPercent = Number((projectedRatio * 100).toFixed(2));
+
+    return {
+      totalCost: cost,
+      totalRevenue: rev,
+      currentCostRatio: Number(currentRatio.toFixed(4)),
+      currentCostPercent: currentPercent,
+      isOverCeiling: isOverCeiling,
+      excessCost: excessCost,
+      highCostItemsCount: highCostItems.length,
+      highCostItems: highCostItems,
+      potentialMaterialSavings: totalPotentialSavings,
+      projectedCostAfterMaterialOptimization: projectedCost,
+      projectedCostPercentAfterOptimization: projectedPercent,
+      willPassCeilingAfterOptimization: projectedRatio <= CONSTANTS.COST_CEILING_MAX_PERCENT,
+      suggestions: suggestions,
+      directorSafetyNotice: projectedRatio <= CONSTANTS.COST_CEILING_MAX_PERCENT ?
+        'Sau khi tối ưu phôi ván khu vực khô, dự kiến Cost giảm về ' + projectedPercent + '% <= 54%, bảo vệ trọn vẹn lãi ròng 18% - 20% của Giám Đốc.' :
+        'Sau khi tối ưu vật tư, Cost dự kiến còn ' + projectedPercent + '%. Cần kết hợp thêm việc điều chỉnh đơn giá các hạng mục cá biệt.'
     };
   }
 
@@ -373,9 +594,11 @@
   return {
     CONSTANTS: CONSTANTS,
     validateCostCeiling: validateCostCeiling,
+    validateCostCeiling54: validateCostCeiling54,
+    getOptimizationSuggestions: getOptimizationSuggestions,
     validateItem3TiersPricing: validateItem3TiersPricing,
     calculateStandard3Tiers: calculateStandard3Tiers,
     auditProjectQuote: auditProjectQuote,
-    version: '1.0.0-w08-flash'
+    version: '1.2.0-w08-flash'
   };
 }));

@@ -23,6 +23,11 @@ Phục vụ: Kết xuất 3D WebGL (Three.js/Babylon.js), Unreal Engine, và tư
 import os
 import sys
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 from datetime import datetime, timezone
 
 # Thiết lập encoding cho stdout trên Windows

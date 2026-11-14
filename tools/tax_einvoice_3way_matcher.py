@@ -24,6 +24,11 @@ import os
 import re
 import sys
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 import hashlib
 import unicodedata
 import xml.etree.ElementTree as ET

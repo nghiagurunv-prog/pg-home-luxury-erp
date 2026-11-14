@@ -482,7 +482,7 @@
     let ply17 = (norm.core_norm.plywood_17mm || 0) * qty;
 
     // Trừ cánh kính tủ áo (nếu có)
-    if (norm.id === 'R27' && glassM2 > 0) {
+    if (['R27', 'R40', 'R49'].includes(norm.id) && glassM2 > 0) {
       const deductionPerM2 = norm.deductions ? norm.deductions.glass_door_m2_reduction : 0.40;
       const reduction = glassM2 * deductionPerM2;
       mdf17 = Math.max(0, mdf17 - reduction);
@@ -506,6 +506,166 @@
       },
       rule_ref: norm.formula_note,
       tech_notes: norm.tech_notes
+    };
+  }
+
+  // HÀM CHUẨN HÓA BỘ CÔNG THỨC NỘI SUY TỰ ĐỘNG 8 ĐỊNH MỨC TẤM CẮT CNC THỰC CHIẾN
+  // Khổ ván chuẩn: 1220 x 2440 mm = 2.9768 m²/tấm
+  function calculateProjectCncSheets(code, qty, glassAreaM2) {
+    const rawCode = (code || '').toString().trim().toUpperCase();
+    const quantity = parseFloat(qty) || 0;
+    const glassM2 = parseFloat(glassAreaM2) || 0;
+
+    const SHEET_AREA_M2 = 2.9768; // 1.22 * 2.44
+    let group = 0;
+    let name = '';
+    let unit = '';
+    let norm17mm = 0;
+    let normBack6mm = 0;
+    let normCarcase = 0;
+    let normDoor = 0;
+    let deductionGlass17mm = 0;
+    let techNotes = '';
+    let formulaNote = '';
+
+    // Nhận diện mã hoặc nhóm
+    if (rawCode === 'R09' || rawCode.includes('BẾP DƯỚI') || rawCode.includes('BEP DUOI')) {
+      group = 1;
+      name = 'Tủ bếp dưới (Sâu 600 × Cao 860)';
+      unit = 'Md';
+      norm17mm = 1.45; // Khóa cứng 1.45 tấm/md, CẤM NHẦM 2.70
+      normCarcase = 1.14; // Thùng + hậu (Pitech/PVC/MDF chống ẩm)
+      normDoor = 0.31; // Cánh Acrylic noline
+      normBack6mm = 0;
+      formulaNote = '1.45 tấm/md (Thùng+Hậu 1.14 + Cánh 0.31) - KHÓA CỨNG CẤM BÁO NHẦM 2.70 TẤM/MD!';
+      techNotes = 'Trừ chân nhựa 100mm + mặt đá 20mm, nóc không bịt kín (chỉ đi 2 thanh xà 80mm), khoang chậu rửa & bếp từ không có đợt ngang.';
+    } else if (rawCode === 'R08' || rawCode.includes('BẾP TRÊN') || rawCode.includes('BEP TREN')) {
+      group = 2;
+      name = 'Tủ bếp trên (Sâu 350 × Cao 750)';
+      unit = 'Md';
+      norm17mm = 1.04; // 0.74 thùng + 0.30 cánh
+      normCarcase = 0.74;
+      normDoor = 0.30;
+      normBack6mm = 0.28;
+      formulaNote = '1.04 tấm 17mm/md (0.74 thùng + 0.30 cánh) + 0.28 tấm hậu 6mm/md';
+      techNotes = 'Sâu 350mm nên 1 khổ ván rộng 1220mm xẻ dọc được 3 dải phôi 350mm rất lợi ván.';
+    } else if (rawCode === 'R10' || rawCode.includes('KỊCH TRẦN BẾP') || rawCode.includes('KICH TRAN BEP')) {
+      group = 3;
+      name = 'Tủ bếp kịch trần (Sâu 700 × Cao 720)';
+      unit = 'Md';
+      norm17mm = 1.44; // 1.15 thùng + 0.29 cánh
+      normCarcase = 1.15;
+      normDoor = 0.29;
+      normBack6mm = 0.27;
+      formulaNote = '1.44 tấm 17mm/md (1.15 thùng + 0.29 cánh) + 0.27 tấm hậu 6mm/md';
+      techNotes = 'Sâu 700mm vượt quá nửa khổ ván 610mm, 1 khổ 1220mm xẻ được 1 dải 700mm + 1 dải 500mm (ghép sang kệ tivi/lavabo).';
+    } else if (['R27', 'R40', 'R49'].includes(rawCode) || rawCode.includes('TỦ ÁO') || rawCode.includes('TU AO')) {
+      group = 4;
+      name = 'Tủ áo kịch trần (Sâu 600 × Cao 2700)';
+      unit = 'M2';
+      norm17mm = 1.05;
+      normBack6mm = 0.36;
+      deductionGlass17mm = 0.40; // Trừ 0.40 tấm 17mm/m2 cánh kính
+      formulaNote = '1.05 tấm ván 17mm/m² + 0.36 tấm hậu 6mm/m² (Trừ 0.40 tấm 17mm/m² cánh kính khung nhôm)';
+      techNotes = '1 khổ ván 1220mm bổ đôi chuẩn 2 dải 600mm. Khoang nào lắp Cánh kính khung nhôm thì trừ ngay 0.40 tấm ván 17mm/m² cánh kính.';
+    } else if (rawCode === 'R05' || rawCode.includes('HỘC TỦ') || rawCode.includes('HOC TU')) {
+      group = 5;
+      name = 'Hộc tủ trang trí nông (Sâu 200 × Cao 1850)';
+      unit = 'M2';
+      norm17mm = 0.50;
+      normBack6mm = 0.25;
+      formulaNote = '0.50 tấm ván 17mm/m² + 0.25 tấm hậu 6mm/m²';
+      techNotes = 'Sâu 200mm nên 1 tấm 1220mm xẻ được 6 dải sâu 200mm rất lợi ván.';
+    } else if (['R21', 'R52'].includes(rawCode) || rawCode.includes('LAM') || rawCode.includes('HUỲNH') || rawCode.includes('HUYNH')) {
+      group = 6;
+      name = 'Vách ốp nan Lam sóng hoặc Soi huỳnh CNC';
+      unit = 'M2';
+      norm17mm = 0.52;
+      normBack6mm = 0;
+      formulaNote = '0.52 tấm/m² (Bao gồm hao hụt phay CNC và xương lót gắn tường)';
+      techNotes = 'Gia công CNC rãnh/lam đòi hỏi ván dày hoặc chập đôi xương liên kết.';
+    } else if (['R06', 'R23', 'R25', 'R34', 'R43'].includes(rawCode) || rawCode.includes('VÁCH') || rawCode.includes('VACH')) {
+      group = 6;
+      name = 'Vách ốp phẳng trang trí (Dày 17mm)';
+      unit = 'M2';
+      norm17mm = 0.40;
+      normBack6mm = 0;
+      formulaNote = '0.40 tấm/m² (Trừ hao hụt ghép vân & xương lót ~15% còn 2.50 m² thành phẩm / tấm)';
+      techNotes = 'Áp dụng cho vách ốp phẳng Melamin, không soi huỳnh rãnh.';
+    } else if (['R33', 'R42'].includes(rawCode) || rawCode.includes('GIƯỜNG') || rawCode.includes('GIUONG')) {
+      group = 7;
+      name = 'Giường ngủ bo cong không đầu giường (1600×2000 / 1800×2000)';
+      unit = 'Cái';
+      norm17mm = 3.40;
+      normBack6mm = 0;
+      formulaNote = '3.3 – 3.5 tấm / cái (Chuẩn thực chiến: 3.4 tấm/cái)';
+      techNotes = 'Gồm phản giường 2 tấm (1.4 tấm) + 3 vai/đuôi bo cong chập đôi + hệ xương/thang chịu lực (2.0 tấm).';
+    } else if (['R04', 'R24', 'R36', 'R39', 'R46'].includes(rawCode) || rawCode.includes('KỆ TIVI') || rawCode.includes('KE TIVI') || rawCode.includes('BÀN HỌC') || rawCode.includes('BAN HOC') || rawCode.includes('BÀN PHẤN') || rawCode.includes('BAN PHAN')) {
+      group = 8;
+      name = 'Kệ tivi / Bàn học / Bàn phấn treo bo góc (Sâu 400–550 × Cao 150–300)';
+      unit = 'Md';
+      norm17mm = 0.60;
+      normBack6mm = 0.15;
+      formulaNote = '0.55 – 0.65 tấm ván 17mm/md (Chuẩn: 0.60) + 0.15 tấm hậu/đáy ngăn kéo 6mm/md';
+      techNotes = 'Khung cánh MDF/PVC, ray bi/giảm chấn, có ngăn kéo âm bo góc CNC.';
+    } else {
+      // Tìm kiếm dự phòng trong STANDARD_CNC_NORMS
+      const fallback = STANDARD_CNC_NORMS.find(n => n.id === rawCode);
+      if (fallback) {
+        group = 0;
+        name = fallback.name;
+        unit = fallback.unit;
+        norm17mm = (fallback.core_norm.mdf_17mm || 0) + (fallback.core_norm.pvc_17mm || 0);
+        normBack6mm = (fallback.core_norm.back_6mm || 0) + (fallback.core_norm.pvc_6mm || 0);
+        formulaNote = fallback.formula_note;
+        techNotes = fallback.tech_notes;
+      } else {
+        return {
+          error: 'Mã hoặc nhóm định mức không hợp lệ: ' + code,
+          supported_codes: ['R09', 'R08', 'R10', 'R27/R40/R49', 'R05', 'R06/R23/R25', 'R21/R52', 'R33/R42', 'R04/R24/R36']
+        };
+      }
+    }
+
+    // Tính toán lượng ván 17mm & hậu 6mm
+    let sheets17mm = norm17mm * quantity;
+    let sheetsBack6mm = normBack6mm * quantity;
+
+    // Khấu trừ cánh kính tủ áo (nếu có)
+    let glassDeductionSheets = 0;
+    if (deductionGlass17mm > 0 && glassM2 > 0) {
+      glassDeductionSheets = Math.min(sheets17mm, glassM2 * deductionGlass17mm);
+      sheets17mm = Math.max(0, sheets17mm - glassDeductionSheets);
+    }
+
+    const totalSheets = sheets17mm + sheetsBack6mm;
+
+    return {
+      code: rawCode,
+      group_number: group,
+      name: name,
+      unit: unit,
+      quantity: quantity,
+      glass_door_m2: glassM2,
+      sheet_specs: {
+        dimensions: '1220 × 2440 mm',
+        sheet_area_m2: SHEET_AREA_M2
+      },
+      breakdown: {
+        sheets_17mm: parseFloat(sheets17mm.toFixed(2)),
+        sheets_back_6mm: parseFloat(sheetsBack6mm.toFixed(2)),
+        glass_deduction_sheets: parseFloat(glassDeductionSheets.toFixed(2)),
+        total_sheets: parseFloat(totalSheets.toFixed(2))
+      },
+      norms_applied: {
+        norm_17mm_per_unit: norm17mm,
+        norm_back_6mm_per_unit: normBack6mm,
+        norm_carcase: normCarcase,
+        norm_door: normDoor
+      },
+      formula_explanation: formulaNote,
+      technical_notes: techNotes,
+      anti_mistake_rule: group === 1 ? 'KHÓA CỨNG: Bếp dưới 1.45 tấm/md, cấm báo nhầm thành 2.70 tấm/md!' : null
     };
   }
 
@@ -925,12 +1085,16 @@
     audit_data: AUDIT_PROJECT_NAM,
     detailed_items: DETAILED_ITEMS,
     calculateItemNorm: calculateItemNorm,
+    calculateProjectCncSheets: calculateProjectCncSheets,
     render: render,
     onNormSelected: onNormSelected,
     runLiveCalc: runLiveCalc,
     switchTab: switchTab,
     exportReport: exportReport
   };
+
+  // Backward compatibility alias
+  window.PG_W07 = window.PG_Modules_W07;
 
   console.log('[PG Home] Module W07 - Project Anh Nam CNC Norm loaded successfully.');
 

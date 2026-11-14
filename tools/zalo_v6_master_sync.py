@@ -34,6 +34,11 @@ import os
 import sys
 import time
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 import argparse
 import ctypes
 import subprocess

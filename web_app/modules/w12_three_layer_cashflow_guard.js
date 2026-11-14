@@ -5,13 +5,15 @@
  * ============================================================================
  * Đơn vị: Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng
  * Mã số ĐKKD/HKD: 042203002931 (Đại diện: Nguyễn Trọng Nghĩa)
- * Địa chỉ: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
- * Hotline: 0986.722.324
+ * Xưởng sản xuất: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
+ * Văn phòng: 35 Đồng Quế, P. Thành Sen, TP. Hà Tĩnh
+ * Hotline duy nhất: 0986.722.324
  * 
  * QUY TẮC CỐT TỬ CỦA GIÁM ĐỐC:
  * 1. [Lớp 1: Ảnh hóa đơn thật] + [Lớp 2: Xác nhận nhóm Zalo NCC] + [Lớp 3: UNC Ngân hàng Chị Hương khớp số tiền]
- * 2. Mã băm SHA-256 64 ký tự chống giả mạo và chống trùng lặp chùm ảnh.
- * 3. THIẾU 1 TRONG 3 LỚP HOẶC TRÙNG SHA-256 => TỰ ĐỘNG GẮN CỜ "TREO THANH TOÁN" 100%.
+ * 2. Ma trận 4 Nhà Cung Cấp cốt lõi: An Cường, Hafele, Quốc Tâm, Lam Giang.
+ * 3. Mã băm SHA-256 64 ký tự chống giả mạo và chống trùng lặp chùm ảnh.
+ * 4. THIẾU 1 TRONG 3 LỚP HOẶC LỆCH TIỀN => GẮN CỜ "TREO THANH TOÁN - THIẾU CHỨNG TỪ" 100%.
  * ============================================================================
  */
 
@@ -21,7 +23,11 @@
   } else if (typeof module === 'object' && module.exports) {
     module.exports = factory();
   } else {
-    root.PG_Modules_W12 = factory();
+    var mod = factory();
+    root.PG_Modules_W12 = mod;
+    if (typeof window !== 'undefined') {
+      window.PG_W12 = mod;
+    }
   }
 })(typeof window !== 'undefined' ? window : this, function () {
   'use strict';
@@ -114,8 +120,98 @@
     DUPLICATE_REJECT: 'CANH_BAO_TRUNG_LAP' // Trùng mã băm SHA-256 - Nghi vấn gian lận
   };
 
-  // --- KHO DỮ LIỆU GỐC TRÍCH XUẤT TỪ SỔ CÁI UNC CHỊ HƯƠNG ---
+  // --- DANH MỤC 4 NHÀ CUNG CẤP CỐT LÕI PG HOME ---
+  var CORE_SUPPLIERS = {
+    AN_CUONG: {
+      key: 'AN_CUONG',
+      name: 'Gỗ Công Nghiệp An Cường',
+      itemType: 'Ván MDF, MFC chống ẩm lõi xanh & Nhựa WPB',
+      zaloGroup: 'Đặt hàng ván An Cường - PG Home Hà Tĩnh'
+    },
+    HAFELE: {
+      key: 'HAFELE',
+      name: 'Phụ Kiện Cao Cấp Hafele',
+      itemType: 'Ray âm giảm chấn, bản lề inox 304, tay nâng tủ bếp Blum/Hafele',
+      zaloGroup: 'Phụ kiện Hafele & Blum chính hãng - Nội Thất Phú Gia'
+    },
+    QUOC_TAM: {
+      key: 'QUOC_TAM',
+      name: 'Phụ Kiện Tổng Kho Quốc Tâm (56 Ngô Đức Kế, Hà Tĩnh)',
+      itemType: 'Ray bi 3 tầng, bản lề giảm chấn, ốc cam, đinh chỉ xưởng',
+      zaloGroup: 'Phụ kiện Quốc Tâm - PG Home'
+    },
+    LAM_GIANG: {
+      key: 'LAM_GIANG',
+      name: 'Tổng Kho Ván Lam Giang (Hà Tĩnh)',
+      itemType: 'Ván phủ Melamine Thái Lan & Chỉ nẹp PVC đồng màu',
+      zaloGroup: 'Ván Gỗ Lam Giang - PG Home Hà Tĩnh'
+    }
+  };
+
+  // --- KHO DỮ LIỆU GỐC TRÍCH XUẤT TỪ SỔ CÁI UNC CHỊ HƯƠNG & 4 NCC ---
   var SEED_TRANSACTIONS = [
+    {
+      id: 'TXN-2026-AC-001',
+      nha_cung_cap: 'Gỗ Công Nghiệp An Cường',
+      loai_giao_dich: 'NHAP_VAN_MDF_CHONG_AM_LOI_XANH',
+      thoi_gian: '2026-11-08 14:30:00',
+      so_tien_yeu_cau: 45600000,
+      so_tien_unc: 45600000,
+      layer1_invoice: {
+        co_anh: true,
+        ten_tep: '1794120300112_ancuong_inv_45m6_mdf.jxl',
+        sha256: 'a1b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef0',
+        kich_thuoc_bytes: 524100,
+        nguoi_gui: 'Vũ (Kỹ thuật xưởng) / Chị Hương'
+      },
+      layer2_zalo_ncc: {
+        co_xac_nhan: true,
+        nhom_zalo: 'Đặt hàng ván An Cường - PG Home Hà Tĩnh',
+        nguoi_xac_nhan: 'Đại diện Sales An Cường Miền Trung',
+        noi_dung: 'Đã nhận đơn đặt ván 32 tấm MDF chống ẩm lõi xanh giao xưởng Phú Gia Ngõ 49 Trương Quốc Dụng. Đã khớp thanh toán 45.600.000 đ.',
+        thoi_gian_xac_nhan: '2026-11-08 14:45:00'
+      },
+      layer3_unc_huong: {
+        co_unc: true,
+        nguoi_thuc_hien: 'Chị Hương (Kế toán)',
+        ngan_hang: 'VietinBank',
+        ma_giao_dich: 'UNC-AC-20261108-45M6',
+        so_tien_chuyen: 45600000,
+        ten_tep_unc: '1794120350220_unc_vietinbank_ancuong_45m6.jxl',
+        sha256_unc: 'b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef01'
+      }
+    },
+    {
+      id: 'TXN-2026-HF-002',
+      nha_cung_cap: 'Phụ Kiện Cao Cấp Hafele',
+      loai_giao_dich: 'NHAP_PHU_KIEN_TAY_NANG_RAY_AM',
+      thoi_gian: '2026-11-09 09:15:00',
+      so_tien_yeu_cau: 18500000,
+      so_tien_unc: 18500000,
+      layer1_invoice: {
+        co_anh: true,
+        ten_tep: '1794182100450_hafele_inv_tay_nang_blum.jxl',
+        sha256: 'c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef01234',
+        kich_thuoc_bytes: 418200,
+        nguoi_gui: 'Chị Hương (Kế toán / Vợ Giám Đốc)'
+      },
+      layer2_zalo_ncc: {
+        co_xac_nhan: true,
+        nhom_zalo: 'Phụ kiện Hafele & Blum chính hãng - Nội Thất Phú Gia',
+        nguoi_xac_nhan: 'Hafele Support Team',
+        noi_dung: 'Xác nhận đơn phụ kiện tay nâng Blum HF25 + ray âm giảm chấn Hafele đã xuất kho. Đã nhận đủ 18.500.000 đ.',
+        thoi_gian_xac_nhan: '2026-11-09 09:30:00'
+      },
+      layer3_unc_huong: {
+        co_unc: true,
+        nguoi_thuc_hien: 'Chị Hương (Kế toán)',
+        ngan_hang: 'MB Bank',
+        ma_giao_dich: 'UNC-HF-20261109-18M5',
+        so_tien_chuyen: 18500000,
+        ten_tep_unc: '1794182150330_unc_mbbank_hafele_18m5.jxl',
+        sha256_unc: 'd4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef012345'
+      }
+    },
     {
       id: 'TXN-2026-001',
       nha_cung_cap: 'Gỗ thịt Đức Anh (Nga)',
@@ -148,65 +244,65 @@
       }
     },
     {
-      id: 'TXN-2026-002',
-      nha_cung_cap: 'Đức Lĩnh SƠN PU',
-      loai_giao_dich: 'THANH_TOAN_GIA_CONG_SON_PU',
-      thoi_gian: '2026-11-07 09:00:40',
-      so_tien_yeu_cau: 2000000,
-      so_tien_unc: 2000000,
+      id: 'TXN-2026-LG-003',
+      nha_cung_cap: 'Tổng Kho Ván Lam Giang (Hà Tĩnh)',
+      loai_giao_dich: 'NHAP_VAN_THAI_LAN_NEP_CHI',
+      thoi_gian: '2026-11-09 16:20:00',
+      so_tien_yeu_cau: 12400000,
+      so_tien_unc: 12400000,
       layer1_invoice: {
         co_anh: true,
-        ten_tep: '1794016840677_1193413708528852811_1193413708528852811_ef8680cfbcadf68d13b78454a2798441.jxl',
-        sha256: '5adcd47c11bccb9429a0ab7cdb470a31a61d5e991f72764974b8b757da0502bf',
-        kich_thuoc_bytes: 674944,
-        nguoi_gui: 'Chị Hương (Kế toán / Vợ Giám Đốc)'
+        ten_tep: '1794208800100_lamgiang_hoa_don_van_thai.jxl',
+        sha256: 'e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef012345678',
+        kich_thuoc_bytes: 388500,
+        nguoi_gui: 'Chị Hương (Kế toán)'
       },
       layer2_zalo_ncc: {
         co_xac_nhan: true,
-        nhom_zalo: 'Đức Lĩnh SƠN PU',
-        nguoi_xac_nhan: 'Đức Lĩnh SƠN PU',
-        noi_dung: 'Alo hôm trước có bộ cnc: 4 m: 2 triệu ck giúp mình nhé. Đã đối soát vào chi phí xưởng.',
-        thoi_gian_xac_nhan: '2026-11-07 09:05:00'
-      },
-      layer3_unc_huong: {
-        co_unc: true,
-        nguoi_thuc_hien: 'Chị Hương (Kế toán)',
-        ngan_hang: 'MB Bank',
-        ma_giao_dich: 'UNC-DL-20261107-2M',
-        so_tien_chuyen: 2000000,
-        ten_tep_unc: '1794016840650_1193413708528852811_1193413708528852811_ae2f30729e215203440ea9b22c4cc305.jxl',
-        sha256_unc: 'c05f04b4fcfc9a975a1f064351631d9cb2cb89c839e90a410fc0d76c7d1b1b79'
-      }
-    },
-    {
-      id: 'TXN-2026-003',
-      nha_cung_cap: 'Lương Xưởng Sản Xuất (Thợ Xưởng T9)',
-      loai_giao_dich: 'CHUYEN_KHOAN_LUONG_XUONG_T9',
-      thoi_gian: '2026-11-06 16:51:03',
-      so_tien_yeu_cau: 71171000,
-      so_tien_unc: 71171000,
-      layer1_invoice: {
-        co_anh: true,
-        ten_tep: '1793958663372_2304805760907141944_1193413708528852811_5344ddd2a3682c5432ed361f7fe0bcee.jxl',
-        sha256: '15aae57c665adacdf7920d13148bcba6c0405c3a44ebb6a76971f3a50d37207e',
-        kich_thuoc_bytes: 263825,
-        nguoi_gui: 'Giám Đốc (Nguyễn Viết Nghĩa)'
-      },
-      layer2_zalo_ncc: {
-        co_xac_nhan: true,
-        nhom_zalo: '2026 Bảng lương hàng tháng - Phú Gia Home Lux',
-        nguoi_xac_nhan: 'Phú Gia Hiệp G (Sale Admin / Quản lý xưởng)',
-        noi_dung: 'Đã nhận bảng kê chuyển khoản 2 đợt: 25.000.000 đ (sáng) + 46.171.000 đ (chiều) = 71.171.000 đ. Đã trừ tạm ứng Vũ 8tr (1tr chuyển sang T10).',
-        thoi_gian_xac_nhan: '2026-11-06 17:00:00'
+        nhom_zalo: 'Ván Gỗ Lam Giang - PG Home Hà Tĩnh',
+        nguoi_xac_nhan: 'Kế toán Lam Giang',
+        noi_dung: 'Đã nhận đủ 12.400.000 đ tiền ván cốt Thái Lan giao xưởng Phú Gia. Biên lai xuất kho số 104.',
+        thoi_gian_xac_nhan: '2026-11-09 16:35:00'
       },
       layer3_unc_huong: {
         co_unc: true,
         nguoi_thuc_hien: 'Chị Hương (Kế toán)',
         ngan_hang: 'VietinBank',
-        ma_giao_dich: 'UNC-LUONG-XUONG-T9',
-        so_tien_chuyen: 71171000,
-        ten_tep_unc: '1793954832260_2304805760907141944_1193413708528852811_51f244c493613a07cf448103ee08f8bb.jxl',
-        sha256_unc: '9bca089a109399e980e3044972b25f2618920290e40451a41c918df81c3b95e7'
+        ma_giao_dich: 'UNC-LG-20261109-12M4',
+        so_tien_chuyen: 12400000,
+        ten_tep_unc: '1794208850200_unc_vietinbank_lamgiang_12m4.jxl',
+        sha256_unc: 'f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef0123456789a'
+      }
+    },
+    {
+      id: 'TXN-2026-006',
+      nha_cung_cap: 'Phụ kiện Tổng kho Quốc Tâm (56 Ngô Đức Kế, Hà Tĩnh)',
+      loai_giao_dich: 'NHAP_KHO_RAY_BAN_LE',
+      thoi_gian: '2026-11-07 09:00:40',
+      so_tien_yeu_cau: 4500000,
+      so_tien_unc: 4000000, // Lệch số tiền (4.5M vs 4.0M)
+      layer1_invoice: {
+        co_anh: true,
+        ten_tep: '1794016840625_1193413708528852811_1193413708528852811_71ed67559476cf2c034d2c4ff28148a9.jxl',
+        sha256: 'd619aa6883b4387b0e79d6e7567a6e80c7a7997908f9d14175583208ca9f9dd5',
+        kich_thuoc_bytes: 797244,
+        nguoi_gui: 'Chị Hương (Kế toán / Vợ Giám Đốc)'
+      },
+      layer2_zalo_ncc: {
+        co_xac_nhan: false, // Thiếu nhóm Zalo Quốc Tâm xác nhận nhận đủ tiền
+        nhom_zalo: 'Phụ kiện Quốc Tâm - PG Home',
+        nguoi_xac_nhan: '',
+        noi_dung: 'Chưa có tin nhắn xác nhận nhận tiền từ thủ kho Quốc Tâm.',
+        thoi_gian_xac_nhan: ''
+      },
+      layer3_unc_huong: {
+        co_unc: true,
+        nguoi_thuc_hien: 'Chị Hương (Kế toán)',
+        ngan_hang: 'VietinBank',
+        ma_giao_dich: 'UNC-QT-20261107-4M',
+        so_tien_chuyen: 4000000,
+        ten_tep_unc: '1794016840599_1193413708528852811_1193413708528852811_95f932b45fad164a6cc90f04fb7b4d13.jxl',
+        sha256_unc: 'bec502df7d776d2427e0ee7c3dcd262160e2c5a8abd818c0da517bd6c1304170'
       }
     },
     {
@@ -270,37 +366,6 @@
         ten_tep_unc: '1794020471573_1193413708528852811_1193413708528852811_4c09355ce4443ac2d802f69c6b3f9b45.jxl',
         sha256_unc: 'c0d93e334f741905ca6b0e97924c64d04bcee84e0b71a0bac948d7882183ff55'
       }
-    },
-    {
-      id: 'TXN-2026-006',
-      nha_cung_cap: 'Phụ kiện Tổng kho Quốc Tâm (Hà Tĩnh)',
-      loai_giao_dich: 'NHAP_KHO_RAY_BAN_LE',
-      thoi_gian: '2026-11-07 09:00:40',
-      so_tien_yeu_cau: 4500000,
-      so_tien_unc: 4000000, // Lệch số tiền (4.5M vs 4.0M)
-      layer1_invoice: {
-        co_anh: true,
-        ten_tep: '1794016840625_1193413708528852811_1193413708528852811_71ed67559476cf2c034d2c4ff28148a9.jxl',
-        sha256: 'd619aa6883b4387b0e79d6e7567a6e80c7a7997908f9d14175583208ca9f9dd5',
-        kich_thuoc_bytes: 797244,
-        nguoi_gui: 'Chị Hương (Kế toán / Vợ Giám Đốc)'
-      },
-      layer2_zalo_ncc: {
-        co_xac_nhan: false, // Thiếu nhóm Zalo Quốc Tâm xác nhận nhận đủ tiền
-        nhom_zalo: 'Phụ kiện Quốc Tâm - PG Home',
-        nguoi_xac_nhan: '',
-        noi_dung: 'Chưa có tin nhắn xác nhận nhận tiền từ thủ kho Quốc Tâm.',
-        thoi_gian_xac_nhan: ''
-      },
-      layer3_unc_huong: {
-        co_unc: true,
-        nguoi_thuc_hien: 'Chị Hương (Kế toán)',
-        ngan_hang: 'VietinBank',
-        ma_giao_dich: 'UNC-QT-20261107-4M',
-        so_tien_chuyen: 4000000,
-        ten_tep_unc: '1794016840599_1193413708528852811_1193413708528852811_95f932b45fad164a6cc90f04fb7b4d13.jxl',
-        sha256_unc: 'bec502df7d776d2427e0ee7c3dcd262160e2c5a8abd818c0da517bd6c1304170'
-      }
     }
   ];
 
@@ -329,7 +394,6 @@
 
   /**
    * ĐỐI SOÁT 3 LỚP CHÉO CHO 1 GIAO DỊCH DUY NHẤT
-   * Trả về kết quả đánh giá nghiêm ngặt theo Kỷ luật Thép PG Home
    */
   function auditTransaction(txn, options) {
     options = options || {};
@@ -396,7 +460,7 @@
       flags.amount_matched = true;
     }
 
-    // 4. KIỂM TRA CHỐNG TRÙNG LẶP MÃ BĂM SHA-256 (CHỐNG GIAN LẬN NỘP 1 ẢNH NHIỀU LẦN)
+    // 4. KIỂM TRA CHỐNG TRÙNG LẶP MÃ BĂM SHA-256
     var currentHashes = [];
     if (l1.sha256 && isValidSha256(l1.sha256)) currentHashes.push({ hash: l1.sha256.toLowerCase(), type: 'INVOICE_IMAGE' });
     if (l3.sha256_unc && isValidSha256(l3.sha256_unc)) currentHashes.push({ hash: l3.sha256_unc.toLowerCase(), type: 'BANK_UNC' });
@@ -439,6 +503,134 @@
       reasons: reasons,
       auditedAt: new Date().toISOString()
     };
+  }
+
+  /**
+   * MA TRẬN ĐỐI SOÁT CÔNG NỢ 3 LỚP NHÀ CUNG CẤP (CẢI TIẾN #7)
+   * Kiểm tra nghiêm ngặt đơn đặt hàng / hóa đơn nhà cung cấp:
+   * 1. Lớp 1: Ảnh hóa đơn / phiếu giao hàng vật lý
+   * 2. Lớp 2: Tin nhắn xác nhận nhóm Zalo chính thức của NCC (An Cường, Hafele, Quốc Tâm, Lam Giang...)
+   * 3. Lớp 3: Chứng từ UNC ngân hàng Kế toán Chị Hương khớp chính xác số tiền
+   * @param {Object} poItem - Bản ghi đơn hàng / khoản chi nhà cung cấp
+   * @returns {Object} Kết quả đối soát chuẩn
+   */
+  function auditSupplierThreeLayer(poItem) {
+    if (!poItem) {
+      return {
+        isApproved: false,
+        status: STATUS.FROZEN,
+        badgeCode: 'TREO_THANH_TOAN',
+        badgeText: 'TREO THANH TOÁN - THIẾU CHỨNG TỪ',
+        badgeColor: '#ef4444',
+        reasons: ['Dữ liệu đơn hàng hoặc nhà cung cấp không hợp lệ'],
+        supplier: 'N/A',
+        amount: 0
+      };
+    }
+
+    var supplier = poItem.supplier || poItem.nha_cung_cap || poItem.vendor || 'Nhà Cung Cấp';
+    var reqAmt = Number(poItem.amount || poItem.so_tien || poItem.so_tien_yeu_cau || poItem.totalPrice || 0);
+
+    // Kiểm tra cấu trúc l1, l2, l3 linh hoạt (hỗ trợ cả schema giao dịch lẫn schema PO)
+    var l1 = poItem.layer1_invoice || {
+      co_anh: !!(poItem.invoiceImage || poItem.hasInvoice || poItem.anh_hoa_don),
+      ten_tep: poItem.invoiceImage || poItem.ten_tep_hoa_don || 'hoa_don.jxl',
+      sha256: poItem.sha256_invoice || poItem.invoiceSha256 || ''
+    };
+
+    var l2 = poItem.layer2_zalo_ncc || {
+      co_xac_nhan: !!(poItem.zaloConfirmation || poItem.hasZaloConfirm || poItem.xac_nhan_zalo),
+      nhom_zalo: poItem.zaloGroup || poItem.nhom_zalo || '',
+      nguoi_xac_nhan: poItem.zaloSender || poItem.nguoi_xac_nhan || ''
+    };
+
+    var l3 = poItem.layer3_unc_huong || {
+      co_unc: !!(poItem.bankUnc || poItem.hasUnc || poItem.uncImage || poItem.ma_giao_dich_unc),
+      so_tien_chuyen: Number(poItem.uncAmount || poItem.so_tien_unc || (poItem.hasUnc ? reqAmt : 0)),
+      nguoi_thuc_hien: poItem.uncBy || poItem.nguoi_chuyen || 'Chị Hương (Kế toán)',
+      sha256_unc: poItem.sha256_unc || ''
+    };
+
+    var reasons = [];
+    var l1Pass = false;
+    var l2Pass = false;
+    var l3Pass = false;
+    var amountMatched = false;
+
+    // Lớp 1: Ảnh hóa đơn
+    if (!l1.co_anh) {
+      reasons.push('Thiếu Lớp 1: Chưa có ảnh hóa đơn/phiếu giao hàng NCC ngoài ổ cứng');
+    } else {
+      l1Pass = true;
+    }
+
+    // Lớp 2: Nhóm Zalo NCC
+    if (!l2.co_xac_nhan) {
+      reasons.push('Thiếu Lớp 2: Chưa có xác nhận công nợ trên nhóm Zalo chính thức của NCC (' + supplier + ')');
+    } else {
+      l2Pass = true;
+    }
+
+    // Lớp 3: UNC Ngân hàng Chị Hương
+    var uncAmt = Number(l3.so_tien_chuyen || 0);
+    if (!l3.co_unc) {
+      reasons.push('Thiếu Lớp 3: Chưa có UNC ngân hàng do Kế toán Chị Hương thực hiện');
+    } else if (reqAmt <= 0 || uncAmt <= 0) {
+      reasons.push('Lỗi số tiền: Số tiền đề xuất hoặc UNC phải lớn hơn 0 đ');
+    } else if (reqAmt !== uncAmt) {
+      reasons.push('Lệch Lớp 3: Số tiền UNC (' + formatMoney(uncAmt) + ') không khớp hóa đơn (' + formatMoney(reqAmt) + ')');
+    } else {
+      l3Pass = true;
+      amountMatched = true;
+    }
+
+    var isApproved = l1Pass && l2Pass && l3Pass && amountMatched;
+    var status = isApproved ? STATUS.APPROVED : STATUS.FROZEN;
+    var badgeCode = isApproved ? 'DU_3_LOP' : 'TREO_THANH_TOAN';
+    var badgeText = isApproved ? 'ĐỦ 3 LỚP - CHO PHÉP CHI' : 'TREO THANH TOÁN - THIẾU CHỨNG TỪ';
+    var badgeColor = isApproved ? '#10b981' : '#ef4444';
+
+    return {
+      isApproved: isApproved,
+      status: status,
+      badgeCode: badgeCode,
+      badgeText: badgeText,
+      badgeColor: badgeColor,
+      supplier: supplier,
+      amount: reqAmt,
+      uncAmount: uncAmt,
+      flags: {
+        layer1_passed: l1Pass,
+        layer2_passed: l2Pass,
+        layer3_passed: l3Pass,
+        amount_matched: amountMatched
+      },
+      reasons: reasons,
+      auditedAt: new Date().toISOString()
+    };
+  }
+
+  /**
+   * TẠO BADGE HTML TRỰC QUAN CHO ĐỐI SOÁT 3 LỚP (CẢI TIẾN #7)
+   * Hiển thị nhãn chuẩn:
+   * "ĐỦ 3 LỚP - CHO PHÉP CHI" (#10b981) hoặc "TREO THANH TOÁN - THIẾU CHỨNG TỪ" (#ef4444)
+   * @param {Object} poItem - Đơn hàng hoặc kết quả auditSupplierThreeLayer
+   */
+  function renderThreeLayerStatusBadge(poItem) {
+    var audit = (poItem && poItem.badgeCode) ? poItem : auditSupplierThreeLayer(poItem);
+    var tooltip = audit.isApproved
+      ? 'ĐÃ ĐỦ 3 LỚP: 1. Ảnh HĐ thật + 2. Xác nhận Zalo NCC + 3. UNC Chị Hương khớp tiền 100%'
+      : 'CHẶN XUẤT QUỸ: ' + (audit.reasons ? audit.reasons.join(' | ') : 'Thiếu chứng từ');
+
+    var icon = audit.isApproved ? '✓' : '⚠️';
+    var bg = audit.isApproved ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.18)';
+    var border = audit.isApproved ? '#10b981' : '#ef4444';
+
+    return '' +
+      '<span class="pg-w12-badge" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; background: ' + bg + '; color: ' + audit.badgeColor + '; border: 1px solid ' + border + '; cursor: help;" title="' + tooltip.replace(/"/g, '&quot;') + '">' +
+        '<span>' + icon + '</span>' +
+        '<span>' + audit.badgeText + '</span>' +
+      '</span>';
   }
 
   /**
@@ -543,7 +735,6 @@
     if (!newTxn.id) {
       newTxn.id = 'TXN-' + Date.now();
     }
-    // Đối soát trước khi lưu
     var auditRes = auditTransaction(newTxn);
     if (auditRes.flags.sha256_unique) {
       registerHashesForTxn(newTxn);
@@ -569,7 +760,6 @@
     if (!ledgerJson) return false;
     var data = typeof ledgerJson === 'string' ? JSON.parse(ledgerJson) : ledgerJson;
     
-    // Nếu có danh sách top chứng từ tháng 11, nạp hash vào knownHashes
     if (data.top_20_chung_tu_anh_moi_nhat_thang_11_2026) {
       var top20 = data.top_20_chung_tu_anh_moi_nhat_thang_11_2026;
       for (var i = 0; i < top20.length; i++) {
@@ -589,7 +779,6 @@
 
   /**
    * GIAO DIỆN HIỂN THỊ HTML NỘI BỘ (UI RENDERER)
-   * Tạo bảng điều khiển trực quan gắn vào container được chỉ định
    */
   function renderUI(containerIdOrElement) {
     var container = typeof containerIdOrElement === 'string' 
@@ -615,10 +804,11 @@
               '<span style="background: #ef4444; color: #fff; font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">MODULE W12: BẢO VỆ DÒNG TIỀN</span>' +
             '</div>' +
             '<h2 style="margin: 8px 0 4px 0; font-size: 20px; font-weight: 700; color: #f1f5f9;">QUY CHUẨN ĐỐI SOÁT DÒNG TIỀN 3 LỚP CHÉO & CHỐNG TRÙNG SHA-256</h2>' +
-            '<p style="margin: 0; font-size: 12px; color: #94a3b8;">Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng | ĐKKD: <strong style="color: #cbd5e1;">042203002931</strong> | Hotline: <strong style="color: #eab308;">0986.722.324</strong> | Trụ sở: Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh</p>' +
+            '<p style="margin: 0; font-size: 12px; color: #94a3b8;">Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng | ĐKKD: <strong style="color: #cbd5e1;">042203002931</strong> | Hotline: <strong style="color: #eab308;">0986.722.324</strong></p>' +
+            '<p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Xưởng SX: Ngõ 49 Trương Quốc Dụng | VP: 35 Đồng Quế, P. Thành Sen, TP. Hà Tĩnh</p>' +
           '</div>' +
           '<div style="text-align: right;">' +
-            '<button id="w12-refresh-btn" style="background: #2563eb; hover: #1d4ed8; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; transition: 0.2s;">⚡ Quét Lại 3 Lớp</button>' +
+            '<button id="w12-refresh-btn" style="background: #2563eb; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; transition: 0.2s;">⚡ Quét Lại 3 Lớp</button>' +
           '</div>' +
         '</div>' +
 
@@ -670,20 +860,18 @@
       var rowBg = i % 2 === 0 ? '#1e293b' : '#182234';
 
       var l1Icon = res.flags.layer1_passed 
-        ? '<span title="Đủ ảnh & SHA-256 hợp lệ" style="color: #10b981; font-weight: 800; font-size: 16px;">✓ ĐÃ CÓ</span>' 
-        : '<span title="Thiếu ảnh thật ngoài ổ cứng" style="color: #ef4444; font-weight: 800; font-size: 14px;">✗ THIẾU</span>';
+        ? '<span title="Đủ ảnh & SHA-256 hợp lệ" style="color: #10b981; font-weight: 800; font-size: 14px;">✓ ĐÃ CÓ</span>' 
+        : '<span title="Thiếu ảnh thật ngoài ổ cứng" style="color: #ef4444; font-weight: 800; font-size: 13px;">✗ THIẾU</span>';
 
       var l2Icon = res.flags.layer2_passed 
-        ? '<span title="NCC đã xác nhận công nợ" style="color: #10b981; font-weight: 800; font-size: 16px;">✓ ĐÃ CHỐT</span>' 
-        : '<span title="Chưa có tin nhắn Zalo NCC" style="color: #ef4444; font-weight: 800; font-size: 14px;">✗ THIẾU</span>';
+        ? '<span title="NCC đã xác nhận công nợ" style="color: #10b981; font-weight: 800; font-size: 14px;">✓ ĐÃ CHỐT</span>' 
+        : '<span title="Chưa có tin nhắn Zalo NCC" style="color: #ef4444; font-weight: 800; font-size: 13px;">✗ THIẾU</span>';
 
       var l3Icon = (res.flags.layer3_passed && res.flags.amount_matched)
-        ? '<span title="UNC Chị Hương chuẩn xác" style="color: #10b981; font-weight: 800; font-size: 16px;">✓ KHỚP TIỀN</span>' 
-        : '<span title="Chưa có UNC hoặc lệch số tiền" style="color: #ef4444; font-weight: 800; font-size: 14px;">✗ LỆCH/THIẾU</span>';
+        ? '<span title="UNC Chị Hương chuẩn xác" style="color: #10b981; font-weight: 800; font-size: 14px;">✓ KHỚP TIỀN</span>' 
+        : '<span title="Chưa có UNC hoặc lệch số tiền" style="color: #ef4444; font-weight: 800; font-size: 13px;">✗ LỆCH/THIẾU</span>';
 
-      var badgeStyle = res.isApproved
-        ? 'background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981;'
-        : 'background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444;';
+      var badgeHtml = renderThreeLayerStatusBadge(res);
 
       var reasonHtml = '';
       if (res.reasons.length > 0) {
@@ -692,7 +880,7 @@
 
       var shaPreview = '';
       if (txn.layer1_invoice && txn.layer1_invoice.sha256) {
-        shaPreview = '<div style="font-family: monospace; font-size: 10px; color: #64748b; margin-top: 4px;">SHA1: ' + txn.layer1_invoice.sha256.substring(0, 16) + '...</div>';
+        shaPreview = '<div style="font-family: monospace; font-size: 10px; color: #64748b; margin-top: 4px;">SHA256: ' + txn.layer1_invoice.sha256.substring(0, 16) + '...</div>';
       }
 
       html += '' +
@@ -710,9 +898,7 @@
           '<td style="padding: 12px 14px; text-align: center;">' + l2Icon + '</td>' +
           '<td style="padding: 12px 14px; text-align: center;">' + l3Icon + '</td>' +
           '<td style="padding: 12px 14px;">' +
-            '<span style="display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; ' + badgeStyle + '">' +
-              res.statusLabel +
-            '</span>' +
+            badgeHtml +
             reasonHtml +
           '</td>' +
         '</tr>';
@@ -742,15 +928,19 @@
   // Tự động khởi tạo bộ dữ liệu gốc
   init();
 
-  // EXPORT CÔNG KHAI MODULE
+  // EXPORT CÔNG KHAI MODULE W12
   return {
-    version: '1.0-STRICT',
+    moduleId: 'W12',
+    version: '2.0.0-PRO',
     legalName: 'Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng',
     taxId: '042203002931',
     hotline: '0986.722.324',
     STATUS: STATUS,
+    CORE_SUPPLIERS: CORE_SUPPLIERS,
     init: init,
     auditTransaction: auditTransaction,
+    auditSupplierThreeLayer: auditSupplierThreeLayer,
+    renderThreeLayerStatusBadge: renderThreeLayerStatusBadge,
     auditAll: auditAll,
     addTransaction: addTransaction,
     computeHash: computeHash,

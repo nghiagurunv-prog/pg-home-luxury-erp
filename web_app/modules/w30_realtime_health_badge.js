@@ -1,20 +1,25 @@
 /**
- * PG HOME LUXURY - REALTIME SYSTEM HEALTH BADGE MODULE (W30)
- * Module: window.PG_Modules_W30
+ * ============================================================================
+ * PG HOME LUXURY - REALTIME SYSTEM HEALTH & NETWORK SYNC BADGE MODULE (W30)
+ * Module: window.PG_Modules_W30 & window.PG_W30
  * File: web_app/modules/w30_realtime_health_badge.js
+ * Cải tiến UX & Hạ tầng: #30 (Network Sync Status Pill: Trực Tuyến / Ngoại Tuyến / Đang Đồng Bộ)
  * 
  * Chức năng:
- * - Hiển thị huy hiệu trạng thái Cloud Vercel + Zalo Stealth Daemon góc màn hình.
+ * - Hiển thị huy hiệu trạng thái Cloud Vercel + Zalo Stealth Daemon + Network Sync.
  * - Tự động ping định kỳ /api/health và /api/zalo-v6-health đo độ trễ ms.
- * - Giám sát tính toàn vẹn Zero-Disruption của Zalo Stealth Reader & Window Sentinel.
+ * - Hiển thị 3 trạng thái đồng bộ:
+ *   + 🟢 Trực Tuyến (Đã Lưu)
+ *   + 🟡 Ngoại Tuyến (Lưu Tạm)
+ *   + 🔵 Đang Đồng Bộ...
+ * - Lắng nghe sự kiện online/offline của trình duyệt và các CustomEvent:
+ *   'pg:sync-start', 'pg:sync-complete', 'pg:data-pending'.
  * - Giao diện Glassmorphism sang trọng, chuẩn Brand PG Home Luxury.
+ * ============================================================================
  */
 
 (function (window, document) {
   'use strict';
-
-  // Khởi tạo namespace toàn cục
-  window.PG_Modules_W30 = window.PG_Modules_W30 || {};
 
   const CONFIG = {
     badgeId: 'pg-w30-health-badge',
@@ -32,6 +37,12 @@
     timer: null,
     isPinging: false,
     lastChecked: null,
+    sync: {
+      status: navigator.onLine ? 'saved' : 'pending', // 'saved', 'pending', 'syncing'
+      statusText: navigator.onLine ? '🟢 Trực Tuyến (Đã Lưu)' : '🟡 Ngoại Tuyến (Lưu Tạm)',
+      pendingCount: 0,
+      lastSyncTime: new Date()
+    },
     vercel: {
       status: 'pending', // 'healthy', 'degraded', 'offline', 'pending'
       latencyMs: 0,
@@ -103,11 +114,13 @@
         flex-shrink: 0;
         position: relative;
       }
-      .pg-w30-dot-healthy {
+      .pg-w30-dot-healthy,
+      .pg-w30-dot-saved {
         background-color: #10b981;
         box-shadow: 0 0 8px #10b981;
       }
-      .pg-w30-dot-healthy::after {
+      .pg-w30-dot-healthy::after,
+      .pg-w30-dot-saved::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -117,7 +130,8 @@
         opacity: 0.6;
         animation: pg-w30-pulse 2s infinite ease-out;
       }
-      .pg-w30-dot-warning {
+      .pg-w30-dot-warning,
+      .pg-w30-dot-pending {
         background-color: #f59e0b;
         box-shadow: 0 0 8px #f59e0b;
       }
@@ -125,8 +139,10 @@
         background-color: #ef4444;
         box-shadow: 0 0 8px #ef4444;
       }
-      .pg-w30-dot-pending {
-        background-color: #64748b;
+      .pg-w30-dot-syncing {
+        background-color: #3b82f6;
+        box-shadow: 0 0 8px #3b82f6;
+        animation: pg-w30-pulse 1s infinite ease-out;
       }
 
       @keyframes pg-w30-pulse {
@@ -157,7 +173,7 @@
         position: absolute;
         bottom: calc(100% + 12px);
         right: 0;
-        width: 320px;
+        width: 330px;
         background: rgba(15, 23, 42, 0.94);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
@@ -236,9 +252,10 @@
         font-weight: 600;
         text-transform: uppercase;
       }
-      .pg-w30-tag-healthy { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-      .pg-w30-tag-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+      .pg-w30-tag-healthy, .pg-w30-tag-saved { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+      .pg-w30-tag-warning, .pg-w30-tag-pending { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
       .pg-w30-tag-offline { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+      .pg-w30-tag-syncing { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
 
       .pg-w30-footer {
         display: flex;
@@ -270,8 +287,16 @@
     container.innerHTML = `
       <div class="pg-w30-card" id="pg-w30-popover">
         <div class="pg-w30-card-header">
-          <div class="pg-w30-brand-title">PG HOME LIVE HEALTH</div>
+          <div class="pg-w30-brand-title">PG HOME LIVE HEALTH & SYNC</div>
           <button type="button" class="pg-w30-btn-refresh" id="pg-w30-refresh-btn">Ping ngay</button>
+        </div>
+
+        <div class="pg-w30-item">
+          <div class="pg-w30-item-head">
+            <span class="pg-w30-item-title">Đồng Bộ Dữ Liệu (Sync Pill)</span>
+            <span class="pg-w30-tag pg-w30-tag-saved" id="pg-w30-card-sync-tag">ONLINE</span>
+          </div>
+          <div class="pg-w30-item-body" id="pg-w30-card-sync-body">Trạng thái: 🟢 Trực Tuyến (Đã Lưu)</div>
         </div>
 
         <div class="pg-w30-item">
@@ -299,7 +324,14 @@
         </div>
       </div>
 
-      <div class="pg-w30-pill" id="pg-w30-pill-btn" title="Bấm để xem chi tiết trạng thái hệ thống PG Home">
+      <div class="pg-w30-pill" id="pg-w30-pill-btn" title="Bấm để xem chi tiết sức khỏe hệ thống & trạng thái đồng bộ PG Home">
+        <div class="pg-w30-service" id="pg-w30-service-sync">
+          <span class="pg-w30-dot pg-w30-dot-saved" id="pg-w30-dot-sync"></span>
+          <span class="pg-w30-label" id="pg-w30-label-sync">Đã Lưu</span>
+        </div>
+
+        <div class="pg-w30-divider"></div>
+
         <div class="pg-w30-service">
           <span class="pg-w30-dot pg-w30-dot-pending" id="pg-w30-dot-vercel"></span>
           <span class="pg-w30-label">Cloud</span>
@@ -318,7 +350,6 @@
 
     document.body.appendChild(container);
 
-    // Event listener bấm mở/đóng popover
     const pillBtn = container.querySelector('#pg-w30-pill-btn');
     pillBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -331,7 +362,6 @@
       window.PG_Modules_W30.pingAll();
     });
 
-    // Bấm ra ngoài tự đóng
     document.addEventListener('click', (e) => {
       if (!container.contains(e.target) && state.isExpanded) {
         window.PG_Modules_W30.toggleExpand(false);
@@ -361,7 +391,7 @@
       let data = null;
       try {
         data = await res.json();
-      } catch (err) {
+      } catch (_) {
         data = null;
       }
 
@@ -384,9 +414,75 @@
   }
 
   /**
+   * Cải tiến #30: getNetworkSyncBadgeState()
+   * Lấy snapshot trạng thái mạng và tiến trình đồng bộ thời gian thực
+   */
+  function getNetworkSyncBadgeState() {
+    return {
+      online: navigator.onLine,
+      syncState: state.sync.status, // 'saved', 'pending', 'syncing'
+      statusText: state.sync.statusText,
+      pendingCount: state.sync.pendingCount,
+      lastSyncTime: state.sync.lastSyncTime,
+      vercel: { ...state.vercel },
+      zalo: { ...state.zalo }
+    };
+  }
+
+  /**
+   * Cải tiến #30: renderSyncStatusPill()
+   * Render huy hiệu 3 trạng thái:
+   * 🟢 Trực Tuyến (Đã Lưu) | 🟡 Ngoại Tuyến (Lưu Tạm) | 🔵 Đang Đồng Bộ...
+   */
+  function renderSyncStatusPill() {
+    const dotSync = document.getElementById('pg-w30-dot-sync');
+    const labelSync = document.getElementById('pg-w30-label-sync');
+    const cardSyncTag = document.getElementById('pg-w30-card-sync-tag');
+    const cardSyncBody = document.getElementById('pg-w30-card-sync-body');
+
+    if (!dotSync || !labelSync) return;
+
+    if (state.sync.status === 'syncing') {
+      dotSync.className = 'pg-w30-dot pg-w30-dot-syncing';
+      labelSync.textContent = 'Đang Đồng Bộ...';
+      if (cardSyncTag) {
+        cardSyncTag.className = 'pg-w30-tag pg-w30-tag-syncing';
+        cardSyncTag.textContent = 'SYNCING';
+      }
+      if (cardSyncBody) {
+        cardSyncBody.textContent = `Trạng thái: 🔵 Đang Đồng Bộ... (${state.sync.pendingCount} gói)`;
+      }
+    } else if (state.sync.status === 'pending' || !navigator.onLine) {
+      dotSync.className = 'pg-w30-dot pg-w30-dot-pending';
+      labelSync.textContent = 'Ngoại Tuyến (Lưu Tạm)';
+      if (cardSyncTag) {
+        cardSyncTag.className = 'pg-w30-tag pg-w30-tag-warning';
+        cardSyncTag.textContent = 'OFFLINE';
+      }
+      if (cardSyncBody) {
+        cardSyncBody.textContent = `Trạng thái: 🟡 Ngoại Tuyến (Lưu Tạm ${state.sync.pendingCount > 0 ? state.sync.pendingCount + ' bản ghi' : 'an toàn'})`;
+      }
+    } else {
+      // Saved / Online
+      dotSync.className = 'pg-w30-dot pg-w30-dot-saved';
+      labelSync.textContent = 'Đã Lưu';
+      if (cardSyncTag) {
+        cardSyncTag.className = 'pg-w30-tag pg-w30-tag-saved';
+        cardSyncTag.textContent = 'ONLINE';
+      }
+      if (cardSyncBody) {
+        const timeStr = state.sync.lastSyncTime ? state.sync.lastSyncTime.toLocaleTimeString('vi-VN') : 'Mới';
+        cardSyncBody.textContent = `Trạng thái: 🟢 Trực Tuyến (Đã Lưu lúc ${timeStr})`;
+      }
+    }
+  }
+
+  /**
    * Cập nhật UI theo State hiện tại
    */
   function renderUI() {
+    renderSyncStatusPill();
+
     // 1. Vercel Pill elements
     const dotVercel = document.getElementById('pg-w30-dot-vercel');
     const msVercel = document.getElementById('pg-w30-ms-vercel');
@@ -453,7 +549,6 @@
       state.vercel.message = 'Sẵn sàng kết nối';
       state.vercel.data = res.data;
     } else {
-      // Nếu 404 hoặc không phản hồi Vercel API
       state.vercel.status = res.status === 404 ? 'warning' : 'offline';
       state.vercel.message = res.error || `Lỗi status ${res.status}`;
     }
@@ -473,7 +568,6 @@
       state.zalo.storageStatus = res.data.storage || 'Accessible (LevelDB/Noise)';
       state.zalo.details = res.data;
     } else {
-      // Khi chạy dev hoặc offline, kiểm tra nếu có fallback
       state.zalo.status = res.status === 404 ? 'warning' : 'offline';
       state.zalo.sentinelStatus = res.status === 404 ? 'API 404 (Chế độ Local Standby)' : 'Chưa kết nối Daemon';
       state.zalo.storageStatus = 'Kiểm tra Daemon nền';
@@ -481,11 +575,60 @@
   }
 
   /**
-   * Module API
+   * Cập nhật trạng thái đồng bộ dữ liệu
    */
-  window.PG_Modules_W30 = {
-    version: '1.0.0',
-    name: 'W30 Realtime Health Badge',
+  function setSyncState(status, text, pendingCount = 0) {
+    state.sync.status = status;
+    state.sync.statusText = text || (status === 'saved' ? '🟢 Trực Tuyến (Đã Lưu)' : (status === 'syncing' ? '🔵 Đang Đồng Bộ...' : '🟡 Ngoại Tuyến (Lưu Tạm)'));
+    if (typeof pendingCount === 'number') {
+      state.sync.pendingCount = pendingCount;
+    }
+    if (status === 'saved') {
+      state.sync.lastSyncTime = new Date();
+    }
+    renderUI();
+  }
+
+  /**
+   * Lắng nghe sự kiện Online / Offline & Custom Sync Events
+   */
+  function bindNetworkEvents() {
+    window.addEventListener('online', () => {
+      console.log('[PG_W30] Kết nối Internet đã khôi phục. Đang tự động đồng bộ...');
+      setSyncState('syncing', '🔵 Đang Đồng Bộ...', state.sync.pendingCount);
+      window.PG_Modules_W30.pingAll().then(() => {
+        setTimeout(() => {
+          setSyncState('saved', '🟢 Trực Tuyến (Đã Lưu)', 0);
+        }, 800);
+      });
+    });
+
+    window.addEventListener('offline', () => {
+      console.warn('[PG_W30] Mất kết nối Internet. Chuyển sang chế độ Ngoại Tuyến (Lưu Tạm).');
+      setSyncState('pending', '🟡 Ngoại Tuyến (Lưu Tạm)', state.sync.pendingCount);
+    });
+
+    window.addEventListener('pg:sync-start', (e) => {
+      const count = (e.detail && e.detail.count) || 1;
+      setSyncState('syncing', '🔵 Đang Đồng Bộ...', count);
+    });
+
+    window.addEventListener('pg:sync-complete', () => {
+      setSyncState('saved', '🟢 Trực Tuyến (Đã Lưu)', 0);
+    });
+
+    window.addEventListener('pg:data-pending', (e) => {
+      const count = (e.detail && e.detail.pendingCount) || (state.sync.pendingCount + 1);
+      setSyncState('pending', '🟡 Ngoại Tuyến (Lưu Tạm)', count);
+    });
+  }
+
+  /**
+   * ĐỐI TƯỢNG MODULE API CHÍNH THỨC
+   */
+  const PG_W30_EXPORT = {
+    version: '2.0.0',
+    name: 'W30 Realtime Health & Network Sync Badge',
 
     init: function (opts) {
       if (opts) {
@@ -495,6 +638,7 @@
 
       injectStyles();
       createBadgeDom();
+      bindNetworkEvents();
       renderUI();
 
       this.pingAll();
@@ -546,6 +690,10 @@
       return JSON.parse(JSON.stringify(state));
     },
 
+    getNetworkSyncBadgeState: getNetworkSyncBadgeState,
+    renderSyncStatusPill: renderSyncStatusPill,
+    setSyncState: setSyncState,
+
     destroy: function () {
       this.stopPolling();
       const el = document.getElementById(CONFIG.badgeId);
@@ -555,7 +703,10 @@
     }
   };
 
-  // Tự động khởi chạy khi trang đã sẵn sàng
+  // Export đồng thời cả PG_Modules_W30 và PG_W30 để tương thích 100%
+  window.PG_Modules_W30 = PG_W30_EXPORT;
+  window.PG_W30 = PG_W30_EXPORT;
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => window.PG_Modules_W30.init());
   } else {

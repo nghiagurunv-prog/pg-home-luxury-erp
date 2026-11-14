@@ -104,7 +104,7 @@
             categoryLabel: "Chỉnh sửa số liệu",
             action: "Bóc tách vật tư & Tách khoán gỗ thịt",
             target: "Dự án Biệt thự Trần Phú - Hạng mục Sofa Gõ Đỏ & Phụ kiện",
-            user: "Nguyễn Trọng Hiệp",
+            user: "Tống Trần Hiệp",
             userRole: "VANPHONG_SALE",
             details: "Tách woodVal và pkVal: Không tính khoán xưởng 15% thợ và 40% vật tư trên gỗ thịt tự nhiên mua ngoài.",
             diff: {
@@ -140,7 +140,7 @@
             categoryLabel: "Chỉnh sửa số liệu",
             action: "Chốt công nhật & Trích Quỹ thợ nòng cốt",
             target: "Bảng chấm công xưởng - Thợ Hòa & Thợ Hào",
-            user: "Trần Đình Vũ",
+            user: "Hoàng Công Vũ",
             userRole: "XUONG_VATTU",
             details: "Ghi nhận 26 công thợ Hòa (530k/công), 26 công thợ Hào (450k/công). Tự động trích 20.000 đ/công vào Quỹ thợ nòng cốt cuối năm.",
             diff: {
@@ -536,6 +536,7 @@
     W47.addAuditEntry = function (entry, autoRender = true) {
         if (!entry) return;
 
+        const prevHash = W47.logs.length > 0 ? (W47.logs[0].sha256 || 'GENESIS_042203002931') : 'GENESIS_042203002931';
         const standardized = {
             id: entry.id || ("AUD-" + Date.now()),
             timestamp: entry.timestamp || new Date().toISOString().replace('T', ' ').substring(0, 19),
@@ -547,13 +548,22 @@
             userRole: entry.userRole || "GIAM_DOC",
             details: entry.details || "",
             diff: entry.diff || null,
-            sha256: entry.sha256 || W47.generateMockHash(),
+            prevHash: prevHash,
+            sha256: "",
             status: entry.status || "SUCCESS",
             badgeClass: entry.badgeClass || (entry.category === "APPROVAL" ? "badge-approval" : (entry.category === "ZALO_SYNC" ? "badge-zalo" : "badge-edit"))
         };
+        standardized.sha256 = entry.sha256 || W47.computeEntryHash(standardized);
 
         W47.logs.unshift(standardized);
         W47.sortLogs();
+        if (typeof window.fetch === 'function') {
+            fetch('/api/save-audit-log', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(standardized)
+            }).catch(() => {});
+        }
 
         if (autoRender) {
             W47.applyFilter();
@@ -565,14 +575,20 @@
         W47.logs.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
     };
 
-    W47.generateMockHash = function () {
-        const hex = '0123456789abcdef';
-        let hash = '';
-        for (let i = 0; i < 64; i++) {
-            hash += hex[Math.floor(Math.random() * 16)];
+    W47.computeEntryHash = function (rec) {
+        const raw = `${rec.id}|${rec.timestamp}|${rec.category}|${rec.action}|${rec.target}|${rec.user}|${rec.prevHash || ''}|PG_AUDIT_V34`;
+        if (typeof window !== 'undefined' && typeof window.pgSha256HexSync === 'function') {
+            return window.pgSha256HexSync(raw);
         }
-        return hash;
+        let h1 = 0xdeadbeef ^ raw.length, h2 = 0x41c6ce57 ^ raw.length;
+        for (let i = 0; i < raw.length; i++) {
+            const ch = raw.charCodeAt(i);
+            h1 = Math.imul(h1 ^ ch, 2654435761);
+            h2 = Math.imul(h2 ^ ch, 1597334677);
+        }
+        return ((h1 >>> 0).toString(16).padStart(8, '0') + (h2 >>> 0).toString(16).padStart(8, '0')).repeat(4);
     };
+    W47.generateMockHash = W47.computeEntryHash;
 
     /**
      * Lọc danh sách bản ghi kiểm toán

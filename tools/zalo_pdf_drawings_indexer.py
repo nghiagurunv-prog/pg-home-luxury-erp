@@ -5,6 +5,11 @@ Nhiệm vụ Flash Worker #05 - PG Home Luxury
 """
 
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 import os
 import re
 from datetime import datetime

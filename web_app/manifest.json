@@ -1,12 +1,30 @@
 {
-  "name": "PG Home Luxury - Quản Trị CCSC Doanh Nghiệp 2026",
+  "name": "PG Home Luxury - Hệ Thống Vận Hành Văn Phòng & Xưởng 2026",
   "short_name": "PG Home",
-  "description": "Hệ thống Quản trị Tài chính CCSC & Vận hành Doanh nghiệp PG Home Luxury",
+  "description": "Hệ thống Quản trị Dự toán, Hợp đồng, Chấm công & Đặt hàng Vật tư PG Home Luxury",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#080C15",
   "theme_color": "#D4AF37",
+  "shortcuts": [
+    {
+      "name": "Dự Toán & Báo Giá",
+      "short_name": "Dự Toán",
+      "url": "./index.html#tab-du-toan-du-an"
+    },
+    {
+      "name": "Chấm Công Real-Time",
+      "short_name": "Chấm Công",
+      "url": "./index.html#tab-cham-cong-all"
+    },
+    {
+      "name": "Đặt Hàng Vật Tư PO",
+      "short_name": "Đặt PO",
+      "url": "./index.html#tab-phe-duyet-vat-tu"
+    }
+  ],
   "icons": [
     {
       "src": "./icon-192.png",

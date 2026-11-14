@@ -384,7 +384,7 @@
     const clientPool = [
         "Anh Văn Mai Phụ", "Anh Hải Toàn Lưu", "Anh Dũng Tỉnh Đội", "Bạn Hà K36 Hương Khê",
         "Chị Phượng Thạch Hà", "Anh Bình Pg Home Thạch Hà", "Chị Nga Cẩm Xuyên", "Anh Tuấn Can Lộc",
-        "Anh Nam Biệt Thự Sông Trí", "Anh Minh Hồng Lĩnh", "Chị Thủy Vũ Quang", "Anh Hòa Lộc Hà"
+        "Anh Nam Biệt Thự Sông Trí", "Nhà Anh Công (Hà Tĩnh)", "Chị Thủy Vũ Quang", "Anh Hòa Lộc Hà"
     ];
 
     while (rawEntities.length < 105) {

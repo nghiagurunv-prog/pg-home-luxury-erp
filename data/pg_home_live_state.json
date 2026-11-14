@@ -393,7 +393,7 @@
       "supplier": "Xưởng Sofa & Bàn Ăn Khánh HN",
       "status": "Đã bàn giao",
       "category": "loose_furniture",
-      "po": "PO-2026-1010"
+      "po": "PO-2026-1007"
     },
     {
       "code": "VT-19",
@@ -405,7 +405,7 @@
       "supplier": "Xưởng Sofa & Bàn Ăn Khánh HN",
       "status": "Đã bàn giao",
       "category": "loose_furniture",
-      "po": "PO-2026-1010"
+      "po": "PO-2026-1007"
     },
     {
       "code": "VT-20",
@@ -609,6 +609,19 @@
       "status": "Đang sản xuất & đặt cánh ALD"
     },
     {
+      "code": "HĐ-2026-1002",
+      "client": "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
+      "rep": "Nguyễn Viết Nghĩa",
+      "type": "Sale Ban GĐ",
+      "total": 345412030,
+      "wood": 289412030,
+      "pk": 56000000,
+      "comm": 0,
+      "date": "17/10/2026",
+      "month": 10,
+      "status": "Đang thi công 65%"
+    },
+    {
       "code": "HĐ-2026-1003",
       "client": "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
       "rep": "Nguyễn Viết Nghĩa",
@@ -634,13 +647,26 @@
       "date": "28/10/2026",
       "month": 10,
       "status": "Vừa ra ván Lam Giang (ĐH29767)"
+    },
+    {
+      "code": "HĐ-2026-1101",
+      "client": "Nhà Anh Nam (TP. Hà Tĩnh)",
+      "rep": "Nguyễn Viết Nghĩa",
+      "type": "Sale Ban GĐ",
+      "total": 665280785,
+      "wood": 540280785,
+      "pk": 125000000,
+      "comm": 0,
+      "date": "06/11/2026",
+      "month": 11,
+      "status": "Đang sản xuất & lắp đặt 55%"
     }
   ],
   "users": [
     {
       "id": 1,
       "username": "giamdoc",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Nguyễn Viết Nghĩa",
       "phone": "0986.722.324",
       "role": "ADMIN",
@@ -651,7 +677,7 @@
     {
       "id": 2,
       "username": "thaixuong",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Nguyễn Văn Thái",
       "phone": "0915.223.456",
       "role": "XUONG_VATTU",
@@ -662,7 +688,7 @@
     {
       "id": 3,
       "username": "vuvattu",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Hoàng Công Vũ",
       "phone": "0911.006.880",
       "role": "XUONG_VATTU",
@@ -673,7 +699,7 @@
     {
       "id": 4,
       "username": "hoatho",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Hà Viết Hòa",
       "phone": "0972.334.556",
       "role": "THO_XUONG",
@@ -684,7 +710,7 @@
     {
       "id": 5,
       "username": "haotho",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Lương Thể Hào",
       "phone": "0983.445.667",
       "role": "THO_XUONG",
@@ -695,7 +721,7 @@
     {
       "id": 6,
       "username": "thoantho",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Lê Văn Thoan",
       "phone": "0976.556.778",
       "role": "THO_XUONG",
@@ -706,7 +732,7 @@
     {
       "id": 7,
       "username": "anhtho",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Trần Văn Anh",
       "phone": "0968.667.889",
       "role": "THO_XUONG",
@@ -717,7 +743,7 @@
     {
       "id": 8,
       "username": "tuananh",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Tuấn Anh",
       "phone": "0971.778.990",
       "role": "THO_XUONG",
@@ -728,7 +754,7 @@
     {
       "id": 9,
       "username": "hiepsale",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Tống Trần Hiệp",
       "phone": "0977.112.233",
       "role": "VANPHONG_SALE",
@@ -739,7 +765,7 @@
     {
       "id": 10,
       "username": "dungsale",
-      "password": "123",
+      "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullName": "Đường Việt Dũng",
       "phone": "0982.889.901",
       "role": "VANPHONG_SALE",
@@ -759,7 +785,9 @@
       "remain": 69803651,
       "deadline": "30/10/2026",
       "risk": "Thấp",
-      "month": 9
+      "month": 9,
+      "_isOverdue": true,
+      "_daysOver": 15
     },
     {
       "client": "Chị Phượng (Nghi Xuân)",
@@ -771,7 +799,9 @@
       "remain": 6462996,
       "deadline": "25/09/2026",
       "risk": "Thấp",
-      "month": 9
+      "month": 9,
+      "_isOverdue": true,
+      "_daysOver": 50
     },
     {
       "client": "Anh Tuấn (TP. Hà Tĩnh)",
@@ -783,7 +813,9 @@
       "remain": 61800000,
       "deadline": "15/10/2026",
       "risk": "Quá hạn",
-      "month": 9
+      "month": 9,
+      "_isOverdue": true,
+      "_daysOver": 30
     },
     {
       "client": "Anh Hào (Kỳ Anh)",
@@ -795,7 +827,8 @@
       "remain": 0,
       "deadline": "Đã thu đủ",
       "risk": "An toàn",
-      "month": 9
+      "month": 9,
+      "_isOverdue": false
     },
     {
       "client": "Chị Hoa (Biệt Thự Thạch Bàn)",
@@ -807,7 +840,8 @@
       "remain": 58000000,
       "deadline": "15/11/2026",
       "risk": "Thấp",
-      "month": 10
+      "month": 10,
+      "_isOverdue": false
     },
     {
       "client": "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
@@ -819,7 +853,48 @@
       "remain": 117121609,
       "deadline": "08/11/2026 (Xong 95%)",
       "risk": "Cần thu ngay",
-      "month": 10
+      "month": 10,
+      "_isOverdue": true,
+      "_daysOver": 6
+    },
+    {
+      "client": "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
+      "total": 345412030,
+      "p1": 120000000,
+      "p2": 80000000,
+      "p3": 0,
+      "collected": 200000000,
+      "remain": 145412030,
+      "deadline": "20/11/2026",
+      "risk": "Thấp",
+      "month": 10,
+      "_isOverdue": false
+    },
+    {
+      "client": "Nhà Anh Nam (TP. Hà Tĩnh)",
+      "total": 665280785,
+      "p1": 200000000,
+      "p2": 100000000,
+      "p3": 0,
+      "collected": 300000000,
+      "remain": 365280785,
+      "deadline": "25/11/2026",
+      "risk": "Thấp",
+      "month": 11,
+      "_isOverdue": false
+    },
+    {
+      "client": "Nhà Anh Công (Hà Tĩnh)",
+      "total": 65000000,
+      "p1": 30000000,
+      "p2": 0,
+      "p3": 0,
+      "collected": 30000000,
+      "remain": 35000000,
+      "deadline": "18/11/2026",
+      "risk": "Thấp",
+      "month": 10,
+      "_isOverdue": false
     }
   ],
   "supplierDebts": [
@@ -896,7 +971,7 @@
     {
       "ncc": "Đặt Cánh Acrylic NTD / ALD",
       "rep": "Kỹ thuật ALD Miền Trung (Zalo ALD)",
-      "category": "Cánh Acrylic bóng gương noline chống trầy (Chị Hoa 12.21M + Shophouse Anh Minh 22.75M)",
+      "category": "Cánh Acrylic bóng gương noline chống trầy (Chị Hoa 12.21M + Nhà Anh Nam 22.75M)",
       "debt": 34960000,
       "note": "PO-1002 (11.1 md = 12.21M) + PO-1015 (18.2 m2 = 22.75M) = 34.96M",
       "deadline": "15/11/2026",
@@ -908,7 +983,7 @@
       "rep": "Nguyễn Thị Thuý",
       "category": "Gương tráng bạc 8 lớp, led cảm ứng",
       "debt": 6800000,
-      "note": "Theo PO-2026-1010 phòng tắm Master",
+      "note": "Theo PO-2026-1009 phòng tắm Master",
       "deadline": "06/11/2026",
       "status": "Gia công",
       "group": "Đặt hàng Kính, Gương Phú Gia"
@@ -964,6 +1039,26 @@
       "price": 14290000,
       "cost": 10003000,
       "profit": 4287000
+    },
+    {
+      "id": "PK-06",
+      "client": "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
+      "item": "Bộ thiết bị bếp từ, hút mùi, chậu vòi & phụ kiện tủ bếp Eurogold",
+      "brand": "Hafele & Eurogold",
+      "month": 10,
+      "price": 56000000,
+      "cost": 39200000,
+      "profit": 16800000
+    },
+    {
+      "id": "PK-07",
+      "client": "Nhà Anh Nam (TP. Hà Tĩnh)",
+      "item": "Trọn bộ phụ kiện bếp Blum/Hafele, đá bàn bếp & thiết bị thông minh",
+      "brand": "Blum & Hafele",
+      "month": 11,
+      "price": 125000000,
+      "cost": 87500000,
+      "profit": 37500000
     }
   ],
   "expenses": [
@@ -1251,7 +1346,7 @@
       "status": "APPROVED",
       "approvedBy": "Nguyễn Viết Nghĩa (Giám Đốc)",
       "approvedAt": "30/10/2026 16:30:00",
-      "sourceFile": "Don_dat_kinh_Viet_Nhat_30_10_2026.pdf",
+      "sourceFile": "/chung_tu/07_DON_DAT_KINH_VIET_NHAT_2776K_30_10_2026.jpg",
       "note": "Bản chốt kỹ thuật kính sóng temper 8mm mài xiết cạnh"
     },
     {
@@ -1396,10 +1491,10 @@
       "category": "Kính cường lực 8-10mm, Kính màu ốp bếp, Phụ kiện nhôm kính",
       "supplier": "Kính Việt Nhật VSG (Thoan VSG)",
       "members": 6,
-      "lastActivity": "30/10/2026 (32 phút trước)",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Đang sản xuất",
       "debt": "Đã cọc 40% (1,110,720 đ) / Tổng đơn 2,776,800 đ",
-      "doc": "Don_dat_kinh_Viet_Nhat_30_10_2026.pdf",
+      "doc": "/chung_tu/07_DON_DAT_KINH_VIET_NHAT_2776K_30_10_2026.jpg",
       "cacheCount": 13,
       "note": "Vũ nhắn Thoan VSG đẩy tiến độ kính giao lắp hoàn thiện công trình."
     },
@@ -1409,10 +1504,10 @@
       "category": "Gỗ thịt tự nhiên (Gõ đỏ Pachy, Óc chó Bắc Mỹ, Sồi Nga)",
       "supplier": "Xưởng Cường Gỗ Thịt (Hà Nội)",
       "members": 4,
-      "lastActivity": "30/10/2026 (2 giờ trước)",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Gia công & Ghép mộng",
       "debt": "Đơn giá 1.700.000 đ/m2 cửa gỗ, cọc theo chuyến xe",
-      "doc": "Untitled.xlsx (Bóc tách chi tiết)",
+      "doc": "Hồ sơ bóc tách gỗ thịt (995 tệp Zalo)",
       "cacheCount": 995,
       "note": "Thái QLX phối hợp trực tiếp với Anh Cường. Kho 995 file thiết kế gia công gỗ thịt năm 2026."
     },
@@ -1422,12 +1517,12 @@
       "category": "Ván phủ Melamine, Phụ kiện ray âm bản lề DTC, Chỉ nẹp dán cạnh",
       "supplier": "Tổng Kho Lam Giang (TP Hà Tĩnh - Ms Hoa)",
       "members": 11,
-      "lastActivity": "04/11/2026 (14:33)",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Cung ứng thường xuyên",
-      "debt": "DƯ NỢ: 147,492,250 đ (Đã trừ 16.838M Dung CK 02/11 & Đơn 496k Vũ CK dứt điểm 04/11)",
-      "doc": "Đơn DH29930 (496k) & UNC VietinBank 16.838M",
+      "debt": "DƯ NỢ: 0 đ (Tổng 0 đ • Đã trả 0 đ)",
+      "doc": "/chung_tu/04_DON_DAT_HANG_LAM_GIANG_DH29930_496K_04_11_2026.jpg",
       "cacheCount": 259,
-      "note": "Vũ đặt 1 tấm HMR DWS 17 2M 201T + ship (496k) và tự CK Techcombank dứt điểm ngay lúc 14:33 ngày 04/11/2026 (Mã GD: FT26308882300013)."
+      "note": "Vũ đặt 1 tấm HMR DWS 17 2M 201T + ship (496k) và tự CK Techcombank dứt điểm ngày 04/11/2026 (Mã GD: FT26308882300013)."
     },
     {
       "id": "g495486322416346660",
@@ -1435,12 +1530,12 @@
       "category": "Bản lề giảm chấn, Ray bi 3 tầng, Pitton Blumk, Đèn led cảm ứng",
       "supplier": "Phụ Kiện Quốc Tâm (56 Ngô Đức Kế, TP Hà Tĩnh - Trần Quang Tú / Phan Thị Lan)",
       "members": 8,
-      "lastActivity": "04/11/2026 (11:52)",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "An toàn trong hạn mức",
-      "debt": "DƯ NỢ: 26,170,000 đ (Sổ nợ trang 296: Đã trả 15M ngày 02/11 + HĐ Led 170k ngày 04/11 + HĐ Sập/Ray 80k ngày 05/11)",
-      "doc": "HĐ 4/11 (170k Led) & Sổ nợ tay T296 & UNC VietinBank 15M",
+      "debt": "DƯ NỢ: 0 đ (Tổng 0 đ • Đã trả 0 đ)",
+      "doc": "/chung_tu/06_HOA_DON_QUOC_TAM_2_CUON_LED_170K_04_11_2026.jpg",
       "cacheCount": 64,
-      "note": "Dung CK Vietinbank trả 15M ngày 02/11 đưa nợ về 25.92M. Sáng 04/11 lấy thêm 2 cuộn Led 10m TT (170k) -> Nợ chốt 26.09M."
+      "note": "Dung CK Vietinbank trả 15M ngày 02/11 đưa nợ về 25.92M. Sáng 04/11 lấy thêm 2 cuộn Led 10m TT (170k) -> Nợ chốt 26.17M."
     },
     {
       "id": "g7737669618333682341",
@@ -1448,7 +1543,7 @@
       "category": "Đá nung kết Ceramic Calacatta, Tấm ốp PVC than tre giả đá",
       "supplier": "Hoàng Hà Ceramic PVC (Hưng Yên / Hà Tĩnh)",
       "members": 5,
-      "lastActivity": "29/10/2026 (Hôm qua)",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Gia công cắt CNC",
       "debt": "Cọc 30-50% đơn hàng đá, thanh toán dứt điểm khi giao tấm",
       "doc": "Bản vẽ bóc tách mặt đá bàn bếp & bàn đảo",
@@ -1461,10 +1556,10 @@
       "category": "Ván Plywood E0, MDF chống ẩm cốt xanh, Ván nhựa Picomat",
       "supplier": "Gỗ NT Cầu Vượt (Hà Tĩnh - 0979137123)",
       "members": 7,
-      "lastActivity": "23/10/2026",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Đối soát công nợ",
-      "debt": "DƯ NỢ HIỆN TẠI: 82,065,300 đ (Đã trừ 1 tấm trả 750,000 đ)",
-      "doc": "Don_tra_hang_NT_23_10_2026.jpg & Cong_no_NT_23_10_2026.jpg",
+      "debt": "DƯ NỢ HIỆN TẠI: 0 đ (Đã trừ 1 tấm trả 750.000 đ)",
+      "doc": "/chung_tu/01_BANG_DOI_SOAT_CONG_NO_NT_CAU_VUOT_82M_23_10_2026.jpg",
       "cacheCount": 80,
       "note": "NCC cung cấp ván gỗ CN chính của xưởng. Bảng đối soát các đơn DON00216 đến DON00274."
     },
@@ -1474,10 +1569,10 @@
       "category": "Ván Melamine Cường Thịnh cốt MDF/HMR chống ẩm",
       "supplier": "Cường Thịnh (Nga Melamine Cường Thịnh)",
       "members": 5,
-      "lastActivity": "03/09/2026",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Đã chốt bảng màu",
       "debt": "Thanh toán theo từng lô ván xuất xưởng",
-      "doc": "Bảng mã màu thực tế Melamine",
+      "doc": "Bảng mã màu thực tế Melamine Cường Thịnh",
       "cacheCount": 8,
       "note": "Chốt tone màu sồi tự nhiên và xám chì đồng bộ với thiết kế 3D của Hiệp."
     },
@@ -1487,11 +1582,11 @@
       "category": "Gỗ sồi Mỹ (Oak) xẻ sấy chuẩn FAS loại 1, Nan gỗ & Tay vịn",
       "supplier": "Sồi Đức Anh - Thu Hương (Hà Tĩnh)",
       "members": 5,
-      "lastActivity": "14/05/2026",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Đã nghiệm thu gạch sổ",
       "debt": "Đã tất toán theo khối lượng nghiệm thu",
-      "doc": "Sổ gạch đối soát khối lượng m3",
-      "cacheCount": 0,
+      "doc": "Sổ gạch đối soát khối lượng m3 gỗ sồi",
+      "cacheCount": 12,
       "note": "Cung cấp gỗ sồi tự nhiên cho hạng mục cầu thang và chi tiết chạm khắc."
     },
     {
@@ -1500,11 +1595,11 @@
       "category": "Kính tôi cường lực, Gương soi nghệ thuật mài vát cạnh",
       "supplier": "Kính Gương Phú Mỹ (TP Vinh - Nguyễn Thị Thúy)",
       "members": 5,
-      "lastActivity": "02/12/2025",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Dự phòng khu vực Bắc",
       "debt": "Không có dư nợ quá hạn",
       "doc": "Bảng giá gia công kính TP Vinh",
-      "cacheCount": 0,
+      "cacheCount": 6,
       "note": "Đơn vị cung cấp kính và gương bổ trợ khi xưởng làm công trình tại Nghi Xuân & Nghệ An."
     },
     {
@@ -1513,11 +1608,11 @@
       "category": "Cánh tủ Acrylic bóng gương No-Line công nghệ Đức",
       "supplier": "Acrylic ALD Hà Nội",
       "members": 5,
-      "lastActivity": "Theo từng hợp đồng",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Sẵn sàng nhận bóc tách",
-      "debt": "Cọc 50% theo kích thước cánh",
-      "doc": "Bảng báo giá cánh Noline ALD",
-      "cacheCount": 0,
+      "debt": "Theo PO-2026-1002 (12,210,000 đ - Đã xuất xưởng)",
+      "doc": "PO-2026-1002",
+      "cacheCount": 18,
       "note": "Chuyên dụng cho cánh tủ bếp trên và cánh tủ áo cao cấp không thấy đường line dán cạnh."
     },
     {
@@ -1526,11 +1621,11 @@
       "category": "Tấm nano than tre, Tấm PVC vân đá cẩm thạch Hoàng Gia",
       "supplier": "Vật Liệu Hoàng Gia",
       "members": 5,
-      "lastActivity": "Theo từng hợp đồng",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Sẵn sàng cung ứng",
       "debt": "Thanh toán theo khối lượng giao hàng",
       "doc": "Catalog tấm PVC vân đá 2026",
-      "cacheCount": 0,
+      "cacheCount": 9,
       "note": "Ốp vách trang trí sau sofa và vách tivi phong cách Luxury."
     },
     {
@@ -1539,11 +1634,11 @@
       "category": "Gương phôi Bỉ AGC tráng bạc 8 lớp, Đèn led cảm ứng viền",
       "supplier": "Xưởng Gương Kính Nghệ Thuật",
       "members": 5,
-      "lastActivity": "15/10/2026",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Đang đặt hàng",
       "debt": "6,800,000 đ (Gia công kính gương)",
       "doc": "Bản vẽ gương bàn phấn & phòng tắm",
-      "cacheCount": 0,
+      "cacheCount": 11,
       "note": "Chống ố mép, tráng bạc chống mốc hơi nước bảo hành 5 năm."
     },
     {
@@ -1552,11 +1647,11 @@
       "category": "Sofa bọc nỉ da góc L, Bàn ăn thông minh mặt đá 6-8 ghế Monet",
       "supplier": "Xưởng Đồ Rời Khánh (Hà Nội)",
       "members": 5,
-      "lastActivity": "20/09/2026",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Đã bàn giao",
-      "debt": "Theo PO-2026-1010 (28,000,000 đ)",
+      "debt": "Theo hợp đồng đồ rời (28,000,000 đ)",
       "doc": "Hình ảnh nghiệm thu sofa & bàn ăn",
-      "cacheCount": 0,
+      "cacheCount": 15,
       "note": "Mảng Phụ Kiện Bán Kèm mang lại 11.65M lãi gộp cho BGĐ trong T8 + T9."
     },
     {
@@ -1565,15 +1660,15 @@
       "category": "Vách ốp da nẹp PVD mút D40, Đệm đầu giường bọc da microfiber",
       "supplier": "Cơ sở Bọc Đệm Da Nỉ Hà Tĩnh",
       "members": 5,
-      "lastActivity": "18/10/2026",
+      "lastActivity": "14/11/2026 20:49 (Vừa đồng bộ)",
       "status": "Đã nghiệm thu",
       "debt": "0 đ (Đã thanh toán)",
       "doc": "Phiếu xuất kho xưởng bọc đệm",
-      "cacheCount": 0,
+      "cacheCount": 7,
       "note": "Đệm tựa êm ái tăng độ sang trọng cho phòng ngủ Master biệt thự."
     }
   ],
-  "appVersion": "2026.11.10_v28_50_IMPROVEMENTS_PATCHED",
+  "appVersion": "2026.11.14_v39_ZERO_TDZ_FULL_AUDIT",
   "timesheets": {
     "8": {
       "month": 8,
@@ -3673,6 +3768,717 @@
           "ot_tot": 20.5
         }
       ]
+    },
+    "11": {
+      "month": 11,
+      "days": [
+        {
+          "day": 1,
+          "dow": "CN"
+        },
+        {
+          "day": 2,
+          "dow": "T2"
+        },
+        {
+          "day": 3,
+          "dow": "T3"
+        },
+        {
+          "day": 4,
+          "dow": "T4"
+        },
+        {
+          "day": 5,
+          "dow": "T5"
+        },
+        {
+          "day": 6,
+          "dow": "T6"
+        },
+        {
+          "day": 7,
+          "dow": "T7"
+        },
+        {
+          "day": 8,
+          "dow": "CN"
+        },
+        {
+          "day": 9,
+          "dow": "T2"
+        },
+        {
+          "day": 10,
+          "dow": "T3"
+        },
+        {
+          "day": 11,
+          "dow": "T4"
+        },
+        {
+          "day": 12,
+          "dow": "T5"
+        },
+        {
+          "day": 13,
+          "dow": "T6"
+        },
+        {
+          "day": 14,
+          "dow": "T7"
+        },
+        {
+          "day": 15,
+          "dow": "CN"
+        },
+        {
+          "day": 16,
+          "dow": "T2"
+        },
+        {
+          "day": 17,
+          "dow": "T3"
+        },
+        {
+          "day": 18,
+          "dow": "T4"
+        },
+        {
+          "day": 19,
+          "dow": "T5"
+        },
+        {
+          "day": 20,
+          "dow": "T6"
+        },
+        {
+          "day": 21,
+          "dow": "T7"
+        },
+        {
+          "day": 22,
+          "dow": "CN"
+        },
+        {
+          "day": 23,
+          "dow": "T2"
+        },
+        {
+          "day": 24,
+          "dow": "T3"
+        },
+        {
+          "day": 25,
+          "dow": "T4"
+        },
+        {
+          "day": 26,
+          "dow": "T5"
+        },
+        {
+          "day": 27,
+          "dow": "T6"
+        },
+        {
+          "day": 28,
+          "dow": "T7"
+        },
+        {
+          "day": 29,
+          "dow": "CN"
+        },
+        {
+          "day": 30,
+          "dow": "T2"
+        }
+      ],
+      "vp": [
+        {
+          "id": "vp_13_11",
+          "name": "Tống Trần Hiệp",
+          "dept": "Văn phòng",
+          "role": "Sale Admin & Thiết kế 3D",
+          "days": [
+            "",
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "totalHC": 8
+        },
+        {
+          "id": "vp_14_11",
+          "name": "Đường Việt Dũng",
+          "dept": "Văn phòng",
+          "role": "Phòng Kinh Doanh",
+          "days": [
+            "",
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "totalHC": 8
+        }
+      ],
+      "xuong": [
+        {
+          "id": "x_2_11",
+          "name": "Hà Viết Hòa",
+          "dept": "Xưởng",
+          "role": "Thợ Cả / Kết cấu",
+          "hc": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "hc_tot": 9,
+          "ot": [
+            2.5,
+            2,
+            2.5,
+            2,
+            3,
+            2.5,
+            3,
+            "",
+            2,
+            2.5,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "ot_tot": 22
+        },
+        {
+          "id": "x_3_11",
+          "name": "Nguyễn Văn Thái",
+          "dept": "Xưởng",
+          "role": "Quản lý xưởng sản xuất",
+          "hc": [
+            "",
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "hc_tot": 8,
+          "ot": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "ot_tot": 0
+        },
+        {
+          "id": "x_4_11",
+          "name": "Lê Văn Thoan",
+          "dept": "Xưởng",
+          "role": "Thợ chính / Dán cạnh máy",
+          "hc": [
+            "",
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "hc_tot": 8,
+          "ot": [
+            "",
+            1.5,
+            2,
+            "",
+            2,
+            1.5,
+            2,
+            "",
+            1.5,
+            1.5,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "ot_tot": 12
+        },
+        {
+          "id": "x_5_11",
+          "name": "Hoàng Công Vũ",
+          "dept": "Xưởng",
+          "role": "Kỹ thuật CNC / Bóc tách vật tư",
+          "hc": [
+            "",
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "hc_tot": 8,
+          "ot": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "ot_tot": 0
+        },
+        {
+          "id": "x_6_11",
+          "name": "Lương Thể Hào",
+          "dept": "Xưởng",
+          "role": "Thợ chính / Lắp ráp",
+          "hc": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "hc_tot": 10,
+          "ot": [
+            2.5,
+            2,
+            2.5,
+            2,
+            2.5,
+            2.5,
+            3,
+            2,
+            2.5,
+            2.5,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "ot_tot": 24
+        },
+        {
+          "id": "x_7_11",
+          "name": "Trần Văn Anh",
+          "dept": "Xưởng",
+          "role": "Thợ lắp đặt & Hoàn thiện",
+          "hc": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "hc_tot": 9,
+          "ot": [
+            2,
+            1.5,
+            2,
+            2,
+            2.5,
+            2,
+            2.5,
+            "",
+            2,
+            2.5,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "ot_tot": 19
+        },
+        {
+          "id": "x_8_11",
+          "name": "Lê Tuấn Anh",
+          "dept": "Xưởng",
+          "role": "Thợ phụ / Đóng gói",
+          "hc": [
+            "",
+            1,
+            1,
+            1,
+            1,
+            0.5,
+            1,
+            "",
+            1,
+            1,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "hc_tot": 7.5,
+          "ot": [
+            "",
+            1.5,
+            "",
+            1.5,
+            2,
+            "",
+            1.5,
+            "",
+            1.5,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "ot_tot": 8
+        }
+      ]
     }
   },
   "xuongRecords": [
@@ -3813,6 +4619,36 @@
       "note": "Hoàn thiện 95% (Mới thu 50% = 117.12M, còn phải thu 117.12M; Bỏ PK bếp Kadinax + Blum 14.29M)"
     },
     {
+      "id": 10,
+      "month": 10,
+      "client": "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
+      "address": "TP. Hà Tĩnh",
+      "saleRep": "Nguyễn Viết Nghĩa",
+      "contractVal": 345412030,
+      "solidVal": 0,
+      "woodVal": 289412030,
+      "pkVal": 56000000,
+      "pct": 0.65,
+      "actualXuong": 188117820,
+      "debt": 145412030,
+      "note": "Đang sản xuất & lắp đặt 65% (Gỗ CN 289.41M + Phụ kiện bếp & thiết bị 56M)"
+    },
+    {
+      "id": 11,
+      "month": 11,
+      "client": "Nhà Anh Nam (TP. Hà Tĩnh)",
+      "address": "Đường Xuân Diệu, TP. Hà Tĩnh",
+      "saleRep": "Nguyễn Viết Nghĩa",
+      "contractVal": 665280785,
+      "solidVal": 0,
+      "woodVal": 540280785,
+      "pkVal": 125000000,
+      "pct": 0.55,
+      "actualXuong": 297154432,
+      "debt": 365280785,
+      "note": "Chốt BOQ thực chiến 06/11 (Gỗ CN 540.28M + Phụ kiện Hafele/Blum & đá 125M)"
+    },
+    {
       "id": 12,
       "month": 10,
       "client": "Nhà Anh Công (Hà Tĩnh)",
@@ -3826,6 +4662,431 @@
       "actualXuong": 10400000,
       "debt": 35000000,
       "note": "Vừa đặt ván HMR Thailan & nẹp Lam Giang 11.935M (ĐH DH29767)"
+    }
+  ],
+  "paymentHistory": [
+    {
+      "id": "PT-2026-0801",
+      "client": "Chị Hiển (Thạch Linh)",
+      "project": "Biệt thự Thạch Linh",
+      "amount": 30000000,
+      "date": "28/08/2026",
+      "method": "Chuyển khoản Vietcombank",
+      "reason": "Tạm ứng Đợt 1 ký hợp đồng",
+      "collector": "Tống Trần Hiệp",
+      "remaining": 99803651
+    },
+    {
+      "id": "PT-2026-0901",
+      "client": "Chị Hiển (Thạch Linh)",
+      "project": "Biệt thự Thạch Linh",
+      "amount": 30000000,
+      "date": "15/09/2026",
+      "method": "Chuyển khoản Vietcombank",
+      "reason": "Thanh toán Đợt 2 sau khi lắp xong phần gỗ xưởng",
+      "collector": "Tống Trần Hiệp",
+      "remaining": 69803651
+    },
+    {
+      "id": "PT-2026-0802",
+      "client": "Chị Phượng (Nghi Xuân)",
+      "project": "Nhà phố Nghi Xuân",
+      "amount": 20000000,
+      "date": "05/09/2026",
+      "method": "Chuyển khoản Techcombank",
+      "reason": "Tạm ứng Đợt 1 ra ván An Cường",
+      "collector": "Tống Trần Hiệp",
+      "remaining": 22462996
+    },
+    {
+      "id": "PT-2026-0902",
+      "client": "Chị Phượng (Nghi Xuân)",
+      "project": "Nhà phố Nghi Xuân",
+      "amount": 16000000,
+      "date": "20/09/2026",
+      "method": "Tiền mặt tại Văn phòng",
+      "reason": "Thanh toán Đợt 2 tiến độ hoàn thiện 95%",
+      "collector": "Tống Trần Hiệp",
+      "remaining": 6462996
+    },
+    {
+      "id": "PT-2026-0903",
+      "client": "Anh Tuấn (TP. Hà Tĩnh)",
+      "project": "Căn hộ TP. Hà Tĩnh",
+      "amount": 30000000,
+      "date": "12/09/2026",
+      "method": "Chuyển khoản Vietcombank",
+      "reason": "Tạm ứng Đợt 1",
+      "collector": "Đường Việt Dũng",
+      "remaining": 81800000
+    },
+    {
+      "id": "PT-2026-0904",
+      "client": "Anh Tuấn (TP. Hà Tĩnh)",
+      "project": "Căn hộ TP. Hà Tĩnh",
+      "amount": 20000000,
+      "date": "25/09/2026",
+      "method": "Chuyển khoản Vietcombank",
+      "reason": "Thanh toán Đợt 2 tiến độ 60%",
+      "collector": "Đường Việt Dũng",
+      "remaining": 61800000
+    },
+    {
+      "id": "PT-2026-0905",
+      "client": "Anh Hào (Kỳ Anh)",
+      "project": "Nhà phố Kỳ Anh",
+      "amount": 50000000,
+      "date": "01/09/2026",
+      "method": "Chuyển khoản BIDV",
+      "reason": "Tạm ứng Đợt 1",
+      "collector": "Đường Việt Dũng",
+      "remaining": 50600000
+    },
+    {
+      "id": "PT-2026-0906",
+      "client": "Anh Hào (Kỳ Anh)",
+      "project": "Nhà phố Kỳ Anh",
+      "amount": 35000000,
+      "date": "18/09/2026",
+      "method": "Chuyển khoản BIDV",
+      "reason": "Thanh toán Đợt 2",
+      "collector": "Đường Việt Dũng",
+      "remaining": 15600000
+    },
+    {
+      "id": "PT-2026-0907",
+      "client": "Anh Hào (Kỳ Anh)",
+      "project": "Nhà phố Kỳ Anh",
+      "amount": 15600000,
+      "date": "28/09/2026",
+      "method": "Tiền mặt tại công trình",
+      "reason": "Quyết toán Đợt 3 hoàn thành 100%",
+      "collector": "Đường Việt Dũng",
+      "remaining": 0
+    },
+    {
+      "id": "PT-2026-1001",
+      "client": "Chị Hoa (Biệt Thự Thạch Bàn)",
+      "project": "Biệt Thự Thạch Bàn",
+      "amount": 110000000,
+      "date": "05/10/2026",
+      "method": "Chuyển khoản Vietcombank",
+      "reason": "Tạm ứng Đợt 1 & Đợt 2 tập kết ván Thái",
+      "collector": "Tống Trần Hiệp",
+      "remaining": 110000000
+    },
+    {
+      "id": "PT-2026-1002",
+      "client": "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
+      "project": "Nhà phố Bác Sĩ Duẫn",
+      "amount": 150000000,
+      "date": "17/10/2026",
+      "method": "Chuyển khoản Techcombank",
+      "reason": "Tạm ứng Đợt 1 ký hợp đồng & nhập ván CNC",
+      "collector": "Đường Việt Dũng",
+      "remaining": 195412030
+    },
+    {
+      "id": "PT-2026-1003",
+      "client": "Bác Phát (Đường 26/03 - TP. Hà Tĩnh)",
+      "project": "Nhà Bác Phát Đường 26/03",
+      "amount": 90000000,
+      "date": "26/10/2026",
+      "method": "Chuyển khoản Vietcombank",
+      "reason": "Thanh toán Đợt 1 & 2 lắp đặt tủ bếp & tủ áo",
+      "collector": "Tống Trần Hiệp",
+      "remaining": 54840000
+    },
+    {
+      "id": "PT-2026-1101",
+      "client": "Nhà Anh Nam (TP. Hà Tĩnh)",
+      "project": "Biệt thự Anh Nam Xuân Diệu",
+      "amount": 250000000,
+      "date": "06/11/2026",
+      "method": "Chuyển khoản Vietcombank",
+      "reason": "Tạm ứng Đợt 1 khởi công CNC toàn bộ nội thất",
+      "collector": "Tống Trần Hiệp",
+      "remaining": 415280785
+    }
+  ],
+  "customProjects": [
+    {
+      "code": "CT-2026-1106",
+      "client": "Nhà Anh Nam (06/11/2026)",
+      "phone": "0986.722.324",
+      "address": "Đường Xuân Diệu, P. Thành Sen, TP. Hà Tĩnh",
+      "rep": "Nguyễn Trọng Nghĩa (BGĐ)",
+      "projType": "Biệt Thự / Nhà Phố",
+      "status": "Đã chuyển xưởng SX",
+      "total": 665280785,
+      "wood": 540280785,
+      "pk": 125000000,
+      "techNote": "56 hạng mục chuẩn Mục 24: Bếp dưới R09 3.77md (1.45 tấm/md), Bếp trên R08 + Kịch trần R10, Tủ áo R27 12.21m² (trừ lỗ mở R29 1.61m²), Cánh Acrylic Noline & Cánh kính Anode.",
+      "items": [
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Tủ bếp dưới R09 thùng nhựa đặc WPB An Cường 18mm + Cánh Acrylic Noline",
+          "material": "Thùng nhựa đặc WPB An Cường 18mm chống nước 100%, cánh Acrylic bóng gương An Cường (Định mức 1.45 tấm/md)",
+          "dim": "3770 x 600 x 860",
+          "unit": "md",
+          "qty": 3.77,
+          "price": 3900000,
+          "total": 14703000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Tủ bếp trên R08 + Kịch trần R10 MDF lõi xanh chống ẩm phủ Acrylic Noline",
+          "material": "Thùng MDF lõi xanh chống ẩm 17mm + Hậu 6mm đồng màu + Cánh Acrylic An Cường (Định mức 1.04 - 1.44 tấm/md)",
+          "dim": "3770 x 350 x 1470",
+          "unit": "md",
+          "qty": 7.54,
+          "price": 3200000,
+          "total": 24128000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Hệ vách ốp phẳng R06 + Tủ trang trí phòng khách R05 & Kệ Tivi bo cong R04",
+          "material": "MDF chống ẩm phủ Melamine vân gỗ óc chó + Lam sóng CNC R21 + Đèn LED thanh nhôm cảm ứng (Đã trừ giao cắt R05 8.51m²)",
+          "dim": "6200 x 350 x 2750",
+          "unit": "m2",
+          "qty": 38.5,
+          "price": 2450000,
+          "total": 94325000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "2. TẦNG 2 - PHÒNG NGỦ MASTER",
+          "name": "Hệ tủ áo kịch trần R27 cánh kính khung nhôm Anode tràn viền (Đã trừ cửa giấu khuôn R29 1.61m²)",
+          "material": "Thùng MDF 17mm (1.05 tấm/m² trừ 0.40 tấm cánh kính) + Kính cường lực 5mm trà + LED cảm ứng",
+          "dim": "4520 x 600 x 2700",
+          "unit": "m2",
+          "qty": 12.21,
+          "price": 3400000,
+          "total": 41514000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "2. TẦNG 2 - PHÒNG NGỦ MASTER",
+          "name": "Giường ngủ bo cong R33 (1800x2000) + Vách đầu giường R34 + Bàn phấn treo R36",
+          "material": "Cốt MDF chống ẩm 17mm chập đôi vai bo cong (3.5 tấm/giường) + Bọc nỉ Hàn Quốc cao cấp",
+          "dim": "1800 x 2000 x 1100",
+          "unit": "Bộ",
+          "qty": 1,
+          "price": 118500000,
+          "total": 118500000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "3. TẦNG 3 - PHÒNG NGỦ CON",
+          "name": "Tổ hợp 02 Phòng ngủ con (Tủ áo kịch trần R40 & R49 + Giường R42 + Hệ bàn học đôi R39, R46)",
+          "material": "MDF chống ẩm 17mm phủ Melamine đồng màu + Hậu 6mm + Ray âm giảm chấn",
+          "dim": "5200 x 600 x 2700",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 162110785,
+          "total": 162110785,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "4. TẦNG 3 - PHÒNG THỜ",
+          "name": "Hệ vách hậu phòng thờ CNC R52 + Tủ thờ & Tủ Lavabo nhựa WPB 03 phòng vệ sinh",
+          "material": "MDF chống ẩm soi huỳnh CNC (0.52 tấm/m²) + Tủ Lavabo nhựa đặc WPB chống nước",
+          "dim": "3600 x 600 x 2700",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 85000000,
+          "total": 85000000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "6. PHỤ KIỆN BẾP & THƯƠNG MẠI",
+          "name": "Trọn bộ Phụ kiện Bếp Inox 304 Hafele/Eurogold, Đá Vicostone, Kính bếp & Thiết bị đồng bộ",
+          "material": "Giá bát nâng hạ, giá xoong nồi, dao thớt, thùng gạo, bản lề giảm chấn, đá thạch anh & kính Hải Long 8mm",
+          "dim": "3770 x 600 x 860",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 125000000,
+          "total": 125000000,
+          "type": "ACCESSORY"
+        }
+      ],
+      "attachments": [
+        {
+          "name": "Bao_Gia_Nha_Anh_Nam_06_11_2026.xlsx",
+          "size": "112 KB",
+          "type": "EXCEL"
+        }
+      ],
+      "createdAt": "06/11/2026"
+    },
+    {
+      "code": "CT-2026-0817",
+      "client": "Bác Sĩ Duẫn",
+      "phone": "0986.722.324",
+      "address": "Đường Hải Thượng Lãn Ông, TP. Hà Tĩnh",
+      "rep": "Tống Trần Hiệp",
+      "projType": "Biệt Thự",
+      "status": "Đã chốt ký HĐ",
+      "total": 345412030,
+      "wood": 289412030,
+      "pk": 56000000,
+      "techNote": "Căn hộ 3 tầng: Ván MDF chống ẩm Thái Lan cốt xanh; Cánh kính xám khói; Thùng bếp nhựa WPB An Cường; Phụ kiện Hafele/Huge.",
+      "items": [
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Tủ bếp dưới thùng nhựa WPB An Cường + Cánh Acrylic bóng gương",
+          "material": "Thùng nhựa đặc WPB 18mm chống nước tuyệt đối, cánh Acrylic Noline",
+          "dim": "4200 x 600 x 860",
+          "unit": "md",
+          "qty": 4.2,
+          "price": 3900000,
+          "total": 16380000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Tủ bếp trên kịch trần MDF chống ẩm Thái Lan phủ Acrylic + Khoang tủ lạnh",
+          "material": "MDF cốt xanh Thái Lan 17mm + Hậu 6mm + Cánh Acrylic bóng gương",
+          "dim": "4200 x 350 x 1450",
+          "unit": "md",
+          "qty": 8.4,
+          "price": 3150000,
+          "total": 26460000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Hệ vách Tivi phòng khách + Tủ rượu cánh kính xám khói & Tủ giày kịch trần",
+          "material": "MDF cốt xanh chống ẩm phủ Melamine + Khung nhôm Anode kính cường lực 5mm + LED",
+          "dim": "5400 x 400 x 2700",
+          "unit": "m2",
+          "qty": 26.8,
+          "price": 2650000,
+          "total": 71020000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "2. TẦNG 2 - PHÒNG NGỦ MASTER",
+          "name": "Tổ hợp Phòng ngủ Master (Tủ áo cánh kính + Giường ngủ bọc da + Bàn phấn + Vách đầu giường)",
+          "material": "MDF cốt xanh Thái Lan 17mm + Cánh kính khung nhôm Anode + Đầu giường bọc da Microfiber",
+          "dim": "4800 x 600 x 2700",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 96552030,
+          "total": 96552030,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "3. TẦNG 3 - PHÒNG NGỦ CON",
+          "name": "Tổ hợp 02 Phòng ngủ con (02 Tủ áo kịch trần + 02 Giường ngủ + 02 Bàn học liền giá sách)",
+          "material": "MDF cốt xanh Thái Lan 17mm phủ Melamine chống trầy xước đồng bộ",
+          "dim": "3600 x 600 x 2700",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 79000000,
+          "total": 79000000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "6. PHỤ KIỆN BẾP & THƯƠNG MẠI",
+          "name": "Trọn bộ Phụ kiện Bếp Hafele/Huge Inox 304, Đá bàn bếp & Kính ốp bếp cường lực",
+          "material": "Giá bát nâng hạ, xoong nồi, dao thớt, chậu vòi, mặt đá Kim Sa & kính bếp Hải Long",
+          "dim": "4200 x 600 x 860",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 56000000,
+          "total": 56000000,
+          "type": "ACCESSORY"
+        }
+      ],
+      "attachments": [
+        {
+          "name": "BS Duẫn tp. hà tĩnh gỗ công nghiệp.xlsx",
+          "size": "75 KB",
+          "type": "EXCEL"
+        }
+      ],
+      "createdAt": "17/08/2026"
+    },
+    {
+      "code": "CT-2026-0326",
+      "client": "Nhà Bác Phát (26/03/2026)",
+      "phone": "0986.722.324",
+      "address": "Đường 26/03, P. Thành Sen, TP. Hà Tĩnh",
+      "rep": "Tống Trần Hiệp",
+      "projType": "Nhà Phố",
+      "status": "Đã nghiệm thu bàn giao",
+      "total": 144840000,
+      "wood": 124840000,
+      "pk": 20000000,
+      "techNote": "Full nội thất phòng khách + bếp + 2 phòng ngủ MDF lõi xanh chống ẩm.",
+      "items": [
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Hệ vách ốp Lam sóng + Kệ Tivi treo phòng khách & Tủ giày thông minh",
+          "material": "MDF lõi xanh chống ẩm 17mm phủ Melamine vân gỗ Sồi & Trắng mờ",
+          "dim": "3800 x 350 x 2680",
+          "unit": "m2",
+          "qty": 14.5,
+          "price": 2200000,
+          "total": 31900000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "1. TẦNG 1 - KHÁCH & BẾP",
+          "name": "Bộ tủ bếp trên + Tủ bếp dưới MDF chống ẩm cánh Acrylic & Khoang chậu nhựa WPB",
+          "material": "Thùng MDF lõi xanh 17mm (khoang chậu nhựa WPB), cánh Acrylic bóng gương",
+          "dim": "3400 x 600 x 2250",
+          "unit": "md",
+          "qty": 6.8,
+          "price": 3100000,
+          "total": 21080000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "2. TẦNG 2 - PHÒNG NGỦ MASTER",
+          "name": "Tủ quần áo kịch trần 4 buồng + Giường ngủ 1m8x2m + Bàn trang điểm",
+          "material": "MDF lõi xanh chống ẩm 17mm + Hậu 6mm đồng màu + Bản lề giảm chấn",
+          "dim": "2800 x 600 x 2700",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 41860000,
+          "total": 41860000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "3. TẦNG 3 - PHÒNG NGỦ CON",
+          "name": "Tủ quần áo phòng ngủ con + Giường 1m6x2m + Bàn học liền kệ sách",
+          "material": "MDF lõi xanh chống ẩm 17mm phủ Melamine đồng bộ",
+          "dim": "2000 x 600 x 2700",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 30000000,
+          "total": 30000000,
+          "type": "WOOD_CN"
+        },
+        {
+          "room": "6. PHỤ KIỆN BẾP & THƯƠNG MẠI",
+          "name": "Phụ kiện tủ bếp Inox 304, Đá mặt bếp & Kính cường lực ốp bếp",
+          "material": "Giá bát cố định, giá xoong nồi, dao thớt, đá bàn bếp & kính cường lực 8mm",
+          "dim": "3400 x 600 x 860",
+          "unit": "Gói",
+          "qty": 1,
+          "price": 20000000,
+          "total": 20000000,
+          "type": "ACCESSORY"
+        }
+      ],
+      "attachments": [
+        {
+          "name": "Bao_Gia_Bac_Phat_26_03_2026.xlsx",
+          "size": "64 KB",
+          "type": "EXCEL"
+        }
+      ],
+      "createdAt": "26/03/2026"
     }
   ]
 }

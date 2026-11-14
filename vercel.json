@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/index.js": {
-      "includeFiles": "data/*.json"
+      "includeFiles": "data/{pg_home_live_state,app_state,all_groups_monitor_state,zalo_staging_inbox,zalo_live_attendance,multi_group_telemetry,zalo_verified_entities,zalo_filenoise_index,zalo_leveldb_intel,zalo_v6_master_summary,zalo_health_report,THONG_TIN_DANG_KY_KINH_DOANH_PHU_GIA}.json"
     }
   },
   "rewrites": [
@@ -32,7 +32,8 @@
       "source": "/api/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "no-store, must-revalidate" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
       ]
     },
     {

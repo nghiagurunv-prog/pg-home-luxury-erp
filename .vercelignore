@@ -3,12 +3,21 @@ __pycache__/
 *.pyc
 *.pyo
 *.db
+*.db-*
 *.sqlite*
+*.bak
+*.jsonl
 *.log
 *.zip
 *.rar
 *.mp4
 data/backups/
+data/zalo_157_private_chats_index.json
+data/zalo_private_chats_vault.json
+data/audit_log*
+3. Chấm công/
+4. Hợp đồng/
+7. Kiểm toán & Đối soát/
 data/zalo_pulled_batches/
 data/zalo_stealth_audit/
 web_app/__pycache__/
@@ -65,4 +74,12 @@ web_app/modules/w03_core_worker_fund_hoa_hao.js
 web_app/modules/w04_sales_bonus_500m_lock.js
 web_app/modules/w38_management_salary_pool.js
 web_app/modules/w45_safe_pocket_summary_card.js
+data/ccsc_*
+_archive_rules_backup/
+_archive_scripts/
+PROJECT_STATE.md
+PROJECT_HISTORY_ARCHIVE.md
+pyrefly.toml
+.geminiignore
+.sop_cloud_gate_cache.json
 

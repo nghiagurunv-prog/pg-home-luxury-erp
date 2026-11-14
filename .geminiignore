@@ -1,0 +1,18 @@
+# Zero-Impact Binary & Archive Ignore for Fast AI Search (#49)
+*.rar
+*.zip
+*.7z
+*.exe
+*.dll
+*.mp4
+*.mov
+*.woff
+*.woff2
+*.ttf
+*.sqlite-wal
+*.sqlite-shm
+*.db-wal
+*.db-shm
+__pycache__/
+node_modules/
+data/backups/*.db

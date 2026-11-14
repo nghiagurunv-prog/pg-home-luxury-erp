@@ -1,0 +1,15 @@
+# Pyrefly configuration - Exclude media, backups, and build folders to prevent RAM bloat
+project_excludes = [
+    "**/_archive_scripts/**",
+    "**/_archive_rules_backup/**",
+    "**/backup*/**",
+    "**/node_modules/**",
+    "**/.venv/**",
+    "**/__pycache__/**",
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.mp4",
+    "**/*.db",
+    "**/*.sqlite",
+]
+

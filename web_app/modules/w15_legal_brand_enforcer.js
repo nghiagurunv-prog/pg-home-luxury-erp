@@ -36,6 +36,11 @@
         EMAIL_OFFICIAL: "noithatphugiahatinh@gmail.com"
     });
 
+    // Xuất Singleton Canonical cho toàn hệ thống (W13, W14, W26, W35, W54...)
+    if (typeof window !== 'undefined') {
+        window.PG_CANONICAL_LEGAL_BRAND = LEGAL_STANDARD;
+    }
+
     // 2. DANH MỤC CÁC MẪU DỮ LIỆU SAI LỆCH / VI PHẠM CẦN TRIỆT TIÊU
     const VIOLATIONS_CONFIG = [
         // Địa chỉ sai, địa chỉ cũ, địa chỉ bịa đặt
@@ -157,10 +162,12 @@
         const target = rootNode || (typeof document !== 'undefined' ? document.body : null);
         if (!target) return;
 
-        // 1. Quét các thẻ Form Input & Textarea
+        // 1. Quét các thẻ Form Input & Textarea (KHÔNG đụng vào phần tử đang được gõ focus để không nhảy con trỏ của Bố)
+        const activeEl = (typeof document !== 'undefined') ? document.activeElement : null;
         if (target.querySelectorAll) {
             const inputs = target.querySelectorAll('input[type="text"], textarea');
             inputs.forEach(input => {
+                if (input === activeEl) return;
                 if (input.value) {
                     const cleaned = cleanseText(input.value);
                     if (cleaned !== input.value) {

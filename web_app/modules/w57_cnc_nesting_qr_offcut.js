@@ -9,7 +9,7 @@
  * Địa chỉ ĐKKD: Số 01, Ngõ 53, Đường Trương Quốc Dụng, Phường Thành Sen, Tỉnh Hà Tĩnh
  * Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia: Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh
  * Hotline duy nhất: 0986.722.324
- * TUYỆT ĐỐI KHÔNG GỌI LÀ "xưởng mộc" - BẮT BUỘC DÙNG: "Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia"
+ * Danh xưng chuẩn duy nhất: "Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia"
  * ==============================================================================================
  * TÍNH NĂNG CHÍNH:
  * 1. Sơ đồ cắt ván 2D Interactive trên HTML5 Canvas tỉ lệ chuẩn (1220 x 2440 mm).

@@ -8,8 +8,8 @@
     "material_category": "Kính cường lực 8-10mm, Kính màu ốp bếp, Phụ kiện nhôm kính",
     "total_messages_loaded": 4,
     "date_range": {
-      "oldest": "Hôm qua",
-      "newest": "10:51 Hôm nay"
+      "oldest": "29/10/2026",
+      "newest": "30/10/2026 10:51"
     },
     "entities": {
       "customer_name": "PG Home Luxury / Ban Giám Đốc",
@@ -27,7 +27,7 @@
     },
     "attached_files_count": 1,
     "attached_files": [
-      "Don_dat_kinh_Viet_Nhat_30_10_2026.pdf"
+      "/chung_tu/07_DON_DAT_KINH_VIET_NHAT_2776K_30_10_2026.jpg"
     ],
     "cached_disk_files_count": 13,
     "recent_messages": [
@@ -80,13 +80,13 @@
     "material_category": "Gỗ thịt tự nhiên (Gõ đỏ Pachy, Óc chó Bắc Mỹ, Sồi Nga)",
     "total_messages_loaded": 2,
     "date_range": {
-      "oldest": "Hôm qua",
-      "newest": "09:21 Hôm qua"
+      "oldest": "04/11/2026",
+      "newest": "05/11/2026 09:21"
     },
     "entities": {
       "customer_name": "PG Home Luxury / Ban Giám Đốc",
       "phone": "0911006880 (Vũ Xưởng)",
-      "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
+      "address": "Tổ hợp Văn phòng & Nhà máy Sản xuất Nội thất Phú Gia - Ngõ 49 Trương Quốc Dụng, TP. Hà Tĩnh",
       "supplier_bank": "Đơn giá 1.700.000 đ/m2 cửa gỗ, cọc theo chuyến xe",
       "debt_amount": "Đơn giá 1.700.000 đ/m2 cửa gỗ, cọc theo chuyến xe",
       "order_codes": [
@@ -98,7 +98,7 @@
     },
     "attached_files_count": 2,
     "attached_files": [
-      "Untitled.xlsx",
+      "Bang_ke_cua_go_thit_Cuong_HN_2026.xlsx",
       "Boc_tach_chi_tiet_go_thit.xlsx"
     ],
     "cached_disk_files_count": 7,
@@ -136,8 +136,8 @@
     "material_category": "Ván phủ Melamine, Phụ kiện ray âm bản lề DTC, Chỉ nẹp dán cạnh",
     "total_messages_loaded": 22,
     "date_range": {
-      "oldest": "T5 08/10/2026",
-      "newest": "Hôm nay"
+      "oldest": "08/10/2026",
+      "newest": "06/11/2026 16:40"
     },
     "entities": {
       "customer_name": "PG Home Luxury / Ban Giám Đốc",
@@ -364,7 +364,7 @@
     "total_messages_loaded": 25,
     "date_range": {
       "oldest": "18/08/2026",
-      "newest": "09:43 Hôm qua"
+      "newest": "05/11/2026 09:43"
     },
     "entities": {
       "customer_name": "PG Home Luxury / Ban Giám Đốc",
@@ -745,14 +745,14 @@
       "customer_name": "PG Home Luxury / Ban Giám Đốc",
       "phone": "0911006880 (Vũ Xưởng)",
       "address": "Xưởng Sản Xuất PG Home - TP Hà Tĩnh",
-      "supplier_bank": "CÒN NỢ 3.200.000 đ (Đã CK 10.000.000 đ trừ vào sổ nợ trong ngày)",
-      "debt_amount": "CÒN NỢ 3.200.000 đ (Đã CK 10.000.000 đ trừ vào sổ nợ trong ngày)",
+      "supplier_bank": "DƯ NỢ: 0 đ (Đã tất toán dứt điểm 13.200.000 đ: 15/02 trả 10M + 14/05 trả 3.2M)",
+      "debt_amount": "0 đ (Đã tất toán đủ 13.200.000 đ ngày 14/05/2026)",
       "order_codes": [
         "DH_GO_THIT_DUCANH"
       ],
       "amounts": [
-        "3.200.000 đ",
-        "10.000.000 đ"
+        "0 đ",
+        "13.200.000 đ"
       ]
     },
     "attached_files_count": 1,

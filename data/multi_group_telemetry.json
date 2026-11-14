@@ -280,5 +280,95 @@
     "group": "Hệ Thống Zalo v6.0",
     "event": "Quét tức thì 16 nhóm (97.8 ms) - 4923 media khớp SHA-256",
     "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 11:28:12",
+    "group": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
+    "event": "[Delta v6.0] Bắt tức thì 22 tệp mới từ Vũ (BANK_TRANSFER_VOUCHER)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-10 11:28:12",
+    "group": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
+    "event": "[Delta v6.0] Bắt tức thì 12 tệp mới từ Nguyễn Minh (INVOICE_OR_DELIVERY_NOTE)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-10 11:28:12",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (1149.0 ms) - 5034 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 12:01:57",
+    "group": "Nhóm Ghim Ưu Tiên Giám Đốc #1",
+    "event": "[Delta v6.0] Bắt tức thì 2 tệp mới từ Nguyễn Minh (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 12:01:57",
+    "group": "Nhóm Ghim Ưu Tiên Giám Đốc #2",
+    "event": "[Delta v6.0] Bắt tức thì 11 tệp mới từ Hà Huy Trọng (WORKSHOP_PHOTO_OR_LANDSCAPE)",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 12:01:57",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (562.7 ms) - 5034 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 12:06:55",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (332.9 ms) - 5034 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 16:26:46",
+    "group": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
+    "event": "[Delta v6.0] Bắt tức thì 16 tệp mới từ Vũ (INVOICE_OR_DELIVERY_NOTE)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-10 16:26:46",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (559.3 ms) - 5034 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 17:59:58",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (469.3 ms) - 5034 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 18:02:16",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 16 nhóm (259.4 ms) - 5034 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 18:23:16",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 14 nhóm (686.7 ms) - 2540 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 19:09:48",
+    "group": "Điều Hành Xưởng & Công Trình Trọng Điểm PG Home",
+    "event": "[Delta v6.0] Bắt tức thì 4 tệp mới từ Phú Gia Hiệp G (INVOICE_OR_DELIVERY_NOTE)",
+    "severity": "ALERT"
+  },
+  {
+    "timestamp": "2026-11-10 19:09:48",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 14 nhóm (444.8 ms) - 2540 media khớp SHA-256",
+    "severity": "INFO"
+  },
+  {
+    "timestamp": "2026-11-10 19:16:22",
+    "group": "Hệ Thống Zalo v6.0",
+    "event": "Quét tức thì 14 nhóm (452.4 ms) - 2540 media khớp SHA-256",
+    "severity": "INFO"
   }
 ]

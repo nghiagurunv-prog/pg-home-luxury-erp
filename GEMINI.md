@@ -8,6 +8,10 @@
 > 1. Trỏ đúng đường dẫn thực tế bằng cú pháp `[Tên hiển thị](file:///đường_dẫn_tuyệt_đối)` hoặc `http://localhost:8080/...` để Giám Đốc bấm mở trực tiếp.
 > 2. **CẤM TUYỆT ĐỐI đưa link `http://localhost:8080/...` hoặc `file:///...` khi chưa kiểm tra HTTP 200 OK & tài nguyên tĩnh**: Trước khi gửi bất kỳ đường link nào cho Giám Đốc, AI bắt buộc phải chạy `python tools/sop_pre_response_gate.py` để: (a) Đảm bảo daemon `web_app/server.py` đang chạy sống trên cổng `8080` qua WMI `pythonw.exe` (không bị tắt sau khi chạy lệnh), (b) Xác nhận mọi đường dẫn (`/`, `/director`, `/deploy`, `/local_admin_vault/director_ccsc_full.html`, `/web_app/index.html`, `.js`, `.css`, và Cloud `https://nghiagurunv-prog.github.io/pg-home-luxury-erp/web_app/`) đều trả về `HTTP 200 OK`, và (c) Đảm bảo mở trực tiếp qua `file:///...` cũng nạp đủ 100% CSS/JS không bị lỗi trắng trang hay `ERR_CONNECTION_REFUSED`.
 > **Khóa Cứng Giao Diện Gốc Chuẩn (`UI_GOLDEN_BASELINE_V1` — Bất Khả Xâm Phạm):** Giao diện hiện tại đã được Giám Đốc duyệt làm chuẩn gốc. **CẤM TUYỆT ĐỐI** tự ý sửa đổi bố cục, màu sắc, cấu trúc bảng 1 dòng (`.pg-compact-row`, `.data-table`), hay tự ý nhồi nhét nhiều bảng chồng dọc trên cùng 1 màn hình. Mọi nâng cấp về sau chỉ được phép tinh chỉnh tối ưu trên đúng khung giao diện gốc này (đã khóa tại Git Tag `UI_GOLDEN_BASELINE_V1` và `data/backups/golden_ui_baseline_20261111/`).
+> **Luật Sắt Sửa Đổi Cô Lập — Cấm Tuyệt Đối Làm Ảnh Hưởng Dự Án & Các Chức Năng Liên Quan (`ZERO-REGRESSION & SURGICAL EDIT HARD-LOCK`):**
+> 1. **Sửa đúng điểm (`100% Surgical Edit`)**: Khi Giám Đốc yêu cầu sửa 1 chức năng cụ thể (ví dụ: bảng chấm công, nút quét Zalo, phiếu PO...), AI chỉ được phép sửa đúng hàm/khối dữ liệu của chức năng đó. **CẤM TUYỆT ĐỐI** tự ý thu gọn/ẩn/xóa bất kỳ mục nào trên thanh Menu (`#sidebar` bắt buộc giữ nguyên 5 nhóm / 16 mục ở bản Giám Đốc và 11 mục ở bản Cloud), cấm xóa `.tab-content`, cấm ẩn nút trên Topbar hoặc làm mất dữ liệu các dự án/hợp đồng/vật tư/CCSC đang có.
+> 2. **Cấm gây lỗi dây chuyền `TDZ / ReferenceError / TypeError`**: Mọi biến trạng thái toàn cục dùng chung bắt buộc khai báo bằng `var` ở đầu file (`dòng 1–20`), cấm đặt `let`/`const` ở giữa file cho các biến được gọi trong `loadState()` hoặc `DOMContentLoaded`. Mọi hàm tính toán dùng chung giữa bản Giám Đốc và bản Cloud (`calculateMonthCCSC`, `renderDashboard`, `renderCharts`, `renderFundMonitorWidget`...) bắt buộc có chốt chặn kiểm tra `null/undefined` để không bao giờ làm gãy luồng khởi tạo của các phân hệ khác.
+> 3. **Cưỡng chế Chốt chặn Chống Hồi Quy (`Cổng 5 - Zero-Regression Gate` trong `tools/sop_pre_response_gate.py`)**: Sau bất kỳ chỉnh sửa nào, bắt buộc chạy `python tools/sop_pre_response_gate.py` để kiểm chứng tự động: (a) Đủ 100% mục Menu & Tab nội dung, (b) Đủ 100% dữ liệu dự án/hợp đồng/nhân sự thật, (c) Chạy giả lập toàn bộ các hàm chức năng liên quan (`Dashboard`, `CCSC`, `Chấm công`, `Vật tư/PO`, `Hợp đồng`, `Công nợ`, `Dự toán`, `Zalo Sync`, `Chuyển Tab`) đạt `0 lỗi Runtime` trước khi báo cáo Giám Đốc.
 
 ---
 
@@ -16,7 +20,7 @@ Toàn bộ 25 mục quy chuẩn chi tiết và kinh nghiệm xương máu đư�
 **LỆNH CƯỠNG CHẾ:** Trước khi xử lý chuyên sâu về mảng nào, AI bắt buộc dùng lệnh `read_file` đọc toàn bộ sổ tay tương ứng!
 
 | Sổ Tay | Tên Chuyên Đề & Phạm Vi Quản Trị | Các Mục Quy Chuẩn Chi Tiết Trực Thuộc | Đường Dẫn File Sống 1 Chạm |
-| :--- | :--- | :--- | :--- |
+|---|---|---| :--- |
 | **Sổ Tay 01** | **Quản Trị Nhân Sự, Tài Chính Thực Tế, CCSC & Bóc Tách Vật Tư** | **Mục 1 đến Mục 8:** Xưng hô chuẩn mực, bảo mật khoán, 3 phân hệ gốc, logic CCSC chi tiết (Vật tư, công thợ, lợi nhuận Col BG, lương quản lý, quỹ thợ nòng cốt Hòa & Hào 20k/công, thưởng doanh số > 500M, phụ kiện/sofa, bảng số liệu bỏ túi BGĐ), danh mục tài nguyên hệ thống, chấm công điểm danh hàng ngày, danh sách nhân sự chuẩn T8-T10, bài học bóc tách gỗ thịt và đối soát 3 NCC 2026. | [SO_TAY_01_QUAN_TRI_TAI_CHINH_CCSC_VA_NHAN_SU.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_01_QUAN_TRI_TAI_CHINH_CCSC_VA_NHAN_SU.md) |
 | **Sổ Tay 02** | **Kỷ Luật Thép, Chống Làm Ẩu, Tự Động Hóa Stealth Zalo & Master SOP** | **Mục 9 đến Mục 16:** 17 bài học cốt tử chống lười - chống làm láo - suy nghĩ đa chiều, điều lệ thép cưỡng chế chat & pre-response hard-lock, thông tin pháp lý PG Home (Mã số HKD: 042203002931 - TP. Hà Tĩnh), quy tắc link sống 1 chạm mở thư mục cha, hệ thống SOP trợ lý AI, Stealth Engine V2.0 & 20 cải tiến đột phá, 30 cải tiến SOP đẳng cấp thế giới, Master SOP 4.0 & 15 nguyên lý tối ưu hóa. | [SO_TAY_02_KY_LUAT_THEP_CHONG_LAM_AU_VA_SOP_VAN_HANH.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_02_KY_LUAT_THEP_CHONG_LAM_AU_VA_SOP_VAN_HANH.md) |
 | **Sổ Tay 03** | **Dự Toán Sale, Bảo Vệ Dòng Tiền, Định Mức CNC & Điều Quân Flash** | **Mục 17 đến Mục 25:** Phân hệ dự toán nhà ở cho Sale (Hiệp & Dũng), 10 quy chuẩn tối thượng kéo Zalo tự động & bảo vệ dòng tiền, 40 quy chuẩn thống kê chính xác 100%, 50 nguyên tắc kỷ luật thép chống làm ẩu - chống tô hồng, tổng kết rà soát lỗi lịch sử & 6 chốt chặn tự động, lưu bộ nhớ phiên 06/11, hệ thống đồng bộ ngầm Zalo V4.0 (Delta-Cursor), định mức tấm cắt CNC thực chiến (Mục 24), quy chế điều hành Sub-Agent (Mục 25). | [SO_TAY_03_DU_TOAN_SALE_DINH_MUC_CNC_VA_DIEU_QUAN.md](file:///f:/PG%20Home%20-%20Qu%E1%BA%A3n%20tr%E1%BB%8B/luat_sat_chi_tiet/SO_TAY_03_DU_TOAN_SALE_DINH_MUC_CNC_VA_DIEU_QUAN.md) |
@@ -97,53 +101,39 @@ Toàn bộ 25 mục quy chuẩn chi tiết và kinh nghiệm xương máu đư�
 
 ---
 
-## 5. KỶ LUẬT PHÂN LOẠI TÁC VỤ, CẮT BỎ TÁC VỤ THỪA & TỔ CHỨC SUB-AGENT (FAST-PATH & ZERO-CEREMONY PROTOCOL)
-- **5.1. Phân loại Quy mô Tác vụ — Cấm Phức Tạp Hóa Việc Đơn Giản (`Anti-Overcomplication / Fast-Path`)**:
-  - **Tác vụ Nhỏ / Đơn giản (`<= 3 files`, sửa lỗi nhanh, kiểm tra trạng thái, chạy 1 lệnh, trả lời câu hỏi)**: Tổng Chỉ Huy (Main Agent) **LÀM TRỰC TIẾP NGAY LẬP TỨC** trong `1 – 5 bước` (`< 30 giây`). **CẤM TUYỆT ĐỐI** bày vẽ đẻ ra đội quân Sub-Agent, cấm tự vẽ thêm quy trình rườm rà hay viết bộ khung kiểm thử (`verification harness`) cho việc nhỏ.
-  - **Tách bạch Tra cứu Nhanh (`Read-Only Query < 15s`) vs Chạy Chiến dịch Thật (`Live Execution`)**: Khi Bố chỉ hỏi thông tin, xem lịch, kiểm tra trạng thái hoặc sửa code nhỏ: Chạy **duy nhất 1 lệnh/script đọc dữ liệu** và trả lời ngay trong `< 15 giây`; **CẤM** chạy các thủ tục tiền kiểm tra 15 cổng (`pre_flight_inspector.py`), cấm quét Fanpage Ưu tiên 0 hay kiểm toán 5 vòng. Chỉ chạy cổng kiểm định khi thực sự kích hoạt chiến dịch chạy thật hoặc xuất bản bàn giao.
-  - **Tác vụ Trung bình & Lớn (`>= 4 files` độc lập hoặc chiến dịch hàng loạt)**: Mới chia nhỏ thành các phần độc lập và huy động đội quân Sub-Agent (`Model="flash"`) chạy song song trong cùng 1 lượt.
-- **5.2. Kỷ Luật Đọc 1 Lần (`Single-Pass Read <= 2 lần/file`) & Chạy Gatekeeper 1 Lần Cuối (`Single-Run Gatekeeper`)**:
-  - **CẤM đọc vụn 1 file hàng chục lần**: Cấm đọc đi đọc lại cùng 1 file `15 – 70 lần` từng khúc nhỏ; chỉ đọc **tối đa `1 – 2 lần`** đúng vùng cần sửa (`150 – 250 dòng`), sửa dứt điểm bằng `edit_file`.
-  - **CẤM đẻ script `test_*.py` rác & CẤM chạy Gatekeeper lặp lại sau mỗi dòng sửa**: Gom toàn bộ thay đổi hoàn tất rồi chỉ chạy **duy nhất 1 lần** script Gatekeeper chính thức của dự án (`audit_master_permanent_gatekeeper.py`, `verify_render_gate.py`, `pre_flight_inspector.py`, `sop_pre_response_gate.py`) ở bước nghiệm thu cuối cùng.
-- **5.3. Kỷ Luật Tốc Độ, Sửa Trực Tiếp File Đích & Cấm Giấy Tờ Trung Gian Trong Sub-Agent (`<= 20 Steps`)**:
-  - Mỗi Sub-Agent chỉ làm **đúng 1 việc duy nhất được giao** bằng công cụ trực tiếp (`read_file`, `edit_file`, `write_file`), hoàn tất gọn trong **`5 – 20 steps` (`< 45 giây`)**.
-  - **Sửa trực tiếp file đích — CẤM đẻ file báo cáo nháp `scratch/w*_report.md`**: Khi Sub-Agent được giao sửa code/dữ liệu/bài viết, bắt buộc ghi thẳng vào file đích được phân công và trả về 1 dòng JSON; **CẤM TUYỆT ĐỐI** bắt Sub-Agent tạo thêm file `scratch/w*_report.md` rồi bắt Giám sát/Tổng Chỉ Huy đọc lại gây nhân đôi I/O (chỉ ghi file báo cáo khi nhiệm vụ là điều tra/kiểm toán độc lập thuần túy).
-  - **CẤM TUYỆT ĐỐI** truyền chuỗi code nhiều dòng qua `python -c "..."` trên PowerShell (nguyên nhân số 1 gây lỗi dấu nháy `SyntaxError` làm Sub-Agent bị kẹt lặp `200–330 bước`). Nếu gặp lỗi quá `2 lần`, Sub-Agent phải dừng ngay và gửi JSON báo `FAIL` về Tổng Chỉ Huy, cấm tự lặp thử sai quá `20 steps`.
-- **5.4. Biên chế Chuẩn Khi Chạy Chiến Dịch Lớn (`>= 4 files`) & Thu hồi Quân (`Auto-Reap`)**:
-  1. **`5 – 10` Công Nhân Thực Thi (`Worker Sub-Agents`, `Model="flash"`)**: Mỗi công nhân phụ trách độc lập 1 khoảnh (`1 Công nhân = 1 Khoảnh độc lập`), tuyệt đối không chạm chung 1 file. Cấm huy động lạm phát `15 – 50` Sub-Agent hay đẻ Sub-Agent đóng vai giám sát khi đã có script Gatekeeper tự động.
-  2. **Cách ly Tài nguyên Sống & Thu hồi Quân**: Cấm 2 Sub-Agent cùng ghi chung 1 DB SQLite, cấm cùng chạy build/chiếm cổng server, tuyệt đối không làm nháy cửa sổ Chrome/Zalo của Bố. Kết thúc mỗi đợt (Wave), bắt buộc dùng `manage_subagents(Action="kill")` hoặc `Action="kill_all"` để thu hồi toàn bộ Sub-Agent.
+## 5. KỶ LUẬT PHÂN LOẠI TÁC VỤ, CẮT BỎ TÁC VỤ THỪA & TỔ CHỨC SUB-AGENT V30 (FAST-PATH & ZERO-CEREMONY PROTOCOL)
+- **5.1. Phân loại Quy mô Tác vụ (`Anti-Overcomplication / Fast-Path`)**:
+  - **Tác vụ Nhỏ (`<= 3 files`, sửa lỗi nhanh, tra cứu trạng thái)**: Tổng Chỉ Huy **LÀM TRỰC TIẾP** trong `1 – 5 bước` (`< 30s`), **CẤM** đẻ Sub-Agent.
+  - **Tách bạch Tra cứu Nhanh (`< 15s`) vs Chạy Chiến dịch Thật**: Khi chỉ hỏi thông tin/xem lịch, chạy **duy nhất 1 lệnh đọc dữ liệu** (tra lịch Task Scheduler dùng `schtasks /query /fo CSV`, cấm `Get-ScheduledTask` trơn).
+  - **Tác vụ Lớn (`>= 4 files` độc lập)**: Chia nhỏ huy động Sub-Agent (`100% Model="flash"`) chạy song song (`1 Công nhân = 1 File độc lập`), cấm gọi `schedule` timer chờ Sub-Agent, thu hồi bằng `manage_subagents(Action="kill_all")`.
+- **5.2. Kỷ Luật Đọc 1 Lần Bằng `fast_lookup.py` (`<= 2 lần/file`) & Chạy Gatekeeper 1 Lần Cuối**:
+  - Trước khi mở file `> 200 dòng`, bắt buộc chạy `python "C:\Users\Admin\.gemini\fast_lookup.py" "<file>" "<query>"` (`< 15ms`) lấy `StartLine–EndLine`, chỉ gọi `read_file` tối đa `1 – 2 lần` và sửa dứt điểm bằng `edit_file`.
+  - Gom toàn bộ thay đổi rồi chỉ chạy **duy nhất 1 lần** script Gatekeeper chính thức ở bước nghiệm thu cuối cùng.
+- **5.3. Kỷ Luật Tốc Độ & Sửa Trực Tiếp File Đích Trong Sub-Agent (`<= 20 Steps`)**:
+  - Sub-Agent ghi thẳng vào file đích, cấm đẻ `scratch/w*_report.md`, cấm truyền code nhiều dòng qua `python -c "..."`.
+- **5.4. Cơ Chế Tự Động Sang Số 3 Tầng (`Auto-Tiering` Qua 9Router `:20128`)**:
+  - **Cấp `1T` (`gemini-3.8-flash-high`, `< 30s`, 0 Sub-Agent)**: Tra cứu, sửa lỗi nhỏ `<= 3 files`.
+  - **Cấp `2T` (`gpt-oss-120b-medium` + `3.8 Flash`)**: Viết/sửa tính năng mới `>= 4 files`.
+  - **Cấp `3T` (`claude-sonnet-4-6` Carbon -> Argon -> Flash)**: Pháp y toàn diện dự án, tìm 20–50 điểm cải tiến, thiết kế hệ thống mới.
 
 ---
 
-## 6. KỶ LUẬT CHỐNG QUÊN, CHỐNG TRÀN CONTEXT & BỘ NHỚ NGOÀI BẤT TỬ (ANTI-AMNESIA & ZERO-CONTEXT BLEED PROTOCOL)
-- **6.1. Giao Thức Báo Cáo Sub-Agent Siêu Gọn (`Minimal JSON Payload <= 3 dòng`)**:
-  + Cấm tuyệt đối các Sub-Agent nhả nguyên file code, log dài hoặc báo cáo văn xuôi hàng trăm dòng qua `send_message` về cho Tổng Chỉ Huy (triệt tiêu hiệu ứng tuyết lăn `Context Bloat`).
-  + Tin nhắn `send_message` gửi về Tổng Chỉ Huy **chỉ được phép dài tối đa 3 dòng theo chuẩn JSON**: `{"status": "PASS/FAIL", "modified_file": "đường_dẫn_file_đích", "summary": "tóm tắt <= 15 từ"}`.
-  + Ngay sau khi nhận đủ báo cáo và kết thúc đợt (Wave), Tổng Chỉ Huy bắt buộc gọi `manage_subagents(Action="kill_all")` xóa sổ ngay lập tức.
-- **6.2. Tra Cứu Sổ Tay Đúng Chỗ Khi Cần (`On-Demand Targeted Lookup — Cấm Đọc Mù Toàn Bộ Sổ Tay Đầu Phiên`)**:
-  + Mọi dự án có thư mục `luat_sat_chi_tiet/` đều đã có Bảng Mục Lục (`Rule Index`) và bản tóm tắt cốt lõi ngay trong `GEMINI.md` (giữ dung lượng `GEMINI.md < 25 KB`).
-  + **CẤM TUYỆT ĐỐI** thói quen máy móc đầu mỗi phiên tự động gọi `read_file` nạp toàn bộ các file sổ tay dài `45 – 85 KB` trong `luat_sat_chi_tiet/` khi chưa cần đến. Chỉ mở đúng đoạn (`StartLine`/`EndLine`) của file sổ tay tương ứng khi gặp ca biên (edge-case) cần tra cứu thông số chi tiết.
-- **6.3. Sổ Cái Bộ Nhớ Ngoài Bất Tử (`PROJECT_STATE.md`)**:
-  + Mỗi dự án bắt buộc duy trì file `PROJECT_STATE.md` tại thư mục gốc để lưu: (1) Mục tiêu & Chỉ thị mới nhất của Bố, (2) Tiến độ thực tế từng hạng mục đã kiểm chứng trên ổ cứng, (3) Các ràng buộc/lỗi cấm tái phạm, (4) Việc cần làm tiếp theo.
-  + Trước và sau mỗi đợt tác vụ hoặc ngay khi hệ thống vừa nén lịch sử (`<CONTEXT_SUMMARY>`), Tổng Chỉ Huy bắt buộc đọc/cập nhật `PROJECT_STATE.md`.
-- **6.4. Giao Thức Chống Mù Ảnh Sau Khi Nén (`Anti-Image Blindness`)**:
-  + Khi lịch sử xuất hiện dòng `[file "...png/jpg" was omitted...]` sau khi nén (`Compaction`), AI bắt buộc gọi `read_file` mở lại đường dẫn ảnh gốc khi cần đối chiếu trực quan, tuyệt đối cấm đoán mò nội dung ảnh từ trí nhớ.
-- **6.5. Vệ Sinh Đọc File (`Pagination Hygiene`) & Cổng Nghiệm Thu Vật Lý (`Physical Disk Gate`)**:
-  + Cấm đọc nguyên file HTML/JSON/log lớn (`> 200 dòng`) vào context; bắt buộc dùng `StartLine`/`EndLine` hoặc script lọc tóm tắt.
-  + Cấm báo cáo `PASS` khi mới tạo xong file code/dàn ý (`.html`, `.json`, `.py`); bắt buộc kiểm tra sản phẩm vật lý thật trên đĩa (ảnh `.png/.jpg > 50 KB`, video `.mp4 > 500 KB`, DB SQLite có bản ghi thật).
-- **6.6. Ngưỡng Xoay Vòng Phiên Chat (`Session Rotation Threshold`)**:
-  + Khi file DB phiên chat (`<id>.db`) vượt `40 MB` hoặc vượt `3.000 steps`, AI chủ động ghi toàn bộ trạng thái vào `PROJECT_STATE.md` và nhắc Bố dùng `/compact` hoặc mở phiên chat mới để tránh chạm trần bộ nhớ `2.8 GB Heap` gây `server restart`.
-
----
-
-## 🧭 VII. BẢN ĐỒ TỌA ĐỘ DÒNG (`CODEBASE LINE-MAP INDEX` — ĐỌC 1 LẦN TRÚNG ĐÍCH)
-> **Kỷ luật Single-Pass Read (`<= 2 lần/file`)**: Dùng bảng tọa độ dưới đây để nhảy thẳng tới vùng code cần sửa bằng `StartLine`/`EndLine` (`150–250 dòng`), cấm đọc mù từng khúc nhỏ:
-- **`web_app/index.html` (`6.704` dòng)**:
-  + `Dòng 1 – 660`: Khối `<head>`, biến CSS Root Luxury & hệ thống `@media print` cô lập in ấn (`pghome-print-isolated`).
-  + `Dòng 661 – 1150`: Khung Layout chính, Sidebar điều hướng phân hệ & Header trạng thái đồng bộ.
-  + `Dòng 1151 – 2850`: Các View Quản trị Doanh nghiệp, Báo giá, Hợp đồng, Công nợ & Tài chính 55/40/15.
-  + `Dòng 2851 – 4800`: Hệ thống 57 Modules (`W01`–`W57`), Nhân sự, Bảng lương, KPI & Phê duyệt chi phí.
-  + `Dòng 4801 – 6704`: Vùng `printCleanArea`, Modal chi tiết chứng từ, Script khởi tạo & nạp các module `w01`–`w57`.
-- **`web_app/app.js` & `web_app/w01_*.js` .. `w57_*.js`**:
-  + Logic mỗi phân hệ nằm độc lập tại file `wXX_*.js` tương ứng; khi sửa phân hệ nào chỉ đọc đúng file `wXX_*.js` đó.
-- **`tools/sop_pre_response_gate.py`**: Cổng kiểm định 1 lần cuối ca (`Single-Run Gatekeeper < 1.2s`).
+## 6. KỶ LUẬT CHỐNG QUÊN, CHỐNG TRÀN CONTEXT & BỘ NHỚ NGOÀI BẤT TỬ V30
+- **6.1. Báo Cáo Sub-Agent Siêu Gọn (`<= 3 dòng JSON`)**: `{"status": "PASS/FAIL", "modified_file": "...", "summary": "<= 15 từ"}`, xong gọi `manage_subagents(Action="kill_all")`.
+- **6.2. Tra Cứu Sổ Tay Đúng Chỗ (`On-Demand Lookup`)**: Giữ `GEMINI.md < 25 KB`; **CẤM** tự động `read_file` toàn bộ `luat_sat_chi_tiet/` đầu phiên, chỉ tra bằng `fast_lookup.py` khi cần.
+- **6.3. Sổ Cái Tinh Gọn (`PROJECT_STATE.md < 10 KB`)**: Lưu Mục tiêu, Tiến độ thật, Lỗi cấm tái phạm & Việc tiếp theo; lịch sử cũ chuyển sang `PROJECT_HISTORY_ARCHIVE.md`.
+- **6.4. Chống Mù Ảnh (`fast_ocr.py < 0.015s–0.38s`)**: **CẤM** gọi `read_file` lên ảnh `.png/.jpg`. Dùng `python "C:\Users\Admin\.gemini\fast_ocr.py" "<ảnh>"`, `--vision-only "<thư_mục>"` (16 luồng), `--find-duplicates "<thư_mục>"`.
+- **6.5. Vệ Sinh Đọc File & Cổng Nghiệm Thu Vật Lý (`Physical Disk Gate`)**: Kiểm tra file thật trên đĩa (ảnh `> 50 KB`, video `> 500 KB`, SQLite có bản ghi thật).
+- **6.6. Ngưỡng Xoay Vòng Phiên Chat**: Khi DB phiên chat `> 40 MB` hoặc `> 3.000 steps`, lưu `PROJECT_STATE.md` và nhắc Bố `/compact`.
+- **6.7. KỶ LUẬT ĐỊNH TUYẾN ĐÍCH, SOI KỸ QUY TRÌNH SOP TRƯỚC KHI THỰC HIỆN & BƠM LỆNH TRỰC TIẾP VÀO ĐÚNG DỰ ÁN (`Universal Direct-Injection & Pre-Execution SOP Audit`)**:
+  + **3 BƯỚC CƯỠNG CHẾ BẤT KHẢ XÂM PHẠM**: Dù Bố mở phiên chat ở bất kỳ đâu (như `d:\Cài đặt các phần mềm`), hễ Bố yêu cầu rà soát/tối ưu/vận hành dự án nào trong **15 Phân Khu Dự Án Phú Gia**, AI bắt buộc thực hiện:
+    1. **BƯỚC 1 — SOI KỸ QUY TRÌNH SOP DỰ ÁN ĐÍCH TRƯỚC KHI LÀM**: Đọc ngay `<Dự_Án_Đích>\GEMINI.md` + `PROJECT_STATE.md` (và tra mục lục `luat_sat_chi_tiet/` bằng `fast_lookup.py` nếu có) trước khi chạm vào code/dữ liệu.
+    2. **BƯỚC 2 — BƠM LỆNH / CODE / CẢI TIẾN TRỰC TIẾP VÀO THƯ MỤC GỐC DỰ ÁN ĐÍCH**: Ghi thẳng 100% code (`.py`/`.js`), sổ cái (`.json`), SQLite và quy trình (`GEMINI.md`, `PROJECT_STATE.md`) vào thư mục vật lý của dự án đích; **CẤM TUYỆT ĐỐI** chỉ trả lời lý thuyết trên chat hoặc ghi nhầm vào workspace đang mở (`d:\Cài đặt các phần mềm`).
+    3. **BƯỚC 3 — CHẠY GATEKEEPER CỦA ĐÚNG DỰ ÁN ĐÍCH ĐẠT `EXIT=0`**:
+       - `01_ROOT_CMD` (`d:\Cài đặt các phần mềm`) & `14_DIEU_PHOI_AI` (`f:\Điều Phối AI`): `python "d:\Cài đặt các phần mềm\unified_health_doctor.py"` (`12/12 PASS`)
+       - `02_PG_HOME_QUAN_TRI` (`f:\PG Home - Quản trị`): `python "d:\Cài đặt các phần mềm\unified_health_doctor.py"` (Cổng 04 & 05 `PASS`)
+       - `03_PHAN_MEM_MKT` (`f:\Phần mềm MKT`): `python "f:\Phần mềm MKT\pre_flight_inspector.py" --sop-status` (`<2s`) / `--passive-proxy` (`15/15 PASS`)
+       - `04A_VIDEO_AUTOMATION` (`d:\VideoAutomation`) & `04B_VIDEO_STUDIO` (`d:\PhuGiaHome_VideoStudio`): `python "d:\VideoAutomation\zero_trust_auditor.py"` (`5/5 PASS`)
+       - `05_TK_NHA` (`01_THIẾT KẾ NHÀ`): `audit_zero_trust_gatekeeper.py` | `06_TK_NOI_THAT` (`02_THIẾT KẾ NỘI THẤT`): `verify_render_gate.py`
+       - `07`–`11_MARKETING` (`f:\MARKETING\...`): `python "f:\MARKETING\MARKETING\audit_master_permanent_gatekeeper.py"` (`Exit=0`)
+       - `12_MKT_2026` (`d:\MKT 2026`): `fast_ocr.py --vision-only` | `13A_SAT_WEB` (`f:\SAT_Web`) & `13B_SAT_NGHIAGURU`: Gatekeeper học liệu SAT.

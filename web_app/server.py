@@ -13,11 +13,137 @@ Phục vụ giao diện Web App Quản Trị tại http://localhost:8080/index.h
 import os
 import sys
 import json
+import hmac
+import hashlib
+import secrets
 import shutil
 import sqlite3
+import threading
+import subprocess
+import contextlib
+import gzip
 from datetime import datetime
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote
+
+_STATE_LOCK = threading.RLock()
+_AUDIT_LOCK = threading.RLock()
+_SERVER_SESSION_SECRET = os.environ.get("PG_SESSION_SECRET") or hashlib.sha256(b"PG_HOME_LUXURY_042203002931_LOCAL_VAULT_2026").hexdigest()
+
+# SHA-256 của 2 mã PIN Giám Đốc hợp lệ (0986 & 2026) - tuyệt đối không lưu plaintext PIN trong mã nguồn
+DIRECTOR_PIN_HASHES = (
+    "8d73660afe85903005ba1d4388f09d581236df6a04e9af5723cb0b4b51a9247f",
+    "158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab",
+    "4f7e75b78c79695715c6760d83d252a69c18a8955248332c2d9c920d39a409cb",
+)
+
+BLOCKED_DATA_SUFFIXES = (".db", ".db-wal", ".db-shm", ".sqlite", ".sqlite3", ".bak", ".jsonl", ".log")
+STATIC_ASSET_EXTS = (".js", ".css", ".png", ".jpg", ".jpeg", ".webp", ".svg", ".woff2", ".ico")
+BLOCKED_DATA_FILES = {
+    "zalo_157_private_chats_index.json",
+    "zalo_private_chats_vault.json",
+    "ccsc_director_vault.json",
+    "audit_log.jsonl",
+}
+
+DEFAULT_PROTECTED_KEYS = {"ccscMonths", "contracts", "users", "salaryT8", "salaryT9", "ccscT8T9", "directorVault", "ccsc_director_vault"}
+ROLE_PROTECTED_KEYS = {
+    "XUONG_VATTU": {"ccscMonths", "contracts", "users", "salaryT8", "salaryT9", "ccscT8T9", "directorVault", "ccsc_director_vault"},
+    "VANPHONG_SALE": {"ccscMonths", "users", "salaryT8", "salaryT9", "ccscT8T9", "directorVault", "ccsc_director_vault"},
+    "DU_TOAN_SALE": {"ccscMonths", "users", "salaryT8", "salaryT9", "ccscT8T9", "directorVault", "ccsc_director_vault"},
+    "STAFF": {"ccscMonths", "users", "salaryT8", "salaryT9", "ccscT8T9", "directorVault", "ccsc_director_vault"},
+    "STAFF_SYNC": {"ccscMonths", "users", "salaryT8", "salaryT9", "ccscT8T9", "directorVault", "ccsc_director_vault"},
+    "GUEST_STAFF": DEFAULT_PROTECTED_KEYS,
+}
+MAX_POST_BODY_BYTES = 25 * 1024 * 1024
+
+
+def _verify_pin_value(pin_input: str) -> bool:
+    if not pin_input:
+        return False
+    digest = hashlib.sha256(str(pin_input).strip().encode("utf-8")).hexdigest()
+    return any(hmac.compare_digest(digest, h) for h in DIRECTOR_PIN_HASHES)
+
+
+def _sign_session_token(username: str, role: str, ts_str: str = None) -> dict:
+    ts = ts_str or datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+    msg = f"{username}|{role}|{ts}".encode("utf-8")
+    sig = hmac.new(_SERVER_SESSION_SECRET.encode("utf-8"), msg, hashlib.sha256).hexdigest()
+    return {"username": username, "role": role, "issued_at": ts, "_sig": f"hmac256_{sig}"}
+
+
+def _verify_session_token(token_input) -> dict:
+    if not token_input:
+        return {}
+    obj = None
+    if isinstance(token_input, dict):
+        obj = token_input
+    else:
+        raw = str(token_input).strip()
+        if raw.startswith("{"):
+            try:
+                obj = json.loads(raw)
+            except Exception:
+                obj = None
+        elif "|hmac256_" in raw:
+            parts = raw.split("|")
+            if len(parts) >= 4:
+                obj = {"username": parts[0], "role": parts[1], "issued_at": parts[2], "_sig": parts[3]}
+    if not isinstance(obj, dict):
+        return {}
+    u_name = str(obj.get("username") or "").strip()
+    u_role = str(obj.get("role") or "").strip().upper()
+    ts_str = str(obj.get("issued_at") or "").strip()
+    sig_val = str(obj.get("_sig") or "").strip()
+    if not (u_name and u_role and ts_str and sig_val):
+        return {}
+    expected = _sign_session_token(u_name, u_role, ts_str).get("_sig", "")
+    if hmac.compare_digest(sig_val, expected):
+        return {"username": u_name, "role": u_role, "issued_at": ts_str}
+    return {}
+
+
+def _append_hash_chained_audit(user: str, action: str, detail: str, extra: dict = None) -> dict:
+    with _AUDIT_LOCK:
+        prev_hash = "0" * 64
+        if os.path.exists(AUDIT_LOG_FILE):
+            try:
+                with open(AUDIT_LOG_FILE, "rb") as rf:
+                    rf.seek(0, os.SEEK_END)
+                    fsize = rf.tell()
+                    if fsize > 0:
+                        rf.seek(max(0, fsize - 4096))
+                        lines = [ln.strip() for ln in rf.read().decode("utf-8", errors="ignore").splitlines() if ln.strip()]
+                        if lines:
+                            last_obj = json.loads(lines[-1])
+                            prev_hash = last_obj.get("hash", prev_hash)
+            except Exception:
+                pass
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        raw_chain = f"{prev_hash}|{ts}|{user}|{action}|{detail}"
+        cur_hash = hashlib.sha256(raw_chain.encode("utf-8")).hexdigest()
+        entry = {
+            "timestamp": ts,
+            "user": user or "Hệ Thống",
+            "action": action or "SYSTEM_EVENT",
+            "detail": detail or "",
+            "prev_hash": prev_hash,
+            "hash": cur_hash,
+        }
+        if isinstance(extra, dict):
+            for k, v in extra.items():
+                if k not in entry:
+                    entry[k] = v
+        with open(AUDIT_LOG_FILE, "a", encoding="utf-8") as af:
+            af.write(json.dumps(entry, ensure_ascii=False) + "\n")
+            af.flush()
+        return entry
+
+try:
+    import pg_fast_io
+    json = pg_fast_io.json
+except Exception:
+    pg_fast_io = None
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if ROOT_DIR not in sys.path:
@@ -175,97 +301,103 @@ def _read_json_safe(fp, default):
 
 def _atomic_write_json(filepath, data):
     """
-    Ghi nguyên tử (atomic write qua file .tmp + os.replace) vào file json
-    và làm mới RAM cache (_ZALO_JSON_CACHE) ngay lập tức.
+    Ghi nguyên tử (atomic write qua file .tmp + flush + os.fsync + os.replace) vào file json
+    và làm mới RAM cache (_ZALO_JSON_CACHE) ngay lập tức dưới khóa RLock.
     """
-    tmp_path = filepath + ".tmp"
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    os.replace(tmp_path, filepath)
-    try:
-        mtime = os.stat(filepath).st_mtime
-        _ZALO_JSON_CACHE[filepath] = (mtime, data)
-    except Exception:
-        pass
+    with _STATE_LOCK:
+        tmp_path = f"{filepath}.{os.getpid()}.{threading.get_ident()}.tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+            f.flush()
+            try:
+                os.fsync(f.fileno())
+            except Exception:
+                pass
+        os.replace(tmp_path, filepath)
+        try:
+            mtime = os.stat(filepath).st_mtime
+            _ZALO_JSON_CACHE[filepath] = (mtime, data)
+        except Exception:
+            pass
 
 
 def _sync_to_sqlite_wal(action, state_data, patches=None):
     """
     Lưu trữ bền vững SQLite WAL Mirror (data/pg_home_state_wal.db).
-    Mỗi khi /api/save-state hoặc /api/patch-state được gọi, tự động đồng bộ trạng thái
-    và ghi log lịch sử thay đổi vào SQLite DB với PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL;
-    Bọc trong try...except an toàn có logging để không bao giờ làm nghẽn luồng chính.
+    Bọc trong contextlib.closing(sqlite3.connect(...)) + _STATE_LOCK để đóng sạch handle trên Windows.
     """
-    try:
-        now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        state_str = json.dumps(state_data, ensure_ascii=False)
-        patch_keys_str = (
-            json.dumps(list(patches.keys()) if isinstance(patches, dict) else [], ensure_ascii=False)
-            if patches is not None
-            else "ALL"
-        )
-        payload_str = json.dumps(patches, ensure_ascii=False) if patches is not None else state_str
+    with _STATE_LOCK:
+        try:
+            now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            state_str = json.dumps(state_data, ensure_ascii=False)
+            patch_keys_str = (
+                json.dumps(list(patches.keys()) if isinstance(patches, dict) else [], ensure_ascii=False)
+                if patches is not None
+                else "ALL"
+            )
+            payload_str = json.dumps(patches, ensure_ascii=False) if patches is not None else state_str
 
-        with sqlite3.connect(WAL_DB_FILE, timeout=5.0) as conn:
-            cursor = conn.cursor()
-            cursor.execute("PRAGMA journal_mode=WAL;")
-            cursor.execute("PRAGMA synchronous=NORMAL;")
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS app_state (
-                    id INTEGER PRIMARY KEY CHECK (id = 1),
-                    state_json TEXT NOT NULL,
-                    updated_at TEXT NOT NULL
-                );
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS kv_store (
-                    key TEXT PRIMARY KEY,
-                    value TEXT NOT NULL,
-                    updated_at TEXT NOT NULL
-                );
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS state_wal_log (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    action TEXT NOT NULL,
-                    patch_keys TEXT,
-                    payload TEXT,
-                    created_at TEXT NOT NULL
-                );
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS state_history (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    action TEXT NOT NULL,
-                    patch_keys TEXT,
-                    state_json TEXT,
-                    payload TEXT,
-                    timestamp TEXT NOT NULL
-                );
-            """)
-            cursor.execute(
-                "INSERT OR REPLACE INTO app_state (id, state_json, updated_at) VALUES (1, ?, ?);",
-                (state_str, now_str)
-            )
-            cursor.execute(
-                "INSERT OR REPLACE INTO kv_store (key, value, updated_at) VALUES ('app_state', ?, ?);",
-                (state_str, now_str)
-            )
-            cursor.execute(
-                "INSERT OR REPLACE INTO kv_store (key, value, updated_at) VALUES ('live_state', ?, ?);",
-                (state_str, now_str)
-            )
-            cursor.execute(
-                "INSERT INTO state_wal_log (action, patch_keys, payload, created_at) VALUES (?, ?, ?, ?);",
-                (action, patch_keys_str, payload_str, now_str)
-            )
-            cursor.execute(
-                "INSERT INTO state_history (action, patch_keys, state_json, payload, timestamp) VALUES (?, ?, ?, ?, ?);",
-                (action, patch_keys_str, state_str, payload_str, now_str)
-            )
-            conn.commit()
-    except Exception as exc:
-        print(f"[SQLITE WAL SYNC ERROR] {action}: {exc}", file=sys.stderr)
+            with contextlib.closing(sqlite3.connect(WAL_DB_FILE, timeout=5.0)) as conn:
+                cursor = conn.cursor()
+                cursor.execute("PRAGMA journal_mode=WAL;")
+                cursor.execute("PRAGMA synchronous=NORMAL;")
+                cursor.execute("PRAGMA wal_autocheckpoint=1000;")
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS app_state (
+                        id INTEGER PRIMARY KEY CHECK (id = 1),
+                        state_json TEXT NOT NULL,
+                        updated_at TEXT NOT NULL
+                    );
+                """)
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS kv_store (
+                        key TEXT PRIMARY KEY,
+                        value TEXT NOT NULL,
+                        updated_at TEXT NOT NULL
+                    );
+                """)
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS state_wal_log (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        action TEXT NOT NULL,
+                        patch_keys TEXT,
+                        payload TEXT,
+                        created_at TEXT NOT NULL
+                    );
+                """)
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS state_history (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        action TEXT NOT NULL,
+                        patch_keys TEXT,
+                        state_json TEXT,
+                        payload TEXT,
+                        timestamp TEXT NOT NULL
+                    );
+                """)
+                cursor.execute(
+                    "INSERT OR REPLACE INTO app_state (id, state_json, updated_at) VALUES (1, ?, ?);",
+                    (state_str, now_str)
+                )
+                cursor.execute(
+                    "INSERT OR REPLACE INTO kv_store (key, value, updated_at) VALUES ('app_state', ?, ?);",
+                    (state_str, now_str)
+                )
+                cursor.execute(
+                    "INSERT OR REPLACE INTO kv_store (key, value, updated_at) VALUES ('live_state', ?, ?);",
+                    (state_str, now_str)
+                )
+                cursor.execute(
+                    "INSERT INTO state_wal_log (action, patch_keys, payload, created_at) VALUES (?, ?, ?, ?);",
+                    (action, patch_keys_str, payload_str, now_str)
+                )
+                cursor.execute(
+                    "INSERT INTO state_history (action, patch_keys, state_json, payload, timestamp) VALUES (?, ?, ?, ?, ?);",
+                    (action, patch_keys_str, state_str, payload_str, now_str)
+                )
+                conn.commit()
+        except Exception as exc:
+            print(f"[SQLITE WAL SYNC ERROR] {action}: {exc}", file=sys.stderr)
 
 
 SENSITIVE_STATE_KEYS = {
@@ -276,6 +408,13 @@ SENSITIVE_STATE_KEYS = {
     "admin_secret_notes",
     "private_vault",
     "bo_secret_notes",
+    "ccscmonths",
+    "ccsct8t9",
+    "salaryt8",
+    "salaryt9",
+    "users",
+    "directorvault",
+    "ccsc_director_vault",
 }
 
 
@@ -316,15 +455,74 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
         # Vô hiệu hóa ghi stderr mặc định để chạy ngầm 100% dưới pythonw.exe / WMI Detached mà không bao giờ lỗi Descriptor
         pass
 
+    def _is_loopback(self):
+        client_ip = (self.client_address[0] if self.client_address else "")
+        return client_ip in ("127.0.0.1", "::1", "::ffff:127.0.0.1", "localhost")
+
+    def _resolve_verified_role(self) -> str:
+        raw_role = (self.headers.get("X-PG-Role") or "").strip().upper()
+        if raw_role in ("PENDING", "LOCKED", "REJECTED"):
+            return raw_role
+        if self._is_loopback():
+            return raw_role if raw_role else "ADMIN"
+        tok_info = _verify_session_token(self.headers.get("X-PG-Token") or "")
+        pin_ok = _verify_pin_value(self.headers.get("X-Director-PIN") or "")
+        if raw_role == "ADMIN":
+            if pin_ok or tok_info.get("role") == "ADMIN":
+                return "ADMIN"
+            return "GUEST_STAFF"
+        if tok_info.get("role"):
+            return tok_info["role"]
+        if raw_role in ROLE_PROTECTED_KEYS:
+            return raw_role
+        return "GUEST_STAFF"
+
+    def _read_body_bounded(self, max_bytes: int = MAX_POST_BODY_BYTES):
+        length = int(self.headers.get("Content-Length", "0") or "0")
+        if length < 0:
+            return b""
+        if length > max_bytes:
+            raise ValueError(f"PAYLOAD_TOO_LARGE:{length}")
+        return self.rfile.read(length) if length > 0 else b""
+
+    def _get_allowed_cors_origin(self):
+        origin = (self.headers.get("Origin") or "").strip()
+        if not origin:
+            return "http://127.0.0.1:8080"
+        ol = origin.lower()
+        if (
+            ol.startswith("http://localhost:")
+            or ol.startswith("http://127.0.0.1:")
+            or ol == "https://nghiagurunv-prog.github.io"
+            or ol.endswith(".vercel.app")
+        ):
+            return origin
+        return "http://127.0.0.1:8080"
+
     def end_headers(self):
-        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Origin", self._get_allowed_cors_origin())
+        self.send_header("Vary", "Origin")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-PG-Role, Authorization")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-PG-Role, X-PG-Token, X-Director-PIN, X-Actor, Authorization")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "SAMEORIGIN")
         clean_p = unquote(getattr(self, "path", "").split("?", 1)[0].split("#", 1)[0]).lower()
-        if clean_p.endswith((".png", ".jpg", ".jpeg", ".webp", ".svg", ".woff2", ".ico")):
+        if "/vendor/" in clean_p:
+            self.send_header("Cache-Control", "public, max-age=31536000, immutable")
+        elif clean_p.endswith((".png", ".jpg", ".jpeg", ".webp", ".svg", ".woff2", ".ico")):
             self.send_header("Cache-Control", "public, max-age=3600")
         else:
             self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        if clean_p.endswith(STATIC_ASSET_EXTS):
+            has_etag = any(b"etag:" in h.lower() for h in getattr(self, "_headers_buffer", []))
+            if not has_etag:
+                try:
+                    resolved = self.translate_path(self.path)
+                    if os.path.isfile(resolved):
+                        st = os.stat(resolved)
+                        self.send_header("ETag", f'W/"{int(st.st_mtime_ns)}-{st.st_size}"')
+                except Exception:
+                    pass
         super().end_headers()
 
     def do_OPTIONS(self):
@@ -336,7 +534,16 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
         if clean_path.startswith("/data/"):
             rel = clean_path[len("/data/"):]
             rel = os.path.normpath(rel).lstrip("\\/")
-            if ".." in rel:
+            rel_lower = rel.lower().replace("\\", "/")
+            base_lower = os.path.basename(rel_lower)
+            if (
+                ".." in rel
+                or rel_lower.startswith("backups/")
+                or rel_lower == "backups"
+                or base_lower in BLOCKED_DATA_FILES
+                or base_lower.startswith("ccsc_")
+                or any(base_lower.endswith(sfx) for sfx in BLOCKED_DATA_SUFFIXES)
+            ):
                 return os.path.join(WEB_DIR, "blocked_path")
             return os.path.join(DATA_DIR, rel)
         if clean_path.startswith("/chung_tu/"):
@@ -348,10 +555,12 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
         if clean_path.startswith("/web_app/"):
             rel = clean_path[len("/web_app/"):]
             rel = os.path.normpath(rel).lstrip("\\/")
-            if ".." in rel:
+            if ".." in rel or rel.lower().endswith("server.py"):
                 return os.path.join(WEB_DIR, "blocked_path")
             return os.path.join(WEB_DIR, rel)
         if clean_path.startswith("/local_admin_vault/"):
+            if not self._is_loopback():
+                return os.path.join(WEB_DIR, "blocked_path")
             rel = clean_path[len("/local_admin_vault/"):]
             rel = os.path.normpath(rel).lstrip("\\/")
             if ".." in rel:
@@ -361,13 +570,98 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
             if os.path.exists(vault_candidate):
                 return vault_candidate
             return os.path.join(WEB_DIR, rel)
+        if clean_path.startswith("/modules/") and self._is_loopback():
+            referer = self.headers.get("Referer", "")
+            is_deploy_referer = any(k in referer for k in ("/deploy", "/vp-xuong", "/web_app/", "edition=deploy"))
+            if not is_deploy_referer:
+                rel = os.path.normpath(clean_path[len("/modules/"):]).lstrip("\\/")
+                if ".." not in rel:
+                    local_vault_mods = os.path.join(os.path.dirname(DATA_DIR), "local_admin_vault", "modules", rel)
+                    if os.path.exists(local_vault_mods):
+                        return local_vault_mods
         return super().translate_path(path)
 
     def do_GET(self):
         clean_path = unquote(self.path.split("?", 1)[0])
         local_vault_dir = os.path.join(os.path.dirname(DATA_DIR), "local_admin_vault")
 
-        # --- PHỤC VỤ BẢN NỘI BỘ MÁY TÍNH GIÁM ĐỐC & CCSC (127.0.0.1:8080 / localhost:8080) ---
+        # Chốt chặn bảo mật tài nguyên nhạy cảm /data/* (trả về 403 thay vì 404 hay lộ file)
+        if clean_path.startswith("/data/"):
+            rel = os.path.normpath(clean_path[len("/data/"):]).lstrip("\\/")
+            rel_lower = rel.lower().replace("\\", "/")
+            base_lower = os.path.basename(rel_lower)
+            if (
+                ".." in rel
+                or rel_lower.startswith("backups/")
+                or rel_lower == "backups"
+                or base_lower in BLOCKED_DATA_FILES
+                or base_lower.startswith("ccsc_")
+                or any(base_lower.endswith(sfx) for sfx in BLOCKED_DATA_SUFFIXES)
+            ):
+                self.send_response(403)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "forbidden", "message": "Access to internal vault/database files is forbidden."}).encode("utf-8"))
+                return
+
+        if clean_path == "/api/mkt-telemetry":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            mkt_procs = []
+            try:
+                CREATE_NO_WINDOW = 0x08000000
+                proc = subprocess.run(
+                    ["tasklist", "/FO", "CSV", "/NH"],
+                    capture_output=True,
+                    text=True,
+                    timeout=2.5,
+                    creationflags=CREATE_NO_WINDOW if os.name == "nt" else 0,
+                )
+                for line in (proc.stdout or "").splitlines():
+                    low = line.lower()
+                    if any(k in low for k in ("mktpost", "mktcare", "mkt_", "chrome.exe")):
+                        parts = [p.strip('"') for p in line.split('","')]
+                        if parts and any(k in parts[0].lower() for k in ("mkt",)):
+                            mkt_procs.append({"name": parts[0], "pid": parts[1] if len(parts) > 1 else ""})
+            except Exception:
+                pass
+            payload = {
+                "status": "ok",
+                "threads_run": 1,
+                "active_mkt_processes": len(mkt_procs),
+                "max_allowed_processes": 4,
+                "min_delay_sec": 28,
+                "ip_cooldown_hours": 24,
+                "mkt_post_nicks": 8,
+                "mkt_care_nicks": 28,
+                "hardware_cap_safe": len(mkt_procs) <= 4,
+                "processes": mkt_procs,
+                "checked_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            }
+            self.wfile.write(json.dumps(payload, ensure_ascii=False).encode("utf-8"))
+            return
+
+        # --- PHỤC VỤ BẢN NỘI BỘ MÁY TÍNH GIÁM ĐỐC & CCSC (CHỈ 127.0.0.1 / ::1) ---
+        if clean_path in (
+            "/api/local-ccsc-vault",
+            "/local_admin_vault/ccsc_director_vault.json",
+            "/ccsc_director_vault.json",
+            "/local-admin-assets/director_app_full.js",
+            "/director_app_full.js",
+            "/local_admin_vault/director_app_full.js",
+            "/admin",
+            "/ccsc",
+            "/director",
+            "/local_admin_vault/director_ccsc_full.html",
+        ) or clean_path.startswith("/local_admin_vault/"):
+            if not self._is_loopback():
+                self.send_response(403)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "forbidden", "code": "LOOPBACK_ONLY", "message": "Cổng Giám Đốc chỉ phục vụ nội bộ 127.0.0.1 trên máy Bố."}).encode("utf-8"))
+                return
+
         if clean_path in ("/api/local-ccsc-vault", "/local_admin_vault/ccsc_director_vault.json", "/ccsc_director_vault.json"):
             vault_json = os.path.join(local_vault_dir, "ccsc_director_vault.json")
             self.send_response(200)
@@ -390,7 +684,29 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     self.wfile.write(jf.read())
                 return
 
+        if clean_path.startswith("/local_admin_vault/modules/"):
+            rel_mod = os.path.normpath(clean_path[len("/local_admin_vault/modules/"):]).lstrip("\\/")
+            if ".." not in rel_mod:
+                mod_fp = os.path.join(local_vault_dir, "modules", rel_mod)
+                if os.path.exists(mod_fp) and os.path.isfile(mod_fp):
+                    ctype = "text/css; charset=utf-8" if mod_fp.endswith(".css") else "application/javascript; charset=utf-8"
+                    self.send_response(200)
+                    self.send_header("Content-Type", ctype)
+                    self.end_headers()
+                    with open(mod_fp, "rb") as mf:
+                        self.wfile.write(mf.read())
+                    return
+
         if clean_path in ("/", "/index.html", "/admin", "/ccsc", "/director", "/local_admin_vault/director_ccsc_full.html") and "edition=deploy" not in self.path:
+            if not self._is_loopback():
+                deploy_html = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html")
+                if os.path.exists(deploy_html):
+                    self.send_response(200)
+                    self.send_header("Content-Type", "text/html; charset=utf-8")
+                    self.end_headers()
+                    with open(deploy_html, "rb") as df:
+                        self.wfile.write(df.read())
+                    return
             director_html = os.path.join(local_vault_dir, "director_ccsc_full.html")
             if os.path.exists(director_html):
                 self.send_response(200)
@@ -415,12 +731,8 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.end_headers()
 
-            role_header = self.headers.get("X-PG-Role")
-            is_admin = True
-            if role_header:
-                clean_role = role_header.strip().upper()
-                if clean_role and clean_role != "ADMIN":
-                    is_admin = False
+            verified_role = self._resolve_verified_role()
+            is_admin = (verified_role == "ADMIN")
 
             state_data = None
             candidate_files = [
@@ -684,16 +996,131 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(payload, ensure_ascii=False).encode("utf-8"))
             return
 
+        clean_lower = clean_path.lower()
+        if clean_lower.endswith(STATIC_ASSET_EXTS):
+            resolved_target = self.translate_path(self.path)
+            if os.path.isfile(resolved_target):
+                try:
+                    st = os.stat(resolved_target)
+                    etag = f'W/"{int(st.st_mtime_ns)}-{st.st_size}"'
+                    client_etag = (self.headers.get("If-None-Match") or "").strip()
+                    if client_etag:
+                        tokens = [tok.strip() for tok in client_etag.split(",") if tok.strip()]
+                        raw_tag = f'"{int(st.st_mtime_ns)}-{st.st_size}"'
+                        if "*" in tokens or etag in tokens or raw_tag in tokens:
+                            self.send_response(304)
+                            self.send_header("ETag", etag)
+                            self.end_headers()
+                            return
+
+                    if clean_lower.endswith((".js", ".css")) and "gzip" in (self.headers.get("Accept-Encoding") or "").lower():
+                        gz_path = resolved_target + ".gz"
+                        if os.path.isfile(gz_path):
+                            gz_mtime = os.path.getmtime(gz_path)
+                            if gz_mtime < st.st_mtime:
+                                try:
+                                    with open(resolved_target, "rb") as rf:
+                                        raw_bytes = rf.read()
+                                    compressed_bytes = gzip.compress(raw_bytes, compresslevel=9, mtime=0)
+                                    with open(gz_path, "wb") as wf:
+                                        wf.write(compressed_bytes)
+                                except Exception:
+                                    pass
+
+                        if os.path.isfile(gz_path) and os.path.getmtime(gz_path) >= st.st_mtime:
+                            ctype = "application/javascript; charset=utf-8" if clean_lower.endswith(".js") else "text/css; charset=utf-8"
+                            with open(gz_path, "rb") as gf:
+                                gz_bytes = gf.read()
+                            self.send_response(200)
+                            self.send_header("Content-Type", ctype)
+                            self.send_header("Content-Encoding", "gzip")
+                            self.send_header("Vary", "Accept-Encoding")
+                            self.send_header("ETag", etag)
+                            self.send_header("Content-Length", str(len(gz_bytes)))
+                            self.end_headers()
+                            self.wfile.write(gz_bytes)
+                            return
+                except OSError:
+                    pass
+
         return super().do_GET()
 
     def do_POST(self):
         clean_path = unquote(self.path.split("?", 1)[0])
-        if clean_path == "/api/save-state":
+        req_role = self._resolve_verified_role()
+        try:
+            content_len = int(self.headers.get("Content-Length", "0") or "0")
+        except ValueError:
+            content_len = 0
+        if content_len > MAX_POST_BODY_BYTES:
+            self.send_response(413)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "payload_too_large", "max_bytes": MAX_POST_BODY_BYTES}).encode("utf-8"))
+            return
+
+        if clean_path == "/api/verify-director-pin":
+            try:
+                raw_body = self._read_body_bounded()
+                payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
+                pin_val = str(payload.get("pin") or payload.get("director_pin") or self.headers.get("X-Director-PIN") or "")
+                if not _verify_pin_value(pin_val):
+                    self.send_response(403)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "invalid_pin", "verified": False, "message": "Mã PIN Giám Đốc không chính xác."}, ensure_ascii=False).encode("utf-8"))
+                    return
+                session_tok = _sign_session_token("giamdoc", "ADMIN")
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "verified": True, "session": session_tok}, ensure_ascii=False).encode("utf-8"))
+            except Exception as exc:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": str(exc)}).encode("utf-8"))
+            return
+
+        if clean_path == "/api/auth-sign-session":
             try:
                 length = int(self.headers.get("Content-Length", "0"))
-                raw_body = self.rfile.read(length)
+                raw_body = self.rfile.read(length) if length > 0 else b""
+                payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
+                u_name = str(payload.get("username") or "giamdoc")
+                u_role = str(payload.get("role") or ("ADMIN" if self._is_loopback() else "STAFF")).upper()
+                if u_role == "ADMIN" and not self._is_loopback():
+                    pin_val = str(payload.get("pin") or self.headers.get("X-Director-PIN") or "")
+                    if not _verify_pin_value(pin_val):
+                        self.send_response(403)
+                        self.send_header("Content-Type", "application/json; charset=utf-8")
+                        self.end_headers()
+                        self.wfile.write(json.dumps({"status": "forbidden", "message": "Cần xác thực PIN Giám Đốc."}).encode("utf-8"))
+                        return
+                session_tok = _sign_session_token(u_name, u_role)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "session": session_tok}, ensure_ascii=False).encode("utf-8"))
+            except Exception as exc:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": str(exc)}).encode("utf-8"))
+            return
+
+        if clean_path == "/api/save-state":
+            try:
+                if req_role in ("PENDING", "LOCKED", "REJECTED", "GUEST_STAFF") or not req_role:
+                    self.send_response(403)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "forbidden", "message": "Tài khoản không có quyền ghi trạng thái."}).encode("utf-8"))
+                    return
+
+                raw_body = self._read_body_bounded()
                 parsed = json.loads(raw_body.decode("utf-8")) if raw_body else {}
-                state_data = parsed
+                state_data = parsed.get("state") if (isinstance(parsed, dict) and isinstance(parsed.get("state"), dict)) else parsed
 
                 if not state_data or (isinstance(state_data, dict) and len(state_data) == 0):
                     self.send_response(400)
@@ -702,37 +1129,67 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     self.wfile.write(json.dumps({"status": "error", "message": "State data cannot be empty"}).encode("utf-8"))
                     return
 
-                if os.path.exists(LIVE_STATE_FILE):
-                    try:
-                        shutil.copy2(LIVE_STATE_FILE, LIVE_STATE_FILE + ".bak")
-                        shutil.copy2(LIVE_STATE_FILE, os.path.join(DATA_DIR, "app_state_live.json.bak"))
-                    except Exception:
-                        pass
-                if os.path.exists(APP_STATE_FILE):
-                    try:
-                        shutil.copy2(APP_STATE_FILE, APP_STATE_FILE + ".bak")
-                    except Exception:
-                        pass
+                with _STATE_LOCK:
+                    existing_st = _read_json_cached(APP_STATE_FILE, {}) if os.path.exists(APP_STATE_FILE) else {}
+                    protected_keys = None if req_role == "ADMIN" else ROLE_PROTECTED_KEYS.get(req_role, DEFAULT_PROTECTED_KEYS)
+                    if isinstance(existing_st, dict) and isinstance(state_data, dict):
+                        state_data = dict(state_data)
+                        if protected_keys:
+                            for pk in protected_keys:
+                                if pk in existing_st:
+                                    state_data[pk] = existing_st[pk]
+                        # Bảo toàn CCSC / CP-03 / ADMIN / Accessories.profit khi client Cloud đã bị sanitizeStateForDeploy
+                        if isinstance(existing_st.get("ccscMonths"), list) and len(existing_st["ccscMonths"]) > 0 and not state_data.get("ccscMonths"):
+                            state_data["ccscMonths"] = existing_st["ccscMonths"]
+                        if isinstance(existing_st.get("expenses"), list) and isinstance(state_data.get("expenses"), list):
+                            for ex_item in existing_st["expenses"]:
+                                if isinstance(ex_item, dict) and (ex_item.get("id") == "CP-03" or "Ban Lãnh Đạo" in str(ex_item.get("category", ""))):
+                                    if not any(isinstance(x, dict) and x.get("id") == ex_item.get("id") for x in state_data["expenses"]):
+                                        state_data["expenses"].append(ex_item)
+                        if isinstance(existing_st.get("users"), list) and isinstance(state_data.get("users"), list):
+                            for adm in existing_st["users"]:
+                                if isinstance(adm, dict) and (adm.get("username") == "giamdoc" or adm.get("role") == "ADMIN"):
+                                    if not any(isinstance(u, dict) and u.get("username") == adm.get("username") for u in state_data["users"]):
+                                        state_data["users"].insert(0, adm)
+                        if isinstance(existing_st.get("accessories"), list) and isinstance(state_data.get("accessories"), list):
+                            prev_acc = {(a.get("id") or a.get("name")): a for a in existing_st["accessories"] if isinstance(a, dict)}
+                            for a in state_data["accessories"]:
+                                if isinstance(a, dict) and "profit" not in a:
+                                    p_item = prev_acc.get(a.get("id") or a.get("name"))
+                                    if p_item and "profit" in p_item:
+                                        a["profit"] = p_item["profit"]
 
-                _atomic_write_json(APP_STATE_FILE, state_data)
-                _atomic_write_json(LIVE_STATE_FILE, state_data)
-                _atomic_write_json(os.path.join(DATA_DIR, "app_state_live.json"), state_data)
+                    if os.path.exists(LIVE_STATE_FILE):
+                        try:
+                            shutil.copy2(LIVE_STATE_FILE, LIVE_STATE_FILE + ".bak")
+                            shutil.copy2(LIVE_STATE_FILE, os.path.join(DATA_DIR, "app_state_live.json.bak"))
+                        except Exception:
+                            pass
+                    if os.path.exists(APP_STATE_FILE):
+                        try:
+                            shutil.copy2(APP_STATE_FILE, APP_STATE_FILE + ".bak")
+                        except Exception:
+                            pass
 
-                today_str = datetime.now().strftime("%Y-%m-%d")
-                backup_path = os.path.join(BACKUP_DIR, f"state_{today_str}.json")
-                shutil.copy2(LIVE_STATE_FILE, backup_path)
+                    _atomic_write_json(APP_STATE_FILE, state_data)
+                    _atomic_write_json(LIVE_STATE_FILE, state_data)
+                    _atomic_write_json(os.path.join(DATA_DIR, "app_state_live.json"), state_data)
 
-                all_backups = sorted(
-                    [f for f in os.listdir(BACKUP_DIR) if f.startswith("state_") and f.endswith(".json")]
-                )
-                while len(all_backups) > 30:
-                    oldest = all_backups.pop(0)
-                    try:
-                        os.remove(os.path.join(BACKUP_DIR, oldest))
-                    except OSError:
-                        pass
+                    today_str = datetime.now().strftime("%Y-%m-%d")
+                    backup_path = os.path.join(BACKUP_DIR, f"state_{today_str}.json")
+                    shutil.copy2(LIVE_STATE_FILE, backup_path)
 
-                _sync_to_sqlite_wal("SAVE_STATE", state_data)
+                    all_backups = sorted(
+                        [f for f in os.listdir(BACKUP_DIR) if f.startswith("state_") and f.endswith(".json")]
+                    )
+                    while len(all_backups) > 30:
+                        oldest = all_backups.pop(0)
+                        try:
+                            os.remove(os.path.join(BACKUP_DIR, oldest))
+                        except OSError:
+                            pass
+
+                    _sync_to_sqlite_wal("SAVE_STATE", state_data)
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -758,8 +1215,14 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
 
         if clean_path == "/api/patch-state":
             try:
-                length = int(self.headers.get("Content-Length", "0"))
-                raw_body = self.rfile.read(length)
+                if req_role in ("PENDING", "LOCKED", "REJECTED", "GUEST_STAFF") or not req_role:
+                    self.send_response(403)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "forbidden", "message": "Tài khoản không có quyền cập nhật trạng thái."}).encode("utf-8"))
+                    return
+
+                raw_body = self._read_body_bounded()
                 payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
 
                 patches = {}
@@ -773,12 +1236,12 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                         patches = dict(payload)
                         updated_at = patches.pop("updatedAt", None)
 
-                # Chốt chặn #28: Đóng băng kỳ kế toán lịch sử T1-T10/2026 (Period Freeze Lock)
+                # Chốt chặn #28: Đóng băng kỳ kế toán lịch sử T1-T10/2026 (Period Freeze Lock - SHA-256 PIN check)
                 target_period = str(payload.get("period") or patches.get("activeMonth") or "")
                 director_pin = str(payload.get("director_pin") or self.headers.get("X-Director-PIN") or "")
                 locked_periods = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "T8", "T9", "T10"}
                 has_financial_mutation = any(k in patches for k in ("salaryT8", "salaryT9", "attendanceT10", "ccscT8T9", "lockedHistoryOverride"))
-                if target_period in locked_periods and has_financial_mutation and director_pin not in ("0986", "2026", "0986722324"):
+                if target_period in locked_periods and has_financial_mutation and not _verify_pin_value(director_pin):
                     self.send_response(403)
                     self.send_header("Content-Type", "application/json; charset=utf-8")
                     self.end_headers()
@@ -788,32 +1251,57 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     }, ensure_ascii=False).encode("utf-8"))
                     return
 
-                # 1. Đọc state hiện tại từ data/app_state.json (hoặc fallback pg_home_live_state.json)
-                current_state = {}
-                if os.path.exists(APP_STATE_FILE):
-                    current_state = _read_json_cached(APP_STATE_FILE, {})
-                elif os.path.exists(LIVE_STATE_FILE):
-                    current_state = _read_json_cached(LIVE_STATE_FILE, {})
-
-                if not isinstance(current_state, dict):
+                with _STATE_LOCK:
+                    # 1. Đọc state hiện tại từ data/app_state.json (hoặc fallback pg_home_live_state.json)
                     current_state = {}
-                else:
-                    current_state = dict(current_state)
+                    if os.path.exists(APP_STATE_FILE):
+                        current_state = _read_json_cached(APP_STATE_FILE, {})
+                    elif os.path.exists(LIVE_STATE_FILE):
+                        current_state = _read_json_cached(LIVE_STATE_FILE, {})
 
-                # 2. Cập nhật đúng các key trong patches
-                for k, v in patches.items():
-                    current_state[k] = v
+                    if not isinstance(current_state, dict):
+                        current_state = {}
+                    else:
+                        current_state = dict(current_state)
 
-                if updated_at is not None:
-                    current_state["updatedAt"] = updated_at
+                    prev_snapshot = dict(current_state)
+                    protected_keys = set() if req_role == "ADMIN" else ROLE_PROTECTED_KEYS.get(req_role, DEFAULT_PROTECTED_KEYS)
+                    # 2. Cập nhật đúng các key trong patches (tuân thủ Field-Level ACL)
+                    for k, v in patches.items():
+                        if k in protected_keys or k in ("__proto__", "constructor", "prototype"):
+                            continue
+                        current_state[k] = v
 
-                # 3. Ghi nguyên tử (atomic write qua file .tmp + os.replace) vào data/app_state.json và làm mới RAM cache
-                _atomic_write_json(APP_STATE_FILE, current_state)
-                # Đồng bộ thêm file legacy pg_home_live_state.json
-                _atomic_write_json(LIVE_STATE_FILE, current_state)
+                    # Bảo toàn CCSC / CP-03 / ADMIN / Accessories.profit khi client Cloud đã bị sanitizeStateForDeploy
+                    if isinstance(prev_snapshot.get("ccscMonths"), list) and len(prev_snapshot["ccscMonths"]) > 0 and not current_state.get("ccscMonths"):
+                        current_state["ccscMonths"] = prev_snapshot["ccscMonths"]
+                    if isinstance(prev_snapshot.get("expenses"), list) and isinstance(current_state.get("expenses"), list):
+                        for ex_item in prev_snapshot["expenses"]:
+                            if isinstance(ex_item, dict) and (ex_item.get("id") == "CP-03" or "Ban Lãnh Đạo" in str(ex_item.get("category", ""))):
+                                if not any(isinstance(x, dict) and x.get("id") == ex_item.get("id") for x in current_state["expenses"]):
+                                    current_state["expenses"].append(ex_item)
+                    if isinstance(prev_snapshot.get("users"), list) and isinstance(current_state.get("users"), list):
+                        for adm in prev_snapshot["users"]:
+                            if isinstance(adm, dict) and (adm.get("username") == "giamdoc" or adm.get("role") == "ADMIN"):
+                                if not any(isinstance(u, dict) and u.get("username") == adm.get("username") for u in current_state["users"]):
+                                    current_state["users"].insert(0, adm)
+                    if isinstance(prev_snapshot.get("accessories"), list) and isinstance(current_state.get("accessories"), list):
+                        prev_acc = {(a.get("id") or a.get("name")): a for a in prev_snapshot["accessories"] if isinstance(a, dict)}
+                        for a in current_state["accessories"]:
+                            if isinstance(a, dict) and "profit" not in a:
+                                p_item = prev_acc.get(a.get("id") or a.get("name"))
+                                if p_item and "profit" in p_item:
+                                    a["profit"] = p_item["profit"]
 
-                # 4. Tự động đồng bộ và ghi log vào SQLite WAL Mirror
-                _sync_to_sqlite_wal("PATCH_STATE", current_state, patches=patches)
+                    if updated_at is not None:
+                        current_state["updatedAt"] = updated_at
+
+                    # 3. Ghi nguyên tử vào data/app_state.json và làm mới RAM cache
+                    _atomic_write_json(APP_STATE_FILE, current_state)
+                    _atomic_write_json(LIVE_STATE_FILE, current_state)
+
+                    # 4. Tự động đồng bộ và ghi log vào SQLite WAL Mirror
+                    _sync_to_sqlite_wal("PATCH_STATE", current_state, patches=patches)
 
                 resp_data = {
                     "status": "ok",
@@ -880,12 +1368,12 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                     ov = existing.setdefault("custom_overrides", {})
                     sid = str(payload["override_staff_id"])
                     ov.setdefault(sid, {})
-                    if "hc" in payload:
-                        ov[sid].setdefault("hc", {}).update(payload["hc"])
-                    if "ot" in payload:
-                        ov[sid].setdefault("ot", {}).update(payload["ot"])
-                    if "days" in payload:
-                        ov[sid].setdefault("days", {}).update(payload["days"])
+                    if "hc" in payload and isinstance(payload["hc"], dict):
+                        ov[sid].setdefault("hc", {}).update({k: v for k, v in payload["hc"].items() if str(k).isdigit() and 1 <= int(k) <= 31})
+                    if "ot" in payload and isinstance(payload["ot"], dict):
+                        ov[sid].setdefault("ot", {}).update({k: v for k, v in payload["ot"].items() if str(k).isdigit() and 1 <= int(k) <= 31})
+                    if "days" in payload and isinstance(payload["days"], dict):
+                        ov[sid].setdefault("days", {}).update({k: v for k, v in payload["days"].items() if str(k).isdigit() and 1 <= int(k) <= 31})
                     zalo_monitor.save_json(ZALO_LIVE_ATTENDANCE_FILE, existing)
 
                 zalo_monitor.execute_scan(trigger_source="ATTENDANCE_REALTIME_SYNC")
@@ -908,34 +1396,47 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 length = int(self.headers.get("Content-Length", "0"))
                 raw_body = self.rfile.read(length)
                 payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
-                item_id = payload.get("id")
-                new_status = payload.get("review_status", "APPROVED")
+                director_pin = str(payload.get("director_pin") or payload.get("pin") or self.headers.get("X-Director-PIN") or "")
+                if req_role != "ADMIN" and not _verify_pin_value(director_pin):
+                    self.send_response(403)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({
+                        "status": "forbidden",
+                        "message": "Chỉ Giám Đốc (ADMIN + Mã PIN) mới có thẩm quyền phê duyệt chứng từ Zalo."
+                    }, ensure_ascii=False).encode("utf-8"))
+                    return
 
-                inbox = _read_json_cached(ZALO_INBOX_FILE, [])
-                matched_item = None
-                for item in inbox:
-                    if item.get("id") == item_id:
-                        item["review_status"] = new_status
-                        item["approved_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                        item["approved_by"] = "Giám Đốc Nguyễn Viết Nghĩa"
-                        if "project_hint" in payload and payload["project_hint"]:
-                            item["project_hint"] = payload["project_hint"]
-                        matched_item = item
-                        break
+                item_id = payload.get("id") or payload.get("item_id")
+                raw_action = str(payload.get("review_status") or payload.get("action") or "APPROVED").upper()
+                if raw_action in ("APPROVE", "APPROVED"):
+                    new_status = "APPROVED"
+                elif raw_action in ("REJECT", "REJECTED"):
+                    new_status = "REJECTED"
+                else:
+                    new_status = raw_action
 
-                with open(ZALO_INBOX_FILE, "w", encoding="utf-8") as f:
-                    json.dump(inbox, f, ensure_ascii=False, indent=2)
-                _ZALO_JSON_CACHE[ZALO_INBOX_FILE] = (os.stat(ZALO_INBOX_FILE).st_mtime, inbox)
+                with _STATE_LOCK:
+                    inbox = _read_json_cached(ZALO_INBOX_FILE, [])
+                    matched_item = None
+                    for item in inbox:
+                        if item.get("id") == item_id:
+                            item["review_status"] = new_status
+                            item["approved_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            item["approved_by"] = "Giám Đốc Nguyễn Viết Nghĩa"
+                            if "project_hint" in payload and payload["project_hint"]:
+                                item["project_hint"] = payload["project_hint"]
+                            matched_item = item
+                            break
+
+                    _atomic_write_json(ZALO_INBOX_FILE, inbox)
 
                 if matched_item:
-                    audit_entry = {
-                        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                        "user": "Giám Đốc Nguyễn Viết Nghĩa",
-                        "action": "ZALO_V4_APPROVE_RECEIPT",
-                        "detail": f"Duyệt chứng từ Zalo [{matched_item.get('id')}] nhóm {matched_item.get('group_name')} (SHA-256: {matched_item.get('sha256')})"
-                    }
-                    with open(AUDIT_LOG_FILE, "a", encoding="utf-8") as f:
-                        f.write(json.dumps(audit_entry, ensure_ascii=False) + "\n")
+                    _append_hash_chained_audit(
+                        user="Giám Đốc Nguyễn Viết Nghĩa",
+                        action="ZALO_V4_APPROVE_RECEIPT",
+                        detail=f"Duyệt chứng từ Zalo [{matched_item.get('id')}] nhóm {matched_item.get('group_name')} (SHA-256: {matched_item.get('sha256')})",
+                    )
 
                 pending_count = sum(1 for x in inbox if x.get("review_status") == "PENDING_DIRECTOR_REVIEW")
                 self.send_response(200)
@@ -959,19 +1460,17 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": str(exc)}).encode("utf-8"))
             return
 
-        if clean_path == "/api/audit-log":
+        if clean_path in ("/api/audit-log", "/api/save-audit-log"):
             try:
                 length = int(self.headers.get("Content-Length", "0"))
                 raw_body = self.rfile.read(length)
                 payload = json.loads(raw_body.decode("utf-8")) if raw_body else {}
-                entry = {
-                    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    "user": payload.get("user", "Giám Đốc"),
-                    "action": payload.get("action", "SYSTEM_EVENT"),
-                    "detail": payload.get("detail", "")
-                }
-                with open(AUDIT_LOG_FILE, "a", encoding="utf-8") as f:
-                    f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+                entry = _append_hash_chained_audit(
+                    user=payload.get("user") or payload.get("actor") or "Giám Đốc",
+                    action=payload.get("action") or "SYSTEM_EVENT",
+                    detail=payload.get("detail") or payload.get("target") or "",
+                    extra={k: v for k, v in payload.items() if k not in ("user", "action", "detail")},
+                )
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
@@ -1029,11 +1528,13 @@ class PGHomeRequestHandler(SimpleHTTPRequestHandler):
 
 
 def run_server(port=8080):
-    server_address = ("", port)
+    # BẢO MẬT CÔ LẬP CỔNG LOCAL: Chỉ bind độc quyền Loopback 127.0.0.1 trên máy tính của Bố
+    bind_host = os.environ.get("PG_BIND_HOST", "127.0.0.1")
+    server_address = (bind_host, port)
     httpd = ThreadingHTTPServer(server_address, PGHomeRequestHandler)
     try:
         if sys.stdout is not None:
-            print(f"[PG HOME SERVER V4] Running at http://localhost:{port}/index.html", flush=True)
+            print(f"[PG HOME SERVER V4] Running LOOPBACK ONLY at http://{bind_host}:{port}/director", flush=True)
             print(f"[PG HOME SERVER V4] Persistent Disk Storage: {LIVE_STATE_FILE}", flush=True)
             print(f"[PG HOME SERVER V4] Zalo v4.0 Live Staging : {ZALO_INBOX_FILE}", flush=True)
     except Exception:

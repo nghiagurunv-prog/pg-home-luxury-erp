@@ -30,6 +30,11 @@ B. BẢN DEPLOY VĂN PHÒNG & XƯỞNG (CLOUD DEPLOY - `web_app/index.html`, `we
 """
 
 import json
+try:
+    import pg_fast_io as _pg_fast_io
+    json = _pg_fast_io.json
+except Exception:
+    pass
 import os
 import re
 
@@ -39,11 +44,41 @@ LOCAL_VAULT_DIR = os.path.join(ROOT_DIR, "local_admin_vault")
 
 
 def ensure_local_vault():
+    import shutil
     os.makedirs(LOCAL_VAULT_DIR, exist_ok=True)
     index_html_path = os.path.join(WEB_APP_DIR, "index.html")
     app_js_path = os.path.join(WEB_APP_DIR, "app.js")
     director_html_path = os.path.join(LOCAL_VAULT_DIR, "director_ccsc_full.html")
     director_js_path = os.path.join(LOCAL_VAULT_DIR, "director_app_full.js")
+
+    # Đồng bộ styles.css và modules/ dùng chung sang local_admin_vault (bảo toàn 6 module Admin CCSC & số liệu gốc w05 trong local_admin_vault)
+    src_css = os.path.join(WEB_APP_DIR, "styles.css")
+    dst_css = os.path.join(LOCAL_VAULT_DIR, "styles.css")
+    if os.path.exists(src_css):
+        shutil.copy2(src_css, dst_css)
+    src_mods = os.path.join(WEB_APP_DIR, "modules")
+    dst_mods = os.path.join(LOCAL_VAULT_DIR, "modules")
+    admin_only_prefixes = ("w01_", "w02_", "w03_", "w04_", "w38_", "w45_", "pg_w50_master.bundle")
+    if os.path.exists(src_mods):
+        os.makedirs(dst_mods, exist_ok=True)
+        for fn in os.listdir(src_mods):
+            s_fp = os.path.join(src_mods, fn)
+            d_fp = os.path.join(dst_mods, fn)
+            if not os.path.isfile(s_fp):
+                continue
+            if fn.startswith(admin_only_prefixes):
+                # Chỉ copy sang local_admin_vault nếu trong vault chưa có bản gốc
+                if not os.path.exists(d_fp):
+                    shutil.copy2(s_fp, d_fp)
+                continue
+            if fn == "w05_attendance_t10_matrix.js":
+                with open(s_fp, "r", encoding="utf-8") as wf:
+                    w05_txt = wf.read()
+                # Chỉ đồng bộ sang local_admin_vault nếu bản nguồn còn giữ nguyên số liệu gốc quy_khoan_15 = 72000000
+                if "quy_khoan_15: 72000000" in w05_txt or not os.path.exists(d_fp):
+                    shutil.copy2(s_fp, d_fp)
+                continue
+            shutil.copy2(s_fp, d_fp)
 
     if os.path.exists(director_html_path):
         with open(director_html_path, "r", encoding="utf-8") as f:
@@ -53,8 +88,8 @@ def ensure_local_vault():
             '<span class="brand-sub" style="color:#10B981;font-weight:800;">LOCAL PC: CCSC & GIÁM ĐỐC</span>'
         )
         dh = re.sub(
-            r'<script src="app\.js[^"]*"></script>',
-            '<script src="/local-admin-assets/director_app_full.js?v=15.0_LOCAL_CCSC_2026"></script>',
+            r'<script src="(?:app\.js|/local-admin-assets/director_app_full\.js|director_app_full\.js)[^"]*"></script>',
+            '<script src="director_app_full.js?v=26.0_LOCAL_CCSC_2026"></script>',
             dh
         )
         with open(director_html_path, "w", encoding="utf-8") as f:
@@ -222,13 +257,13 @@ def build_deploy_html(source_html):
 
     # Khôi phục script tag chuẩn cho bản Deploy
     html = re.sub(
-        r'<script src="/local-admin-assets/director_app_full\.js[^"]*"></script>',
-        '<script src="app.js?v=15.0_DEPLOY_2PARTS_VP_XUONG"></script>',
+        r'<script src="(?:/local-admin-assets/)?director_app_full\.js[^"]*"></script>',
+        '<script src="app.js?v=26.0_DEPLOY_2PARTS_VP_XUONG"></script>',
         html
     )
     html = re.sub(
         r'<script src="app\.js[^"]*"></script>',
-        '<script src="app.js?v=15.0_DEPLOY_2PARTS_VP_XUONG"></script>',
+        '<script src="app.js?v=26.0_DEPLOY_2PARTS_VP_XUONG"></script>',
         html
     )
     html = html.replace(
@@ -240,9 +275,9 @@ def build_deploy_html(source_html):
         '<span class="brand-sub">VĂN PHÒNG & XƯỞNG</span>'
     )
 
-    # 1. Thay thế toàn bộ khối <nav class="nav-menu" id="mainNavMenu">...</nav> bằng Menu 2 Phần chuẩn quy trình
+    # 1. Thay thế toàn bộ khối <nav class="nav-menu" id="mainNavMenu">...</nav> (bao gồm cả thanh switcher nếu có sẵn) bằng Menu 2 Phần chuẩn quy trình
     html = re.sub(
-        r'<nav class="nav-menu" id="mainNavMenu">.*?</nav>',
+        r'(?:<!-- COMPACT (?:2-)?DIVISION SWITCHER.*?</div>\s*)?<nav class="nav-menu" id="mainNavMenu">.*?</nav>',
         DEPLOY_TWO_DIVISION_NAV_HTML,
         html,
         flags=re.DOTALL
@@ -448,6 +483,13 @@ def build_deploy_js(source_js):
         'Mảng Phụ Kiện Bán Kèm & Đồ Rời bàn giao đồng bộ theo tiến độ công trình.'
     )
 
+    # 4b. Làm sạch các chuỗi nhạy cảm nội bộ của BGĐ (Quỹ 20k/công và Lương QLX) khỏi deploy_js
+    for s_old in ['Quỹ 20k/công', 'quỹ 20k/công', '20.000đ/công']:
+        js = js.replace(s_old, 'Quỹ thưởng xưởng')
+    js = re.sub(r'(?i)quỹ 20k/công', 'Quỹ thưởng xưởng', js)
+    for s_old in ['21.130.000', '21,130,000']:
+        js = js.replace(s_old, '--')
+
     # 5. Đổi currentUser mặc định ở đầu file app.js trên bản Deploy
     js = js.replace(
         'username: "giamdoc",\n  fullName: "Nguyễn Viết Nghĩa",\n  role: "ADMIN",\n  dept: "Ban Giám Đốc"',
@@ -648,10 +690,8 @@ window.switchDeployDivision = function(mode, skipAutoTabSwitch) {
     if (btnVP) btnVP.style.display = "inline-flex";
 
     if (!skipAutoTabSwitch) {
-      const activeTab = document.querySelector(".tab-pane.active");
-      if (!activeTab || !allowedTabs.includes(activeTab.id)) {
-        if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
-      }
+      if (typeof switchTabTo === "function") switchTabTo("tab-du-toan-du-an");
+      if (typeof showToast === "function") showToast("🏢 Đã chuyển sang Phần I: Khối Văn Phòng & Kinh Doanh (6 nghiệp vụ)", "info");
     }
   } else {
     if (sideName) sideName.textContent = "PHẦN II: KHỐI XƯỞNG SX";
@@ -667,10 +707,8 @@ window.switchDeployDivision = function(mode, skipAutoTabSwitch) {
     if (btnVP) btnVP.style.display = "none";
 
     if (!skipAutoTabSwitch) {
-      const activeTab = document.querySelector(".tab-pane.active");
-      if (!activeTab || !allowedTabs.includes(activeTab.id)) {
-        if (typeof switchTabTo === "function") switchTabTo("tab-xuong-san-xuat");
-      }
+      if (typeof switchTabTo === "function") switchTabTo("tab-xuong-san-xuat");
+      if (typeof showToast === "function") showToast("🏭 Đã chuyển sang Phần II: Khối Xưởng Sản Xuất (5 nghiệp vụ)", "info");
     }
   }
 };
@@ -698,8 +736,7 @@ window.switchDeployDivision = function(mode, skipAutoTabSwitch) {
 })();
 """
 
-    if "window.switchDeployDivision =" not in js:
-        js = js + "\n" + division_switcher_js
+    js = js + "\n" + division_switcher_js
 
     # Chặn đăng nhập quyền ADMIN trên môi trường Cloud Deploy
     cloud_guard_snippet = """
@@ -718,41 +755,119 @@ const IS_LOCAL_DIRECTOR_PC = (typeof window !== 'undefined') && (
     print(f"[OK] Built 2-Division Deploy JS: {deploy_js_path} ({len(js):,} bytes)")
 
 
+def _module_sort_key(filename):
+    # Đảm bảo w50_master_hub_loader.js luôn nạp CUỐI CÙNG sau tất cả w01..w57
+    if filename.startswith("w50_"):
+        return (999, filename)
+    m = re.match(r"^w(\d+)_", filename)
+    return (int(m.group(1)) if m else 500, filename)
+
+
+def _write_gzip_deterministic(src_path):
+    import gzip
+    gz_path = src_path + ".gz"
+    with open(src_path, "rb") as f_in:
+        raw_bytes = f_in.read()
+    with open(gz_path, "wb") as f_out:
+        with gzip.GzipFile(filename="", mode="wb", fileobj=f_out, compresslevel=9, mtime=0) as gz:
+            gz.write(raw_bytes)
+
+
+def _build_css_bundle(modules_dir):
+    css_files = sorted([
+        fn for fn in os.listdir(modules_dir)
+        if re.match(r"^w\d+_.*\.css$", fn)
+    ])
+    if not css_files:
+        return
+    css_parts = ["/* PG HOME LUXURY ERP - MASTER CSS BUNDLE */\n"]
+    for fn in css_files:
+        with open(os.path.join(modules_dir, fn), "r", encoding="utf-8") as cf:
+            css_parts.append(f"\n/* === CSS MODULE: {fn} === */\n{cf.read()}\n")
+    css_bundle_path = os.path.join(modules_dir, "pg_w50_master.bundle.css")
+    with open(css_bundle_path, "w", encoding="utf-8") as cbf:
+        cbf.write("".join(css_parts))
+    _write_gzip_deterministic(css_bundle_path)
+
+
 def patch_w14_and_master_bundle():
     """
-    Cập nhật `w14_rbac_4_portals_guard.js` và `pg_w50_master.bundle.js` để:
-    - Khi chạy trên Cloud/Deploy (`!IS_LOCAL_DIRECTOR_PC`): Khóa chặt ở chế độ Văn Phòng & Xưởng,
-      vô hiệu hóa hoàn toàn các widget Admin/CCSC (`w01`, `w02`, `w03`, `w04`, `w38`, `w45`).
+    Xây dựng 2 gói Bundle vật lý tách biệt 100%:
+    1. `local_admin_vault/modules/pg_w50_master.bundle.js`: Đủ 55 module (gồm cả 6 module CCSC/Admin `w01, w02, w03, w04, w38, w45` & `w05` nguyên bản) cho Máy Giám Đốc Local (`127.0.0.1:8080` / `file:///`).
+    2. `web_app/modules/pg_w50_master.bundle.js`: Cắt bỏ vật lý 100% 6 file Admin CCSC khỏi `web_app/modules/`, làm sạch `quy_khoan_15` / `doi_du_quy_tho` / `quy_khoan` trong `w05_attendance_t10_matrix.js`, đóng gói đúng 49 module an toàn cho Nhân Viên trên Cloud/Vercel/GitHub Pages (0 byte mã nguồn CCSC lọt ra ngoài).
     """
-    w14_path = os.path.join(WEB_APP_DIR, "modules", "w14_rbac_4_portals_guard.js")
-    with open(w14_path, "r", encoding="utf-8") as f:
-        w14_code = f.read()
+    admin_only_prefixes = ("w01_", "w02_", "w03_", "w04_", "w38_", "w45_")
+    vault_mods_dir = os.path.join(LOCAL_VAULT_DIR, "modules")
+    deploy_mods_dir = os.path.join(WEB_APP_DIR, "modules")
 
-    bundle_path = os.path.join(WEB_APP_DIR, "modules", "pg_w50_master.bundle.js")
-    if os.path.exists(bundle_path):
-        modules_dir = os.path.join(WEB_APP_DIR, "modules")
-        js_files = sorted([
-            fn for fn in os.listdir(modules_dir)
-            if re.match(r"^w\d+_.*\.js$", fn)
-        ])
-        admin_only_prefixes = ("w01_", "w02_", "w03_", "w04_", "w38_", "w45_")
-        parts = [
-            "/* PG HOME LUXURY ERP - MASTER MODULE BUNDLE (2-EDITION ISOLATION AWARE) */\n",
-            "window.__PG_IS_LOCAL_DIRECTOR_PC__ = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && !window.location.search.includes('edition=deploy');\n"
+    # A. Đóng gói Bundle Đầy Đủ (55 modules) cho Local Director Vault
+    if os.path.exists(vault_mods_dir):
+        vault_js_files = sorted(
+            [fn for fn in os.listdir(vault_mods_dir) if re.match(r"^w\d+_.*\.js$", fn)],
+            key=_module_sort_key
+        )
+        vault_parts = [
+            "/* PG HOME LUXURY ERP - LOCAL DIRECTOR MASTER BUNDLE (FULL 55 MODULES - LOOPBACK ONLY) */\n",
+            "window.__PG_IS_LOCAL_DIRECTOR_PC__ = (window.location.protocol === 'file:' || window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && !window.location.pathname.includes('/deploy') && !window.location.search.includes('edition=deploy');\n"
         ]
-        for fn in js_files:
-            fpath = os.path.join(modules_dir, fn)
+        for fn in vault_js_files:
+            fpath = os.path.join(vault_mods_dir, fn)
             with open(fpath, "r", encoding="utf-8") as mf:
                 mcontent = mf.read()
             if fn.startswith(admin_only_prefixes):
-                parts.append(f"\n/* === MODULE: {fn} (LOCAL DIRECTOR PC ONLY) === */\n")
-                parts.append(f"if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {{\n{mcontent}\n}}\n")
+                vault_parts.append(f"\n/* === MODULE: {fn} (LOCAL DIRECTOR PC ONLY) === */\n")
+                vault_parts.append(f"if (window.__PG_IS_LOCAL_DIRECTOR_PC__) {{\n{mcontent}\n}}\n")
             else:
-                parts.append(f"\n/* === MODULE: {fn} === */\n{mcontent}\n")
-        new_bundle = "".join(parts)
-        with open(bundle_path, "w", encoding="utf-8") as bf:
-            bf.write(new_bundle)
-        print(f"[OK] Rebuilt Master JS Bundle with Local-Only Guard for CCSC modules: {bundle_path} ({len(new_bundle):,} bytes)")
+                vault_parts.append(f"\n/* === MODULE: {fn} === */\n{mcontent}\n")
+        vault_bundle_path = os.path.join(vault_mods_dir, "pg_w50_master.bundle.js")
+        vault_bundle_txt = "".join(vault_parts)
+        with open(vault_bundle_path, "w", encoding="utf-8") as vbf:
+            vbf.write(vault_bundle_txt)
+        _write_gzip_deterministic(vault_bundle_path)
+        _build_css_bundle(vault_mods_dir)
+        print(f"[OK] Built Local Director Bundle ({len(vault_js_files)} modules): {vault_bundle_path} ({len(vault_bundle_txt):,} bytes)")
+
+    # B. Xóa vật lý 6 module Admin CCSC khỏi web_app/modules/ & làm sạch số liệu quỹ khoán trong w05 bản Deploy
+    if os.path.exists(deploy_mods_dir):
+        removed_admin_files = []
+        for fn in list(os.listdir(deploy_mods_dir)):
+            if fn.startswith(admin_only_prefixes):
+                os.remove(os.path.join(deploy_mods_dir, fn))
+                removed_admin_files.append(fn)
+        if removed_admin_files:
+            print(f"[OK] Physically removed {len(removed_admin_files)} Admin/CCSC modules from web_app/modules/: {', '.join(sorted(removed_admin_files))}")
+
+        deploy_w05_path = os.path.join(deploy_mods_dir, "w05_attendance_t10_matrix.js")
+        if os.path.exists(deploy_w05_path):
+            with open(deploy_w05_path, "r", encoding="utf-8") as wf:
+                w05_deploy = wf.read()
+            w05_deploy = re.sub(r"quy_khoan_15:\s*\d+", "quy_khoan_15: 0", w05_deploy)
+            w05_deploy = re.sub(r"doi_du_quy_tho:\s*\d+", "doi_du_quy_tho: 0", w05_deploy)
+            w05_deploy = re.sub(r"quy_khoan:\s*\d+", "quy_khoan: 0", w05_deploy)
+            w05_deploy = re.sub(r"//\s*\d+\s*công\s*\*\s*20\.000\s*đ[^\n]*", "// Quỹ nội bộ xưởng", w05_deploy)
+            with open(deploy_w05_path, "w", encoding="utf-8") as wf:
+                wf.write(w05_deploy)
+
+        deploy_js_files = sorted(
+            [fn for fn in os.listdir(deploy_mods_dir) if re.match(r"^w\d+_.*\.js$", fn)],
+            key=_module_sort_key
+        )
+        deploy_parts = [
+            "/* PG HOME LUXURY ERP - CLOUD STAFF DEPLOY BUNDLE (ZERO CCSC / ZERO DIRECTOR SECRETS) */\n",
+            "window.__PG_IS_LOCAL_DIRECTOR_PC__ = false;\n"
+        ]
+        for fn in deploy_js_files:
+            fpath = os.path.join(deploy_mods_dir, fn)
+            with open(fpath, "r", encoding="utf-8") as mf:
+                mcontent = mf.read()
+            deploy_parts.append(f"\n/* === MODULE: {fn} === */\n{mcontent}\n")
+        deploy_bundle_path = os.path.join(deploy_mods_dir, "pg_w50_master.bundle.js")
+        deploy_bundle_txt = "".join(deploy_parts)
+        with open(deploy_bundle_path, "w", encoding="utf-8") as dbf:
+            dbf.write(deploy_bundle_txt)
+        _write_gzip_deterministic(deploy_bundle_path)
+        _build_css_bundle(deploy_mods_dir)
+        print(f"[OK] Built Cloud Staff Bundle ({len(deploy_js_files)} modules, 0 Admin CCSC modules): {deploy_bundle_path} ({len(deploy_bundle_txt):,} bytes)")
 
 
 if __name__ == "__main__":

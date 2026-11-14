@@ -16,9 +16,9 @@
  * ============================================================================
  */
 
-const CACHE_NAME = 'pg-home-erp-v2026.11.08';
+const CACHE_NAME = 'pg-home-erp-v2026.11.14-v40';
 
-// Danh mục toàn bộ tài nguyên cốt lõi và 50 Module W01 - W50 cần precache
+// Danh mục tài nguyên cốt lõi bản Online Nhân Viên (TUYỆT ĐỐI KHÔNG CACHE MODULE CCSC ADMIN W01-W04, W38, W45)
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
@@ -32,62 +32,8 @@ const PRECACHE_ASSETS = [
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
-  // 50 Module tối ưu thực tế trong /modules/ (W01 - W50)
-  '/modules/w01_executive_kpi_bar.js',
-  '/modules/w02_ccsc_12months_engine.js',
-  '/modules/w03_core_worker_fund_hoa_hao.js',
-  '/modules/w04_sales_bonus_500m_lock.js',
-  '/modules/w05_attendance_t10_matrix.js',
-  '/modules/w06_project_bac_phat_tracker.js',
-  '/modules/w07_project_anh_nam_cnc_norm.js',
-  '/modules/w08_pricing_3tiers_validator.js',
-  '/modules/w09_intersection_deduction_tool.js',
-  '/modules/w10_supplier_board_3ncc.js',
-  '/modules/w11_supplier_fitting_glass_stone.js',
-  '/modules/w12_three_layer_cashflow_guard.js',
-  '/modules/w13_red_stamp_po_approval.js',
-  '/modules/w14_rbac_4_portals_guard.js',
-  '/modules/w15_legal_brand_enforcer.js',
-  '/modules/w16_zalo_v6_stealth_cockpit.js',
-  '/modules/w17_zalo_175_groups_explorer.js',
-  '/modules/w18_filenoise_xor_status.js',
-  '/modules/w19_zalo_staging_approval_queue.js',
-  '/modules/w20_contracts_docx_vault.js',
-  '/modules/w21_quotations_excel_vault.js',
-  '/modules/w22_technical_drawings_pdf_vault.js',
-  '/modules/w23_po_zalo_2026_analytics.js',
-  '/modules/w24_material_catalog_search.js',
-  '/modules/w25_lam_giang_debt_reconciler.js',
-  '/modules/w26_print_a4_quotation_engine.js',
-  '/modules/w27_csv_excel_export_helper.js',
-  '/modules/w28_offline_sync_outbox.js',
-  '/modules/w29_command_palette_ctrl_k.js',
-  '/modules/w30_realtime_health_badge.js',
-  '/modules/w31_solid_wood_separator.js',
-  '/modules/w32_cnc_8categories_reference.js',
-  '/modules/w33_verified_entities_inspector.js',
-  '/modules/w34_telemetry_performance_chart.js',
-  '/modules/w35_zero_trust_audit_viewer.js',
-  '/modules/w36_customer_receivables_aging.js',
-  '/modules/w37_workshop_productivity_kpi.js',
-  '/modules/w38_management_salary_pool.js',
-  '/modules/w39_debt_60min_sla_timer.js',
-  '/modules/w40_leveldb_keyword_highlighter.js',
-  '/modules/w41_luxury_gold_theme_tokens.css',
-  '/modules/w42_print_a4_stylesheet.css',
-  '/modules/w43_keyboard_shortcuts_manager.js',
-  '/modules/w44_data_integrity_guard.js',
-  '/modules/w45_safe_pocket_summary_card.js',
-  '/modules/w46_mkt_safety_monitor_widget.js',
-  '/modules/w47_audit_trail_timeline.js',
-  '/modules/w48_delta_cursor_inspector.js',
-  '/modules/w49_cloud_backup_snapshot.js',
-  '/modules/w50_master_hub_loader.js',
-  // Các đường dẫn tương đối dự phòng bổ trợ
-  './modules/w01_executive_kpi_bar.js',
-  './modules/w02_ccsc_12months_engine.js',
-  './modules/w03_core_worker_fund_hoa_hao.js',
-  './modules/w04_sales_bonus_500m_lock.js',
+  './modules/pg_w50_master.bundle.js',
+  './modules/pg_w50_master.bundle.css',
   './modules/w05_attendance_t10_matrix.js',
   './modules/w06_project_bac_phat_tracker.js',
   './modules/w07_project_anh_nam_cnc_norm.js',
@@ -121,19 +67,29 @@ const PRECACHE_ASSETS = [
   './modules/w35_zero_trust_audit_viewer.js',
   './modules/w36_customer_receivables_aging.js',
   './modules/w37_workshop_productivity_kpi.js',
-  './modules/w38_management_salary_pool.js',
   './modules/w39_debt_60min_sla_timer.js',
   './modules/w40_leveldb_keyword_highlighter.js',
   './modules/w41_luxury_gold_theme_tokens.css',
   './modules/w42_print_a4_stylesheet.css',
   './modules/w43_keyboard_shortcuts_manager.js',
   './modules/w44_data_integrity_guard.js',
-  './modules/w45_safe_pocket_summary_card.js',
   './modules/w46_mkt_safety_monitor_widget.js',
   './modules/w47_audit_trail_timeline.js',
   './modules/w48_delta_cursor_inspector.js',
   './modules/w49_cloud_backup_snapshot.js',
-  './modules/w50_master_hub_loader.js'
+  './modules/w50_master_hub_loader.js',
+  './modules/w51_luxury_3d_showroom.js',
+  './modules/w52_cad_bom_instant_quote.js',
+  './modules/w53_zalo_hybrid_rag_copilot.js',
+  './modules/w54_einvoice_3way_audit.js',
+  './modules/w55_workshop_oee_dashboard.js',
+  './modules/w56_realtime_crdt_client.js',
+  './modules/w57_cnc_nesting_qr_offcut.js',
+  './vendor/chart.umd.min.js',
+  './vendor/fontawesome.all.min.css',
+  './vendor/webfonts/fa-solid-900.woff2',
+  './vendor/webfonts/fa-regular-400.woff2',
+  './vendor/webfonts/fa-brands-400.woff2'
 ];
 
 /**
@@ -199,7 +155,7 @@ self.addEventListener('activate', (event) => {
  * - Các file dữ liệu JSON thực tế (ngoại trừ manifest.json)
  */
 function isNetworkFirstRequest(pathname) {
-  if (pathname.includes('/api/load-state') || pathname.includes('/api/live-state')) {
+  if (pathname.startsWith('/api/') || pathname.includes('/api/')) {
     return true;
   }
   if (pathname.includes('/data/')) {
@@ -258,7 +214,10 @@ async function handleNetworkFirst(request) {
  */
 async function handleStaleWhileRevalidate(request) {
   const cache = await caches.open(CACHE_NAME);
-  const cachedResponse = await cache.match(request, { ignoreSearch: true });
+  const url = new URL(request.url);
+  // Tôn trọng cache-busting query string (?v=...) cho file .js, .css, .html
+  const hasVersionParam = url.searchParams.has('v');
+  const cachedResponse = await cache.match(request, { ignoreSearch: !hasVersionParam });
 
   const fetchPromise = fetch(request).then(async (networkResponse) => {
     if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque')) {
@@ -316,5 +275,20 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(handleNetworkFirst(event.request));
   } else {
     event.respondWith(handleStaleWhileRevalidate(event.request));
+  }
+});
+
+/**
+ * 4. SỰ KIỆN BACKGROUND SYNC (ĐỒNG BỘ OUTBOX W28 KHI CÓ MẠNG TRỞ LẠI)
+ */
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'pghome-outbox-sync') {
+    event.waitUntil(
+      self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+        clientList.forEach((client) => {
+          client.postMessage({ type: 'PGHOME_TRIGGER_OUTBOX_SYNC', timestamp: Date.now() });
+        });
+      })
+    );
   }
 });

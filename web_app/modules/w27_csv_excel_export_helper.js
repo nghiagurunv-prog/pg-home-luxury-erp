@@ -40,20 +40,7 @@
       address: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
       hotline: "0986.722.324"
     },
-    ccscMonths: [
-      { m: 1, name: "Tháng 1", sales: 250000000, debt: 25000000, cash: 225000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 3000000, bpkd: 15000000, qlx: 21000000, thue: 13000000, mkt: 10000000, bhxh: 6600000, pk_profit: 0, isActual: false },
-      { m: 2, name: "Tháng 2", sales: 80000000, debt: 8000000, cash: 72000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 1000000, bpkd: 7500000, qlx: 21000000, thue: 13000000, mkt: 5000000, bhxh: 6600000, pk_profit: 0, isActual: false },
-      { m: 3, name: "Tháng 3", sales: 220000000, debt: 22000000, cash: 198000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 3000000, bpkd: 14500000, qlx: 21000000, thue: 13000000, mkt: 10000000, bhxh: 6600000, pk_profit: 0, isActual: false },
-      { m: 4, name: "Tháng 4", sales: 300000000, debt: 30000000, cash: 270000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 4000000, bpkd: 18000000, qlx: 21000000, thue: 13000000, mkt: 15000000, bhxh: 6600000, pk_profit: 0, isActual: false },
-      { m: 5, name: "Tháng 5", sales: 350000000, debt: 35000000, cash: 315000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 4500000, bpkd: 19000000, qlx: 21000000, thue: 13000000, mkt: 15000000, bhxh: 6600000, pk_profit: 0, isActual: false },
-      { m: 6, name: "Tháng 6", sales: 289578000, debt: 240000000, cash: 49578000, bld: 12000000, hiep_cb: 3500000, hiep_sale: 1978900, bpkd: 16923076, qlx: 11961539, thue: 13000000, mkt: 10000000, bhxh: 6600000, pk_profit: 0, isActual: true },
-      { m: 7, name: "Tháng 7", sales: 450000000, debt: 67500000, cash: 382500000, bld: 19970529, hiep_cb: 6500000, hiep_sale: 5000000, bpkd: 11691538, qlx: 22500000, thue: 13000000, mkt: 15000000, bhxh: 6600000, pk_profit: 0, isActual: true },
-      { m: 8, name: "Tháng 8", sales: 242051705, debt: 69803651, cash: 172248054, bld: 12000000, hiep_cb: 6500000, hiep_sale: 3000000, bpkd: 10500000, qlx: 19615385, thue: 13000000, mkt: 12000000, bhxh: 6600000, pk_profit: 2652000, isActual: true },
-      { m: 9, name: "Tháng 9", sales: 287782767, debt: 138066647, cash: 149716120, bld: 12000000, hiep_cb: 6500000, hiep_sale: 7000000, bpkd: 9865385, qlx: 20250000, thue: 13000000, mkt: 12000000, bhxh: 6600000, pk_profit: 9000000, isActual: true },
-      { m: 10, name: "Tháng 10", sales: 480000000, debt: 48000000, cash: 432000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 6000000, bpkd: 18000000, qlx: 21000000, thue: 13000000, mkt: 20000000, bhxh: 6600000, pk_profit: 13287000, isActual: false },
-      { m: 11, name: "Tháng 11", sales: 580000000, debt: 58000000, cash: 522000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 8000000, bpkd: 22000000, qlx: 21000000, thue: 13000000, mkt: 20000000, bhxh: 6600000, pk_profit: 15000000, isActual: false },
-      { m: 12, name: "Tháng 12", sales: 520000000, debt: 52000000, cash: 468000000, bld: 12000000, hiep_cb: 6500000, hiep_sale: 7000000, bpkd: 20000000, qlx: 21000000, thue: 13000000, mkt: 20000000, bhxh: 6600000, pk_profit: 15000000, isActual: false }
-    ],
+    ccscMonths: [],
     supplierDebts: [
       {
         ncc: "Tổng Kho Lam Giang",
@@ -93,7 +80,7 @@
         deadline: "15/11/2026",
         status: "Đúng hạn",
         group: "Đặt hàng Acrylic ALD",
-        note: "PO-1002 (11.1 md = 12.21M Chị Hoa) + PO-1015 (18.2 m2 = 22.75M Shophouse Anh Minh) = 34.96M"
+        note: "PO-1002 (11.1 md = 12.21M Chị Hoa) + PO-1007 (18.2 m2 = 22.75M Nhà Anh Nam) = 34.96M"
       },
       {
         ncc: "Kính Việt Nhật - VSG",
@@ -133,7 +120,7 @@
         deadline: "06/11/2026",
         status: "Gia công",
         group: "Đặt hàng Kính, Gương Phú Gia",
-        note: "Theo PO-2026-1010 phòng tắm Master"
+        note: "Theo PO-2026-1009 phòng tắm Master"
       },
       {
         ncc: "Gỗ Đức Anh (Gỗ sồi thịt)",
@@ -180,14 +167,16 @@
       return '""';
     }
     let str = String(val);
-    // Nếu chứa dấu nháy kép, dấu phẩy, hoặc dấu xuống dòng
+    // Chống CSV Formula Injection (=, +, -, @, \t, \r ở đầu chuỗi không phải số âm hợp lệ)
+    if (/^[=+\-@\t\r]/.test(str) && !/^-[0-9]+(\.[0-9]+)?$/.test(str)) {
+      str = "'" + str;
+    }
     if (str.includes('"') || str.includes(',') || str.includes('\n') || str.includes('\r')) {
       str = str.replace(/"/g, '""');
       return `"${str}"`;
     }
-    // Nếu có ký tự đặc biệt hoặc số dài tránh Excel làm tròn thành khoa học
     if (typeof val === 'string' && val.length > 0 && /^[0-9]{10,}$/.test(val)) {
-      return `="${val}"`;
+      return `"'${val}"`;
     }
     return `"${str}"`;
   }

@@ -138,7 +138,7 @@
     {
       file_id: "411b60feadb36d2b65699f59cef0d1f2",
       datetime: "2026-11-03 11:11:48",
-      customer: "Anh Trung Tuyết",
+      customer: "Bác Sĩ Duẫn (TP. Hà Tĩnh)",
       project: "Nhà ở tư nhân Hải Thượng Lãn Ông, TP. Hà Tĩnh",
       total_amount: 232248174.0,
       sender: "Tống Trần Hiệp (Sale Admin)",
@@ -202,7 +202,7 @@
     {
       file_id: "5d84065844cc66fb0db64e8a6aed678f",
       datetime: "2026-10-21 10:00:58",
-      customer: "Anh Hoàn",
+      customer: "Bác Phát (Đường 26/03)",
       project: "Nhà ở tư nhân TP. Hà Tĩnh",
       total_amount: 270470150.0,
       sender: "Nguyễn Viết Nghĩa (Giám Đốc)",

@@ -207,6 +207,15 @@ def build_js_bundle(modules_dir: str, js_files: list, output_path: str) -> dict:
     with open(output_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(full_bundle_text)
 
+    # Pre-compress static gzip bundle (.gz) alongside uncompressed bundle (#11)
+    try:
+        import gzip
+        gz_path = output_path + ".gz"
+        with open(gz_path, "wb") as gz_f:
+            gz_f.write(gzip.compress(full_bundle_text.encode("utf-8"), compresslevel=6))
+    except Exception:
+        pass
+
     bundle_size = os.path.getsize(output_path)
     bundle_sha256 = compute_sha256_file(output_path)
 
@@ -296,6 +305,15 @@ def build_css_bundle(modules_dir: str, css_files: list, output_path: str) -> dic
     with open(output_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(full_bundle_text)
 
+    # Pre-compress static gzip bundle (.gz) alongside uncompressed bundle (#11)
+    try:
+        import gzip
+        gz_path = output_path + ".gz"
+        with open(gz_path, "wb") as gz_f:
+            gz_f.write(gzip.compress(full_bundle_text.encode("utf-8"), compresslevel=6))
+    except Exception:
+        pass
+
     bundle_size = os.path.getsize(output_path)
     bundle_sha256 = compute_sha256_file(output_path)
 
@@ -322,7 +340,8 @@ def run_node_check(js_bundle_path: str) -> tuple[bool, str]:
             stderr=subprocess.PIPE,
             text=True,
             encoding="utf-8",
-            errors="replace"
+            errors="replace",
+            creationflags=0x08000000 if os.name == "nt" else 0
         )
         if proc.returncode == 0:
             return True, "Node syntax check PASS (exit code 0, no errors)"
@@ -371,7 +390,20 @@ def main():
     print(f"    - Dung lượng: {css_result['bundle_size']:,} bytes ({css_result['bundle_size'] / 1024:.2f} KB)")
     print(f"    - SHA-256: {css_result['bundle_sha256']}")
 
-    # 3. Kiểm tra cú pháp với node --check
+    # 3. Đồng bộ bản nén tĩnh web_app/app.js.gz để tránh lệch cache gzip với web_app/app.js
+    app_js_path = os.path.join(os.path.dirname(modules_dir), "app.js")
+    if os.path.isfile(app_js_path):
+        try:
+            import gzip
+            with open(app_js_path, "rb") as f_in:
+                raw_app_js = f_in.read()
+            with open(app_js_path + ".gz", "wb") as f_out:
+                f_out.write(gzip.compress(raw_app_js, compresslevel=6))
+            print(f"[+] Đã đồng bộ {app_js_path}.gz ({len(raw_app_js):,} B -> {os.path.getsize(app_js_path + '.gz'):,} B)")
+        except Exception as ex:
+            print(f"[!] Cảnh báo nén app.js.gz: {ex}")
+
+    # 4. Kiểm tra cú pháp với node --check
     print("\n" + "-" * 80)
     print(f"[*] Chạy kiểm tra cú pháp: node --check \"{js_bundle_path}\"")
     passed, check_msg = run_node_check(js_bundle_path)

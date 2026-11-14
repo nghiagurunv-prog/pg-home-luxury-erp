@@ -12,9 +12,8 @@ import uiautomation as auto
 
 zalo_hwnd = 67036
 render_hwnd = 67200
-was_visible = user32.IsWindowVisible(zalo_hwnd)
-user32.ShowWindow(zalo_hwnd, 4)
-time.sleep(0.3)
+# STEALTH PROTOCOL: Never call user32.ShowWindow to avoid stealing focus or flashing window
+time.sleep(0.1)
 
 class POINT(ctypes.Structure):
     _fields_ = [('x', ctypes.c_long), ('y', ctypes.c_long)]
@@ -112,5 +111,4 @@ try:
         for m in sorted_m:
             print(f"[{m['aid']}] [{m['date']}] ({m['time']}) {' | '.join(m['texts'])}")
 finally:
-    if not was_visible:
-        user32.ShowWindow(zalo_hwnd, 0)
+    pass

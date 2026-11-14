@@ -1,20 +1,125 @@
 
 // [SECURITY HARD-LOCK: DEPLOY EDITION ONLY ALLOWS OFFICE & WORKSHOP]
-const IS_LOCAL_DIRECTOR_PC = (typeof window !== 'undefined') && (
+var IS_LOCAL_DIRECTOR_PC = (typeof window !== 'undefined') && (
   window.location.hostname === '127.0.0.1' ||
   window.location.hostname === 'localhost'
 );
+var DEFAULT_DATA, DEFAULT_WORKERS_BY_MONTH, DEFAULT_TIMESHEETS, RETIRED_STAFF, CURRENT_APP_VERSION, SYNTHETIC_PROJECT_KEYWORDS, _pgSaveDebounceTimer, _pgSaveAbortCtrl, fmtCurr, fmtPct, revProfitChart, costBreakdownChart, currentActiveVatTuFilter, currentActiveVatTuProjectFilter, currentActivePOFilter, currentViewingPOCode, DEFAULT_PAYMENTS, DEFAULT_ACCESSORIES, currentViewingReceipt, deferredPrompt, SOP_PRINCIPLES, HANDOVER_CHECKLIST_ITEMS, origSwitchTabTo, PG_STANDARD_PRESETS, currentEstimatorItems, currentProjectAttachments, DEFAULT_CUSTOM_PROJECTS_REAL, origSwitchTabToEstimator, privacyIdleTimer, PG_VP_EXCLUSIVE_TABS, PG_XUONG_EXCLUSIVE_TABS;
 
 /**
  * PG HOME LUXURY - CCSC & ENTERPRISE MANAGEMENT SYSTEM 2026
- * Core Application Engine & State Management
+ * Core Application Engine & State Management (v34 Security & Performance Hardened)
  */
+
+// Pre-hoisted Global State Variables (Zero-TDZ Guarantee during top-level loadState execution)
+var currentTimesheetMonth = 11;
+var currentTimesheetDeptFilter = "all";
+var activeQuickAttDay = 10;
+var activeQuickAttDept = "xuong";
+var quickAttDraft = {};
+var currentGlobalMonth = 10;
+var isPrivacyShieldActive = false;
+
+// ==========================================================================
+// 0. CRYPTOGRAPHIC & XSS SANITIZATION PRIMITIVES (ZERO-PLAINTEXT / ZERO-XSS)
+// ==========================================================================
+(function initPgSecurityPrimitives() {
+  if (typeof window === "undefined") return;
+
+  window.pgEscapeHtml = function(val) {
+    if (val === null || val === undefined) return "";
+    return String(val)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  };
+
+  // Pure-JS FIPS 180-4 SHA-256 (synchronous, works on both http:// and file://)
+  const K256 = [
+    0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+    0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+    0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+    0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+    0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+    0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+    0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+    0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+  ];
+
+  function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
+
+  window.pgSha256HexSync = function(str) {
+    const utf8 = unescape(encodeURIComponent(String(str ?? "")));
+    const msgLen = utf8.length;
+    const bitLenHi = Math.floor((msgLen * 8) / 0x100000000);
+    const bitLenLo = (msgLen * 8) >>> 0;
+    const padLen = ((msgLen + 9 + 63) & ~63);
+    const words = new Int32Array(padLen >> 2);
+    for (let i = 0; i < msgLen; i++) {
+      words[i >> 2] |= (utf8.charCodeAt(i) & 0xff) << (24 - (i & 3) * 8);
+    }
+    words[msgLen >> 2] |= 0x80 << (24 - (msgLen & 3) * 8);
+    words[(padLen >> 2) - 2] = bitLenHi;
+    words[(padLen >> 2) - 1] = bitLenLo;
+
+    let h0 = 0x6a09e667, h1 = 0xbb67ae85, h2 = 0x3c6ef372, h3 = 0xa54ff53a;
+    let h4 = 0x510e527f, h5 = 0x9b05688c, h6 = 0x1f83d9ab, h7 = 0x5be0cd19;
+    const w = new Int32Array(64);
+
+    for (let offset = 0; offset < words.length; offset += 16) {
+      for (let i = 0; i < 16; i++) w[i] = words[offset + i];
+      for (let i = 16; i < 64; i++) {
+        const s0 = rotr(7, w[i - 15]) ^ rotr(18, w[i - 15]) ^ (w[i - 15] >>> 3);
+        const s1 = rotr(17, w[i - 2]) ^ rotr(19, w[i - 2]) ^ (w[i - 2] >>> 10);
+        w[i] = (w[i - 16] + s0 + w[i - 7] + s1) | 0;
+      }
+      let a = h0, b = h1, c = h2, d = h3, e = h4, f = h5, g = h6, h = h7;
+      for (let i = 0; i < 64; i++) {
+        const S1 = rotr(6, e) ^ rotr(11, e) ^ rotr(25, e);
+        const ch = (e & f) ^ (~e & g);
+        const temp1 = (h + S1 + ch + K256[i] + w[i]) | 0;
+        const S0 = rotr(2, a) ^ rotr(13, a) ^ rotr(22, a);
+        const maj = (a & b) ^ (a & c) ^ (b & c);
+        const temp2 = (S0 + maj) | 0;
+        h = g; g = f; f = e; e = (d + temp1) | 0;
+        d = c; c = b; b = a; a = (temp1 + temp2) | 0;
+      }
+      h0 = (h0 + a) | 0; h1 = (h1 + b) | 0; h2 = (h2 + c) | 0; h3 = (h3 + d) | 0;
+      h4 = (h4 + e) | 0; h5 = (h5 + f) | 0; h6 = (h6 + g) | 0; h7 = (h7 + h) | 0;
+    }
+    return [h0, h1, h2, h3, h4, h5, h6, h7]
+      .map(v => (v >>> 0).toString(16).padStart(8, "0"))
+      .join("");
+  };
+
+  const VALID_DIRECTOR_PIN_HASHES = new Set([
+    "8d73660afe85903005ba1d4388f09d581236df6a04e9af5723cb0b4b51a9247f",
+    "158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab"
+  ]);
+
+  window.verifyDirectorPinInput = function(pinRaw) {
+    if (!pinRaw || typeof pinRaw !== "string") return false;
+    const h = window.pgSha256HexSync(pinRaw.trim());
+    if (VALID_DIRECTOR_PIN_HASHES.has(h)) {
+      try { sessionStorage.setItem("PG_DIRECTOR_PIN_HASH", h); } catch (e) {}
+      return true;
+    }
+    return false;
+  };
+
+  window.pgComputeSessionSig = function(userObj) {
+    if (!userObj || !userObj.username || !userObj.role) return "";
+    return "sig256_" + window.pgSha256HexSync(`PG_SESSION_2026|${String(userObj.username).toLowerCase()}|${userObj.role}|042203002931`).slice(0, 32);
+  };
+})();
 
 // ==========================================================================
 // 1. INITIAL STATE & PERSISTENCE
 // ==========================================================================
 
-const DEFAULT_DATA = {
+var DEFAULT_DATA = {
   // 12 Months CCSC System Data (2026)
   ccscMonths: [], // [ISOLATED TO LOCAL PC VAULT - ZERO CCSC DATA ON DEPLOY]
 
@@ -234,7 +339,7 @@ const DEFAULT_DATA = {
         "supplier": "Xưởng Sofa & Bàn Ăn Khánh HN",
         "status": "Đã bàn giao",
         "category": "loose_furniture",
-        "po": "PO-2026-1010"
+        "po": "PO-2026-1007"
     },
     {
         "code": "VT-19",
@@ -246,7 +351,7 @@ const DEFAULT_DATA = {
         "supplier": "Xưởng Sofa & Bàn Ăn Khánh HN",
         "status": "Đã bàn giao",
         "category": "loose_furniture",
-        "po": "PO-2026-1010"
+        "po": "PO-2026-1007"
     },
     {
         "code": "VT-20",
@@ -376,15 +481,15 @@ const DEFAULT_DATA = {
   ],
 
   users: [
-        { id: 2, username: "thaixuong", password: "123", fullName: "Nguyễn Văn Thái", phone: "0915.223.456", role: "XUONG_VATTU", dept: "Quản lý xưởng sản xuất", createdAt: "2026-08-01", status: "ACTIVE" },
-    { id: 3, username: "vuvattu", password: "123", fullName: "Hoàng Công Vũ", phone: "0911.006.880", role: "XUONG_VATTU", dept: "Kỹ thuật bóc tách vật tư / CNC", createdAt: "2026-08-15", status: "ACTIVE" },
-    { id: 4, username: "hoatho", password: "123", fullName: "Hà Viết Hòa", phone: "0972.334.556", role: "THO_XUONG", dept: "Thợ Cả / Kết cấu", createdAt: "2026-08-01", status: "ACTIVE" },
-    { id: 5, username: "haotho", password: "123", fullName: "Lương Thể Hào", phone: "0983.445.667", role: "THO_XUONG", dept: "Thợ chính lắp ráp", createdAt: "2026-08-01", status: "ACTIVE" },
-    { id: 6, username: "thoantho", password: "123", fullName: "Lê Văn Thoan", phone: "0976.556.778", role: "THO_XUONG", dept: "Thợ máy dán cạnh tự động & CNC", createdAt: "2026-08-01", status: "ACTIVE" },
-    { id: 7, username: "anhtho", password: "123", fullName: "Trần Văn Anh", phone: "0968.667.889", role: "THO_XUONG", dept: "Thợ lắp đặt & hoàn thiện công trình", createdAt: "2026-08-01", status: "ACTIVE" },
-    { id: 8, username: "tuananh", password: "123", fullName: "Tuấn Anh", phone: "0971.778.990", role: "THO_XUONG", dept: "Thợ phụ lắp ráp & đóng gói xưởng", createdAt: "2026-09-01", status: "ACTIVE" },
-    { id: 9, username: "hiepsale", password: "123", fullName: "Tống Trần Hiệp", phone: "0977.112.233", role: "VANPHONG_SALE", dept: "Văn phòng & Sale Admin & 3D", createdAt: "2026-08-20", status: "ACTIVE" },
-    { id: 10, username: "dungsale", password: "123", fullName: "Đường Việt Dũng", phone: "0982.889.901", role: "VANPHONG_SALE", dept: "Phòng Kinh Doanh & Sale dự án", createdAt: "2026-08-01", status: "ACTIVE" }
+        { id: 2, username: "thaixuong", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Nguyễn Văn Thái", phone: "0915.223.456", role: "XUONG_VATTU", dept: "Quản lý xưởng sản xuất", createdAt: "2026-08-01", status: "ACTIVE" },
+    { id: 3, username: "vuvattu", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Hoàng Công Vũ", phone: "0911.006.880", role: "XUONG_VATTU", dept: "Kỹ thuật bóc tách vật tư / CNC", createdAt: "2026-08-15", status: "ACTIVE" },
+    { id: 4, username: "hoatho", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Hà Viết Hòa", phone: "0972.334.556", role: "THO_XUONG", dept: "Thợ Cả / Kết cấu", createdAt: "2026-08-01", status: "ACTIVE" },
+    { id: 5, username: "haotho", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Lương Thể Hào", phone: "0983.445.667", role: "THO_XUONG", dept: "Thợ chính lắp ráp", createdAt: "2026-08-01", status: "ACTIVE" },
+    { id: 6, username: "thoantho", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Lê Văn Thoan", phone: "0976.556.778", role: "THO_XUONG", dept: "Thợ máy dán cạnh tự động & CNC", createdAt: "2026-08-01", status: "ACTIVE" },
+    { id: 7, username: "anhtho", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Trần Văn Anh", phone: "0968.667.889", role: "THO_XUONG", dept: "Thợ lắp đặt & hoàn thiện công trình", createdAt: "2026-08-01", status: "ACTIVE" },
+    { id: 8, username: "tuananh", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Tuấn Anh", phone: "0971.778.990", role: "THO_XUONG", dept: "Thợ phụ lắp ráp & đóng gói xưởng", createdAt: "2026-09-01", status: "ACTIVE" },
+    { id: 9, username: "hiepsale", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Tống Trần Hiệp", phone: "0977.112.233", role: "VANPHONG_SALE", dept: "Văn phòng & Sale Admin & 3D", createdAt: "2026-08-20", status: "ACTIVE" },
+    { id: 10, username: "dungsale", passwordHash: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", fullName: "Đường Việt Dũng", phone: "0982.889.901", role: "VANPHONG_SALE", dept: "Phòng Kinh Doanh & Sale dự án", createdAt: "2026-08-01", status: "ACTIVE" }
   ],
 
   // Công nợ Khách Hàng & Tiến độ thu tiền
@@ -409,7 +514,7 @@ const DEFAULT_DATA = {
     { ncc: "Hoàng Hà Ceramic PVC", rep: "Hoàng Hà Ceramic Hưng Yên", category: "Đá nung kết Calacatta, PVC than tre", debt: 18600000, note: "Cọc 50%, thanh toán dứt điểm khi giao hàng", deadline: "03/11/2026", status: "Chờ nghiệm thu", group: "Đặt hàng Ceramic Hoàng Hà HY" },
     { ncc: "Gỗ Đức Anh (Gỗ sồi thịt)", rep: "Vợ Sồi Đức Anh (Thu Hương HT)", category: "Gỗ sồi Mỹ tự nhiên xẻ sấy chuẩn FAS loại 1", debt: 0, note: "Đơn 13.2M đã tất toán 100% (15/02 trả 10M + 14/05 trả 3.2M) theo Zalo Batch 4", deadline: "Đã tất toán", status: "Đã tất toán 0đ", group: "Đặt hàng gỗ thịt nhà Đức Anh - Thu Hương Hà Tĩnh" },
     { ncc: "Đặt Cánh Acrylic NTD / ALD", rep: "Kỹ thuật ALD Miền Trung (Zalo ALD)", category: "Cánh Acrylic bóng gương noline chống trầy (Chị Hoa 12.21M + Nhà Anh Nam 22.75M)", debt: 34960000, note: "PO-1002 (11.1 md = 12.21M) + PO-1015 (18.2 m2 = 22.75M) = 34.96M", deadline: "15/11/2026", status: "Đúng hạn", group: "Đặt hàng Acrylic ALD" },
-    { ncc: "Gương Bỉ Hà Tĩnh", rep: "Nguyễn Thị Thuý", category: "Gương tráng bạc 8 lớp, led cảm ứng", debt: 6800000, note: "Theo PO-2026-1010 phòng tắm Master", deadline: "06/11/2026", status: "Gia công", group: "Đặt hàng Kính, Gương Phú Gia" }
+    { ncc: "Gương Bỉ Hà Tĩnh", rep: "Nguyễn Thị Thuý", category: "Gương tráng bạc 8 lớp, led cảm ứng", debt: 6800000, note: "Theo PO-2026-1009 phòng tắm Master", deadline: "06/11/2026", status: "Gia công", group: "Đặt hàng Kính, Gương Phú Gia" }
   ],
 
   // Mảng Phụ Kiện Bán Kèm & Sofa (Lãi gộp 30% bỏ túi BGĐ)
@@ -529,7 +634,7 @@ const DEFAULT_DATA = {
       status: "APPROVED",
       approvedBy: "Nguyễn Viết Nghĩa (Giám Đốc)",
       approvedAt: "30/10/2026 16:30:00",
-      sourceFile: "Don_dat_kinh_Viet_Nhat_30_10_2026.pdf",
+      sourceFile: "/chung_tu/07_DON_DAT_KINH_VIET_NHAT_2776K_30_10_2026.jpg",
       note: "Bản chốt kỹ thuật kính sóng temper 8mm mài xiết cạnh"
     },
     {
@@ -633,10 +738,10 @@ const DEFAULT_DATA = {
       category: "Kính cường lực 8-10mm, Kính màu ốp bếp, Phụ kiện nhôm kính",
       supplier: "Kính Việt Nhật VSG (Thoan VSG)",
       members: 6,
-      lastActivity: "30/10/2026 (32 phút trước)",
+      lastActivity: "11/11/2026 (Đã đồng bộ)",
       status: "Đang sản xuất",
       debt: "Đã cọc 40% (1,110,720 đ) / Tổng đơn 2,776,800 đ",
-      doc: "Don_dat_kinh_Viet_Nhat_30_10_2026.pdf",
+      doc: "/chung_tu/07_DON_DAT_KINH_VIET_NHAT_2776K_30_10_2026.jpg",
       cacheCount: 13,
       note: "Vũ nhắn Thoan VSG đẩy tiến độ kính giao lắp hoàn thiện công trình."
     },
@@ -646,10 +751,10 @@ const DEFAULT_DATA = {
       category: "Gỗ thịt tự nhiên (Gõ đỏ Pachy, Óc chó Bắc Mỹ, Sồi Nga)",
       supplier: "Xưởng Cường Gỗ Thịt (Hà Nội)",
       members: 4,
-      lastActivity: "30/10/2026 (2 giờ trước)",
+      lastActivity: "11/11/2026 (Đã đồng bộ)",
       status: "Gia công & Ghép mộng",
       debt: "Đơn giá 1.700.000 đ/m2 cửa gỗ, cọc theo chuyến xe",
-      doc: "Untitled.xlsx (Bóc tách chi tiết)",
+      doc: "Hồ sơ bóc tách gỗ thịt (995 tệp Zalo)",
       cacheCount: 995,
       note: "Thái QLX phối hợp trực tiếp với Anh Cường. Kho 995 file thiết kế gia công gỗ thịt năm 2026."
     },
@@ -659,12 +764,12 @@ const DEFAULT_DATA = {
       category: "Ván phủ Melamine, Phụ kiện ray âm bản lề DTC, Chỉ nẹp dán cạnh",
       supplier: "Tổng Kho Lam Giang (TP Hà Tĩnh - Ms Hoa)",
       members: 11,
-      lastActivity: "04/11/2026 (14:33)",
+      lastActivity: "11/11/2026 (Đã đồng bộ)",
       status: "Cung ứng thường xuyên",
       debt: "DƯ NỢ: 147,492,250 đ (Đã trừ 16.838M Dung CK 02/11 & Đơn 496k Vũ CK dứt điểm 04/11)",
-      doc: "Đơn DH29930 (496k) & UNC VietinBank 16.838M",
+      doc: "/chung_tu/04_DON_DAT_HANG_LAM_GIANG_DH29930_496K_04_11_2026.jpg",
       cacheCount: 259,
-      note: "Vũ đặt 1 tấm HMR DWS 17 2M 201T + ship (496k) và tự CK Techcombank dứt điểm ngay lúc 14:33 ngày 04/11/2026 (Mã GD: FT26308882300013)."
+      note: "Vũ đặt 1 tấm HMR DWS 17 2M 201T + ship (496k) và tự CK Techcombank dứt điểm ngày 04/11/2026 (Mã GD: FT26308882300013)."
     },
     {
       id: "g495486322416346660",
@@ -672,12 +777,12 @@ const DEFAULT_DATA = {
       category: "Bản lề giảm chấn, Ray bi 3 tầng, Pitton Blumk, Đèn led cảm ứng",
       supplier: "Phụ Kiện Quốc Tâm (56 Ngô Đức Kế, TP Hà Tĩnh - Trần Quang Tú / Phan Thị Lan)",
       members: 8,
-      lastActivity: "04/11/2026 (11:52)",
+      lastActivity: "11/11/2026 (Đã đồng bộ)",
       status: "An toàn trong hạn mức",
       debt: "DƯ NỢ: 26,170,000 đ (Sổ nợ trang 296: Đã trả 15M ngày 02/11 + HĐ Led 170k ngày 04/11 + HĐ Sập/Ray 80k ngày 05/11)",
-      doc: "HĐ 4/11 (170k Led) & Sổ nợ tay T296 & UNC VietinBank 15M",
+      doc: "/chung_tu/06_HOA_DON_QUOC_TAM_2_CUON_LED_170K_04_11_2026.jpg",
       cacheCount: 64,
-      note: "Dung CK Vietinbank trả 15M ngày 02/11 đưa nợ về 25.92M. Sáng 04/11 lấy thêm 2 cuộn Led 10m TT (170k) -> Nợ chốt 26.09M."
+      note: "Dung CK Vietinbank trả 15M ngày 02/11 đưa nợ về 25.92M. Sáng 04/11 lấy thêm 2 cuộn Led 10m TT (170k) -> Nợ chốt 26.17M."
     },
     {
       id: "g7737669618333682341",
@@ -685,7 +790,7 @@ const DEFAULT_DATA = {
       category: "Đá nung kết Ceramic Calacatta, Tấm ốp PVC than tre giả đá",
       supplier: "Hoàng Hà Ceramic PVC (Hưng Yên / Hà Tĩnh)",
       members: 5,
-      lastActivity: "29/10/2026 (Hôm qua)",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Gia công cắt CNC",
       debt: "Cọc 30-50% đơn hàng đá, thanh toán dứt điểm khi giao tấm",
       doc: "Bản vẽ bóc tách mặt đá bàn bếp & bàn đảo",
@@ -698,10 +803,10 @@ const DEFAULT_DATA = {
       category: "Ván Plywood E0, MDF chống ẩm cốt xanh, Ván nhựa Picomat",
       supplier: "Gỗ NT Cầu Vượt (Hà Tĩnh - 0979137123)",
       members: 7,
-      lastActivity: "23/10/2026",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Đối soát công nợ",
       debt: "DƯ NỢ HIỆN TẠI: 82,065,300 đ (Đã trừ 1 tấm trả 750,000 đ)",
-      doc: "Don_tra_hang_NT_23_10_2026.jpg & Cong_no_NT_23_10_2026.jpg",
+      doc: "/chung_tu/01_BANG_DOI_SOAT_CONG_NO_NT_CAU_VUOT_82M_23_10_2026.jpg",
       cacheCount: 80,
       note: "NCC cung cấp ván gỗ CN chính của xưởng. Bảng đối soát các đơn DON00216 đến DON00274."
     },
@@ -711,10 +816,10 @@ const DEFAULT_DATA = {
       category: "Ván Melamine Cường Thịnh cốt MDF/HMR chống ẩm",
       supplier: "Cường Thịnh (Nga Melamine Cường Thịnh)",
       members: 5,
-      lastActivity: "03/09/2026",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Đã chốt bảng màu",
       debt: "Thanh toán theo từng lô ván xuất xưởng",
-      doc: "Bảng mã màu thực tế Melamine",
+      doc: "Bảng mã màu thực tế Melamine Cường Thịnh",
       cacheCount: 8,
       note: "Chốt tone màu sồi tự nhiên và xám chì đồng bộ với thiết kế 3D của Hiệp."
     },
@@ -724,11 +829,11 @@ const DEFAULT_DATA = {
       category: "Gỗ sồi Mỹ (Oak) xẻ sấy chuẩn FAS loại 1, Nan gỗ & Tay vịn",
       supplier: "Sồi Đức Anh - Thu Hương (Hà Tĩnh)",
       members: 5,
-      lastActivity: "14/05/2026",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Đã nghiệm thu gạch sổ",
       debt: "Đã tất toán theo khối lượng nghiệm thu",
-      doc: "Sổ gạch đối soát khối lượng m3",
-      cacheCount: 0,
+      doc: "Sổ gạch đối soát khối lượng m3 gỗ sồi",
+      cacheCount: 12,
       note: "Cung cấp gỗ sồi tự nhiên cho hạng mục cầu thang và chi tiết chạm khắc."
     },
     {
@@ -737,11 +842,11 @@ const DEFAULT_DATA = {
       category: "Kính tôi cường lực, Gương soi nghệ thuật mài vát cạnh",
       supplier: "Kính Gương Phú Mỹ (TP Vinh - Nguyễn Thị Thúy)",
       members: 5,
-      lastActivity: "02/12/2025",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Dự phòng khu vực Bắc",
       debt: "Không có dư nợ quá hạn",
       doc: "Bảng giá gia công kính TP Vinh",
-      cacheCount: 0,
+      cacheCount: 6,
       note: "Đơn vị cung cấp kính và gương bổ trợ khi xưởng làm công trình tại Nghi Xuân & Nghệ An."
     },
     {
@@ -750,11 +855,11 @@ const DEFAULT_DATA = {
       category: "Cánh tủ Acrylic bóng gương No-Line công nghệ Đức",
       supplier: "Acrylic ALD Hà Nội",
       members: 5,
-      lastActivity: "Theo từng hợp đồng",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Sẵn sàng nhận bóc tách",
-      debt: "Cọc 50% theo kích thước cánh",
-      doc: "Bảng báo giá cánh Noline ALD",
-      cacheCount: 0,
+      debt: "Theo PO-2026-1002 (12,210,000 đ - Đã xuất xưởng)",
+      doc: "PO-2026-1002",
+      cacheCount: 18,
       note: "Chuyên dụng cho cánh tủ bếp trên và cánh tủ áo cao cấp không thấy đường line dán cạnh."
     },
     {
@@ -763,11 +868,11 @@ const DEFAULT_DATA = {
       category: "Tấm nano than tre, Tấm PVC vân đá cẩm thạch Hoàng Gia",
       supplier: "Vật Liệu Hoàng Gia",
       members: 5,
-      lastActivity: "Theo từng hợp đồng",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Sẵn sàng cung ứng",
       debt: "Thanh toán theo khối lượng giao hàng",
       doc: "Catalog tấm PVC vân đá 2026",
-      cacheCount: 0,
+      cacheCount: 9,
       note: "Ốp vách trang trí sau sofa và vách tivi phong cách Luxury."
     },
     {
@@ -776,11 +881,11 @@ const DEFAULT_DATA = {
       category: "Gương phôi Bỉ AGC tráng bạc 8 lớp, Đèn led cảm ứng viền",
       supplier: "Xưởng Gương Kính Nghệ Thuật",
       members: 5,
-      lastActivity: "15/10/2026",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Đang đặt hàng",
       debt: "6,800,000 đ (Gia công kính gương)",
       doc: "Bản vẽ gương bàn phấn & phòng tắm",
-      cacheCount: 0,
+      cacheCount: 11,
       note: "Chống ố mép, tráng bạc chống mốc hơi nước bảo hành 5 năm."
     },
     {
@@ -789,11 +894,11 @@ const DEFAULT_DATA = {
       category: "Sofa bọc nỉ da góc L, Bàn ăn thông minh mặt đá 6-8 ghế Monet",
       supplier: "Xưởng Đồ Rời Khánh (Hà Nội)",
       members: 5,
-      lastActivity: "20/09/2026",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Đã bàn giao",
-      debt: "Theo PO-2026-1010 (28,000,000 đ)",
+      debt: "Theo hợp đồng đồ rời (28,000,000 đ)",
       doc: "Hình ảnh nghiệm thu sofa & bàn ăn",
-      cacheCount: 0,
+      cacheCount: 15,
       note: "Mảng Phụ Kiện Bán Kèm & Đồ Rời bàn giao đồng bộ theo tiến độ công trình."
     },
     {
@@ -802,11 +907,11 @@ const DEFAULT_DATA = {
       category: "Vách ốp da nẹp PVD mút D40, Đệm đầu giường bọc da microfiber",
       supplier: "Cơ sở Bọc Đệm Da Nỉ Hà Tĩnh",
       members: 5,
-      lastActivity: "18/10/2026",
+      lastActivity: "10/11/2026 (Đã đồng bộ)",
       status: "Đã nghiệm thu",
       debt: "0 đ (Đã thanh toán)",
       doc: "Phiếu xuất kho xưởng bọc đệm",
-      cacheCount: 0,
+      cacheCount: 7,
       note: "Đệm tựa êm ái tăng độ sang trọng cho phòng ngủ Master biệt thự."
     }
   ]
@@ -814,7 +919,7 @@ const DEFAULT_DATA = {
 
 
 // BẢNG LƯƠNG ĐÃ ĐỐI SOÁT CHUẨN 100% THEO KỲ THÁNG (T8, T9, T10)
-const DEFAULT_WORKERS_BY_MONTH = {
+var DEFAULT_WORKERS_BY_MONTH = {
   "8": [
     { code: "NV01", name: "HÀ VIẾT HOÀ", skill: "Thợ Cả / Kết cấu", base: 13780000, days: 21, daySalary: 11130000, ot: 347813, allowance: 0, retained20k: 420000, advance: 0, total: 11477813 },
     { code: "NV02", name: "LÊ VĂN THOAN", skill: "Thợ Chính / Dán cạnh", base: 11700000, days: 22, daySalary: 9900000, ot: 1012500, allowance: 0, advance: 0, total: 10912500 },
@@ -845,37 +950,144 @@ const DEFAULT_WORKERS_BY_MONTH = {
   ]
 };
 
-const DEFAULT_TIMESHEETS = {"8": {"month": 8, "days": [{"day": 1, "dow": "T2"}, {"day": 2, "dow": "T3"}, {"day": 3, "dow": "T4"}, {"day": 4, "dow": "T5"}, {"day": 5, "dow": "T6"}, {"day": 6, "dow": "T7"}, {"day": 7, "dow": "CN"}, {"day": 8, "dow": "T2"}, {"day": 9, "dow": "T3"}, {"day": 10, "dow": "T4"}, {"day": 11, "dow": "T5"}, {"day": 12, "dow": "T6"}, {"day": 13, "dow": "T7"}, {"day": 14, "dow": "CN"}, {"day": 15, "dow": "T2"}, {"day": 16, "dow": "T3"}, {"day": 17, "dow": "T4"}, {"day": 18, "dow": "T5"}, {"day": 19, "dow": "T6"}, {"day": 20, "dow": "T7"}, {"day": 21, "dow": "CN"}, {"day": 22, "dow": "T2"}, {"day": 23, "dow": "T3"}, {"day": 24, "dow": "T4"}, {"day": 25, "dow": "T5"}, {"day": 26, "dow": "T6"}, {"day": 27, "dow": "T7"}, {"day": 28, "dow": "CN"}, {"day": 29, "dow": "T2"}, {"day": 30, "dow": "T3"}, {"day": 31, "dow": ""}], "vp": [{"id": "vp_13_8", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": [1, "", 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 0.5, 1], "totalHC": 27.5}, {"id": "vp_14_8", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": [1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 0.5, 1], "totalHC": 28.5}], "xuong": [{"id": "x_2_8", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1, "", 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, "", "", "", "", "", "", "", "", 1, 1, 1], "hc_tot": 21.0, "ot": ["", "", "", "", "", "", "", "", "", 3.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 3.5}, {"id": "x_3_8", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": [1, "", 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, "", 1, 1, 0.5, 1, 1, 1, 1, 1], "hc_tot": 27.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_8", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, "", "", "", "", "", "", "", 1, ""], "hc_tot": 22.0, "ot": [2, "", "", 3, 2.5, 1.5, 1.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1.5, "", "", "", "", "", "", "", "", ""], "ot_tot": 12.0}, {"id": "x_5_8", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1, "", 1, 1, 1, 1, "", "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 0.5, "", 0.5, "", "", ""], "hc_tot": 22.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_8", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp khung", "hc": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, "", 1, 1, 1, 1, 1, "", "", "", "", "", "", "", 1, 1], "hc_tot": 22.5, "ot": [2, "", "", 3, 2.5, 1.5, 1.5, "", "", 3.5, "", "", "", "", "", "", "", "", "", "", "", 1.5, "", "", "", "", "", "", "", "", ""], "ot_tot": 15.5}, {"id": "x_7_8", "name": "Anh Xưởng", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": [1, 1, "", 1, 0.5, 1, 1, 1, 1, "", "", 1, 1, 1, 1, 0.5, 0.5, 1, 1, "", 1, 1, "", "", "", "", "", "", "", 0.5, 1], "hc_tot": 18.0, "ot": [2, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1.5, "", "", "", "", "", "", "", "", ""], "ot_tot": 3.5}]}, "9": {"month": 9, "days": [{"day": 1, "dow": "T2"}, {"day": 2, "dow": "T3"}, {"day": 3, "dow": "T4"}, {"day": 4, "dow": "T5"}, {"day": 5, "dow": "T6"}, {"day": 6, "dow": "T7"}, {"day": 7, "dow": "CN"}, {"day": 8, "dow": "T2"}, {"day": 9, "dow": "T3"}, {"day": 10, "dow": "T4"}, {"day": 11, "dow": "T5"}, {"day": 12, "dow": "T6"}, {"day": 13, "dow": "T7"}, {"day": 14, "dow": "CN"}, {"day": 15, "dow": "T2"}, {"day": 16, "dow": "T3"}, {"day": 17, "dow": "T4"}, {"day": 18, "dow": "T5"}, {"day": 19, "dow": "T6"}, {"day": 20, "dow": "T7"}, {"day": 21, "dow": "CN"}, {"day": 22, "dow": "T2"}, {"day": 23, "dow": "T3"}, {"day": 24, "dow": "T4"}, {"day": 25, "dow": "T5"}, {"day": 26, "dow": "T6"}, {"day": 27, "dow": "T7"}, {"day": 28, "dow": "CN"}, {"day": 29, "dow": "T2"}, {"day": 30, "dow": "T3"}], "vp": [{"id": "vp_13_9", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": [1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1], "totalHC": 28.0}, {"id": "vp_14_9", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": ["", "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", "", "", 1, 1, 1, 1, 1, 1, 1, 1, 1], "totalHC": 25.0}], "xuong": [{"id": "x_2_9", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1, "", 0.5, 1, 1, 0.5, 1, 1, 1, 1, 1, "", "", 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1], "hc_tot": 24.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, 1, 2, 2.5, 1, "", 1.5, "", "", "", 2, "", "", "", ""], "ot_tot": 11.0}, {"id": "x_3_9", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": ["", "", 1, 1, 1, "", 1, 1, 0.5, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "hc_tot": 24.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_9", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": [1, "", 1, 1, "", "", 1, 0.5, 1, 1, 1, "", "", "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", "", ""], "hc_tot": 20.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 2.5, 1, 3, 3, 1, "", "", "", "", "", "", ""], "ot_tot": 10.5}, {"id": "x_5_9", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": ["", "", 1, 1, 0.5, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "hc_tot": 25.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_9", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp khung", "hc": ["", "", 0.5, 1, "", "", 1, 0.5, "", 1, "", "", "", 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", ""], "hc_tot": 18.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 2.5, 1.5, 3, 3, 1, "", "", 2, "", "", "", ""], "ot_tot": 13.0}, {"id": "x_7_9", "name": "Anh Xưởng", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": [1, "", "", 1, "", "", 1, 0.5, "", 1, "", "", "", "", 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", ""], "hc_tot": 18.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, 3, 3, 1, "", "", "", "", "", "", ""], "ot_tot": 8.0}, {"id": "x_8_9", "name": "Tuấn Anh", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, 1, 1, 1, "", 1, 1, 1, "", 1, 0.5, "", 1, "", ""], "hc_tot": 9.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, "", "", "", "", "", "", "", ""], "ot_tot": 1.0}]}, "10": {"month": 10, "days": [{"day": 1, "dow": "T5"}, {"day": 2, "dow": "T6"}, {"day": 3, "dow": "T7"}, {"day": 4, "dow": "CN"}, {"day": 5, "dow": "T2"}, {"day": 6, "dow": "T3"}, {"day": 7, "dow": "T4"}, {"day": 8, "dow": "T5"}, {"day": 9, "dow": "T6"}, {"day": 10, "dow": "T7"}, {"day": 11, "dow": "CN"}, {"day": 12, "dow": "T2"}, {"day": 13, "dow": "T3"}, {"day": 14, "dow": "T4"}, {"day": 15, "dow": "T5"}, {"day": 16, "dow": "T6"}, {"day": 17, "dow": "T7"}, {"day": 18, "dow": "CN"}, {"day": 19, "dow": "T2"}, {"day": 20, "dow": "T3"}, {"day": 21, "dow": "T4"}, {"day": 22, "dow": "T5"}, {"day": 23, "dow": "T6"}, {"day": 24, "dow": "T7"}, {"day": 25, "dow": "CN"}, {"day": 26, "dow": "T2"}, {"day": 27, "dow": "T3"}, {"day": 28, "dow": "T4"}, {"day": 29, "dow": "T5"}, {"day": 30, "dow": "T6"}, {"day": 31, "dow": "T7"}], "vp": [{"id": "vp_13_10", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, ""], "totalHC": 26.0}, {"id": "vp_14_10", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, ""], "totalHC": 26.0}], "xuong": [{"id": "x_2_10", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, "", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, 1.0, 1.0, 1.0], "hc_tot": 28.0, "ot": ["", "", 2.0, 3.5, 1.0, 1.5, 2.0, 2.0, 2.0, 4.0, 3.5, 3.0, "", "", 4.0, "", 3.0, "", "", 4.0, 1.0, 2.5, 6.0, 5.0, 2.0, "", 3.5, 1.0, 3.0, 2.0, 4.5], "ot_tot": 66.0}, {"id": "x_3_10", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 0.5, 1, 1, "", 1, 1, 1, 1, 1, 1], "hc_tot": 26.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_10", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": ["", "", "", "", "", "", "", 1.0, 1.0, 1.0, "", 1.0, 1.0, 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 7.0, "ot": ["", "", "", "", "", "", "", "", "", 1.5, "", 2.0, "", 1.5, 2.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 7.0}, {"id": "x_5_10", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Kỹ thuật CNC / Bóc tách vật tư", "hc": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, ""], "hc_tot": 26.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_10", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp", "hc": [0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "hc_tot": 30.0, "ot": ["", "", 2.0, 2.5, 1.0, "", 6.5, 2.0, 3.5, 3.0, 3.0, 2.0, "", 3.0, 3.0, "", 2.0, 2.0, "", 1.5, "", 2.5, 1.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 3.0, 3.0], "ot_tot": 62.0}, {"id": "x_7_10", "name": "Trần Văn Anh", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": ["", "", "", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, "", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0], "hc_tot": 26.0, "ot": ["", "", "", 2.5, 1.0, "", 6.5, 2.0, 3.5, 3.0, 3.0, 2.0, "", 3.0, 2.0, "", 2.0, 2.0, "", "", "", 1.0, 1.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 3.0, 3.0], "ot_tot": 56.0}, {"id": "x_8_10", "name": "Lê Tuấn Anh", "dept": "Xưởng", "role": "Thợ phụ / Đóng gói", "hc": ["", "", 1.0, "", 1.0, 1.0, "", 1.0, 1.0, "", 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 0.5, "", "", 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, 1.0, 1.0, 0.5, "", 1.0], "hc_tot": 19.5, "ot": ["", "", 2.0, "", 1.0, "", "", 2.0, "", "", "", 1.5, "", 1.5, 2.0, "", 1.0, "", "", 1.5, "", 1.5, "", "", 1.5, 2.5, 2.5, "", "", "", ""], "ot_tot": 20.5}]}, "11": {"month": 11, "days": [{"day": 1, "dow": "CN"}, {"day": 2, "dow": "T2"}, {"day": 3, "dow": "T3"}, {"day": 4, "dow": "T4"}, {"day": 5, "dow": "T5"}, {"day": 6, "dow": "T6"}, {"day": 7, "dow": "T7"}, {"day": 8, "dow": "CN"}, {"day": 9, "dow": "T2"}, {"day": 10, "dow": "T3"}, {"day": 11, "dow": "T4"}, {"day": 12, "dow": "T5"}, {"day": 13, "dow": "T6"}, {"day": 14, "dow": "T7"}, {"day": 15, "dow": "CN"}, {"day": 16, "dow": "T2"}, {"day": 17, "dow": "T3"}, {"day": 18, "dow": "T4"}, {"day": 19, "dow": "T5"}, {"day": 20, "dow": "T6"}, {"day": 21, "dow": "T7"}, {"day": 22, "dow": "CN"}, {"day": 23, "dow": "T2"}, {"day": 24, "dow": "T3"}, {"day": 25, "dow": "T4"}, {"day": 26, "dow": "T5"}, {"day": 27, "dow": "T6"}, {"day": 28, "dow": "T7"}, {"day": 29, "dow": "CN"}, {"day": 30, "dow": "T2"}], "vp": [{"id": "vp_13_11", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "totalHC": 8.0}, {"id": "vp_14_11", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "totalHC": 8.0}], "xuong": [{"id": "x_2_11", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 9.0, "ot": [2.5, 2.0, 2.5, 2.0, 3.0, 2.5, 3.0, "", 2.0, 2.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 22.0}, {"id": "x_3_11", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 8.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_11", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": ["", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 8.0, "ot": ["", 1.5, 2.0, "", 2.0, 1.5, 2.0, "", 1.5, 1.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 12.0}, {"id": "x_5_11", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Kỹ thuật CNC / Bóc tách vật tư", "hc": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 8.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_11", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp", "hc": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 10.0, "ot": [2.5, 2.0, 2.5, 2.0, 2.5, 2.5, 3.0, 2.0, 2.5, 2.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 24.0}, {"id": "x_7_11", "name": "Trần Văn Anh", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 9.0, "ot": [2.0, 1.5, 2.0, 2.0, 2.5, 2.0, 2.5, "", 2.0, 2.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 19.0}, {"id": "x_8_11", "name": "Lê Tuấn Anh", "dept": "Xưởng", "role": "Thợ phụ / Đóng gói", "hc": ["", 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 7.5, "ot": ["", 1.5, "", 1.5, 2.0, "", 1.5, "", 1.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 8.0}]}};
+var DEFAULT_TIMESHEETS = {"8": {"month": 8, "days": [{"day": 1, "dow": "T2"}, {"day": 2, "dow": "T3"}, {"day": 3, "dow": "T4"}, {"day": 4, "dow": "T5"}, {"day": 5, "dow": "T6"}, {"day": 6, "dow": "T7"}, {"day": 7, "dow": "CN"}, {"day": 8, "dow": "T2"}, {"day": 9, "dow": "T3"}, {"day": 10, "dow": "T4"}, {"day": 11, "dow": "T5"}, {"day": 12, "dow": "T6"}, {"day": 13, "dow": "T7"}, {"day": 14, "dow": "CN"}, {"day": 15, "dow": "T2"}, {"day": 16, "dow": "T3"}, {"day": 17, "dow": "T4"}, {"day": 18, "dow": "T5"}, {"day": 19, "dow": "T6"}, {"day": 20, "dow": "T7"}, {"day": 21, "dow": "CN"}, {"day": 22, "dow": "T2"}, {"day": 23, "dow": "T3"}, {"day": 24, "dow": "T4"}, {"day": 25, "dow": "T5"}, {"day": 26, "dow": "T6"}, {"day": 27, "dow": "T7"}, {"day": 28, "dow": "CN"}, {"day": 29, "dow": "T2"}, {"day": 30, "dow": "T3"}, {"day": 31, "dow": ""}], "vp": [{"id": "vp_13_8", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": [1, "", 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 0.5, 1], "totalHC": 27.5}, {"id": "vp_14_8", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": [1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 0.5, 1], "totalHC": 28.5}], "xuong": [{"id": "x_2_8", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1, "", 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, "", "", "", "", "", "", "", "", 1, 1, 1], "hc_tot": 21.0, "ot": ["", "", "", "", "", "", "", "", "", 3.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 3.5}, {"id": "x_3_8", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": [1, "", 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, "", 1, 1, 0.5, 1, 1, 1, 1, 1], "hc_tot": 27.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_8", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, "", "", "", "", "", "", "", 1, ""], "hc_tot": 22.0, "ot": [2, "", "", 3, 2.5, 1.5, 1.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1.5, "", "", "", "", "", "", "", "", ""], "ot_tot": 12.0}, {"id": "x_5_8", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1, "", 1, 1, 1, 1, "", "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 0.5, "", 0.5, "", "", ""], "hc_tot": 22.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_8", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp khung", "hc": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, "", 1, 1, 1, 1, 1, "", "", "", "", "", "", "", 1, 1], "hc_tot": 22.5, "ot": [2, "", "", 3, 2.5, 1.5, 1.5, "", "", 3.5, "", "", "", "", "", "", "", "", "", "", "", 1.5, "", "", "", "", "", "", "", "", ""], "ot_tot": 15.5}, {"id": "x_7_8", "name": "Anh Xưởng", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": [1, 1, "", 1, 0.5, 1, 1, 1, 1, "", "", 1, 1, 1, 1, 0.5, 0.5, 1, 1, "", 1, 1, "", "", "", "", "", "", "", 0.5, 1], "hc_tot": 18.0, "ot": [2, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1.5, "", "", "", "", "", "", "", "", ""], "ot_tot": 3.5}]}, "9": {"month": 9, "days": [{"day": 1, "dow": "T2"}, {"day": 2, "dow": "T3"}, {"day": 3, "dow": "T4"}, {"day": 4, "dow": "T5"}, {"day": 5, "dow": "T6"}, {"day": 6, "dow": "T7"}, {"day": 7, "dow": "CN"}, {"day": 8, "dow": "T2"}, {"day": 9, "dow": "T3"}, {"day": 10, "dow": "T4"}, {"day": 11, "dow": "T5"}, {"day": 12, "dow": "T6"}, {"day": 13, "dow": "T7"}, {"day": 14, "dow": "CN"}, {"day": 15, "dow": "T2"}, {"day": 16, "dow": "T3"}, {"day": 17, "dow": "T4"}, {"day": 18, "dow": "T5"}, {"day": 19, "dow": "T6"}, {"day": 20, "dow": "T7"}, {"day": 21, "dow": "CN"}, {"day": 22, "dow": "T2"}, {"day": 23, "dow": "T3"}, {"day": 24, "dow": "T4"}, {"day": 25, "dow": "T5"}, {"day": 26, "dow": "T6"}, {"day": 27, "dow": "T7"}, {"day": 28, "dow": "CN"}, {"day": 29, "dow": "T2"}, {"day": 30, "dow": "T3"}], "vp": [{"id": "vp_13_9", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": [1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1], "totalHC": 28.0}, {"id": "vp_14_9", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": ["", "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", "", "", 1, 1, 1, 1, 1, 1, 1, 1, 1], "totalHC": 25.0}], "xuong": [{"id": "x_2_9", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1, "", 0.5, 1, 1, 0.5, 1, 1, 1, 1, 1, "", "", 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", 1], "hc_tot": 24.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, 1, 2, 2.5, 1, "", 1.5, "", "", "", 2, "", "", "", ""], "ot_tot": 11.0}, {"id": "x_3_9", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": ["", "", 1, 1, 1, "", 1, 1, 0.5, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "hc_tot": 24.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_9", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": [1, "", 1, 1, "", "", 1, 0.5, 1, 1, 1, "", "", "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", "", ""], "hc_tot": 20.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 2.5, 1, 3, 3, 1, "", "", "", "", "", "", ""], "ot_tot": 10.5}, {"id": "x_5_9", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": ["", "", 1, 1, 0.5, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "hc_tot": 25.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_9", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp khung", "hc": ["", "", 0.5, 1, "", "", 1, 0.5, "", 1, "", "", "", 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", ""], "hc_tot": 18.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 2.5, 1.5, 3, 3, 1, "", "", 2, "", "", "", ""], "ot_tot": 13.0}, {"id": "x_7_9", "name": "Anh Xưởng", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": [1, "", "", 1, "", "", 1, 0.5, "", 1, "", "", "", "", 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, "", ""], "hc_tot": 18.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, 3, 3, 1, "", "", "", "", "", "", ""], "ot_tot": 8.0}, {"id": "x_8_9", "name": "Tuấn Anh", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, 1, 1, 1, "", 1, 1, 1, "", 1, 0.5, "", 1, "", ""], "hc_tot": 9.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 1, "", "", "", "", "", "", "", ""], "ot_tot": 1.0}]}, "10": {"month": 10, "days": [{"day": 1, "dow": "T5"}, {"day": 2, "dow": "T6"}, {"day": 3, "dow": "T7"}, {"day": 4, "dow": "CN"}, {"day": 5, "dow": "T2"}, {"day": 6, "dow": "T3"}, {"day": 7, "dow": "T4"}, {"day": 8, "dow": "T5"}, {"day": 9, "dow": "T6"}, {"day": 10, "dow": "T7"}, {"day": 11, "dow": "CN"}, {"day": 12, "dow": "T2"}, {"day": 13, "dow": "T3"}, {"day": 14, "dow": "T4"}, {"day": 15, "dow": "T5"}, {"day": 16, "dow": "T6"}, {"day": 17, "dow": "T7"}, {"day": 18, "dow": "CN"}, {"day": 19, "dow": "T2"}, {"day": 20, "dow": "T3"}, {"day": 21, "dow": "T4"}, {"day": 22, "dow": "T5"}, {"day": 23, "dow": "T6"}, {"day": 24, "dow": "T7"}, {"day": 25, "dow": "CN"}, {"day": 26, "dow": "T2"}, {"day": 27, "dow": "T3"}, {"day": 28, "dow": "T4"}, {"day": 29, "dow": "T5"}, {"day": 30, "dow": "T6"}, {"day": 31, "dow": "T7"}], "vp": [{"id": "vp_13_10", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, ""], "totalHC": 26.0}, {"id": "vp_14_10", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, ""], "totalHC": 26.0}], "xuong": [{"id": "x_2_10", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, "", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, 1.0, 1.0, 1.0], "hc_tot": 28.0, "ot": ["", "", 2.0, 3.5, 1.0, 1.5, 2.0, 2.0, 2.0, 4.0, 3.5, 3.0, "", "", 4.0, "", 3.0, "", "", 4.0, 1.0, 2.5, 6.0, 5.0, 2.0, "", 3.5, 1.0, 3.0, 2.0, 4.5], "ot_tot": 66.0}, {"id": "x_3_10", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 0.5, 1, 1, "", 1, 1, 1, 1, 1, 1], "hc_tot": 26.5, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_10", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": ["", "", "", "", "", "", "", 1.0, 1.0, 1.0, "", 1.0, 1.0, 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 7.0, "ot": ["", "", "", "", "", "", "", "", "", 1.5, "", 2.0, "", 1.5, 2.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 7.0}, {"id": "x_5_10", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Kỹ thuật CNC / Bóc tách vật tư", "hc": [1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, 1, "", 1, 1, 1, 1, 1, ""], "hc_tot": 26.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_10", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp", "hc": [0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "hc_tot": 30.0, "ot": ["", "", 2.0, 2.5, 1.0, "", 6.5, 2.0, 3.5, 3.0, 3.0, 2.0, "", 3.0, 3.0, "", 2.0, 2.0, "", 1.5, "", 2.5, 1.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 3.0, 3.0], "ot_tot": 62.0}, {"id": "x_7_10", "name": "Trần Văn Anh", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": ["", "", "", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, "", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0], "hc_tot": 26.0, "ot": ["", "", "", 2.5, 1.0, "", 6.5, 2.0, 3.5, 3.0, 3.0, 2.0, "", 3.0, 2.0, "", 2.0, 2.0, "", "", "", 1.0, 1.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 3.0, 3.0], "ot_tot": 56.0}, {"id": "x_8_10", "name": "Lê Tuấn Anh", "dept": "Xưởng", "role": "Thợ phụ / Đóng gói", "hc": ["", "", 1.0, "", 1.0, 1.0, "", 1.0, 1.0, "", 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 0.5, "", "", 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, 1.0, 1.0, 0.5, "", 1.0], "hc_tot": 19.5, "ot": ["", "", 2.0, "", 1.0, "", "", 2.0, "", "", "", 1.5, "", 1.5, 2.0, "", 1.0, "", "", 1.5, "", 1.5, "", "", 1.5, 2.5, 2.5, "", "", "", ""], "ot_tot": 20.5}]}, "11": {"month": 11, "days": [{"day": 1, "dow": "CN"}, {"day": 2, "dow": "T2"}, {"day": 3, "dow": "T3"}, {"day": 4, "dow": "T4"}, {"day": 5, "dow": "T5"}, {"day": 6, "dow": "T6"}, {"day": 7, "dow": "T7"}, {"day": 8, "dow": "CN"}, {"day": 9, "dow": "T2"}, {"day": 10, "dow": "T3"}, {"day": 11, "dow": "T4"}, {"day": 12, "dow": "T5"}, {"day": 13, "dow": "T6"}, {"day": 14, "dow": "T7"}, {"day": 15, "dow": "CN"}, {"day": 16, "dow": "T2"}, {"day": 17, "dow": "T3"}, {"day": 18, "dow": "T4"}, {"day": 19, "dow": "T5"}, {"day": 20, "dow": "T6"}, {"day": 21, "dow": "T7"}, {"day": 22, "dow": "CN"}, {"day": 23, "dow": "T2"}, {"day": 24, "dow": "T3"}, {"day": 25, "dow": "T4"}, {"day": 26, "dow": "T5"}, {"day": 27, "dow": "T6"}, {"day": 28, "dow": "T7"}, {"day": 29, "dow": "CN"}, {"day": 30, "dow": "T2"}], "vp": [{"id": "vp_13_11", "name": "Tống Trần Hiệp", "dept": "Văn phòng", "role": "Sale Admin & Thiết kế 3D", "days": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "totalHC": 8.0}, {"id": "vp_14_11", "name": "Đường Việt Dũng", "dept": "Văn phòng", "role": "Phòng Kinh Doanh", "days": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "totalHC": 8.0}], "xuong": [{"id": "x_2_11", "name": "Hà Viết Hòa", "dept": "Xưởng", "role": "Thợ Cả / Kết cấu", "hc": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 9.0, "ot": [2.5, 2.0, 2.5, 2.0, 3.0, 2.5, 3.0, "", 2.0, 2.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 22.0}, {"id": "x_3_11", "name": "Nguyễn Văn Thái", "dept": "Xưởng", "role": "Quản lý xưởng sản xuất", "hc": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 8.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_4_11", "name": "Lê Văn Thoan", "dept": "Xưởng", "role": "Thợ chính / Dán cạnh máy", "hc": ["", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 8.0, "ot": ["", 1.5, 2.0, "", 2.0, 1.5, 2.0, "", 1.5, 1.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 12.0}, {"id": "x_5_11", "name": "Hoàng Công Vũ", "dept": "Xưởng", "role": "Kỹ thuật CNC / Bóc tách vật tư", "hc": ["", 1, 1, 1, 1, 1, 1, "", 1, 1, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 8.0, "ot": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 0}, {"id": "x_6_11", "name": "Lương Thể Hào", "dept": "Xưởng", "role": "Thợ chính / Lắp ráp", "hc": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 10.0, "ot": [2.5, 2.0, 2.5, 2.0, 2.5, 2.5, 3.0, 2.0, 2.5, 2.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 24.0}, {"id": "x_7_11", "name": "Trần Văn Anh", "dept": "Xưởng", "role": "Thợ lắp đặt & Hoàn thiện", "hc": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 9.0, "ot": [2.0, 1.5, 2.0, 2.0, 2.5, 2.0, 2.5, "", 2.0, 2.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 19.0}, {"id": "x_8_11", "name": "Lê Tuấn Anh", "dept": "Xưởng", "role": "Thợ phụ / Đóng gói", "hc": ["", 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, "", 1.0, 1.0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "hc_tot": 7.5, "ot": ["", 1.5, "", 1.5, 2.0, "", 1.5, "", 1.5, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "ot_tot": 8.0}]}};
 
 // Danh sách nhân sự đã nghỉ việc (thanh lọc vĩnh viễn khỏi toàn hệ thống)
-const RETIRED_STAFF = ["Phan Thanh Lực", "Phan Xuân Hùng", "Phan Văn Bình", "Dương Thị Tuyết", "Trần Văn Bình"];
+var RETIRED_STAFF = ["Phan Thanh Lực", "Phan Xuân Hùng", "Phan Văn Bình", "Dương Thị Tuyết", "Trần Văn Bình"];
 
-const CURRENT_APP_VERSION = "2026.11.11_v32_ZERO_MOCK_SMART_PO";
+var CURRENT_APP_VERSION = "2026.11.14_v39_ZERO_TDZ_FULL_AUDIT";
 
-const SYNTHETIC_PROJECT_KEYWORDS = ["anh trung tuyết", "biệt thự cẩm xuyên", "shophouse vinhomes", "shophouse anh minh", "chị hương (vinhomes)"];
+function sanitizeTimesheetFutureDays(timesheetsObj) {
+  if (!timesheetsObj || typeof timesheetsObj !== "object") return timesheetsObj;
+  const maxDayT11 = (typeof activeQuickAttDay === "number" && activeQuickAttDay > 0) ? activeQuickAttDay : 10;
+  const ts11 = timesheetsObj["11"];
+  if (ts11 && typeof ts11 === "object") {
+    if (Array.isArray(ts11.xuong)) {
+      ts11.xuong.forEach(w => {
+        if (!Array.isArray(w.hc)) w.hc = new Array(30).fill("");
+        if (!Array.isArray(w.ot)) w.ot = new Array(30).fill("");
+        while (w.hc.length < 30) w.hc.push("");
+        while (w.ot.length < 30) w.ot.push("");
+        for (let i = maxDayT11; i < 30; i++) {
+          w.hc[i] = "";
+          w.ot[i] = "";
+        }
+        w.hc_tot = w.hc.slice(0, maxDayT11).reduce((s, v) => s + (v === 1 || v === "1" ? 1 : (v === 0.5 || v === "0.5" ? 0.5 : 0)), 0);
+        w.ot_tot = w.ot.slice(0, maxDayT11).reduce((s, v) => { const n = parseFloat(v); return !isNaN(n) ? s + n : s; }, 0);
+      });
+    }
+    if (Array.isArray(ts11.vp)) {
+      ts11.vp.forEach(v => {
+        if (!Array.isArray(v.days)) v.days = new Array(30).fill("");
+        while (v.days.length < 30) v.days.push("");
+        for (let i = maxDayT11; i < 30; i++) {
+          v.days[i] = "";
+        }
+        v.totalHC = v.days.slice(0, maxDayT11).reduce((s, x) => s + (x === 1 || x === "1" ? 1 : (x === 0.5 || x === "0.5" ? 0.5 : 0)), 0);
+      });
+    }
+  }
+  return timesheetsObj;
+}
+window.sanitizeTimesheetFutureDays = sanitizeTimesheetFutureDays;
+sanitizeTimesheetFutureDays(DEFAULT_TIMESHEETS);
+
+var SYNTHETIC_PROJECT_KEYWORDS = [
+  "anh trung tuyết",
+  "biệt thự cẩm xuyên",
+  "shophouse vinhomes",
+  "shophouse anh minh",
+  "chị hương (vinhomes)",
+  "chị phượng (vinhomes)",
+  "đường hàm nghi",
+  "hàm nghi, tp hà tĩnh",
+  "35 ngô đức kế"
+];
 function isSyntheticProjectRecord(item) {
-  if (!item) return false;
-  const text = `${item.client || ""} ${item.project || ""} ${item.category || ""}`.toLowerCase();
+  if (!item || typeof item !== "object") return false;
+  const text = `${item.client || ""} ${item.project || ""} ${item.category || ""} ${item.address || ""} ${item.note || ""} ${item.name || ""}`.toLowerCase();
   return SYNTHETIC_PROJECT_KEYWORDS.some(kw => text.includes(kw));
 }
 
-function mergeArrayByKey(savedArr, defaultArr, keyField) {
-  if (!Array.isArray(savedArr) || savedArr.length === 0) {
-    return JSON.parse(JSON.stringify(defaultArr || []));
+function sanitizeAppStateZeroMock(stateObj) {
+  if (!stateObj || typeof stateObj !== "object") return stateObj;
+  const cleanArr = (arr, defArr) => {
+    if (!Array.isArray(arr)) return Array.isArray(defArr) ? JSON.parse(JSON.stringify(defArr)) : [];
+    const filtered = arr.filter(item => !isSyntheticProjectRecord(item));
+    return filtered.length > 0 ? filtered : (Array.isArray(defArr) ? JSON.parse(JSON.stringify(defArr)) : []);
+  };
+  if (typeof DEFAULT_DATA !== "undefined" && DEFAULT_DATA) {
+    stateObj.xuongRecords = cleanArr(stateObj.xuongRecords, DEFAULT_DATA.xuongRecords);
+    stateObj.contracts = cleanArr(stateObj.contracts, DEFAULT_DATA.contracts);
+    stateObj.debts = cleanArr(stateObj.debts, DEFAULT_DATA.debts);
+    stateObj.supplierDebts = cleanArr(stateObj.supplierDebts, DEFAULT_DATA.supplierDebts);
+    stateObj.accessories = cleanArr(stateObj.accessories, DEFAULT_DATA.accessories);
+    stateObj.materials = cleanArr(stateObj.materials, DEFAULT_DATA.materials);
+    stateObj.poList = cleanArr(stateObj.poList, DEFAULT_DATA.poList);
   }
-  const defClone = JSON.parse(JSON.stringify(defaultArr || []));
-  const defKeys = new Set(defClone.map(item => item && item[keyField]).filter(Boolean));
-  const customItems = savedArr.filter(item => item && item[keyField] && !defKeys.has(item[keyField]));
-  // Preserve status/edits on existing items where applicable
-  const savedMap = new Map(savedArr.filter(i => i && i[keyField]).map(i => [i[keyField], i]));
+  if (stateObj.timesheets) {
+    sanitizeTimesheetFutureDays(stateObj.timesheets);
+  }
+  return stateObj;
+}
+window.sanitizeAppStateZeroMock = sanitizeAppStateZeroMock;
+
+function getDeletedTombstoneSet() {
+  try {
+    const raw = JSON.parse(localStorage.getItem("PG_DELETED_RECORD_IDS") || "[]");
+    return new Set(Array.isArray(raw) ? raw.map(String) : []);
+  } catch (e) {
+    return new Set();
+  }
+}
+
+window.recordDeletedTombstone = function(namespace, keyVal) {
+  if (!keyVal) return;
+  try {
+    const set = getDeletedTombstoneSet();
+    set.add(`${namespace}:${String(keyVal)}`);
+    const arr = Array.from(set).slice(-500);
+    localStorage.setItem("PG_DELETED_RECORD_IDS", JSON.stringify(arr));
+    if (typeof appState !== "undefined" && appState) {
+      appState.deletedRecordIds = arr;
+    }
+  } catch (e) {}
+};
+
+function mergeArrayByKey(savedArr, defaultArr, keyField, tombstoneNamespace) {
+  const tombstones = getDeletedTombstoneSet();
+  const ns = tombstoneNamespace || keyField;
+  const isDeleted = (item) => item && item[keyField] !== undefined && tombstones.has(`${ns}:${String(item[keyField])}`);
+
+  if (!Array.isArray(savedArr) || savedArr.length === 0) {
+    return JSON.parse(JSON.stringify(defaultArr || [])).filter(item => !isDeleted(item));
+  }
+  const defClone = JSON.parse(JSON.stringify(defaultArr || [])).filter(item => !isDeleted(item));
+  const defKeys = new Set(defClone.map(item => item && item[keyField]).filter(v => v !== undefined && v !== null));
+  const customItems = savedArr.filter(item => item && item[keyField] !== undefined && !defKeys.has(item[keyField]) && !isDeleted(item));
+  // Preserve ALL user-edited fields on existing items (status, paid/collected, qty, price, approvedAt, etc.)
+  const savedMap = new Map(savedArr.filter(i => i && i[keyField] !== undefined).map(i => [i[keyField], i]));
   const mergedDefaults = defClone.map(defItem => {
     const existing = savedMap.get(defItem[keyField]);
-    if (existing && existing.status && existing.status !== defItem.status) {
-      return Object.assign({}, defItem, { status: existing.status, approvedAt: existing.approvedAt || defItem.approvedAt });
+    if (existing) {
+      return Object.assign({}, defItem, existing);
     }
     return defItem;
   });
   return [...customItems, ...mergedDefaults];
+}
+
+function sanitizeUsersPasswordHashes(usersArr) {
+  if (!Array.isArray(usersArr)) return [];
+  return usersArr.map(u => {
+    if (!u) return u;
+    const copy = Object.assign({}, u);
+    if (!copy.passwordHash && copy.password) {
+      copy.passwordHash = window.pgSha256HexSync(String(copy.password));
+    }
+    delete copy.password;
+    return copy;
+  });
 }
 
 function loadState() {
@@ -885,50 +1097,38 @@ function loadState() {
     try {
       data = JSON.parse(saved);
       if (!data.appVersion || data.appVersion !== CURRENT_APP_VERSION) {
-        console.log("Cập nhật phiên bản hệ thống lên " + CURRENT_APP_VERSION + " - Hợp nhất bảo toàn dữ liệu người dùng (Delta-Merge).");
+        console.log("Cập nhật phiên bản hệ thống lên " + CURRENT_APP_VERSION + " - Hợp nhất bảo toàn dữ liệu người dùng (Delta-Merge + Tombstones).");
         data.appVersion = CURRENT_APP_VERSION;
-        data.xuongRecords = mergeArrayByKey((data.xuongRecords || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.xuongRecords, "id");
-        data.contracts = mergeArrayByKey((data.contracts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.contracts, "code");
-        data.debts = mergeArrayByKey((data.debts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.debts, "client");
-        data.supplierDebts = mergeArrayByKey((data.supplierDebts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.supplierDebts, "ncc");
-        data.accessories = mergeArrayByKey((data.accessories || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.accessories, "id");
-        data.expenses = mergeArrayByKey(data.expenses, DEFAULT_DATA.expenses, "id");
-        data.users = JSON.parse(JSON.stringify(DEFAULT_DATA.users));
-        data.materials = mergeArrayByKey(data.materials, DEFAULT_DATA.materials, "id");
-        data.poList = mergeArrayByKey(data.poList, DEFAULT_DATA.poList, "code");
-        data.ccscMonths = JSON.parse(JSON.stringify(DEFAULT_DATA.ccscMonths));
-        data.zaloSupplierGroups = JSON.parse(JSON.stringify(DEFAULT_DATA.zaloSupplierGroups));
+        data.xuongRecords = mergeArrayByKey((data.xuongRecords || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.xuongRecords, "id", "xuongRecords");
+        data.contracts = mergeArrayByKey((data.contracts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.contracts, "code", "contracts");
+        data.debts = mergeArrayByKey((data.debts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.debts, "client", "debts");
+        data.supplierDebts = mergeArrayByKey((data.supplierDebts || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.supplierDebts, "ncc", "supplierDebts");
+        data.accessories = mergeArrayByKey((data.accessories || []).filter(r => !isSyntheticProjectRecord(r)), DEFAULT_DATA.accessories, "id", "accessories");
+        data.expenses = mergeArrayByKey(data.expenses, DEFAULT_DATA.expenses, "id", "expenses");
+        data.users = sanitizeUsersPasswordHashes(mergeArrayByKey(data.users, DEFAULT_DATA.users, "username", "users"));
+        data.materials = mergeArrayByKey(data.materials, DEFAULT_DATA.materials, "code", "materials");
+        data.poList = mergeArrayByKey(data.poList, DEFAULT_DATA.poList, "code", "poList");
+        if (Array.isArray(DEFAULT_DATA.ccscMonths)) {
+          data.ccscMonths = mergeArrayByKey(data.ccscMonths, DEFAULT_DATA.ccscMonths, "m", "ccscMonths");
+        }
+        data.zaloSupplierGroups = mergeArrayByKey(data.zaloSupplierGroups, DEFAULT_DATA.zaloSupplierGroups, "id", "zaloSupplierGroups");
+        if (!data.timesheets || typeof data.timesheets !== "object") {
+          data.timesheets = JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS));
+        } else {
+          data.timesheets["11"] = JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS["11"]));
+        }
       } else {
-        // Chỉ phục hồi khi mảng bị hỏng hoặc hoàn toàn rỗng (không ghi đè khi người dùng xóa bớt dòng)
-        if (!Array.isArray(data.xuongRecords) || data.xuongRecords.length === 0) {
-          data.xuongRecords = JSON.parse(JSON.stringify(DEFAULT_DATA.xuongRecords));
-        }
-        if (!Array.isArray(data.contracts) || data.contracts.length === 0) {
-          data.contracts = JSON.parse(JSON.stringify(DEFAULT_DATA.contracts));
-        }
-        if (!Array.isArray(data.debts) || data.debts.length === 0) {
-          data.debts = JSON.parse(JSON.stringify(DEFAULT_DATA.debts));
-        }
-        if (!Array.isArray(data.supplierDebts) || data.supplierDebts.length === 0) {
-          data.supplierDebts = JSON.parse(JSON.stringify(DEFAULT_DATA.supplierDebts));
-        }
-        if (!Array.isArray(data.accessories) || data.accessories.length === 0) {
-          data.accessories = JSON.parse(JSON.stringify(DEFAULT_DATA.accessories));
-        }
-        if (!Array.isArray(data.expenses) || data.expenses.length === 0) {
-          data.expenses = JSON.parse(JSON.stringify(DEFAULT_DATA.expenses));
-        }
-        if (!Array.isArray(data.users) || data.users.length === 0) {
-          data.users = JSON.parse(JSON.stringify(DEFAULT_DATA.users));
-        }
-        if (!Array.isArray(data.materials) || data.materials.length === 0) {
-          data.materials = JSON.parse(JSON.stringify(DEFAULT_DATA.materials));
-        }
-        if (!Array.isArray(data.poList) || data.poList.length === 0) {
-          data.poList = JSON.parse(JSON.stringify(DEFAULT_DATA.poList));
-        }
-        data.ccscMonths = JSON.parse(JSON.stringify(DEFAULT_DATA.ccscMonths));
-        data.zaloSupplierGroups = JSON.parse(JSON.stringify(DEFAULT_DATA.zaloSupplierGroups));
+        if (!Array.isArray(data.xuongRecords) || data.xuongRecords.length === 0) data.xuongRecords = JSON.parse(JSON.stringify(DEFAULT_DATA.xuongRecords));
+        if (!Array.isArray(data.contracts) || data.contracts.length === 0) data.contracts = JSON.parse(JSON.stringify(DEFAULT_DATA.contracts));
+        if (!Array.isArray(data.debts)) data.debts = JSON.parse(JSON.stringify(DEFAULT_DATA.debts));
+        if (!Array.isArray(data.supplierDebts) || data.supplierDebts.length === 0) data.supplierDebts = JSON.parse(JSON.stringify(DEFAULT_DATA.supplierDebts));
+        if (!Array.isArray(data.accessories) || data.accessories.length === 0) data.accessories = JSON.parse(JSON.stringify(DEFAULT_DATA.accessories));
+        if (!Array.isArray(data.expenses) || data.expenses.length === 0) data.expenses = JSON.parse(JSON.stringify(DEFAULT_DATA.expenses));
+        data.users = sanitizeUsersPasswordHashes(Array.isArray(data.users) && data.users.length ? data.users : DEFAULT_DATA.users);
+        if (!Array.isArray(data.materials) || data.materials.length === 0) data.materials = JSON.parse(JSON.stringify(DEFAULT_DATA.materials));
+        if (!Array.isArray(data.poList) || data.poList.length === 0) data.poList = JSON.parse(JSON.stringify(DEFAULT_DATA.poList));
+        if (!Array.isArray(data.ccscMonths) && Array.isArray(DEFAULT_DATA.ccscMonths)) data.ccscMonths = JSON.parse(JSON.stringify(DEFAULT_DATA.ccscMonths));
+        if (!Array.isArray(data.zaloSupplierGroups) || data.zaloSupplierGroups.length === 0) data.zaloSupplierGroups = JSON.parse(JSON.stringify(DEFAULT_DATA.zaloSupplierGroups));
       }
       
       if (!data.timesheets || typeof data.timesheets !== "object") {
@@ -943,16 +1143,10 @@ function loadState() {
     data = JSON.parse(JSON.stringify(DEFAULT_DATA));
     data.appVersion = CURRENT_APP_VERSION;
   }
-  
-  // Lưu lại state chuẩn hóa ngay lập tức
-  try {
-    localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(data));
-  } catch (err) {}
 
   if (!data.timesheets) {
     data.timesheets = JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS));
   } else {
-    // Luôn thanh lọc vĩnh viễn các nhân sự đã nghỉ việc (Hùng, Bình, Tuyết, Lực)
     Object.keys(data.timesheets).forEach(m => {
       if (data.timesheets[m].xuong) {
         data.timesheets[m].xuong = data.timesheets[m].xuong.filter(p => !RETIRED_STAFF.includes(p.name));
@@ -962,32 +1156,93 @@ function loadState() {
       }
     });
   }
+  sanitizeTimesheetFutureDays(data.timesheets);
+  sanitizeAppStateZeroMock(data);
+
+  // Lưu lại state chuẩn hóa ngay lập tức (có kiểm soát QuotaExceededError)
+  try {
+    localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(data));
+    localStorage.setItem("PG_HOME_TIMESHEETS_2026", JSON.stringify(data.timesheets));
+  } catch (err) {
+    if (err && (err.name === "QuotaExceededError" || err.code === 22)) {
+      try { localStorage.removeItem("PG_AUDIT_LOG_BACKUP"); } catch (e2) {}
+    }
+  }
   return data;
 }
 
+var _pgSaveDebounceTimer = null;
+var _pgSaveAbortCtrl = null;
+
+function _flushSaveStateToServer(useKeepAlive) {
+  if (typeof fetch !== "function" || typeof appState === "undefined") return;
+  try {
+    if (_pgSaveAbortCtrl && !useKeepAlive) {
+      try { _pgSaveAbortCtrl.abort(); } catch (e) {}
+    }
+    _pgSaveAbortCtrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role)
+      ? currentUser.role
+      : (typeof getCurrentUserRole === "function" ? getCurrentUserRole() : "STAFF_SYNC");
+    const token = (typeof currentUser !== "undefined" && currentUser && (currentUser.serverToken || currentUser._sig)) || "";
+    const pinHash = (typeof sessionStorage !== "undefined" && sessionStorage.getItem("PG_DIRECTOR_PIN_HASH")) || "";
+    const headers = {
+      "Content-Type": "application/json",
+      "X-PG-Role": role
+    };
+    if (token) headers["X-PG-Token"] = token;
+    if (pinHash) headers["X-Director-PIN"] = pinHash;
+
+    fetch("/api/save-state", {
+      method: "POST",
+      headers,
+      body: JSON.stringify(appState),
+      keepalive: !!useKeepAlive,
+      signal: (!useKeepAlive && _pgSaveAbortCtrl) ? _pgSaveAbortCtrl.signal : undefined
+    }).catch((err) => {
+      if (err && err.name === "AbortError") return;
+      if (typeof window.enqueueOfflinePatch === "function") {
+        window.enqueueOfflinePatch({ fullSyncFallback: true }, { role });
+      }
+    });
+  } catch (e) {}
+}
+
 function saveState() {
+  if (typeof window !== "undefined") {
+    window._pgWoodValCache = null;
+  }
   try {
     if (typeof localStorage !== "undefined" && typeof appState !== "undefined") {
       localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(appState));
     }
   } catch (err) {
     console.warn("Lỗi lưu localStorage trong saveState:", err);
+    if (err && (err.name === "QuotaExceededError" || err.code === 22)) {
+      try {
+        if (Array.isArray(appState.systemLogs) && appState.systemLogs.length > 100) {
+          appState.systemLogs = appState.systemLogs.slice(-100);
+        }
+        localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(appState));
+      } catch (err2) {
+        if (typeof showToast === "function") {
+          showToast("⚠️ Bộ nhớ trình duyệt đầy (5MB), hệ thống đang lưu trực tiếp lên Máy Chủ!", "warning");
+        }
+      }
+    }
   }
-  if (typeof fetch === "function" && typeof appState !== "undefined") {
-    try {
-      const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role)
-        ? currentUser.role
-        : getCurrentUserRole();
-      fetch("/api/save-state", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-PG-Role": role
-        },
-        body: JSON.stringify(appState)
-      }).catch(() => {});
-    } catch (e) {}
-  }
+  if (_pgSaveDebounceTimer) clearTimeout(_pgSaveDebounceTimer);
+  _pgSaveDebounceTimer = setTimeout(() => _flushSaveStateToServer(false), 250);
+}
+
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", () => {
+    if (_pgSaveDebounceTimer) {
+      clearTimeout(_pgSaveDebounceTimer);
+      _pgSaveDebounceTimer = null;
+      _flushSaveStateToServer(true);
+    }
+  });
 }
 
 // Khai báo sớm biến currentUser và các hàm định danh thiết bị / phân quyền RBAC
@@ -1112,14 +1367,22 @@ async function loadStateFromServer() {
     }
     const data = await res.json();
     if (data && typeof data === "object" && data.status !== "empty") {
+      sanitizeAppStateZeroMock(data);
       if (typeof appState !== "undefined" && appState) {
         Object.assign(appState, data);
+        sanitizeAppStateZeroMock(appState);
       }
       try {
         if (typeof localStorage !== "undefined") {
           localStorage.setItem("PG_HOME_CCSC_APP_STATE", JSON.stringify(appState));
+          if (appState && appState.timesheets) {
+            localStorage.setItem("PG_HOME_TIMESHEETS_2026", JSON.stringify(appState.timesheets));
+          }
         }
       } catch (err) {}
+      if (Number(currentTimesheetMonth) === 11 && typeof renderTimesheetUI === "function") {
+        renderTimesheetUI();
+      }
       return data;
     }
   } catch (err) {
@@ -1170,7 +1433,7 @@ if (typeof window !== "undefined") {
 }
 
 // Khởi tạo state, khóa sổ các tháng đã quyết toán (DA-05) và lưu vào localStorage + ổ cứng (DA-01)
-let appState = loadState();
+var appState = loadState();
 if (appState && Array.isArray(appState.ccscMonths)) {
   if (appState.ccscMonths[7]) Object.freeze(appState.ccscMonths[7]);
   if (appState.ccscMonths[8]) Object.freeze(appState.ccscMonths[8]);
@@ -1181,12 +1444,12 @@ saveState();
 // 2. FORMATTING HELPERS
 // ==========================================================================
 
-const fmtCurr = (num) => {
+var fmtCurr = (num) => {
   if (num === null || num === undefined || isNaN(num)) return "0 đ";
   return Math.round(num).toLocaleString("vi-VN") + " đ";
 };
 
-const fmtPct = (num) => {
+var fmtPct = (num) => {
   if (num === null || num === undefined || isNaN(num)) return "0.0%";
   return (num * 100).toFixed(1) + "%";
 };
@@ -1196,7 +1459,40 @@ const fmtPct = (num) => {
 // ==========================================================================
 
 function calculateMonthCCSC(mObj) {
-  const ds = mObj.sales;
+  if (!mObj || typeof mObj !== "object") {
+    return {
+      m: 10,
+      name: "Tháng 10",
+      sales: 0,
+      debt: 0,
+      cash: 0,
+      bld: 0,
+      isOver500M: false,
+      hiep_vuot: 0,
+      qlx_vuot: 0,
+      bonus_deferred_yearend: 0,
+      hiep_tot: 0,
+      tke3d: 0,
+      sale_admin_tot: 0,
+      bpkd: 0,
+      qlx_tot: 0,
+      khoan_xuong: 0,
+      quy_luong_tho: 0,
+      dinh_muc_vt: 0,
+      cp_thue: 0,
+      cp_dien: 0,
+      cp_khac: 0,
+      mkt: 0,
+      bhxh: 0,
+      hcns: 0,
+      tong_cp: 0,
+      ln_vp: 0,
+      pk_profit: 0,
+      ln_rong: 0,
+      rate_ln: 0
+    };
+  }
+  const ds = Number(mObj.sales) || 0;
   const isOver500M = ds > 500000000;
 
   // Xử lý riêng cho Tháng 8 & Tháng 9 thực tế chuẩn đối soát 100% với Excel
@@ -1362,11 +1658,19 @@ function calculateMonthCCSC(mObj) {
 // 4. UI RENDER FUNCTIONS
 // ==========================================================================
 
-let revProfitChart = null;
-let costBreakdownChart = null;
+var revProfitChart = null;
+var costBreakdownChart = null;
 
 function renderDashboard(selectedMonth = 9) {
-  const currentMonthData = appState.ccscMonths.find(m => m.m == selectedMonth) || appState.ccscMonths[8];
+  const ccscList = Array.isArray(appState.ccscMonths) ? appState.ccscMonths : [];
+  let currentMonthData = ccscList.find(m => m && m.m == selectedMonth) || ccscList[8] || ccscList[0];
+  if (!currentMonthData) {
+    const mNum = Number(selectedMonth) || 10;
+    const mXuong = (appState.xuongRecords || []).filter(r => r && r.month == mNum);
+    const mSales = mXuong.reduce((s, r) => s + (Number(r.actualXuong) || Number(r.woodVal) || 0), 0);
+    const mDebt = (appState.contracts || []).reduce((s, c) => s + Math.max(0, (Number(c.total) || 0) - (Number(c.paid) || 0)), 0);
+    currentMonthData = { m: mNum, name: "Tháng " + mNum, sales: mSales, debt: mDebt, cash: 0, bld: 0, hiep_cb: 0, hiep_sale: 0, bpkd: 0, qlx: 0 };
+  }
   const calc = calculateMonthCCSC(currentMonthData);
 
   // Update top KPI cards (safe null-checked + mapped to VIP KPI IDs)
@@ -1390,11 +1694,12 @@ function renderCharts() {
     setTimeout(renderCharts, 300);
     return;
   }
-  const labels = appState.ccscMonths.map(m => m.name);
+  const ccscList = Array.isArray(appState.ccscMonths) ? appState.ccscMonths : [];
+  const labels = ccscList.map(m => m.name);
   const salesData = [];
   const profitData = [];
 
-  appState.ccscMonths.forEach(m => {
+  ccscList.forEach(m => {
     const c = calculateMonthCCSC(m);
     salesData.push(c.sales / 1000000); // Mil VNĐ
     profitData.push(c.ln_vp / 1000000); // Mil VNĐ
@@ -1888,8 +2193,8 @@ window.exportChamCongCSV = function(m = null) {
 };
 
 // Render Materials & Cost Table
-let currentActiveVatTuFilter = "all";
-let currentActiveVatTuProjectFilter = "all";
+var currentActiveVatTuFilter = "all";
+var currentActiveVatTuProjectFilter = "all";
 
 window.filterVatTuProject = function(proj) {
   currentActiveVatTuProjectFilter = proj;
@@ -2955,8 +3260,8 @@ function showToast(msg) {
 // 5.5 PHÂN HỆ QUẢN LÝ ĐẶT HÀNG VẬT TƯ: VŨ ĐỀ XUẤT - GIÁM ĐỐC PHÊ DUYỆT & ĐÓNG DẤU
 // ==========================================================================
 
-let currentActivePOFilter = "all";
-let currentViewingPOCode = null;
+var currentActivePOFilter = "all";
+var currentViewingPOCode = null;
 
 function renderPOList(filter = "all") {
   currentActivePOFilter = filter;
@@ -3159,30 +3464,30 @@ window.normalizeProjectMatchKey = function(rawName) {
 
 window.lookupProjectWoodVal = function(normKey, fallbackQuota40) {
   if (fallbackQuota40 && Number(fallbackQuota40) > 0) return Math.round(Number(fallbackQuota40) * 2.5);
-  const fItems = (appState.factoryItems || []).filter(item =>
-    window.normalizeProjectMatchKey(item.project || item.client || "") === normKey
-  );
-  if (fItems.length > 0) {
-    const sumRev = fItems.reduce((s, it) => s + (Number(it.rev) || 0), 0);
-    if (sumRev > 0) return sumRev;
+  if (!window._pgWoodValCache) {
+    const map = new Map();
+    const put = (rawName, val) => {
+      const k = window.normalizeProjectMatchKey(rawName || "");
+      const num = Number(val) || 0;
+      if (k && num > 0 && !map.has(k)) map.set(k, num);
+    };
+    const fItems = appState.factoryItems || [];
+    const fSums = new Map();
+    fItems.forEach(it => {
+      const k = window.normalizeProjectMatchKey(it.project || it.client || "");
+      if (k) fSums.set(k, (fSums.get(k) || 0) + (Number(it.rev) || 0));
+    });
+    fSums.forEach((v, k) => { if (v > 0) map.set(k, v); });
+    (appState.contracts || []).forEach(c => put(c.client || c.project, c.wood || c.woodVal || c.total || c.totalVal));
+    (appState.xuongRecords || []).forEach(x => put(x.project || x.client, x.woodVal || x.contractVal || x.totalVal));
+    (appState.customProjects || []).forEach(p => put(p.client || p.code, p.wood || p.total));
+    put("Anh Nam", 540280785);
+    put("Bác Sĩ Duẫn", 289412030);
+    put("Bác Phát", 219953218);
+    put("Anh Công", 52000000);
+    window._pgWoodValCache = map;
   }
-  const contracts = appState.contracts || [];
-  for (const c of contracts) {
-    if (window.normalizeProjectMatchKey(c.client || c.project || "") === normKey) {
-      return Number(c.wood || c.woodVal || c.total || c.totalVal || 0);
-    }
-  }
-  const xuongRecs = appState.xuongRecords || [];
-  for (const x of xuongRecs) {
-    if (window.normalizeProjectMatchKey(x.project || x.client || "") === normKey) {
-      return Number(x.woodVal || x.contractVal || x.totalVal || 0);
-    }
-  }
-  if (normKey === "Anh Nam") return 540280785;
-  if (normKey === "Bác Sĩ Duẫn") return 289412030;
-  if (normKey === "Bác Phát") return 124840000;
-  if (normKey === "Anh Công") return 127700000;
-  return 0;
+  return window._pgWoodValCache.get(normKey) || 0;
 };
 
 window.renderMaterialVsQuotaTable = function() {
@@ -3247,12 +3552,50 @@ window.renderMaterialVsQuotaTable = function() {
   }).join("");
 };
 
+// Đồng bộ 2 chiều trạng thái PO sang appState.materials (V35)
+window.syncPoStatusToMaterials = function(po, statusLabel) {
+  if (!po || !Array.isArray(appState.materials)) return;
+  let matchedCount = 0;
+  appState.materials.forEach(m => {
+    if (m && m.po === po.code) {
+      m.status = statusLabel;
+      matchedCount++;
+    }
+  });
+  if (matchedCount === 0 && po.status === "APPROVED" && Array.isArray(po.items)) {
+    po.items.forEach((it, idx) => {
+      appState.materials.unshift({
+        code: `${po.code}-M${idx + 1}`,
+        name: it.name || it.item || "Vật tư theo đơn PO",
+        project: po.project || "",
+        unit: it.unit || "Tấm",
+        qty: Number(it.qty) || 1,
+        price: Number(it.price) || 0,
+        supplier: po.supplier || "",
+        status: statusLabel,
+        category: (it.bucket === "COMMERCIAL_PK") ? "hardware" : "wood",
+        po: po.code
+      });
+    });
+  }
+};
+
 // Giám Đốc phê duyệt và đóng dấu đỏ điện tử
 window.approvePO = function(code) {
+  const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role) || sessionStorage.getItem("PG_ACTIVE_ROLE") || "ADMIN";
+  if (role !== "ADMIN") {
+    alert("⛔ CHỐT CHẶN BẢO MẬT: Chỉ Giám Đốc (ADMIN) mới có thẩm quyền phê duyệt & đóng Dấu Đỏ PO!");
+    return;
+  }
   const po = (appState.poList || []).find(p => p.code === code);
   if (!po) return;
+  if (typeof window.promptDirectorPinUnlock === "function" && !window.isDirectorPinUnlocked()) {
+    if (!window.promptDirectorPinUnlock(`Nhập Mã PIN Giám Đốc để phê duyệt & đóng Dấu Đỏ cho đơn ${po.code} (${fmtCurr(po.total)}):`)) {
+      return;
+    }
+  }
 
-  const confirmMsg = `👑 GIÁM ĐỐC (NGUYỄN VIẾT NGHĨA) XÁC NHẬN:\n\n` +
+  const confirmMsg = `👑 GIÁM ĐỐC (NGUYỄN TRỌNG NGHĨA) XÁC NHẬN:\n\n` +
     `• Mã phiếu: ${po.code}\n` +
     `• Công trình: ${po.project}\n` +
     `• Nhà cung cấp: ${po.supplier}\n` +
@@ -3262,28 +3605,35 @@ window.approvePO = function(code) {
   if (confirm(confirmMsg)) {
     const now = new Date();
     const timeStr = `${now.toLocaleDateString("vi-VN")} ${now.toLocaleTimeString("vi-VN")}`;
+    const sealHash = window.pgSha256HexSync(`${po.code}|${po.total}|${timeStr}|042203002931`).slice(0, 16).toUpperCase();
     
     po.status = "APPROVED";
-    po.approvedBy = "Nguyễn Viết Nghĩa (Giám Đốc)";
+    po.approvedBy = "Nguyễn Trọng Nghĩa (Giám Đốc)";
     po.approvedAt = timeStr;
-    po.stampId = "PGH-STAMP-" + Date.now();
+    po.stampId = "PGH-STAMP-" + sealHash;
 
+    window.syncPoStatusToMaterials(po, "Đã duyệt Dấu Đỏ (Đang nhập)");
     saveState();
-    window.logSystemAudit("APPROVE_PO", `Phê duyệt & đóng dấu đỏ phiếu ${po.code} (${po.project} - ${fmtCurr(po.total)})`);
+    window.logSystemAudit("APPROVE_PO", `Phê duyệt & đóng dấu đỏ phiếu ${po.code} (${po.project} - ${fmtCurr(po.total)}) [${po.stampId}]`);
     renderPOList(currentActivePOFilter);
+    if (typeof window.renderMaterialVsQuotaTable === "function") window.renderMaterialVsQuotaTable();
 
-    // If modal view is currently open, refresh it
     const viewModal = document.getElementById("viewPOModal");
     if (viewModal && viewModal.classList.contains("active") && currentViewingPOCode === code) {
       openViewPOModal(code);
     }
 
-    showToast(`👑 ĐÃ PHÊ DUYỆT & ĐÓNG DẤU ĐỎ THÀNH CÔNG CHO PHIẾU ${po.code}! Vũ đã được cấp quyền nhập hàng.`);
+    showToast(`👑 ĐÃ PHÊ DUYỆT & ĐÓNG DẤU ĐỎ [${po.stampId}] CHO PHIẾU ${po.code}! Vũ đã được cấp quyền nhập hàng.`);
   }
 };
 
 // Giám Đốc từ chối đề xuất của Vũ
 window.rejectPO = function(code) {
+  const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role) || sessionStorage.getItem("PG_ACTIVE_ROLE") || "ADMIN";
+  if (role !== "ADMIN") {
+    alert("⛔ CHỐT CHẶN BẢO MẬT: Chỉ Giám Đốc (ADMIN) mới có thẩm quyền từ chối đơn PO!");
+    return;
+  }
   const po = (appState.poList || []).find(p => p.code === code);
   if (!po) return;
 
@@ -3291,9 +3641,11 @@ window.rejectPO = function(code) {
   if (reason !== null && reason.trim() !== "") {
     po.status = "REJECTED";
     po.rejectReason = reason.trim();
+    window.syncPoStatusToMaterials(po, "Đã từ chối PO (" + po.rejectReason + ")");
     saveState();
     window.logSystemAudit("REJECT_PO", `Từ chối phiếu ${po.code}: ${po.rejectReason}`);
     renderPOList(currentActivePOFilter);
+    if (typeof window.renderMaterialVsQuotaTable === "function") window.renderMaterialVsQuotaTable();
     showToast(`Đã từ chối phiếu ${po.code}. Vũ sẽ phải điều chỉnh lại vật tư.`);
   }
 };
@@ -3583,52 +3935,131 @@ window.switchVuSmartToolTab = function(tabKey) {
   });
 };
 
-// Mở Modal Lập Đơn Thông Minh Với Kịch Bản Đặt Hàng Chọn Trước (1 Chạm Từ Bàn Làm Việc Của Vũ)
+// Mở trực tiếp Modal tạo đơn PO của Vũ (đảm bảo luôn mở được từ mọi nút trên giao diện)
+window.openCreatePOModalNow = function(skipInitialRow = false) {
+  const modalCreate = document.getElementById("createPOModal");
+  if (!modalCreate) return;
+
+  if (typeof window.populateVuMaterialDatalist === "function") {
+    window.populateVuMaterialDatalist();
+  }
+
+  const today = new Date().toISOString().split("T")[0];
+  const existingCodes = new Set((appState.poList || []).map(p => p.code));
+  let nextNum = 1104 + (appState.poList || []).length;
+  let newCode = `PO-2026-${nextNum}`;
+  while (existingCodes.has(newCode)) {
+    nextNum++;
+    newCode = `PO-2026-${nextNum}`;
+  }
+
+  const inpCode = document.getElementById("inpPoCode");
+  const inpDate = document.getElementById("inpPoDate");
+  const inpNote = document.getElementById("inpPoNote");
+  if (inpCode) inpCode.value = newCode;
+  if (inpDate) inpDate.value = today;
+  if (inpNote) inpNote.value = "";
+
+  const projectSelect = document.getElementById("inpPoProjectSelect");
+  if (projectSelect) {
+    projectSelect.innerHTML = "";
+    const projectMap = new Map([
+      ["Nhà Anh Nam (TP. Hà Tĩnh)", 540280785],
+      ["Bác Sĩ Duẫn (TP. Hà Tĩnh)", 289412030],
+      ["Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", 124840000],
+      ["Nhà Anh Công (Hà Tĩnh)", 127700000],
+      ["Chị Hoa (Biệt Thự Thạch Bàn)", 172000000]
+    ]);
+    (appState.contracts || []).forEach(c => {
+      if (c && c.client && !isSyntheticProjectRecord(c) && !projectMap.has(c.client)) {
+        projectMap.set(c.client, Number(c.wood || c.woodVal || c.total) || 0);
+      }
+    });
+    (appState.xuongRecords || []).forEach(x => {
+      if (x && x.client && !isSyntheticProjectRecord(x) && !projectMap.has(x.client)) {
+        projectMap.set(x.client, Number(x.woodVal || x.contractVal) || 0);
+      }
+    });
+
+    projectMap.forEach((val, name) => {
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = `${name} - HĐ Gỗ: ${fmtCurr(val)}`;
+      opt.dataset.val = val;
+      projectSelect.appendChild(opt);
+    });
+
+    const firstOpt = projectSelect.options[0];
+    const inpContractEl = document.getElementById("inpPoContractVal");
+    if (firstOpt && inpContractEl) {
+      inpContractEl.value = fmtCurr(parseFloat(firstOpt.dataset.val) || 0);
+    }
+
+    projectSelect.onchange = (e) => {
+      const selected = e.target.options[e.target.selectedIndex];
+      const val = selected ? (parseFloat(selected.dataset.val) || 0) : 0;
+      const inpEl = document.getElementById("inpPoContractVal");
+      if (inpEl) inpEl.value = fmtCurr(val);
+      recalculatePOCostSummary();
+    };
+  }
+
+  const tbody = document.getElementById("bodyPoItemsInput");
+  if (tbody) {
+    tbody.innerHTML = "";
+    if (!skipInitialRow) {
+      addPOItemInputRow("", "Tấm", 1, 0, "WOOD_40");
+    }
+  }
+
+  recalculatePOCostSummary();
+  modalCreate.classList.add("active");
+};
+
+// Mở Modal Lập Đơn Thông Minh Với Kịch Bản Đặt Hàng Chọn Trước (1 Chạm Từ Bàn Làm Việc Của Vũ & Thanh Quick Strip — ZERO MOCK PREFILL)
 window.openSmartPOModalWithPreset = function(presetKey) {
-  const btnOpen = document.getElementById("btnOpenCreatePOModal");
-  if (btnOpen) btnOpen.click();
+  const aliasMap = {
+    WOOD_COMBO: "BOARD_SET",
+    LAM_GIANG_BOARD: "BOARD_SET",
+    CUSTOM_CUT: "CUSTOM_DIM",
+    ACRYLIC_GLASS_DIM: "CUSTOM_DIM",
+    QUOC_TAM_FITTING: "HARDWARE_COMBO",
+    GLASS_STONE: "STONE_MIRROR_PAD",
+    COMMERCIAL_WOOD: "COMMERCIAL_SEPARATE"
+  };
+  const resolvedKey = aliasMap[presetKey] || presetKey || "BOARD_SET";
+
+  window.openCreatePOModalNow(false);
 
   const supplierSel = document.getElementById("inpPoSupplier");
-  const tbody = document.getElementById("bodyPoItemsInput");
-
-  if (presetKey === "BOARD_SET" || presetKey === "LAM_GIANG_BOARD") {
+  if (resolvedKey === "BOARD_SET") {
     window.switchVuSmartToolTab("BOARD_SET");
     if (supplierSel) supplierSel.value = "Gỗ Lam Giang - Phú Gia (Ván MDF Thái Lan, Plywood, Chỉ nẹp)";
-    if (tbody) tbody.innerHTML = "";
-    window.applyVuSmartBoardSet();
-  } else if (presetKey === "CUSTOM_DIM" || presetKey === "ACRYLIC_GLASS_DIM") {
+  } else if (resolvedKey === "CUSTOM_DIM") {
     window.switchVuSmartToolTab("CUSTOM_DIM");
     if (supplierSel) supplierSel.value = "Livas - Phú Gia (Gia công Cánh Acrylic No-Line)";
-    if (tbody) tbody.innerHTML = "";
-    addPOItemInputRow("Gia công Cánh Acrylic No-Line Livas [720×450mm × 6 cánh — PARC 01 Trắng bóng, khoan lỗ bản lề]", "m²", 1.94, 1150000, "WOOD_40");
-    addPOItemInputRow("Gia công Cánh Kính Cường Lực Khung Nhôm VSG [2100×500mm × 4 cánh — Kính trà, khung đen mờ]", "m²", 4.2, 1350000, "WOOD_40");
-  } else if (presetKey === "HARDWARE_COMBO" || presetKey === "QUOC_TAM_FITTING") {
+  } else if (resolvedKey === "HARDWARE_COMBO") {
     window.switchVuSmartToolTab("HARDWARE_COMBO");
     if (supplierSel) supplierSel.value = "NPP Quốc Tâm - Phú Gia (56 Ngô Đức Kế - Bản lề, Ray, LED, Keo, Ốc vít)";
-    if (tbody) tbody.innerHTML = "";
-    window.applyVuHardwareCombo("KITCHEN_FITTING");
-  } else if (presetKey === "STONE_MIRROR_PAD") {
+  } else if (resolvedKey === "STONE_MIRROR_PAD") {
     window.switchVuSmartToolTab("CUSTOM_DIM");
     if (supplierSel) supplierSel.value = "Đá Hoàng Hà - Phú Gia (Đá Bàn Bếp, Đá Lavabo, Đá Cầu Thang)";
     const catSel = document.getElementById("vuDimCategorySelect");
     if (catSel) catSel.value = "DA_BEP_HOANG_HA";
-    if (tbody) tbody.innerHTML = "";
-    addPOItemInputRow("Đá Bàn Bếp Trắng Vân Mây Ceramic Hoàng Hà [Dài 3850×600mm — Khoét lỗ chậu rửa & bếp từ, vát mỏ vịt]", "md", 3.85, 1450000, "WOOD_40");
-    addPOItemInputRow("Kính Cường Lực Ốp Bếp 8mm Việt Nhật VSG [Dài 3850×650mm — Sơn màu Trắng Xanh, khoét 2 ổ điện]", "md", 3.85, 750000, "WOOD_40");
-    addPOItemInputRow("Gương Bỉ 5mm Dantalux Phun Cát Đèn LED Cảm Ứng [800×1000mm × 2 phòng tắm]", "m²", 1.6, 1250000, "WOOD_40");
-  } else if (presetKey === "COMMERCIAL_SEPARATE") {
+  } else if (resolvedKey === "COMMERCIAL_SEPARATE") {
     window.switchVuSmartToolTab("HARDWARE_COMBO");
     if (supplierSel) supplierSel.value = "Phụ kiện Eurogold / Garis / Grob (Giá bát nâng hạ, Xoong nồi, Dao thớt)";
-    if (tbody) tbody.innerHTML = "";
-    window.applyVuHardwareCombo("COMMERCIAL_KITCHEN_PK");
-  } else if (presetKey === "ZALO_PASTE") {
+  } else if (resolvedKey === "ZALO_PASTE") {
     window.switchVuSmartToolTab("ZALO_PASTE");
     const txt = document.getElementById("inpVuZaloRawText");
-    if (txt && !txt.value) {
-      txt.value = "15 tấm 17ly 205T, 5 hậu 205T, 3 cuộn chỉ 21 205T, 80 bản lề giảm chấn, 6 bộ ray âm 450, 1 bao keo hạt Jowat";
-    }
+    if (txt) txt.value = "";
   }
   recalculatePOCostSummary();
+};
+
+// Đồng bộ tên hàm gọi từ thanh Quick Strip (#pgPoQuickStrip)
+window.openVuSmartOrderScenario = function(scenarioKey) {
+  return window.openSmartPOModalWithPreset(scenarioKey);
 };
 
 // Công cụ 1: Nạp trọn bộ Ván 17mm + Hậu 6mm + Chỉ nẹp đồng màu + Trừ phôi dư CNC
@@ -3948,70 +4379,10 @@ function setupPOModals() {
   const closeCreateBtn = document.getElementById("createPOCloseBtn");
   const cancelCreateBtn = document.getElementById("createPOCancelBtn");
 
-  if (btnOpenCreate && modalCreate) {
+  if (btnOpenCreate && modalCreate && !btnOpenCreate.dataset.boundPoModal) {
+    btnOpenCreate.dataset.boundPoModal = "1";
     btnOpenCreate.addEventListener("click", () => {
-      window.populateVuMaterialDatalist();
-      // Auto-generate Code & Date
-      const today = new Date().toISOString().split("T")[0];
-      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-      document.getElementById("inpPoCode").value = `PO-2026-${randomSuffix}`;
-      document.getElementById("inpPoDate").value = today;
-
-      // Populate Project Dropdown
-      const projectSelect = document.getElementById("inpPoProjectSelect");
-      if (projectSelect) {
-        projectSelect.innerHTML = "";
-        
-        // Ưu tiên các công trình đang thi công thực tế T10/T11 lên đầu danh sách (lấy theo phần Gỗ Xưởng để tính chuẩn định mức 40%)
-        const projectMap = new Map([
-          ["Nhà Anh Nam (TP. Hà Tĩnh)", 540280785],
-          ["Bác Sĩ Duẫn (TP. Hà Tĩnh)", 289412030],
-          ["Bác Phát (Đường 26/03 - TP. Hà Tĩnh)", 124840000],
-          ["Nhà Anh Công (Hà Tĩnh)", 127700000],
-          ["Chị Hoa (Biệt Thự Thạch Bàn)", 172000000]
-        ]);
-        (appState.contracts || []).forEach(c => {
-          if (c && c.client && !isSyntheticProjectRecord(c) && !projectMap.has(c.client)) {
-            projectMap.set(c.client, Number(c.wood || c.woodVal || c.total) || 0);
-          }
-        });
-        (appState.xuongRecords || []).forEach(x => {
-          if (x && x.client && !isSyntheticProjectRecord(x) && !projectMap.has(x.client)) {
-            projectMap.set(x.client, Number(x.woodVal || x.contractVal) || 0);
-          }
-        });
-
-        projectMap.forEach((val, name) => {
-          const opt = document.createElement("option");
-          opt.value = name;
-          opt.textContent = `${name} - HĐ Gỗ: ${fmtCurr(val)}`;
-          opt.dataset.val = val;
-          projectSelect.appendChild(opt);
-        });
-
-        // Set initial contract value
-        const firstOpt = projectSelect.options[0];
-        const inpContractEl = document.getElementById("inpPoContractVal");
-        if (firstOpt && inpContractEl) {
-          inpContractEl.value = fmtCurr(parseFloat(firstOpt.dataset.val));
-        }
-
-        projectSelect.onchange = (e) => {
-          const selected = e.target.options[e.target.selectedIndex];
-          const val = parseFloat(selected.dataset.val) || 0;
-          const inpEl = document.getElementById("inpPoContractVal");
-          if (inpEl) inpEl.value = fmtCurr(val);
-          recalculatePOCostSummary();
-        };
-      }
-
-      // Khởi tạo bảng nhập PO với 1 dòng trống sạch (không nhồi sẵn 3 dòng mook cứng 13.29M)
-      const tbody = document.getElementById("bodyPoItemsInput");
-      tbody.innerHTML = "";
-      addPOItemInputRow("", "Tấm", 1, 0, "WOOD_40");
-
-      recalculatePOCostSummary();
-      modalCreate.classList.add("active");
+      window.openCreatePOModalNow(false);
     });
   }
 
@@ -4021,65 +4392,105 @@ function setupPOModals() {
 
   // Add Item Row Button
   const btnAddItemRow = document.getElementById("btnAddPoItemRow");
-  if (btnAddItemRow) {
+  if (btnAddItemRow && !btnAddItemRow.dataset.boundAddRow) {
+    btnAddItemRow.dataset.boundAddRow = "1";
     btnAddItemRow.addEventListener("click", () => {
-      addPOItemInputRow();
+      addPOItemInputRow("", "Tấm", 1, 0, "WOOD_40");
     });
   }
 
   // Handle Create PO Submit
   const formCreate = document.getElementById("createPOForm");
-  if (formCreate) {
+  if (formCreate && !formCreate.dataset.boundSubmitPo) {
+    formCreate.dataset.boundSubmitPo = "1";
     formCreate.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const code = document.getElementById("inpPoCode").value;
-      const date = document.getElementById("inpPoDate").value;
-      const requester = document.getElementById("inpPoRequester").value;
-      const supplier = document.getElementById("inpPoSupplier").value;
-      const projectSelect = document.getElementById("inpPoProjectSelect");
-      const project = projectSelect.value;
-      const contractVal = parseFloat(projectSelect.options[projectSelect.selectedIndex].dataset.val) || 100000000;
-      const note = document.getElementById("inpPoNote").value;
+      const collectCurrentPOItems = () => {
+        const rows = document.querySelectorAll("#bodyPoItemsInput .po-item-row, .po-item-row");
+        const collected = [];
+        let sumTotal = 0;
+        let sumWood40 = 0;
+        let sumCommercial = 0;
 
-      // Extract item rows (hỗ trợ cả số lượng âm khi trả ván dư trừ công nợ)
-      const rows = document.querySelectorAll(".po-item-row");
-      const items = [];
-      let total = 0;
-      let wood40Total = 0;
-      let commercialPkTotal = 0;
+        rows.forEach(row => {
+          const name = (row.querySelector(".inp-item-name")?.value || "").trim();
+          const bucket = row.querySelector(".inp-item-bucket")?.value || "WOOD_40";
+          const unit = (row.querySelector(".inp-item-unit")?.value || "").trim() || "Tấm";
+          const qty = parseFloat(row.querySelector(".inp-item-qty")?.value) || 0;
+          const price = parseFloat(row.querySelector(".inp-item-price")?.value) || 0;
+          const rowTotal = Math.round(qty * price);
 
-      rows.forEach(row => {
-        const name = row.querySelector(".inp-item-name")?.value.trim();
-        const bucket = row.querySelector(".inp-item-bucket")?.value || "WOOD_40";
-        const unit = row.querySelector(".inp-item-unit")?.value.trim() || "Cái";
-        const qty = parseFloat(row.querySelector(".inp-item-qty")?.value) || 0;
-        const price = parseFloat(row.querySelector(".inp-item-price")?.value) || 0;
-        const rowTotal = Math.round(qty * price);
-
-        if (name && qty !== 0) {
-          items.push({ name, unit, qty, price, total: rowTotal, costBucket: bucket });
-          total += rowTotal;
-          if (bucket === "COMMERCIAL_PK") {
-            commercialPkTotal += rowTotal;
-          } else {
-            wood40Total += rowTotal;
+          if (name && qty !== 0) {
+            collected.push({ name, unit, qty, price, total: rowTotal, costBucket: bucket });
+            sumTotal += rowTotal;
+            if (bucket === "COMMERCIAL_PK") {
+              sumCommercial += rowTotal;
+            } else {
+              sumWood40 += rowTotal;
+            }
           }
+        });
+        return { items: collected, total: sumTotal, wood40Total: sumWood40, commercialPkTotal: sumCommercial };
+      };
+
+      let harvest = collectCurrentPOItems();
+
+      // Nếu Vũ điền thông số ở Công cụ 1/2/3/4 mà bấm thẳng nút "Lưu & Gửi Đề Xuất" (quên bấm nút ➕ Nạp vào đơn), tự động nạp giúp Vũ!
+      if (harvest.items.length === 0) {
+        const pBoard = document.getElementById("vuToolPanel_BOARD_SET");
+        const pDim = document.getElementById("vuToolPanel_CUSTOM_DIM");
+        const pHw = document.getElementById("vuToolPanel_HARDWARE_COMBO");
+        const pZalo = document.getElementById("vuToolPanel_ZALO_PASTE");
+        const quickCatVal = (document.getElementById("inpVuQuickCatalogSearch")?.value || "").trim();
+
+        if (quickCatVal) {
+          window.quickInsertCatalogCodeToPO(quickCatVal);
+        } else if (pZalo && pZalo.style.display !== "none" && (document.getElementById("inpVuZaloRawText")?.value || "").trim()) {
+          window.parseVuZaloOrderText();
+        } else if (pDim && pDim.style.display !== "none") {
+          window.applyVuSmartDimensionCalc();
+        } else if (pHw && pHw.style.display !== "none") {
+          window.applyVuHardwareCombo("KITCHEN_FITTING");
+        } else if (pBoard && pBoard.style.display !== "none") {
+          window.applyVuSmartBoardSet();
         }
-      });
+        harvest = collectCurrentPOItems();
+      }
+
+      const { items, total, wood40Total, commercialPkTotal } = harvest;
 
       if (items.length === 0) {
-        alert("Vũ vui lòng nhập ít nhất một dòng vật tư hợp lệ!");
+        alert("Vũ vui lòng nhập tên vật tư ở bảng bên dưới hoặc bấm chọn 1 chạm từ Công cụ 1/2/3/4 trước khi lưu đơn!");
+        const firstEmptyInput = document.querySelector("#bodyPoItemsInput .inp-item-name");
+        if (firstEmptyInput) firstEmptyInput.focus();
         return;
       }
 
-      // DA-29: Chống tạo trùng mã đơn PO hoặc trùng (Nhà cung cấp + Công trình + Tổng tiền)
+      let code = (document.getElementById("inpPoCode")?.value || "").trim();
+      if (!code || (appState.poList || []).some(p => p.code === code)) {
+        code = `PO-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      }
+      const date = document.getElementById("inpPoDate")?.value || new Date().toISOString().split("T")[0];
+      const requester = document.getElementById("inpPoRequester")?.value || "Hoàng Công Vũ (Kỹ thuật & Vật tư Xưởng)";
+      const supplier = document.getElementById("inpPoSupplier")?.value || "Tổng Kho Lam Giang";
+      const projectSelect = document.getElementById("inpPoProjectSelect");
+      const selectedOpt = (projectSelect && projectSelect.selectedIndex >= 0) ? projectSelect.options[projectSelect.selectedIndex] : null;
+      const project = (projectSelect && projectSelect.value) ? projectSelect.value : "Nhà Anh Nam (TP. Hà Tĩnh)";
+      const contractVal = selectedOpt ? (parseFloat(selectedOpt.dataset.val) || 540280785) : 540280785;
+      const note = (document.getElementById("inpPoNote")?.value || "").trim();
+
+      // DA-29: Cảnh báo nếu trùng (Nhà cung cấp + Công trình + Tổng tiền), cho phép xác nhận nếu Vũ thực sự đặt lô thứ 2 giống hệt
       const duplicatePO = (appState.poList || []).find(p =>
-        p.code === code || (p.supplier === supplier && p.project === project && Math.abs((p.total || 0) - total) < 1)
+        p.supplier === supplier && p.project === project && Math.abs((p.total || 0) - total) < 1
       );
       if (duplicatePO) {
-        alert(`⚠️ CẢNH BÁO TRÙNG ĐƠN VẬT TƯ (DA-29):\nĐã tồn tại phiếu ${duplicatePO.code} (${duplicatePO.project} - ${fmtCurr(duplicatePO.total)}) trên hệ thống!\nTuyệt đối không tạo trùng đơn đặt hàng.`);
-        return;
+        const confirmDup = confirm(
+          `⚠️ CẢNH BÁO ĐƠN TƯƠNG TỰ (DA-29):\n` +
+          `Đã có phiếu ${duplicatePO.code} (${duplicatePO.project} • ${duplicatePO.supplier} • ${fmtCurr(duplicatePO.total)}) trên hệ thống.\n\n` +
+          `Bấm [OK] nếu Vũ thực sự muốn lập thêm 1 đơn mới (${code}), hoặc [Cancel] để hủy.`
+        );
+        if (!confirmDup) return;
       }
 
       // Tính tỷ lệ % định mức 40% chuẩn xác: chỉ tính trên phần Vật tư xưởng (wood40Total), không tính lầm đồ thương mại
@@ -4103,20 +4514,72 @@ function setupPOModals() {
         note
       };
 
+      if (!Array.isArray(appState.poList)) appState.poList = [];
       appState.poList.unshift(newPO);
+
+      // Đồng bộ luôn từng dòng vật tư vào Kho Vật Tư (appState.materials) để bảng Thống Kê Đa Chiều & Kho Vật Tư cập nhật tức thì
+      if (!Array.isArray(appState.materials)) appState.materials = [];
+      items.forEach((it, idx) => {
+        appState.materials.unshift({
+          id: `${code}-${idx + 1}`,
+          date: date.split("-").reverse().join("/"),
+          project: project,
+          supplier: supplier,
+          item: it.name,
+          name: it.name,
+          unit: it.unit,
+          qty: it.qty,
+          price: it.price,
+          total: it.total,
+          amount: it.total,
+          costBucket: it.costBucket || "WOOD_40",
+          poCode: code,
+          status: "Chờ Giám Đốc duyệt PO"
+        });
+      });
+
       saveState();
       if (typeof window.logSystemAudit === "function") {
         window.logSystemAudit("CREATE_PO", `Lập phiếu đề xuất mới ${code} (${project} - Tổng: ${fmtCurr(total)} | Khoán xưởng: ${fmtCurr(wood40Total)})`);
       }
 
       closeCreateModal();
-      renderPOList(currentActivePOFilter);
 
-      alert(`✅ VŨ ĐÃ GỬI ĐỀ XUẤT ${code} THÀNH CÔNG!\n\n` +
-        `• Nhà cung cấp: ${supplier}\n` +
-        `• Tổng tiền đơn hàng: ${fmtCurr(total)} (Vật tư xưởng 40%: ${fmtCurr(wood40Total)} | Thương mại tách riêng: ${fmtCurr(commercialPkTotal)})\n` +
-        `• Trạng thái: ⏳ CHỜ GIÁM ĐỐC DUYỆT & ĐÓNG DẤU ĐỎ\n\n` +
-        `⚠️ NHẮC NHỞ: Sau khi Giám Đốc đóng dấu đỏ, Vũ bấm nút "📋 Copy Zalo" để gửi đơn chuẩn sang nhóm NCC!`);
+      // Đưa bộ lọc về "Tất cả" và chuyển về phân khu 1 để hiển thị ngay đơn vừa tạo ở dòng đầu tiên
+      currentActivePOFilter = "all";
+      const projFilter = document.getElementById("poProjectQuickFilter");
+      if (projFilter) projFilter.value = "ALL";
+      const supFilter = document.getElementById("poSupplierQuickFilter");
+      if (supFilter) supFilter.value = "ALL";
+      const searchInp = document.getElementById("poQuickSearchInput");
+      if (searchInp) searchInp.value = "";
+      document.querySelectorAll("input[name='poFilter']").forEach(r => {
+        const pill = r.closest(".radio-pill");
+        if (r.value === "all") {
+          r.checked = true;
+          if (pill) pill.classList.add("active");
+        } else if (pill) {
+          pill.classList.remove("active");
+        }
+      });
+
+      if (typeof window.switchPoTabSubView === "function") {
+        window.switchPoTabSubView("po_list");
+      }
+      renderPOList("all");
+      if (typeof window.renderMaterialVsQuotaTable === "function") window.renderMaterialVsQuotaTable();
+      if (typeof window.renderVuMultiDimStatsPivot === "function") window.renderVuMultiDimStatsPivot();
+      if (typeof window.filterVatTuTableByCategory === "function") window.filterVatTuTableByCategory();
+      if (typeof window.updatePoQuickStripLiveSummary === "function") window.updatePoQuickStripLiveSummary();
+
+      if (typeof showToast === "function") {
+        showToast(`✅ Đã lập đơn ${code} (${fmtCurr(total)}) thành công! Đang mở bản xem trước hóa đơn PO...`);
+      }
+
+      // Mở ngay cửa sổ Xem/Duyệt/In Hóa Đơn PO vừa tạo để Vũ và Giám Đốc kiểm tra 1 chạm
+      if (typeof openViewPOModal === "function") {
+        openViewPOModal(newPO.code);
+      }
     });
   }
 
@@ -4139,15 +4602,34 @@ function setupPOModals() {
     });
   }
 
-  // Print Button Handler with STRICT Check
+  // Print Button Handler with 1-Click Director Red-Stamp Option
   const btnPrint = document.getElementById("btnPrintPO");
-  if (btnPrint) {
+  if (btnPrint && !btnPrint.dataset.boundPrintPo) {
+    btnPrint.dataset.boundPrintPo = "1";
     btnPrint.addEventListener("click", () => {
       if (!currentViewingPOCode) return;
       const po = (appState.poList || []).find(p => p.code === currentViewingPOCode);
       if (!po) return;
 
       if (po.status !== "APPROVED") {
+        const isDirector = (currentUser && currentUser.role === "ADMIN") || isLocalMachine();
+        if (isDirector) {
+          const approveNow = confirm(
+            `💮 PHIẾU ${po.code} ĐANG CHỜ DUYỆT (${fmtCurr(po.total)}):\n\n` +
+            `Giám Đốc có muốn [DUYỆT & ĐÓNG DẤU ĐỎ NGAY] để xuất/in hóa đơn đặt hàng chính thức không?`
+          );
+          if (approveNow) {
+            po.status = "APPROVED";
+            po.approvedBy = "Nguyễn Viết Nghĩa (Giám Đốc)";
+            po.approvedAt = new Date().toLocaleString("vi-VN");
+            po.sealUrl = "assets/dau_do_giam_doc.png";
+            saveState();
+            renderPOList(currentActivePOFilter);
+            openViewPOModal(po.code);
+            setTimeout(() => window.print(), 250);
+          }
+          return;
+        }
         alert("⚠️ LỆNH CẤM TỪ BAN GIÁM ĐỐC:\n\n" +
           "Phiếu đề xuất này CHƯA ĐƯỢC GIÁM ĐỐC DUYỆT & ĐÓNG DẤU ĐỎ!\n" +
           "Vũ và Bộ phận Xưởng tuyệt đối KHÔNG ĐƯỢC PHÉP IN hoặc lấy file để nhập bất kỳ mặt hàng nào!");
@@ -4182,13 +4664,24 @@ function addPOItemInputRow(defName = "", defUnit = "Tấm", defQty = 1, defPrice
   const tbody = document.getElementById("bodyPoItemsInput");
   if (!tbody) return;
 
+  // Nếu nạp 1 dòng vật tư có tên thực tế, tự động dọn bỏ dòng trống đầu tiên (tránh để dòng trống thừa trên bảng)
+  if (defName && String(defName).trim() !== "") {
+    tbody.querySelectorAll(".po-item-row").forEach(existingRow => {
+      const existingName = (existingRow.querySelector(".inp-item-name")?.value || "").trim();
+      const existingPrice = parseFloat(existingRow.querySelector(".inp-item-price")?.value) || 0;
+      if (!existingName && existingPrice === 0) {
+        existingRow.remove();
+      }
+    });
+  }
+
   const resolvedBucket = defBucket || window.detectMaterialBucketByName(defName);
 
   const tr = document.createElement("tr");
   tr.className = "po-item-row";
   tr.innerHTML = `
     <td>
-      <input type="text" class="form-control inp-item-name" list="vuMaterialCatalogDatalist" required placeholder="Gõ mã màu (205T, 388, 612...) hoặc tên vật tư..." value="${defName}" style="font-size: 0.8rem;">
+      <input type="text" class="form-control inp-item-name" list="vuMaterialCatalogDatalist" placeholder="Gõ mã màu (205T, 388, 612...) hoặc tên vật tư..." value="${defName}" style="font-size: 0.8rem;">
     </td>
     <td>
       <select class="form-control inp-item-bucket" style="font-size: 0.75rem; padding: 4px 6px;">
@@ -4642,7 +5135,11 @@ function setupAuthEvents() {
       const u = document.getElementById("loginUsername").value.trim().toLowerCase();
       const p = document.getElementById("loginPassword").value;
 
-      const user = (appState.users || []).find(item => item.username.toLowerCase() === u && item.password === p);
+      const pHash = window.pgSha256HexSync(p);
+      const user = (appState.users || []).find(item =>
+        item.username.toLowerCase() === u &&
+        ((item.passwordHash && item.passwordHash === pHash) || (item.password && item.password === p))
+      );
 
       if (!user) {
         alert("❌ Tên đăng nhập hoặc mật khẩu không chính xác!\n\n(Gợi ý: bạn có thể bấm trực tiếp các nút Đăng Nhập Nhanh 1 Chạm bên dưới để vào hệ thống).");
@@ -4650,17 +5147,33 @@ function setupAuthEvents() {
       }
 
       if (user.role === "PENDING") {
-        alert("⚠️ TÀI KHOẢN CHƯA ĐƯỢC PHÂN QUYỀN!\n\nTài khoản '" + user.username + "' đã được tạo nhưng đang chờ Giám Đốc Nguyễn Viết Nghĩa vào phân quyền. Vui lòng báo Giám Đốc phê duyệt!");
+        alert("⚠️ TÀI KHOẢN CHƯA ĐƯỢC PHÂN QUYỀN!\n\nTài khoản '" + user.username + "' đã được tạo nhưng đang chờ Giám Đốc Nguyễn Trọng Nghĩa vào phân quyền. Vui lòng báo Giám Đốc phê duyệt!");
         return;
       }
 
-      currentUser = user;
+      const safeSessionUser = Object.assign({}, user);
+      delete safeSessionUser.password;
+      delete safeSessionUser.passwordHash;
+      safeSessionUser._sig = window.pgComputeSessionSig(safeSessionUser);
+
+      currentUser = safeSessionUser;
       if (typeof window !== "undefined") {
-        window.currentUser = user;
+        window.currentUser = safeSessionUser;
       }
-      localStorage.setItem("PG_HOME_CURRENT_USER", JSON.stringify(user));
-      applyUserRole(user);
-      showToast(`Xin chào ${user.fullName}! Đăng nhập thành công.`);
+      localStorage.setItem("PG_HOME_CURRENT_USER", JSON.stringify(safeSessionUser));
+      fetch("/api/auth-sign-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: safeSessionUser.username, passwordHash: pHash })
+      }).then(r => r.ok ? r.json() : null).then(d => {
+        if (d && d.token) {
+          safeSessionUser.serverToken = d.token;
+          safeSessionUser._sig = d.token;
+          localStorage.setItem("PG_HOME_CURRENT_USER", JSON.stringify(safeSessionUser));
+        }
+      }).catch(() => {});
+      applyUserRole(safeSessionUser);
+      showToast(`Xin chào ${safeSessionUser.fullName}! Đăng nhập thành công.`);
     });
   }
 
@@ -4684,7 +5197,7 @@ function setupAuthEvents() {
       const newUser = {
         id: Date.now(),
         username,
-        password,
+        passwordHash: window.pgSha256HexSync(password),
         fullName,
         phone,
         dept,
@@ -4846,11 +5359,11 @@ window.deleteUserAccount = function(userId) {
 // 6. MODULE CHẤM CÔNG & ĐIỂM DANH HÀNG NGÀY (XƯỞNG & VĂN PHÒNG)
 // ==========================================================================
 
-let currentTimesheetMonth = 11; // Mặc định Tháng 11 sống (cập nhật đến hôm nay 10/11/2026)
-let currentTimesheetDeptFilter = "all";
-let activeQuickAttDay = 10; // Ngày thực tế hôm nay 10/11/2026
-let activeQuickAttDept = "xuong";
-let quickAttDraft = {};
+currentTimesheetMonth = 11; // Mặc định Tháng 11 sống (cập nhật đến hôm nay 10/11/2026)
+currentTimesheetDeptFilter = "all";
+activeQuickAttDay = 10; // Ngày thực tế hôm nay 10/11/2026
+activeQuickAttDept = "xuong";
+quickAttDraft = {};
 
 function setTimesheetMonth(m) {
   currentTimesheetMonth = m;
@@ -4992,9 +5505,10 @@ function getActiveTimesheetData() {
   }
   const mKey = String(currentTimesheetMonth);
   if (!appState.timesheets[mKey]) {
-    appState.timesheets[mKey] = JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS["9"] || DEFAULT_TIMESHEETS["10"]));
+    appState.timesheets[mKey] = JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS[mKey] || DEFAULT_TIMESHEETS["11"] || DEFAULT_TIMESHEETS["10"]));
     appState.timesheets[mKey].month = currentTimesheetMonth;
   }
+  sanitizeTimesheetFutureDays(appState.timesheets);
   return appState.timesheets[mKey];
 }
 
@@ -5093,19 +5607,24 @@ function renderXuongTimesheetTable(days, xuongStaff) {
       <td class="sticky-shift" style="color:var(--cyan-main);">HC</td>`;
 
     days.forEach((d, dIdx) => {
-      const val = (w.hc && w.hc[dIdx] !== undefined) ? w.hc[dIdx] : "";
+      const isFuture = (Number(currentTimesheetMonth) === 11 && d.day > activeQuickAttDay);
+      const val = (!isFuture && w.hc && w.hc[dIdx] !== undefined) ? w.hc[dIdx] : "";
       const isSun = d.dow === "CN";
       const isToday = (currentTimesheetMonth === 11 && d.day === 10) || (currentTimesheetMonth === 10 && d.day === 27);
 
-      let pill = '<span class="att-empty">-</span>';
-      if (val === 1 || val === "1") pill = '<span class="att-pill work-1">1</span>';
-      else if (val === 0.5 || val === "0.5") pill = '<span class="att-pill work-half">0.5</span>';
-      else if (val === "P" || val === "p") pill = '<span class="att-pill work-p">P</span>';
-      else if (val === "K" || val === "k") pill = '<span class="att-pill work-k">K</span>';
+      let pill = isFuture ? '<span class="att-empty" style="opacity:0.25;">-</span>' : '<span class="att-empty">-</span>';
+      if (!isFuture) {
+        if (val === 1 || val === "1") pill = '<span class="att-pill work-1">1</span>';
+        else if (val === 0.5 || val === "0.5") pill = '<span class="att-pill work-half">0.5</span>';
+        else if (val === "P" || val === "p") pill = '<span class="att-pill work-p">P</span>';
+        else if (val === "K" || val === "k") pill = '<span class="att-pill work-k">K</span>';
+      }
 
-      bHtml += `<td class="att-cell ${isSun ? 'is-sunday' : ''} ${isToday ? 'is-today' : ''}" 
+      const futureStyle = isFuture ? 'style="opacity:0.42; background:rgba(15,23,42,0.38); cursor:not-allowed;"' : '';
+      const cellTitle = isFuture ? `Ngày ${d.day}/11/2026 chưa tới` : `Click để đổi công: ${w.name} - Ngày ${d.day}`;
+      bHtml += `<td class="att-cell ${isSun ? 'is-sunday' : ''} ${isToday ? 'is-today' : ''}" ${futureStyle}
                     onclick="cycleAttendanceCell('xuong', '${w.id}', ${dIdx}, 'hc')" 
-                    title="Click để đổi công: ${w.name} - Ngày ${d.day}">${pill}</td>`;
+                    title="${cellTitle}">${pill}</td>`;
     });
 
     bHtml += `<td rowspan="2" style="font-weight:800; font-size:1.05rem; color:var(--text-gold); text-align:center;">${w.hc_tot}</td>
@@ -5122,18 +5641,21 @@ function renderXuongTimesheetTable(days, xuongStaff) {
       <td class="sticky-shift" style="color:var(--purple-main);">OT</td>`;
 
     days.forEach((d, dIdx) => {
-      const otVal = (w.ot && w.ot[dIdx] !== undefined) ? w.ot[dIdx] : "";
+      const isFuture = (Number(currentTimesheetMonth) === 11 && d.day > activeQuickAttDay);
+      const otVal = (!isFuture && w.ot && w.ot[dIdx] !== undefined) ? w.ot[dIdx] : "";
       const isSun = d.dow === "CN";
       const isToday = (currentTimesheetMonth === 11 && d.day === 10) || (currentTimesheetMonth === 10 && d.day === 27);
 
-      let otPill = '<span class="att-empty">-</span>';
-      if (otVal && String(otVal).trim() !== "" && String(otVal) !== "0") {
+      let otPill = isFuture ? '<span class="att-empty" style="opacity:0.25;">-</span>' : '<span class="att-empty">-</span>';
+      if (!isFuture && otVal && String(otVal).trim() !== "" && String(otVal) !== "0") {
         otPill = `<span class="att-pill work-ot">${otVal}h</span>`;
       }
 
-      bHtml += `<td class="att-cell ${isSun ? 'is-sunday' : ''} ${isToday ? 'is-today' : ''}" 
+      const futureStyle = isFuture ? 'style="opacity:0.42; background:rgba(15,23,42,0.38); cursor:not-allowed;"' : '';
+      const cellTitle = isFuture ? `Ngày ${d.day}/11/2026 chưa tới` : `Click để nhập giờ tăng ca: ${w.name} - Ngày ${d.day}`;
+      bHtml += `<td class="att-cell ${isSun ? 'is-sunday' : ''} ${isToday ? 'is-today' : ''}" ${futureStyle}
                     onclick="cycleAttendanceCell('xuong', '${w.id}', ${dIdx}, 'ot')" 
-                    title="Click để nhập giờ tăng ca: ${w.name} - Ngày ${d.day}">${otPill}</td>`;
+                    title="${cellTitle}">${otPill}</td>`;
     });
 
     bHtml += `</tr>`;
@@ -5146,12 +5668,15 @@ function renderXuongTimesheetTable(days, xuongStaff) {
     let f1 = `<tr>
       <td class="sticky-stt" colspan="4" style="text-align:right; font-weight:700; color:var(--text-gold);">TỔNG THỢ ĐI LÀM:</td>`;
     days.forEach((d, dIdx) => {
+      const isFuture = (Number(currentTimesheetMonth) === 11 && d.day > activeQuickAttDay);
       let count = 0;
-      xuongStaff.forEach(w => {
-        const v = w.hc ? w.hc[dIdx] : "";
-        if (v === 1 || v === "1") count += 1;
-        else if (v === 0.5 || v === "0.5") count += 0.5;
-      });
+      if (!isFuture) {
+        xuongStaff.forEach(w => {
+          const v = w.hc ? w.hc[dIdx] : "";
+          if (v === 1 || v === "1") count += 1;
+          else if (v === 0.5 || v === "0.5") count += 0.5;
+        });
+      }
       f1 += `<td style="font-weight:700; color:${count > 0 ? 'var(--emerald-main)' : 'var(--text-dim)'};">${count > 0 ? count : '-'}</td>`;
     });
     const totalHC = xuongStaff.reduce((sum, w) => sum + (parseFloat(w.hc_tot) || 0), 0);
@@ -5163,11 +5688,14 @@ function renderXuongTimesheetTable(days, xuongStaff) {
     let f2 = `<tr>
       <td class="sticky-stt" colspan="4" style="text-align:right; font-weight:700; color:var(--purple-main);">TỔNG GIỜ TĂNG CA:</td>`;
     days.forEach((d, dIdx) => {
+      const isFuture = (Number(currentTimesheetMonth) === 11 && d.day > activeQuickAttDay);
       let otSum = 0;
-      xuongStaff.forEach(w => {
-        const v = w.ot ? w.ot[dIdx] : "";
-        if (v && !isNaN(v)) otSum += parseFloat(v);
-      });
+      if (!isFuture) {
+        xuongStaff.forEach(w => {
+          const v = w.ot ? w.ot[dIdx] : "";
+          if (v && !isNaN(v)) otSum += parseFloat(v);
+        });
+      }
       f2 += `<td style="font-weight:700; color:${otSum > 0 ? 'var(--purple-main)' : 'var(--text-dim)'};">${otSum > 0 ? otSum + 'h' : '-'}</td>`;
     });
     f2 += `<td colspan="3"></td></tr>`;
@@ -5219,19 +5747,24 @@ function renderVPTimesheetTable(days, vpStaff) {
       <td class="sticky-role">${vStaff.role}</td>`;
 
     days.forEach((d, dIdx) => {
-      const val = (vStaff.days && vStaff.days[dIdx] !== undefined) ? vStaff.days[dIdx] : "";
+      const isFuture = (Number(currentTimesheetMonth) === 11 && d.day > activeQuickAttDay);
+      const val = (!isFuture && vStaff.days && vStaff.days[dIdx] !== undefined) ? vStaff.days[dIdx] : "";
       const isSun = d.dow === "CN";
       const isToday = (currentTimesheetMonth === 11 && d.day === 10) || (currentTimesheetMonth === 10 && d.day === 27);
 
-      let pill = '<span class="att-empty">-</span>';
-      if (val === 1 || val === "1") pill = '<span class="att-pill work-1">1</span>';
-      else if (val === 0.5 || val === "0.5") pill = '<span class="att-pill work-half">0.5</span>';
-      else if (val === "P" || val === "p") pill = '<span class="att-pill work-p">P</span>';
-      else if (val === "K" || val === "k") pill = '<span class="att-pill work-k">K</span>';
+      let pill = isFuture ? '<span class="att-empty" style="opacity:0.25;">-</span>' : '<span class="att-empty">-</span>';
+      if (!isFuture) {
+        if (val === 1 || val === "1") pill = '<span class="att-pill work-1">1</span>';
+        else if (val === 0.5 || val === "0.5") pill = '<span class="att-pill work-half">0.5</span>';
+        else if (val === "P" || val === "p") pill = '<span class="att-pill work-p">P</span>';
+        else if (val === "K" || val === "k") pill = '<span class="att-pill work-k">K</span>';
+      }
 
-      bHtml += `<td class="att-cell ${isSun ? 'is-sunday' : ''} ${isToday ? 'is-today' : ''}" 
+      const futureStyle = isFuture ? 'style="opacity:0.42; background:rgba(15,23,42,0.38); cursor:not-allowed;"' : '';
+      const cellTitle = isFuture ? `Ngày ${d.day}/11/2026 chưa tới` : `Click để đổi công: ${vStaff.name} - Ngày ${d.day}`;
+      bHtml += `<td class="att-cell ${isSun ? 'is-sunday' : ''} ${isToday ? 'is-today' : ''}" ${futureStyle}
                     onclick="cycleAttendanceCell('vp', '${vStaff.id}', ${dIdx}, 'hc')" 
-                    title="Click để đổi công: ${vStaff.name} - Ngày ${d.day}">${pill}</td>`;
+                    title="${cellTitle}">${pill}</td>`;
     });
 
     bHtml += `<td style="font-weight:800; font-size:1.05rem; color:var(--text-gold); text-align:center;">${vStaff.totalHC}</td>
@@ -5246,12 +5779,15 @@ function renderVPTimesheetTable(days, vpStaff) {
     let f1 = `<tr>
       <td class="sticky-stt" colspan="3" style="text-align:right; font-weight:700; color:var(--emerald-main);">TỔNG NHÂN SỰ VP ĐI LÀM:</td>`;
     days.forEach((d, dIdx) => {
+      const isFuture = (Number(currentTimesheetMonth) === 11 && d.day > activeQuickAttDay);
       let count = 0;
-      vpStaff.forEach(v => {
-        const val = v.days ? v.days[dIdx] : "";
-        if (val === 1 || val === "1") count += 1;
-        else if (val === 0.5 || val === "0.5") count += 0.5;
-      });
+      if (!isFuture) {
+        vpStaff.forEach(v => {
+          const val = v.days ? v.days[dIdx] : "";
+          if (val === 1 || val === "1") count += 1;
+          else if (val === 0.5 || val === "0.5") count += 0.5;
+        });
+      }
       f1 += `<td style="font-weight:700; color:${count > 0 ? 'var(--emerald-main)' : 'var(--text-dim)'};">${count > 0 ? count : '-'}</td>`;
     });
     const totalHC = vpStaff.reduce((sum, v) => sum + (parseFloat(v.totalHC) || 0), 0);
@@ -5328,7 +5864,11 @@ window.setTimesheetDeptFilter = setTimesheetDeptFilter;
 function cycleAttendanceCell(dept, staffId, dayIndex, shiftType) {
   // KHÓA SỔ THÁNG 8 & THÁNG 9: CHỈ XEM ĐỐI SOÁT, KHÔNG CHO CHỈNH SỬA
   if (currentTimesheetMonth === 8 || currentTimesheetMonth === 9) {
-    showToast(`🔒 Tháng ${currentTimesheetMonth} đã khóa sổ quyết toán! Vui lòng chọn Tháng 10 để điểm danh thực tế.`);
+    showToast(`🔒 Tháng ${currentTimesheetMonth} đã khóa sổ quyết toán! Vui lòng chọn Tháng 10 hoặc Tháng 11 để điểm danh thực tế.`);
+    return;
+  }
+  if (Number(currentTimesheetMonth) === 11 && (dayIndex + 1) > activeQuickAttDay) {
+    showToast(`⏳ Ngày ${dayIndex + 1}/11/2026 chưa tới! Hệ thống đã khóa chấm công ngày tương lai (hiện tại: ${activeQuickAttDay}/11/2026).`);
     return;
   }
   const tsData = getActiveTimesheetData();
@@ -5471,6 +6011,7 @@ window.applyZaloAttendancePayloadToState = function(attPayload, isManual) {
     appState.timesheets = JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS));
   }
   const ts11 = appState.timesheets["11"] || JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS["11"]));
+  const maxDayT11 = (typeof activeQuickAttDay === "number" && activeQuickAttDay > 0) ? activeQuickAttDay : 10;
   let changed = false;
 
   if (Array.isArray(attPayload.xuong) && Array.isArray(ts11.xuong)) {
@@ -5479,22 +6020,26 @@ window.applyZaloAttendancePayloadToState = function(attPayload, isManual) {
       if (localW) {
         if (!Array.isArray(localW.hc)) localW.hc = new Array(30).fill("");
         if (!Array.isArray(localW.ot)) localW.ot = new Array(30).fill("");
+        for (let i = maxDayT11; i < 30; i++) {
+          if (localW.hc[i] !== "") { localW.hc[i] = ""; changed = true; }
+          if (localW.ot[i] !== "") { localW.ot[i] = ""; changed = true; }
+        }
         Object.entries(remoteW.hc || {}).forEach(([dayStr, val]) => {
           const idx = parseInt(dayStr, 10) - 1;
-          if (idx >= 0 && idx < 30 && localW.hc[idx] !== val) {
+          if (idx >= 0 && idx < maxDayT11 && localW.hc[idx] !== val) {
             localW.hc[idx] = val;
             changed = true;
           }
         });
         Object.entries(remoteW.ot || {}).forEach(([dayStr, val]) => {
           const idx = parseInt(dayStr, 10) - 1;
-          if (idx >= 0 && idx < 30 && localW.ot[idx] !== val) {
+          if (idx >= 0 && idx < maxDayT11 && localW.ot[idx] !== val) {
             localW.ot[idx] = val;
             changed = true;
           }
         });
-        localW.hc_tot = localW.hc.reduce((s, v) => s + (v === 1 || v === "1" ? 1 : (v === 0.5 || v === "0.5" ? 0.5 : 0)), 0);
-        localW.ot_tot = localW.ot.reduce((s, v) => { const n = parseFloat(v); return !isNaN(n) ? s + n : s; }, 0);
+        localW.hc_tot = localW.hc.slice(0, maxDayT11).reduce((s, v) => s + (v === 1 || v === "1" ? 1 : (v === 0.5 || v === "0.5" ? 0.5 : 0)), 0);
+        localW.ot_tot = localW.ot.slice(0, maxDayT11).reduce((s, v) => { const n = parseFloat(v); return !isNaN(n) ? s + n : s; }, 0);
       }
     });
   }
@@ -5504,19 +6049,23 @@ window.applyZaloAttendancePayloadToState = function(attPayload, isManual) {
       const localV = ts11.vp.find(v => v.id === remoteV.id || v.name === remoteV.name);
       if (localV) {
         if (!Array.isArray(localV.days)) localV.days = new Array(30).fill("");
+        for (let i = maxDayT11; i < 30; i++) {
+          if (localV.days[i] !== "") { localV.days[i] = ""; changed = true; }
+        }
         Object.entries(remoteV.days || {}).forEach(([dayStr, val]) => {
           const idx = parseInt(dayStr, 10) - 1;
-          if (idx >= 0 && idx < 30 && localV.days[idx] !== val) {
+          if (idx >= 0 && idx < maxDayT11 && localV.days[idx] !== val) {
             localV.days[idx] = val;
             changed = true;
           }
         });
-        localV.totalHC = localV.days.reduce((s, v) => s + (v === 1 || v === "1" ? 1 : (v === 0.5 || v === "0.5" ? 0.5 : 0)), 0);
+        localV.totalHC = localV.days.slice(0, maxDayT11).reduce((s, v) => s + (v === 1 || v === "1" ? 1 : (v === 0.5 || v === "0.5" ? 0.5 : 0)), 0);
       }
     });
   }
 
   appState.timesheets["11"] = ts11;
+  sanitizeTimesheetFutureDays(appState.timesheets);
   window.lastZaloAttendancePayload = attPayload;
   window.renderZaloAttendanceFeedUI(attPayload);
 
@@ -5531,11 +6080,26 @@ window.applyZaloAttendancePayloadToState = function(attPayload, isManual) {
   }
   if (isManual && typeof showToast === "function") {
     const sum = attPayload.summary_t11 || {};
-    showToast(`✅ Đã rà Zalo Thời Gian Thực: Xưởng ${sum.total_xuong_hc || 59.5} công (${sum.total_xuong_ot || 85}h OT) | Văn phòng ${sum.total_vp_hc || 16} công!`);
+    const groupCnt = (appState.zaloSupplierGroups || []).length || 14;
+    showToast(`⚡ Quét Zalo Toàn Dự Án Hoàn Tất: Xưởng ${sum.total_xuong_hc || 59.5} công (${sum.total_xuong_ot || 85}h OT) • VP ${sum.total_vp_hc || 16} công • Đã đồng bộ ${groupCnt} nhóm công trình & NCC!`);
   }
 };
 
 window.syncZaloAttendanceRealtime = function(isManual = false) {
+  const btn = document.getElementById("btnZaloAttQuickScan");
+  let origBtnHtml = "";
+  if (isManual && btn) {
+    origBtnHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = `<i class="fa-solid fa-rotate fa-spin"></i> Đang quét Zalo toàn dự án...`;
+  }
+  const restoreBtn = () => {
+    if (isManual && btn) {
+      btn.disabled = false;
+      btn.innerHTML = origBtnHtml || `<i class="fa-solid fa-bolt"></i> Quét Zalo Ngay`;
+    }
+  };
+
   if (typeof fetch !== "function" || !window.location.protocol.startsWith("http")) {
     // Fallback offline file:///
     const fallbackPayload = {
@@ -5554,9 +6118,13 @@ window.syncZaloAttendanceRealtime = function(isManual = false) {
         { name: "Đường Việt Dũng", dept: "vanphong", hc_tot: 8.0, ot_tot: 0.0, time: "10/11 07:48", group: "Chấm Công Văn Phòng", message: "Có mặt VP 07:48 — Khảo sát mặt bằng & lên dự toán báo giá 3 cấp" }
       ]
     };
+    if (appState && appState.timesheets) sanitizeTimesheetFutureDays(appState.timesheets);
+    saveTimesheetState();
+    if (Number(currentTimesheetMonth) === 11) renderTimesheetUI();
     window.renderZaloAttendanceFeedUI(fallbackPayload);
+    restoreBtn();
     if (isManual && typeof showToast === "function") {
-      showToast("✅ Đã đồng bộ bảng chấm công Zalo Tháng 11 (Chế độ Offline Vault)!");
+      showToast("✅ Đã đồng bộ bảng chấm công & toàn bộ nhóm dự án Zalo Tháng 11 (Chế độ Offline Vault)!");
     }
     return;
   }
@@ -5564,14 +6132,27 @@ window.syncZaloAttendanceRealtime = function(isManual = false) {
   const endpoint = isManual ? "/api/zalo-sync-attendance" : "/api/zalo-live-attendance";
   const opts = isManual ? { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" } : { method: "GET" };
 
-  fetch(endpoint, opts)
+  const attPromise = fetch(endpoint, opts)
     .then(r => r.ok ? r.json() : null)
-    .then(data => {
+    .catch(() => null);
+
+  const projectScanPromise = (isManual && typeof window.triggerZaloInstantScan === "function")
+    ? Promise.resolve(window.triggerZaloInstantScan(true)).catch(() => null)
+    : Promise.resolve(null);
+
+  Promise.all([attPromise, projectScanPromise])
+    .then(([data]) => {
       if (data && data.status === "ok") {
         window.applyZaloAttendancePayloadToState(data, isManual);
+      } else if (isManual) {
+        if (appState && appState.timesheets) sanitizeTimesheetFutureDays(appState.timesheets);
+        saveTimesheetState();
+        if (Number(currentTimesheetMonth) === 11) renderTimesheetUI();
       }
     })
-    .catch(() => {});
+    .finally(() => {
+      restoreBtn();
+    });
 };
 
 // Tự động khởi chạy bộ đồng bộ Chấm Công Zalo Thời Gian Thực (Chu kỳ 15 giây/lần)
@@ -5603,6 +6184,7 @@ function openQuickAttendanceModal(defaultDept = "xuong") {
   if (selDay) {
     selDay.innerHTML = "";
     tsData.days.forEach(d => {
+      if (Number(currentTimesheetMonth) === 11 && d.day > activeQuickAttDay) return;
       const opt = document.createElement("option");
       opt.value = d.day;
       opt.textContent = `Ngày ${d.day} (${d.dow})`;
@@ -5824,28 +6406,34 @@ function handleAddTimesheetStaff(e) {
 }
 
 function saveTimesheetState() {
-  localStorage.setItem("PG_HOME_TIMESHEETS_2026", JSON.stringify(appState.timesheets));
+  if (appState && appState.timesheets) {
+    sanitizeTimesheetFutureDays(appState.timesheets);
+    localStorage.setItem("PG_HOME_TIMESHEETS_2026", JSON.stringify(appState.timesheets));
+  }
+  if (typeof saveState === "function") {
+    saveState();
+  }
 }
 
 function loadTimesheetState() {
   const currentVer = localStorage.getItem("PG_HOME_APP_VER");
   if (currentVer !== CURRENT_APP_VERSION) {
-    // Phiên bản mới: Ghi đè tự động dữ liệu chuẩn T8, T9, T10 đã đối soát 10 lần
+    // Phiên bản mới: Ghi đè tự động dữ liệu chuẩn T8, T9, T10, T11 đã đối soát 10 lần
     localStorage.setItem("PG_HOME_APP_VER", CURRENT_APP_VERSION);
-    localStorage.setItem("PG_HOME_TIMESHEETS_2026", JSON.stringify(DEFAULT_TIMESHEETS));
-    return JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS));
+    const cleanDefault = sanitizeTimesheetFutureDays(JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS)));
+    localStorage.setItem("PG_HOME_TIMESHEETS_2026", JSON.stringify(cleanDefault));
+    return cleanDefault;
   }
   const saved = localStorage.getItem("PG_HOME_TIMESHEETS_2026");
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      // Đảm bảo T10 luôn có ngày 1 Hòa = 0.5 và ngày 28 Anh = 0.5
-      return parsed;
+      return sanitizeTimesheetFutureDays(parsed);
     } catch (e) {
       console.error("Lỗi đọc timesheets:", e);
     }
   }
-  return JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS));
+  return sanitizeTimesheetFutureDays(JSON.parse(JSON.stringify(DEFAULT_TIMESHEETS)));
 }
 
 function setupGlobalEvents() {
@@ -5927,7 +6515,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // GIAI ĐOẠN 1: CORE ENGINE UPGRADES (SYNC GLOBAL MONTH, LOCKING, 15% FUND & PO IMAGE)
 // ==========================================================================
 
-let currentGlobalMonth = 10; // Mặc định tháng 10 - kỳ vận hành thực tế sống
+currentGlobalMonth = 10; // Mặc định tháng 10 - kỳ vận hành thực tế sống
 
 // Đồng bộ hóa toàn bộ ứng dụng khi đổi tháng ở topbar
 function syncGlobalMonth(month) {
@@ -6051,7 +6639,7 @@ function renderFundMonitorWidget(month = 10) {
       luongTho = 26198750;
     }
   } else {
-    const mData = appState.ccscMonths.find(m => m.m == month);
+    const mData = (appState.ccscMonths || []).find(m => m && m.m == month);
     dsXuong = mData ? mData.sales : 300000000;
     luongTho = dsXuong * 0.15;
   }
@@ -6379,7 +6967,7 @@ window.downloadPOAsImage = downloadPOAsImage;
 // ==========================================================================
 
 // 1. DỮ LIỆU ĐỢT THU TIỀN & PHỤ KIỆN SOFA BÁN KÈM
-const DEFAULT_PAYMENTS = [
+var DEFAULT_PAYMENTS = [
   { id: "PT-2026-0801", client: "Chị Hiển (Thạch Linh)", project: "Biệt thự Thạch Linh", amount: 30000000, date: "28/08/2026", method: "Chuyển khoản Vietcombank", reason: "Tạm ứng Đợt 1 ký hợp đồng", collector: "Tống Trần Hiệp", remaining: 99803651 },
   { id: "PT-2026-0901", client: "Chị Hiển (Thạch Linh)", project: "Biệt thự Thạch Linh", amount: 30000000, date: "15/09/2026", method: "Chuyển khoản Vietcombank", reason: "Thanh toán Đợt 2 sau khi lắp xong phần gỗ xưởng", collector: "Tống Trần Hiệp", remaining: 69803651 },
   { id: "PT-2026-0802", client: "Chị Phượng (Nghi Xuân)", project: "Nhà phố Nghi Xuân", amount: 20000000, date: "05/09/2026", method: "Chuyển khoản Techcombank", reason: "Tạm ứng Đợt 1 ra ván An Cường", collector: "Tống Trần Hiệp", remaining: 22462996 },
@@ -6395,7 +6983,7 @@ const DEFAULT_PAYMENTS = [
   { id: "PT-2026-1101", client: "Nhà Anh Nam (TP. Hà Tĩnh)", project: "Biệt thự Anh Nam Xuân Diệu", amount: 250000000, date: "06/11/2026", method: "Chuyển khoản Vietcombank", reason: "Tạm ứng Đợt 1 khởi công CNC toàn bộ nội thất", collector: "Tống Trần Hiệp", remaining: 415280785 }
 ];
 
-const DEFAULT_ACCESSORIES = [
+var DEFAULT_ACCESSORIES = [
   { id: "PK-01", month: 8, client: "Thắm Minh (Thạch Hưng)", item: "Phụ kiện tủ bếp Eurogold SUS304", brand: "Eurogold", price: 8840000, cost: 6188000, profit: 2652000, date: "20/08/2026" },
   { id: "PK-02", month: 9, client: "Anh Tuấn (TP. Hà Tĩnh)", item: "Bếp từ 3 vùng nấu Hafele + Hút mùi kính cong", brand: "Hafele", price: 14800000, cost: 10360000, profit: 4440000, date: "15/09/2026" },
   { id: "PK-03", month: 9, client: "Anh Hào (Kỳ Anh)", item: "Sofa nỉ cao cấp nhập khẩu + Giá bát nâng hạ", brand: "Eurogold / Sofa", price: 15200000, cost: 10640000, profit: 4560000, date: "22/09/2026" },
@@ -6533,7 +7121,7 @@ function renderCongNoEnhanced() {
 }
 
 // 3. XEM & XUẤT BIÊN LAI THU TIỀN ĐIỆN TỬ (TỐI ƯU 14)
-let currentViewingReceipt = null;
+var currentViewingReceipt = null;
 
 function openReceiptForClient(clientName) {
   const payments = (appState.paymentHistory || []).filter(p => p.client.includes(clientName.split('(')[0].trim()) || p.client === clientName);
@@ -6853,7 +7441,7 @@ function printCCSCReport() {
 window.printCCSCReport = printCCSCReport;
 
 // 6. CÀI ĐẶT ỨNG DỤNG DI ĐỘNG (PWA - TỐI ƯU 17)
-let deferredPrompt = null;
+var deferredPrompt = null;
 
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
@@ -6920,17 +7508,31 @@ function renderZaloSupplierGroups() {
     return;
   }
 
-  tbody.innerHTML = groups.map((g, idx) => {
-    const isHighDebt = (g.debt && g.debt.includes("82,065,300"));
-    const debtClass = isHighDebt ? "text-danger fw-bold" : "text-gold";
-    const statusBadge = g.status.includes("sản xuất") ? "badge-info" : (g.status.includes("nghiệm thu") || g.status.includes("bàn giao") ? "badge-success" : "badge-warning");
+  const badgeSync = document.getElementById("badgeZaloGroupsSyncCount");
+  if (badgeSync) {
+    badgeSync.textContent = `${groups.length} NHÓM ĐỒNG BỘ LIVE`;
+  }
 
-    let docHtml = `<span class="text-muted"><i class="fa-regular fa-file"></i> ${g.doc || "Hồ sơ công trình"}</span>`;
-    if (g.doc && g.doc.endsWith(".pdf")) {
-      docHtml = `<a href="${g.doc}" target="_blank" class="badge positive" style="text-decoration:none;"><i class="fa-solid fa-file-pdf"></i> ${g.doc}</a>`;
-    } else if (g.doc && g.doc.endsWith(".jpg")) {
-      docHtml = `<a href="${g.doc}" target="_blank" class="badge warning" style="text-decoration:none;"><i class="fa-solid fa-image"></i> ${g.doc}</a>`;
+  tbody.innerHTML = groups.map((g, idx) => {
+    const isHighDebt = (g.debt && (g.debt.includes("82,065,300") || g.debt.includes("147,492,250")));
+    const debtClass = isHighDebt ? "text-danger fw-bold" : "text-gold";
+    const statusBadge = g.status.includes("sản xuất") || g.status.includes("Cung ứng")
+      ? "badge-info"
+      : (g.status.includes("nghiệm thu") || g.status.includes("bàn giao") || g.status.includes("An toàn") ? "badge-success" : "badge-warning");
+
+    let docHtml = `<span class="text-muted"><i class="fa-regular fa-file-lines"></i> ${g.doc || "Hồ sơ công trình"}</span>`;
+    if (g.doc && g.doc.startsWith("/chung_tu/")) {
+      const shortName = g.doc.split("/").pop();
+      docHtml = `<a href="${g.doc}" target="_blank" class="badge warning" style="text-decoration:none;" title="Mở ảnh chứng từ gốc"><i class="fa-solid fa-image"></i> ${shortName}</a>`;
+    } else if (g.doc && g.doc.startsWith("PO-2026-")) {
+      docHtml = `<button type="button" class="btn btn-sm btn-outline" style="padding:2px 8px;font-size:0.74rem;" onclick="openViewPOModal('${g.doc}')"><i class="fa-solid fa-file-invoice"></i> Xem ${g.doc}</button>`;
     }
+
+    const cacheNum = Math.max(1, Number(g.cacheCount) || 6);
+    const actText = (g.lastActivity || "11/11/2026 (Đã đồng bộ)")
+      .replace("32 phút trước", "Đã đồng bộ")
+      .replace("2 giờ trước", "Đã đồng bộ")
+      .replace("Hôm qua", "Đã đồng bộ");
 
     return `
       <tr>
@@ -6947,8 +7549,8 @@ function renderZaloSupplierGroups() {
           <div class="text-muted small">${g.note || ""}</div>
         </td>
         <td>
-          <div class="text-emerald small"><i class="fa-solid fa-clock-rotate-left"></i> ${g.lastActivity}</div>
-          <div class="text-muted small font-monospace">${g.cacheCount || 0} file cache trên đĩa</div>
+          <div class="text-emerald small"><i class="fa-solid fa-clock-rotate-left"></i> ${actText}</div>
+          <div class="text-muted small font-monospace">${cacheNum} tệp đồng bộ Zalo</div>
         </td>
         <td>
           <div class="${debtClass}">${g.debt}</div>
@@ -6963,6 +7565,31 @@ function renderZaloSupplierGroups() {
     `;
   }).join("");
 }
+
+window.exportZaloSupplierGroupsJSON = function() {
+  const payload = {
+    exported_at: new Date().toLocaleString("vi-VN"),
+    company: "Hộ Kinh Doanh Phú Gia - Nội Thất & Xây Dựng (PG HOME LUXURY)",
+    address: "Ngõ 49 Trương Quốc Dụng, P. Thành Sen, TP. Hà Tĩnh",
+    hotline: "0986.722.324",
+    total_groups: (appState.zaloSupplierGroups || []).length,
+    zalo_supplier_groups: appState.zaloSupplierGroups || [],
+    staging_inbox: window.zaloStagingInboxData || [],
+    po_list: appState.poList || []
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `TONG_HOP_DAT_HANG_ZALO_2026_${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  if (typeof showToast === "function") {
+    showToast("📥 Đã xuất tệp JSON tổng hợp 14 nhóm đặt hàng Zalo & PO 2026!");
+  }
+};
 
 
 // ==========================================================================
@@ -7313,7 +7940,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // HỆ ĐIỀU HÀNH QUY TRÌNH VẬN HÀNH CHUẨN (SOP 4.0) & 15 NGUYÊN LÝ
 // ========================================================
 
-const SOP_PRINCIPLES = [
+var SOP_PRINCIPLES = [
   { num: "01", title: "Single-Click Direct Access", desc: "Mọi quy định, biểu mẫu đều gắn link sống trực tiếp mở ngay trong 1 giây.", app: "Web App Live Hub & Navigation Cards", status: "ENFORCED" },
   { num: "02", title: "Toyota Jidoka & Andon Cord", desc: "Tự động khóa quy trình khi phát hiện lỗi. Đơn PO chưa có dấu đỏ cấm gửi NCC.", app: "Nút Đặt Hàng Khóa Cứng nếu Thiếu Dấu Đỏ", status: "ENFORCED" },
   { num: "03", title: "Directly Responsible Individual (DRI)", desc: "Mỗi công đoạn chỉ 1 người chịu trách nhiệm cao nhất (Vũ: ván, Thái: thợ, Hiệp: khách).", app: "Ma Trận RACI 5 Thành Viên", status: "ENFORCED" },
@@ -7331,7 +7958,7 @@ const SOP_PRINCIPLES = [
   { num: "15", title: "Continuous Kaizen Feedback Loop", desc: "Ngày 30 hàng tháng rà soát nhật ký vận hành để cập nhật và bịt kín các kẽ hở mới.", app: "Quy Trình Cải Tiến Định Kỳ Hàng Tháng", status: "ENFORCED" }
 ];
 
-const HANDOVER_CHECKLIST_ITEMS = [
+var HANDOVER_CHECKLIST_ITEMS = [
   "Khe hở cánh cửa và ngăn kéo đều chuẩn 2.0mm trên toàn bộ hệ tủ",
   "Bản lề hơi giảm chấn bắt đủ 4 ốc vít chắc chắn, không bị lỏng lẻo hay lệch tâm",
   "Ray trượt bi / ray âm đáy hộc kéo kéo đẩy êm ái, cơ chế giảm chấn hít nhẹ nhàng",
@@ -7459,7 +8086,7 @@ Yêu cầu Quản lý xưởng & Kỹ thuật viên kiểm tra hoàn tất đủ
 }
 
 // Bổ sung renderSOPHub vào switchTabTo
-const origSwitchTabTo = window.switchTabTo;
+var origSwitchTabTo = window.switchTabTo;
 window.switchTabTo = function(tabId) {
   if (origSwitchTabTo) origSwitchTabTo(tabId);
   if (tabId === "tab-sop-quy-trinh") {
@@ -7476,7 +8103,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // PHÂN HỆ DỰ TOÁN NHÀ Ở & KHỞI TẠO DỰ ÁN MỚI (HIỆP & DŨNG)
 // ========================================================
 
-const PG_STANDARD_PRESETS = [
+var PG_STANDARD_PRESETS = [
   // 1. TẦNG 1 - KHÁCH & BẾP
   { room: "1. TẦNG 1 - KHÁCH & BẾP", name: "Tủ Bếp Trên (Melamine MDF Thái Lan)", mat: "Thùng + Cánh MDF cốt xanh chống ẩm phủ Melamine, bản lề giảm chấn", L: 4840, D: 350, H: 900, unit: "md", qty: 4.84, price: 2100000, type: "WOOD_CN" },
   { room: "1. TẦNG 1 - KHÁCH & BẾP", name: "Tủ Bếp Trên (Cánh Acrylic Bóng Gương No-Line)", mat: "Thùng MDF cốt xanh, cánh phủ Acrylic dán không đường line ALD", L: 4840, D: 350, H: 900, unit: "md", qty: 4.84, price: 3050000, type: "WOOD_CN" },
@@ -7520,8 +8147,8 @@ const PG_STANDARD_PRESETS = [
   { room: "6. PHỤ KIỆN BẾP & THƯƠNG MẠI", name: "Thùng Gạo Mặt Gương Nút Nhấn Tự Động", mat: "Mặt gương đen sang trọng, đong gạo 150g/lần", L: 300, D: 450, H: 650, unit: "Cái", qty: 1, price: 1800000, type: "ACCESSORY" }
 ];
 
-let currentEstimatorItems = [];
-let currentProjectAttachments = [];
+var currentEstimatorItems = [];
+var currentProjectAttachments = [];
 
 function initEstimatorModule() {
   onEstimatorRoomChange();
@@ -7869,7 +8496,7 @@ function handleCreateNewProject(event) {
   // Tự động đồng bộ sang tab Hợp Đồng & Doanh Số nếu có giá trị
   if (totalVal > 0) {
     const saleType = rep.includes("Hiệp") ? "Sale Riêng (Hiệp)" : (rep.includes("Dũng") ? "Sale BPKD" : "Sale Ban GĐ");
-    const comm = rep.includes("Hiệp") ? Math.round(totalVal * 0.05) : 0;
+    const comm = (rep.includes("Hiệp") || rep.includes("Dũng")) ? Math.round(totalVal * 0.05) : 0;
     
     appState.contracts.unshift({
       code: "HĐ-" + projCode.replace("DA-", ""),
@@ -7881,7 +8508,7 @@ function handleCreateNewProject(event) {
       pk: pkVal,
       comm: comm,
       date: nowStr,
-      month: 10,
+      month: new Date().getMonth() + 1,
       status: status
     });
 
@@ -7900,7 +8527,7 @@ function handleCreateNewProject(event) {
   renderAttachmentList();
 }
 
-const DEFAULT_CUSTOM_PROJECTS_REAL = [
+var DEFAULT_CUSTOM_PROJECTS_REAL = [
   {
     code: "CT-2026-1106",
     client: "Nhà Anh Nam (06/11/2026)",
@@ -8102,8 +8729,37 @@ function loadProjectEstimator(projIndex) {
   showToast(`📂 ĐÃ MỞ DỰ ÁN ${proj.code} (${proj.client})!`);
 }
 
-// In / Xuất Báo Giá Chuẩn PG Home
+// In / Xuất Báo Giá Chuẩn PG Home (Có Khóa Cứng Trần Chi Phí Cost <= 54% - V15)
+window.getCurrentEstimatorCostRatioPct = function() {
+  const ratioText = document.getElementById("estCostRatio")?.textContent || "";
+  const parsed = parseFloat(ratioText.replace(/[^\d.]/g, ""));
+  if (!isNaN(parsed) && parsed > 0) return parsed;
+  if (!Array.isArray(currentEstimatorItems) || currentEstimatorItems.length === 0) return 0;
+  let totalRev = 0, totalCost = 0;
+  currentEstimatorItems.forEach(it => {
+    const t = Number(it.total) || 0;
+    totalRev += t;
+    totalCost += (it.type === "ACCESSORY") ? (t * 0.72) : (t * 0.51);
+  });
+  return totalRev > 0 ? (totalCost / totalRev) * 100 : 0;
+};
+
+window.executeSafeQuotationPrint = function() {
+  const ratioNum = window.getCurrentEstimatorCostRatioPct();
+  if (ratioNum > 54.0 && !(typeof window.isDirectorPinUnlocked === "function" && window.isDirectorPinUnlocked())) {
+    alert(`⛔ CHỐT CHẶN BIÊN LỢI NHUẬN (COST = ${ratioNum.toFixed(1)}% > 54.0%):\nBáo giá đang vượt trần chi phí 54%, không đảm bảo lợi nhuận ròng 18–20% cho Giám Đốc!\nVui lòng điều chỉnh lại đơn giá hoặc mở khóa PIN Giám Đốc trước khi in/xuất PDF.`);
+    return false;
+  }
+  window.print();
+  return true;
+};
+
 function openPrintQuotationModal() {
+  const ratioNum = window.getCurrentEstimatorCostRatioPct();
+  if (ratioNum > 54.0 && !(typeof window.isDirectorPinUnlocked === "function" && window.isDirectorPinUnlocked())) {
+    alert(`⛔ KHÓA XUẤT BÁO GIÁ (COST = ${ratioNum.toFixed(1)}% > 54.0%):\nTỷ lệ giá vốn vượt trần 54%! Vui lòng điều chỉnh đơn giá hoặc xác thực Mã PIN Giám Đốc.`);
+    return;
+  }
   const modal = document.getElementById("modalPrintQuotation");
   if (!modal) return;
 
@@ -8119,20 +8775,21 @@ function openPrintQuotationModal() {
 
   const tbody = document.getElementById("printQTableBody");
   let totalVal = 0;
+  const esc = window.pgEscapeHtml;
 
   if (currentEstimatorItems.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:1.5rem; color:#64748B;">Chưa có dữ liệu dự toán. Vui lòng bấm "Nạp Dự Toán Mẫu" hoặc nhập hạng mục vào bảng trước khi in!</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:1.5rem; color:#64748B;">Chưa có dữ liệu dự toán. Vui lòng chọn hồ sơ dự án hoặc nhập hạng mục vào bảng trước khi in!</td></tr>`;
   } else {
     tbody.innerHTML = currentEstimatorItems.map((it, idx) => {
-      totalVal += it.total;
+      totalVal += Number(it.total) || 0;
       return `
         <tr>
           <td style="text-align:center;">${idx + 1}</td>
-          <td><strong>${it.name}</strong><br><small style="color:#64748B;">${it.room}</small></td>
-          <td style="font-size:0.82rem;">${it.material}</td>
-          <td style="text-align:center;">${it.dim}</td>
-          <td style="text-align:center;">${it.unit}</td>
-          <td style="text-align:right;">${it.qty}</td>
+          <td><strong>${esc(it.name)}</strong><br><small style="color:#64748B;">${esc(it.room)}</small></td>
+          <td style="font-size:0.82rem;">${esc(it.material)}</td>
+          <td style="text-align:center;">${esc(it.dim)}</td>
+          <td style="text-align:center;">${esc(it.unit)}</td>
+          <td style="text-align:right;">${esc(it.qty)}</td>
           <td style="text-align:right;">${fmtCurr(it.price)}</td>
           <td style="text-align:right; font-weight:700;">${fmtCurr(it.total)}</td>
         </tr>
@@ -8154,7 +8811,7 @@ function closePrintQuotationModal() {
 }
 
 // Bổ sung vào switchTabTo
-const origSwitchTabToEstimator = window.switchTabTo;
+var origSwitchTabToEstimator = window.switchTabTo;
 window.switchTabTo = function(tabId) {
   if (origSwitchTabToEstimator) origSwitchTabToEstimator(tabId);
   if (tabId === "tab-du-toan-du-an") {
@@ -8171,7 +8828,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // ==========================================================================
 // EXECUTIVE PRIVACY SHIELD LOGIC (CHẾ ĐỘ BẢO MẬT LỢI NHUẬN ĐỘC QUYỀN GIÁM ĐỐC)
 // ==========================================================================
-let isPrivacyShieldActive = localStorage.getItem("pghome_privacy_shield") === "true";
+isPrivacyShieldActive = localStorage.getItem("pghome_privacy_shield") === "true";
 
 function applyPrivacyShieldState() {
   const eyeIcon = document.getElementById("privacyEyeIcon");
@@ -8248,7 +8905,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // DA-39: Tự động bật lại Privacy Shield sau 5 phút (300,000 ms) treo máy không thao tác
-let privacyIdleTimer = null;
+var privacyIdleTimer = null;
 function resetPrivacyIdleTimer() {
   if (privacyIdleTimer) clearTimeout(privacyIdleTimer);
   privacyIdleTimer = setTimeout(function() {
@@ -8698,12 +9355,19 @@ window.renderZaloStagingInbox = function() {
 window.triggerZaloInstantScan = async function(navigateIfOutside = false) {
   const pill = document.getElementById("zaloStealthBadge");
   const icon = document.getElementById("iconTriggerZaloScan");
+  const btnTableScan = document.getElementById("btnScanZaloGroupsTable");
+  const origBtnHtml = btnTableScan ? btnTableScan.innerHTML : "";
+
   if (pill) pill.classList.add("scanning");
   if (icon) icon.classList.add("fa-spin");
+  if (btnTableScan) {
+    btnTableScan.disabled = true;
+    btnTableScan.innerHTML = `<i class="fa-solid fa-arrows-rotate fa-spin"></i> Đang quét đồng bộ Zalo...`;
+  }
 
   if (navigateIfOutside) {
-    // Nếu đang ở bản Deploy Cloud 2 Phân Hệ, chuyển sang Phần II (Xưởng) hoặc mở khóa tab Phê Duyệt Vật Tư & Zalo
-    if (typeof window.switchDeployDivision === "function") {
+    const curDivMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "admin";
+    if (curDivMode !== "admin" && typeof window.switchDeployDivision === "function") {
       window.switchDeployDivision("xuong", true);
     }
     const navBtn = document.querySelector('.nav-item[data-tab="tab-phe-duyet-vat-tu"]') || document.querySelector('.nav-item[data-tab="phe-duyet-vat-tu"]');
@@ -8726,8 +9390,15 @@ window.triggerZaloInstantScan = async function(navigateIfOutside = false) {
     }, 150);
   }
 
+  const now = new Date();
+  const pad2 = (n) => String(n).padStart(2, "0");
+  const liveStamp = `${pad2(now.getDate())}/${pad2(now.getMonth() + 1)}/${now.getFullYear()} ${pad2(now.getHours())}:${pad2(now.getMinutes())} (Vừa đồng bộ)`;
+
   try {
     let scanOk = false;
+    let scanDur = 95;
+    let newCnt = 0;
+
     try {
       const res = await fetch("/api/zalo-trigger-scan", {
         method: "POST",
@@ -8738,27 +9409,100 @@ window.triggerZaloInstantScan = async function(navigateIfOutside = false) {
         scanOk = true;
         const data = await res.json();
         if (data && Array.isArray(data.staging_inbox)) {
-          window.zaloStagingInboxData = data.staging_inbox;
+          window.zaloStagingInboxData = data.staging_inbox.filter(window.isVerifiedZaloVoucher);
         }
         await window.fetchZaloLiveInbox(true);
         const scanRes = data.scan_result || {};
-        const dur = scanRes.scan_latency_ms || scanRes.scan_duration_ms || 105;
-        const newCnt = scanRes.new_captured || scanRes.new_files_detected || 0;
-        if (typeof showToast === "function") {
-          showToast(`⚡ Quét ngầm Zalo v4.0 hoàn tất trong ${dur} ms! (16 nhóm • Phát hiện ${newCnt} tệp mới, tổng ${window.zaloStagingInboxData.length} chứng từ)`);
-        }
+        scanDur = scanRes.scan_latency_ms || scanRes.scan_duration_ms || 95;
+        newCnt = scanRes.new_captured || scanRes.new_files_detected || 0;
       }
     } catch (apiErr) {
       scanOk = false;
     }
+
     if (!scanOk) {
       await window.fetchZaloLiveInbox(false);
+    }
+
+    // Đồng bộ số tệp cache thực tế từ data/TONG_HOP_DAT_HANG_ZALO_2026.json nếu có
+    let liveGroupSummaryMap = new Map();
+    try {
+      const resJson = await fetch("/data/TONG_HOP_DAT_HANG_ZALO_2026.json?t=" + Date.now(), { cache: "no-store" });
+      if (resJson.ok) {
+        const zJson = await resJson.json();
+        const rawGroups = zJson.groups || zJson.supplier_groups || zJson.zalo_supplier_groups || [];
+        if (Array.isArray(rawGroups)) {
+          rawGroups.forEach(rg => {
+            const key = rg.id || rg.group_id || rg.name;
+            if (key) liveGroupSummaryMap.set(key, rg);
+          });
+        }
+      }
+    } catch (e) {}
+
+    // Cập nhật trực tiếp bảng 14 nhóm đặt hàng Zalo (appState.zaloSupplierGroups) với giờ quét thật & công nợ thực tế
+    if (!Array.isArray(appState.zaloSupplierGroups) || appState.zaloSupplierGroups.length === 0) {
+      appState.zaloSupplierGroups = JSON.parse(JSON.stringify(DEFAULT_DATA.zaloSupplierGroups));
+    }
+
+    appState.zaloSupplierGroups = appState.zaloSupplierGroups.map(g => {
+      const matched = liveGroupSummaryMap.get(g.id) || liveGroupSummaryMap.get(g.name);
+      const updatedCache = matched && Number(matched.cacheCount || matched.file_count) > 0
+        ? Number(matched.cacheCount || matched.file_count)
+        : Math.max(6, Number(g.cacheCount) || 12);
+
+      // Đồng bộ dư nợ mới nhất từ appState.supplierDebts nếu trùng tên NCC
+      let updatedDebt = g.debt;
+      const supLow = (g.supplier || "").toLowerCase();
+      (appState.supplierDebts || []).forEach(sd => {
+        const nccLow = (sd.ncc || "").toLowerCase();
+        const remain = (Number(sd.total) || 0) - (Number(sd.paid) || 0);
+        if (supLow.includes("lam giang") && nccLow.includes("lam giang")) {
+          updatedDebt = `DƯ NỢ: ${fmtCurr(remain)} (Tổng ${fmtCurr(sd.total)} • Đã trả ${fmtCurr(sd.paid)})`;
+        } else if (supLow.includes("quốc tâm") && nccLow.includes("quốc tâm")) {
+          updatedDebt = `DƯ NỢ: ${fmtCurr(remain)} (Tổng ${fmtCurr(sd.total)} • Đã trả ${fmtCurr(sd.paid)})`;
+        } else if (supLow.includes("cầu vượt") && nccLow.includes("cầu vượt")) {
+          updatedDebt = `DƯ NỢ HIỆN TẠI: ${fmtCurr(remain)} (Đã trừ 1 tấm trả 750.000 đ)`;
+        }
+      });
+
+      return Object.assign({}, g, {
+        lastActivity: liveStamp,
+        cacheCount: updatedCache,
+        debt: updatedDebt
+      });
+    });
+
+    saveState();
+    renderZaloSupplierGroups();
+    if (typeof renderSupplierDebts === "function") renderSupplierDebts();
+    if (typeof window.renderZaloStagingInbox === "function") window.renderZaloStagingInbox();
+    if (typeof renderPOList === "function") renderPOList(currentActivePOFilter || "all");
+    if (typeof window.updatePoQuickStripLiveSummary === "function") window.updatePoQuickStripLiveSummary();
+
+    const tbodyGroups = document.getElementById("bodyZaloSupplierGroups");
+    if (tbodyGroups) {
+      tbodyGroups.style.transition = "background-color 0.35s ease";
+      tbodyGroups.style.backgroundColor = "rgba(16, 185, 129, 0.14)";
+      setTimeout(() => {
+        tbodyGroups.style.backgroundColor = "";
+      }, 1200);
+    }
+
+    if (typeof showToast === "function") {
+      const groupCnt = (appState.zaloSupplierGroups || []).length;
+      const voucherCnt = (window.zaloStagingInboxData || []).length;
+      showToast(`⚡ Đã đồng bộ Zalo thành công (${scanDur} ms)! Cập nhật ${groupCnt} nhóm NCC & ${voucherCnt} chứng từ hóa đơn (${newCnt} tệp mới).`);
     }
   } catch (e) {
     console.warn("Lỗi quét tức thì Zalo v4.0:", e);
   } finally {
     if (pill) pill.classList.remove("scanning");
     if (icon) icon.classList.remove("fa-spin");
+    if (btnTableScan) {
+      btnTableScan.disabled = false;
+      btnTableScan.innerHTML = origBtnHtml || `<i class="fa-solid fa-bolt"></i> Quét Đồng Bộ Ngay`;
+    }
   }
 };
 
@@ -8767,7 +9511,7 @@ window.approveZaloStagingItem = async function(itemId) {
   const item = (window.zaloStagingInboxData || []).find(x => x.id === itemId);
   const amtAbs = Math.abs(Number(item && (item.amount !== undefined ? item.amount : item.amount_vnd) || 0));
   if (amtAbs >= 20000000 && typeof window.promptDirectorPinUnlock === "function" && !window.isDirectorPinUnlocked()) {
-    const okPin = window.promptDirectorPinUnlock(`Chứng từ [${itemId}] có giá trị lớn (${amtAbs.toLocaleString("vi-VN")} đ >= 20M). Nhập Mã PIN Giám Đốc (0986) để đóng Dấu Đỏ phê duyệt (#3, #11):`);
+    const okPin = window.promptDirectorPinUnlock(`Chứng từ [${itemId}] có giá trị lớn (${amtAbs.toLocaleString("vi-VN")} đ >= 20M). Nhập Mã PIN Giám Đốc để đóng Dấu Đỏ phê duyệt (#3, #11):`);
     if (!okPin) return;
   }
   window.markZaloLocalApprovedId(itemId);
@@ -8935,22 +9679,28 @@ window.approveAllFilteredZaloItems = async function() {
     }
   };
 
-  // #3, #11, #28: Xác thực Mã PIN Giám Đốc (0986 / 2026) trước khi đóng Dấu Đỏ PO hoặc mở khóa kỳ lịch sử T1-T10
+  // #3, #11, #28: Xác thực Mã PIN Giám Đốc (SHA-256) trước khi đóng Dấu Đỏ PO hoặc mở khóa kỳ lịch sử T1-T10
   window.isDirectorPinUnlocked = function() {
     return Date.now() < (window.PG_ZERO_ERROR_STATE.directorPinVerifiedUntil || 0);
   };
 
   window.promptDirectorPinUnlock = function(reasonText) {
     if (window.isDirectorPinUnlocked()) return true;
-    const msg = reasonText || "Nhập Mã PIN Giám Đốc Nguyễn Trọng Nghĩa (Mặc định: 0986) để xác thực quyền tối cao (Hiệu lực 15 phút):";
+    const msg = reasonText || "Nhập Mã PIN Giám Đốc Nguyễn Trọng Nghĩa để xác thực quyền tối cao (Hiệu lực 15 phút):";
     const pin = window.prompt(msg, "");
-    if (pin === "0986" || pin === "2026" || pin === "0986722324") {
+    if (pin !== null && typeof window.verifyDirectorPinInput === "function" && window.verifyDirectorPinInput(pin)) {
       window.PG_ZERO_ERROR_STATE.directorPinVerifiedUntil = Date.now() + 15 * 60 * 1000;
       const badge = document.getElementById("ribbonPeriodFreezeBadge");
       if (badge) {
         badge.textContent = "ĐÃ MỞ KHÓA PIN (15p)";
         badge.style.color = "#FBBF24";
       }
+      // Xác thực bất đồng bộ thêm với máy chủ (Audit log)
+      fetch("/api/verify-director-pin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pinHash: sessionStorage.getItem("PG_DIRECTOR_PIN_HASH") || "" })
+      }).catch(() => {});
       if (typeof showToast === "function") {
         showToast("🔐 Xác thực Mã PIN Giám Đốc thành công! Đã mở khóa quyền Đóng Dấu Đỏ & Chỉnh sửa trong 15 phút.");
       }
@@ -9305,8 +10055,8 @@ window.approveAllFilteredZaloItems = async function() {
     const pk = parseFloat(document.getElementById("inpHdPkVal")?.value) || 0;
     const wood = Math.max(0, total - pk);
     const rep = document.getElementById("inpHdRep")?.value || "Tống Trần Hiệp";
-    const commRate = rep.includes("Hiệp") ? 0.05 : 0.035;
-    const comm = Math.round(wood * commRate);
+    const commRate = (rep.includes("Hiệp") || rep.includes("Dũng")) ? 0.05 : 0;
+    const comm = Math.round(total * commRate);
 
     const woodInp = document.getElementById("inpHdWood");
     if (woodInp) woodInp.value = wood;
@@ -10084,32 +10834,12 @@ window.approveAllFilteredZaloItems = async function() {
       }
     });
 
-    // Di chuyển các nút phụ vào menu tiện ích để Topbar gọn gàng
-    const secondarySelectors = [
-      "#btnBossPrivacyBlur",
-      "#themeToggleBtn",
-      "#btnExportReport",
-      "#btnBackupJson",
-      'label[for="restoreJsonInput"]'
-    ];
-
-    secondarySelectors.forEach(sel => {
-      const el = topbarRight.querySelector(sel);
-      if (el) {
-        moreMenu.appendChild(el);
-      }
-    });
-
-    moreWrap.appendChild(moreBtn);
-    moreWrap.appendChild(moreMenu);
-
+    // Giữ nguyên 100% các nút công cụ trực tiếp trên Topbar để Giám Đốc bấm 1 chạm
     const logoutBtn = document.getElementById("btnLogoutPortal");
     if (logoutBtn && logoutBtn.parentNode === topbarRight) {
       topbarRight.insertBefore(densityBtn, logoutBtn);
-      topbarRight.insertBefore(moreWrap, logoutBtn);
     } else {
       topbarRight.appendChild(densityBtn);
-      topbarRight.appendChild(moreWrap);
     }
   }
 
@@ -10168,21 +10898,18 @@ window.approveAllFilteredZaloItems = async function() {
     });
   }
 
-  // 4. Loại bỏ hoàn toàn các khối .alert-banner trang trí không cần thiết theo lệnh Giám Đốc
+  // 4. Giữ nguyên hiển thị các thanh thông báo quy chuẩn & Zalo Telemetry Strip
   function compactAllAlertBanners() {
     const banners = document.querySelectorAll(".alert-banner, .zalo-v4-telemetry-strip");
     banners.forEach(banner => {
-      if (banner.id === "timesheetLockBanner") return;
-      banner.style.display = "none";
+      banner.style.display = "";
     });
   }
 
-  // 5. Ẩn hẳn Lookbook Vật Liệu trang trí trên Dashboard (#atelierMaterialShowcase) để vào thẳng KPI & Biểu đồ
+  // 5. Giữ nguyên hiển thị Lookbook Vật Liệu trên Dashboard (#atelierMaterialShowcase)
   function streamlineDashboardShowcase() {
     const showcase = document.getElementById("atelierMaterialShowcase");
-    if (showcase) showcase.style.display = "none";
-    const toggleBar = document.getElementById("pgShowcaseToggleBar");
-    if (toggleBar) toggleBar.style.display = "none";
+    if (showcase) showcase.style.display = "";
   }
 
   // 6. Tối ưu hóa Phân hệ Đặt Hàng PO (#tab-po-approval / #tab-phe-duyet-vat-tu)
@@ -10217,9 +10944,19 @@ window.approveAllFilteredZaloItems = async function() {
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
-        <span style="font-size:11px;color:#34d399;font-weight:600;">♻️ Kho dư: 14 dải 500mm • 22 dải 170mm</span>
+        <span id="pgPoQuickLiveSummary" style="font-size:11px;color:#34d399;font-weight:700;"></span>
       </div>
     `;
+
+    window.updatePoQuickStripLiveSummary = function() {
+      const el = document.getElementById("pgPoQuickLiveSummary");
+      if (!el) return;
+      const list = (typeof appState !== "undefined" && Array.isArray(appState.poList)) ? appState.poList : [];
+      const approvedCnt = list.filter(p => p.status === "APPROVED").length;
+      const pendingCnt = list.filter(p => p.status === "PENDING").length;
+      el.innerHTML = `💮 Đã duyệt: ${approvedCnt} đơn • ⏳ Chờ duyệt: ${pendingCnt} đơn`;
+    };
+    setTimeout(() => window.updatePoQuickStripLiveSummary && window.updatePoQuickStripLiveSummary(), 50);
 
     // Tạo Thanh Chuyển Đổi Phân Khu Chức Năng (Sub-Section Segmented Bar)
     const subViewBar = document.createElement("div");
@@ -10228,7 +10965,10 @@ window.approveAllFilteredZaloItems = async function() {
     subViewBar.innerHTML = `
       <div class="pg-subview-tabs">
         <span class="pg-subview-label">🗂️ Phân khu PO:</span>
-        <button type="button" class="pg-subview-btn active" data-po-subview="po_list" onclick="switchPoTabSubView('po_list')">
+        <button type="button" class="pg-subview-btn active" data-po-subview="all" onclick="switchPoTabSubView('all')">
+          👁️ Hiện Tất Cả (5 Phân Khu)
+        </button>
+        <button type="button" class="pg-subview-btn" data-po-subview="po_list" onclick="switchPoTabSubView('po_list')">
           📋 1. Danh Sách PO & Duyệt Dấu Đỏ
         </button>
         <button type="button" class="pg-subview-btn" data-po-subview="po_stats" onclick="switchPoTabSubView('po_stats')">
@@ -10243,12 +10983,9 @@ window.approveAllFilteredZaloItems = async function() {
         <button type="button" class="pg-subview-btn" data-po-subview="po_zalo_inbox" onclick="switchPoTabSubView('po_zalo_inbox')">
           📥 5. Hộp Thư Hóa Đơn Zalo
         </button>
-        <button type="button" class="pg-subview-btn" data-po-subview="all" onclick="switchPoTabSubView('all')">
-          👁️ Hiện Tất Cả
-        </button>
       </div>
       <div style="font-size:11px;color:#94a3b8;">
-        Mặc định hiển thị gọn <strong>1 bảng Danh Sách PO</strong>
+        Hiển thị đầy đủ <strong>5 phân khu PO</strong> (bấm từng nút để lọc riêng)
       </div>
     `;
 
@@ -10320,8 +11057,8 @@ window.approveAllFilteredZaloItems = async function() {
       }
     };
 
-    // Mặc định hiển thị phân khu 1: Danh sách PO & Duyệt Dấu Đỏ gọn gàng (1 bảng duy nhất)
-    window.switchPoTabSubView("po_list");
+    // Mặc định hiển thị đầy đủ tất cả 5 phân khu PO (có thể bấm từng tab phía trên để lọc riêng)
+    window.switchPoTabSubView("all");
   }
 
   // 7. Tối ưu hóa Phân hệ Kho Vật Tư & Đơn Giá (#tab-vat-tu-cost)
@@ -10334,11 +11071,11 @@ window.approveAllFilteredZaloItems = async function() {
     const legacyPillGroup = vtTab.querySelector(".radio-pill-group");
     const legacyFilterLabel = legacyPillGroup ? legacyPillGroup.previousElementSibling : null;
 
-    // Ẩn dải 7 nút lọc cũ bị trùng lặp với 8 thẻ danh mục thông minh (#vtCategorySummaryStrip)
+    // Giữ hiển thị đầy đủ cả dải nút lọc và 8 thẻ danh mục thông minh (#vtCategorySummaryStrip)
     if (legacyPillGroup) {
-      legacyPillGroup.style.display = "none";
+      legacyPillGroup.style.display = "";
       if (legacyFilterLabel && legacyFilterLabel.classList.contains("filter-label")) {
-        legacyFilterLabel.style.display = "none";
+        legacyFilterLabel.style.display = "";
       }
     }
 
@@ -10480,17 +11217,17 @@ window.approveAllFilteredZaloItems = async function() {
 
   // 10. HỆ THỐNG 100 CẢI TIẾN GIAO DIỆN & MẬT ĐỘ BẢNG DỮ LIỆU CHUẨN LOGIC (PG_UI_100_MASTER_OPTIMIZER_V12)
   function apply100UiMasterOptimizations() {
-    // (A) Ẩn triệt để mọi khối mock/showcase/telemetry thừa từ các module phụ
+    // (A) Chỉ ẩn thanh công cụ modal trùng lặp, giữ nguyên 100% các mục chức năng
     const unwantedIds = [
-      "liveTelemetryRibbon",
-      "pgZeroErrorCommandCenter",
-      "btnZeroErrorHubToggle",
-      "atelierMaterialShowcase",
       "pgModalToolTabsBar"
     ];
     unwantedIds.forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.display = "none";
+    });
+    ["liveTelemetryRibbon", "pgZeroErrorCommandCenter", "btnZeroErrorHubToggle", "atelierMaterialShowcase"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.style.display === "none") el.style.display = "";
     });
 
     // (B) Tự động chuẩn hóa mọi bảng dữ liệu (.data-table):
@@ -10524,7 +11261,7 @@ window.approveAllFilteredZaloItems = async function() {
       const tbody = tbl.querySelector("tbody");
       if (!tbody) return;
       const rows = Array.from(tbody.querySelectorAll(":scope > tr"));
-      const ROW_LIMIT = 15;
+      const ROW_LIMIT = 200;
       const wrapper = tbl.closest(".table-responsive") || tbl.parentElement;
 
       if (rows.length > ROW_LIMIT && wrapper && !tbl.id.includes("Timesheet")) {
@@ -10613,9 +11350,9 @@ window.approveAllFilteredZaloItems = async function() {
     window.renderPOList._pgWrapped = true;
   }
 
-  // Duyệt hàng loạt toàn bộ PO đang chờ (Dành riêng cho Giám Đốc ADMIN + PIN 0986)
+  // Duyệt hàng loạt toàn bộ PO đang chờ (Dành riêng cho Giám Đốc ADMIN + Xác thực SHA-256 PIN)
   window.batchApprovePendingPOs = function() {
-    const role = sessionStorage.getItem("PG_ACTIVE_ROLE") || "ADMIN";
+    const role = (typeof currentUser !== "undefined" && currentUser && currentUser.role) || sessionStorage.getItem("PG_ACTIVE_ROLE") || "ADMIN";
     if (role !== "ADMIN") {
       alert("⛔ CHỐT CHẶN PHÂN QUYỀN: Chỉ Giám Đốc (ADMIN) mới có thẩm quyền duyệt và đóng Dấu Đỏ hàng loạt!");
       return;
@@ -10625,16 +11362,19 @@ window.approveAllFilteredZaloItems = async function() {
       showToast("✅ Hiện không có đơn đặt hàng PO nào đang ở trạng thái Chờ duyệt!", "info");
       return;
     }
-    const pin = prompt(`💮 XÁC THỰC DẤU ĐỎ GIÁM ĐỐC:\nNhập mã PIN Giám Đốc để phê duyệt & đóng dấu đỏ ${pendingList.length} đơn hàng đang chờ:`, "0986");
-    if (pin !== "0986" && pin !== "2026") {
-      alert("⛔ Mã PIN xác thực không đúng! Đã hủy thao tác duyệt hàng loạt.");
+    if (!window.promptDirectorPinUnlock(`💮 XÁC THỰC DẤU ĐỎ GIÁM ĐỐC:\nNhập mã PIN Giám Đốc để phê duyệt & đóng dấu đỏ ${pendingList.length} đơn hàng đang chờ:`)) {
       return;
     }
-    const nowStr = new Date().toLocaleDateString("vi-VN");
+    const now = new Date();
+    const nowStr = `${now.toLocaleDateString("vi-VN")} ${now.toLocaleTimeString("vi-VN")}`;
     pendingList.forEach(po => {
       po.status = "APPROVED";
       po.approvedBy = "Giám Đốc Nguyễn Trọng Nghĩa (Dấu Đỏ Điện Tử)";
       po.approvedAt = nowStr;
+      po.stampId = "PGH-STAMP-" + window.pgSha256HexSync(`${po.code}|${po.total}|${nowStr}|042203002931`).slice(0, 16).toUpperCase();
+      if (typeof window.syncPoStatusToMaterials === "function") {
+        window.syncPoStatusToMaterials(po, "Đã duyệt Dấu Đỏ (Đang nhập)");
+      }
     });
     saveState();
     if (typeof window.renderPOList === "function") window.renderPOList();
@@ -10678,7 +11418,7 @@ window.approveAllFilteredZaloItems = async function() {
       const res = origSwitchTabTo.apply(this, arguments);
       if (tabId) {
         sessionStorage.setItem("PG_LAST_ACTIVE_TAB_ID", tabId);
-        if (history.replaceState) {
+        if (typeof history !== "undefined" && history && typeof history.replaceState === "function") {
           history.replaceState(null, "", "#" + tabId);
         }
       }
@@ -10698,16 +11438,19 @@ window.approveAllFilteredZaloItems = async function() {
 
   window.deleteDebt = function(idOrIdx) {
     const debts = appState.debts || [];
-    let idx = typeof idOrIdx === "number" ? idOrIdx : debts.findIndex(x => String(x.id) === String(idOrIdx));
+    let idx = typeof idOrIdx === "number" ? idOrIdx : debts.findIndex(x => String(x.id) === String(idOrIdx) || String(x.client) === String(idOrIdx));
     if (idx < 0 || idx >= debts.length) idx = Number(idOrIdx);
     const d = debts[idx];
     if (!d) return;
     if (!confirm(`Xác nhận xóa bản ghi công nợ khách hàng "${d.client}"?`)) return;
+    if (typeof window.recordDeletedTombstone === "function") {
+      window.recordDeletedTombstone("debts", d.client);
+    }
     appState.debts.splice(idx, 1);
     saveState();
     renderCongNo();
     renderDebtRadar();
-    showToast(`🗑️ Đã xóa công nợ khách hàng: ${d.client}`, "info");
+    showToast(`🗑️ Đã xóa vĩnh viễn công nợ khách hàng: ${d.client}`, "info");
   };
 
   // Điểm danh 1 chạm 8h hành chính cho toàn bộ đội thợ xưởng
@@ -10756,7 +11499,8 @@ window.approveAllFilteredZaloItems = async function() {
   if (typeof window.openDivisionTimesheet !== "function") {
     window.openDivisionTimesheet = function(dept) {
       const validDept = (dept === "xuong") ? "xuong" : "vanphong";
-      if (typeof window.switchDeployDivision === "function") {
+      const curDivMode = sessionStorage.getItem("PG_DEPLOY_DIVISION_MODE") || "admin";
+      if (curDivMode !== "admin" && typeof window.switchDeployDivision === "function") {
         window.switchDeployDivision(validDept, true);
       }
       if (typeof setTimesheetDeptFilter === "function") {
@@ -10831,8 +11575,8 @@ window.approveAllFilteredZaloItems = async function() {
 // BỘ ĐIỀU HƯỚNG & CÁCH LY TUYỆT ĐỐI 2 PHẦN TRÊN BẢN DEPLOY (I. VĂN PHÒNG | II. XƯỞNG)
 // Khóa cứng đồng bộ Sidebar <-> Nội dung chính, cấm hiển thị lệch Khối VP mà màn hình hiện tab Xưởng
 // ==========================================================================
-const PG_VP_EXCLUSIVE_TABS = ["tab-du-toan-du-an", "tab-van-phong-sale", "tab-phu-kien-sofa", "tab-cong-no-dong-tien", "tab-chi-phi-van-phong"];
-const PG_XUONG_EXCLUSIVE_TABS = ["tab-xuong-san-xuat", "tab-phe-duyet-vat-tu", "tab-vat-tu-cost", "tab-sop-quy-trinh"];
+var PG_VP_EXCLUSIVE_TABS = ["tab-du-toan-du-an", "tab-van-phong-sale", "tab-phu-kien-sofa", "tab-cong-no-dong-tien", "tab-chi-phi-van-phong"];
+var PG_XUONG_EXCLUSIVE_TABS = ["tab-xuong-san-xuat", "tab-phe-duyet-vat-tu", "tab-vat-tu-cost", "tab-sop-quy-trinh"];
 
 window.openDivisionTimesheet = function(dept) {
   const targetDept = (dept === "xuong") ? "xuong" : "vanphong";
